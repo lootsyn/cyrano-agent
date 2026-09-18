@@ -1,0 +1,6 @@
+{
+  "name": "alpha",
+  "schema": "widgetbox.sidecar/1",
+  "lifecycle": "stable",
+  "owners": ["team-widgets"]
+}

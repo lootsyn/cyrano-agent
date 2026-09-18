@@ -1,0 +1,37 @@
+{
+  "kind": "benchmark_discriminability_review",
+  "study_id": "wp23-live-effectiveness-3",
+  "addresses": "wp23-live-effectiveness-2 ceiling effect: the convention was fully inferable from visible code, so baseline passed every holdout and measured lift was zero",
+  "convention_under_test": "widgetbox metadata sidecar contract (widgetbox.sidecar/2): every widget module <m> requires meta/<m>.json with {name, schema: widgetbox.sidecar/2, lifecycle: stable|beta|deprecated|retired, compat: widgetbox/2, owners: [non-empty strings]}; sidecars are never deleted (removal retires them); a rename carries the sidecar to the new name; new widgets enter at stable; the legacy meta/alpha.json (sidecar/1) is grandfathered only while byte-identical to the frozen seed",
+  "questions": {
+    "what_information_is_unavailable_to_baseline": "The v2 schema string, the required compat field and its exact value widgetbox/2, the retire-instead-of-delete rule, the carry-sidecar-on-rename rule, the new-widgets-enter-at-stable rule, and the non-stable lifecycle enum values (beta, deprecated, retired). The visible repo contains only the v1 sidecar shape {name, schema: widgetbox.sidecar/1, lifecycle: stable, owners} — none of the discriminating content.",
+    "where_does_candidate_obtain_it": "Only from the governed improvement note. Task A's evaluator violation prints the complete contract; the improvement run receives that oracle output plus the Task A workspace diff as its evidence; the note is approved, activated, digest-bound and provisioned as AGENTS.md to candidate profiles only.",
+    "why_is_the_rule_realistic": "Schema migrations that grandfather untouched legacy files are standard practice (apiVersion bumps, manifest v2 migrations, OCI annotations). Metadata sidecars validated by external packaging/CI are commonplace (package manifests, registry metadata, CODEOWNERS-style owner fields). Retire-not-delete lifecycle policies mirror tombstone/soft-delete conventions in real repositories.",
+    "could_a_strong_model_recover_the_rule_anyway": "Verified offline: bumping the visible v1 schema string to widgetbox.sidecar/2 still fails SIDECAR_FIELDS because compat is absent from every visible example; guessing compat's value requires a second exact guess; the lifecycle enum and the retire/carry/stable rules have no visible instance. A baseline would need several simultaneous exact guesses.",
+    "does_each_holdout_require_transfer": "b7 add: needs a v2 sidecar with compat and stable lifecycle for a new module. b8 rename: needs the carry rule plus v2 rewrite; a stale or retired alpha sidecar fails. b9 remove: needs the retire rule — deleting the sidecar fails MISSING_RETIRED_SIDECAR; retiring it as v1 fails SIDECAR_SCHEMA. b10 deprecate: needs the deprecated enum value inside a valid v2 sidecar. b11 repair: needs the full v2 contract on a malformed sidecar.",
+    "accidental_hint_or_leakage": "repo/ grep: no 'sidecar/2', 'compat', 'retired', 'deprecated', 'beta' strings anywhere. meta/alpha.json shows only v1 fields. README mentions sidecars exist and are externally validated — an existence hint only, no contract content. Task prompts name the intent (remove, deprecated), not the mechanism; 'deprecated' is the one contract token visible to baseline and is insufficient alone. The oracle, expectations, and contract text live outside the workspace. Suite families and holdout ids are disjoint.",
+    "is_success_possible_without_the_convention": "No verified path: naive delete/copy/no-sidecar/v1-retire/schema-bump all fail the frozen oracle (16/16 offline scenarios checked). Passing requires the contract as disclosed only through Task A's governed improvement lane.",
+    "runtime_filesystem_exposure": "Independent review found the headless agent runs with unrestricted filesystem reach (virtual_mode=False): a baseline could in principle read the oracle, the sealed suite, the evidence tree, or a sibling candidate profile's provisioned note, and stdout logs tool names without paths so the act would be undetectable. MITIGATED: every dcode run now executes inside a private mount namespace (unshare -rm) that replaces the Cyrano fixture/evidence tree, the repository .git objects, and the whole run root with empty tmpfs, rebinding only the run's own directory at its real path. The dcode venv and editable sources remain reachable; the oracle and ledger run harness-side outside the namespace.",
+    "oracle_hardening": "Independent review hardening applied: (1) per-task expectation files are fail-closed — a supplied task key without a sealed expectation file exits 2 instead of silently skipping checks (task-a has an explicit empty expectation); (2) the contract text now prints on every violation, not only sidecar ones, so Task A's learning signal is guaranteed regardless of which rule the attempt violates; (3) retired-sidecar, stale-sidecar and lifecycle expectations make 'delete everything' and 'retire instead of carry' fail deterministically."
+  },
+  "independent_review": {
+    "reviewer": "independent read-only audit of the frozen fixture (subagent), findings addressed before sealing",
+    "findings_disposition": {
+      "runtime_filesystem_exposure_medium": "mitigated via per-run mount-namespace confinement, verified by dry namespace test",
+      "expectations_silently_skipped_medium_latent": "fixed — fail-closed NO_EXPECTATIONS, sealed task-a.json",
+      "contract_not_printed_on_registry_violations_low": "fixed — contract prints on every violation",
+      "task_b10_prompt_names_deprecated_low": "accepted — the prompt names task intent; the token alone cannot satisfy schema+compat+fields+rules",
+      "compat_value_lowest_entropy_low": "accepted — five independent holdouts bound the inflation probability of a lucky guess",
+      "dead_study2_overlays_hygiene": "removed — overlays/task-b4,b5,b6 deleted; B4/B5/B6 remain retired in study-2 evidence",
+      "registered_parser_fragility_low": "accepted — fail-closed and symmetric across arms; a parse failure wastes a run but biases nothing",
+      "symlink_and_traversal_negligible": "accepted — requires deliberate adversarial behavior; the ledger records all specimens"
+    }
+  },
+  "residual_risks": [
+    "A candidate note that paraphrases the contract loosely could still fail holdouts — that is the intended measurement of memory quality, not a benchmark defect.",
+    "deepseek-v4.1-flash may rarely guess compat on the first try; five independent holdouts bound the probability that a lucky guess inflates the aggregate.",
+    "The oracle prints the contract on any violation — including baseline holdout violations — but baseline arms never see oracle output; it is recorded as evidence only.",
+    "Mount confinement masks the repository checkout, git objects, run root and evidence tree; the agent retains read access to the rest of the host filesystem, which contains no contract material."
+  ],
+  "verdict": "discriminative — baseline cannot derive the contract from visible state; candidate derives it only through the governed Task A evidence lane"
+}

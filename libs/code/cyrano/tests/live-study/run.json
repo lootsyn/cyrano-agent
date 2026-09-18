@@ -17,7 +17,9 @@
       "temperature": 0,
       "max_retries": 0,
       "openrouter_provider": {
-        "only": ["DeepInfra"],
+        "only": [
+          "DeepInfra"
+        ],
         "allow_fallbacks": false,
         "require_parameters": true
       }
@@ -25,7 +27,9 @@
   },
   "provider_routing": {
     "policy": {
-      "only": ["DeepInfra"],
+      "only": [
+        "DeepInfra"
+      ],
       "allow_fallbacks": false,
       "require_parameters": true
     },
@@ -65,12 +69,16 @@
   "run_order": [
     "task-a-candidate",
     "improvement",
-    "task-b4-baseline",
-    "task-b4-candidate",
-    "task-b5-baseline",
-    "task-b5-candidate",
-    "task-b6-baseline",
-    "task-b6-candidate"
+    "task-b7-baseline",
+    "task-b7-candidate",
+    "task-b8-baseline",
+    "task-b8-candidate",
+    "task-b9-baseline",
+    "task-b9-candidate",
+    "task-b10-baseline",
+    "task-b10-candidate",
+    "task-b11-baseline",
+    "task-b11-candidate"
   ],
   "controls": {
     "same_task_text_both_arms": true,
@@ -84,9 +92,9 @@
     "candidate_differs_only_by_approved_improvement": true
   },
   "caps": {
-    "max_runs": 8,
-    "max_model_calls": 240,
-    "max_tokens": 5000000,
+    "max_runs": 12,
+    "max_model_calls": 300,
+    "max_tokens": 6000000,
     "max_cost_usd": 10.0,
     "timeout_seconds_per_run": 1800
   }

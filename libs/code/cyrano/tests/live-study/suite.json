@@ -1,80 +1,125 @@
 {
-  "schema_version": "cyrano.live-study/1",
-  "status": "sealed_inputs_not_executed",
-  "study_id": "wp23-live-effectiveness-2",
-  "predecessor": "wp23-live-effectiveness-1 (executed_inconclusive; B1/B2/B3 retired as exposed holdouts)",
-  "families": ["learn-episode", "convention-apply"],
-  "holdout": [
-    "task-b4-holdout",
-    "task-b5-holdout",
-    "task-b6-holdout"
-  ],
-  "min_pairs": 3,
-  "ordering": [
-    "task-a-candidate",
-    "improvement",
-    "task-b4-baseline",
-    "task-b4-candidate",
-    "task-b5-baseline",
-    "task-b5-candidate",
-    "task-b6-baseline",
-    "task-b6-candidate"
-  ],
-  "tasks": {
-    "task-a": {
-      "family": "learn-episode",
-      "arm": "candidate",
-      "prompt": "In the widgetbox package, add a new widget module `kappa` that defines `render() -> str` returning the string 'kappa'. Edit files only; do not run tests.",
-      "oracle": "oracle/check_registry.py",
-      "workspace": "repo",
-      "expected_episode": "first attempt fails the registry convention"
+    "schema_version": "cyrano.live-study/1",
+    "status": "sealed_inputs_not_executed",
+    "study_id": "wp23-live-effectiveness-3",
+    "predecessor": "wp23-live-effectiveness-2 (executed_inconclusive; baseline ceiling — convention inferable from visible code; B4/B5/B6 retired as exposed holdouts)",
+    "families": [
+        "learn-episode",
+        "convention-apply"
+    ],
+    "holdout": [
+        "task-b7-holdout",
+        "task-b8-holdout",
+        "task-b9-holdout",
+        "task-b10-holdout",
+        "task-b11-holdout"
+    ],
+    "min_pairs": 5,
+    "ordering": [
+        "task-a-candidate",
+        "improvement",
+        "task-b7-baseline",
+        "task-b7-candidate",
+        "task-b8-baseline",
+        "task-b8-candidate",
+        "task-b9-baseline",
+        "task-b9-candidate",
+        "task-b10-baseline",
+        "task-b10-candidate",
+        "task-b11-baseline",
+        "task-b11-candidate"
+    ],
+    "tasks": {
+        "task-a": {
+            "family": "learn-episode",
+            "arm": "candidate",
+            "prompt": "In the widgetbox package, add a new widget module `iota` that defines `render() -> str` returning the string 'iota'. Edit files only; do not run tests.",
+            "oracle": "oracle/check_conventions.py",
+            "workspace": "repo",
+            "expected_episode": "attempt fails the hidden sidecar contract; the evaluator output is fed to the governed improvement step"
+        },
+        "task-b7": {
+            "pair_id": "pair-b7",
+            "family": "convention-apply",
+            "holdout": "task-b7-holdout",
+            "operation": "add",
+            "arms": [
+                "baseline",
+                "candidate"
+            ],
+            "prompt": "In the widgetbox package, add a new widget module `omicron` that defines `render() -> str` returning the string 'omicron'. Edit files only; do not run tests.",
+            "oracle": "oracle/check_conventions.py",
+            "workspace": "repo"
+        },
+        "task-b8": {
+            "pair_id": "pair-b8",
+            "family": "convention-apply",
+            "holdout": "task-b8-holdout",
+            "operation": "rename",
+            "arms": [
+                "baseline",
+                "candidate"
+            ],
+            "prompt": "In the widgetbox package, rename the `alpha` widget to `rho`. Edit files only; do not run tests.",
+            "oracle": "oracle/check_conventions.py",
+            "workspace": "repo"
+        },
+        "task-b9": {
+            "pair_id": "pair-b9",
+            "family": "convention-apply",
+            "holdout": "task-b9-holdout",
+            "operation": "remove",
+            "arms": [
+                "baseline",
+                "candidate"
+            ],
+            "prompt": "In the widgetbox package, remove the `tau` widget so that the package no longer exposes it. Edit files only; do not run tests.",
+            "oracle": "oracle/check_conventions.py",
+            "workspace": "repo",
+            "workspace_overlay": "overlays/task-b9"
+        },
+        "task-b10": {
+            "pair_id": "pair-b10",
+            "family": "convention-apply",
+            "holdout": "task-b10-holdout",
+            "operation": "deprecate",
+            "arms": [
+                "baseline",
+                "candidate"
+            ],
+            "prompt": "In the widgetbox package, mark the `upsilon` widget as deprecated. Edit files only; do not run tests.",
+            "oracle": "oracle/check_conventions.py",
+            "workspace": "repo",
+            "workspace_overlay": "overlays/task-b10"
+        },
+        "task-b11": {
+            "pair_id": "pair-b11",
+            "family": "convention-apply",
+            "holdout": "task-b11-holdout",
+            "operation": "repair_sidecar",
+            "arms": [
+                "baseline",
+                "candidate"
+            ],
+            "prompt": "In the widgetbox package, the metadata for the `chi` widget does not satisfy the package's conventions. Bring `chi` into conformance. Edit files only; do not run tests.",
+            "oracle": "oracle/check_conventions.py",
+            "workspace": "repo",
+            "workspace_overlay": "overlays/task-b11"
+        }
     },
-    "task-b4": {
-      "pair_id": "pair-b4",
-      "family": "convention-apply",
-      "holdout": "task-b4-holdout",
-      "operation": "remove",
-      "arms": ["baseline", "candidate"],
-      "prompt": "In the widgetbox package, remove the `sigma` widget so that the package no longer exposes it. Edit files only; do not run tests.",
-      "oracle": "oracle/check_registry.py",
-      "workspace": "repo",
-      "workspace_overlay": "overlays/task-b4"
+    "primary_metric": "first_pass_oracle_success",
+    "quality_margin": 0.5,
+    "budget": {
+        "budget_units": 6000000,
+        "unit": "token",
+        "max_model_calls": 300,
+        "max_cost_usd": 10.0
     },
-    "task-b5": {
-      "pair_id": "pair-b5",
-      "family": "convention-apply",
-      "holdout": "task-b5-holdout",
-      "operation": "purge_stale",
-      "arms": ["baseline", "candidate"],
-      "prompt": "The widgetbox package's registry lists a widget that does not exist. Make `registry.py` consistent with the package's conventions. Edit files only; do not run tests.",
-      "oracle": "oracle/check_registry.py",
-      "workspace": "repo",
-      "workspace_overlay": "overlays/task-b5"
-    },
-    "task-b6": {
-      "pair_id": "pair-b6",
-      "family": "convention-apply",
-      "holdout": "task-b6-holdout",
-      "operation": "document",
-      "arms": ["baseline", "candidate"],
-      "prompt": "In the widgetbox package, the `eta` module is missing the documentation required by the package's conventions. Bring `eta` into conformance. Edit files only; do not run tests.",
-      "oracle": "oracle/check_registry.py",
-      "workspace": "repo",
-      "workspace_overlay": "overlays/task-b6"
-    }
-  },
-  "primary_metric": "first_pass_oracle_success",
-  "quality_margin": 0.5,
-  "budget": {
-    "budget_units": 5000000,
-    "unit": "token",
-    "max_model_calls": 240,
-    "max_cost_usd": 10.0
-  },
-  "timeout_seconds_per_run": 1800,
-  "retry_policy": "no retry when an external effect is uncertain; a run aborted before its first model call may be re-issued at most once",
-  "workspace": "per-run byte-identical copy of repo/ under an owned temp root, plus the task's frozen overlay when declared; oracle/ is never copied into the agent workspace",
-  "completion_rule": "PASS requires all three holdout pairs completed; an incomplete pair is never discarded or replaced for an unfavorable outcome",
-  "integrity_rule": "every candidate holdout run passes a fail-closed provisioning gate before its first model call; a failed gate aborts the run, records the pair incomplete, and never falls back to baseline-vs-baseline",
-  "scope": "this fixture study only; no cross-project or cross-model generalization"
+    "timeout_seconds_per_run": 1800,
+    "retry_policy": "no retry when an external effect is uncertain; a run aborted before its first model call may be re-issued at most once",
+    "workspace": "per-run byte-identical copy of repo/ under an owned temp root, plus the task's frozen overlay when declared; oracle/ is never copied into the agent workspace",
+    "completion_rule": "PASS requires all five holdout pairs completed; an incomplete pair is never discarded or replaced for an unfavorable outcome",
+    "integrity_rule": "every candidate holdout run passes a fail-closed provisioning gate before its first model call; a failed gate aborts the run, records the pair incomplete, and never falls back to baseline-vs-baseline",
+    "discriminability_rule": "the evaluated convention must be unavailable to baseline from the visible repository; baseline arms receive no Task A history, memory, improvement, evaluator feedback, or equivalent disclosure; the governed improvement derives only from Task A evidence",
+    "scope": "this fixture study only; no cross-project or cross-model generalization"
 }

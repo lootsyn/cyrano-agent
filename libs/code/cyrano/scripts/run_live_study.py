@@ -1,4 +1,4 @@
-"""Execute the sealed WP23 live-effectiveness study (study 2).
+"""Execute the sealed WP23 live-effectiveness study (study 3).
 
 This harness is the only caller allowed to turn the sealed manifest
 into real ``dcode`` runs. It re-verifies the sealed digest, enforces
@@ -17,6 +17,13 @@ the candidate context manifest binds the run to that release, the
 baseline profile carries no candidate artifact, and the arms remain
 identical on every other sealed dimension. Any failed invariant aborts
 the run before its first model call and leaves the pair incomplete.
+
+Study 3 versus study 2: the evaluated convention (the
+``widgetbox.sidecar/2`` metadata contract) is not inferable from the
+agent-visible repository, so the improvement prompt is fed Task A's
+real evidence — its workspace diff and the trusted evaluator's
+violation output — instead of relying on the model rediscovering a
+visible pattern.
 """
 
 from __future__ import annotations
@@ -26,6 +33,7 @@ import importlib
 import json
 import os
 import re
+import shlex
 import shutil
 import sqlite3
 import subprocess
@@ -62,37 +70,56 @@ seal_study = importlib.import_module("seal_study")
 
 STUDY = ROOT / "tests" / "live-study"
 EVIDENCE = ROOT / "evidence" / "live-evaluation"
-EVDIR = EVIDENCE / "study-2"
-RUN_ROOT = Path("/tmp/wp23-live-study-2")
+EVDIR = EVIDENCE / "study-3"
+RUN_ROOT = Path("/tmp/wp23-live-study-3")
 DCODE = CODE / ".venv" / "bin" / "dcode"
 TARGET_DDL = ROOT / "contracts" / "sql" / "target-schema.sql"
 
-# Fresh lane for study 2 — nothing inherits the post-hoc
-# widgetbox-convention-r1 record, which lives only in study 1's
-# committed ledger.
-STUDY_ID = "wp23-live-effectiveness-2"
-AGENT = "wp23r2"
-SCOPE = "wp23-live-study-2"
-MEMORY_ID = "widgetbox-convention-r2"
-NONCE = "wp23-live-2"
+# Fresh lane for study 3 — nothing inherits the study-2
+# widgetbox-convention-r2 record or the post-hoc study-1
+# widgetbox-convention-r1 record; both live only in their own
+# committed ledgers.
+STUDY_ID = "wp23-live-effectiveness-3"
+AGENT = "wp23r3"
+SCOPE = "wp23-live-study-3"
+MEMORY_ID = "widgetbox-convention-r3"
+NONCE = "wp23-live-3"
+CLIENT_EVENT = "wp23-live-3-approve-1"
 ACTOR = "study-operator"
 PURPOSE = "improvement_approval"
 
 RUN_TIMEOUT = 1500  # inside the sealed 1800s per-run cap
 HARD_KILL = 1700
-MAX_TURNS = 25  # 8 runs x 25 turns = 200 < 240-call cap
+MAX_TURNS = 20  # 12 runs x 20 turns = 240 < 300-call cap
 
 # Pinned DeepInfra pricing, USD per token (sealed route record).
 PRICE_PROMPT = 0.0000002
 PRICE_COMPLETION = 0.0000006
 
-_IMPROVEMENT_PROMPT = (
-    "Inspect the widgetbox package in this workspace, including "
-    "registry.py and the existing widget modules. Write a durable "
-    "engineering note stating the exact convention every widget "
-    "module must satisfy in this package. Reply with only the note "
-    "text; do not edit any file."
-)
+
+def _improvement_prompt(
+    task_a_prompt: str, workspace_diff: str, oracle_text: str
+) -> str:
+    """Improvement prompt built only from Task A evidence.
+
+    The governed note must be derivable from the learning episode —
+    the attempted instruction, the changes the model actually made,
+    and the trusted evaluator's violation report — never from the
+    holdout inputs or the oracle implementation.
+    """
+    return (
+        "A previous task attempted this instruction:\n"
+        f"{task_a_prompt}\n\n"
+        "Its workspace changes were:\n"
+        f"{workspace_diff or '(no changes)'}\n\n"
+        "The package's packaging evaluator then reported:\n"
+        f"{oracle_text}\n\n"
+        "Inspect the widgetbox package in this workspace, then write a "
+        "durable engineering note stating the exact convention every "
+        "widget module and its metadata must satisfy in this package. "
+        "Reply with only the note text; do not edit any file."
+    )
+
 
 _USAGE_ROW = re.compile(
     r"deepseek/deepseek-v4\.1-flash\s+(\d+)\s+(\S+)\s+(\S+)\s+(\S+)"
@@ -329,6 +356,46 @@ def _candidate_integrity_gate(
     return fails
 
 
+def _confined(run_dir: Path, cmd: list[str]) -> list[str]:
+    """Wrap a run in a mount namespace hiding contract-bearing paths.
+
+    The dcode agent's filesystem tools run with ``virtual_mode=False``
+    — unrestricted path reach. Without confinement a baseline arm
+    could read the oracle, the sealed suite, the evidence tree or a
+    sibling candidate's provisioned note and receive the convention
+    disclosure reserved for the candidate lane. The namespace masks
+    the Cyrano fixture/evidence tree, the repository git objects and
+    the whole run root, then rebinds only this run's own directory at
+    its real path. The dcode venv and editable sources stay visible.
+    """
+    stage = Path("/tmp") / f".ns-stage-{run_dir.name}"
+    stage.mkdir(exist_ok=True)
+    git_dir = ROOT.parents[2] / ".git"
+    masks = [str(ROOT)]
+    if git_dir.is_dir():
+        masks.append(str(git_dir))
+    script = (
+        f"mount --bind {shlex.quote(str(run_dir))} {shlex.quote(str(stage))}"
+        + "".join(f" && mount -t tmpfs tmpfs {shlex.quote(m)}" for m in masks)
+        + f" && mount -t tmpfs tmpfs {shlex.quote(str(RUN_ROOT))}"
+        + f" && mkdir -p {shlex.quote(str(run_dir))}"
+        + f" && mount --bind {shlex.quote(str(stage))} "
+        + shlex.quote(str(run_dir))
+        + ' && exec "$@"'
+    )
+    return [
+        "unshare",
+        "-rm",
+        "--propagation",
+        "private",
+        "bash",
+        "-c",
+        script,
+        "bash",
+        *cmd,
+    ]
+
+
 def _run_dcode(
     name: str,
     prompt: str,
@@ -342,24 +409,27 @@ def _run_dcode(
     home.mkdir(exist_ok=True)
     out_path = run_dir / "stdout.txt"
     err_path = run_dir / "stderr.txt"
-    cmd = [
-        str(DCODE),
-        "-n",
-        prompt,
-        "-a",
-        AGENT,
-        "-M",
-        "openrouter:deepseek/deepseek-v4.1-flash",
-        "--model-params",
-        json.dumps(model_params),
-        "--max-retries",
-        "0",
-        "--no-mcp",
-        "--timeout",
-        str(RUN_TIMEOUT),
-        "--max-turns",
-        str(MAX_TURNS),
-    ]
+    cmd = _confined(
+        run_dir,
+        [
+            str(DCODE),
+            "-n",
+            prompt,
+            "-a",
+            AGENT,
+            "-M",
+            "openrouter:deepseek/deepseek-v4.1-flash",
+            "--model-params",
+            json.dumps(model_params),
+            "--max-retries",
+            "0",
+            "--no-mcp",
+            "--timeout",
+            str(RUN_TIMEOUT),
+            "--max-turns",
+            str(MAX_TURNS),
+        ],
+    )
     start = time.monotonic()
     aborted = False
     with out_path.open("w") as out, err_path.open("w") as err:
@@ -421,13 +491,16 @@ def _run_dcode(
     return result
 
 
-def _oracle(workspace: Path, out_path: Path) -> tuple[int, str]:
-    """Run the trusted oracle on a workspace; record raw output."""
+def _oracle(
+    workspace: Path, out_path: Path, oracle_rel: str, task_key: str
+) -> tuple[int, str]:
+    """Run the task's trusted oracle; record raw output."""
     proc = subprocess.run(
         [
             sys.executable,
-            str(STUDY / "oracle" / "check_registry.py"),
+            str(STUDY / oracle_rel),
             str(workspace),
+            task_key,
         ],
         capture_output=True,
         text=True,
@@ -529,6 +602,7 @@ def main() -> int:
         name: str,
         prompt: str,
         overlay: str | None,
+        oracle_rel: str,
         gated_candidate: bool,
     ) -> dict[str, object]:
         """Run one slot; gate candidates before any model call."""
@@ -634,7 +708,10 @@ def main() -> int:
         seed_digest = _tree_digest(workspace)
         result = _run_dcode(name, prompt, workspace, profile, model_params)
         _collect(run_dir, ev_dir)
-        code, text = _oracle(workspace, ev_dir / "oracle.txt")
+        task_key = name.rsplit("-", 1)[0]
+        code, text = _oracle(
+            workspace, ev_dir / "oracle.txt", oracle_rel, task_key
+        )
         diff = subprocess.run(
             ["diff", "-ruN", str(seed) + "/", str(workspace) + "/"],
             capture_output=True,
@@ -697,12 +774,21 @@ def main() -> int:
 
     # --- Run 1: Task A learning episode (candidate arm) ---
     task_a = tasks["task-a"]
-    a_res = execute("task-a-candidate", str(task_a["prompt"]), None, False)
+    a_oracle = str(task_a["oracle"])
+    a_res = execute(
+        "task-a-candidate", str(task_a["prompt"]), None, a_oracle, False
+    )
     trial("pair-a", "learn-episode", "candidate", a_res, 0)
     if over_budget():
         return _abort(totals, results, "cap exceeded after task-a")
 
     # --- Run 2: governed improvement generation (learn-episode) ---
+    # The note may be derived only from Task A evidence: the attempted
+    # instruction, the workspace diff the run produced, and the trusted
+    # evaluator's violation report — never holdout inputs.
+    a_ev = runs_dir / "task-a-candidate"
+    a_diff = (a_ev / "workspace.diff").read_text(errors="replace")
+    a_oracle_text = (a_ev / "oracle.txt").read_text(errors="replace")
     imp_dir = RUN_ROOT / "improvement"
     imp_dir.mkdir(parents=True, exist_ok=True)
     imp_ws = imp_dir / "workspace"
@@ -712,12 +798,18 @@ def main() -> int:
     imp_profile = imp_dir / "profile"
     (imp_profile / "agents" / AGENT).mkdir(parents=True, exist_ok=True)
     imp_res = _run_dcode(
-        "improvement", _IMPROVEMENT_PROMPT, imp_ws, imp_profile, model_params
+        "improvement",
+        _improvement_prompt(
+            str(task_a["prompt"]), a_diff, a_oracle_text.strip()
+        ),
+        imp_ws,
+        imp_profile,
+        model_params,
     )
     ev_dir = runs_dir / "improvement"
     ev_dir.mkdir(parents=True, exist_ok=True)
     _collect(imp_dir, ev_dir)
-    code, text = _oracle(imp_ws, ev_dir / "oracle.txt")
+    code, text = _oracle(imp_ws, ev_dir / "oracle.txt", a_oracle, "task-a")
     imp_res["oracle_exit"] = code
     imp_res["oracle_text"] = text
     (ev_dir / "result.json").write_text(json.dumps(imp_res, indent=2))
@@ -763,7 +855,7 @@ def main() -> int:
             decision="approve",
             shown_text=note,
             display_revision=display.display_revision,
-            client_event_id="wp23-live-2-approve-1",
+            client_event_id=CLIENT_EVENT,
             now=now,
         )
         approval = {
@@ -777,7 +869,7 @@ def main() -> int:
                 "subject": kc.candidate_id,
                 "nonce": NONCE,
                 "actor": ACTOR,
-                "client_event_id": "wp23-live-2-approve-1",
+                "client_event_id": CLIENT_EVENT,
                 "purpose": PURPOSE,
             },
             "memory_activated": False,
@@ -802,15 +894,25 @@ def main() -> int:
     if over_budget():
         return _abort(totals, results, "cap exceeded after improvement")
 
-    # --- Runs 3-8: holdout pairs; candidates are integrity-gated ---
-    holdout_keys = [k for k, t in tasks.items() if t.get("arms")]
+    # --- Runs 3-12: holdout pairs; candidates are integrity-gated ---
+    # Follow the sealed ordering — lexicographic sort would place
+    # task-b10/task-b11 before task-b7.
+    holdout_keys = [
+        k[: -len("-baseline")]
+        for k in suite["ordering"]
+        if k.endswith("-baseline")
+    ]
     order = 1
-    for key in sorted(holdout_keys):
+    for key in holdout_keys:
         task = tasks[key]
         overlay = task.get("workspace_overlay")
         overlay_str = str(overlay) if overlay else None
         b_res = execute(
-            f"{key}-baseline", str(task["prompt"]), overlay_str, False
+            f"{key}-baseline",
+            str(task["prompt"]),
+            overlay_str,
+            str(task["oracle"]),
+            False,
         )
         trial(
             str(task["pair_id"]), str(task["family"]), "baseline", b_res, order
@@ -820,7 +922,11 @@ def main() -> int:
                 totals, results, f"cap exceeded after {key}-baseline"
             )
         c_res = execute(
-            f"{key}-candidate", str(task["prompt"]), overlay_str, True
+            f"{key}-candidate",
+            str(task["prompt"]),
+            overlay_str,
+            str(task["oracle"]),
+            True,
         )
         trial(
             str(task["pair_id"]),
@@ -856,8 +962,8 @@ def main() -> int:
         for p in runs_dir.glob("*/*.txt")
         if p.name in {"stdout.txt", "stderr.txt", "oracle.txt"}
     )
-    first_holdout = sorted(holdout_keys)[0]
-    last_holdout = sorted(holdout_keys)[-1]
+    first_holdout = holdout_keys[0]
+    last_holdout = holdout_keys[-1]
     items = {
         "3-1": {
             "evidence_refs": [

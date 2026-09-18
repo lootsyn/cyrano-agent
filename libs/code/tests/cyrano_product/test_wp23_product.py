@@ -314,8 +314,9 @@ def test_wp23_i01_same_release_comparison_no_model_specialization():
     assert manifest["model_digest"].startswith("sha256:")
     assert manifest["baseline_digest"] != manifest["candidate_digest"]
     assert manifest["nondeterministic_provider"] is True
-    assert manifest["min_pairs"] == 3
-    assert len(manifest["holdout"]) == 3
+    suite = json.loads((STUDY / "suite.json").read_text(encoding="utf-8"))
+    assert manifest["min_pairs"] == suite["min_pairs"]
+    assert len(manifest["holdout"]) == len(suite["holdout"])
 
 
 def test_three_pairs_under_sealed_margin_aggregate_honestly():

@@ -137,6 +137,11 @@ def main() -> int:
                 "sealed_manifest_digest": old["sealed_manifest_digest"],
                 "archived": archive.name,
             }
+            # Supersession must not sever the lineage: carry the
+            # replaced seal's own predecessor link forward.
+            old_pred = old.get("predecessor")
+            if isinstance(old_pred, dict):
+                predecessor = old_pred
         elif old_status.startswith("executed"):
             # An executed study is immutable history: archive it with
             # its status and evidence pointers untouched, then link
@@ -167,7 +172,11 @@ def main() -> int:
         "kind": "sealed_experiment_manifest",
         "status": "sealed_not_executed",
         "study_id": str(suite.get("study_id", "wp23-live-study")),
-        "evidence_dir": "evidence/live-evaluation/study-2/",
+        "evidence_dir": (
+            "evidence/live-evaluation/study-"
+            + str(suite.get("study_id", "wp23-live-study")).rsplit("-", 1)[-1]
+            + "/"
+        ),
         "manifest": {
             field: getattr(manifest, field)
             for field in manifest.__dataclass_fields__

@@ -1,0 +1,4 @@
+{
+  "expect_lifecycle": {"rho": "stable"},
+  "required_absent_sidecars": ["alpha"]
+}

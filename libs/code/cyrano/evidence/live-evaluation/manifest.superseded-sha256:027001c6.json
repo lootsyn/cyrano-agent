@@ -1,14 +1,14 @@
 {
   "kind": "sealed_experiment_manifest",
-  "status": "sealed_not_executed",
+  "status": "superseded",
   "study_id": "wp23-live-effectiveness-3",
   "evidence_dir": "evidence/live-evaluation/study-3/",
   "manifest": {
-    "manifest_id": "sha256:3b9892415bd99a7f9a25596834a3f63e703b1f6210e3f0fe37bd738a2d02d4c5",
+    "manifest_id": "sha256:027001c61e7433d0e53001620d4f9f3260def8429dea020ae310beb04553adc2",
     "baseline_digest": "sha256:6f24305b2cf0cee7a6062b5171bcd9b7e159ca3f5482f1d82499dc206430a6b0",
     "candidate_digest": "sha256:4dc5c259c56749930324ed176fb1477bcb45c7ff6fe57ea7ea6d57d50528eabf",
     "suite_digest": "sha256:6d0fb052a963d9ab6f49cd459d1ce31ded49c496fa3e7e7547ae6a8bdefd02ba",
-    "runtime_digest": "sha256:9f83d77b42dad1b7bf95c14764b764d8d5f6f3c288184109cca894354b0e7033",
+    "runtime_digest": "sha256:4aa183074e29b010ef6aea8f2a9977ab70e75465e22860f66e0734b017e9bd9f",
     "plan_digest": "sha256:f36d5191d0877419e42d2805a01a30600998b5a39b3f6f3e64d9daf0885998a3",
     "families": [
       "learn-episode",
@@ -96,12 +96,6 @@
     "max_cost_usd": 10.0,
     "timeout_seconds_per_run": 1800
   },
-  "supersedes": {
-    "manifest_id": "sha256:3b9892415bd99a7f9a25596834a3f63e703b1f6210e3f0fe37bd738a2d02d4c5",
-    "sealed_manifest_digest": "sha256:8a64920fbefb898e205d77f647ca987e5bcca39668a6fbf5d3ea5621bf39b7b0",
-    "archived": "manifest.superseded-sha256:3b989241.json"
-  },
-  "sealed_manifest_digest": "sha256:8a64920fbefb898e205d77f647ca987e5bcca39668a6fbf5d3ea5621bf39b7b0",
   "predecessor": {
     "manifest_id": "sha256:6d5f88af345c439129c745cb85faf245745062151f55e91d6dafa074fd73deda",
     "sealed_manifest_digest": "sha256:2960ddcf4400a66f5ebd553399a141f2400e22140f81b2435b664cc090cac7b1",
@@ -151,5 +145,7 @@
       "baseline_retained": true
     },
     "archived": "manifest.executed_inconclusive-sha256:6d5f88af.json"
-  }
+  },
+  "sealed_manifest_digest": "sha256:1a6885c6143171b1444a8ba712061b30047d80f29835c16d4d43580699577ff1",
+  "superseded_by": "manifest.json"
 }
