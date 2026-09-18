@@ -1,0 +1,11 @@
+{
+  "posthoc": true,
+  "performed_at": 1789701785,
+  "note": "approval executed after all runs completed; does NOT retroactively provision candidate arms",
+  "candidate_id": "sha256:539df3a75e66d8b0998ec49bbf8f6b13718159f6cb8454e8f33bb06ab3e5e028",
+  "memory_id": "widgetbox-convention-r1",
+  "request_id": "req1",
+  "decision": "approved",
+  "content_digest": "sha256:7b69251421f9912207dc27dd377be4730fa73ba466ddb6a2a4fcd6a4c4973d20",
+  "memory_activated": true
+}

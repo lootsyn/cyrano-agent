@@ -1,0 +1,39 @@
+{
+  "run_id": "task-a-candidate",
+  "cmd": [
+    "/home/ubuntu/cyrano-agent-devin/libs/code/.venv/bin/dcode",
+    "-n",
+    "In the widgetbox package, add a new widget module `beta` that defines `render() -> str` returning the string 'beta'. Edit files only; do not run tests.",
+    "-a",
+    "wp23",
+    "-M",
+    "openrouter:deepseek/deepseek-v4.1-flash",
+    "--model-params",
+    "{\"temperature\": 0, \"max_retries\": 0, \"openrouter_provider\": {\"only\": [\"DeepInfra\"], \"allow_fallbacks\": false, \"require_parameters\": true}}",
+    "--max-retries",
+    "0",
+    "--no-mcp",
+    "--timeout",
+    "1500",
+    "--max-turns",
+    "25"
+  ],
+  "cwd": "/tmp/wp23-live-study/task-a-candidate/workspace",
+  "exit_code": 0,
+  "aborted": false,
+  "completed": true,
+  "wall_seconds": 23.72,
+  "usage": {
+    "requests": 4,
+    "input_tokens": 45000,
+    "output_tokens": 584
+  },
+  "cost_usd": 0.00935,
+  "stdout_bytes": 778,
+  "stderr_bytes": 429,
+  "retried": false,
+  "oracle_exit": 0,
+  "oracle_text": "CONVENTION_OK",
+  "workspace_digest": "sha256:79e94a83bc5eb20e95bf57455e1a36a6ac1779bef5156a942c22488f14a92c22",
+  "accounting_note": "usage re-parsed from stdout (harness initially read stderr)"
+}

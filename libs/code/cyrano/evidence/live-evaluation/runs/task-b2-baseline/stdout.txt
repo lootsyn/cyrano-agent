@@ -1,0 +1,30 @@
+Running task non-interactively...
+App: v0.1.70 | Agent: wp23 | Model: deepseek/deepseek-v4.1-flash | Thread: 
+01a0b284-ca5a-7720-93ca-8bb0c240600c
+Starting LangGraph server...
+✓ Server ready
+🔧 Calling tool: ls
+🔧 Calling tool: ls
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: grep
+🔧 Calling tool: write_file
+🔧 Calling tool: edit_file
+🔧 Calling tool: delete
+🔧 Calling tool: grep
+Done. Renamed the `alpha` widget to `delta`:
+
+- `widgetbox/alpha.py` → `widgetbox/delta.py` (docstring/return now `"delta"`), keeping the public `render() -> str` signature.
+- `widgetbox/registry.py`: `REGISTERED = ("delta",)`.
+
+No remaining `alpha` references.
+
+✓ Task completed
+
+Usage Stats
+Provider    Model                         Reqs  InputTok  OutputTok  Cost  
+openrouter  deepseek/deepseek-v4.1-flash     7     80.6K        957     —  
+
+Agent active  26.4s

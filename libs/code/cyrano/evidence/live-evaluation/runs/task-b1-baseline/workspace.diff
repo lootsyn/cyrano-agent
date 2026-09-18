@@ -1,0 +1,18 @@
+diff -ruN /tmp/wp23-live-study/task-b1-baseline/seed/widgetbox/gamma.py /tmp/wp23-live-study/task-b1-baseline/workspace/widgetbox/gamma.py
+--- /tmp/wp23-live-study/task-b1-baseline/seed/widgetbox/gamma.py	1970-01-01 09:00:00.000000000 +0900
++++ /tmp/wp23-live-study/task-b1-baseline/workspace/widgetbox/gamma.py	2026-09-18 12:16:49.664074511 +0900
+@@ -0,0 +1,6 @@
++"""Gamma widget."""
++
++
++def render() -> str:
++    """Render the gamma widget."""
++    return "gamma"
+diff -ruN /tmp/wp23-live-study/task-b1-baseline/seed/widgetbox/registry.py /tmp/wp23-live-study/task-b1-baseline/workspace/widgetbox/registry.py
+--- /tmp/wp23-live-study/task-b1-baseline/seed/widgetbox/registry.py	2026-09-18 10:26:48.135279065 +0900
++++ /tmp/wp23-live-study/task-b1-baseline/workspace/widgetbox/registry.py	2026-09-18 12:16:49.664074511 +0900
+@@ -1,3 +1,3 @@
+ """Module registry; every widget module must be listed."""
+ 
+-REGISTERED = ("alpha",)
++REGISTERED = ("alpha", "gamma")

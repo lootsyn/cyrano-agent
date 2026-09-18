@@ -1,6 +1,6 @@
 {
   "kind": "sealed_experiment_manifest",
-  "status": "sealed_not_executed",
+  "status": "executed_inconclusive",
   "manifest": {
     "manifest_id": "sha256:ff0ae06902d9da113c5a238e4111fc14d112a6c08f2ff797d2b0eb4e4b9615fb",
     "baseline_digest": "sha256:6f24305b2cf0cee7a6062b5171bcd9b7e159ca3f5482f1d82499dc206430a6b0",
@@ -97,5 +97,7 @@
     "sealed_manifest_digest": "sha256:4b6a436f6f21a01c1bbf0606fd7cbe87c9c7f018b37d642643cf541337a70f22",
     "archived": "manifest.superseded-sha256:6ca6182b.json"
   },
-  "sealed_manifest_digest": "sha256:586d2b8ea96294586307f42453a78ed7fc7cae4c43f78b897a22abd204b7cc17"
+  "sealed_manifest_digest": "sha256:586d2b8ea96294586307f42453a78ed7fc7cae4c43f78b897a22abd204b7cc17",
+  "executed_at": 1789701895,
+  "result": "live-evaluation/study-result.json"
 }

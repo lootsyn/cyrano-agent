@@ -156,11 +156,30 @@ def required_gates(packaging: dict, quality_status: str | None) -> dict:
             and not wheel["forbidden_entries"]
             else "not_run"
         ),
-        "live_effectiveness": "not_run",
+        "live_effectiveness": _live_effectiveness_status(),
     }
     for gate, drill in DRILL_EVIDENCE.items():
         gates[gate] = drill_gate_status(drill)
     return gates
+
+
+def _live_effectiveness_status() -> str:
+    """Report the sealed live study's verdict; unrun stays not_run."""
+    result = ROOT / "evidence" / "live-evaluation" / "study-result.json"
+    if not result.is_file():
+        return "not_run"
+    try:
+        verdict = json.loads(result.read_text(encoding="utf-8")).get(
+            "verdict", {}
+        )
+    except (OSError, json.JSONDecodeError):
+        return "not_run"
+    outcome = verdict.get("verdict") if isinstance(verdict, dict) else None
+    if outcome == "improved":
+        return "passed"
+    if outcome in {"inconclusive", "regressed", "rejected", "invalid"}:
+        return str(outcome)
+    return "not_run"
 
 
 def main() -> int:

@@ -1,0 +1,18 @@
+diff -ruN /tmp/wp23-live-study/task-b3-candidate/seed/widgetbox/registry.py /tmp/wp23-live-study/task-b3-candidate/workspace/widgetbox/registry.py
+--- /tmp/wp23-live-study/task-b3-candidate/seed/widgetbox/registry.py	2026-09-18 10:26:48.135279065 +0900
++++ /tmp/wp23-live-study/task-b3-candidate/workspace/widgetbox/registry.py	2026-09-18 12:19:35.241785856 +0900
+@@ -1,3 +1,3 @@
+ """Module registry; every widget module must be listed."""
+ 
+-REGISTERED = ("alpha",)
++REGISTERED = ("alpha", "zeta")
+diff -ruN /tmp/wp23-live-study/task-b3-candidate/seed/widgetbox/zeta.py /tmp/wp23-live-study/task-b3-candidate/workspace/widgetbox/zeta.py
+--- /tmp/wp23-live-study/task-b3-candidate/seed/widgetbox/zeta.py	2026-09-18 11:41:40.498889849 +0900
++++ /tmp/wp23-live-study/task-b3-candidate/workspace/widgetbox/zeta.py	2026-09-18 12:19:35.241785856 +0900
+@@ -1,2 +1,6 @@
++"""Zeta widget."""
++
++
+ def render() -> str:
++    """Render the zeta widget."""
+     return "zeta"

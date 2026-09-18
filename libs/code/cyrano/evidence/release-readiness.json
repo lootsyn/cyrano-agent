@@ -11,7 +11,7 @@
   "required_gates": {
     "quality_gate": "passed",
     "wheel_build_and_content": "passed",
-    "live_effectiveness": "not_run",
+    "live_effectiveness": "inconclusive",
     "clean_env_install": "passed",
     "permission_bypass_drill": "passed",
     "disk_full_drill": "passed",

@@ -1,0 +1,7 @@
+{
+  "decision": "not_executed",
+  "note_produced": true,
+  "reason": "approval gate skipped: completed flag was misparsed from stderr instead of stdout",
+  "memory_activated": false,
+  "provisioned_to_candidate_runs": false
+}

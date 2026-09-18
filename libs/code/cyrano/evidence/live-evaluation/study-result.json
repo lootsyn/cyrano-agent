@@ -1,0 +1,215 @@
+{
+  "manifest_id": "sha256:ff0ae06902d9da113c5a238e4111fc14d112a6c08f2ff797d2b0eb4e4b9615fb",
+  "sealed_manifest_digest": "sha256:586d2b8ea96294586307f42453a78ed7fc7cae4c43f78b897a22abd204b7cc17",
+  "status": "executed_inconclusive",
+  "totals": {
+    "runs": 8,
+    "requests": 43,
+    "tokens": 496580,
+    "cost_usd": 0.102107
+  },
+  "caps": {
+    "max_runs": 8,
+    "max_model_calls": 240,
+    "max_tokens": 5000000,
+    "max_cost_usd": 10.0
+  },
+  "arm_integrity": {
+    "defect": "candidate arms ran WITHOUT the provisioned improvement (empty memory): the approval gate read a misparsed completed flag and skipped propose/approve/activate; pairs are baseline-vs-baseline as executed",
+    "improvement_produced": true,
+    "improvement_approved_posthoc": true,
+    "candidate_memory_provisioned": false
+  },
+  "invocation_note": "sealed invocation 'dcode -x <prompt> --workspace <ws>' is a notational placeholder; executed equivalent 'dcode -n <prompt>' with cwd=<ws> (no -x/--workspace flag exists in deepagents-code 0.1.70)",
+  "pairs": [
+    {
+      "pair_id": "pair-a",
+      "family": "learn-episode",
+      "complete": false,
+      "baseline": "unknown",
+      "candidate": "pass"
+    },
+    {
+      "pair_id": "pair-b1",
+      "family": "convention-apply",
+      "complete": true,
+      "baseline": "pass",
+      "candidate": "pass"
+    },
+    {
+      "pair_id": "pair-b2",
+      "family": "convention-apply",
+      "complete": true,
+      "baseline": "pass",
+      "candidate": "pass"
+    },
+    {
+      "pair_id": "pair-b3",
+      "family": "convention-apply",
+      "complete": true,
+      "baseline": "pass",
+      "candidate": "pass"
+    },
+    {
+      "pair_id": "pair-improvement",
+      "family": "learn-episode",
+      "complete": false,
+      "baseline": "unknown",
+      "candidate": "pass"
+    }
+  ],
+  "study": {
+    "permit_id": "sha256:3e9c8dac0018edee2356944a13a4352448c20c5526bd21a78aebcf1ccca8a71f",
+    "settle": {
+      "manifest_id": "sha256:ff0ae06902d9da113c5a238e4111fc14d112a6c08f2ff797d2b0eb4e4b9615fb",
+      "planned_pairs": 3,
+      "actual_pairs": 3,
+      "incomplete_pairs": 2,
+      "denominator_intact": false,
+      "nondeterministic_provider": true
+    },
+    "spent_units": 496580
+  },
+  "verdict": {
+    "manifest_id": "sha256:ff0ae06902d9da113c5a238e4111fc14d112a6c08f2ff797d2b0eb4e4b9615fb",
+    "scope": "manifest_bound_no_generalization",
+    "verdict": "inconclusive",
+    "eligible_for_review": false,
+    "reason": "uncertain effect",
+    "items": {
+      "3-1": "evaluated",
+      "3-2": "evaluated",
+      "3-3": "evaluated",
+      "3-4": "evaluated",
+      "4-1": "evaluated",
+      "4-2": "evaluated",
+      "4-3": "evaluated",
+      "4-4": "evaluated"
+    },
+    "official_score": null,
+    "analysis": {
+      "verdict": "inconclusive",
+      "completed_pairs": 3,
+      "planned_pairs": 3,
+      "families": [
+        {
+          "family": "convention-apply",
+          "pairs": 3,
+          "delta": 0.0,
+          "interval": [
+            -0.7493370940031047,
+            0.7493370940031046
+          ]
+        }
+      ]
+    },
+    "cost": {
+      "baseline_units": 207211,
+      "candidate_units": 289369,
+      "learning_overhead_units": 46500,
+      "missing_costs": 0,
+      "total_known": true,
+      "total_units": 543080,
+      "net_savings_claim_allowed": false
+    },
+    "baseline_retained": true
+  },
+  "runs": [
+    {
+      "run_id": "task-a-candidate",
+      "completed": true,
+      "oracle_exit": 0,
+      "usage": {
+        "requests": 4,
+        "input_tokens": 45000,
+        "output_tokens": 584
+      },
+      "cost_usd": 0.00935,
+      "wall_seconds": 23.72
+    },
+    {
+      "run_id": "improvement",
+      "completed": true,
+      "oracle_exit": 0,
+      "usage": {
+        "requests": 4,
+        "input_tokens": 45300,
+        "output_tokens": 1200
+      },
+      "cost_usd": 0.00978,
+      "wall_seconds": 29.88
+    },
+    {
+      "run_id": "task-b1-baseline",
+      "completed": true,
+      "oracle_exit": 0,
+      "usage": {
+        "requests": 6,
+        "input_tokens": 67700,
+        "output_tokens": 649
+      },
+      "cost_usd": 0.013929,
+      "wall_seconds": 19.01
+    },
+    {
+      "run_id": "task-b1-candidate",
+      "completed": true,
+      "oracle_exit": 0,
+      "usage": {
+        "requests": 5,
+        "input_tokens": 56200,
+        "output_tokens": 585
+      },
+      "cost_usd": 0.011591,
+      "wall_seconds": 19.94
+    },
+    {
+      "run_id": "task-b2-baseline",
+      "completed": true,
+      "oracle_exit": 0,
+      "usage": {
+        "requests": 7,
+        "input_tokens": 80600,
+        "output_tokens": 957
+      },
+      "cost_usd": 0.016694,
+      "wall_seconds": 32.09
+    },
+    {
+      "run_id": "task-b2-candidate",
+      "completed": true,
+      "oracle_exit": 0,
+      "usage": {
+        "requests": 6,
+        "input_tokens": 68900,
+        "output_tokens": 1000
+      },
+      "cost_usd": 0.01438,
+      "wall_seconds": 27.4
+    },
+    {
+      "run_id": "task-b3-baseline",
+      "completed": true,
+      "oracle_exit": 0,
+      "usage": {
+        "requests": 5,
+        "input_tokens": 56600,
+        "output_tokens": 705
+      },
+      "cost_usd": 0.011743,
+      "wall_seconds": 23.52
+    },
+    {
+      "run_id": "task-b3-candidate",
+      "completed": true,
+      "oracle_exit": 0,
+      "usage": {
+        "requests": 6,
+        "input_tokens": 69300,
+        "output_tokens": 1300
+      },
+      "cost_usd": 0.01464,
+      "wall_seconds": 29.93
+    }
+  ]
+}

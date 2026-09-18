@@ -1,0 +1,39 @@
+{
+  "run_id": "task-b2-candidate",
+  "cmd": [
+    "/home/ubuntu/cyrano-agent-devin/libs/code/.venv/bin/dcode",
+    "-n",
+    "In the widgetbox package, rename the widget `alpha` to `delta`, keeping its public `render()` contract. Edit files only; do not run tests.",
+    "-a",
+    "wp23",
+    "-M",
+    "openrouter:deepseek/deepseek-v4.1-flash",
+    "--model-params",
+    "{\"temperature\": 0, \"max_retries\": 0, \"openrouter_provider\": {\"only\": [\"DeepInfra\"], \"allow_fallbacks\": false, \"require_parameters\": true}}",
+    "--max-retries",
+    "0",
+    "--no-mcp",
+    "--timeout",
+    "1500",
+    "--max-turns",
+    "25"
+  ],
+  "cwd": "/tmp/wp23-live-study/task-b2-candidate/workspace",
+  "exit_code": 0,
+  "aborted": false,
+  "completed": true,
+  "wall_seconds": 27.4,
+  "usage": {
+    "requests": 6,
+    "input_tokens": 68900,
+    "output_tokens": 1000
+  },
+  "cost_usd": 0.01438,
+  "stdout_bytes": 964,
+  "stderr_bytes": 431,
+  "retried": true,
+  "oracle_exit": 0,
+  "oracle_text": "CONVENTION_OK",
+  "workspace_digest": "sha256:cde4cc16cc40721a77fbce83a0571a5baec6fd1fbfa6a550942d0e6b8ac774b1",
+  "accounting_note": "usage re-parsed from stdout (harness initially read stderr)"
+}
