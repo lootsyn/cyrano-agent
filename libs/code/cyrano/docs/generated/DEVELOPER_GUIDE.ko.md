@@ -109,6 +109,8 @@ python cyrano/scripts/dev.py check
 | 종료·cancel·server 재시작 | WP06/WP13/WP21 | durable terminal settlement; unknown outcome·recovery | crash injection과 중복 outbox 검사 |
 | native build 설정 | WP19/WP22, RC00 | 제품에 필요한 JSON/prompt/skill resources를 package resources로 투영 | wheel unzip + fresh venv import + resource read |
 
+native `MemoryMiddleware`의 `AGENTS.md` 채널은 그 안내 문구상 참고자료다 — 내용이 사용자 요청이나 도구 검증 근거와 충돌하면 근거를 우선하도록 모델에 지시한다(WP23 Study 3에서 실제 관측). 따라서 승인된 `scope_rule`의 배포는 이 채널 단독으로 이루어지지 않고 [Memory 수명주기](../design/MEMORY_LIFECYCLE.ko.md) §10의 의무 투영을 거친다. adapter는 read-only projection과 의무 투영을 구분해 기록하며, `AGENTS.md` 단독 전달을 규칙 적용 증거로 보고하지 않는다.
+
 복사 과정에서 base 파일을 수정하지 않는 원칙과, **우리 제품 개발 중 승인된 native integration patch를 허용**하는 원칙은 다르다. 이전 설계의 'core 무수정'은 설치 시 무단 변경 금지로 범위를 제한한다. native integration을 절대 금지하는 뜻으로 해석하지 않는다. 다만 모델 이름별 분기, 핵심 loop 재작성, SDK 대체 agent로의 조용한 전환, upstream 전체 재포맷은 하지 않는다.
 
 #### 4. packaged code와 개발 자료의 분리
@@ -368,6 +370,10 @@ format/lint는 실제 고정 도구 raw exit와 parser 결과를 함께 확인�
 검색 precision 측정과 실제 적용을 분리한다. `queried → selected → injected → referenced → applied`를 각각 기록한다. plan clause의 memory_id만으로 applied=true를 만들지 않는다. memory-specific predicate(예: 프로젝트에서 요구한 timeout 처리와 그 테스트)가 plan/code/test의 실제 산출물에 존재하고 동작해야 한다. 관련 기록·무관한 기록·만료 기록·충돌 기록·악성 지시 기록을 함께 제공한다. scope ACL은 top-k 이전에 적용한다.
 
 memory-on/off 비교는 효과 확인에 쓰며 케이스가 적으면 추정 범위를 보고한다. 현재 사용자 요청은 과거 memory보다 우선한다. 삭제·정정·stale 처리 후 검색·projection·export 잔존 여부도 테스트한다.
+
+**채널·적용 분리 (WP23 Study 3 관측 추가).** memory 전달과 적용은 별도로 검증한다. `AGENTS.md` 참고자료 채널로의 전달은 규칙 적용의 증거가 아니다 — native 안내가 그 채널을 도구 근거 아래에 둔다. 승인된 `scope_rule` 검증은 의무 투영·`requirement_ids`/`acceptance_ids` 연결·checker의 bundle 판정을 확인한다. visible repo에 규칙과 모순된 동작 예제가 있을 때 참고자료 채널 단독 배포는 적용을 보장하지 않음을 부정 사례로 둔다. acceptance catalog의 `RULE-*`·`EVAL-CHANNEL-*`·`EVAL-WIRE-01` 사례가 이 family를 추적한다.
+
+**matched-information 비교.** 동일 note 내용을 (a) `AGENTS.md` 참고자료 채널, (b) 의무 투영 채널, (c) 의무+checker 강제로 배포한 arm을 구분해 memory 표현 효과를 측정한다. (d) memory 없이 validator feedback만 주는 arm을 둬 feedback 효과와 memory 표현 효과를 분리한다. Study 3 과제는 이미 실행된 결과이므로 원인분석·회귀용으로만 재사용하고 새로운 미공개 holdout 판정으로 보고하지 않는다. paired/family 통계는 `evaluation/statistics.py`의 sealed margin·Wilson 계산을 그대로 사용한다 — delta·interval을 새로 계산하거나 완화하지 않는다.
 
 #### 7. Self-Improvement 검증
 

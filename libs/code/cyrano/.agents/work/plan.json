@@ -2857,7 +2857,17 @@
         "CON-MEM-09",
         "CON-MEM-10",
         "CON-MEM-11",
-        "CON-MEM-12"
+        "CON-MEM-12",
+        "RULE-PROJECT-01",
+        "RULE-VISIBLE-CONFLICT",
+        "RULE-UNAPPROVED-CHANNEL",
+        "RULE-STRING-AUTHORITY",
+        "RULE-INACTIVE-STATUS",
+        "RULE-SCOPE-MISMATCH",
+        "RULE-CHECKER-REJECT",
+        "RULE-EXCEPTION-CLAUSE",
+        "RULE-DUAL-CHANNEL",
+        "RULE-STALE-EPOCH"
       ],
       "commands": [
         [
@@ -5594,7 +5604,11 @@
         "R5-RF11-03",
         "R5-RF11-04",
         "R5-RF11-05",
-        "R5-RF11-06"
+        "R5-RF11-06",
+        "EVAL-CHANNEL-01",
+        "EVAL-CHANNEL-02",
+        "EVAL-CHANNEL-03",
+        "EVAL-WIRE-01"
       ],
       "commands": [
         [

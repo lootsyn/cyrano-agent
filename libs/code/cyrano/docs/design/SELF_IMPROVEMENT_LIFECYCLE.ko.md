@@ -34,6 +34,7 @@ agent는 author·critic·generator 역할만 수행한다. 평가기와 승인 b
 | `working_memory` | 현재 task note의 후보 revision. 전역 scope 자동 승격 금지 | 같은 episode 새 branch 실제 실행; 현재 승인 의무 불변 | task-scoped new revision |
 | `semantic_memory` | 명시 근거·dependency·scope의 사실 후보 | 사실 재검증, 충돌·stale·다른 workspace 반례 | memory release |
 | `procedure_memory` | 실패 원인·적용 조건·검증 recipe | on/off 실제 비교; 잘못된 적용·과도한 일반화 반례 | memory+skill bundle |
+| `scope_rule` | 승인된 범위 규칙·예외 절·checker ref | 의무 투영 + bundle checker 적용 여부 비교 | memory release + plan obligation binding |
 | `interview`, `plan`, `review` | 질문/순서/분해/리뷰 procedure patch | 질문 수보다 false-ready·coverage·defect detection·false-block 우선 | workflow config/skill |
 | `context_config` | recall/compaction/offload/budget 변경 | 의무 보존·actual context·정확도+캐시 측정 | context component |
 | `verification_recipe` | 준비/명령/대상/환경 patch | 결함 검출/오탐/flake; 실패 test 삭제·oracle 약화 금지 | signed recipe |
@@ -65,6 +66,8 @@ split 단위는 repository/task family와 시간이다. 같은 issue의 변형, 
 `Candidate -> EvaluationReport -> IndependentReview -> PromotionApproval -> HarnessRelease -> new RunBinding -> ContextManifest/ToolInventory -> 실제 행동 -> regression result`.
 
 새 release가 파일로 존재한다는 사실은 적용 증거가 아니다. process B/new thread에서 새 binding이 실제 chosen artifact digest와 같고, 기존 run A는 보안 revoke가 아닌 일반 승격에서 이전 binding을 유지하는지 검사한다. context/skill 실제 로딩을 관측할 수 없으면 반영 결과는 `unverified`. 감사 지표는 release 생성 수와 다음 업무 적용 수를 구분한다.
+
+**채널 구분 (WP23 Study 3 관측).** memory surface 후보를 user-level `AGENTS.md`로만 배포하는 것은 '참고자료 채널' 배포다. native memory 안내는 그 채널 내용을 명시적으로 도구·코드 근거 아래에 두므로, visible repo에 모순된 동작 예제가 있으면 모델이 예제를 택하는 것이 허용된 행동이다. Study 3에서 B7–B9는 정확한 규칙 note를 받고도 visible v1 예제를 복사했다. 규칙 surface(`scope_rule`)의 배포 단위는 release+plan obligation binding이며, `AGENTS.md` 단독 배포와 의무 투영 배포는 서로 다른 surface로 분류해 평가한다. matched-information 비교 시 동일 내용을 두 채널로 배포한 arm을 구분해야 memory 표현 효과와 validator feedback 효과를 분리할 수 있다.
 
 ## 7. canary·rollback·비용
 

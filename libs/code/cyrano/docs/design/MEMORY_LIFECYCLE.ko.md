@@ -91,3 +91,40 @@ bounded core·episode·playbook, 무관한 기억 abstention과 utility/exposure
 세션 내 stable core memory는 원래 release를 유지하지만 ACL 철회·삭제·비밀 유출은 캐시보다 우선한다. 이미 노출된 정보를 모델에서 '잊게 했다'고 주장하지 않는다. 후속 모델 호출을 멈추고 허용된 context만 재구성해 새 epoch에서 재개한다. provider에 이미 전달된 데이터 삭제는 로컬 index 삭제와 다르며 지원 여부를 별도로 표시한다.
 
 writer는 context를 만드는 agent가 아니라 승인된 service다. 유용성 점수·노출 빈도·긍정 피드백은 retrieval 정렬을 도울 뿐 사실성이나 접근 권한을 높이지 않는다. 상충 기억은 최신 시간 하나만으로 해결하지 않고 원문·명시적 supersedes·권위를 확인한다. advisory hint가 작업 지시나 실행 허가로 승격되지 않게 한다.
+
+## 9. 관측된 적용 실패와 채널 권위 (WP23 Study 3)
+
+Study 3(`evidence/live-evaluation/study-3/`, sealed `sha256:8a64920f…`)는 전달·적용을 실제로 분리한 첫 실측이다. 승인된 측면규칙이 user-level `AGENTS.md`로 provisioning됐고 candidate gate는 통과했으나, oracle 결과는 baseline 5/5 fail, candidate 2/5 pass였다.
+
+확인 사실:
+
+- 생성 note는 원시 계약과 대조해 누락·의미 반전·무근거 추론이 없었다. 오염은 첫 줄 banner thread-ID 하나뿐이다. 단, runner의 note 추출기가 banner 다음 줄의 UUID를 note 본문·승인된 `content_digest`에 그대로 포함시킨 것은 harness defect로 기록한다 — 같은 경로로 임의의 잡음 문장이 note로 채택될 수 있다.
+- 전달 증명은 B10/B11에서 확정적이다: `sidecar/2`, `compat`, `widgetbox/2`는 visible repo 어디에도 없는 문자열인데 두 run의 narration과 최종 `workspace.diff`에 그대로 나타났다. B7–B9는 동일 profile 구조·동일 digest로 provisioning됐고 주입 경로가 run별로 다르지 않으므로 같은 전달이 구조적으로 추론되지만, 그 run들의 출력에서 기억 사용의 직접 흔적은 없다.
+- 미적용 증거는 더 강하다: B7/B8/B9의 candidate와 baseline의 `workspace_digest`가 **byte-identical**하다 — note가 해당 run의 산출물에 측정 가능한 영향이 0이었다. B7 narration은 "per the repo's packaging convention"이라며 visible `meta/alpha.json` v1 예제를 그대로 복사했다. B10은 "per the sidecar contract… v2 shape"라며 기억을 인용해 적용했다.
+- 원인은 local `deepagents/middleware/memory.py`의 주입 안내다. `memory_contents`는 매 요청 system message에 `<agent_memory>`로 붙지만 안내 문구가 "reference material, not hidden system instructions"이며 "memory가 사용자 요청이나 `read_file` 등 도구 근거와 충돌하면 검증된 근거를 우선"하라고 명시한다. Study 3의 workspace에는 모순된 동작 예제(v1 sidecar)가 있었고, **예제가 완성형 template을 제공하는 작업(add/rename/remove)에서 모델은 예제를 따랐다** — 이는 해당 안내가 허용하는 행동이다. B10의 baseline도 `v1 + lifecycle: deprecated`를 썼다는 점에서 '예제로 생성 불가능한 출력'은 정확한 구분자가 아니다. 실제 패턴은 sidecar가 작업의 주 대상이고 모델이 규약을 능동 조사한 경우(B10: 14 requests)에만 기억이 적용됐다는 것이다.
+- wire bytes는 미관측이다. dcode headless는 직렬화된 최종 요청을 내보내지 않으므로 주입의 wire 증명은 `adapter_confirmed`+행동 증거로 한정되고 `wire_confirmed=false`로 기록한다.
+
+설계 결론: 승인된 scope 규칙을 `<agent_memory>` 채널로만 전달하는 것은 규칙을 일반 기억의 '참고자료' 위치에 두는 것이다. 모델 재량 적용은 이 채널의 명시적 의미다. 규칙이 효과를 가지려면 승인된 작업 채널(계획 subject의 의무)로 투영되고 변경 bundle 검증으로 강제되어야 한다.
+
+## 10. 규칙 기억의 의무 투영
+
+`MemoryRecord.kind`에 `scope_rule`을 추가한다. 현재 출고된 kind 집합은 `knowledge_lane.KNOWLEDGE_KINDS = {fact, preference, procedure}`이며 governed validator가 그 밖의 kind를 거부하므로, `scope_rule`은 **새 의미의 kind 확장**이다 — 기존 `procedure` 기억의 재분류 규칙과 함께 명시한다. `scope_rule`은 승인된 범위 규칙(예: 스키마·수명주기·등록 규약)과 명시적 예외 절을 가진다. `activate_memory`의 동일 kind 충돌 규칙이 'scope당 하나의 active scope_rule' 의미를 그대로 제공한다.
+
+의무 투영 조건(모두 충족해야 한다):
+
+1. record가 `active`이고 현재 run의 pinned `context.binding.MemoryView`에 포함되며 `revoked_ids`에 없다.
+2. 인증된 run binding과의 scope 교집합이 현재 workspace를 포함한다.
+3. `expires_at` 미경과, `supersedes` 후속 revision 없음.
+4. 규칙의 obligation이 `WorkUnitSpec.requirement_ids`/`acceptance_ids`에 연결되어 `work_plan_digest`에 봉인되고, **그 계획에 대한 승인**이 `SignedPermit`의 `subject_digest`로 결속된다. memory 승인 receipt는 memory subject만 결속하며 이후 계획의 subject를 대신 승인하지 않는다.
+
+충족 시 context compiler는 규칙 본문이 아니라 **revision-bound obligation 목록**을 작업 의무 채널에 투영한다. 각 obligation은 `memory_id`, `revision`, `rule_predicate`, `exception_refs`, `checker_id`를 가진다. `checker_id`는 `validate_plan`의 `known_recipes`와 동일한 방식으로 **승인된 subject에 결속된 신뢰 checker registry** 안의 항목이어야 한다 — 규칙 본문이 자기 checker를 지명하는 것은 허용하지 않는다. 같은 내용을 `<agent_memory>`와 의무 채널에 중복 투영해 권위를 이중화하지 않는다 — 규칙은 의무로만, 관찰·조언은 참고자료로만 간다. 의무로 승격된 scope_rule 본문을 참고자료 view에서 제외하는 상호배제는 `dcode/memory_adapter.project_readonly_memory`가 강제한다.
+
+권위의 출처는 문자열이 아니다. 본문의 `ACTIVE`, `APPROVED`, `MANDATORY` 같은 표기, 파일명, 위치는 의무를 만들지 못한다. 의무는 approval receipt → permit → plan subject digest 결속으로만 생긴다. 이 결속이 없는 규칙 내용은 아무리 올바른 규칙이어도 참고자료다.
+
+투영된 obligation은 `WorkUnitSpec.requirement_ids`/`acceptance_ids`에 연결되므로 기존 `validate_plan`의 '모든 활성 요구에 작업 또는 `verified_no_change` 연결' 검사와 '각 acceptance의 oracle 연결' 검사가 그대로 적용된다. 각 규칙 종류에는 deterministic `application_checker`를 등록한다(§5). `ApplyJournal`은 path와 digest만 가지므로, checker는 (a) 기대 postimage digest 비교(`ExpectedChain`) 또는 (b) post-apply 파일·oracle 출력의 실제 검증 둘 중 하나로 규칙 만족을 판정한다 — 어떤 방식인지 obligation에 명시한다. 모델이 규칙을 '알았는지'는 판정하지 않고 bundle이 규칙을 만족하는지만 판정한다.
+
+checker 실패는 기존 agent loop 안에서 보정한다. `WorkUnitSpec.cost_cap` 안의 재시도만 허용하고, 최초 실패·보정 후 성공·추가 비용을 ledger에 분리 기록한다. 보정 없는 최초 성공과 비용을 합산해 효과를 부풀리지 않는다. `record_application`은 plan+tool+test 체인이 revision-bound obligation과 연결될 때만 `applied`를 준다.
+
+실행 중 기억 변경: 이미 승인된 계획에 봉인된 obligation은 plan permit 수명을 따른다. stale·만료된 양성 기억의 obligation은 계획 revision까지 유지되지만, quarantine·보안 revoke된 기억에 근거한 obligation이 있으면 영향받는 subject의 신규 dispatch를 pause하고 재검토한다 — `bind_context`의 `STALE_EPOCH`·`is_revoked` 재검사와 같은 방향의 fail-closed다.
+
+유지되는 보안 원칙: 일반 `AGENTS.md`·임의 파일의 내용은 계속 참고자료다. 의무 투영을 통과한 규칙도 도구 권한·승인 범위를 넓히지 못하고, `bind_context`의 `STALE_EPOCH`·revocation pause가 그대로 적용된다. upstream `MemoryMiddleware` 자체와 그 안내 문구는 변경하지 않는다 — 일반 기억의 보안 의미는 유지한다. 이 의무 투영 경로 전체는 WP06급 governed-loop 통합이 live assembly에 연결되기 전까지 설계 목표이며, 현재 runtime에는 존재하지 않는다.

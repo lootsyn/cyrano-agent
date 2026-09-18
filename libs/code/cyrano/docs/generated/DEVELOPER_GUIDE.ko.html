@@ -1,6 +1,6 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="cyrano-markdown-sha256" content="7a38fb59cf60bff91109ee74f2130f10c7c2b01d911f1fd08f0ed2de421ebb00"><title>
+    <meta name="cyrano-markdown-sha256" content="f53ea98b01fdac25ddc6e7977e011343445bc51896fd78e143cb34f257561a49"><title>
     Cyrano Agent · dcode 기반 개발 설계</title><style>
         :root{--ink:#142a3d;--muted:#526675;--line:#dbe4e9;--paper:#ffffff;
     --nav:#102b3f;--accent:#157a8a}
@@ -193,6 +193,7 @@ python cyrano/scripts/dev.py check
 </tr>
 </tbody>
 </table>
+<p>native <code>MemoryMiddleware</code>의 <code>AGENTS.md</code> 채널은 그 안내 문구상 참고자료다 — 내용이 사용자 요청이나 도구 검증 근거와 충돌하면 근거를 우선하도록 모델에 지시한다(WP23 Study 3에서 실제 관측). 따라서 승인된 <code>scope_rule</code>의 배포는 이 채널 단독으로 이루어지지 않고 <a href="../design/MEMORY_LIFECYCLE.ko.md">Memory 수명주기</a> §10의 의무 투영을 거친다. adapter는 read-only projection과 의무 투영을 구분해 기록하며, <code>AGENTS.md</code> 단독 전달을 규칙 적용 증거로 보고하지 않는다.</p>
 <p>복사 과정에서 base 파일을 수정하지 않는 원칙과, <strong>우리 제품 개발 중 승인된 native integration patch를 허용</strong>하는 원칙은 다르다. 이전 설계의 'core 무수정'은 설치 시 무단 변경 금지로 범위를 제한한다. native integration을 절대 금지하는 뜻으로 해석하지 않는다. 다만 모델 이름별 분기, 핵심 loop 재작성, SDK 대체 agent로의 조용한 전환, upstream 전체 재포맷은 하지 않는다.</p>
 <h4 id="section-0016">4. packaged code와 개발 자료의 분리</h4>
 <p><code>cyrano/contracts</code>, <code>configs</code>, <code>plugins</code>는 현재 개발 원본이다. 제품이 runtime에 필요로 하는 부분만 WP19의 결정적 resource compiler로 <code>deepagents_code/cyrano/resources/</code>에 투영한다. 그 디렉터리는 이번 ZIP에서 가짜 완성 파일로 채우지 않는다. base wheel이 <code>*.json</code> 등을 실제 포함하는지는 빌드로 확인해야 한다. runtime에서 <code>Path(__file__).parents[...] / cyrano/docs</code>로 개발 checkout을 가정하지 않는다.</p>
@@ -418,6 +419,8 @@ executing → succeeded / failed / cancelled / unknown_effect
 <p>과제 A를 실제로 수행하고 규칙·경험을 저장한다. 프로세스 A를 종료한 후 프로세스 B에서 다른 thread·새 업무 B를 시작한다. 단순히 Python 객체를 다시 읽거나 checkpoint를 resume한 결과를 세션 간 장기 기억 테스트로 대체하지 않는다.</p>
 <p>검색 precision 측정과 실제 적용을 분리한다. <code>queried → selected → injected → referenced → applied</code>를 각각 기록한다. plan clause의 memory_id만으로 applied=true를 만들지 않는다. memory-specific predicate(예: 프로젝트에서 요구한 timeout 처리와 그 테스트)가 plan/code/test의 실제 산출물에 존재하고 동작해야 한다. 관련 기록·무관한 기록·만료 기록·충돌 기록·악성 지시 기록을 함께 제공한다. scope ACL은 top-k 이전에 적용한다.</p>
 <p>memory-on/off 비교는 효과 확인에 쓰며 케이스가 적으면 추정 범위를 보고한다. 현재 사용자 요청은 과거 memory보다 우선한다. 삭제·정정·stale 처리 후 검색·projection·export 잔존 여부도 테스트한다.</p>
+<p><strong>채널·적용 분리 (WP23 Study 3 관측 추가).</strong> memory 전달과 적용은 별도로 검증한다. <code>AGENTS.md</code> 참고자료 채널로의 전달은 규칙 적용의 증거가 아니다 — native 안내가 그 채널을 도구 근거 아래에 둔다. 승인된 <code>scope_rule</code> 검증은 의무 투영·<code>requirement_ids</code>/<code>acceptance_ids</code> 연결·checker의 bundle 판정을 확인한다. visible repo에 규칙과 모순된 동작 예제가 있을 때 참고자료 채널 단독 배포는 적용을 보장하지 않음을 부정 사례로 둔다. acceptance catalog의 <code>RULE-*</code>·<code>EVAL-CHANNEL-*</code>·<code>EVAL-WIRE-01</code> 사례가 이 family를 추적한다.</p>
+<p><strong>matched-information 비교.</strong> 동일 note 내용을 (a) <code>AGENTS.md</code> 참고자료 채널, (b) 의무 투영 채널, (c) 의무+checker 강제로 배포한 arm을 구분해 memory 표현 효과를 측정한다. (d) memory 없이 validator feedback만 주는 arm을 둬 feedback 효과와 memory 표현 효과를 분리한다. Study 3 과제는 이미 실행된 결과이므로 원인분석·회귀용으로만 재사용하고 새로운 미공개 holdout 판정으로 보고하지 않는다. paired/family 통계는 <code>evaluation/statistics.py</code>의 sealed margin·Wilson 계산을 그대로 사용한다 — delta·interval을 새로 계산하거나 완화하지 않는다.</p>
 <h4 id="section-0057">7. Self-Improvement 검증</h4>
 <p>3-3은 실제 Agent가 실패/평가 증거에서 <strong>허용된 system prompt 블록·skill·작업 memory</strong>의 후보를 각각 생성하는지 확인한다. 후보에는 source evidence, cause hypothesis와 대안, 정확 patch, scope, expected effect, adverse effect, evaluation plan, parent/rollback release, cost cap이 있어야 한다. TDD red·정상 거부·사용자 변경은 원인 구분 없이 교훈으로 일반화하지 않는다.</p>
 <p>경로 A는 입력 동일성과 지원되는 기록 전이 안에서만 replay한다. 경로 B는 prompt/skill/memory/tool/code 의미가 바뀌므로 실제 baseline/candidate 재실행을 한다. frozen task/source/tool/runtime/model/endpoint/budget을 동일하게 유지하고 순서를 무작위로 배치한다. task family·repo fork·인접 commit·대화 변형은 같은 split에 둔다. 반복 3회는 독립 과제 3개가 아니다.</p>
@@ -453,5 +456,5 @@ executing → succeeded / failed / cancelled / unknown_effect
 <p>Python은 uv pip compile --generate-hashes와 uv pip sync --require-hashes --only-binary :all:를 사용한다. 지원 wheel이 없으면 실패하며 임의 source build로 우회하지 않는다. npm은 package-lock-only --ignore-scripts 뒤 npm ci를 사용한다. QMD native lifecycle script는 따로 검토한 build 허가를 요구한다. 소스 방식 Serena는 정확한 Git commit과 upstream uv.lock을 확인한 뒤 frozen sync한다.</p>
 <p>상태·캐시 경로를 프로젝트 안에 고정하지만 이것만으로 프로세스 보안 격리가 생기지는 않는다. 설치·build는 secret 없는 외부 작업 환경에서 수행한다. 실제 분석 실행은 RF02/RF03의 readonly snapshot·broker·네트워크 차단 테스트가 완료되어야 제품에 연결한다. <code>doctor</code>는 설치 receipt 존재 검사이며 LSP/MCP 기능 검증을 대신하지 않는다.</p>
 <footer>
-    Generated from canonical project sources. SHA256: 7a38fb59cf60bff91109ee74f2130f10c7c2b01d911f1fd08f0ed2de421ebb00</footer>
+    Generated from canonical project sources. SHA256: f53ea98b01fdac25ddc6e7977e011343445bc51896fd78e143cb34f257561a49</footer>
     </main></body></html>

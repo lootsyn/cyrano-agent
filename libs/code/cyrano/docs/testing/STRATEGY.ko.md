@@ -57,6 +57,10 @@ format/lint는 실제 고정 도구 raw exit와 parser 결과를 함께 확인�
 
 memory-on/off 비교는 효과 확인에 쓰며 케이스가 적으면 추정 범위를 보고한다. 현재 사용자 요청은 과거 memory보다 우선한다. 삭제·정정·stale 처리 후 검색·projection·export 잔존 여부도 테스트한다.
 
+**채널·적용 분리 (WP23 Study 3 관측 추가).** memory 전달과 적용은 별도로 검증한다. `AGENTS.md` 참고자료 채널로의 전달은 규칙 적용의 증거가 아니다 — native 안내가 그 채널을 도구 근거 아래에 둔다. 승인된 `scope_rule` 검증은 의무 투영·`requirement_ids`/`acceptance_ids` 연결·checker의 bundle 판정을 확인한다. visible repo에 규칙과 모순된 동작 예제가 있을 때 참고자료 채널 단독 배포는 적용을 보장하지 않음을 부정 사례로 둔다. acceptance catalog의 `RULE-*`·`EVAL-CHANNEL-*`·`EVAL-WIRE-01` 사례가 이 family를 추적한다.
+
+**matched-information 비교.** 동일 note 내용을 (a) `AGENTS.md` 참고자료 채널, (b) 의무 투영 채널, (c) 의무+checker 강제로 배포한 arm을 구분해 memory 표현 효과를 측정한다. (d) memory 없이 validator feedback만 주는 arm을 둬 feedback 효과와 memory 표현 효과를 분리한다. Study 3 과제는 이미 실행된 결과이므로 원인분석·회귀용으로만 재사용하고 새로운 미공개 holdout 판정으로 보고하지 않는다. paired/family 통계는 `evaluation/statistics.py`의 sealed margin·Wilson 계산을 그대로 사용한다 — delta·interval을 새로 계산하거나 완화하지 않는다.
+
 ## 7. Self-Improvement 검증
 
 3-3은 실제 Agent가 실패/평가 증거에서 **허용된 system prompt 블록·skill·작업 memory**의 후보를 각각 생성하는지 확인한다. 후보에는 source evidence, cause hypothesis와 대안, 정확 patch, scope, expected effect, adverse effect, evaluation plan, parent/rollback release, cost cap이 있어야 한다. TDD red·정상 거부·사용자 변경은 원인 구분 없이 교훈으로 일반화하지 않는다.

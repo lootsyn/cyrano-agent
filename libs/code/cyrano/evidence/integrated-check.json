@@ -4,8 +4,8 @@
   "counts": {
     "routed_tasks": 61,
     "verified_stage_routes": 183,
-    "max_readset_bytes": 47948,
-    "acceptance_specifications": 857,
+    "max_readset_bytes": 48535,
+    "acceptance_specifications": 871,
     "integrated_implementation_units": 12,
     "request_sections": 44,
     "pairwise_rows": 22,
@@ -14,7 +14,7 @@
     "runtime_contract_definitions": 17,
     "planning_contract_definitions": 11,
     "planning_shape_cases_executed": 60,
-    "current_documents_scanned": 245
+    "current_documents_scanned": 246
   },
   "errors": [],
   "blocked": [],
@@ -156,8 +156,8 @@
     },
     {
       "path": ".agents/work/WP11.ko.md",
-      "bytes": 15685,
-      "sha256": "8fa0e09a16822317b3d62b441786781deefcb8ba0e8e97765b4a54f55a8ee65c"
+      "bytes": 16983,
+      "sha256": "b0fad46c3a7f3082ab01873fb14c254719f1e11fde1d76e11ee6553f9e2935fa"
     },
     {
       "path": ".agents/work/WP12.ko.md",
@@ -311,8 +311,8 @@
     },
     {
       "path": "docs/design/DCODE_INTEGRATION.ko.md",
-      "bytes": 18403,
-      "sha256": "c9ac09ccb7427120d400ba6d5c91f7bc52e4939b4e1547bae40e10c8d458a3b7"
+      "bytes": 18978,
+      "sha256": "bb8f3af5e462549d031ba4a0b6b34a30228742e635a5fc7b553e3e64a062bafb"
     },
     {
       "path": "docs/design/DOCUMENT_GOVERNANCE.ko.md",
@@ -321,8 +321,8 @@
     },
     {
       "path": "docs/design/MEMORY_LIFECYCLE.ko.md",
-      "bytes": 12675,
-      "sha256": "a5cc60b047f6f6703e488294b96db2816bf2df2344e5aa9f0ae2389d6d2e1aa2"
+      "bytes": 20403,
+      "sha256": "b723890afa756d29c3fdf52c0a7bfd433a9122fc84a8e21984c256854c8aea66"
     },
     {
       "path": "docs/design/NATIVE_MONITOR_TUI.ko.md",
@@ -346,8 +346,8 @@
     },
     {
       "path": "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md",
-      "bytes": 11990,
-      "sha256": "7c755af4de33f95af7a5602b6749f1728a00d3d4cbf85329962713c5620cb39b"
+      "bytes": 12974,
+      "sha256": "e4f2a6d9e004349362baeb8ac09c7e19dfce63a04d8630d47d31030d3d6e6821"
     },
     {
       "path": "docs/design/architecture/2026-09-16-cache-context.ko.md",
@@ -396,8 +396,8 @@
     },
     {
       "path": "docs/design/features/2026-09-16-plan-memory-execution.ko.md",
-      "bytes": 26355,
-      "sha256": "8f103c58750432b38627a02031aeafdad5b49189d34704f887ddb3c88124f0b6"
+      "bytes": 26942,
+      "sha256": "9f9f5b7b9b0f8cc1acca8a39abe571c823bd288e09f7894aa9350af7963cefe5"
     },
     {
       "path": "docs/design/testing/2026-09-16-evaluation-observability.ko.md",
@@ -786,8 +786,8 @@
     },
     {
       "path": "docs/testing/STRATEGY.ko.md",
-      "bytes": 13338,
-      "sha256": "caf135757a4fb7db576aadf82086d3fadace8351c4dc4b61710d461cefd5682e"
+      "bytes": 14664,
+      "sha256": "03bc716cea9d9422d3a86d22861302b423a30a9e1ea844ddd606951931ff458c"
     },
     {
       "path": "docs/testing/cases/1-1.ko.md",
@@ -1238,6 +1238,11 @@
       "path": "tests/README.md",
       "bytes": 610,
       "sha256": "10d8b814b5ceb931250c13200045eb76f7c42ccd4e1538caae01e2cad042ebcc"
+    },
+    {
+      "path": "tests/live-study/repo/README.md",
+      "bytes": 366,
+      "sha256": "5e0e15c02d9b9baaf6b0ceefdd8c9162a9d7b9f55835a32d1616e10c0b23bcee"
     },
     {
       "path": "tools/README.md",

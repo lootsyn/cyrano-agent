@@ -112,7 +112,7 @@
 - [release rollback과 영향 작업 재검토](execution/runbooks/rollback.ko.md) — `docs/execution/runbooks/rollback.ko.md`
 - [경로 B runtime 코드 배포](execution/runbooks/runtime-upgrade.ko.md) — `docs/execution/runbooks/runtime-upgrade.ko.md`
 
-## 테스트 전략·사례 · 32개
+## 테스트 전략·사례 · 33개
 
 - [증거 수집·채점·변조 방지 계약](testing/EVIDENCE_AND_SCORING.ko.md) — `docs/testing/EVIDENCE_AND_SCORING.ko.md`
 - [R4 추가 검증·수용 프로토콜](testing/R4_ACCEPTANCE_PROTOCOL.ko.md) — `docs/testing/R4_ACCEPTANCE_PROTOCOL.ko.md`
@@ -146,6 +146,7 @@
 - [RF10 수용 테스트 상세](testing/r5/RF10.ko.md) — `docs/testing/r5/RF10.ko.md`
 - [RF11 수용 테스트 상세](testing/r5/RF11.ko.md) — `docs/testing/r5/RF11.ko.md`
 - [테스트 위치](../tests/README.md) — `tests/README.md`
+- [widgetbox fixture repo](../tests/live-study/repo/README.md) — `tests/live-study/repo/README.md`
 
 ## 개발 에이전트 지침 · 18개
 

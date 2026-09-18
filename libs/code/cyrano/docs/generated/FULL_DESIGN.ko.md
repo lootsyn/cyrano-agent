@@ -4298,6 +4298,8 @@ python cyrano/scripts/doc_route.py --task WP00 --stage plan --content
 | 종료·cancel·server 재시작 | WP06/WP13/WP21 | durable terminal settlement; unknown outcome·recovery | crash injection과 중복 outbox 검사 |
 | native build 설정 | WP19/WP22, RC00 | 제품에 필요한 JSON/prompt/skill resources를 package resources로 투영 | wheel unzip + fresh venv import + resource read |
 
+native `MemoryMiddleware`의 `AGENTS.md` 채널은 그 안내 문구상 참고자료다 — 내용이 사용자 요청이나 도구 검증 근거와 충돌하면 근거를 우선하도록 모델에 지시한다(WP23 Study 3에서 실제 관측). 따라서 승인된 `scope_rule`의 배포는 이 채널 단독으로 이루어지지 않고 [Memory 수명주기](../design/MEMORY_LIFECYCLE.ko.md) §10의 의무 투영을 거친다. adapter는 read-only projection과 의무 투영을 구분해 기록하며, `AGENTS.md` 단독 전달을 규칙 적용 증거로 보고하지 않는다.
+
 복사 과정에서 base 파일을 수정하지 않는 원칙과, **우리 제품 개발 중 승인된 native integration patch를 허용**하는 원칙은 다르다. 이전 설계의 'core 무수정'은 설치 시 무단 변경 금지로 범위를 제한한다. native integration을 절대 금지하는 뜻으로 해석하지 않는다. 다만 모델 이름별 분기, 핵심 loop 재작성, SDK 대체 agent로의 조용한 전환, upstream 전체 재포맷은 하지 않는다.
 
 #### 4. packaged code와 개발 자료의 분리
@@ -4559,6 +4561,43 @@ bounded core·episode·playbook, 무관한 기억 abstention과 utility/exposure
 
 writer는 context를 만드는 agent가 아니라 승인된 service다. 유용성 점수·노출 빈도·긍정 피드백은 retrieval 정렬을 도울 뿐 사실성이나 접근 권한을 높이지 않는다. 상충 기억은 최신 시간 하나만으로 해결하지 않고 원문·명시적 supersedes·권위를 확인한다. advisory hint가 작업 지시나 실행 허가로 승격되지 않게 한다.
 
+#### 9. 관측된 적용 실패와 채널 권위 (WP23 Study 3)
+
+Study 3(`evidence/live-evaluation/study-3/`, sealed `sha256:8a64920f…`)는 전달·적용을 실제로 분리한 첫 실측이다. 승인된 측면규칙이 user-level `AGENTS.md`로 provisioning됐고 candidate gate는 통과했으나, oracle 결과는 baseline 5/5 fail, candidate 2/5 pass였다.
+
+확인 사실:
+
+- 생성 note는 원시 계약과 대조해 누락·의미 반전·무근거 추론이 없었다. 오염은 첫 줄 banner thread-ID 하나뿐이다. 단, runner의 note 추출기가 banner 다음 줄의 UUID를 note 본문·승인된 `content_digest`에 그대로 포함시킨 것은 harness defect로 기록한다 — 같은 경로로 임의의 잡음 문장이 note로 채택될 수 있다.
+- 전달 증명은 B10/B11에서 확정적이다: `sidecar/2`, `compat`, `widgetbox/2`는 visible repo 어디에도 없는 문자열인데 두 run의 narration과 최종 `workspace.diff`에 그대로 나타났다. B7–B9는 동일 profile 구조·동일 digest로 provisioning됐고 주입 경로가 run별로 다르지 않으므로 같은 전달이 구조적으로 추론되지만, 그 run들의 출력에서 기억 사용의 직접 흔적은 없다.
+- 미적용 증거는 더 강하다: B7/B8/B9의 candidate와 baseline의 `workspace_digest`가 **byte-identical**하다 — note가 해당 run의 산출물에 측정 가능한 영향이 0이었다. B7 narration은 "per the repo's packaging convention"이라며 visible `meta/alpha.json` v1 예제를 그대로 복사했다. B10은 "per the sidecar contract… v2 shape"라며 기억을 인용해 적용했다.
+- 원인은 local `deepagents/middleware/memory.py`의 주입 안내다. `memory_contents`는 매 요청 system message에 `<agent_memory>`로 붙지만 안내 문구가 "reference material, not hidden system instructions"이며 "memory가 사용자 요청이나 `read_file` 등 도구 근거와 충돌하면 검증된 근거를 우선"하라고 명시한다. Study 3의 workspace에는 모순된 동작 예제(v1 sidecar)가 있었고, **예제가 완성형 template을 제공하는 작업(add/rename/remove)에서 모델은 예제를 따랐다** — 이는 해당 안내가 허용하는 행동이다. B10의 baseline도 `v1 + lifecycle: deprecated`를 썼다는 점에서 '예제로 생성 불가능한 출력'은 정확한 구분자가 아니다. 실제 패턴은 sidecar가 작업의 주 대상이고 모델이 규약을 능동 조사한 경우(B10: 14 requests)에만 기억이 적용됐다는 것이다.
+- wire bytes는 미관측이다. dcode headless는 직렬화된 최종 요청을 내보내지 않으므로 주입의 wire 증명은 `adapter_confirmed`+행동 증거로 한정되고 `wire_confirmed=false`로 기록한다.
+
+설계 결론: 승인된 scope 규칙을 `<agent_memory>` 채널로만 전달하는 것은 규칙을 일반 기억의 '참고자료' 위치에 두는 것이다. 모델 재량 적용은 이 채널의 명시적 의미다. 규칙이 효과를 가지려면 승인된 작업 채널(계획 subject의 의무)로 투영되고 변경 bundle 검증으로 강제되어야 한다.
+
+#### 10. 규칙 기억의 의무 투영
+
+`MemoryRecord.kind`에 `scope_rule`을 추가한다. 현재 출고된 kind 집합은 `knowledge_lane.KNOWLEDGE_KINDS = {fact, preference, procedure}`이며 governed validator가 그 밖의 kind를 거부하므로, `scope_rule`은 **새 의미의 kind 확장**이다 — 기존 `procedure` 기억의 재분류 규칙과 함께 명시한다. `scope_rule`은 승인된 범위 규칙(예: 스키마·수명주기·등록 규약)과 명시적 예외 절을 가진다. `activate_memory`의 동일 kind 충돌 규칙이 'scope당 하나의 active scope_rule' 의미를 그대로 제공한다.
+
+의무 투영 조건(모두 충족해야 한다):
+
+1. record가 `active`이고 현재 run의 pinned `context.binding.MemoryView`에 포함되며 `revoked_ids`에 없다.
+2. 인증된 run binding과의 scope 교집합이 현재 workspace를 포함한다.
+3. `expires_at` 미경과, `supersedes` 후속 revision 없음.
+4. 규칙의 obligation이 `WorkUnitSpec.requirement_ids`/`acceptance_ids`에 연결되어 `work_plan_digest`에 봉인되고, **그 계획에 대한 승인**이 `SignedPermit`의 `subject_digest`로 결속된다. memory 승인 receipt는 memory subject만 결속하며 이후 계획의 subject를 대신 승인하지 않는다.
+
+충족 시 context compiler는 규칙 본문이 아니라 **revision-bound obligation 목록**을 작업 의무 채널에 투영한다. 각 obligation은 `memory_id`, `revision`, `rule_predicate`, `exception_refs`, `checker_id`를 가진다. `checker_id`는 `validate_plan`의 `known_recipes`와 동일한 방식으로 **승인된 subject에 결속된 신뢰 checker registry** 안의 항목이어야 한다 — 규칙 본문이 자기 checker를 지명하는 것은 허용하지 않는다. 같은 내용을 `<agent_memory>`와 의무 채널에 중복 투영해 권위를 이중화하지 않는다 — 규칙은 의무로만, 관찰·조언은 참고자료로만 간다. 의무로 승격된 scope_rule 본문을 참고자료 view에서 제외하는 상호배제는 `dcode/memory_adapter.project_readonly_memory`가 강제한다.
+
+권위의 출처는 문자열이 아니다. 본문의 `ACTIVE`, `APPROVED`, `MANDATORY` 같은 표기, 파일명, 위치는 의무를 만들지 못한다. 의무는 approval receipt → permit → plan subject digest 결속으로만 생긴다. 이 결속이 없는 규칙 내용은 아무리 올바른 규칙이어도 참고자료다.
+
+투영된 obligation은 `WorkUnitSpec.requirement_ids`/`acceptance_ids`에 연결되므로 기존 `validate_plan`의 '모든 활성 요구에 작업 또는 `verified_no_change` 연결' 검사와 '각 acceptance의 oracle 연결' 검사가 그대로 적용된다. 각 규칙 종류에는 deterministic `application_checker`를 등록한다(§5). `ApplyJournal`은 path와 digest만 가지므로, checker는 (a) 기대 postimage digest 비교(`ExpectedChain`) 또는 (b) post-apply 파일·oracle 출력의 실제 검증 둘 중 하나로 규칙 만족을 판정한다 — 어떤 방식인지 obligation에 명시한다. 모델이 규칙을 '알았는지'는 판정하지 않고 bundle이 규칙을 만족하는지만 판정한다.
+
+checker 실패는 기존 agent loop 안에서 보정한다. `WorkUnitSpec.cost_cap` 안의 재시도만 허용하고, 최초 실패·보정 후 성공·추가 비용을 ledger에 분리 기록한다. 보정 없는 최초 성공과 비용을 합산해 효과를 부풀리지 않는다. `record_application`은 plan+tool+test 체인이 revision-bound obligation과 연결될 때만 `applied`를 준다.
+
+실행 중 기억 변경: 이미 승인된 계획에 봉인된 obligation은 plan permit 수명을 따른다. stale·만료된 양성 기억의 obligation은 계획 revision까지 유지되지만, quarantine·보안 revoke된 기억에 근거한 obligation이 있으면 영향받는 subject의 신규 dispatch를 pause하고 재검토한다 — `bind_context`의 `STALE_EPOCH`·`is_revoked` 재검사와 같은 방향의 fail-closed다.
+
+유지되는 보안 원칙: 일반 `AGENTS.md`·임의 파일의 내용은 계속 참고자료다. 의무 투영을 통과한 규칙도 도구 권한·승인 범위를 넓히지 못하고, `bind_context`의 `STALE_EPOCH`·revocation pause가 그대로 적용된다. upstream `MemoryMiddleware` 자체와 그 안내 문구는 변경하지 않는다 — 일반 기억의 보안 의미는 유지한다. 이 의무 투영 경로 전체는 WP06급 governed-loop 통합이 live assembly에 연결되기 전까지 설계 목표이며, 현재 runtime에는 존재하지 않는다.
+
 
 ---
 
@@ -4600,6 +4639,7 @@ agent는 author·critic·generator 역할만 수행한다. 평가기와 승인 b
 | `working_memory` | 현재 task note의 후보 revision. 전역 scope 자동 승격 금지 | 같은 episode 새 branch 실제 실행; 현재 승인 의무 불변 | task-scoped new revision |
 | `semantic_memory` | 명시 근거·dependency·scope의 사실 후보 | 사실 재검증, 충돌·stale·다른 workspace 반례 | memory release |
 | `procedure_memory` | 실패 원인·적용 조건·검증 recipe | on/off 실제 비교; 잘못된 적용·과도한 일반화 반례 | memory+skill bundle |
+| `scope_rule` | 승인된 범위 규칙·예외 절·checker ref | 의무 투영 + bundle checker 적용 여부 비교 | memory release + plan obligation binding |
 | `interview`, `plan`, `review` | 질문/순서/분해/리뷰 procedure patch | 질문 수보다 false-ready·coverage·defect detection·false-block 우선 | workflow config/skill |
 | `context_config` | recall/compaction/offload/budget 변경 | 의무 보존·actual context·정확도+캐시 측정 | context component |
 | `verification_recipe` | 준비/명령/대상/환경 patch | 결함 검출/오탐/flake; 실패 test 삭제·oracle 약화 금지 | signed recipe |
@@ -4631,6 +4671,8 @@ split 단위는 repository/task family와 시간이다. 같은 issue의 변형, 
 `Candidate -> EvaluationReport -> IndependentReview -> PromotionApproval -> HarnessRelease -> new RunBinding -> ContextManifest/ToolInventory -> 실제 행동 -> regression result`.
 
 새 release가 파일로 존재한다는 사실은 적용 증거가 아니다. process B/new thread에서 새 binding이 실제 chosen artifact digest와 같고, 기존 run A는 보안 revoke가 아닌 일반 승격에서 이전 binding을 유지하는지 검사한다. context/skill 실제 로딩을 관측할 수 없으면 반영 결과는 `unverified`. 감사 지표는 release 생성 수와 다음 업무 적용 수를 구분한다.
+
+**채널 구분 (WP23 Study 3 관측).** memory surface 후보를 user-level `AGENTS.md`로만 배포하는 것은 '참고자료 채널' 배포다. native memory 안내는 그 채널 내용을 명시적으로 도구·코드 근거 아래에 두므로, visible repo에 모순된 동작 예제가 있으면 모델이 예제를 택하는 것이 허용된 행동이다. Study 3에서 B7–B9는 정확한 규칙 note를 받고도 visible v1 예제를 복사했다. 규칙 surface(`scope_rule`)의 배포 단위는 release+plan obligation binding이며, `AGENTS.md` 단독 배포와 의무 투영 배포는 서로 다른 surface로 분류해 평가한다. matched-information 비교 시 동일 내용을 두 채널로 배포한 arm을 구분해야 memory 표현 효과와 validator feedback 효과를 분리할 수 있다.
 
 #### 7. canary·rollback·비용
 
@@ -6888,6 +6930,10 @@ format/lint는 실제 고정 도구 raw exit와 parser 결과를 함께 확인�
 검색 precision 측정과 실제 적용을 분리한다. `queried → selected → injected → referenced → applied`를 각각 기록한다. plan clause의 memory_id만으로 applied=true를 만들지 않는다. memory-specific predicate(예: 프로젝트에서 요구한 timeout 처리와 그 테스트)가 plan/code/test의 실제 산출물에 존재하고 동작해야 한다. 관련 기록·무관한 기록·만료 기록·충돌 기록·악성 지시 기록을 함께 제공한다. scope ACL은 top-k 이전에 적용한다.
 
 memory-on/off 비교는 효과 확인에 쓰며 케이스가 적으면 추정 범위를 보고한다. 현재 사용자 요청은 과거 memory보다 우선한다. 삭제·정정·stale 처리 후 검색·projection·export 잔존 여부도 테스트한다.
+
+**채널·적용 분리 (WP23 Study 3 관측 추가).** memory 전달과 적용은 별도로 검증한다. `AGENTS.md` 참고자료 채널로의 전달은 규칙 적용의 증거가 아니다 — native 안내가 그 채널을 도구 근거 아래에 둔다. 승인된 `scope_rule` 검증은 의무 투영·`requirement_ids`/`acceptance_ids` 연결·checker의 bundle 판정을 확인한다. visible repo에 규칙과 모순된 동작 예제가 있을 때 참고자료 채널 단독 배포는 적용을 보장하지 않음을 부정 사례로 둔다. acceptance catalog의 `RULE-*`·`EVAL-CHANNEL-*`·`EVAL-WIRE-01` 사례가 이 family를 추적한다.
+
+**matched-information 비교.** 동일 note 내용을 (a) `AGENTS.md` 참고자료 채널, (b) 의무 투영 채널, (c) 의무+checker 강제로 배포한 arm을 구분해 memory 표현 효과를 측정한다. (d) memory 없이 validator feedback만 주는 arm을 둬 feedback 효과와 memory 표현 효과를 분리한다. Study 3 과제는 이미 실행된 결과이므로 원인분석·회귀용으로만 재사용하고 새로운 미공개 holdout 판정으로 보고하지 않는다. paired/family 통계는 `evaluation/statistics.py`의 sealed margin·Wilson 계산을 그대로 사용한다 — delta·interval을 새로 계산하거나 완화하지 않는다.
 
 #### 7. Self-Improvement 검증
 
@@ -11503,6 +11549,8 @@ WP07/08은 `InterviewContract`와 현재 요구·제약·acceptance·비목표·
 
 작업에는 `requirement_ids`, `acceptance_ids`, 생성/수정/삭제할 파일, 읽을 근거, 소비/생산 인터페이스, dependency, 독점 자원, 정확한 argv와 cwd, env allowlist, timeout, retry class, 비용 한도, owner, expected artifact, 검증 oracle, 실패·복구가 필요하다. 구현 단계는 작은 검증 가능한 결과를 만든다. 단순 '수정한다/테스트한다'는 작업 정의가 아니다.
 
+승인된 `scope_rule` 기억이 투영 조건(MEMORY_LIFECYCLE §10)을 충족하면 그 obligation은 `requirement_ids`/`acceptance_ids`에 연결된 요구로 들어간다. obligation은 `memory_id`/`revision`/`checker_id` 결속을 가지며, plan subject digest가 그 결속을 봉인하므로 approval receipt → permit → subject의 권위 사슬 안에 놓인다. 본문의 '승인됨' 문자열이나 파일 위치는 이 사슬을 대신하지 못한다. obligation이 없는 scope 규칙은 `<agent_memory>` 참고자료로만 머물고 검증 의무가 되지 않는다.
+
 **해시 순환을 금지한다.** 승인 대상 projection에는 진행률·화면 cursor·review response·approval_ref·execution_permit_ref·signature·실행 결과를 넣지 않는다. Subject를 먼저 봉인하고 리뷰·표시·승인·permit이 그 digest를 바깥에서 참조한다. 표시 문자열 변화가 권한 범위 변화인지 별도 classifier가 판단한다. JSON key 순서나 공백 재정렬 때문에 실행 의미가 바뀌었다고 하지 않으며, 문자열 안 공백·NFC/NFD·명령 인수의 다른 bytes는 임의로 합치지 않는다.
 
 계획의 초기 source와 승인 범위 안에서 생성된 작업 사본 revision을 구분한다. 승인된 이전 작업의 정상 수정으로 `candidate_head`가 바뀐 것은 허용된 계보 진전이며 매 도구 호출마다 전체 계획을 재승인하지 않는다. 작업은 예상 parent output digest에 결속한다. 사용자의 원본 수정, 다른 branch 결과, 허용하지 않은 파일 변경은 계보에 없으므로 stale 처리한다.
@@ -14255,6 +14303,19 @@ memory candidate/active 분리와 phase별 recall·적용 증거를 구현한다
 - `MEM-CONFLICT`: 근거·authority 검토 없이 최신값 선택 금지
 - `MEM-DELETE`: index/cache/summary/export 영향 추적 무효화
 - `MEM-APPLIED`: referenced만, applied/effective 단정 금지
+
+WP23 Study 3 원인분석 이후 추가된 의무 투영 수용(`scope_rule` kind·의무 채널·checker registry는 아직 미구현 설계 대상이며, 기존 verified 범위에 포함되지 않는다. 이들이 not_run인 동안 이 WP의 product_verified는 해당 확장에 한해 성립하지 않는다):
+
+- `RULE-PROJECT-01`: 투영 조건 충족 시 obligation이 memory_id·revision·checker_id 결속으로 의무 채널에 투영
+- `RULE-VISIBLE-CONFLICT`: 규칙·가시 예제 충돌 시 예제를 따른 bundle은 checker 거부
+- `RULE-UNAPPROVED-CHANNEL`: 결속 사슬 없는 AGENTS.md 단독 전달은 참고자료로만 기록
+- `RULE-STRING-AUTHORITY`: 본문의 승인 문자열·위치만으로 의무 생성 금지
+- `RULE-INACTIVE-STATUS`: candidate/stale/quarantined/superseded/revoked/만료 기억 투영 금지
+- `RULE-SCOPE-MISMATCH`: scope 교집합 없는 규칙 투영 금지
+- `RULE-CHECKER-REJECT`: checker 실패→cost_cap 내 보정, 최초 실패·보정 성공·추가 비용 분리 기록
+- `RULE-EXCEPTION-CLAUSE`: 예외 절 보존 — 예외 파일 touch는 실패, untouched는 통과
+- `RULE-DUAL-CHANNEL`: 동일 규칙의 참고자료·의무 중복 투영 금지
+- `RULE-STALE-EPOCH`: compile·bind 사이 memory view 변경 시 STALE_EPOCH pause
 
 추가 조건: API consumer가 실제 제공자에 연결되고, 잘못된 입력에 대한 실행 거부 경로가 존재해야 한다. 문서·interface만 있는 상태는 partial이다.
 
@@ -33229,7 +33290,17 @@ PRAGMA user_version = 1;
         "CON-MEM-09",
         "CON-MEM-10",
         "CON-MEM-11",
-        "CON-MEM-12"
+        "CON-MEM-12",
+        "RULE-PROJECT-01",
+        "RULE-VISIBLE-CONFLICT",
+        "RULE-UNAPPROVED-CHANNEL",
+        "RULE-STRING-AUTHORITY",
+        "RULE-INACTIVE-STATUS",
+        "RULE-SCOPE-MISMATCH",
+        "RULE-CHECKER-REJECT",
+        "RULE-EXCEPTION-CLAUSE",
+        "RULE-DUAL-CHANNEL",
+        "RULE-STALE-EPOCH"
       ],
       "commands": [
         [
@@ -35966,7 +36037,11 @@ PRAGMA user_version = 1;
         "R5-RF11-03",
         "R5-RF11-04",
         "R5-RF11-05",
-        "R5-RF11-06"
+        "R5-RF11-06",
+        "EVAL-CHANNEL-01",
+        "EVAL-CHANNEL-02",
+        "EVAL-CHANNEL-03",
+        "EVAL-WIRE-01"
       ],
       "commands": [
         [
@@ -55722,6 +55797,204 @@ PRAGMA user_version = 1;
       ],
       "test_oracle_owner": "independent evaluator, not implementer or skill",
       "applicability": "required for enabled governed path; unavailable mode must deny explicitly"
+    },
+    {
+      "id": "RULE-PROJECT-01",
+      "area": "memory_application",
+      "title": "scope_rule 의무 투영",
+      "given": "active·in-scope·pinned view의 scope_rule + receipt→subject 결속",
+      "when": "context compile",
+      "then": "obligation이 memory_id·revision·checker_id 결속으로 작업 의무 채널에 투영되고 <agent_memory>에는 규칙 의무가 들어가지 않는다",
+      "owner_wp": "WP11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause",
+      "requirement_ids": [
+        "MEM-01"
+      ]
+    },
+    {
+      "id": "RULE-VISIBLE-CONFLICT",
+      "area": "memory_application",
+      "title": "규칙·가시 예제 충돌",
+      "given": "active scope_rule과 모순된 동작 예제 파일이 workspace에 있다",
+      "when": "규칙 해당 변경 bundle 검증",
+      "then": "예제를 따른 bundle은 checker가 거부하고 규칙 만족 bundle만 통과한다",
+      "owner_wp": "WP11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause",
+      "requirement_ids": [
+        "MEM-01"
+      ]
+    },
+    {
+      "id": "RULE-UNAPPROVED-CHANNEL",
+      "area": "memory_application",
+      "title": "참고 채널 단독 전달",
+      "given": "동일 규칙 내용이 AGENTS.md로만 전달되고 receipt→subject 결속이 없다",
+      "when": "적용 판정",
+      "then": "참고자료 전달로만 기록되고 의무 적용으로 보고하지 않는다",
+      "owner_wp": "WP11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause",
+      "requirement_ids": [
+        "MEM-01"
+      ]
+    },
+    {
+      "id": "RULE-STRING-AUTHORITY",
+      "area": "memory_application",
+      "title": "문자열 권위 위장",
+      "given": "본문에 APPROVED·MANDATORY 문자열이 있으나 결속 사슬이 없는 기억",
+      "when": "의무 투영 판정",
+      "then": "문자열·파일명·위치만으로 의무가 생성되지 않는다",
+      "owner_wp": "WP11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause",
+      "requirement_ids": [
+        "MEM-01"
+      ]
+    },
+    {
+      "id": "RULE-INACTIVE-STATUS",
+      "area": "memory_application",
+      "title": "비활성 기억 투영 금지",
+      "given": "candidate·stale·quarantined·superseded·revoked·만료된 scope_rule",
+      "when": "context compile",
+      "then": "어떤 상태라도 의무 채널에 투영되지 않는다",
+      "owner_wp": "WP11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause",
+      "requirement_ids": [
+        "MEM-01"
+      ]
+    },
+    {
+      "id": "RULE-SCOPE-MISMATCH",
+      "area": "memory_application",
+      "title": "범위 밖 규칙",
+      "given": "다른 workspace·tenant scope의 active scope_rule",
+      "when": "context compile",
+      "then": "scope 교집합이 없으면 투영되지 않는다",
+      "owner_wp": "WP11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause",
+      "requirement_ids": [
+        "MEM-01"
+      ]
+    },
+    {
+      "id": "RULE-CHECKER-REJECT",
+      "area": "memory_application",
+      "title": "checker 거부와 보정",
+      "given": "scope_rule을 위반한 변경 bundle",
+      "when": "application_checker·oracle 판정",
+      "then": "checker fail→기존 loop에서 cost_cap 내 보정; 최초 실패·보정 성공·추가 비용이 분리 기록된다",
+      "owner_wp": "WP11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause",
+      "requirement_ids": [
+        "MEM-01"
+      ]
+    },
+    {
+      "id": "RULE-EXCEPTION-CLAUSE",
+      "area": "memory_application",
+      "title": "예외 절 보존",
+      "given": "예외 절(grandfathered 파일)을 가진 scope_rule",
+      "when": "예외 파일 touch vs untouched bundle 검증",
+      "then": "예외 파일을 건드린 bundle은 실패하고 untouched는 예외 유지로 통과한다",
+      "owner_wp": "WP11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause",
+      "requirement_ids": [
+        "MEM-01"
+      ]
+    },
+    {
+      "id": "RULE-DUAL-CHANNEL",
+      "area": "memory_application",
+      "title": "권위 이중화 금지",
+      "given": "의무로 투영된 scope_rule",
+      "when": "context serialization 검사",
+      "then": "동일 규칙이 <agent_memory> 참고자료와 의무 채널에 중복 등장하지 않는다",
+      "owner_wp": "WP11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause",
+      "requirement_ids": [
+        "MEM-01"
+      ]
+    },
+    {
+      "id": "RULE-STALE-EPOCH",
+      "area": "memory_application",
+      "title": "compile·bind 사이 기억 변경",
+      "given": "compile 이후 memory view digest가 바뀌었다",
+      "when": "bind_context",
+      "then": "STALE_EPOCH pause로 stale 의무가 dispatch되지 않는다",
+      "owner_wp": "WP11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause",
+      "requirement_ids": [
+        "MEM-01"
+      ]
+    },
+    {
+      "id": "EVAL-CHANNEL-01",
+      "area": "effectiveness",
+      "title": "matched-information 채널 비교",
+      "given": "동일 note 내용을 AGENTS.md·의무 투영·의무+checker로 배포한 arm",
+      "when": "고정 task·동일 조건 paired 실행",
+      "then": "sealed margin·Wilson으로 채널별 delta를 분리 측정한다",
+      "owner_wp": "WP23",
+      "test_layer": "native_integration_or_effectiveness",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause"
+    },
+    {
+      "id": "EVAL-CHANNEL-02",
+      "area": "effectiveness",
+      "title": "validator feedback 분리",
+      "given": "memory 없이 validator feedback만 주는 arm",
+      "when": "동일 조건 실행",
+      "then": "feedback 효과와 memory 표현 효과를 구분해 보고한다",
+      "owner_wp": "WP23",
+      "test_layer": "native_integration_or_effectiveness",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause"
+    },
+    {
+      "id": "EVAL-CHANNEL-03",
+      "area": "effectiveness",
+      "title": "실행된 과제 재사용 한정",
+      "given": "이미 실행된 Study 3 holdout",
+      "when": "원인분석·회귀 재실행",
+      "then": "새로운 미공개 holdout 판정으로 보고하지 않는다",
+      "owner_wp": "WP23",
+      "test_layer": "native_integration_or_effectiveness",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause"
+    },
+    {
+      "id": "EVAL-WIRE-01",
+      "area": "effectiveness",
+      "title": "주입 증명 한계 표시",
+      "given": "직렬화된 최종 요청 캡처가 없는 실행",
+      "when": "injected 증거 기록",
+      "then": "adapter_confirmed+행동 증거로 한정하고 wire_confirmed=false로 표시한다",
+      "owner_wp": "WP23",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause"
     }
   ]
 }

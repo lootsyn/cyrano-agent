@@ -22,6 +22,8 @@ WP07/08은 `InterviewContract`와 현재 요구·제약·acceptance·비목표·
 
 작업에는 `requirement_ids`, `acceptance_ids`, 생성/수정/삭제할 파일, 읽을 근거, 소비/생산 인터페이스, dependency, 독점 자원, 정확한 argv와 cwd, env allowlist, timeout, retry class, 비용 한도, owner, expected artifact, 검증 oracle, 실패·복구가 필요하다. 구현 단계는 작은 검증 가능한 결과를 만든다. 단순 '수정한다/테스트한다'는 작업 정의가 아니다.
 
+승인된 `scope_rule` 기억이 투영 조건(MEMORY_LIFECYCLE §10)을 충족하면 그 obligation은 `requirement_ids`/`acceptance_ids`에 연결된 요구로 들어간다. obligation은 `memory_id`/`revision`/`checker_id` 결속을 가지며, plan subject digest가 그 결속을 봉인하므로 approval receipt → permit → subject의 권위 사슬 안에 놓인다. 본문의 '승인됨' 문자열이나 파일 위치는 이 사슬을 대신하지 못한다. obligation이 없는 scope 규칙은 `<agent_memory>` 참고자료로만 머물고 검증 의무가 되지 않는다.
+
 **해시 순환을 금지한다.** 승인 대상 projection에는 진행률·화면 cursor·review response·approval_ref·execution_permit_ref·signature·실행 결과를 넣지 않는다. Subject를 먼저 봉인하고 리뷰·표시·승인·permit이 그 digest를 바깥에서 참조한다. 표시 문자열 변화가 권한 범위 변화인지 별도 classifier가 판단한다. JSON key 순서나 공백 재정렬 때문에 실행 의미가 바뀌었다고 하지 않으며, 문자열 안 공백·NFC/NFD·명령 인수의 다른 bytes는 임의로 합치지 않는다.
 
 계획의 초기 source와 승인 범위 안에서 생성된 작업 사본 revision을 구분한다. 승인된 이전 작업의 정상 수정으로 `candidate_head`가 바뀐 것은 허용된 계보 진전이며 매 도구 호출마다 전체 계획을 재승인하지 않는다. 작업은 예상 parent output digest에 결속한다. 사용자의 원본 수정, 다른 branch 결과, 허용하지 않은 파일 변경은 계보에 없으므로 stale 처리한다.

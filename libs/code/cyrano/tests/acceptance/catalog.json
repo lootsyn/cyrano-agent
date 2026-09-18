@@ -19617,6 +19617,204 @@
       ],
       "test_oracle_owner": "independent evaluator, not implementer or skill",
       "applicability": "required for enabled governed path; unavailable mode must deny explicitly"
+    },
+    {
+      "id": "RULE-PROJECT-01",
+      "area": "memory_application",
+      "title": "scope_rule 의무 투영",
+      "given": "active·in-scope·pinned view의 scope_rule + receipt→subject 결속",
+      "when": "context compile",
+      "then": "obligation이 memory_id·revision·checker_id 결속으로 작업 의무 채널에 투영되고 <agent_memory>에는 규칙 의무가 들어가지 않는다",
+      "owner_wp": "WP11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause",
+      "requirement_ids": [
+        "MEM-01"
+      ]
+    },
+    {
+      "id": "RULE-VISIBLE-CONFLICT",
+      "area": "memory_application",
+      "title": "규칙·가시 예제 충돌",
+      "given": "active scope_rule과 모순된 동작 예제 파일이 workspace에 있다",
+      "when": "규칙 해당 변경 bundle 검증",
+      "then": "예제를 따른 bundle은 checker가 거부하고 규칙 만족 bundle만 통과한다",
+      "owner_wp": "WP11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause",
+      "requirement_ids": [
+        "MEM-01"
+      ]
+    },
+    {
+      "id": "RULE-UNAPPROVED-CHANNEL",
+      "area": "memory_application",
+      "title": "참고 채널 단독 전달",
+      "given": "동일 규칙 내용이 AGENTS.md로만 전달되고 receipt→subject 결속이 없다",
+      "when": "적용 판정",
+      "then": "참고자료 전달로만 기록되고 의무 적용으로 보고하지 않는다",
+      "owner_wp": "WP11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause",
+      "requirement_ids": [
+        "MEM-01"
+      ]
+    },
+    {
+      "id": "RULE-STRING-AUTHORITY",
+      "area": "memory_application",
+      "title": "문자열 권위 위장",
+      "given": "본문에 APPROVED·MANDATORY 문자열이 있으나 결속 사슬이 없는 기억",
+      "when": "의무 투영 판정",
+      "then": "문자열·파일명·위치만으로 의무가 생성되지 않는다",
+      "owner_wp": "WP11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause",
+      "requirement_ids": [
+        "MEM-01"
+      ]
+    },
+    {
+      "id": "RULE-INACTIVE-STATUS",
+      "area": "memory_application",
+      "title": "비활성 기억 투영 금지",
+      "given": "candidate·stale·quarantined·superseded·revoked·만료된 scope_rule",
+      "when": "context compile",
+      "then": "어떤 상태라도 의무 채널에 투영되지 않는다",
+      "owner_wp": "WP11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause",
+      "requirement_ids": [
+        "MEM-01"
+      ]
+    },
+    {
+      "id": "RULE-SCOPE-MISMATCH",
+      "area": "memory_application",
+      "title": "범위 밖 규칙",
+      "given": "다른 workspace·tenant scope의 active scope_rule",
+      "when": "context compile",
+      "then": "scope 교집합이 없으면 투영되지 않는다",
+      "owner_wp": "WP11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause",
+      "requirement_ids": [
+        "MEM-01"
+      ]
+    },
+    {
+      "id": "RULE-CHECKER-REJECT",
+      "area": "memory_application",
+      "title": "checker 거부와 보정",
+      "given": "scope_rule을 위반한 변경 bundle",
+      "when": "application_checker·oracle 판정",
+      "then": "checker fail→기존 loop에서 cost_cap 내 보정; 최초 실패·보정 성공·추가 비용이 분리 기록된다",
+      "owner_wp": "WP11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause",
+      "requirement_ids": [
+        "MEM-01"
+      ]
+    },
+    {
+      "id": "RULE-EXCEPTION-CLAUSE",
+      "area": "memory_application",
+      "title": "예외 절 보존",
+      "given": "예외 절(grandfathered 파일)을 가진 scope_rule",
+      "when": "예외 파일 touch vs untouched bundle 검증",
+      "then": "예외 파일을 건드린 bundle은 실패하고 untouched는 예외 유지로 통과한다",
+      "owner_wp": "WP11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause",
+      "requirement_ids": [
+        "MEM-01"
+      ]
+    },
+    {
+      "id": "RULE-DUAL-CHANNEL",
+      "area": "memory_application",
+      "title": "권위 이중화 금지",
+      "given": "의무로 투영된 scope_rule",
+      "when": "context serialization 검사",
+      "then": "동일 규칙이 <agent_memory> 참고자료와 의무 채널에 중복 등장하지 않는다",
+      "owner_wp": "WP11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause",
+      "requirement_ids": [
+        "MEM-01"
+      ]
+    },
+    {
+      "id": "RULE-STALE-EPOCH",
+      "area": "memory_application",
+      "title": "compile·bind 사이 기억 변경",
+      "given": "compile 이후 memory view digest가 바뀌었다",
+      "when": "bind_context",
+      "then": "STALE_EPOCH pause로 stale 의무가 dispatch되지 않는다",
+      "owner_wp": "WP11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause",
+      "requirement_ids": [
+        "MEM-01"
+      ]
+    },
+    {
+      "id": "EVAL-CHANNEL-01",
+      "area": "effectiveness",
+      "title": "matched-information 채널 비교",
+      "given": "동일 note 내용을 AGENTS.md·의무 투영·의무+checker로 배포한 arm",
+      "when": "고정 task·동일 조건 paired 실행",
+      "then": "sealed margin·Wilson으로 채널별 delta를 분리 측정한다",
+      "owner_wp": "WP23",
+      "test_layer": "native_integration_or_effectiveness",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause"
+    },
+    {
+      "id": "EVAL-CHANNEL-02",
+      "area": "effectiveness",
+      "title": "validator feedback 분리",
+      "given": "memory 없이 validator feedback만 주는 arm",
+      "when": "동일 조건 실행",
+      "then": "feedback 효과와 memory 표현 효과를 구분해 보고한다",
+      "owner_wp": "WP23",
+      "test_layer": "native_integration_or_effectiveness",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause"
+    },
+    {
+      "id": "EVAL-CHANNEL-03",
+      "area": "effectiveness",
+      "title": "실행된 과제 재사용 한정",
+      "given": "이미 실행된 Study 3 holdout",
+      "when": "원인분석·회귀 재실행",
+      "then": "새로운 미공개 holdout 판정으로 보고하지 않는다",
+      "owner_wp": "WP23",
+      "test_layer": "native_integration_or_effectiveness",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause"
+    },
+    {
+      "id": "EVAL-WIRE-01",
+      "area": "effectiveness",
+      "title": "주입 증명 한계 표시",
+      "given": "직렬화된 최종 요청 캡처가 없는 실행",
+      "when": "injected 증거 기록",
+      "then": "adapter_confirmed+행동 증거로 한정하고 wire_confirmed=false로 표시한다",
+      "owner_wp": "WP23",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "origin": "wp23-study-3-root-cause"
     }
   ]
 }

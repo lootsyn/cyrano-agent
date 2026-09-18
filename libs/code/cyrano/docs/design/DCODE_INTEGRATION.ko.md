@@ -36,6 +36,8 @@
 | 종료·cancel·server 재시작 | WP06/WP13/WP21 | durable terminal settlement; unknown outcome·recovery | crash injection과 중복 outbox 검사 |
 | native build 설정 | WP19/WP22, RC00 | 제품에 필요한 JSON/prompt/skill resources를 package resources로 투영 | wheel unzip + fresh venv import + resource read |
 
+native `MemoryMiddleware`의 `AGENTS.md` 채널은 그 안내 문구상 참고자료다 — 내용이 사용자 요청이나 도구 검증 근거와 충돌하면 근거를 우선하도록 모델에 지시한다(WP23 Study 3에서 실제 관측). 따라서 승인된 `scope_rule`의 배포는 이 채널 단독으로 이루어지지 않고 [Memory 수명주기](MEMORY_LIFECYCLE.ko.md) §10의 의무 투영을 거친다. adapter는 read-only projection과 의무 투영을 구분해 기록하며, `AGENTS.md` 단독 전달을 규칙 적용 증거로 보고하지 않는다.
+
 복사 과정에서 base 파일을 수정하지 않는 원칙과, **우리 제품 개발 중 승인된 native integration patch를 허용**하는 원칙은 다르다. 이전 설계의 'core 무수정'은 설치 시 무단 변경 금지로 범위를 제한한다. native integration을 절대 금지하는 뜻으로 해석하지 않는다. 다만 모델 이름별 분기, 핵심 loop 재작성, SDK 대체 agent로의 조용한 전환, upstream 전체 재포맷은 하지 않는다.
 
 ## 4. packaged code와 개발 자료의 분리

@@ -3,12 +3,12 @@
   "counts": {
     "packages": 13,
     "work_packages": 24,
-    "acceptance_specifications": 857,
+    "acceptance_specifications": 871,
     "product_roles": 14,
     "product_skills": 17,
     "developer_skills": 10,
-    "local_links_checked": 892,
-    "python_sources_parsed": 170,
+    "local_links_checked": 894,
+    "python_sources_parsed": 183,
     "target_sql_tables": 24
   },
   "errors": [],
