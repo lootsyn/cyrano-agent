@@ -242,9 +242,7 @@ def env(tmp_path):
         evidence_refs=("e:1",),
         at=1,
     )
-    service.activate_memory(
-        scope, "rule-sidecar", expected_revision=1, at=2
-    )
+    service.activate_memory(scope, "rule-sidecar", expected_revision=1, at=2)
 
     workspace = tmp_path / "ws"
     (workspace / "meta").mkdir(parents=True)
@@ -446,8 +444,7 @@ async def test_end_to_end_satisfied(env):
         if _has_tool_results(messages):
             return AIMessage(content="done")
         return _write_calls(
-            env["workspace"],
-            {"widgetbox/x.py": _PY, "meta/x.json": _v2("x")}
+            env["workspace"], {"widgetbox/x.py": _PY, "meta/x.json": _v2("x")}
         )
 
     evidence = await _run(env, script)
@@ -456,8 +453,9 @@ async def test_end_to_end_satisfied(env):
     assert all(r.verdict.state == "satisfied" for r in evidence.reports)
     assert all(v.state == "applied" for v in evidence.verdicts)
     assert evidence.wire
-    assert all(e.wire_confirmed for e in evidence.wire)
-    assert evidence.receipts[0].wire_confirmed is True
+    assert all(e.dispatch_confirmed for e in evidence.wire)
+    assert evidence.receipts[0].dispatch_confirmed is True
+    assert evidence.receipts[0].wire_confirmed is False
     assert evidence.permit_id is not None
     assert "widgetbox/x.py" in evidence.touched_paths
     # The grandfathered v1 exemplar was untouched: no regression.
@@ -474,8 +472,7 @@ async def test_study3_regression_correction(env):
     def script(messages):
         if _correction_turn(messages):
             return _write_calls(
-            env["workspace"],
-                {"meta/x.json": _v2("x")}, prefix="fix"
+                env["workspace"], {"meta/x.json": _v2("x")}, prefix="fix"
             )
         if _has_tool_results(messages):
             return AIMessage(content="done")
@@ -492,7 +489,7 @@ async def test_study3_regression_correction(env):
                         "owners": ["w"],
                     }
                 ),
-            }
+            },
         )
 
     evidence = await _run(env, script)
@@ -523,8 +520,7 @@ async def test_revision_change_after_approval_fails(env):
         finally:
             service._repo._repo.close()
         return _write_calls(
-            env["workspace"],
-            {"widgetbox/x.py": _PY, "meta/x.json": _v2("x")}
+            env["workspace"], {"widgetbox/x.py": _PY, "meta/x.json": _v2("x")}
         )
 
     evidence = await _run(env, script)
@@ -547,9 +543,7 @@ async def test_revocation_before_dispatch(env):
             lambda messages: AIMessage(content="never runs"),
             env["workspace"],
         ),
-        on_attempt_start=lambda _n: env["revoked"].add(
-            "rule-sidecar"
-        ),
+        on_attempt_start=lambda _n: env["revoked"].add("rule-sidecar"),
     )
     assert evidence.status == "refused"
     assert evidence.refusal_code == "MEMORY_REVOKED"
@@ -578,7 +572,7 @@ async def test_revocation_during_run(env):
                         "owners": ["w"],
                     }
                 ),
-            }
+            },
         )
 
     evidence = await _run(env, script)
@@ -609,8 +603,7 @@ async def test_checker_digest_change_fails(env):
         if _has_tool_results(messages):
             return AIMessage(content="done")
         return _write_calls(
-            env["workspace"],
-            {"widgetbox/x.py": _PY, "meta/x.json": _v2("x")}
+            env["workspace"], {"widgetbox/x.py": _PY, "meta/x.json": _v2("x")}
         )
 
     registry = _registry()
@@ -624,9 +617,7 @@ async def test_checker_digest_change_fails(env):
         on_attempt_start=lambda _n: _move_checker(registry),
     )
     assert evidence.status in {"unverifiable", "aborted"}
-    assert all(
-        r.verdict.state != "satisfied" for r in evidence.reports
-    )
+    assert all(r.verdict.state != "satisfied" for r in evidence.reports)
 
 
 async def test_stale_view_fails(env):
@@ -648,9 +639,7 @@ async def test_stale_view_fails(env):
         stable_bytes=1,
         block_digests=(),
     )
-    config = dataclasses.replace(
-        config, epoch=stale_epoch, compiled=compiled
-    )
+    config = dataclasses.replace(config, epoch=stale_epoch, compiled=compiled)
     evidence = await run_governed_work(
         config=config,
         memory=memory,
@@ -719,9 +708,7 @@ async def test_unattached_obligation_refused(env):
         budget_cap=8,
     )
     env["plan"] = plan
-    evidence = await _run(
-        env, lambda messages: AIMessage(content="never")
-    )
+    evidence = await _run(env, lambda messages: AIMessage(content="never"))
     assert evidence.status == "refused"
     assert evidence.refusal_code == "UNBOUND_OBLIGATION"
 
@@ -733,7 +720,7 @@ async def test_correction_budget_exhaustion(env):
         if _correction_turn(messages):
             # Correction keeps producing v1 — never satisfies.
             return _write_calls(
-            env["workspace"],
+                env["workspace"],
                 {
                     "meta/x.json": json.dumps(
                         {
@@ -760,7 +747,7 @@ async def test_correction_budget_exhaustion(env):
                         "owners": ["w"],
                     }
                 ),
-            }
+            },
         )
 
     evidence = await _run(env, script, cost_cap=1)
@@ -777,16 +764,14 @@ async def test_denied_write_never_hits_disk(env):
     def script(messages):
         if _has_tool_results(messages):
             denied = any(
-                isinstance(m, ToolMessage)
-                and "SCOPE_DENIED" in str(m.content)
+                isinstance(m, ToolMessage) and "SCOPE_DENIED" in str(m.content)
                 for m in messages
             )
             if denied:
                 return AIMessage(content="blocked, stopping")
             return AIMessage(content="done")
         return _write_calls(
-            env["workspace"],
-            {"etc/evil.txt": "x", "widgetbox/x.py": _PY}
+            env["workspace"], {"etc/evil.txt": "x", "widgetbox/x.py": _PY}
         )
 
     evidence = await _run(env, script)
@@ -826,7 +811,8 @@ async def test_wire_evidence_is_digest_only(env):
     evidence = await _run(env, script)
     assert evidence.wire
     first = evidence.wire[0]
-    assert first.wire_confirmed is True
+    assert first.dispatch_confirmed is True
+    assert first.wire_confirmed is False
     assert first.message_digest.startswith("sha256:")
     assert first.tools_digest.startswith("sha256:")
     assert first.provider == "scripted-fake"
@@ -861,9 +847,7 @@ async def test_scope_rule_subkind_prefix_no_authority(env):
         evidence_refs=("e:1",),
         at=1,
     )
-    service.activate_memory(
-        scope, "rule-sneaky", expected_revision=1, at=2
-    )
+    service.activate_memory(scope, "rule-sneaky", expected_revision=1, at=2)
     projection = project_obligations(
         list(_records(env)),
         scope_id=scope,
@@ -887,9 +871,7 @@ def _load_extension():
     import importlib.util
 
     path = ROOT / "cyrano/plugins/cyrano/extension.py"
-    spec = importlib.util.spec_from_file_location(
-        "cyrano_extension", path
-    )
+    spec = importlib.util.spec_from_file_location("cyrano_extension", path)
     assert spec is not None and spec.loader is not None
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -945,9 +927,7 @@ def _session_manifest(tmp_path: Path) -> Path:
     )
     manifest = {
         "permit": dataclasses.asdict(permit),
-        "trust_root": PUB.public_bytes(
-            Encoding.Raw, PublicFormat.Raw
-        ).hex(),
+        "trust_root": PUB.public_bytes(Encoding.Raw, PublicFormat.Raw).hex(),
         "root": str(workspace),
         "subject_digest": "sd",
         "grants": [{"path": "x.txt", "allow": ["create"]}],
@@ -960,9 +940,7 @@ def _session_manifest(tmp_path: Path) -> Path:
     return path
 
 
-async def test_extension_governed_with_manifest(
-    tmp_path, monkeypatch
-):
+async def test_extension_governed_with_manifest(tmp_path, monkeypatch):
     """Governed mode + sentinel + manifest registers mediation."""
     module = _load_extension()
     manifest = _session_manifest(tmp_path)
@@ -974,15 +952,11 @@ async def test_extension_governed_with_manifest(
     registered = dict(
         (unit.name, kind) for kind, unit in registry.registrations()
     )
-    assert (
-        registered.get("cyrano_governed_obligations") == "middleware"
-    )
+    assert registered.get("cyrano_governed_obligations") == "middleware"
     assert registered.get("cyrano_governed_status") == "tool"
 
 
-async def test_extension_governed_no_manifest(
-    tmp_path, monkeypatch
-):
+async def test_extension_governed_no_manifest(tmp_path, monkeypatch):
     """Governed mode without a declared manifest registers status."""
     module = _load_extension()
     monkeypatch.setenv("CYRANO_MODE", "governed")
@@ -995,9 +969,7 @@ async def test_extension_governed_no_manifest(
     assert "tool" in kinds
 
 
-async def test_extension_governed_no_sentinel(
-    tmp_path, monkeypatch
-):
+async def test_extension_governed_no_sentinel(tmp_path, monkeypatch):
     """UH-OPS-03: a disabled sentinel aborts the governed launch."""
     module = _load_extension()
     manifest = _session_manifest(tmp_path)
@@ -1010,9 +982,7 @@ async def test_extension_governed_no_sentinel(
     assert err.value.code == "CAPABILITY_UNAVAILABLE"
 
 
-async def test_extension_governed_bad_manifest(
-    tmp_path, monkeypatch
-):
+async def test_extension_governed_bad_manifest(tmp_path, monkeypatch):
     """A declared-but-invalid manifest stops governed launch."""
     module = _load_extension()
     bad = tmp_path / "session.json"
@@ -1027,9 +997,7 @@ async def test_extension_governed_bad_manifest(
     assert not registry.registrations()
 
 
-async def test_extension_advisory_registers_status_only(
-    tmp_path, monkeypatch
-):
+async def test_extension_advisory_registers_status_only(tmp_path, monkeypatch):
     """Advisory mode registers a status tool and no mediation."""
     module = _load_extension()
     monkeypatch.setenv("CYRANO_MODE", "advisory_diagnostics")
@@ -1041,9 +1009,7 @@ async def test_extension_advisory_registers_status_only(
     assert "tool" in kinds
 
 
-async def test_extension_missing_mode_refuses(
-    tmp_path, monkeypatch
-):
+async def test_extension_missing_mode_refuses(tmp_path, monkeypatch):
     """No declared mode refuses registration entirely."""
     module = _load_extension()
     monkeypatch.delenv("CYRANO_MODE", raising=False)

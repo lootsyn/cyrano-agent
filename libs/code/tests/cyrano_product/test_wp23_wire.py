@@ -1,10 +1,13 @@
-"""WP23 EVAL-WIRE-01 — wire-boundary observation, digest-only.
+"""WP23 EVAL-WIRE-01 — model-dispatch observation, digest-only.
 
-``wire_confirmed`` is emitted only when the observation happens at the
-boundary that hands the serialized request to the provider handler —
-inside the extension middleware's model-call wrap. An adapter-side
-projection is honest evidence of internal delivery, never of the wire.
-No content, credential, or transport structure may persist.
+``dispatch_confirmed`` is emitted only when the observation happens at
+the boundary that hands the final assembled request to the model
+handler — inside the extension middleware's model-call wrap. The
+provider client may still transform the request into transport bytes;
+those bytes are NOT observed, so ``wire_confirmed`` is pinned False.
+An adapter-side projection is honest evidence of internal delivery,
+never of the wire. No content, credential, or transport structure may
+persist.
 """
 
 from deepagents_code.cyrano.contracts.canonical import digest
@@ -47,9 +50,13 @@ class _Msg:
             setattr(self, key, value)
 
     def model_dump(self, mode: str = "json"):  # noqa: ARG002
-        out = {"type": self.type, "content": self.content}
-        if hasattr(self, "tool_calls"):
-            out["tool_calls"] = self.tool_calls
+        out: dict[str, object] = {
+            "type": self.type,
+            "content": self.content,
+        }
+        tool_calls = getattr(self, "tool_calls", None)
+        if tool_calls is not None:
+            out["tool_calls"] = tool_calls
         return out
 
 
@@ -67,7 +74,8 @@ class _FakeTool:
 def test_record_produces_digest_only_evidence():
     capture = WireCapture(run_id="run-1", context_digest="ctx:d")
     evidence = capture.record(_FakeRequest())
-    assert evidence.wire_confirmed is True
+    assert evidence.dispatch_confirmed is True
+    assert evidence.wire_confirmed is False
     assert evidence.message_digest.startswith("sha256:")
     assert evidence.tools_digest.startswith("sha256:")
     assert evidence.model_params_digest.startswith("sha256:")
@@ -86,9 +94,7 @@ def test_record_never_serializes_secret_shapes():
     from dataclasses import asdict
 
     request = _FakeRequest()
-    request.messages.append(
-        _Msg("human", "token sk-secret-value")
-    )
+    request.messages.append(_Msg("human", "token sk-secret-value"))
     capture = WireCapture(run_id="run-1")
     evidence = capture.record(request)
     dumped = str(asdict(evidence))
@@ -112,42 +118,46 @@ def test_obligation_digest_links_projection():
         obligation_digest=digest({"obligations": ["o1"]}),
     )
     evidence = capture.record(_FakeRequest())
-    assert evidence.obligation_digest == digest(
-        {"obligations": ["o1"]}
-    )
+    assert evidence.obligation_digest == digest({"obligations": ["o1"]})
 
 
 def test_wire_receipt_adapter_only_not_confirmed():
     receipt = wire_receipt(None, context_projected=True)
+    assert receipt["dispatch_confirmed"] is False
     assert receipt["wire_confirmed"] is False
     assert receipt["context_projected"] is True
     assert receipt["evidence_refs"] == ()
 
 
-def test_wire_receipt_confirmed_with_refs():
+def test_dispatch_receipt_confirmed_wire_stays_false():
+    """Dispatch observation never upgrades to wire confirmation."""
     capture = WireCapture(run_id="r")
     capture.record(_FakeRequest())
     receipt = wire_receipt(capture, context_projected=True)
-    assert receipt["wire_confirmed"] is True
+    assert receipt["dispatch_confirmed"] is True
+    assert receipt["wire_confirmed"] is False
     refs = receipt["evidence_refs"]
     assert isinstance(refs, tuple) and len(refs) == 1
 
 
 def test_injection_receipt_wire_honesty():
-    """Adapter-confirmed delivery is not wire confirmation."""
+    """Dispatch-confirmed delivery is not wire confirmation."""
     receipt = injection_receipt(
-        "m1", 2, "obligation", wire_confirmed=False
+        "m1", 2, "obligation", dispatch_confirmed=False
     )
     assert receipt.adapter_confirmed is True
+    assert receipt.dispatch_confirmed is False
     assert receipt.wire_confirmed is False
     confirmed = injection_receipt(
         "m1",
         2,
         "obligation",
-        wire_confirmed=True,
+        dispatch_confirmed=True,
         evidence_refs=("sha256:abc",),
     )
-    assert confirmed.wire_confirmed is True
+    assert confirmed.dispatch_confirmed is True
+    # Transport bytes are never observed — wire stays pinned False.
+    assert confirmed.wire_confirmed is False
     assert confirmed.evidence_refs == ("sha256:abc",)
 
 

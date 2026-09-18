@@ -49,6 +49,11 @@ from deepagents_code.cyrano.dcode.memory_adapter import (
     injection_receipt,
     project_readonly_memory,
 )
+from deepagents_code.cyrano.dcode.recall import (
+    RecallContext,
+    RecallEvidence,
+    RecallOutcome,
+)
 from deepagents_code.cyrano.dcode.wire import WireCapture, WireEvidence
 from deepagents_code.cyrano.kernel.actions import ActionBroker, Grant
 from deepagents_code.cyrano.kernel.approvals import (
@@ -145,13 +150,22 @@ class GovernedRunConfig:
     cost_cap: int | None = None
     max_attempts: int = 4
     permit_ttl: int = 3600
+    recall_limit: int = 10
     run_id: str = "run"
     agent_context: object | None = None
 
 
 @dataclass(frozen=True, slots=True)
 class MemoryGate:
-    """Live memory inputs the run binds and rechecks."""
+    """Live memory inputs the run binds and rechecks.
+
+    When ``recall`` is set the run resolves records, rule bodies and
+    the pinned view from the live store per task — ``records`` and
+    ``rule_bodies`` stay empty and nothing caller-staged is trusted.
+    The recall provider also re-runs inside ``currency_check`` so a
+    rule becoming applicable after approval forces rebind, never a
+    silent plan mutation.
+    """
 
     records: tuple[MemoryRecord, ...]
     rule_bodies: Mapping[str, bytes]
@@ -160,6 +174,8 @@ class MemoryGate:
     is_current: Callable[[str, int], bool]
     memory_view: MemoryView | None = None
     view_provider: Callable[[], MemoryView | None] | None = None
+    recall: Callable[[RecallContext], RecallOutcome] | None = None
+    admitted_kinds: frozenset[str] = frozenset()
 
 
 @dataclass(frozen=True, slots=True)
@@ -201,6 +217,7 @@ class GovernedRunEvidence:
     binding: BindingReceipt | None
     check_report: PlanCheckReport | None
     readonly: ReadonlyProjection | None
+    recall: RecallEvidence | None = None
 
 
 def _feedback(reports: tuple[ObligationCheckReport, ...]) -> str:
@@ -240,6 +257,7 @@ def _refusal(
     unattached: tuple[str, ...] = (),
     check_report: PlanCheckReport | None = None,
     subject: PlanReviewSubject | None = None,
+    recall: RecallEvidence | None = None,
 ) -> GovernedRunEvidence:
     return GovernedRunEvidence(
         status="refused",
@@ -266,6 +284,7 @@ def _refusal(
         binding=None,
         check_report=check_report,
         readonly=None,
+        recall=recall,
     )
 
 
@@ -310,17 +329,54 @@ async def run_governed_work(
     )
 
     now = config.now
-    live_view = memory.view_provider or (lambda: memory.memory_view)
+
+    def recall_context() -> RecallContext:
+        """Derive the authorized query from real task inputs."""
+        hints = tuple(
+            sorted({p for u in config.plan.units for p in u.write_paths})
+        )
+        return RecallContext(
+            task_id=config.run_id,
+            scope_id=config.scope_id,
+            path_hints=hints,
+            query_terms=None,
+            limit=config.recall_limit,
+            now=now(),
+            epoch=None if config.epoch is None else config.epoch.epoch_id,
+            source_digests=memory.available_source_digests,
+        )
+
+    # 0. Task-triggered recall — before the plan is sealed, so every
+    # applicable rule lands inside the approved subject digest. The
+    # pinned view comes from this recall, never a reused snapshot.
+    recall_evidence: RecallEvidence | None = None
+    records = list(memory.records)
+    rule_bodies: Mapping[str, bytes] = memory.rule_bodies
+    recall_view = memory.memory_view
+    if memory.recall is not None:
+        try:
+            outcome = memory.recall(recall_context())
+        except CyranoError as exc:
+            return _refusal(exc.code)
+        records = list(outcome.records)
+        rule_bodies = outcome.rule_bodies
+        recall_view = outcome.memory_view
+        recall_evidence = outcome.evidence
+
+    # The staleness view prefers the live provider; without one it
+    # falls back to the recall-pinned view (never a stale snapshot).
+    live_view = memory.view_provider or (lambda: recall_view)
 
     # 1–2. Eligibility projection and plan linkage.
     projection = project_obligations(
-        list(memory.records),
+        records,
         scope_id=config.scope_id,
         now=now(),
         available_source_digests=memory.available_source_digests,
-        rule_bodies=memory.rule_bodies,
-        memory_view=memory.memory_view,
+        rule_bodies=rule_bodies,
+        memory_view=recall_view,
         checker_digests=memory.registry.digests(),
+        admitted_kinds=memory.admitted_kinds,
     )
     obligations_t = projection.obligations
     attachment = attach_obligations(
@@ -336,13 +392,18 @@ async def run_governed_work(
             projection=projection,
             attached=attachment.attached,
             unattached=tuple(sorted(set(ids))),
+            recall=recall_evidence,
         )
 
     # 3–4. Requirements doc merge + sealed subject digests.
     req_doc = dict(config.requirements_doc)
     obligation_doc = obligations_requirements_doc(obligations_t)
     if "obligations" in req_doc:
-        return _refusal("INPUT_INVALID", projection=projection)
+        return _refusal(
+            "INPUT_INVALID",
+            projection=projection,
+            recall=recall_evidence,
+        )
     req_doc.update(obligation_doc)
     subject = build_subject(
         plan, req_doc, config.source_snapshot, config.scope
@@ -364,6 +425,7 @@ async def run_governed_work(
             attached=attachment.attached,
             check_report=check_report,
             subject=subject,
+            recall=recall_evidence,
         )
 
     # 6. Currency gate — moved/revoked rules refuse pre-dispatch.
@@ -380,6 +442,7 @@ async def run_governed_work(
             attached=attachment.attached,
             check_report=check_report,
             subject=subject,
+            recall=recall_evidence,
         )
 
     # 7. Approval boundary: explicit approve over the shown subject.
@@ -425,6 +488,7 @@ async def run_governed_work(
             attached=attachment.attached,
             check_report=check_report,
             subject=subject,
+            recall=recall_evidence,
         )
     permit = issue_permit(
         approval.signing_key,
@@ -452,6 +516,7 @@ async def run_governed_work(
                 attached=attachment.attached,
                 check_report=check_report,
                 subject=subject,
+                recall=recall_evidence,
             )
         try:
             binding = bind_context(
@@ -468,6 +533,7 @@ async def run_governed_work(
                 attached=attachment.attached,
                 check_report=check_report,
                 subject=subject,
+                recall=recall_evidence,
             )
 
     # 9. Verified-runtime handle and the brokered session.
@@ -487,6 +553,7 @@ async def run_governed_work(
             attached=attachment.attached,
             check_report=check_report,
             subject=subject,
+            recall=recall_evidence,
         )
 
     def currency_check() -> None:
@@ -496,6 +563,28 @@ async def run_governed_work(
             is_current=memory.is_current,
             memory_view=live_view(),
         )
+        if memory.recall is None:
+            return
+        # A rule becoming applicable after approval must rebind/replan
+        # — never mutate the sealed plan. Re-project from the live
+        # store and refuse on any drift from the bound set.
+        fresh = memory.recall(recall_context())
+        drifted = project_obligations(
+            list(fresh.records),
+            scope_id=config.scope_id,
+            now=now(),
+            available_source_digests=memory.available_source_digests,
+            rule_bodies=fresh.rule_bodies,
+            memory_view=fresh.memory_view,
+            checker_digests=memory.registry.digests(),
+        )
+        if {o.obligation_id for o in drifted.obligations} != {
+            o.obligation_id for o in obligations_t
+        }:
+            raise CyranoError(
+                "OBLIGATION_DRIFT",
+                "applicable rule set changed after approval; replan",
+            )
 
     session = GovernedSession(
         broker=ActionBroker(
@@ -719,12 +808,12 @@ async def run_governed_work(
             o.memory_id,
             o.revision,
             "obligation",
-            wire_confirmed=bool(wire.evidence),
+            dispatch_confirmed=bool(wire.evidence),
             evidence_refs=wire.digests(),
         )
         for o in obligations_t
     )
-    readonly = project_readonly_memory(list(memory.records), obligations_t)
+    readonly = project_readonly_memory(records, obligations_t)
     return GovernedRunEvidence(
         status=status,
         refusal_code=refusal,
@@ -752,4 +841,5 @@ async def run_governed_work(
         binding=binding,
         check_report=check_report,
         readonly=readonly,
+        recall=recall_evidence,
     )

@@ -182,8 +182,8 @@
       "title": "WP06: dcode extension와 actual attempt port",
       "category": "development",
       "authority": "source",
-      "bytes": 13924,
-      "sha256": "f16030d95f347e654ec98eaee6dad127c89d048bb322a77ed0411f7acade97a3"
+      "bytes": 14424,
+      "sha256": "3b819d4c96b114e73621ec5570af5d9752a6b55e2776732e3ecb91c6d4207c8d"
     },
     {
       "path": ".agents/work/WP07.ko.md",
@@ -222,8 +222,8 @@
       "title": "WP11: 범위화 Memory 저장·조회·무효화",
       "category": "development",
       "authority": "source",
-      "bytes": 17603,
-      "sha256": "dd1f3c139892cabc515735409b0e3d47b6e916f05ab015141e84aea81231a9d5"
+      "bytes": 17966,
+      "sha256": "7f7f48f4db65e7f74e80fdf3769b7f9028233830e85c6cc6c232fb098caa41da"
     },
     {
       "path": ".agents/work/WP12.ko.md",
@@ -318,8 +318,8 @@
       "title": "WP23: 실제 효과 검증과 승인된 초기 운영",
       "category": "development",
       "authority": "source",
-      "bytes": 10467,
-      "sha256": "38da151af3ebad052f48995973ac3a5065303fd70d7fd67ef05bb2122509b5b9"
+      "bytes": 10589,
+      "sha256": "4b8960f1f593d5ab8dd0e690e1761160ed64ce2ba6d4e09ae32b0c3957fa1cfa"
     },
     {
       "path": ".claude/CLAUDE.md",
@@ -493,8 +493,8 @@
       "title": "평가 3-1·3-2 · 장기 Memory 저장·선택·실제 적용 상세 설계",
       "category": "design",
       "authority": "source",
-      "bytes": 21413,
-      "sha256": "9cd8fb6410b20105adb502abb5adf4c28ad2b9b4a782f14b7dcaaa703262ccab"
+      "bytes": 22121,
+      "sha256": "0729598bbb31e00349a077914d2f5726884d0910922a7f136a2bb4d1a416ea11"
     },
     {
       "path": "docs/design/NATIVE_MONITOR_TUI.ko.md",

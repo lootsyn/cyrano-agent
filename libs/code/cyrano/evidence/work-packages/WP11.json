@@ -159,10 +159,10 @@
  ],
  "not_established": [
   "the contract's own memories/memory_fts tables are unused - WP11 stores records in the Cyrano-owned memory_records extension table because the contract table lacks evidence_refs/kind/rank/supersedes; FTS5 projection wiring is a later-package concern",
-  "live dcode event-triggered recall (RecallService admits bound hints in-process; event plumbing through the runtime adapter belongs to the integration layer)",
+  "RecallService hint event plumbing (task-triggered recall into run_governed_work now runs through MemoryService.query_memory/select_recall via dcode/recall.task_recall, verified offline in test_wp06_recall_runtime.py; the hint-admission surface remains in-process only)",
   "provider/model-backed semantic search (search is deterministic lexical by contract; RF03-02 requires no model call)"
  ],
  "review_findings": [],
  "authority_scope": "memory lifecycle, scope ACL, deterministic recall, deletion tombstones, and evidence-bound application verdicts verified at component level against the real scoped ledger",
- "next_wp_impact": "WP12/WP13 consume MemoryService recall views; workflow packages bind releases via bind_core Obligation runtime binding now exists: run_governed_work composes projection->approval->permit->native agent->brokered tools->verification->correction on the real dcode assembly."
+ "next_wp_impact": "WP12/WP13 consume MemoryService recall views; workflow packages bind releases via bind_core Obligation runtime binding now exists: run_governed_work composes task-triggered recall->projection->approval->permit->native agent->brokered tools->verification->correction on the real dcode assembly, with drift re-check inside the dispatch currency gate."
 }

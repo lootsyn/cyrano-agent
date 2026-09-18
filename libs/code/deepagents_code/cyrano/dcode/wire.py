@@ -1,19 +1,23 @@
-"""Serialized-request observation at the model-call boundary.
+"""Model-dispatch request observation for EVAL-WIRE-01.
 
-Implements the EVAL-WIRE-01 boundary: evidence is captured where the
-assembled model request is handed to the provider transport, inside the
-extension runtime middleware's ``wrap_model_call`` /
-``awrap_model_call`` hook — the last safe request-construction point
-before the provider handler runs.
+Evidence is captured inside the extension middleware's
+``wrap_model_call`` / ``awrap_model_call`` hook — the final assembled
+``ModelRequest`` immediately before the provider handler executes. That
+is the *model-dispatch* boundary: the provider client may still
+transform the request into its own transport payload, and those bytes
+are NOT observed here. ``dispatch_confirmed`` records what this module
+actually proves — the final LangChain-level request. ``wire_confirmed``
+remains reserved for provider-transport capture, which is intentionally
+not implemented; it is always emitted False rather than overstated.
 
 Evidence is digest-based only. Message bodies, provider parameters,
 authorization material, cookies, and any secret-bearing transport
 structure are never persisted; every content-bearing field is reduced
 to a canonical ``CYRANO-C14N-1`` digest plus non-secret role/type
 labels. An adapter-level projection can establish
-``context_projected`` but never ``wire_confirmed`` — that flag is set
-only here, by an observation object that physically saw the serialized
-request handed to the provider.
+``context_projected`` but never ``dispatch_confirmed`` — that flag is
+set only here, by an observation object that physically saw the final
+assembled request handed to the model handler.
 """
 
 from __future__ import annotations
@@ -123,12 +127,14 @@ def _tool_projection(tool: object) -> dict[str, object]:
 
 @dataclass(frozen=True, slots=True)
 class WireEvidence:
-    """Digest-only observation of one serialized model request.
+    """Digest-only observation of one dispatched model request.
 
     Carries no message content and no provider transport structure —
-    only digests, role/type labels, and run linkage. ``wire_confirmed``
-    is True by construction: this record type exists only when the
-    observation happened at the provider-request boundary.
+    only digests, role/type labels, and run linkage.
+    ``dispatch_confirmed`` is True by construction: this record type
+    exists only when the observation happened at the model-dispatch
+    boundary. ``wire_confirmed`` is a fixed False — provider transport
+    bytes are not observed.
     """
 
     evidence_digest: str
@@ -143,20 +149,21 @@ class WireEvidence:
     tools_digest: str
     model_params_digest: str
     routing_digest: str
-    wire_confirmed: bool = True
+    dispatch_confirmed: bool = True
+    wire_confirmed: bool = False
     observed_at_ms: int = 0
 
 
 @dataclass(slots=True)
 class WireCapture:
-    """Boundary observer injected into the extension runtime middleware.
+    """Boundary observer injected into the extension middleware.
 
     ``record`` is invoked by ``GovernedObligationMiddleware`` at the
     exact point the assembled request is about to be handed to the
-    provider handler. The captured list is the wire evidence for the
+    model handler. The captured list is the dispatch evidence for the
     run; ``context_digest``/``obligation_digest`` pin the internal
     projections so a study can distinguish *projected internally* from
-    *serialized into the actual request*.
+    *dispatched in the actual model request*.
     """
 
     run_id: str
@@ -168,7 +175,7 @@ class WireCapture:
     _evidence: list[WireEvidence] = field(default_factory=list)
 
     def record(self, request: object) -> WireEvidence:
-        """Digest the request just before provider dispatch."""
+        """Digest the request just before model dispatch."""
         messages = list(getattr(request, "messages", None) or ())
         projections = [_message_projection(m) for m in messages]
         system = getattr(request, "system_message", None)
@@ -232,7 +239,7 @@ class WireCapture:
             tools_digest=digest(tools),
             model_params_digest=model_params_digest,
             routing_digest=routing,
-            wire_confirmed=True,
+            dispatch_confirmed=True,
             observed_at_ms=self.now_ms(),
         )
         self._evidence.append(evidence)
@@ -255,15 +262,22 @@ def wire_receipt(
     *,
     context_projected: bool,
 ) -> dict[str, object]:
-    """Honest wire-status receipt for run evidence."""
+    """Honest dispatch-status receipt for run evidence.
+
+    ``dispatch_confirmed`` is True only when the model-dispatch
+    boundary actually observed the request. ``wire_confirmed`` stays
+    False — provider transport bytes are never captured.
+    """
     if capture is None or not capture.evidence:
         return {
+            "dispatch_confirmed": False,
             "wire_confirmed": False,
             "context_projected": context_projected,
             "evidence_refs": (),
         }
     return {
-        "wire_confirmed": True,
+        "dispatch_confirmed": True,
+        "wire_confirmed": False,
         "context_projected": context_projected,
         "evidence_refs": capture.digests(),
     }

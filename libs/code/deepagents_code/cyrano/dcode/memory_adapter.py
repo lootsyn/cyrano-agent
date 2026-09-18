@@ -116,15 +116,18 @@ class InjectionReceipt:
     """Proof level of one channel delivery; wire bytes stay honest.
 
     ``adapter_confirmed`` means the adapter delivered the content to
-    the runtime boundary; ``wire_confirmed`` is only True when the
-    serialized request was captured — a channel an adapter cannot
-    see stays False instead of being claimed.
+    the runtime boundary. ``dispatch_confirmed`` is True only when the
+    model-dispatch boundary observed the final assembled request.
+    ``wire_confirmed`` is a fixed False — provider transport bytes are
+    not captured anywhere in this system; a channel an observer cannot
+    see is never claimed.
     """
 
     memory_id: str
     revision: int
     channel: str  # "reference" | "obligation"
     adapter_confirmed: bool
+    dispatch_confirmed: bool
     wire_confirmed: bool
     evidence_refs: tuple[str, ...]
 
@@ -154,12 +157,13 @@ def injection_receipt(
     revision: int,
     channel: str,
     *,
-    wire_confirmed: bool = False,
+    dispatch_confirmed: bool = False,
     evidence_refs: tuple[str, ...] = (),
 ) -> InjectionReceipt:
     """Build a delivery receipt.
 
-    Wire capture stays honest by default.
+    ``wire_confirmed`` is pinned False — provider transport capture is
+    not implemented, so the honest wire claim can never be emitted.
     """
     if channel not in {"reference", "obligation"}:
         raise CyranoError("INPUT_INVALID", f"channel {channel!r}")
@@ -168,6 +172,7 @@ def injection_receipt(
         revision=revision,
         channel=channel,
         adapter_confirmed=True,
-        wire_confirmed=wire_confirmed,
+        dispatch_confirmed=dispatch_confirmed,
+        wire_confirmed=False,
         evidence_refs=evidence_refs,
     )

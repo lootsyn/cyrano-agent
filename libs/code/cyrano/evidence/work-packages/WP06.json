@@ -24,12 +24,15 @@
   "tests/cyrano_product/test_1_2.py": "sha256:e772bdb8ab75d3353623691d2d6901390c6353890a3f5959d55b8592f2ae7b1d",
   "tests/cyrano_product/test_1_3.py": "sha256:3197e21fa902b3459fcf1ed81d587723d04f174c2347ef5acaf500d02ee05864",
   "tests/cyrano_product/test_r5_rf02.py": "sha256:221370fca2ffd0ff960fc02f03095d9f3d28d52c46c0ff105958136d92042ee5",
-  "deepagents_code/cyrano/dcode/wire.py": "sha256:2c664a5fbd276c3242434ea0dff0e06f01eabcd6d1ad0ec60971ac7732ad4efa",
+  "deepagents_code/cyrano/dcode/wire.py": "sha256:0e6fae1a8676ac492eb7a95afcc02a26192f2531d28354480a8d3dd9d57ebdd5",
   "deepagents_code/cyrano/dcode/governed_middleware.py": "sha256:a4f4390b62b8afaa3262d6a988b8a9ba0e8784ee88b3ae6f1a3483dd89fcd89e",
-  "deepagents_code/cyrano/dcode/governed_runtime.py": "sha256:f481c773e34bd641c523aadc461ca3738eb007f14c07db4845ebb83a2986c72a",
+  "deepagents_code/cyrano/dcode/governed_runtime.py": "sha256:f14ead096421ad9462bde64dbcc90391dc0e0fa6def9ae299c2fcd1c084baa5b",
   "deepagents_code/cyrano/memory/obligations.py": "sha256:eccb50edba3caa782511b3286eb210e8a17a2da082f6c9428448f1dca20b474e",
-  "tests/cyrano_product/test_wp06_governed_runtime.py": "sha256:4a4a56420a53fb2ac985c06fd2007d77b68c7dfc5a6ce43aefbb622e8eb44142",
-  "tests/cyrano_product/test_wp23_wire.py": "sha256:2c101f1ef1bf0e5c9976be21137fa12c2d8ac7df2446d86401344dacf09033a7"
+  "tests/cyrano_product/test_wp06_governed_runtime.py": "sha256:9a38a087eef5fc7115ffc180ef997bd303ba26f03012cd2be11fd7b14c9841cd",
+  "tests/cyrano_product/test_wp23_wire.py": "sha256:aff245bc060bab27bd25b3e4d596a50d1303dc6d4d691f4d4e6d79611361deae",
+  "deepagents_code/cyrano/dcode/memory_adapter.py": "sha256:65b1950e75f188441922a35bcc336b16d674285a967f79e9b6a2c4e2a0302712",
+  "deepagents_code/cyrano/dcode/recall.py": "sha256:e8dadd5e154ed01fcc7abc1146f1798eda87820b05061a67f5c6c05ba2d6a7c4",
+  "tests/cyrano_product/test_wp06_recall_runtime.py": "sha256:0e939c210e9835f38c9022bdba1ad24b933e521d01fe128e3aaf08ae99e5ee8f"
  },
  "contract_files": {
   "cyrano/contracts/sql/target-schema.sql": "ledger DDL used by report-store tests",
@@ -123,6 +126,26 @@
    "argv": "uv tool run --python .venv/bin/python basedpyright <changed files>",
    "exit_code": 1,
    "result": "0 errors, 123 reportUnknown*/reportImplicitStringConcatenation warnings - same class as committed modules (approvals.py etc.); ty remains the recorded clean gate"
+  },
+  {
+   "argv": "python -m pytest tests/cyrano_product/test_wp06_recall_runtime.py tests/cyrano_product/test_wp06_governed_runtime.py tests/cyrano_product/test_wp23_wire.py tests/cyrano_product/test_wp11_obligations.py -q",
+   "exit_code": 0,
+   "result": "81 passed"
+  },
+  {
+   "argv": "python -m pytest tests/cyrano_product/ -q",
+   "exit_code": 0,
+   "result": "1084 passed"
+  },
+  {
+   "argv": "uv tool run --python .venv/bin/python basedpyright <changed files>",
+   "exit_code": 0,
+   "result": "0 errors; reportUnknown*/naming warnings only - same class as committed modules"
+  },
+  {
+   "argv": "run_semantic_review(dcode recall/runtime/wire/adapter)",
+   "exit_code": 0,
+   "result": "5 findings, all DOCSTRING_MISSING_RAISES - accepted project norm; zero DOCSTRING_MISSING on new code"
   }
  ],
  "acceptance_evidence": {
@@ -214,8 +237,8 @@
   "CON-MOD-10": "passed - arg size/count hard limits (test_con_mod_10)",
   "CON-MOD-11": "passed - second retry owner = CONFLICT (test_con_mod_11)",
   "CON-MOD-12": "passed - cancelled call records usage; late result stale (test_con_mod_12)",
-  "GOVERNED-OBLIGATION-RUNTIME": "passed - run_governed_work drives projection->subject->approval->SignedPermit->bind->create_cli_agent+ExtensionRegistry->GovernedObligationMiddleware->brokered tool calls->verify_obligations->bounded correction on the real agent graph with a scripted local model; end-to-end satisfied + correction + revocation/race/staleness fail-closed cases all pass offline (test_wp06_governed_runtime, 20)",
-  "EVAL-WIRE-01": "passed (offline) - WireCapture records digest-only request evidence at wrap_model_call immediately before the provider handler; wire_confirmed only on real boundary observation; no content or secrets persisted (test_wp23_wire, 9; runtime file proves boundary)"
+  "GOVERNED-OBLIGATION-RUNTIME": "passed - run_governed_work drives task-triggered recall (task_recall via MemoryService.query_memory/select_recall, fresh MemoryView pin) -> projection -> subject -> approval -> SignedPermit -> bind -> create_cli_agent+ExtensionRegistry -> GovernedObligationMiddleware -> brokered tool calls -> verify_obligations -> bounded correction on the real agent graph with scripted local models; post-approval obligation drift re-projects inside the dispatch currency gate and fails closed as OBLIGATION_DRIFT (test_wp06_governed_runtime 20, test_wp06_recall_runtime 18)",
+  "EVAL-WIRE-01": "passed (offline) - WireCapture records digest-only request evidence at wrap_model_call immediately before the model handler; dispatch_confirmed marks that model-dispatch observation, wire_confirmed is pinned False because provider transport bytes are never observed; no content or secrets persisted (test_wp23_wire 9; runtime file proves boundary)"
  },
  "review_findings": [
   "bridge unverified-handle refusal delegates to adapter.require_governed to keep DCODE_RUNTIME_NOT_VERIFIED single-owned (WP00 collision test enforces this)",
