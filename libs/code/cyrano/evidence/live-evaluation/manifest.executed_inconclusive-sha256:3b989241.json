@@ -1,0 +1,171 @@
+{
+  "kind": "sealed_experiment_manifest",
+  "status": "executed_inconclusive",
+  "study_id": "wp23-live-effectiveness-3",
+  "evidence_dir": "evidence/live-evaluation/study-3/",
+  "manifest": {
+    "manifest_id": "sha256:3b9892415bd99a7f9a25596834a3f63e703b1f6210e3f0fe37bd738a2d02d4c5",
+    "baseline_digest": "sha256:6f24305b2cf0cee7a6062b5171bcd9b7e159ca3f5482f1d82499dc206430a6b0",
+    "candidate_digest": "sha256:4dc5c259c56749930324ed176fb1477bcb45c7ff6fe57ea7ea6d57d50528eabf",
+    "suite_digest": "sha256:6d0fb052a963d9ab6f49cd459d1ce31ded49c496fa3e7e7547ae6a8bdefd02ba",
+    "runtime_digest": "sha256:9f83d77b42dad1b7bf95c14764b764d8d5f6f3c288184109cca894354b0e7033",
+    "plan_digest": "sha256:f36d5191d0877419e42d2805a01a30600998b5a39b3f6f3e64d9daf0885998a3",
+    "families": [
+      "learn-episode",
+      "convention-apply"
+    ],
+    "holdout": [
+      "task-b7-holdout",
+      "task-b8-holdout",
+      "task-b9-holdout",
+      "task-b10-holdout",
+      "task-b11-holdout"
+    ],
+    "budget_units": 6000000,
+    "quality_margin": 0.5,
+    "min_pairs": 5,
+    "nondeterministic_provider": true,
+    "changes": [
+      "memory/service",
+      "improvement/knowledge_lane",
+      "kernel/actions"
+    ],
+    "policy_digest": "sha256:4b9378d055eda21515b86b444e2e766a00a1f217048608fe280dabccf7c4823f",
+    "model_digest": "sha256:53ba3522d1b4b8d621d6d4411317b629c4792b303ba21acd2deb1801e32bfa05",
+    "route_digest": "sha256:6c6b24a19d7499999fbe19c4ef6c404dcae0a4c1add87ed3bb7bbc7a8e8f3bdf"
+  },
+  "inputs": {
+    "suite": "tests/live-study/suite.json",
+    "route": "tests/live-study/run.json",
+    "baseline_arm": "tests/live-study/arms/baseline.json",
+    "candidate_arm": "tests/live-study/arms/candidate.json",
+    "fixture_repo": "tests/live-study/repo/",
+    "overlays": "tests/live-study/overlays/",
+    "oracle": "tests/live-study/oracle/",
+    "policy": "configs/broker-policy.json"
+  },
+  "credential_env": "OPENROUTER_API_KEY",
+  "provider_routing": {
+    "policy": {
+      "only": [
+        "DeepInfra"
+      ],
+      "allow_fallbacks": false,
+      "require_parameters": true
+    },
+    "fail_closed": "an unavailable or nonconforming upstream aborts the run; a mid-flight abort yields an incomplete pair (INCONCLUSIVE), never a silent reroute",
+    "pinned_upstream": {
+      "provider_name": "DeepInfra",
+      "tag": "deepinfra/fp8",
+      "context_length": 1048576,
+      "pricing": {
+        "prompt": "0.0000002",
+        "completion": "0.0000006"
+      },
+      "supported_parameters": [
+        "reasoning",
+        "include_reasoning",
+        "max_tokens",
+        "temperature",
+        "top_p",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "repetition_penalty",
+        "top_k",
+        "seed",
+        "min_p",
+        "logit_bias",
+        "structured_outputs",
+        "tools",
+        "tool_choice",
+        "response_format",
+        "reasoning_effort"
+      ],
+      "observed_at": "2026-09-18",
+      "source": "openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash/endpoints"
+    }
+  },
+  "external_effects": [
+    "paid model calls to provider openrouter only"
+  ],
+  "limits": {
+    "max_runs": 12,
+    "max_model_calls": 300,
+    "max_tokens": 6000000,
+    "max_cost_usd": 10.0,
+    "timeout_seconds_per_run": 1800
+  },
+  "supersedes": {
+    "manifest_id": "sha256:3b9892415bd99a7f9a25596834a3f63e703b1f6210e3f0fe37bd738a2d02d4c5",
+    "sealed_manifest_digest": "sha256:8a64920fbefb898e205d77f647ca987e5bcca39668a6fbf5d3ea5621bf39b7b0",
+    "archived": "manifest.superseded-sha256:3b989241.json"
+  },
+  "sealed_manifest_digest": "sha256:8a64920fbefb898e205d77f647ca987e5bcca39668a6fbf5d3ea5621bf39b7b0",
+  "predecessor": {
+    "manifest_id": "sha256:6d5f88af345c439129c745cb85faf245745062151f55e91d6dafa074fd73deda",
+    "sealed_manifest_digest": "sha256:2960ddcf4400a66f5ebd553399a141f2400e22140f81b2435b664cc090cac7b1",
+    "status": "executed_inconclusive",
+    "verdict": {
+      "manifest_id": "sha256:6d5f88af345c439129c745cb85faf245745062151f55e91d6dafa074fd73deda",
+      "scope": "manifest_bound_no_generalization",
+      "verdict": "inconclusive",
+      "eligible_for_review": false,
+      "reason": "uncertain effect",
+      "items": {
+        "3-1": "evaluated",
+        "3-2": "evaluated",
+        "3-3": "evaluated",
+        "3-4": "evaluated",
+        "4-1": "evaluated",
+        "4-2": "evaluated",
+        "4-3": "evaluated",
+        "4-4": "evaluated"
+      },
+      "official_score": null,
+      "analysis": {
+        "verdict": "inconclusive",
+        "completed_pairs": 3,
+        "planned_pairs": 3,
+        "families": [
+          {
+            "family": "convention-apply",
+            "pairs": 3,
+            "delta": 0.0,
+            "interval": [
+              -0.7493370940031047,
+              0.7493370940031046
+            ]
+          }
+        ]
+      },
+      "cost": {
+        "baseline_units": 208455,
+        "candidate_units": 335467,
+        "learning_overhead_units": 57300,
+        "missing_costs": 0,
+        "total_known": true,
+        "total_units": 601222,
+        "net_savings_claim_allowed": false
+      },
+      "baseline_retained": true
+    },
+    "archived": "manifest.executed_inconclusive-sha256:6d5f88af.json"
+  },
+  "result": "evidence/live-evaluation/study-3/study-result.json",
+  "execution_classification": {
+    "verdict": "inconclusive",
+    "authoritative": true,
+    "valid_measurement": true,
+    "findings": {
+      "baselines": "all 5 baseline holdouts failed (B7-B11) \u2014 hidden contract non-inferable",
+      "candidates": "passed B10, B11; failed B7, B8, B9 despite valid memory provisioning",
+      "gates": "candidate-integrity gates passed for B7/B8/B9/B10/B11; mount-namespace confinement held on all 12 runs",
+      "improvement": "proposed from Task A evidence only; approved, activated, bound, provisioned (receipt sha256:bf04cb39 verified)",
+      "observed_delta": 0.4,
+      "sealed_margin": "not met \u2014 delta < required margin; verdict remains INCONCLUSIVE",
+      "primary_bottleneck": "memory application/adherence \u2014 governed memory conflicted with visible legacy v1 patterns and the model copied v1 on B7/B8/B9 (see workspace diffs)"
+    },
+    "not_a_provisioning_failure": true
+  }
+}

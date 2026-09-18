@@ -1,0 +1,6 @@
+{
+  "name": "phi",
+  "schema": "sentinel.cap/2",
+  "tier": "admin",
+  "lifecycle": "active"
+}

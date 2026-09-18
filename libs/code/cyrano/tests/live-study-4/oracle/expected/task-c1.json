@@ -1,0 +1,8 @@
+{
+  "cap_fields": {
+    "caps/omicron.json": {
+      "lifecycle": "provisional",
+      "tier": "standard"
+    }
+  }
+}

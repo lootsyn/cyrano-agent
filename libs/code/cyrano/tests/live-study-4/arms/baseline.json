@@ -1,0 +1,39 @@
+{
+  "arm": "baseline",
+  "description": "stock dcode agent assembly via create_cli_agent — no Cyrano governed middleware, no memory service, no recall, no obligation enforcement, no correction loop",
+  "dcode_release": "deepagents-code (editable workspace)",
+  "invocation_surface": "in-process create_cli_agent through study4_arm.py",
+  "memory_service": "disabled",
+  "improvement_lanes": "disabled",
+  "action_broker": "disabled",
+  "governed_middleware": "absent",
+  "recall": "absent",
+  "correction_loop": "absent — single attempt",
+  "event_ledger": "local scoped repository, observation only",
+  "approval": "launch-scope permit for the run itself only",
+  "workspace": "byte-identical copy of tests/live-study-4/repo plus the task overlay",
+  "system_prompt": "native create_cli_agent default",
+  "tools": ["read_file", "write_file", "edit_file", "delete", "ls", "glob", "grep"],
+  "enable_shell": false,
+  "enable_memory": false,
+  "enable_skills": false,
+  "enable_ask_user": false,
+  "model": {
+    "provider": "openrouter",
+    "model_spec": "openrouter:deepseek/deepseek-v4.1-flash",
+    "parameters": {
+      "temperature": 0,
+      "max_retries": 0,
+      "openrouter_provider": {
+        "only": ["DeepInfra"],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      }
+    }
+  },
+  "provider_routing": {
+    "only": ["DeepInfra"],
+    "allow_fallbacks": false,
+    "require_parameters": true
+  }
+}

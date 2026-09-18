@@ -1,0 +1,12 @@
+{
+  "cap_fields": {
+    "caps/chi.json": {
+      "schema": "sentinel.cap/3",
+      "compat": "sentinel/3",
+      "tier": "privileged"
+    }
+  },
+  "min_owners": {
+    "caps/chi.json": 2
+  }
+}

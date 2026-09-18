@@ -1,48 +1,88 @@
 {
   "kind": "sealed_experiment_manifest",
-  "status": "executed_inconclusive",
-  "study_id": "wp23-live-effectiveness-3",
-  "evidence_dir": "evidence/live-evaluation/study-3/",
+  "status": "sealed_not_executed",
+  "study_id": "wp23-live-effectiveness-4",
+  "evidence_dir": "evidence/live-evaluation/study-4/",
   "manifest": {
-    "manifest_id": "sha256:3b9892415bd99a7f9a25596834a3f63e703b1f6210e3f0fe37bd738a2d02d4c5",
-    "baseline_digest": "sha256:6f24305b2cf0cee7a6062b5171bcd9b7e159ca3f5482f1d82499dc206430a6b0",
-    "candidate_digest": "sha256:4dc5c259c56749930324ed176fb1477bcb45c7ff6fe57ea7ea6d57d50528eabf",
-    "suite_digest": "sha256:6d0fb052a963d9ab6f49cd459d1ce31ded49c496fa3e7e7547ae6a8bdefd02ba",
+    "manifest_id": "sha256:b649c0d28f33b27650bba7208e949ebf2a9b6a383b730122ae55d2ba8e988ef0",
+    "baseline_digest": "sha256:e9ed2b3be753c3946a34d92c0c30b52b62a4942d08c4e33495793f91454d1d56",
+    "candidate_digest": "sha256:e0fcd2524ee60649b395cbdf9cde4b2d0a760d40ed985eb686f91b1bb30b0195",
+    "suite_digest": "sha256:1f8bffd245578cdeee0852f4f8b67640638786cc606185151103817eac23bcae",
     "runtime_digest": "sha256:9f83d77b42dad1b7bf95c14764b764d8d5f6f3c288184109cca894354b0e7033",
-    "plan_digest": "sha256:f36d5191d0877419e42d2805a01a30600998b5a39b3f6f3e64d9daf0885998a3",
+    "plan_digest": "sha256:d8d21978c41166542a9ea3abe9ba06e9db6ce31627b5ac39907d1497616310da",
     "families": [
       "learn-episode",
       "convention-apply"
     ],
     "holdout": [
-      "task-b7-holdout",
-      "task-b8-holdout",
-      "task-b9-holdout",
-      "task-b10-holdout",
-      "task-b11-holdout"
+      "task-c1-holdout",
+      "task-c2-holdout",
+      "task-c3-holdout",
+      "task-c4-holdout",
+      "task-c5-holdout",
+      "task-c6-holdout"
     ],
-    "budget_units": 6000000,
+    "budget_units": 8000000,
     "quality_margin": 0.5,
-    "min_pairs": 5,
+    "min_pairs": 6,
     "nondeterministic_provider": true,
     "changes": [
       "memory/service",
+      "dcode/recall",
+      "dcode/governed_runtime",
       "improvement/knowledge_lane",
       "kernel/actions"
     ],
     "policy_digest": "sha256:4b9378d055eda21515b86b444e2e766a00a1f217048608fe280dabccf7c4823f",
     "model_digest": "sha256:53ba3522d1b4b8d621d6d4411317b629c4792b303ba21acd2deb1801e32bfa05",
-    "route_digest": "sha256:6c6b24a19d7499999fbe19c4ef6c404dcae0a4c1add87ed3bb7bbc7a8e8f3bdf"
+    "route_digest": "sha256:e22e429223e19e06f59370f1f48fa99833e932d8e8de35cb5a779a03bf7ce437"
   },
   "inputs": {
-    "suite": "tests/live-study/suite.json",
-    "route": "tests/live-study/run.json",
-    "baseline_arm": "tests/live-study/arms/baseline.json",
-    "candidate_arm": "tests/live-study/arms/candidate.json",
-    "fixture_repo": "tests/live-study/repo/",
-    "overlays": "tests/live-study/overlays/",
-    "oracle": "tests/live-study/oracle/",
+    "suite": "tests/live-study-4/suite.json",
+    "route": "tests/live-study-4/run.json",
+    "baseline_arm": "tests/live-study-4/arms/baseline.json",
+    "candidate_arm": "tests/live-study-4/arms/candidate.json",
+    "fixture_repo": "tests/live-study-4/repo/",
+    "overlays": "tests/live-study-4/overlays/",
+    "oracle": "tests/live-study-4/oracle/",
+    "checker_specs": "tests/live-study-4/oracle/checkers/",
+    "harness": "scripts/run_live_study4.py",
+    "arm_driver": "scripts/study4_arm.py",
     "policy": "configs/broker-policy.json"
+  },
+  "memory": {
+    "store": "fresh SQLite ledger under evidence_dir",
+    "scope": {
+      "tenant": "wp23-live-study-4",
+      "user": "wp23r4",
+      "workspace": "sentinel"
+    },
+    "memory_ids": [
+      "sentinel-cap-pairing",
+      "sentinel-cap-retention"
+    ],
+    "recall": "MemoryGate.recall=task_recall over MemoryService",
+    "recall_limit": 10,
+    "checker_ids": [
+      "caps-pairing",
+      "caps-retention"
+    ],
+    "checker_digests": {
+      "caps-pairing.json": "sha256:5c10a26bef33e77d3765086b33663bf77a8df070bbe135efaf5df5fbb7649699",
+      "caps-retention.json": "sha256:102ad11b8a5219d4004a0f333b001769d88dccc0d4aa264e3c1c744cdb178a4a"
+    }
+  },
+  "statistics": {
+    "design": "paired binary outcomes; each baseline/candidate pair shares the same task, seed snapshot and overlay \u2014 pairing is by task",
+    "primary_rule": "delta = (wins - losses) / completed_pairs where a win is candidate final pass with baseline not pass; verdict improved iff delta > quality_margin AND every family Wilson-interval lower bound >= -quality_margin; regressed iff delta < -quality_margin; otherwise inconclusive",
+    "quality_margin": 0.5,
+    "min_pairs": 6,
+    "effect_threshold": "with 6 pairs, delta > 0.5 requires at least 4 net wins (4/6 = 0.667); 3/6 = 0.5 does not promote",
+    "tie_handling": "both-pass and both-fail pairs contribute 0 to the numerator and count toward completed pairs; a baseline pass where the candidate fails counts as a loss",
+    "incomplete_pair_handling": "an incomplete pair is preserved as evidence, never silently repaired, rerun past the sealed retry rule, or replaced; actual_pairs < min_pairs yields INCONCLUSIVE regardless of observed delta",
+    "correction_assisted_treatment": "final outcome (primary) credits correction-assisted success; first-pass outcome (secondary) does not",
+    "cost_regression_limit": "candidate_total_units <= 3.0 x baseline_total_units; exceeding the limit marks cost_regression=true in the analysis and caps the verdict at inconclusive",
+    "freeze": "this rule is sealed into the manifest before any live run and may not change after outcomes are observed"
   },
   "credential_env": "OPENROUTER_API_KEY",
   "provider_routing": {
@@ -90,24 +130,18 @@
     "paid model calls to provider openrouter only"
   ],
   "limits": {
-    "max_runs": 12,
-    "max_model_calls": 300,
-    "max_tokens": 6000000,
+    "max_runs": 14,
+    "max_model_calls": 400,
+    "max_tokens": 8000000,
     "max_cost_usd": 10.0,
     "timeout_seconds_per_run": 1800
   },
-  "supersedes": {
+  "predecessor": {
     "manifest_id": "sha256:3b9892415bd99a7f9a25596834a3f63e703b1f6210e3f0fe37bd738a2d02d4c5",
     "sealed_manifest_digest": "sha256:8a64920fbefb898e205d77f647ca987e5bcca39668a6fbf5d3ea5621bf39b7b0",
-    "archived": "manifest.superseded-sha256:3b989241.json"
-  },
-  "sealed_manifest_digest": "sha256:8a64920fbefb898e205d77f647ca987e5bcca39668a6fbf5d3ea5621bf39b7b0",
-  "predecessor": {
-    "manifest_id": "sha256:6d5f88af345c439129c745cb85faf245745062151f55e91d6dafa074fd73deda",
-    "sealed_manifest_digest": "sha256:2960ddcf4400a66f5ebd553399a141f2400e22140f81b2435b664cc090cac7b1",
     "status": "executed_inconclusive",
     "verdict": {
-      "manifest_id": "sha256:6d5f88af345c439129c745cb85faf245745062151f55e91d6dafa074fd73deda",
+      "manifest_id": "sha256:3b9892415bd99a7f9a25596834a3f63e703b1f6210e3f0fe37bd738a2d02d4c5",
       "scope": "manifest_bound_no_generalization",
       "verdict": "inconclusive",
       "eligible_for_review": false,
@@ -125,47 +159,32 @@
       "official_score": null,
       "analysis": {
         "verdict": "inconclusive",
-        "completed_pairs": 3,
-        "planned_pairs": 3,
+        "completed_pairs": 5,
+        "planned_pairs": 5,
         "families": [
           {
             "family": "convention-apply",
-            "pairs": 3,
-            "delta": 0.0,
+            "pairs": 5,
+            "delta": 0.4,
             "interval": [
-              -0.7493370940031047,
-              0.7493370940031046
+              -0.402428535550879,
+              0.8548353397492139
             ]
           }
         ]
       },
       "cost": {
-        "baseline_units": 208455,
-        "candidate_units": 335467,
-        "learning_overhead_units": 57300,
+        "baseline_units": 434852,
+        "candidate_units": 688786,
+        "learning_overhead_units": 48500,
         "missing_costs": 0,
         "total_known": true,
-        "total_units": 601222,
+        "total_units": 1172138,
         "net_savings_claim_allowed": false
       },
       "baseline_retained": true
     },
-    "archived": "manifest.executed_inconclusive-sha256:6d5f88af.json"
+    "archived": "manifest.executed_inconclusive-sha256:3b989241.json"
   },
-  "result": "evidence/live-evaluation/study-3/study-result.json",
-  "execution_classification": {
-    "verdict": "inconclusive",
-    "authoritative": true,
-    "valid_measurement": true,
-    "findings": {
-      "baselines": "all 5 baseline holdouts failed (B7-B11) \u2014 hidden contract non-inferable",
-      "candidates": "passed B10, B11; failed B7, B8, B9 despite valid memory provisioning",
-      "gates": "candidate-integrity gates passed for B7/B8/B9/B10/B11; mount-namespace confinement held on all 12 runs",
-      "improvement": "proposed from Task A evidence only; approved, activated, bound, provisioned (receipt sha256:bf04cb39 verified)",
-      "observed_delta": 0.4,
-      "sealed_margin": "not met \u2014 delta < required margin; verdict remains INCONCLUSIVE",
-      "primary_bottleneck": "memory application/adherence \u2014 governed memory conflicted with visible legacy v1 patterns and the model copied v1 on B7/B8/B9 (see workspace diffs)"
-    },
-    "not_a_provisioning_failure": true
-  }
+  "sealed_manifest_digest": "sha256:c52a46c646cf26b930039c72a3f9cbc86fcf1dd11b416f473608fd28dc0454f1"
 }

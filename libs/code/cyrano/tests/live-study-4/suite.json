@@ -1,0 +1,279 @@
+{
+  "schema_version": "cyrano.live-study/2",
+  "status": "sealed_inputs_not_executed",
+  "study_id": "wp23-live-effectiveness-4",
+  "predecessor": "wp23-live-effectiveness-3 (executed_inconclusive; governed note provisioning measured +0.4 delta on B10/B11 but the claim under test here — task-triggered recall through the governed runtime — was never exercised; B7-B11 retired as exposed holdouts)",
+  "research_question": "Does Cyrano improve coding outcomes on new repository tasks by automatically (1) recalling previously learned repository-specific knowledge through the runtime recall path, (2) projecting applicable governed knowledge into RuleObligations, (3) binding those obligations into the approved work plan, (4) verifying the resulting implementation deterministically, and (5) correcting violations within a bounded budget?",
+  "claim_under_test": "the integrated product path task -> task_recall -> fresh MemoryView -> scope_rule projection -> RuleObligation -> governed plan/permit -> native create_cli_agent -> deterministic verify_obligations -> bounded correction -> application evidence. The claim is the composite governed path; the marginal contribution of recall versus the correction loop alone is not ablated (documented limitation).",
+  "recall_service_path": "MemoryService.query_memory + select_recall via dcode/recall.task_recall, bound into MemoryGate.recall. The separate hint-admission RecallService (candidates/admit_hint) is NOT exercised and NOT part of the effectiveness claim.",
+  "families": [
+    "learn-episode",
+    "convention-apply"
+  ],
+  "holdout": [
+    "task-c1-holdout",
+    "task-c2-holdout",
+    "task-c3-holdout",
+    "task-c4-holdout",
+    "task-c5-holdout",
+    "task-c6-holdout"
+  ],
+  "min_pairs": 6,
+  "ordering": [
+    "task-a-candidate",
+    "improvement",
+    "task-c1-baseline",
+    "task-c1-candidate",
+    "task-c2-baseline",
+    "task-c2-candidate",
+    "task-c3-baseline",
+    "task-c3-candidate",
+    "task-c4-baseline",
+    "task-c4-candidate",
+    "task-c5-baseline",
+    "task-c5-candidate",
+    "task-c6-baseline",
+    "task-c6-candidate"
+  ],
+  "identity": {
+    "scope": {"tenant": "wp23-live-study-4", "user": "wp23r4", "workspace": "sentinel"},
+    "agent": "wp23r4",
+    "nonce": "wp23-live-4",
+    "client_event": "wp23-live-4-approve-1",
+    "actor": "study-operator",
+    "purpose": "improvement_approval",
+    "memory_ids": ["sentinel-cap-pairing", "sentinel-cap-retention"],
+    "run_root": "/tmp/wp23-live-study-4",
+    "evidence_dir": "evidence/live-evaluation/study-4/"
+  },
+  "learning": {
+    "mode": "governed_lifecycle",
+    "rule_templates": [
+      {
+        "memory_id": "sentinel-cap-pairing",
+        "kind": "scope_rule",
+        "body": {
+          "rule_id": "sentinel-cap-pairing",
+          "checker_id": "caps-pairing",
+          "applicability": {
+            "write_globs": ["sentinel/*.py", "caps/*.json"],
+            "operations": ["create", "modify", "rename", "delete", "repair"]
+          },
+          "exceptions": [
+            {
+              "exception_id": "legacy-alpha-cap",
+              "path_globs": ["caps/alpha.json"]
+            }
+          ],
+          "summary": "<NOTE>"
+        }
+      },
+      {
+        "memory_id": "sentinel-cap-retention",
+        "kind": "scope_rule.retention",
+        "body": {
+          "rule_id": "sentinel-cap-retention",
+          "checker_id": "caps-retention",
+          "applicability": {
+            "write_globs": ["caps/*.json"],
+            "operations": ["create", "modify", "rename", "delete", "repair"]
+          },
+          "exceptions": [],
+          "summary": "<NOTE>"
+        }
+      }
+    ],
+    "rule_template_note": "the harness instantiates each template by replacing <NOTE> with the improvement run's approved note text; checker_id, applicability, exceptions and identity are sealed fixture constants — the learned content is the note-derived summary plus the activation decision, never the checker binding. The two rules carry distinct kinds (scope_rule / scope_rule.retention) because activate_memory refuses two active same-kind records; the sub-kind additionally exercises the admitted_kinds projection gate. The summary is governance metadata bound into the requirements digest — it is not model-visible prompt text; the model-visible governed channel is obligation-bound checker feedback and permit mediation.",
+    "checker_files": {
+      "caps-pairing": "oracle/checkers/caps-pairing.json",
+      "caps-retention": "oracle/checkers/caps-retention.json"
+    },
+    "activation": "Task A evidence -> propose_memory(kind=scope_rule) -> ApprovalDesk approve -> activate_memory -> persisted study-4 store; holdout candidates must discover both rules through task_recall at runtime — no caller-staged records or prompt injection"
+  },
+  "governed_candidate": {
+    "max_attempts": 4,
+    "cost_cap_per_obligation": 2,
+    "recall_limit": 10,
+    "admitted_kinds": ["scope_rule.retention"],
+    "permit_ttl_seconds": 3600,
+    "tools": ["read_file", "write_file", "edit_file", "delete", "ls", "glob", "grep"],
+    "unmediated_tools": [],
+    "approver": "sealed-study-policy (ApprovalGate.decide=approve over the presented subject digest; desk receipt recomputed and recorded; no interactive human)"
+  },
+  "tasks": {
+    "task-a": {
+      "family": "learn-episode",
+      "arm": "candidate",
+      "prompt": "In the sentinel package, add a new capability module `iota` that defines `capability() -> str` returning the string 'iota'. Edit files only; do not run tests.",
+      "oracle": "oracle/check_sentinel.py",
+      "workspace": "repo",
+      "expected_episode": "governed attempt with an empty store fails the hidden cap contract; the evaluator output and workspace diff feed the governed improvement step, which proposes the two scope_rules for approval and activation",
+      "write_paths": ["sentinel/iota.py", "caps/iota.json", "sentinel/registry.py", "caps/registry.json", "caps/__init__.json", "caps/alpha.json"],
+      "grants": {
+        "read": ["README.md", "sentinel", "caps", "sentinel/__init__.py", "sentinel/registry.py", "sentinel/alpha.py", "caps/alpha.json"],
+        "create": ["sentinel/iota.py", "caps/iota.json", "caps/registry.json", "caps/__init__.json"],
+        "write_existing": ["sentinel/registry.py", "caps/alpha.json"],
+        "delete": []
+      }
+    },
+    "task-c1": {
+      "pair_id": "pair-c1",
+      "family": "convention-apply",
+      "holdout": "task-c1-holdout",
+      "operation": "create",
+      "arms": ["baseline", "candidate"],
+      "prompt": "In the sentinel package, add a new capability module `omicron` that defines `capability() -> str` returning the string 'omicron'. Edit files only; do not run tests.",
+      "oracle": "oracle/check_sentinel.py",
+      "workspace": "repo",
+      "write_paths": ["sentinel/omicron.py", "caps/omicron.json", "sentinel/registry.py", "caps/registry.json", "caps/__init__.json", "caps/alpha.json"],
+      "grants": {
+        "read": ["README.md", "sentinel", "caps", "sentinel/__init__.py", "sentinel/registry.py", "sentinel/alpha.py", "caps/alpha.json"],
+        "create": ["sentinel/omicron.py", "caps/omicron.json", "caps/registry.json", "caps/__init__.json"],
+        "write_existing": ["sentinel/registry.py", "caps/alpha.json"],
+        "delete": []
+      }
+    },
+    "task-c2": {
+      "pair_id": "pair-c2",
+      "family": "convention-apply",
+      "holdout": "task-c2-holdout",
+      "operation": "rename",
+      "arms": ["baseline", "candidate"],
+      "prompt": "In the sentinel package, rename the `alpha` capability module to `rho`. Edit files only; do not run tests.",
+      "oracle": "oracle/check_sentinel.py",
+      "workspace": "repo",
+      "write_paths": ["sentinel/rho.py", "sentinel/alpha.py", "caps/rho.json", "caps/alpha.json", "sentinel/registry.py", "caps/registry.json", "caps/__init__.json"],
+      "grants": {
+        "read": ["README.md", "sentinel", "caps", "sentinel/__init__.py", "sentinel/registry.py", "sentinel/alpha.py", "caps/alpha.json"],
+        "create": ["sentinel/rho.py", "caps/rho.json", "caps/registry.json", "caps/__init__.json"],
+        "write_existing": ["sentinel/registry.py", "caps/alpha.json"],
+        "delete": ["sentinel/alpha.py"]
+      }
+    },
+    "task-c3": {
+      "pair_id": "pair-c3",
+      "family": "convention-apply",
+      "holdout": "task-c3-holdout",
+      "operation": "delete",
+      "arms": ["baseline", "candidate"],
+      "prompt": "In the sentinel package, remove the `alpha` capability module so that the package no longer exposes it. Edit files only; do not run tests.",
+      "oracle": "oracle/check_sentinel.py",
+      "workspace": "repo",
+      "write_paths": ["sentinel/alpha.py", "caps/alpha.json", "sentinel/registry.py", "caps/registry.json", "caps/__init__.json"],
+      "grants": {
+        "read": ["README.md", "sentinel", "caps", "sentinel/__init__.py", "sentinel/registry.py", "sentinel/alpha.py", "caps/alpha.json"],
+        "create": ["caps/registry.json", "caps/__init__.json"],
+        "write_existing": ["sentinel/registry.py", "caps/alpha.json"],
+        "delete": ["sentinel/alpha.py"]
+      }
+    },
+    "task-c4": {
+      "pair_id": "pair-c4",
+      "family": "convention-apply",
+      "holdout": "task-c4-holdout",
+      "operation": "modify",
+      "arms": ["baseline", "candidate"],
+      "prompt": "In the sentinel package, mark the `psi` capability module as sunset. Edit files only; do not run tests.",
+      "oracle": "oracle/check_sentinel.py",
+      "workspace": "repo",
+      "workspace_overlay": "overlays/task-c4",
+      "write_paths": ["sentinel/psi.py", "caps/psi.json", "sentinel/registry.py", "caps/registry.json", "caps/__init__.json", "caps/alpha.json"],
+      "grants": {
+        "read": ["README.md", "sentinel", "caps", "sentinel/__init__.py", "sentinel/registry.py", "sentinel/alpha.py", "sentinel/psi.py", "caps/alpha.json"],
+        "create": ["caps/psi.json", "caps/registry.json", "caps/__init__.json"],
+        "write_existing": ["sentinel/registry.py", "sentinel/psi.py", "caps/alpha.json"],
+        "delete": []
+      }
+    },
+    "task-c5": {
+      "pair_id": "pair-c5",
+      "family": "convention-apply",
+      "holdout": "task-c5-holdout",
+      "operation": "repair",
+      "arms": ["baseline", "candidate"],
+      "prompt": "In the sentinel package, the packaging metadata for the `phi` capability module does not satisfy the package's conventions. Bring `phi` into conformance. Edit files only; do not run tests.",
+      "oracle": "oracle/check_sentinel.py",
+      "workspace": "repo",
+      "workspace_overlay": "overlays/task-c5",
+      "write_paths": ["sentinel/phi.py", "caps/phi.json", "sentinel/registry.py", "caps/registry.json", "caps/__init__.json", "caps/alpha.json"],
+      "grants": {
+        "read": ["README.md", "sentinel", "caps", "sentinel/__init__.py", "sentinel/registry.py", "sentinel/alpha.py", "sentinel/phi.py", "caps/alpha.json", "caps/phi.json"],
+        "create": ["caps/registry.json", "caps/__init__.json"],
+        "write_existing": ["sentinel/registry.py", "sentinel/phi.py", "caps/phi.json", "caps/alpha.json"],
+        "delete": []
+      }
+    },
+    "task-c6": {
+      "pair_id": "pair-c6",
+      "family": "convention-apply",
+      "holdout": "task-c6-holdout",
+      "operation": "modify",
+      "arms": ["baseline", "candidate"],
+      "prompt": "In the sentinel package, raise the `chi` capability module to the privileged tier. Edit files only; do not run tests.",
+      "oracle": "oracle/check_sentinel.py",
+      "workspace": "repo",
+      "workspace_overlay": "overlays/task-c6",
+      "write_paths": ["sentinel/chi.py", "caps/chi.json", "sentinel/registry.py", "caps/registry.json", "caps/__init__.json", "caps/alpha.json"],
+      "grants": {
+        "read": ["README.md", "sentinel", "caps", "sentinel/__init__.py", "sentinel/registry.py", "sentinel/alpha.py", "sentinel/chi.py", "caps/alpha.json", "caps/chi.json"],
+        "create": ["caps/registry.json", "caps/__init__.json"],
+        "write_existing": ["sentinel/registry.py", "sentinel/chi.py", "caps/chi.json", "caps/alpha.json"],
+        "delete": []
+      }
+    }
+  },
+  "primary_metric": "final_oracle_success_paired_delta",
+  "secondary_metrics": [
+    "first_pass_oracle_success_paired_delta",
+    "correction_assisted_successes",
+    "correction_attempts_per_candidate",
+    "cost_units_per_arm",
+    "cost_ratio_candidate_over_baseline",
+    "latency_seconds_per_arm",
+    "model_calls_per_arm",
+    "recall_evidence_completeness"
+  ],
+  "metric_definitions": {
+    "final_oracle_success": "oracle exit 0 on the workspace after the run's last governed attempt (candidate) or single attempt (baseline)",
+    "first_pass_oracle_success": "oracle exit 0 on the workspace snapshot taken at the start of the candidate's second governed attempt (post-attempt-1 state); a run satisfied at attempt 1 has first_pass == final; baseline first_pass == its single attempt; a correction-assisted success is never counted as first-pass success",
+    "correction_assisted_success": "final oracle pass where first_pass failed — governed correction credit, never first-pass credit",
+    "cost_units": "input+output tokens from the provider-reported usage callback; unobserved usage is recorded as missing, never zero",
+    "recall_evidence_completeness": "per candidate run: RecallEvidence present, returned ids/revisions == approved store state, exclusions recorded, MemoryView digest recomputed, projected obligation ids == bound plan set"
+  },
+  "statistics": {
+    "design": "paired binary outcomes; each baseline/candidate pair shares the same task, seed snapshot and overlay — pairing is by task",
+    "primary_rule": "delta = (wins - losses) / completed_pairs where a win is candidate final pass with baseline not pass; verdict improved iff delta > quality_margin AND every family Wilson-interval lower bound >= -quality_margin; regressed iff delta < -quality_margin; otherwise inconclusive",
+    "quality_margin": 0.5,
+    "min_pairs": 6,
+    "effect_threshold": "with 6 pairs, delta > 0.5 requires at least 4 net wins (4/6 = 0.667); 3/6 = 0.5 does not promote",
+    "tie_handling": "both-pass and both-fail pairs contribute 0 to the numerator and count toward completed pairs; a baseline pass where the candidate fails counts as a loss",
+    "incomplete_pair_handling": "an incomplete pair is preserved as evidence, never silently repaired, rerun past the sealed retry rule, or replaced; actual_pairs < min_pairs yields INCONCLUSIVE regardless of observed delta",
+    "correction_assisted_treatment": "final outcome (primary) credits correction-assisted success; first-pass outcome (secondary) does not",
+    "cost_regression_limit": "candidate_total_units <= 3.0 x baseline_total_units; exceeding the limit marks cost_regression=true in the analysis and caps the verdict at inconclusive",
+    "freeze": "this rule is sealed into the manifest before any live run and may not change after outcomes are observed"
+  },
+  "quality_margin": 0.5,
+  "budget": {
+    "budget_units": 8000000,
+    "unit": "token",
+    "max_model_calls": 400,
+    "max_cost_usd": 10.0
+  },
+  "timeout_seconds_per_run": 1800,
+  "retry_policy": "no retry when an external effect is uncertain; a run aborted before its first model call may be re-issued at most once",
+  "workspace": "per-run byte-identical copy of repo/ under an owned temp root, plus the task's frozen overlay when declared; oracle/ and oracle/checkers/ are never copied into the agent workspace — checker bytes are loaded harness-side into the TrustedCheckerRegistry",
+  "completion_rule": "PASS requires all six holdout pairs completed; an incomplete pair is never discarded or replaced for an unfavorable outcome",
+  "integrity_rule": "every candidate holdout run passes a fail-closed pre-dispatch gate: fresh study-4 store and scope, both rules active at approved revisions, approval receipt recomputes, checker digests match the sealed specs, workspace digest equals the sealed seed plus overlay, baseline profile carries no governed artifacts, arms identical on every other sealed dimension; a failed gate aborts the run before its first model call, records the pair incomplete, and never falls back to baseline-vs-baseline",
+  "recall_integrity_rule": "candidate MemoryGate is built with records=() and rule_bodies={} — the only record source is task_recall against the study store; post-run evidence must carry RecallEvidence whose returned ids/revisions equal the approved active set, and the store digest must be unchanged across the run",
+  "discriminability_rule": "the evaluated convention (sentinel.cap/3) is unavailable to baseline from the visible repository: the v3 schema and compat strings, the tier and lifecycle enums, the all-modules pairing requirement, the never-delete/retire rules and the privileged-owner rule have no visible instance — the seed shows only caps/alpha.json at sentinel.cap/2; baseline arms receive no Task A history, memory, recall results, improvement, evaluator feedback, or equivalent disclosure; the governed improvement derives only from Task A evidence",
+  "known_limitations": [
+    "the separate hint-admission RecallService (candidates/admit_hint) is not part of this effectiveness claim — only the task-triggered MemoryService.query_memory/select_recall path is exercised",
+    "recall body token budgeting is not implemented; the bounded recall set is recall_limit=10 and the sealed checker/rule bodies are the only recalled content — actual recalled context size is reported per run",
+    "native long-run compaction/resume is not a claim of this study",
+    "dispatch_confirmed=true confirms the final LangChain model-dispatch request boundary only; wire_confirmed remains false because provider HTTP serialization is not observed",
+    "the governed plan, grants and approval are study-harness artifacts: the approver is the sealed study policy, not an interactive human",
+    "single-cause attribution between the recall leg and the correction loop is not ablated — the claim under test is the composite governed path",
+    "the learned rule's enforcement binding (checker_id, applicability, exceptions) is a sealed template; the model-derived content is the approved summary note"
+  ],
+  "scope": "this fixture study only; no cross-project or cross-model generalization"
+}

@@ -1,0 +1,104 @@
+{
+  "schema_version": "cyrano.live-study-route/2",
+  "status": "sealed_route_not_executed",
+  "entrypoint": "study4_arm.py",
+  "invocation": [
+    "python",
+    "cyrano/scripts/study4_arm.py",
+    "--arm",
+    "<baseline|candidate|improvement>",
+    "--task",
+    "<task-key>",
+    "--run-dir",
+    "<run-directory>"
+  ],
+  "credential_env": "OPENROUTER_API_KEY",
+  "model": {
+    "provider": "openrouter",
+    "model_spec": "openrouter:deepseek/deepseek-v4.1-flash",
+    "parameters": {
+      "temperature": 0,
+      "max_retries": 0,
+      "openrouter_provider": {
+        "only": ["DeepInfra"],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      }
+    }
+  },
+  "provider_routing": {
+    "policy": {
+      "only": ["DeepInfra"],
+      "allow_fallbacks": false,
+      "require_parameters": true
+    },
+    "fail_closed": "an unavailable or nonconforming upstream aborts the run; a mid-flight abort yields an incomplete pair (INCONCLUSIVE), never a silent reroute",
+    "pinned_upstream": {
+      "provider_name": "DeepInfra",
+      "tag": "deepinfra/fp8",
+      "context_length": 1048576,
+      "pricing": {
+        "prompt": "0.0000002",
+        "completion": "0.0000006"
+      },
+      "supported_parameters": [
+        "reasoning",
+        "include_reasoning",
+        "max_tokens",
+        "temperature",
+        "top_p",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "repetition_penalty",
+        "top_k",
+        "seed",
+        "min_p",
+        "logit_bias",
+        "structured_outputs",
+        "tools",
+        "tool_choice",
+        "response_format",
+        "reasoning_effort"
+      ],
+      "observed_at": "2026-09-18",
+      "source": "openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash/endpoints"
+    }
+  },
+  "run_order": [
+    "task-a-candidate",
+    "improvement",
+    "task-c1-baseline",
+    "task-c1-candidate",
+    "task-c2-baseline",
+    "task-c2-candidate",
+    "task-c3-baseline",
+    "task-c3-candidate",
+    "task-c4-baseline",
+    "task-c4-candidate",
+    "task-c5-baseline",
+    "task-c5-candidate",
+    "task-c6-baseline",
+    "task-c6-candidate"
+  ],
+  "controls": {
+    "same_task_text_both_arms": true,
+    "same_starting_state_both_arms": true,
+    "same_model_both_arms": true,
+    "same_parameters_both_arms": true,
+    "same_tool_availability_both_arms": true,
+    "same_provider_routing_both_arms": true,
+    "same_invocation_surface_both_arms": "both arms run in-process through create_cli_agent assembled by study4_arm.py under identical model, parameters, tool set, workspace and limits; the candidate differs only by the governed runtime (recall, obligations, permit, brokered tools, verify, bounded correction)",
+    "oracle_outside_agent_scope": true,
+    "byte_identical_workspace_copies": true,
+    "candidate_differs_only_by_governed_runtime": true,
+    "no_caller_staged_memory": "candidate MemoryGate carries records=() rule_bodies={}; memory arrives only via task_recall against the study-4 store"
+  },
+  "caps": {
+    "max_runs": 14,
+    "max_model_calls": 400,
+    "max_tokens": 8000000,
+    "max_cost_usd": 10.0,
+    "timeout_seconds_per_run": 1800
+  }
+}

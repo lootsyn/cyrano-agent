@@ -1,0 +1,7 @@
+{
+  "name": "chi",
+  "schema": "sentinel.cap/2",
+  "tier": "observer",
+  "lifecycle": "active",
+  "owners": ["team-sentinel"]
+}

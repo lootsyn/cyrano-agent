@@ -1,0 +1,139 @@
+{
+  "kind": "adversarial_design_review",
+  "study_id": "wp23-live-effectiveness-4",
+  "status": "all_material_findings_dispositioned",
+  "addresses": "wp23-live-effectiveness-3 structural gaps: (1) candidate received the convention via a provisioned AGENTS.md artifact — provisioning was measured, not governed application; (2) the product recall path did not exist at seal time. Study 4 moves the knowledge channel to the real runtime: MemoryGate.recall = task_recall over the study store; no caller-staged records exist in the candidate process.",
+  "claim_shape": "composite governed path (task -> task_recall -> MemoryView -> scope_rule projection -> RuleObligation -> governed plan/permit -> native create_cli_agent -> deterministic verify_obligations -> bounded correction -> application evidence). Recall vs correction-loop marginal contribution is NOT ablated — the claim is the composite.",
+  "areas": {
+    "benchmark_discriminability": {
+      "verdict": "pass",
+      "evidence": "hidden contract sentinel.cap/3 requires: caps/<stem>.json for EVERY sentinel/*.py including __init__.py and registry.py (no visible instance); schema sentinel.cap/3 and compat sentinel/3 (absent from the v2 seed); lifecycle enum active|provisional|sunset|removed with never-delete/retire/provisional-entry rules (no visible instance); tier enum observer|standard|privileged with privileged requiring >=2 owners (no visible instance). The seed shows only caps/alpha.json at sentinel.cap/2. Offline validation: base repo and naive completions fail the oracle; six hand-built ideal completions pass."
+    },
+    "hidden_leakage": {
+      "verdict": "pass",
+      "evidence": "grep over repo/, overlays/ and every suite prompt finds no cap/3, sentinel/3, compat, provisional, removed, lifecycle-rule, or owners-rule text. The only seed-visible enum value is tier observer in the c6 overlay's v2 cap — same class as the alpha v2 field names; realistic partial visibility, not the contract. oracle/, oracle/checkers/ and oracle/expected/ are never copied into workspaces."
+    },
+    "visible_code_inference": {
+      "verdict": "pass",
+      "evidence": "registry.py's docstring ('every live capability module must be listed') is an intentional visible requirement — registry updates are legitimately inferable. The discriminating content (v3 schema string, compat sentinel/3, enum sets, per-stem caps for __init__/registry, never-delete, provisional-entry, 2-owner privileged rule) has zero visible instances. caps/alpha.json reveals only v2 field names."
+    },
+    "recall_contamination": {
+      "verdict": "pass",
+      "evidence": "candidate MemoryGate is constructed with records=() and rule_bodies={} in study4_arm.py; when MemoryGate.recall is set, run_governed_work resolves records exclusively from the live store via task_recall — caller-staged state is ignored by construction (product invariant, not harness convention). The gate evidence records the store digest before/after each run; a write to the store fails the check."
+    },
+    "baseline_contamination": {
+      "verdict": "pass",
+      "evidence": "baseline run directories receive no store.sqlite, no checkers/, no governed arm-input fields (arm-input omits scope/governed/checker_files for non-candidate arms). The pre-dispatch gate asserts their absence per candidate run. Baseline and candidate consume identical prompts, seeds, model, parameters, tools, recursion limit and timeout."
+    },
+    "candidate_only_hints": {
+      "verdict": "pass",
+      "evidence": "candidate prompt bytes equal baseline prompt bytes (same sealed task.prompt). The scope_rule summary — the only place Task A's learned note text lands — is governance metadata bound into requirements_digest; it is never serialized into the agent context. Model-visible governed surfaces are permit-bound tool mediation and checker violation feedback only. Verified by reading governed_runtime._feedback, obligations_requirements_doc, and governed_middleware denial paths."
+    },
+    "oracle_accessibility": {
+      "verdict": "pass",
+      "evidence": "each run executes inside a private mount namespace that tmpfs-masks the cyrano/ tree (oracle, suite, expected/, evidence) and .git; only the run's own directory is rebound. Within it, the agent backend confines fs tools to workspace/ (canonical root bounds, '..' and absolute-outside paths rejected); the governed broker additionally grants only sealed per-task paths. run_dir/checkers/ and arm-input.json sit outside workspace/ and are unreachable from agent tools."
+    },
+    "prior_study_memory_leakage": {
+      "verdict": "pass",
+      "evidence": "fresh tenant/user/workspace scope triple, fresh SQLite ledger under evidence/live-evaluation/study-4/, fresh agent id wp23r4, nonce, client event, run root and evidence root. The gate enumerates the store: any memory id beyond the two approved rules fails closed (unexpected_records). Study 1-3 fixtures/stores are never opened."
+    },
+    "correction_loop_fairness": {
+      "verdict": "accepted_as_designed",
+      "evidence": "baseline = single attempt (stock dcode); candidate = max_attempts 4 with <=2 corrections per obligation. This asymmetry is the claim under test — the composite governed path includes bounded correction. The cost side is measured and the cost_regression_limit (3.0x baseline) is pre-registered and enforced harness-side: it only downgrades, never promotes."
+    },
+    "asymmetric_budgets": {
+      "verdict": "pass",
+      "evidence": "identical model/provider/params, identical fs_tools allowlist, recursion_limit 100, 1800s timeout, same seed bytes. The candidate's additional model calls are the correction mechanism under test and are counted in usage, tokens and cost; the baseline spends exactly one invocation."
+    },
+    "statistical_validity": {
+      "verdict": "pass",
+      "evidence": "paired binary outcomes per task (same seed+prompt); primary = final oracle pass delta = (wins-losses)/6 with wins = candidate pass & baseline not pass; improved iff overall delta > 0.5 AND every family Wilson-interval lower bound >= -0.5 — verified line-by-line against evaluation/statistics.analyze_families and gates.judge_candidate (incomplete denominator -> inconclusive; zero actual pairs -> invalid; safety failure -> rejected). First-pass delta, correction-assisted successes, correction attempts, cost and latency are secondary endpoints computed in study-result.json, never promoted to the primary claim. Ties contribute 0 and count in the denominator. actual_pairs < min_pairs -> inconclusive regardless of delta."
+    },
+    "evidence_completeness": {
+      "verdict": "pass",
+      "evidence": "per candidate run: integrity-gate.json, arm-input.json, run-binding.json, stdout/stderr, result.json (usage, governed_status, refusal_code, attempts, full GovernedRunEvidence including RecallEvidence, obligations, attached pairs, digests, wire dispatch evidence, checker reports, correction ledgers, verdicts, touched paths, denials), oracle.txt, oracle-first-pass.txt, snapshots/attempt-N-post, workspace.diff, store digests. TrialLedger retains aborted/failed specimens; one-sided pairs stay incomplete."
+    }
+  },
+  "findings": [
+    {
+      "id": "S4-R1",
+      "severity": "blocking",
+      "area": "memory_lifecycle",
+      "finding": "activate_memory refuses MEMORY_CONFLICT when a second record of kind scope_rule activates while another is active; the original two-rule design could never produce an active pair.",
+      "disposition": "fixed — rules carry distinct kinds scope_rule and scope_rule.retention; the sub-kind is admitted explicitly via MemoryGate.admitted_kinds, exercising the projection admission gate rather than weakening it."
+    },
+    {
+      "id": "S4-R2",
+      "severity": "material",
+      "area": "integrity_gate",
+      "finding": "the seed-digest check compared the workspace to a seed directory copied from that same workspace — vacuous.",
+      "disposition": "fixed — the expected tree is materialized independently from the sealed fixtures under RUN_ROOT/.expected and its digest compared to the run workspace."
+    },
+    {
+      "id": "S4-R3",
+      "severity": "material",
+      "area": "baseline_contamination",
+      "finding": "baseline arm-input.json carried governed-only fields (checker_files, available_source_digests, governed caps).",
+      "disposition": "fixed — non-candidate arm inputs omit all governed fields; the gate still asserts no store/checkers/snapshots exist in the baseline run directory."
+    },
+    {
+      "id": "S4-R4",
+      "severity": "material",
+      "area": "statistics",
+      "finding": "unobserved provider usage would have been recorded as cost 0 in the ledger — a fake known-zero.",
+      "disposition": "fixed — TrialResult.cost_units is None when usage.observed is false; cost_report counts it as missing and net-savings claims stay disallowed."
+    },
+    {
+      "id": "S4-R5",
+      "severity": "material",
+      "area": "checker_oracle_asymmetry",
+      "finding": "trusted checkers enforce the schema envelope (field presence, equals for schema/compat, enum membership) but cannot pin task-specific lifecycle/tier values; a checker-satisfying workspace can still fail the oracle (e.g. lifecycle active where the contract wants provisional).",
+      "disposition": "accepted and sealed — the oracle is ground truth; the gap is the honest ceiling of the governed recovery channel and is listed in suite.known_limitations. Pinning per-task values inside shared checkers would leak holdout answers into the learned rules."
+    },
+    {
+      "id": "S4-R6",
+      "severity": "informational",
+      "area": "candidate_only_hints",
+      "finding": "the recalled scope_rule summary (approved Task-A note, which contains the full contract text the oracle printed) is never model-visible — it binds into requirements_digest only. The model-visible channel is checker violation feedback.",
+      "disposition": "documented — this is the product path as built; the hint-admission RecallService surface that would surface prose is explicitly out of scope (suite.known_limitations). The study measures recall-driven obligation enforcement, not prompt disclosure."
+    },
+    {
+      "id": "S4-R7",
+      "severity": "informational",
+      "area": "integrity_gate",
+      "finding": "the gate originally checked only that required ids were active — extra/foreign records in the store would pass.",
+      "disposition": "fixed — the store is enumerated and any id outside the approved pair fails closed (unexpected_records)."
+    },
+    {
+      "id": "S4-R8",
+      "severity": "informational",
+      "area": "correction_loop_fairness",
+      "finding": "ls of the workspace root or a '.' path is always denied by governed path normalization; discovery proceeds via the granted README read and per-directory ls grants.",
+      "disposition": "accepted — intrinsic governed friction on the candidate only; symmetric within all candidate runs and identical for every holdout."
+    },
+    {
+      "id": "S4-R9",
+      "severity": "informational",
+      "area": "benchmark_discriminability",
+      "finding": "if Task A's governed attempt happens to satisfy the oracle, the improvement note carries weaker signal (no violation list).",
+      "disposition": "accepted — the lifecycle proceeds regardless; rule checker bindings are sealed constants, only the summary varies. Holdout gates still require runtime recall of the activated rules."
+    },
+    {
+      "id": "S4-R10",
+      "severity": "informational",
+      "area": "evidence_completeness",
+      "finding": "dispatch evidence records the LangChain model-dispatch boundary; provider HTTP bytes remain unobserved (wire_confirmed=false).",
+      "disposition": "documented — matches the corrected terminology; no transport interception added."
+    }
+  ],
+  "frozen_before_task_a": [
+    "repo/ fixture tree",
+    "overlays/ for c4/c5/c6",
+    "oracle/check_sentinel.py + oracle/expected/*.json + oracle/checkers/*.json",
+    "suite.json task definitions, prompts, grants, write_paths, statistics",
+    "run.json route + caps",
+    "arms/baseline.json + arms/candidate.json",
+    "ordering of all 14 runs"
+  ],
+  "post_review_changes_allowed": "none — any edit to a sealed input reseals (suite_digest binds repo/oracle/overlays/harness bytes)."
+}

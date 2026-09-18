@@ -1,0 +1,39 @@
+{
+  "arm": "candidate",
+  "description": "same dcode assembly plus the Cyrano governed runtime: task-triggered recall -> MemoryView -> scope_rule projection -> RuleObligation -> governed plan approval/permit -> brokered tools -> deterministic verify -> bounded correction -> application evidence; obligations bind through the plan/permit, never through prompt injection",
+  "dcode_release": "deepagents-code (editable workspace)",
+  "invocation_surface": "in-process create_cli_agent through study4_arm.py carrying the governed ExtensionRegistry",
+  "memory_service": "enabled (scoped repository at the study-4 store; runtime recall only — no caller-staged records)",
+  "improvement_lanes": "enabled after task-a (scope_rule lifecycle: propose -> approve -> activate -> persisted store)",
+  "action_broker": "enabled (permit-gated mutation; ungranted paths denied)",
+  "governed_middleware": "GovernedObligationMiddleware (currency check + wire capture + tool mediation)",
+  "recall": "task_recall via MemoryGate.recall before plan sealing; re-run inside currency_check before every model dispatch",
+  "correction_loop": "bounded — max_attempts=4 total, <=2 corrections per obligation",
+  "event_ledger": "local scoped repository, full instrumentation",
+  "approval": "ApprovalDesk over the presented subject digest; sealed study-policy approver; SignedPermit issued per run",
+  "workspace": "byte-identical copy of tests/live-study-4/repo plus the task overlay",
+  "system_prompt": "native create_cli_agent default",
+  "tools": ["read_file", "write_file", "edit_file", "delete", "ls", "glob", "grep"],
+  "enable_shell": false,
+  "enable_memory": false,
+  "enable_skills": false,
+  "enable_ask_user": false,
+  "model": {
+    "provider": "openrouter",
+    "model_spec": "openrouter:deepseek/deepseek-v4.1-flash",
+    "parameters": {
+      "temperature": 0,
+      "max_retries": 0,
+      "openrouter_provider": {
+        "only": ["DeepInfra"],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      }
+    }
+  },
+  "provider_routing": {
+    "only": ["DeepInfra"],
+    "allow_fallbacks": false,
+    "require_parameters": true
+  }
+}

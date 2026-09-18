@@ -1,0 +1,7 @@
+{
+  "name": "alpha",
+  "schema": "sentinel.cap/2",
+  "tier": "standard",
+  "lifecycle": "active",
+  "owners": ["team-sentinel"]
+}

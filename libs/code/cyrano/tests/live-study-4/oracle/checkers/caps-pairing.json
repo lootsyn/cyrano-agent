@@ -1,0 +1,18 @@
+{
+  "kind": "paired_files",
+  "params": {
+    "trigger": "sentinel/*.py",
+    "derive": "caps/{stem}.json",
+    "required": true,
+    "json_fields": {
+      "name": {"matches_stem": true},
+      "schema": {"equals": "sentinel.cap/3"},
+      "compat": {"equals": "sentinel/3"},
+      "tier": {"one_of": ["observer", "standard", "privileged"]},
+      "lifecycle": {
+        "one_of": ["active", "provisional", "sunset", "removed"]
+      },
+      "owners": {"required": true}
+    }
+  }
+}

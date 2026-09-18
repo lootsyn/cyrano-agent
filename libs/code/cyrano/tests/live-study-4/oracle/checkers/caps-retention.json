@@ -1,0 +1,17 @@
+{
+  "kind": "json_fields",
+  "params": {
+    "files": "caps/*.json",
+    "missing_is_violation": true,
+    "fields": {
+      "name": {"matches_stem": true},
+      "schema": {"equals": "sentinel.cap/3"},
+      "compat": {"equals": "sentinel/3"},
+      "tier": {"one_of": ["observer", "standard", "privileged"]},
+      "lifecycle": {
+        "one_of": ["active", "provisional", "sunset", "removed"]
+      },
+      "owners": {"required": true}
+    }
+  }
+}

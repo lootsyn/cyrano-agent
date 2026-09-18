@@ -1,0 +1,11 @@
+{
+  "caps_must_exist": ["caps/alpha.json"],
+  "cap_fields": {
+    "caps/alpha.json": {
+      "schema": "sentinel.cap/3",
+      "compat": "sentinel/3",
+      "lifecycle": "removed",
+      "name": "alpha"
+    }
+  }
+}
