@@ -4596,7 +4596,9 @@ checker 실패는 기존 agent loop 안에서 보정한다. `WorkUnitSpec.cost_c
 
 실행 중 기억 변경: 이미 승인된 계획에 봉인된 obligation은 plan permit 수명을 따른다. stale·만료된 양성 기억의 obligation은 계획 revision까지 유지되지만, quarantine·보안 revoke된 기억에 근거한 obligation이 있으면 영향받는 subject의 신규 dispatch를 pause하고 재검토한다 — `bind_context`의 `STALE_EPOCH`·`is_revoked` 재검사와 같은 방향의 fail-closed다.
 
-유지되는 보안 원칙: 일반 `AGENTS.md`·임의 파일의 내용은 계속 참고자료다. 의무 투영을 통과한 규칙도 도구 권한·승인 범위를 넓히지 못하고, `bind_context`의 `STALE_EPOCH`·revocation pause가 그대로 적용된다. upstream `MemoryMiddleware` 자체와 그 안내 문구는 변경하지 않는다 — 일반 기억의 보안 의미는 유지한다. 이 의무 투영 경로 전체는 WP06급 governed-loop 통합이 live assembly에 연결되기 전까지 설계 목표이며, 현재 runtime에는 존재하지 않는다.
+유지되는 보안 원칙: 일반 `AGENTS.md`·임의 파일의 내용은 계속 참고자료다. 의무 투영을 통과한 규칙도 도구 권한·승인 범위를 넓히지 못하고, `bind_context`의 `STALE_EPOCH`·revocation pause가 그대로 적용된다. upstream `MemoryMiddleware` 자체와 그 안내 문구는 변경하지 않는다 — 일반 기억의 보안 의미는 유지한다.
+
+구현 상태: 이 의무 경로는 이제 실제 dcode assembly에 연결된다. `dcode/governed_runtime.run_governed_work`가 projection→plan linkage→subject digest→approval→SignedPermit→context bind→native agent(`create_cli_agent` + `ExtensionRegistry`)→`GovernedObligationMiddleware`→brokered tool calls→`verify_obligations`→bounded correction→evidence를 구동한다. middleware는 `wrap_model_call`에서 매 요청 직전 `assert_obligations_current`로 통화성(currency)을 재검사하고, `wrap_tool_call`에서 `ActionBroker` 결정과 permit 재검증을 강제한다 — 별도 agent loop가 아니라 등록 extension middleware다. EVAL-WIRE-01의 `dcode/wire.WireCapture`는 같은 경계에서 digest-only 요청 증거를 기록하며 `wire_confirmed`는 이 객체가 실제 직렬화 요청을 본 경우에만 true다. live governed dispatch는 operator가 `CYRANO_GOVERNED_SESSION` manifest(고정 permit·grants·obligation 바인딩·store/audit 경로)와 `CYRANO_EXTENSION_SENTINEL=enabled`를 제공할 때만 활성화된다; 선언된 manifest가 무효하면 launch는 unmediated 실행으로 떨어지지 않고 중단된다.
 
 
 ---
@@ -13386,7 +13388,7 @@ uv run --no-sync python -m pytest tests/cyrano_product/test_wp05_context.py -q
 
 ### WP06: dcode extension와 actual attempt port
 
-상태: planned. 기존 foundation이 일부 원리를 구현했더라도 이 작업의 product-level 완료를 의미하지 않는다.
+상태: partial. governed 의무 채널의 live assembly 연결이 추가됐다 — `dcode/governed_runtime.run_governed_work`가 projection→subject→approval→SignedPermit→bind→`create_cli_agent`+`ExtensionRegistry`→`GovernedObligationMiddleware`→brokered tool call→`verify_obligations`→bounded correction을 구동하고 `tests/cyrano_product/test_wp06_governed_runtime.py` 20건이 실제 agent graph 위 scripted local model로 end-to-end·revocation·race·budget·scope_rule sub-kind를 검증한다. `dcode/wire.py`의 `WireCapture`는 EVAL-WIRE-01 경계에서 digest-only 요청 증거를 남긴다(`tests/cyrano_product/test_wp23_wire.py` 9건). 그러나 검증은 offline fake-model 통합이다 — live provider dispatch와 실제 paid run은 명시 인가 없이 수행되지 않았고 WP06의 product_verified는 성립하지 않는다.
 
 #### 목표와 입력
 
@@ -14304,7 +14306,7 @@ memory candidate/active 분리와 phase별 recall·적용 증거를 구현한다
 - `MEM-DELETE`: index/cache/summary/export 영향 추적 무효화
 - `MEM-APPLIED`: referenced만, applied/effective 단정 금지
 
-WP23 Study 3 원인분석 이후 추가된 의무 투영 수용(`scope_rule` kind·의무 투영·checker registry·검증·보정 ledger·dual-channel 분리는 오프라인 제품 조각으로 구현됐다 — `memory/obligations.py`·`memory/checkers.py`·`memory/obligation_check.py`·`dcode/memory_adapter.py`·`improvement/knowledge_lane.py`와 `tests/cyrano_product/test_wp11_obligations.py` 37건이 실제 상태 전이로 검증한다. 그러나 governed 의무 채널의 live dcode assembly 연결은 아직 없다 — 이 WP의 product_verified는 해당 확장에 한해 성립하지 않으며, native runtime 결속은 WP06급 governed-loop 통합 의존이 계속 소유한다):
+WP23 Study 3 원인분석 이후 추가된 의무 투영 수용(`scope_rule` kind·의무 투영·checker registry·검증·보정 ledger·dual-channel 분리는 `memory/obligations.py`·`memory/checkers.py`·`memory/obligation_check.py`·`dcode/memory_adapter.py`·`improvement/knowledge_lane.py`로 구현됐고 `tests/cyrano_product/test_wp11_obligations.py`가 실제 상태 전이로 검증한다. live dcode assembly 결속도 이제 존재한다 — `dcode/governed_runtime.run_governed_work`가 `create_cli_agent`+`ExtensionRegistry` 경로로 `GovernedObligationMiddleware`를 실제 loop에 등록하고 `tests/cyrano_product/test_wp06_governed_runtime.py` 20건이 native graph·fake model로 end-to-end를 검증한다. 다만 이 검증은 scripted local model 위의 offline 통합이며 live provider 효과 측정이 아니다 — WP11의 product_verified는 계속 sealed live 연구 없이 성립하지 않는다):
 
 - `RULE-PROJECT-01`: 투영 조건 충족 시 obligation이 memory_id·revision·checker_id 결속으로 의무 채널에 투영
 - `RULE-VISIBLE-CONFLICT`: 규칙·가시 예제 충돌 시 예제를 따른 bundle은 checker 거부
@@ -16260,6 +16262,8 @@ uv run --no-sync python -m pytest tests/cyrano_product/test_wp22_release.py -q
 ### WP23: 실제 효과 검증과 승인된 초기 운영
 
 상태: planned. 기존 foundation이 일부 원리를 구현했더라도 이 작업의 product-level 완료를 의미하지 않는다.
+
+EVAL-WIRE-01 관측 경계는 구현됐다: `dcode/wire.WireCapture`가 `GovernedObligationMiddleware`의 `wrap_model_call` 안에서 provider handler 직전의 최종 요청을 digest-only로 기록하고(run_id·sequence·context/obligation/routing/message/tool/model-param digest·model identity·timestamp), 선택적 JSONL sink로 내구화한다. `wire_confirmed`는 이 경계에서 관측한 경우에만 true다 — adapter 수준 주입은 여전히 `adapter_confirmed`일 뿐이다. `tests/cyrano_product/test_wp23_wire.py` 9건과 governed-runtime 통합 테스트가 redaction·sequence·경계를 검증한다. 이는 다음 live 연구의 관측 기반일 뿐 효과 측정 자체가 아니다 — sealed live study는 별도 인가가 필요하다.
 
 #### 목표와 입력
 
@@ -62732,9 +62736,20 @@ grants no authority. ``governed`` verifies the extension sentinel and
 runtime probes before registering the governed bridge; a disabled
 sentinel or an unverified runtime aborts registration — governed
 launch stops rather than degrading to advisory.
+
+In governed mode, ``CYRANO_GOVERNED_SESSION`` may name an
+operator-written session manifest (pinned permit, grants, obligation
+bindings, store and audit paths). When present, the extension
+registers ``GovernedObligationMiddleware`` so every model request
+re-checks obligation currency and every tool call is brokered against
+the signed permit and grant ACL. A missing or invalid manifest aborts
+the launch; governed mode never silently drops mediation.
 """
 
+import json
 import os
+from dataclasses import asdict
+from pathlib import Path
 
 from deepagents_code.cyrano.dcode.middleware import (
     verify_extension_sentinel,
@@ -62746,17 +62761,63 @@ def governed_enabled() -> bool:
     return os.environ.get("CYRANO_EXTENSION_SENTINEL") == "enabled"
 
 
+def _register_governed_middleware(d) -> bool:
+    """Register governed mediation when a session manifest exists.
+
+    Returns True when the manifest named by ``CYRANO_GOVERNED_SESSION``
+    loaded and the middleware registered; False when no manifest was
+    declared. A declared-but-unloadable manifest raises — governed
+    launch stops rather than running unmediated.
+    """
+    manifest = os.environ.get("CYRANO_GOVERNED_SESSION")
+    if not manifest:
+        return False
+    from deepagents_code.cyrano.dcode.governed_middleware import (
+        GovernedObligationMiddleware,
+        session_from_manifest,
+    )
+    from deepagents_code.cyrano.dcode.wire import WireCapture
+
+    session = session_from_manifest(Path(manifest))
+    wire_path = os.environ.get("CYRANO_WIRE_EVIDENCE")
+    wire = None
+    if wire_path:
+        sink_path = Path(wire_path)
+
+        def sink(evidence) -> None:
+            """Append one digest-only wire record to the sink."""
+            with sink_path.open("a", encoding="utf-8") as handle:
+                handle.write(json.dumps(asdict(evidence)) + "\n")
+
+        wire = WireCapture(
+            run_id=os.environ.get("CYRANO_RUN_ID", "governed"),
+            sink=sink,
+        )
+    d.register_middleware(GovernedObligationMiddleware(session, wire=wire))
+    return True
+
+
 async def extension(d):
-    """Register according to the declared mode."""
+    """Register according to the declared mode.
+
+    Raises:
+        RuntimeError: if ``CYRANO_MODE`` is unset or the governed
+            sentinel is disabled.
+    """
     mode = os.environ.get("CYRANO_MODE")
 
     if mode == "governed":
         # UH-OPS-03: a disabled sentinel stops the governed launch.
         verify_extension_sentinel(governed_enabled())
+        mediated = _register_governed_middleware(d)
 
         def cyrano_governed_status() -> dict[str, str]:
             """Report governed bridge status; grants no authority."""
-            return {"mode": "governed", "sentinel": "enabled"}
+            return {
+                "mode": "governed",
+                "sentinel": "enabled",
+                "mediation": "active" if mediated else "absent",
+            }
 
         d.register_tool(cyrano_governed_status)
         return

@@ -16,14 +16,20 @@
   "deepagents_code/cyrano/intelligence/lsp.py": "sha256:978a87a66a403bd66cacb41346952557245e118623da8445fc351557e7b6927a",
   "deepagents_code/cyrano/intelligence/manager.py": "sha256:8774acb448c223785bf80f48254dd890c90c40ab56931ee6e22f7916be922a6e",
   "deepagents_code/cyrano/intelligence/__init__.py": "sha256:a9b091cddb2932e6eadb9cd401b37a16d95c078bc924404646cf1d7953af4ae6",
-  "cyrano/plugins/cyrano/extension.py": "sha256:85d3dfd57e0d7440f948246ab19835047ab4653ea1dddab04874089dcd0e814d",
+  "cyrano/plugins/cyrano/extension.py": "sha256:a668f53d31cf1d2771d37c9304d51bb211de5f387c59cb68b0f32e330ddeca36",
   "tests/cyrano_product/test_wp06_product.py": "sha256:ea731feb67fb37b64d24c13bbaa63337c808380be394c34b8170170500916145",
   "tests/cyrano_product/test_wp06_protocol.py": "sha256:0b7297781a1d1e1590b5b4ff3e8536ed5387adabc90a7fe27d2b7c0f4cb64739",
   "tests/cyrano_product/test_wp06_contract_scenarios.py": "sha256:d0bb092380833cca6ec0cbf99c96565d91a45797c8d599ca8da12b5c32720bae",
   "tests/cyrano_product/test_1_1.py": "sha256:28fd90c8245b4246de7f9078b5dad73f0e0a9d99112e23083d17e3f86950334f",
   "tests/cyrano_product/test_1_2.py": "sha256:e772bdb8ab75d3353623691d2d6901390c6353890a3f5959d55b8592f2ae7b1d",
   "tests/cyrano_product/test_1_3.py": "sha256:3197e21fa902b3459fcf1ed81d587723d04f174c2347ef5acaf500d02ee05864",
-  "tests/cyrano_product/test_r5_rf02.py": "sha256:221370fca2ffd0ff960fc02f03095d9f3d28d52c46c0ff105958136d92042ee5"
+  "tests/cyrano_product/test_r5_rf02.py": "sha256:221370fca2ffd0ff960fc02f03095d9f3d28d52c46c0ff105958136d92042ee5",
+  "deepagents_code/cyrano/dcode/wire.py": "sha256:2c664a5fbd276c3242434ea0dff0e06f01eabcd6d1ad0ec60971ac7732ad4efa",
+  "deepagents_code/cyrano/dcode/governed_middleware.py": "sha256:a4f4390b62b8afaa3262d6a988b8a9ba0e8784ee88b3ae6f1a3483dd89fcd89e",
+  "deepagents_code/cyrano/dcode/governed_runtime.py": "sha256:f481c773e34bd641c523aadc461ca3738eb007f14c07db4845ebb83a2986c72a",
+  "deepagents_code/cyrano/memory/obligations.py": "sha256:eccb50edba3caa782511b3286eb210e8a17a2da082f6c9428448f1dca20b474e",
+  "tests/cyrano_product/test_wp06_governed_runtime.py": "sha256:4a4a56420a53fb2ac985c06fd2007d77b68c7dfc5a6ce43aefbb622e8eb44142",
+  "tests/cyrano_product/test_wp23_wire.py": "sha256:2c101f1ef1bf0e5c9976be21137fa12c2d8ac7df2446d86401344dacf09033a7"
  },
  "contract_files": {
   "cyrano/contracts/sql/target-schema.sql": "ledger DDL used by report-store tests",
@@ -82,6 +88,41 @@
   {
    "argv": "uv run --no-sync python cyrano/scripts/check_r5.py",
    "exit_code": 0
+  },
+  {
+   "argv": "python -m pytest tests/cyrano_product/test_wp06_governed_runtime.py tests/cyrano_product/test_wp23_wire.py tests/cyrano_product/test_wp11_obligations.py -q",
+   "exit_code": 0,
+   "result": "63 passed"
+  },
+  {
+   "argv": "python -m pytest tests/cyrano_product -q",
+   "exit_code": 0,
+   "result": "1066 passed"
+  },
+  {
+   "argv": "python cyrano/scripts/dev.py check",
+   "exit_code": 0,
+   "result": "5/5 success"
+  },
+  {
+   "argv": "python cyrano/scripts/dev.py schemas",
+   "exit_code": 0,
+   "result": "schemas clean"
+  },
+  {
+   "argv": "python cyrano/scripts/quality.py (ruff 0.16.0 + ty 0.0.61 on PATH)",
+   "exit_code": 0,
+   "result": "status passed; ruff check 0, format 0, ty 0 on cyrano scope"
+  },
+  {
+   "argv": "git diff --check",
+   "exit_code": 0,
+   "result": "clean"
+  },
+  {
+   "argv": "uv tool run --python .venv/bin/python basedpyright <changed files>",
+   "exit_code": 1,
+   "result": "0 errors, 123 reportUnknown*/reportImplicitStringConcatenation warnings - same class as committed modules (approvals.py etc.); ty remains the recorded clean gate"
   }
  ],
  "acceptance_evidence": {
@@ -172,24 +213,29 @@
   "CON-MOD-09": "passed - unsupported content kind = CAPABILITY_UNAVAILABLE (test_con_mod_09)",
   "CON-MOD-10": "passed - arg size/count hard limits (test_con_mod_10)",
   "CON-MOD-11": "passed - second retry owner = CONFLICT (test_con_mod_11)",
-  "CON-MOD-12": "passed - cancelled call records usage; late result stale (test_con_mod_12)"
+  "CON-MOD-12": "passed - cancelled call records usage; late result stale (test_con_mod_12)",
+  "GOVERNED-OBLIGATION-RUNTIME": "passed - run_governed_work drives projection->subject->approval->SignedPermit->bind->create_cli_agent+ExtensionRegistry->GovernedObligationMiddleware->brokered tool calls->verify_obligations->bounded correction on the real agent graph with a scripted local model; end-to-end satisfied + correction + revocation/race/staleness fail-closed cases all pass offline (test_wp06_governed_runtime, 20)",
+  "EVAL-WIRE-01": "passed (offline) - WireCapture records digest-only request evidence at wrap_model_call immediately before the provider handler; wire_confirmed only on real boundary observation; no content or secrets persisted (test_wp23_wire, 9; runtime file proves boundary)"
  },
  "review_findings": [
   "bridge unverified-handle refusal delegates to adapter.require_governed to keep DCODE_RUNTIME_NOT_VERIFIED single-owned (WP00 collision test enforces this)",
   "resolve_quality_policy takes `object` and narrows explicitly; ty rejects Mapping-union narrowing due to invariance",
   "ruff-format FAIL carries empty diagnostics by design; raw_digest + exit_code preserve evidence",
-  "QualityReportStore binds real ScopedRepository execute_command (CAS + idempotency + outbox), no fixture ledger"
+  "QualityReportStore binds real ScopedRepository execute_command (CAS + idempotency + outbox), no fixture ledger",
+  "run_semantic_review on wire/governed_middleware/governed_runtime/extension: 0 DOCSTRING_MISSING (all resolved); 4 DOCSTRING_MISSING_RAISES on private narrowers + session_from_manifest - same accepted norm as committed modules (approvals.py/service.py carry 8 identical findings)"
  ],
  "known_limitations": [
   "live_dcode cases R3-11-06/R3-12-06/R3-13-06 recorded blocked/not_run: the component gate is verified, the live wheel/provider path is not",
   "LspManager gates the read-only surface in-process; no real LSP server subprocess is spawned (RF02 scope is lifecycle/guard semantics)",
   "basedpyright reports 58 warnings (reportUnknown*/reportUnannotated* on JSON boundaries); 0 errors; same warning class as pre-existing baseline",
-  "style_audit finding_count 447 is pre-existing baseline debt; zero findings in WP06-owned files"
+  "style_audit finding_count 447 is pre-existing baseline debt; zero findings in WP06-owned files",
+  "governed runtime verified on the real agent graph with a scripted local model only; no live provider dispatch or paid run performed"
  ],
  "blocked_not_run": [
   "R3-11-06, R3-12-06, R3-13-06: live_dcode layer — no provider key/live wheel authorization in this environment",
   "dev.py quality gate: fails on pre-existing baseline debt outside WP06 files (recorded, not hidden)"
  ],
- "next_work_package_impact": "WP08/WP09/WP10 can consume AttemptBridge/ProtocolNormalizer/QualityReportStore; the governed launch path stays fail-closed until WP00 runtime-lock verification (WP22 gate).",
- "authority_scope": "component + governed_integration layers only; no live provider or wheel mutation performed"
+ "next_work_package_impact": "WP08/WP09/WP10 can consume AttemptBridge/ProtocolNormalizer/QualityReportStore; the governed launch path stays fail-closed until WP00 runtime-lock verification (WP22 gate). WP23 gains the EVAL-WIRE-01 observation boundary needed to seal a future live study; governed obligation channel is wired for dispatch.",
+ "authority_scope": "component + governed_integration layers only; no live provider or wheel mutation performed",
+ "blocked": []
 }

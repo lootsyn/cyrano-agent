@@ -36,6 +36,23 @@ if TYPE_CHECKING:
 #: The governed knowledge kind eligible for obligation projection.
 RULE_KIND = "scope_rule"
 
+
+def registered_rule_kinds(
+    admitted: frozenset[str] | None = None,
+) -> frozenset[str]:
+    """Kinds eligible for projection: exact kind plus listed sub-kinds.
+
+    A ``scope_rule.<sub>`` kind is admitted only when the caller
+    explicitly lists it — the namespaced prefix alone never creates
+    authority, and a sub-kind still passes the same closed parser,
+    lifecycle, scope and projection gates as the bare kind.
+    """
+    extra = frozenset(
+        k for k in (admitted or frozenset()) if k.startswith(RULE_KIND + ".")
+    )
+    return frozenset({RULE_KIND}) | extra
+
+
 #: Closed operation vocabulary for declarative selectors.
 OPERATIONS = frozenset({"create", "modify", "rename", "delete", "repair"})
 
@@ -203,7 +220,12 @@ def parse_scope_rule(content: object) -> ScopeRuleSpec:
 
 
 def is_scope_rule(record: MemoryRecord) -> bool:
-    """A record is a scope rule by exact or namespaced kind."""
+    """Classify the scope_rule family — a label, never authority.
+
+    Prefix matching is only a classifier. Obligation authority comes
+    from ``registered_rule_kinds`` plus the closed parser, lifecycle,
+    scope and projection gates — never from this predicate alone.
+    """
     return record.kind == RULE_KIND or record.kind.startswith(RULE_KIND + ".")
 
 
@@ -228,6 +250,7 @@ def project_obligations(
     rule_bodies: Mapping[str, bytes] | None = None,
     memory_view: MemoryView | None = None,
     checker_digests: Mapping[str, str] | None = None,
+    admitted_kinds: frozenset[str] | None = None,
 ) -> ObligationProjection:
     """Project eligible ``scope_rule`` records into obligations.
 
@@ -238,10 +261,13 @@ def project_obligations(
     repository's content per memory id — bodies are access
     controlled, never read inside this pure projection. Each active
     record projects at most one obligation — running projection
-    twice changes nothing.
+    twice changes nothing. ``admitted_kinds`` is the explicit
+    sub-kind allowlist; an unregistered ``scope_rule.<x>`` record is
+    excluded ``unregistered_kind`` even though it carries the prefix.
     """
     checkers = dict(checker_digests or {})
     bodies = dict(rule_bodies or {})
+    kinds = registered_rule_kinds(admitted_kinds)
     obligations: list[RuleObligation] = []
     excluded: list[tuple[str, str]] = []
     seen: set[str] = set()
@@ -266,6 +292,11 @@ def project_obligations(
             record.memory_id, memory_view
         ):
             reason = "revoked"
+        elif record.kind not in kinds:
+            # Lifecycle reasons are reported first — they are the
+            # proximate state of the record; kind admission gates an
+            # otherwise-eligible record.
+            reason = "unregistered_kind"
         spec: ScopeRuleSpec | None = None
         if reason is None:
             body = bodies.get(record.memory_id)

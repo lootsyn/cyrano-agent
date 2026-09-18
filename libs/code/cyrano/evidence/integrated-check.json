@@ -131,8 +131,8 @@
     },
     {
       "path": ".agents/work/WP06.ko.md",
-      "bytes": 13191,
-      "sha256": "051020438827dd437f0fc4c262471259564b4d809b09ab10ff31fc6f3e92312b"
+      "bytes": 13924,
+      "sha256": "f16030d95f347e654ec98eaee6dad127c89d048bb322a77ed0411f7acade97a3"
     },
     {
       "path": ".agents/work/WP07.ko.md",
@@ -156,8 +156,8 @@
     },
     {
       "path": ".agents/work/WP11.ko.md",
-      "bytes": 17364,
-      "sha256": "15202d4c5f7a28d838650810868d74ac15d24eed370027947911b10d2e67128f"
+      "bytes": 17603,
+      "sha256": "dd1f3c139892cabc515735409b0e3d47b6e916f05ab015141e84aea81231a9d5"
     },
     {
       "path": ".agents/work/WP12.ko.md",
@@ -216,8 +216,8 @@
     },
     {
       "path": ".agents/work/WP23.ko.md",
-      "bytes": 9701,
-      "sha256": "67414768815079eba88510732a8e3137f8d746658cc77ac0265042d79576e8e5"
+      "bytes": 10467,
+      "sha256": "38da151af3ebad052f48995973ac3a5065303fd70d7fd67ef05bb2122509b5b9"
     },
     {
       "path": ".claude/CLAUDE.md",
@@ -321,8 +321,8 @@
     },
     {
       "path": "docs/design/MEMORY_LIFECYCLE.ko.md",
-      "bytes": 20403,
-      "sha256": "b723890afa756d29c3fdf52c0a7bfd433a9122fc84a8e21984c256854c8aea66"
+      "bytes": 21413,
+      "sha256": "9cd8fb6410b20105adb502abb5adf4c28ad2b9b4a782f14b7dcaaa703262ccab"
     },
     {
       "path": "docs/design/NATIVE_MONITOR_TUI.ko.md",

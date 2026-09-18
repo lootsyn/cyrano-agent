@@ -168,7 +168,7 @@
     },
     {
       "path": "docs/design/MEMORY_LIFECYCLE.ko.md",
-      "sha256": "b723890afa756d29c3fdf52c0a7bfd433a9122fc84a8e21984c256854c8aea66"
+      "sha256": "9cd8fb6410b20105adb502abb5adf4c28ad2b9b4a782f14b7dcaaa703262ccab"
     },
     {
       "path": "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md",
@@ -456,7 +456,7 @@
     },
     {
       "path": ".agents/work/WP06.ko.md",
-      "sha256": "051020438827dd437f0fc4c262471259564b4d809b09ab10ff31fc6f3e92312b"
+      "sha256": "f16030d95f347e654ec98eaee6dad127c89d048bb322a77ed0411f7acade97a3"
     },
     {
       "path": ".agents/work/WP07.ko.md",
@@ -476,7 +476,7 @@
     },
     {
       "path": ".agents/work/WP11.ko.md",
-      "sha256": "15202d4c5f7a28d838650810868d74ac15d24eed370027947911b10d2e67128f"
+      "sha256": "dd1f3c139892cabc515735409b0e3d47b6e916f05ab015141e84aea81231a9d5"
     },
     {
       "path": ".agents/work/WP12.ko.md",
@@ -524,7 +524,7 @@
     },
     {
       "path": ".agents/work/WP23.ko.md",
-      "sha256": "67414768815079eba88510732a8e3137f8d746658cc77ac0265042d79576e8e5"
+      "sha256": "38da151af3ebad052f48995973ac3a5065303fd70d7fd67ef05bb2122509b5b9"
     },
     {
       "path": "../deepagents_code/cyrano/context/README.md",
@@ -1336,7 +1336,7 @@
     },
     {
       "path": "plugins/cyrano/extension.py",
-      "sha256": "85d3dfd57e0d7440f948246ab19835047ab4653ea1dddab04874089dcd0e814d"
+      "sha256": "a668f53d31cf1d2771d37c9304d51bb211de5f387c59cb68b0f32e330ddeca36"
     },
     {
       "path": "scripts/package.py",
@@ -1619,5 +1619,5 @@
       "sha256": "c405fe86a82a00a2272bd2e97a698eb03c5ab9d3bdc597bc316ee1a37de7da49"
     }
   ],
-  "markdown_sha256": "6be211ffd373834183ceb081a3f40bedf9c4787e75e88be1282258e580bcddc2"
+  "markdown_sha256": "f292b77c6db32c2e5ee4c033449679ea21c1dab04950de33706b1d40a3339024"
 }

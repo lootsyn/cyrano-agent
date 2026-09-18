@@ -177,6 +177,7 @@ def _project(
     *,
     checker_digests: dict[str, str] | None = None,
     memory_view: MemoryView | None = None,
+    admitted: frozenset[str] | None = None,
 ) -> ObligationProjection:
     records = service._repo.list_scope(scope)
     bodies = {
@@ -194,6 +195,7 @@ def _project(
         checker_digests=(
             _registry().digests() if checker_digests is None else checker_digests
         ),
+        admitted_kinds=admitted,
     )
 
 
@@ -737,7 +739,11 @@ def test_verification_error_never_passes(svc, tmp_path):
         {"rule_id": "r", "checker_id": "ghost", "applicability": {}}
     ).encode()
     _activate(service, scope, "m-ghost", body=body, kind="scope_rule.g")
-    excluded = dict(_project(service, scope).excluded)
+    excluded = dict(
+        _project(
+            service, scope, admitted=frozenset({"scope_rule.g"})
+        ).excluded
+    )
     assert excluded["m-ghost"] == "checker_unresolved"
 
 

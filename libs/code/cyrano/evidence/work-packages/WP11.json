@@ -16,11 +16,14 @@
   "deepagents_code/cyrano/memory/repository.py": "sha256:0e1a77af82d3fab716f875f6cb58056578eeb091b94f61f63ede1d092217ecd5",
   "deepagents_code/cyrano/memory/selection.py": "sha256:1bd90e61eed072ad0be2d625e4e6b72758a670431649785387451bda0c9f8ad8",
   "deepagents_code/cyrano/memory/service.py": "sha256:798e68c9e53f7d9ddc6a83f7987266423172652eb565cde1ba8c46f713463d3a",
-  "deepagents_code/cyrano/dcode/memory_adapter.py": "sha256:85bce69f13ddd67904291f0f1b1da14563c08a91bd418a632c0a9c61554efd2f",
+  "deepagents_code/cyrano/dcode/memory_adapter.py": "sha256:6fdf3e5b54f79abaa1e4424066bd723fbeb4e0a3a4207b957e32bcf4513652ea",
   "deepagents_code/cyrano/sqlite/repository.py": "sha256:ad55e492a623b1adb148071ebfb70d64bf6f29dd201559c482f455c07fe0f619",
   "tests/cyrano_product/test_wp11_product.py": "sha256:70de632d46a2e5067c5e451d49591e9597d1d144158ae3087f8f056c4a109bd8",
   "tests/cyrano_product/test_wp11_recall.py": "sha256:e79b25f85610285e57e236e855268a0c23972dae806013e3cbf4695cefb60322",
-  "tests/cyrano_product/test_wp11_contract_scenarios.py": "sha256:ad359c96a5ce997b1d3851262313248dbf2a5cd7ff4af9feaec3d9faf49caa27"
+  "tests/cyrano_product/test_wp11_contract_scenarios.py": "sha256:ad359c96a5ce997b1d3851262313248dbf2a5cd7ff4af9feaec3d9faf49caa27",
+  "deepagents_code/cyrano/dcode/governed_runtime.py": "sha256:f481c773e34bd641c523aadc461ca3738eb007f14c07db4845ebb83a2986c72a",
+  "deepagents_code/cyrano/dcode/governed_middleware.py": "sha256:a4f4390b62b8afaa3262d6a988b8a9ba0e8784ee88b3ae6f1a3483dd89fcd89e",
+  "tests/cyrano_product/test_wp06_governed_runtime.py": "sha256:4a4a56420a53fb2ac985c06fd2007d77b68c7dfc5a6ce43aefbb622e8eb44142"
  },
  "contract_files": {
   "cyrano/contracts/sql/target-schema.sql": "unchanged; memory_records is an additive Cyrano-owned extension table (the contract memories/memory_fts tables lack evidence_refs/kind/rank/supersedes semantics; the extension table pattern is the same one WP02 established)"
@@ -94,7 +97,11 @@
   "CON-MEM-09": "passed - exposure without evidence is referenced (test_con_mem_09)",
   "CON-MEM-10": "passed - complete evidence chain yields applied (test_con_mem_10)",
   "CON-MEM-11": "passed - delete + backup/restore keeps tombstone; unsearchable (test_con_mem_11)",
-  "CON-MEM-12": "passed - gate/store failure blocks hint as AUDIT_UNAVAILABLE (test_con_mem_12)"
+  "CON-MEM-12": "passed - gate/store failure blocks hint as AUDIT_UNAVAILABLE (test_con_mem_12)",
+  "RULE-PROJECT-01": "passed - scope_rule -> RuleObligation -> WorkUnit linkage -> sealed subject digest -> permit; end-to-end through the real dcode agent graph via GovernedObligationMiddleware (test_end_to_end_satisfied)",
+  "RULE-VISIBLE-CONFLICT": "passed - v1 exemplar-following bundle rejected by the deterministic checker; bounded correction produces the v2 postimage; first failure preserved (test_study3_regression_correction)",
+  "RULE-CHECKER-REJECT": "passed - checker failure -> deterministic feedback -> correction inside cost_cap; budget exhaustion recorded (test_correction_budget_exhaustion)",
+  "RULE-STALE-EPOCH": "passed - stale pinned view refuses bind (test_stale_view_fails); revision move mid-run aborts (test_revision_change_after_approval_fails)"
  },
  "commands": [
   {
@@ -138,6 +145,11 @@
   {
    "argv": "uv run --no-sync python cyrano/scripts/check_r5.py",
    "exit": 0
+  },
+  {
+   "argv": "python -m pytest tests/cyrano_product/test_wp11_obligations.py -q",
+   "exit_code": 0,
+   "result": "34 passed"
   }
  ],
  "errors": [],
@@ -152,5 +164,5 @@
  ],
  "review_findings": [],
  "authority_scope": "memory lifecycle, scope ACL, deterministic recall, deletion tombstones, and evidence-bound application verdicts verified at component level against the real scoped ledger",
- "next_wp_impact": "WP12/WP13 consume MemoryService recall views; workflow packages bind releases via bind_core"
+ "next_wp_impact": "WP12/WP13 consume MemoryService recall views; workflow packages bind releases via bind_core Obligation runtime binding now exists: run_governed_work composes projection->approval->permit->native agent->brokered tools->verification->correction on the real dcode assembly."
 }
