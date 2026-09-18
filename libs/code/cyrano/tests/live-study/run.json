@@ -65,12 +65,12 @@
   "run_order": [
     "task-a-candidate",
     "improvement",
-    "task-b1-baseline",
-    "task-b1-candidate",
-    "task-b2-baseline",
-    "task-b2-candidate",
-    "task-b3-baseline",
-    "task-b3-candidate"
+    "task-b4-baseline",
+    "task-b4-candidate",
+    "task-b5-baseline",
+    "task-b5-candidate",
+    "task-b6-baseline",
+    "task-b6-candidate"
   ],
   "controls": {
     "same_task_text_both_arms": true,

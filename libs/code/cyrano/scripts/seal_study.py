@@ -120,16 +120,15 @@ def main() -> int:
     provider = str(route["model"]["provider"])
     previous = EVIDENCE / "manifest.json"
     supersedes = None
+    predecessor = None
     if previous.is_file():
         old = json.loads(previous.read_text(encoding="utf-8"))
-        if old.get("status") == "sealed_not_executed":
+        old_status = str(old.get("status", ""))
+        old_id = str(old["manifest"]["manifest_id"])[:15]
+        if old_status == "sealed_not_executed":
             old["status"] = "superseded"
             old["superseded_by"] = "manifest.json"
-            archive = EVIDENCE / (
-                "manifest.superseded-"
-                + str(old["manifest"]["manifest_id"])[:15]
-                + ".json"
-            )
+            archive = EVIDENCE / f"manifest.superseded-{old_id}.json"
             archive.write_text(
                 json.dumps(old, indent=2) + "\n", encoding="utf-8"
             )
@@ -138,9 +137,37 @@ def main() -> int:
                 "sealed_manifest_digest": old["sealed_manifest_digest"],
                 "archived": archive.name,
             }
+        elif old_status.startswith("executed"):
+            # An executed study is immutable history: archive it with
+            # its status and evidence pointers untouched, then link
+            # the new seal to it as predecessor — never supersede.
+            archive = EVIDENCE / f"manifest.{old_status}-{old_id}.json"
+            archive.write_text(
+                json.dumps(old, indent=2) + "\n", encoding="utf-8"
+            )
+            verdict = None
+            old_result = old.get("result")
+            if isinstance(old_result, str):
+                result_path = ROOT / "evidence" / old_result
+                if result_path.is_file():
+                    try:
+                        verdict = json.loads(
+                            result_path.read_text(encoding="utf-8")
+                        ).get("verdict")
+                    except json.JSONDecodeError:
+                        verdict = None
+            predecessor = {
+                "manifest_id": old["manifest"]["manifest_id"],
+                "sealed_manifest_digest": old["sealed_manifest_digest"],
+                "status": old_status,
+                "verdict": verdict,
+                "archived": archive.name,
+            }
     record = {
         "kind": "sealed_experiment_manifest",
         "status": "sealed_not_executed",
+        "study_id": str(suite.get("study_id", "wp23-live-study")),
+        "evidence_dir": "evidence/live-evaluation/study-2/",
         "manifest": {
             field: getattr(manifest, field)
             for field in manifest.__dataclass_fields__
@@ -170,6 +197,8 @@ def main() -> int:
     }
     if supersedes is not None:
         record["supersedes"] = supersedes
+    if predecessor is not None:
+        record["predecessor"] = predecessor
     record["sealed_manifest_digest"] = _digest_json(record["manifest"])
     path = EVIDENCE / "manifest.json"
     path.write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")

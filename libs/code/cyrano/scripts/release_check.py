@@ -164,8 +164,27 @@ def required_gates(packaging: dict, quality_status: str | None) -> dict:
 
 
 def _live_effectiveness_status() -> str:
-    """Report the sealed live study's verdict; unrun stays not_run."""
-    result = ROOT / "evidence" / "live-evaluation" / "study-result.json"
+    """Report the current sealed study's execution outcome.
+
+    Reads the live manifest record: a sealed-but-unexecuted study is
+    ``not_run``; an executed study's verdict is taken from the result
+    file its record points at.
+    """
+    manifest_path = ROOT / "evidence" / "live-evaluation" / "manifest.json"
+    if not manifest_path.is_file():
+        return "not_run"
+    try:
+        record = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return "not_run"
+    if record.get("status") == "sealed_not_executed":
+        return "not_run"
+    result_ref = record.get("result")
+    result = (
+        ROOT / "evidence" / result_ref
+        if isinstance(result_ref, str)
+        else ROOT / "evidence" / "live-evaluation" / "study-result.json"
+    )
     if not result.is_file():
         return "not_run"
     try:

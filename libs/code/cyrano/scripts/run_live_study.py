@@ -1,4 +1,4 @@
-"""Execute the sealed WP23 live-effectiveness study.
+"""Execute the sealed WP23 live-effectiveness study (study 2).
 
 This harness is the only caller allowed to turn the sealed manifest
 into real ``dcode`` runs. It re-verifies the sealed digest, enforces
@@ -7,6 +7,16 @@ workspaces and profiles, captures raw stdout/stderr/oracle evidence,
 drives the governed improvement step, folds specimens into the trial
 ledger and produces the sealed-margin verdict. It never retries an
 ambiguous external effect and never discards an incomplete pair.
+
+Hardening versus study 1: candidate readiness is proven from real
+runtime state, never inferred from process completion text. Every
+candidate holdout run must clear ``_candidate_integrity_gate`` —
+proposal exists, approval receipt recomputes, improvement is ACTIVE,
+the provisioned artifact's digest equals the approved content digest,
+the candidate context manifest binds the run to that release, the
+baseline profile carries no candidate artifact, and the arms remain
+identical on every other sealed dimension. Any failed invariant aborts
+the run before its first model call and leaves the pair incomplete.
 """
 
 from __future__ import annotations
@@ -24,42 +34,50 @@ import time
 from pathlib import Path
 from typing import TypedDict
 
+from deepagents_code.cyrano.contracts.canonical import digest
+from deepagents_code.cyrano.contracts.types import CyranoError
+from deepagents_code.cyrano.evaluation.paired import (
+    TrialLedger,
+    TrialResult,
+    seal_experiment,
+)
+from deepagents_code.cyrano.evaluation.rubric_evidence import (
+    review_effectiveness,
+    run_preregistered_study,
+)
+from deepagents_code.cyrano.improvement.knowledge_lane import (
+    validate_knowledge_candidate,
+)
+from deepagents_code.cyrano.kernel.approvals import ApprovalDesk
+from deepagents_code.cyrano.memory.repository import MemoryRepository
+from deepagents_code.cyrano.memory.service import MemoryService
+from deepagents_code.cyrano.sqlite.repository import ScopedRepository
+
 ROOT = Path(__file__).resolve().parents[1]
 CODE = ROOT.parent
 sys.path.insert(0, str(CODE))
 sys.path.insert(0, str(ROOT / "scripts"))
 
-seal_study = importlib.import_module("seal_study")  # noqa: E402
-
-from deepagents_code.cyrano.contracts.canonical import digest  # noqa: E402
-from deepagents_code.cyrano.contracts.types import CyranoError  # noqa: E402
-from deepagents_code.cyrano.evaluation.paired import (  # noqa: E402
-    TrialLedger,
-    TrialResult,
-    seal_experiment,
-)
-from deepagents_code.cyrano.evaluation.rubric_evidence import (  # noqa: E402
-    review_effectiveness,
-    run_preregistered_study,
-)
-from deepagents_code.cyrano.improvement.knowledge_lane import (  # noqa: E402
-    validate_knowledge_candidate,
-)
-from deepagents_code.cyrano.kernel.approvals import ApprovalDesk  # noqa: E402
-from deepagents_code.cyrano.memory.repository import (  # noqa: E402
-    MemoryRepository,
-)
-from deepagents_code.cyrano.memory.service import MemoryService  # noqa: E402
-from deepagents_code.cyrano.sqlite.repository import (  # noqa: E402
-    ScopedRepository,
-)
+seal_study = importlib.import_module("seal_study")
 
 STUDY = ROOT / "tests" / "live-study"
 EVIDENCE = ROOT / "evidence" / "live-evaluation"
-RUN_ROOT = Path("/tmp/wp23-live-study")
+EVDIR = EVIDENCE / "study-2"
+RUN_ROOT = Path("/tmp/wp23-live-study-2")
 DCODE = CODE / ".venv" / "bin" / "dcode"
 TARGET_DDL = ROOT / "contracts" / "sql" / "target-schema.sql"
-AGENT = "wp23"
+
+# Fresh lane for study 2 — nothing inherits the post-hoc
+# widgetbox-convention-r1 record, which lives only in study 1's
+# committed ledger.
+STUDY_ID = "wp23-live-effectiveness-2"
+AGENT = "wp23r2"
+SCOPE = "wp23-live-study-2"
+MEMORY_ID = "widgetbox-convention-r2"
+NONCE = "wp23-live-2"
+ACTOR = "study-operator"
+PURPOSE = "improvement_approval"
+
 RUN_TIMEOUT = 1500  # inside the sealed 1800s per-run cap
 HARD_KILL = 1700
 MAX_TURNS = 25  # 8 runs x 25 turns = 200 < 240-call cap
@@ -81,6 +99,16 @@ _USAGE_ROW = re.compile(
 )
 _TOK = re.compile(r"^([\d.]+)([kKmM]?)$")
 
+_NOISE_PREFIXES = (
+    "Running task non-interactively",
+    "App:",
+    "Starting LangGraph server",
+    "✓ Server ready",
+    "🔧",
+    "✓ Task completed",
+    "Agent active",
+)
+
 
 def _tokens(raw: str) -> int:
     """Parse a formatted token count like ``45.2k`` or ``1.3M``."""
@@ -91,9 +119,9 @@ def _tokens(raw: str) -> int:
     return int(float(match.group(1)) * scale)
 
 
-def _usage(stderr_text: str) -> dict[str, int]:
-    """Extract provider-reported usage from the usage table."""
-    match = _USAGE_ROW.search(stderr_text)
+def _usage(stdout_text: str) -> dict[str, int]:
+    """Extract provider-reported usage from the stdout usage table."""
+    match = _USAGE_ROW.search(stdout_text)
     if not match:
         return {"requests": 0, "input_tokens": 0, "output_tokens": 0}
     return {
@@ -101,6 +129,25 @@ def _usage(stderr_text: str) -> dict[str, int]:
         "input_tokens": _tokens(match.group(2)),
         "output_tokens": _tokens(match.group(3)),
     }
+
+
+def _extract_note(stdout_text: str) -> str:
+    """Extract the improvement note artifact from raw stdout.
+
+    The headless run prints the model's reply inline between banner
+    lines, tool-call notifications and the trailing usage block. The
+    note is whatever real text remains after that noise is removed;
+    the ``✓ Task completed`` marker is treated as noise, never as a
+    readiness signal.
+    """
+    lines: list[str] = []
+    for line in stdout_text.splitlines():
+        if line.startswith("Usage Stats"):
+            break
+        if any(line.startswith(p) for p in _NOISE_PREFIXES):
+            continue
+        lines.append(line)
+    return "\n".join(lines).strip()
 
 
 def _env(profile: Path, home: Path) -> dict[str, str]:
@@ -167,6 +214,119 @@ class _Totals(TypedDict):
     requests: int
     tokens: int
     cost_usd: float
+
+
+def _receipt_valid(approval: dict[str, object]) -> bool:
+    """Recompute the approval receipt from its bound fields."""
+    fields = approval.get("receipt_fields")
+    expected = approval.get("receipt_digest")
+    if not isinstance(fields, dict) or not isinstance(expected, str):
+        return False
+    return expected == digest(
+        {
+            "subject": fields.get("subject"),
+            "nonce": fields.get("nonce"),
+            "actor": fields.get("actor"),
+            "client_event": fields.get("client_event_id"),
+            "purpose": fields.get("purpose"),
+        }
+    )
+
+
+def _candidate_integrity_gate(
+    *,
+    repo: MemoryRepository | None,
+    scope: str,
+    approval: dict[str, object] | None,
+    candidate_profile: Path,
+    baseline_profile: Path,
+    context_manifest: Path,
+    agent: str,
+    arms_identical: bool,
+) -> list[str]:
+    """Prove candidate-arm provisioning from real runtime state.
+
+    Every invariant is checked against on-disk artifacts and the
+    scoped memory repository — never against process output. Returns
+    the list of failed invariant tags; an empty list means the
+    candidate may proceed to its first model call.
+    """
+    fails: list[str] = []
+    if not arms_identical:
+        fails.append("arms_diverge")
+
+    approved = (
+        isinstance(approval, dict) and approval.get("decision") == "approved"
+    )
+    if not approved:
+        fails.append("approval_absent")
+
+    memory_id = ""
+    if isinstance(approval, dict):
+        memory_id = str(approval.get("memory_id") or "")
+
+    record = None
+    if repo is None or not memory_id:
+        fails.append("proposal_missing")
+    else:
+        record = repo.get(scope, memory_id)
+        if record is None:
+            fails.append("proposal_missing")
+
+    if record is not None:
+        if record.status != "active":
+            fails.append("improvement_not_active")
+        if isinstance(approval, dict) and record.content_digest != (
+            approval.get("content_digest")
+        ):
+            fails.append("release_unbound")
+
+    if (
+        approved
+        and isinstance(approval, dict)
+        and not _receipt_valid(approval)
+    ):
+        fails.append("receipt_invalid")
+
+    artifact = candidate_profile / "agents" / agent / "AGENTS.md"
+    artifact_digest: str | None = None
+    if not artifact.is_file():
+        fails.append("artifact_not_provisioned")
+    else:
+        artifact_digest = _file_digest(artifact)
+        wanted = (
+            approval.get("content_digest")
+            if isinstance(approval, dict)
+            else None
+        )
+        if artifact_digest != wanted:
+            fails.append("artifact_digest_mismatch")
+
+    context: dict[str, object] | None = None
+    if context_manifest.is_file():
+        try:
+            loaded = json.loads(context_manifest.read_text())
+            if isinstance(loaded, dict):
+                context = loaded
+        except (OSError, json.JSONDecodeError):
+            context = None
+    wanted_digest = (
+        approval.get("content_digest") if isinstance(approval, dict) else None
+    )
+    if (
+        context is None
+        or context.get("memory_id") != memory_id
+        or not memory_id
+        or context.get("content_digest") != wanted_digest
+        or context.get("artifact_digest") != artifact_digest
+    ):
+        fails.append("context_binding_missing")
+
+    base_artifact = baseline_profile / "agents" / agent / "AGENTS.md"
+    if base_artifact.is_file():
+        fails.append("baseline_contaminated")
+
+    return fails
 
 
 def _run_dcode(
@@ -293,10 +453,20 @@ def main() -> int:
     suite = json.loads((STUDY / "suite.json").read_text())
     route = json.loads((STUDY / "run.json").read_text())
     model_params = route["model"]["parameters"]
+    baseline_arm = json.loads((STUDY / "arms" / "baseline.json").read_text())
+    candidate_arm = json.loads((STUDY / "arms" / "candidate.json").read_text())
     spec = seal_study.build_spec()
     manifest = seal_experiment(spec)
     if manifest.manifest_id != record["manifest"]["manifest_id"]:
         raise CyranoError("SEAL_MISMATCH", "spec does not reproduce seal")
+    # Every sealed dimension except the approved improvement must be
+    # identical between arms; verified once and fed to each gate.
+    arms_identical = (
+        baseline_arm["model"] == candidate_arm["model"]
+        and baseline_arm["provider_routing"]
+        == candidate_arm["provider_routing"]
+        and baseline_arm["dcode_release"] == candidate_arm["dcode_release"]
+    )
 
     permit = {
         "permit_id": digest(
@@ -308,20 +478,20 @@ def main() -> int:
     }
 
     RUN_ROOT.mkdir(parents=True, exist_ok=True)
-    runs_dir = EVIDENCE / "runs"
-    runs_dir.mkdir(exist_ok=True)
+    runs_dir = EVDIR / "runs"
+    runs_dir.mkdir(parents=True, exist_ok=True)
     repo = ScopedRepository.create(
-        EVIDENCE / "study-ledger.sqlite", TARGET_DDL.read_text()
+        EVDIR / "study-ledger.sqlite", TARGET_DDL.read_text()
     )
     memory = MemoryService(MemoryRepository(repo))
     desk = ApprovalDesk()
     ledger = TrialLedger(manifest)
-    scope = "wp23-live-study"
     now = int(time.time())
 
     tasks = suite["tasks"]
     totals: _Totals = {"runs": 0, "requests": 0, "tokens": 0, "cost_usd": 0.0}
     results: list[dict[str, object]] = []
+    approval: dict[str, object] | None = None
     improvement_text: str | None = None
 
     def over_budget() -> str | None:
@@ -335,13 +505,33 @@ def main() -> int:
             return "cost"
         return None
 
+    def _collect(run_dir: Path, ev_dir: Path) -> None:
+        """Copy the run's raw streams into the evidence dir."""
+        ev_dir.mkdir(parents=True, exist_ok=True)
+        for f in (
+            "stdout.txt",
+            "stderr.txt",
+            "attempt1.stdout.txt",
+            "attempt1.stderr.txt",
+        ):
+            if (run_dir / f).exists():
+                shutil.copy(run_dir / f, ev_dir / f)
+
+    def _debit(result: dict[str, object]) -> None:
+        totals["runs"] += 1
+        usage = _usage_of(result)
+        totals["requests"] += usage["requests"]
+        totals["tokens"] += usage["input_tokens"] + usage["output_tokens"]
+        totals["cost_usd"] = round(totals["cost_usd"] + _cost_of(result), 6)
+        results.append(result)
+
     def execute(
         name: str,
         prompt: str,
         overlay: str | None,
-        memory_text: str | None,
+        gated_candidate: bool,
     ) -> dict[str, object]:
-        """Run one slot, snapshot seed, capture evidence, debit."""
+        """Run one slot; gate candidates before any model call."""
         run_dir = RUN_ROOT / name
         run_dir.mkdir(parents=True, exist_ok=True)
         workspace = run_dir / "workspace"
@@ -353,21 +543,93 @@ def main() -> int:
         profile = run_dir / "profile"
         agent_dir = profile / "agents" / AGENT
         agent_dir.mkdir(parents=True, exist_ok=True)
-        if memory_text is not None:
-            (agent_dir / "AGENTS.md").write_text(memory_text)
+        ev_dir = runs_dir / name
+        ev_dir.mkdir(parents=True, exist_ok=True)
+
+        if gated_candidate:
+            # Provision the approved artifact, then prove every
+            # invariant from real runtime state before any model call.
+            if improvement_text is not None:
+                (agent_dir / "AGENTS.md").write_text(improvement_text)
+            context = {
+                "run_id": name,
+                "study_id": STUDY_ID,
+                "memory_id": MEMORY_ID,
+                "candidate_id": (
+                    approval.get("candidate_id")
+                    if isinstance(approval, dict)
+                    else None
+                ),
+                "content_digest": (
+                    approval.get("content_digest")
+                    if isinstance(approval, dict)
+                    else None
+                ),
+                "artifact": f"agents/{AGENT}/AGENTS.md",
+                "artifact_digest": (
+                    _file_digest(agent_dir / "AGENTS.md")
+                    if (agent_dir / "AGENTS.md").is_file()
+                    else None
+                ),
+            }
+            context_path = run_dir / "context-manifest.json"
+            context_path.write_text(json.dumps(context, indent=2))
+            shutil.copy(context_path, ev_dir / context_path.name)
+            base_profile = (
+                RUN_ROOT / name.replace("-candidate", "-baseline") / "profile"
+            )
+            fails = _candidate_integrity_gate(
+                repo=MemoryRepository(repo),
+                scope=SCOPE,
+                approval=approval,
+                candidate_profile=profile,
+                baseline_profile=base_profile,
+                context_manifest=context_path,
+                agent=AGENT,
+                arms_identical=arms_identical,
+            )
+            gate_ev = {"run_id": name, "gate": "failed", "failures": fails}
+            (ev_dir / "integrity-gate.json").write_text(
+                json.dumps(gate_ev, indent=2)
+            )
+            if fails:
+                result: dict[str, object] = {
+                    "run_id": name,
+                    "exit_code": None,
+                    "aborted": True,
+                    "completed": False,
+                    "integrity_gate": "failed",
+                    "gate_failures": fails,
+                    "wall_seconds": 0.0,
+                    "usage": {
+                        "requests": 0,
+                        "input_tokens": 0,
+                        "output_tokens": 0,
+                    },
+                    "cost_usd": 0.0,
+                    "retried": False,
+                }
+                binding = {
+                    "run_id": name,
+                    "manifest_id": manifest.manifest_id,
+                    "integrity_gate": "failed",
+                    "gate_failures": fails,
+                    "seed_digest": _tree_digest(workspace),
+                    "profile_digest": _tree_digest(profile),
+                }
+                (ev_dir / "run-binding.json").write_text(
+                    json.dumps(binding, indent=2)
+                )
+                (ev_dir / "result.json").write_text(
+                    json.dumps(result, indent=2)
+                )
+                results.append(result)
+                return result
+
         profile_digest = _tree_digest(profile)
         seed_digest = _tree_digest(workspace)
         result = _run_dcode(name, prompt, workspace, profile, model_params)
-        ev_dir = runs_dir / name
-        ev_dir.mkdir(parents=True, exist_ok=True)
-        for f in (
-            "stdout.txt",
-            "stderr.txt",
-            "attempt1.stdout.txt",
-            "attempt1.stderr.txt",
-        ):
-            if (run_dir / f).exists():
-                shutil.copy(run_dir / f, ev_dir / f)
+        _collect(run_dir, ev_dir)
         code, text = _oracle(workspace, ev_dir / "oracle.txt")
         diff = subprocess.run(
             ["diff", "-ruN", str(seed) + "/", str(workspace) + "/"],
@@ -388,14 +650,18 @@ def main() -> int:
             "profile_digest": profile_digest,
             "workspace_digest": result["workspace_digest"],
         }
+        if gated_candidate:
+            binding["memory_binding"] = {
+                "memory_id": MEMORY_ID,
+                "content_digest": (
+                    approval.get("content_digest")
+                    if isinstance(approval, dict)
+                    else None
+                ),
+            }
         (ev_dir / "run-binding.json").write_text(json.dumps(binding, indent=2))
         (ev_dir / "result.json").write_text(json.dumps(result, indent=2))
-        totals["runs"] += 1
-        usage = _usage_of(result)
-        totals["requests"] += usage["requests"]
-        totals["tokens"] += usage["input_tokens"] + usage["output_tokens"]
-        totals["cost_usd"] = round(totals["cost_usd"] + _cost_of(result), 6)
-        results.append(result)
+        _debit(result)
         return result
 
     def trial(
@@ -427,7 +693,7 @@ def main() -> int:
 
     # --- Run 1: Task A learning episode (candidate arm) ---
     task_a = tasks["task-a"]
-    a_res = execute("task-a-candidate", str(task_a["prompt"]), None, None)
+    a_res = execute("task-a-candidate", str(task_a["prompt"]), None, False)
     trial("pair-a", "learn-episode", "candidate", a_res, 0)
     if over_budget():
         return _abort(totals, results, "cap exceeded after task-a")
@@ -446,32 +712,22 @@ def main() -> int:
     )
     ev_dir = runs_dir / "improvement"
     ev_dir.mkdir(parents=True, exist_ok=True)
-    for f in (
-        "stdout.txt",
-        "stderr.txt",
-        "attempt1.stdout.txt",
-        "attempt1.stderr.txt",
-    ):
-        if (imp_dir / f).exists():
-            shutil.copy(imp_dir / f, ev_dir / f)
+    _collect(imp_dir, ev_dir)
     code, text = _oracle(imp_ws, ev_dir / "oracle.txt")
     imp_res["oracle_exit"] = code
     imp_res["oracle_text"] = text
     (ev_dir / "result.json").write_text(json.dumps(imp_res, indent=2))
-    totals["runs"] += 1
-    imp_usage = _usage_of(imp_res)
-    totals["requests"] += imp_usage["requests"]
-    totals["tokens"] += imp_usage["input_tokens"] + imp_usage["output_tokens"]
-    totals["cost_usd"] = round(totals["cost_usd"] + _cost_of(imp_res), 6)
-    results.append(imp_res)
+    _debit(imp_res)
     trial("pair-improvement", "learn-episode", "candidate", imp_res, 0)
 
-    note = (imp_dir / "stdout.txt").read_text(errors="replace").strip()
-    approval: dict[str, object]
-    if imp_res["completed"] and note:
+    # Approval keys on the extracted note artifact and the desk's real
+    # decision — never on the process completion marker.
+    note = _extract_note((imp_dir / "stdout.txt").read_text(errors="replace"))
+    (ev_dir / "note.txt").write_text(note + "\n")
+    if note:
         proposal = {
             "kind": "procedure",
-            "scope_id": scope,
+            "scope_id": SCOPE,
             "subject": "widgetbox-convention",
             "precondition": "editing widgetbox widget modules",
             "evidence_refs": ("task-a-candidate", "improvement"),
@@ -479,8 +735,8 @@ def main() -> int:
         }
         kc = validate_knowledge_candidate(proposal)
         record_mem = memory.propose_memory(
-            scope,
-            "widgetbox-convention-r1",
+            SCOPE,
+            MEMORY_ID,
             kind="procedure",
             content=note.encode(),
             source_digest=kc.candidate_id,
@@ -490,20 +746,20 @@ def main() -> int:
         display = desk.present(
             subject_digest=kc.candidate_id,
             shown_text=note,
-            audience="study-operator",
-            nonce="wp23-live",
+            audience=ACTOR,
+            nonce=NONCE,
             expires_at=now + 3600,
-            purpose="improvement_approval",
+            purpose=PURPOSE,
         )
         desk.open_display(display.request_id)
         decision = desk.submit(
             display.request_id,
-            actor="study-operator",
-            nonce="wp23-live",
+            actor=ACTOR,
+            nonce=NONCE,
             decision="approve",
             shown_text=note,
             display_revision=display.display_revision,
-            client_event_id="wp23-live-approve-1",
+            client_event_id="wp23-live-2-approve-1",
             now=now,
         )
         approval = {
@@ -512,19 +768,29 @@ def main() -> int:
             "request_id": display.request_id,
             "decision": decision.status,
             "content_digest": record_mem.content_digest,
+            "receipt_digest": decision.receipt_digest,
+            "receipt_fields": {
+                "subject": kc.candidate_id,
+                "nonce": NONCE,
+                "actor": ACTOR,
+                "client_event_id": "wp23-live-2-approve-1",
+                "purpose": PURPOSE,
+            },
+            "memory_activated": False,
         }
-        if decision.status == "approved":
-            memory.activate_memory(
-                scope,
+        if decision.status == "approved" and decision.receipt_digest:
+            activated = memory.activate_memory(
+                SCOPE,
                 record_mem.memory_id,
                 expected_revision=record_mem.revision,
                 at=now,
             )
+            approval["memory_activated"] = activated.status == "active"
             improvement_text = note
     else:
         approval = {
             "decision": "no_improvement",
-            "reason": "improvement run produced no note",
+            "reason": "improvement run produced no note artifact",
         }
     (ev_dir / "improvement-approval.json").write_text(
         json.dumps(approval, indent=2)
@@ -532,21 +798,37 @@ def main() -> int:
     if over_budget():
         return _abort(totals, results, "cap exceeded after improvement")
 
-    # --- Runs 3-8: holdout pairs B1/B2/B3 ---
+    # --- Runs 3-8: holdout pairs; candidates are integrity-gated ---
+    holdout_keys = [k for k, t in tasks.items() if t.get("arms")]
     order = 1
-    for key in ("task-b1", "task-b2", "task-b3"):
+    for key in sorted(holdout_keys):
         task = tasks[key]
         overlay = task.get("workspace_overlay")
         overlay_str = str(overlay) if overlay else None
-        for arm, mem in (
-            ("baseline", None),
-            ("candidate", improvement_text),
-        ):
-            name = f"{key}-{arm}"
-            res = execute(name, str(task["prompt"]), overlay_str, mem)
-            trial(str(task["pair_id"]), str(task["family"]), arm, res, order)
-            if over_budget():
-                return _abort(totals, results, f"cap exceeded after {name}")
+        b_res = execute(
+            f"{key}-baseline", str(task["prompt"]), overlay_str, False
+        )
+        trial(
+            str(task["pair_id"]), str(task["family"]), "baseline", b_res, order
+        )
+        if over_budget():
+            return _abort(
+                totals, results, f"cap exceeded after {key}-baseline"
+            )
+        c_res = execute(
+            f"{key}-candidate", str(task["prompt"]), overlay_str, True
+        )
+        trial(
+            str(task["pair_id"]),
+            str(task["family"]),
+            "candidate",
+            c_res,
+            order,
+        )
+        if over_budget():
+            return _abort(
+                totals, results, f"cap exceeded after {key}-candidate"
+            )
         order += 1
 
     # --- Settle, review, verdict ---
@@ -561,7 +843,7 @@ def main() -> int:
             "digest": _file_digest(path),
         }
 
-    ledger_db = EVIDENCE / "study-ledger.sqlite"
+    ledger_db = EVDIR / "study-ledger.sqlite"
     sqlite3.connect(str(ledger_db)).execute("PRAGMA wal_checkpoint(TRUNCATE)")
     approval_file = runs_dir / "improvement" / "improvement-approval.json"
     bindings = sorted(runs_dir.glob("*/run-binding.json"))
@@ -570,6 +852,8 @@ def main() -> int:
         for p in runs_dir.glob("*/*.txt")
         if p.name in {"stdout.txt", "stderr.txt", "oracle.txt"}
     )
+    first_holdout = sorted(holdout_keys)[0]
+    last_holdout = sorted(holdout_keys)[-1]
     items = {
         "3-1": {
             "evidence_refs": [
@@ -581,7 +865,9 @@ def main() -> int:
             "evidence_refs": [
                 ref(
                     "run_binding",
-                    runs_dir / "task-b1-candidate" / "run-binding.json",
+                    runs_dir
+                    / f"{first_holdout}-candidate"
+                    / "run-binding.json",
                 )
             ]
         },
@@ -591,10 +877,13 @@ def main() -> int:
         "4-2": {"evidence_refs": [ref("artifact", s) for s in streams]},
         "4-3": {
             "evidence_refs": [
-                ref("artifact", runs_dir / "task-b1-baseline" / "result.json"),
                 ref(
                     "artifact",
-                    runs_dir / "task-b1-candidate" / "result.json",
+                    runs_dir / f"{first_holdout}-baseline" / "result.json",
+                ),
+                ref(
+                    "artifact",
+                    runs_dir / f"{first_holdout}-candidate" / "result.json",
                 ),
             ]
         },
@@ -602,11 +891,12 @@ def main() -> int:
             "evidence_refs": [
                 ref(
                     "oracle_result",
-                    runs_dir / "task-b3-candidate" / "oracle.txt",
+                    runs_dir / f"{last_holdout}-candidate" / "oracle.txt",
                 )
             ]
         },
     }
+    imp_usage = _usage_of(imp_res)
     verdict = review_effectiveness(
         manifest,
         ledger,
@@ -616,8 +906,15 @@ def main() -> int:
         ),
     )
     final = {
+        "study_id": STUDY_ID,
         "manifest_id": manifest.manifest_id,
         "sealed_manifest_digest": record["sealed_manifest_digest"],
+        "invocation_note": (
+            "sealed invocation 'dcode -x <prompt> --workspace <ws>' is a "
+            "notational placeholder; executed equivalent is "
+            "'dcode -n <prompt>' with cwd=<ws> (no -x/--workspace flag "
+            "exists in deepagents-code 0.1.70)"
+        ),
         "totals": totals,
         "pairs": [
             {
@@ -647,7 +944,7 @@ def main() -> int:
             for r in results
         ],
     }
-    (EVIDENCE / "study-result.json").write_text(
+    (EVDIR / "study-result.json").write_text(
         json.dumps(final, indent=2, default=str)
     )
     print(json.dumps(final, indent=2, default=str))
@@ -660,9 +957,10 @@ def _abort(
     reason: str,
 ) -> int:
     """Stop inside the authorized boundary; keep raw evidence."""
-    (EVIDENCE / "study-result.json").write_text(
+    (EVDIR / "study-result.json").write_text(
         json.dumps(
             {
+                "study_id": STUDY_ID,
                 "status": "aborted",
                 "reason": reason,
                 "totals": totals,

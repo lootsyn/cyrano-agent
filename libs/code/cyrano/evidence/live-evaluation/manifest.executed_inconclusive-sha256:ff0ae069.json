@@ -1,23 +1,21 @@
 {
   "kind": "sealed_experiment_manifest",
-  "status": "sealed_not_executed",
-  "study_id": "wp23-live-effectiveness-2",
-  "evidence_dir": "evidence/live-evaluation/study-2/",
+  "status": "executed_inconclusive",
   "manifest": {
-    "manifest_id": "sha256:6d5f88af345c439129c745cb85faf245745062151f55e91d6dafa074fd73deda",
+    "manifest_id": "sha256:ff0ae06902d9da113c5a238e4111fc14d112a6c08f2ff797d2b0eb4e4b9615fb",
     "baseline_digest": "sha256:6f24305b2cf0cee7a6062b5171bcd9b7e159ca3f5482f1d82499dc206430a6b0",
     "candidate_digest": "sha256:4dc5c259c56749930324ed176fb1477bcb45c7ff6fe57ea7ea6d57d50528eabf",
-    "suite_digest": "sha256:8df8045ad32c7ca87129313e59b280eed8483aa88d8b55170431a3b9673686f6",
+    "suite_digest": "sha256:bdf05c37478e2619d7cbbac5effccd32ba67c0d862d8ed6fe6757f1792a5f477",
     "runtime_digest": "sha256:9f83d77b42dad1b7bf95c14764b764d8d5f6f3c288184109cca894354b0e7033",
-    "plan_digest": "sha256:8becc44d259cd0b96a92c22e2387440e3fca70e1cd770b71fd3e43db1a2f5c44",
+    "plan_digest": "sha256:d9eae41b6dbd96b86561ac225e114aa06c2c5743eb0452c220f02dea68688fce",
     "families": [
       "learn-episode",
       "convention-apply"
     ],
     "holdout": [
-      "task-b4-holdout",
-      "task-b5-holdout",
-      "task-b6-holdout"
+      "task-b1-holdout",
+      "task-b2-holdout",
+      "task-b3-holdout"
     ],
     "budget_units": 5000000,
     "quality_margin": 0.5,
@@ -94,55 +92,12 @@
     "max_cost_usd": 10.0,
     "timeout_seconds_per_run": 1800
   },
-  "predecessor": {
-    "manifest_id": "sha256:ff0ae06902d9da113c5a238e4111fc14d112a6c08f2ff797d2b0eb4e4b9615fb",
-    "sealed_manifest_digest": "sha256:586d2b8ea96294586307f42453a78ed7fc7cae4c43f78b897a22abd204b7cc17",
-    "status": "executed_inconclusive",
-    "verdict": {
-      "manifest_id": "sha256:ff0ae06902d9da113c5a238e4111fc14d112a6c08f2ff797d2b0eb4e4b9615fb",
-      "scope": "manifest_bound_no_generalization",
-      "verdict": "inconclusive",
-      "eligible_for_review": false,
-      "reason": "uncertain effect",
-      "items": {
-        "3-1": "evaluated",
-        "3-2": "evaluated",
-        "3-3": "evaluated",
-        "3-4": "evaluated",
-        "4-1": "evaluated",
-        "4-2": "evaluated",
-        "4-3": "evaluated",
-        "4-4": "evaluated"
-      },
-      "official_score": null,
-      "analysis": {
-        "verdict": "inconclusive",
-        "completed_pairs": 3,
-        "planned_pairs": 3,
-        "families": [
-          {
-            "family": "convention-apply",
-            "pairs": 3,
-            "delta": 0.0,
-            "interval": [
-              -0.7493370940031047,
-              0.7493370940031046
-            ]
-          }
-        ]
-      },
-      "cost": {
-        "baseline_units": 207211,
-        "candidate_units": 289369,
-        "learning_overhead_units": 46500,
-        "missing_costs": 0,
-        "total_known": true,
-        "total_units": 543080,
-        "net_savings_claim_allowed": false
-      },
-      "baseline_retained": true
-    },
-    "archived": "manifest.executed_inconclusive-sha256:ff0ae069.json"
+  "supersedes": {
+    "manifest_id": "sha256:6ca6182b2148c3fc088bade84f6adafcf1bfcd0efe4d2d3da2a5d81c2cf7dc32",
+    "sealed_manifest_digest": "sha256:4b6a436f6f21a01c1bbf0606fd7cbe87c9c7f018b37d642643cf541337a70f22",
+    "archived": "manifest.superseded-sha256:6ca6182b.json"
   },
-  "sealed_manifest_digest": "sha256:2960ddcf4400a66f5ebd553399a141f2400e22140f81b2435b664cc090cac7b1"
+  "sealed_manifest_digest": "sha256:586d2b8ea96294586307f42453a78ed7fc7cae4c43f78b897a22abd204b7cc17",
+  "executed_at": 1789701895,
+  "result": "live-evaluation/study-result.json"
 }

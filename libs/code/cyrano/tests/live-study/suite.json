@@ -1,62 +1,66 @@
 {
   "schema_version": "cyrano.live-study/1",
   "status": "sealed_inputs_not_executed",
+  "study_id": "wp23-live-effectiveness-2",
+  "predecessor": "wp23-live-effectiveness-1 (executed_inconclusive; B1/B2/B3 retired as exposed holdouts)",
   "families": ["learn-episode", "convention-apply"],
   "holdout": [
-    "task-b1-holdout",
-    "task-b2-holdout",
-    "task-b3-holdout"
+    "task-b4-holdout",
+    "task-b5-holdout",
+    "task-b6-holdout"
   ],
   "min_pairs": 3,
   "ordering": [
     "task-a-candidate",
     "improvement",
-    "task-b1-baseline",
-    "task-b1-candidate",
-    "task-b2-baseline",
-    "task-b2-candidate",
-    "task-b3-baseline",
-    "task-b3-candidate"
+    "task-b4-baseline",
+    "task-b4-candidate",
+    "task-b5-baseline",
+    "task-b5-candidate",
+    "task-b6-baseline",
+    "task-b6-candidate"
   ],
   "tasks": {
     "task-a": {
       "family": "learn-episode",
       "arm": "candidate",
-      "prompt": "In the widgetbox package, add a new widget module `beta` that defines `render() -> str` returning the string 'beta'. Edit files only; do not run tests.",
+      "prompt": "In the widgetbox package, add a new widget module `kappa` that defines `render() -> str` returning the string 'kappa'. Edit files only; do not run tests.",
       "oracle": "oracle/check_registry.py",
       "workspace": "repo",
       "expected_episode": "first attempt fails the registry convention"
     },
-    "task-b1": {
-      "pair_id": "pair-b1",
+    "task-b4": {
+      "pair_id": "pair-b4",
       "family": "convention-apply",
-      "holdout": "task-b1-holdout",
-      "operation": "add",
+      "holdout": "task-b4-holdout",
+      "operation": "remove",
       "arms": ["baseline", "candidate"],
-      "prompt": "In the widgetbox package, add a new widget module `gamma` that defines `render() -> str` returning the string 'gamma'. Edit files only; do not run tests.",
-      "oracle": "oracle/check_registry.py",
-      "workspace": "repo"
-    },
-    "task-b2": {
-      "pair_id": "pair-b2",
-      "family": "convention-apply",
-      "holdout": "task-b2-holdout",
-      "operation": "rename",
-      "arms": ["baseline", "candidate"],
-      "prompt": "In the widgetbox package, rename the widget `alpha` to `delta`, keeping its public `render()` contract. Edit files only; do not run tests.",
-      "oracle": "oracle/check_registry.py",
-      "workspace": "repo"
-    },
-    "task-b3": {
-      "pair_id": "pair-b3",
-      "family": "convention-apply",
-      "holdout": "task-b3-holdout",
-      "operation": "repair",
-      "arms": ["baseline", "candidate"],
-      "prompt": "The widgetbox package contains a `zeta` module that does not conform to the package's own conventions. Repair the package so that `zeta` is a proper widget. Edit files only; do not run tests.",
+      "prompt": "In the widgetbox package, remove the `sigma` widget so that the package no longer exposes it. Edit files only; do not run tests.",
       "oracle": "oracle/check_registry.py",
       "workspace": "repo",
-      "workspace_overlay": "overlays/task-b3"
+      "workspace_overlay": "overlays/task-b4"
+    },
+    "task-b5": {
+      "pair_id": "pair-b5",
+      "family": "convention-apply",
+      "holdout": "task-b5-holdout",
+      "operation": "purge_stale",
+      "arms": ["baseline", "candidate"],
+      "prompt": "The widgetbox package's registry lists a widget that does not exist. Make `registry.py` consistent with the package's conventions. Edit files only; do not run tests.",
+      "oracle": "oracle/check_registry.py",
+      "workspace": "repo",
+      "workspace_overlay": "overlays/task-b5"
+    },
+    "task-b6": {
+      "pair_id": "pair-b6",
+      "family": "convention-apply",
+      "holdout": "task-b6-holdout",
+      "operation": "document",
+      "arms": ["baseline", "candidate"],
+      "prompt": "In the widgetbox package, the `eta` module is missing the documentation required by the package's conventions. Bring `eta` into conformance. Edit files only; do not run tests.",
+      "oracle": "oracle/check_registry.py",
+      "workspace": "repo",
+      "workspace_overlay": "overlays/task-b6"
     }
   },
   "primary_metric": "first_pass_oracle_success",
@@ -71,5 +75,6 @@
   "retry_policy": "no retry when an external effect is uncertain; a run aborted before its first model call may be re-issued at most once",
   "workspace": "per-run byte-identical copy of repo/ under an owned temp root, plus the task's frozen overlay when declared; oracle/ is never copied into the agent workspace",
   "completion_rule": "PASS requires all three holdout pairs completed; an incomplete pair is never discarded or replaced for an unfavorable outcome",
+  "integrity_rule": "every candidate holdout run passes a fail-closed provisioning gate before its first model call; a failed gate aborts the run, records the pair incomplete, and never falls back to baseline-vs-baseline",
   "scope": "this fixture study only; no cross-project or cross-model generalization"
 }
