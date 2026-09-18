@@ -158,6 +158,11 @@ def _usage(stdout_text: str) -> dict[str, int]:
     }
 
 
+_BARE_UUID = re.compile(
+    r"^[0-9a-fA-F]{8}-(?:[0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}$"
+)
+
+
 def _extract_note(stdout_text: str) -> str:
     """Extract the improvement note artifact from raw stdout.
 
@@ -165,14 +170,22 @@ def _extract_note(stdout_text: str) -> str:
     lines, tool-call notifications and the trailing usage block. The
     note is whatever real text remains after that noise is removed;
     the ``✓ Task completed`` marker is treated as noise, never as a
-    readiness signal.
+    readiness signal. The ``App:`` banner wraps its trailing
+    ``Thread:`` value onto the next line, so a bare-UUID line
+    directly after the banner is noise too.
     """
     lines: list[str] = []
+    skip_continuation = False
     for line in stdout_text.splitlines():
         if line.startswith("Usage Stats"):
             break
         if any(line.startswith(p) for p in _NOISE_PREFIXES):
+            skip_continuation = line.startswith("App:")
             continue
+        if skip_continuation and _BARE_UUID.match(line.strip()):
+            skip_continuation = False
+            continue
+        skip_continuation = False
         lines.append(line)
     return "\n".join(lines).strip()
 

@@ -218,11 +218,11 @@ def test_rc43_04_untested_modes_block_release_grade():
 
 
 def test_rc43_sealed_manifest_is_persisted_and_digest_bound():
-    """The sealed manifest exists, is unexecuted, and verifies."""
+    """The sealed manifest exists, reports its terminal verdict, verifies."""
     path = CODE / "cyrano" / "evidence" / "live-evaluation" / "manifest.json"
     record = json.loads(path.read_text(encoding="utf-8"))
     assert record["kind"] == "sealed_experiment_manifest"
-    assert record["status"] == "sealed_not_executed"
+    assert record["status"] == "executed_inconclusive"
     assert record["manifest"]["manifest_id"].startswith("sha256:")
     assert record["manifest"]["model_digest"].startswith("sha256:")
     assert record["sealed_manifest_digest"].startswith("sha256:")

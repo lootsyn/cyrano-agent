@@ -12,13 +12,17 @@ inheritance of the narrow evidence.
 
 from __future__ import annotations
 
-from collections.abc import Iterable, Mapping
 from dataclasses import dataclass
+from typing import TYPE_CHECKING
 
 from deepagents_code.cyrano.contracts.canonical import digest
 from deepagents_code.cyrano.contracts.types import CyranoError
+from deepagents_code.cyrano.memory.obligations import parse_scope_rule
 
-KNOWLEDGE_KINDS = frozenset({"fact", "preference", "procedure"})
+if TYPE_CHECKING:
+    from collections.abc import Iterable, Mapping
+
+KNOWLEDGE_KINDS = frozenset({"fact", "preference", "procedure", "scope_rule"})
 SEQ = (list, tuple, set, frozenset)
 
 
@@ -92,6 +96,12 @@ def validate_knowledge_candidate(
         raise CyranoError(
             "INPUT_INVALID", "a procedure declares its precondition"
         )
+    if kind == "scope_rule":
+        # A scope rule declares a declarative body — glob selectors,
+        # exception clauses and a trusted checker id. The validator
+        # only checks the closed shape; the rule gains no authority
+        # here and is never executed.
+        _ = parse_scope_rule(proposal.get("rule", {}))
     supersedes = proposal.get("supersedes")
     return KnowledgeCandidate(
         candidate_id=digest([kind, scope, subject, sorted(refs)]),

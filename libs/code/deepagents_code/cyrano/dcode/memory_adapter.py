@@ -10,8 +10,10 @@ from dataclasses import dataclass
 from deepagents_code.cyrano.contracts.types import CyranoError
 from deepagents_code.cyrano.memory.models import (
     ApplicationVerdict,
+    MemoryRecord,
     RecallHint,
 )
+from deepagents_code.cyrano.memory.obligations import RuleObligation
 from deepagents_code.cyrano.memory.service import MemoryService
 
 
@@ -93,3 +95,79 @@ class RecallService:
     def exposure_count(self) -> int:
         """Exposures recorded; distinct from applications."""
         return len(self._exposures)
+
+
+@dataclass(frozen=True, slots=True)
+class ReadonlyProjection:
+    """Channel split: reference text vs governed obligations.
+
+    The two sets are disjoint by construction — a memory projected
+    as an obligation never also appears as ``<agent_memory>``
+    reference material, and a reference record never silently gains
+    obligation authority.
+    """
+
+    reference_ids: tuple[str, ...]
+    obligation_ids: tuple[str, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class InjectionReceipt:
+    """Proof level of one channel delivery; wire bytes stay honest.
+
+    ``adapter_confirmed`` means the adapter delivered the content to
+    the runtime boundary; ``wire_confirmed`` is only True when the
+    serialized request was captured — a channel an adapter cannot
+    see stays False instead of being claimed.
+    """
+
+    memory_id: str
+    revision: int
+    channel: str  # "reference" | "obligation"
+    adapter_confirmed: bool
+    wire_confirmed: bool
+    evidence_refs: tuple[str, ...]
+
+
+def project_readonly_memory(
+    records: list[MemoryRecord],
+    obligations: tuple[RuleObligation, ...],
+) -> ReadonlyProjection:
+    """Split records into the reference channel vs obligations.
+
+    This adapter owns the dual-channel exclusion: a memory bound
+    into an obligation is removed from the reference set, and the
+    two id sets can never overlap.
+    """
+    projected = {o.memory_id for o in obligations}
+    reference = tuple(
+        sorted(r.memory_id for r in records if r.memory_id not in projected)
+    )
+    return ReadonlyProjection(
+        reference_ids=reference,
+        obligation_ids=tuple(sorted(projected)),
+    )
+
+
+def injection_receipt(
+    memory_id: str,
+    revision: int,
+    channel: str,
+    *,
+    wire_confirmed: bool = False,
+    evidence_refs: tuple[str, ...] = (),
+) -> InjectionReceipt:
+    """Build a delivery receipt.
+
+    Wire capture stays honest by default.
+    """
+    if channel not in {"reference", "obligation"}:
+        raise CyranoError("INPUT_INVALID", f"channel {channel!r}")
+    return InjectionReceipt(
+        memory_id=memory_id,
+        revision=revision,
+        channel=channel,
+        adapter_confirmed=True,
+        wire_confirmed=wire_confirmed,
+        evidence_refs=evidence_refs,
+    )

@@ -1,6 +1,6 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="cyrano-markdown-sha256" content="73fe9d51a20a1597ccc0a5e9e024af858318df0a1c8ee1c8ad615a72ee02652d"><title>
+    <meta name="cyrano-markdown-sha256" content="6be211ffd373834183ceb081a3f40bedf9c4787e75e88be1282258e580bcddc2"><title>
     Cyrano Agent · dcode 기반 개발 설계</title><style>
         :root{--ink:#142a3d;--muted:#526675;--line:#dbe4e9;--paper:#ffffff;
     --nav:#102b3f;--accent:#157a8a}
@@ -12063,7 +12063,7 @@ python cyrano/scripts/dev.py quality
 <li><code>MEM-DELETE</code>: index/cache/summary/export 영향 추적 무효화</li>
 <li><code>MEM-APPLIED</code>: referenced만, applied/effective 단정 금지</li>
 </ul>
-<p>WP23 Study 3 원인분석 이후 추가된 의무 투영 수용(<code>scope_rule</code> kind·의무 채널·checker registry는 아직 미구현 설계 대상이며, 기존 verified 범위에 포함되지 않는다. 이들이 not_run인 동안 이 WP의 product_verified는 해당 확장에 한해 성립하지 않는다):</p>
+<p>WP23 Study 3 원인분석 이후 추가된 의무 투영 수용(<code>scope_rule</code> kind·의무 투영·checker registry·검증·보정 ledger·dual-channel 분리는 오프라인 제품 조각으로 구현됐다 — <code>memory/obligations.py</code>·<code>memory/checkers.py</code>·<code>memory/obligation_check.py</code>·<code>dcode/memory_adapter.py</code>·<code>improvement/knowledge_lane.py</code>와 <code>tests/cyrano_product/test_wp11_obligations.py</code> 37건이 실제 상태 전이로 검증한다. 그러나 governed 의무 채널의 live dcode assembly 연결은 아직 없다 — 이 WP의 product_verified는 해당 확장에 한해 성립하지 않으며, native runtime 결속은 WP06급 governed-loop 통합 의존이 계속 소유한다):</p>
 <ul>
 <li><code>RULE-PROJECT-01</code>: 투영 조건 충족 시 obligation이 memory_id·revision·checker_id 결속으로 의무 채널에 투영</li>
 <li><code>RULE-VISIBLE-CONFLICT</code>: 규칙·가시 예제 충돌 시 예제를 따른 bundle은 checker 거부</li>
@@ -106935,5 +106935,5 @@ try {
 }
 </code></pre>
 <footer>
-    Generated from canonical project sources. SHA256: 73fe9d51a20a1597ccc0a5e9e024af858318df0a1c8ee1c8ad615a72ee02652d</footer>
+    Generated from canonical project sources. SHA256: 6be211ffd373834183ceb081a3f40bedf9c4787e75e88be1282258e580bcddc2</footer>
     </main></body></html>

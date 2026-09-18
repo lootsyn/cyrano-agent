@@ -14304,7 +14304,7 @@ memory candidate/active 분리와 phase별 recall·적용 증거를 구현한다
 - `MEM-DELETE`: index/cache/summary/export 영향 추적 무효화
 - `MEM-APPLIED`: referenced만, applied/effective 단정 금지
 
-WP23 Study 3 원인분석 이후 추가된 의무 투영 수용(`scope_rule` kind·의무 채널·checker registry는 아직 미구현 설계 대상이며, 기존 verified 범위에 포함되지 않는다. 이들이 not_run인 동안 이 WP의 product_verified는 해당 확장에 한해 성립하지 않는다):
+WP23 Study 3 원인분석 이후 추가된 의무 투영 수용(`scope_rule` kind·의무 투영·checker registry·검증·보정 ledger·dual-channel 분리는 오프라인 제품 조각으로 구현됐다 — `memory/obligations.py`·`memory/checkers.py`·`memory/obligation_check.py`·`dcode/memory_adapter.py`·`improvement/knowledge_lane.py`와 `tests/cyrano_product/test_wp11_obligations.py` 37건이 실제 상태 전이로 검증한다. 그러나 governed 의무 채널의 live dcode assembly 연결은 아직 없다 — 이 WP의 product_verified는 해당 확장에 한해 성립하지 않으며, native runtime 결속은 WP06급 governed-loop 통합 의존이 계속 소유한다):
 
 - `RULE-PROJECT-01`: 투영 조건 충족 시 obligation이 memory_id·revision·checker_id 결속으로 의무 채널에 투영
 - `RULE-VISIBLE-CONFLICT`: 규칙·가시 예제 충돌 시 예제를 따른 bundle은 checker 거부

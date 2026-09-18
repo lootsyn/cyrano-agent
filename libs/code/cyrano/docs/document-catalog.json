@@ -222,8 +222,8 @@
       "title": "WP11: 범위화 Memory 저장·조회·무효화",
       "category": "development",
       "authority": "source",
-      "bytes": 16983,
-      "sha256": "b0fad46c3a7f3082ab01873fb14c254719f1e11fde1d76e11ee6553f9e2935fa"
+      "bytes": 17364,
+      "sha256": "15202d4c5f7a28d838650810868d74ac15d24eed370027947911b10d2e67128f"
     },
     {
       "path": ".agents/work/WP12.ko.md",

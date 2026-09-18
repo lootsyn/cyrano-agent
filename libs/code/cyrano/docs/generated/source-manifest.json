@@ -476,7 +476,7 @@
     },
     {
       "path": ".agents/work/WP11.ko.md",
-      "sha256": "b0fad46c3a7f3082ab01873fb14c254719f1e11fde1d76e11ee6553f9e2935fa"
+      "sha256": "15202d4c5f7a28d838650810868d74ac15d24eed370027947911b10d2e67128f"
     },
     {
       "path": ".agents/work/WP12.ko.md",
@@ -1619,5 +1619,5 @@
       "sha256": "c405fe86a82a00a2272bd2e97a698eb03c5ab9d3bdc597bc316ee1a37de7da49"
     }
   ],
-  "markdown_sha256": "73fe9d51a20a1597ccc0a5e9e024af858318df0a1c8ee1c8ad615a72ee02652d"
+  "markdown_sha256": "6be211ffd373834183ceb081a3f40bedf9c4787e75e88be1282258e580bcddc2"
 }
