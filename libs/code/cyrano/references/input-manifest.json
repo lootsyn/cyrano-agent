@@ -1,0 +1,13 @@
+{
+  "status": "supplied_design_inputs_not_product_code",
+  "files": [
+    {
+      "path": "interview-plugin-design-kit.zip",
+      "sha256": "2fb7ec872f53480daa72e17894154ae77405d00cfdbf18f0393af249dc07a987"
+    },
+    {
+      "path": "CYRANO_DREAM_Design_Kit_2026-09-16.zip",
+      "sha256": "2be2f433c2f0252f79c23ae7fabdf98266a86aa978998a889e6b14631c357913"
+    }
+  ]
+}

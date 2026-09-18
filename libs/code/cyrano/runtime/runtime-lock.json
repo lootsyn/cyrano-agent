@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "status": "not_verified",
+  "python": "3.13.15",
+  "dcode_distribution": "deepagents-code",
+  "dcode_version": "0.1.70",
+  "artifact_hashes": [
+    {
+      "kind": "dist-info",
+      "editable": true,
+      "sha256": "sha256:c5fc42239fab16366fb3cf660f6dacef5b21fec739e4f73ddfdbe561021e5112"
+    }
+  ],
+  "source_observation": {
+    "repository": "cyrano-agent-devin working tree",
+    "deepagents": "0.7.15",
+    "deepagents_code": "0.1.70"
+  },
+  "probes": {
+    "extension_loading": "verified",
+    "async_middleware": "verified",
+    "child_observation": "verified",
+    "tool_mediation": "verified",
+    "sandbox_isolation": "verified",
+    "trusted_approval": "verified",
+    "context_manifest": "not_tested",
+    "cancel_recovery": "not_tested"
+  }
+}

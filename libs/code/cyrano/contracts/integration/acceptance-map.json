@@ -1,0 +1,903 @@
+{
+  "revision": "2026-09-16-integration-r2",
+  "source_cases": 124,
+  "reused_original_cases": 22,
+  "new_source_obligations": 102,
+  "mappings": [
+    {
+      "source_id": "R01",
+      "target_id": "INT-R01",
+      "owner_wp": "WP07",
+      "disposition": "reuse_exact_case",
+      "scenario_sha256": "66a99f712cafd759574082fc39987cfc798913ee46d9d9481251eee7d593be77"
+    },
+    {
+      "source_id": "R02",
+      "target_id": "INT-R02",
+      "owner_wp": "WP07",
+      "disposition": "reuse_exact_case",
+      "scenario_sha256": "5ba6bdd6bc992fb8029a6c40abaab985838fae25d5f43feadc512ab845358e3f"
+    },
+    {
+      "source_id": "R03",
+      "target_id": "INT-R03",
+      "owner_wp": "WP07",
+      "disposition": "reuse_exact_case",
+      "scenario_sha256": "a5065827d303872a8e5ef306326fb1c77657aea94a016f2f154a985e233fb796"
+    },
+    {
+      "source_id": "R04",
+      "target_id": "INT-R04",
+      "owner_wp": "WP07",
+      "disposition": "reuse_exact_case",
+      "scenario_sha256": "375836199d9f836996f3e90d6b3ca34cc6571b36b98498fffb57f549f83ad306"
+    },
+    {
+      "source_id": "R05",
+      "target_id": "INT-R05",
+      "owner_wp": "WP07",
+      "disposition": "reuse_exact_case",
+      "scenario_sha256": "32206d5402de30610c6b5874f24700aba7d5cb9fb4f06511bebf751852883c80"
+    },
+    {
+      "source_id": "R06",
+      "target_id": "INT-R06",
+      "owner_wp": "WP07",
+      "disposition": "reuse_exact_case",
+      "scenario_sha256": "021a09350569e475d7854f015476a6a3ce0d42216783e8ff5a85923b61dbf9a1"
+    },
+    {
+      "source_id": "R07",
+      "target_id": "INT-R07",
+      "owner_wp": "WP07",
+      "disposition": "reuse_exact_case",
+      "scenario_sha256": "e6740670042a7a8d79313e59875c07df8b0c692e5140526e986ddd03353604ae"
+    },
+    {
+      "source_id": "R08",
+      "target_id": "INT-R08",
+      "owner_wp": "WP07",
+      "disposition": "reuse_exact_case",
+      "scenario_sha256": "18e5564ef9ba05068897f2370be8aafd935a69907d15b2af878f1ffd4877b398"
+    },
+    {
+      "source_id": "R09",
+      "target_id": "INT-R09",
+      "owner_wp": "WP08",
+      "disposition": "reuse_exact_case",
+      "scenario_sha256": "d08b332fc0135c9dae808c2cc87389975257062accffa35076abeb9b3555f9f2"
+    },
+    {
+      "source_id": "R10",
+      "target_id": "INT-R10",
+      "owner_wp": "WP07",
+      "disposition": "reuse_exact_case",
+      "scenario_sha256": "913681c1b18ff09ace428cf0ca7e0639fa6d1648f7f040be3494e43c63ba08bc"
+    },
+    {
+      "source_id": "R11",
+      "target_id": "INT-R11",
+      "owner_wp": "WP07",
+      "disposition": "reuse_exact_case",
+      "scenario_sha256": "6a30fb66231abcd8ba2178f75cbc11ddb425c806e381a1f07bc1c097be9e39b8"
+    },
+    {
+      "source_id": "R12",
+      "target_id": "INT-R12",
+      "owner_wp": "WP07",
+      "disposition": "reuse_exact_case",
+      "scenario_sha256": "f5e2e417dec107a81db57ac661b1d171b04a52383d76cb44a3f5918a7be8485a"
+    },
+    {
+      "source_id": "R13",
+      "target_id": "INT-R13",
+      "owner_wp": "WP07",
+      "disposition": "reuse_exact_case",
+      "scenario_sha256": "3be0c03ac84182f3ee0aa36e0fd1e08c69f407d44172216521d4a5094387a4e1"
+    },
+    {
+      "source_id": "R14",
+      "target_id": "INT-R14",
+      "owner_wp": "WP07",
+      "disposition": "reuse_exact_case",
+      "scenario_sha256": "7f117b0034d15b744e0455d1c3f3a2c2c5d5f45c90bfae2dd0e2b139c38c7b4b"
+    },
+    {
+      "source_id": "R15",
+      "target_id": "INT-R15",
+      "owner_wp": "WP07",
+      "disposition": "reuse_exact_case",
+      "scenario_sha256": "13847bb0b7c9b11aa0e4bf19e33395b1a02a2bb4d4022eef6cabb4892a44e4ea"
+    },
+    {
+      "source_id": "R16",
+      "target_id": "INT-R16",
+      "owner_wp": "WP07",
+      "disposition": "reuse_exact_case",
+      "scenario_sha256": "3796174a0c9b0c9eecc0366e91a25b041811356e4a2a0faab7a4cc008f985929"
+    },
+    {
+      "source_id": "R17",
+      "target_id": "INT-R17",
+      "owner_wp": "WP07",
+      "disposition": "reuse_exact_case",
+      "scenario_sha256": "fb6f734aa8d2c15617c14f263263e34f836d89932304fc8bcf116ee26650c9a7"
+    },
+    {
+      "source_id": "R18",
+      "target_id": "INT-R18",
+      "owner_wp": "WP08",
+      "disposition": "reuse_exact_case",
+      "scenario_sha256": "5f1c052cf3f7e1521e0055949d005b2f60c9776901cbbe27d95acc4f0ddf9b84"
+    },
+    {
+      "source_id": "R19",
+      "target_id": "INT-R19",
+      "owner_wp": "WP07",
+      "disposition": "reuse_exact_case",
+      "scenario_sha256": "20833f08cd8da90fe7bac323ae0c37f9ee23588382bcb950873440514ea5c28f"
+    },
+    {
+      "source_id": "R20",
+      "target_id": "INT-R20",
+      "owner_wp": "WP08",
+      "disposition": "reuse_exact_case",
+      "scenario_sha256": "b4d002e2c0f32052f144abfccd6e4869e11d409197dcdb03de7e1a9ad916d740"
+    },
+    {
+      "source_id": "R21",
+      "target_id": "INT-R21",
+      "owner_wp": "WP07",
+      "disposition": "reuse_exact_case",
+      "scenario_sha256": "05f3be61cc0e2bcde69e884f49ecaa07ab04380ee7c7abca7d6e22f34e18ea56"
+    },
+    {
+      "source_id": "R22",
+      "target_id": "INT-R22",
+      "owner_wp": "WP08",
+      "disposition": "reuse_exact_case",
+      "scenario_sha256": "30c1e3d67abd9c97fd4cbb62c54173534a42068918b420d2443c2fb44a5b29a4"
+    },
+    {
+      "source_id": "PLAN-01",
+      "target_id": "UH-PLAN-01",
+      "owner_wp": "WP09",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "759b080cd48aa89abbee637f177c358430509c00045312611c124b4fecdb29e8"
+    },
+    {
+      "source_id": "PLAN-02",
+      "target_id": "UH-PLAN-02",
+      "owner_wp": "WP09",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "431a14c8195d8d051a3e49f9d605859888c4a5a835b980fa8a89f79f6675dfad"
+    },
+    {
+      "source_id": "PLAN-03",
+      "target_id": "UH-PLAN-03",
+      "owner_wp": "WP09",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "b4b617cad7af5873ffa67e59de810f05182308aed05cc67750bcf80111371d91"
+    },
+    {
+      "source_id": "PLAN-04",
+      "target_id": "UH-PLAN-04",
+      "owner_wp": "WP09",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "4a97d098284b633e14c90ba8962f76274dbacd6701334c3da796c971492a49d7"
+    },
+    {
+      "source_id": "PLAN-05",
+      "target_id": "UH-PLAN-05",
+      "owner_wp": "WP09",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "73f8aaa40a61be08013e0f33c54ffcbf0f123f53d5aaa881a34e0ff0b1bb09ec"
+    },
+    {
+      "source_id": "PLAN-06",
+      "target_id": "UH-PLAN-06",
+      "owner_wp": "WP09",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "791e6ac2a6899032f843ab382e898242eee55d9d032178e1a90bfe3d7828c52a"
+    },
+    {
+      "source_id": "PLAN-07",
+      "target_id": "UH-PLAN-07",
+      "owner_wp": "WP09",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "b29765f97b823f808cc1223371ffc1ad35c3858ccedcd560221e41e6643e4e3c"
+    },
+    {
+      "source_id": "PLAN-08",
+      "target_id": "UH-PLAN-08",
+      "owner_wp": "WP09",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "7ef9a370fefe3237c12ffc131ae0d22451fa6e4a8895fd99b004483734f49de2"
+    },
+    {
+      "source_id": "PLAN-09",
+      "target_id": "UH-PLAN-09",
+      "owner_wp": "WP10",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "3707def7605bb1e7f5de8d082258fb775daceec2f7904bbc917f6ca0a0ca59b6"
+    },
+    {
+      "source_id": "PLAN-10",
+      "target_id": "UH-PLAN-10",
+      "owner_wp": "WP09",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "a063caf440617ccdbd4715aeec675e9f53334bd85b494fe7abab07d9c8f2333d"
+    },
+    {
+      "source_id": "AUTH-01",
+      "target_id": "UH-AUTH-01",
+      "owner_wp": "WP03",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "2c8054537acaf166006dcda7fb5492e980e20ace74cf4c16b4a7d46338df3f51"
+    },
+    {
+      "source_id": "AUTH-02",
+      "target_id": "UH-AUTH-02",
+      "owner_wp": "WP03",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "bcf8495c794d84339607bcd17124936a8ae0904bf96cba2ba7b7005bb235642e"
+    },
+    {
+      "source_id": "AUTH-03",
+      "target_id": "UH-AUTH-03",
+      "owner_wp": "WP03",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "13c4f3c8e498ca455a7b361e964ef17c578719ab2b8e24bdcdc19c3d0a16f9ab"
+    },
+    {
+      "source_id": "AUTH-04",
+      "target_id": "UH-AUTH-04",
+      "owner_wp": "WP03",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "aa271019b4aaca7e720ee7e82cd702babc3e40d4f6ca02e5138dd625139943ec"
+    },
+    {
+      "source_id": "AUTH-05",
+      "target_id": "UH-AUTH-05",
+      "owner_wp": "WP03",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "7fc1c889b8ca531e075618d10307bd61f085148887b95bf6dfd358c0dbd08cf9"
+    },
+    {
+      "source_id": "AUTH-06",
+      "target_id": "UH-AUTH-06",
+      "owner_wp": "WP03",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "14bf420f63e1849c2536f1ebba0fc5234a7f5b3dd3b3e757053fb517c75135a3"
+    },
+    {
+      "source_id": "AUTH-07",
+      "target_id": "UH-AUTH-07",
+      "owner_wp": "WP03",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "f883ea5e86523e91aa788d3c47a90eae2dd9796a7e5fe9a9cd4f882bacf52baf"
+    },
+    {
+      "source_id": "AUTH-08",
+      "target_id": "UH-AUTH-08",
+      "owner_wp": "WP03",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "54544acc02afa2fcb13a4decd0cd93c364589e77a26ad7f2ae4f042f2770e4f8"
+    },
+    {
+      "source_id": "AUTH-09",
+      "target_id": "UH-AUTH-09",
+      "owner_wp": "WP03",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "3213bb7b4a616ccf2450249017b55b4ccde39b747bf67fc8578e65839575ee19"
+    },
+    {
+      "source_id": "AUTH-10",
+      "target_id": "UH-AUTH-10",
+      "owner_wp": "WP03",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "4611299f8bdf5c2465bb94203445d7738fd77394fe2ce7bd120737b3e4b50719"
+    },
+    {
+      "source_id": "AUTH-11",
+      "target_id": "UH-AUTH-11",
+      "owner_wp": "WP03",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "724f28a27f3cf00593a0db6db28db418498354e1d8fe95eb717d34a237aa588d"
+    },
+    {
+      "source_id": "AUTH-12",
+      "target_id": "UH-AUTH-12",
+      "owner_wp": "WP03",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "0e57cf762bcbde7cbbc176175eb0766f0918752b412640bf4635d287f44b53ba"
+    },
+    {
+      "source_id": "AUTH-13",
+      "target_id": "UH-AUTH-13",
+      "owner_wp": "WP03",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "e5f62b9895e6c2dc21b470beccc39656402be7c3b214dcba7575044886d8da78"
+    },
+    {
+      "source_id": "AUTH-14",
+      "target_id": "UH-AUTH-14",
+      "owner_wp": "WP03",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "a37cc49d37c3c16e099853e0b010fc38e801acd511455c508b9c560a95dbd32e"
+    },
+    {
+      "source_id": "RUN-01",
+      "target_id": "UH-RUN-01",
+      "owner_wp": "WP02",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "51e2df410ad56ede65412c7f6a6f98e32ba40b9d84f84749d95415bf2f6badab"
+    },
+    {
+      "source_id": "RUN-02",
+      "target_id": "UH-RUN-02",
+      "owner_wp": "WP02",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "be2e06a8b7dbababf7298d5f516d36051c174c92f461f7ebd865119d8dc0adde"
+    },
+    {
+      "source_id": "RUN-03",
+      "target_id": "UH-RUN-03",
+      "owner_wp": "WP02",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "fed40724ac98a5451d467034f855162051438f6425c4c691de6eee15b7517489"
+    },
+    {
+      "source_id": "RUN-04",
+      "target_id": "UH-RUN-04",
+      "owner_wp": "WP10",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "34724197689d049ba6b2e0bc83e8a89e3fbe42551d12467e49f03acc8289b8c9"
+    },
+    {
+      "source_id": "RUN-05",
+      "target_id": "UH-RUN-05",
+      "owner_wp": "WP02",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "13b47f9e6b45c398aa82072fdf1027c01b6fc0c0d74a36b7c0dd8d9fa31cb2b0"
+    },
+    {
+      "source_id": "RUN-06",
+      "target_id": "UH-RUN-06",
+      "owner_wp": "WP09",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "4f5c053b0c24c7c372fa72e1521218e741e18278a255eaff250c26262fc01e4e"
+    },
+    {
+      "source_id": "RUN-07",
+      "target_id": "UH-RUN-07",
+      "owner_wp": "WP09",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "e5e3681406c3053df4bdae715dfb65e84a7403ea4956326f847b56cef5ddea79"
+    },
+    {
+      "source_id": "RUN-08",
+      "target_id": "UH-RUN-08",
+      "owner_wp": "WP10",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "a82ae24b98764407661115239147a0cdc62fa17141402cb847ec9e79fe6483e5"
+    },
+    {
+      "source_id": "RUN-09",
+      "target_id": "UH-RUN-09",
+      "owner_wp": "WP06",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "9ffbfdcbda1f9e5b134f53403ff0cb84fba85c06d0992b3bc9a9d5723e80db6d"
+    },
+    {
+      "source_id": "RUN-10",
+      "target_id": "UH-RUN-10",
+      "owner_wp": "WP09",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "4c052e76e370e328669ef4b2d8b6a8abb36f3f0be3820dd4e02b08a0f65f1069"
+    },
+    {
+      "source_id": "CACHE-01",
+      "target_id": "UH-CACHE-01",
+      "owner_wp": "WP05",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "8c5249057ef74826a8feb9cc8c240e1c4be986e730f24ff44e24d43f56e77ca0"
+    },
+    {
+      "source_id": "CACHE-02",
+      "target_id": "UH-CACHE-02",
+      "owner_wp": "WP13",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "a5c865c76a4a8197d4b129a83919141ba0755b4405c15ae26c85dccd2e926859"
+    },
+    {
+      "source_id": "CACHE-03",
+      "target_id": "UH-CACHE-03",
+      "owner_wp": "WP13",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "40a0f622dfc080f49032eb6b1c5f1cda621be69a0eee6643c09cddb4065e8055"
+    },
+    {
+      "source_id": "CACHE-04",
+      "target_id": "UH-CACHE-04",
+      "owner_wp": "WP05",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "23d1f4c9a89cb6e159077bcab8cac4ced17224acd288fea400560e9db6bb6b36"
+    },
+    {
+      "source_id": "CACHE-05",
+      "target_id": "UH-CACHE-05",
+      "owner_wp": "WP11",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "20c5661fc5c42f8eea215cfef61e032f08bacd8aa6dc5956f706b08e699600fd"
+    },
+    {
+      "source_id": "CACHE-06",
+      "target_id": "UH-CACHE-06",
+      "owner_wp": "WP11",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "1ebb29f6b6dae2877dfe4bde48b776c7f0d69fe72bec076ade2eef301619d07f"
+    },
+    {
+      "source_id": "CACHE-07",
+      "target_id": "UH-CACHE-07",
+      "owner_wp": "WP05",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "c5b68feea5b4dfad043d28b241c83e5f8989583e14914d25abf1b93c3c92fd90"
+    },
+    {
+      "source_id": "CACHE-08",
+      "target_id": "UH-CACHE-08",
+      "owner_wp": "WP05",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "5cfb49772f1157901f5d07364b78be3d8c7dace27393204cb8597a4aa72cfa97"
+    },
+    {
+      "source_id": "CACHE-09",
+      "target_id": "UH-CACHE-09",
+      "owner_wp": "WP05",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "3bda20692d1e8e9b69f37514e4cd6cd612a493daa4f56fc63b9fd96466c5e6ff"
+    },
+    {
+      "source_id": "CACHE-10",
+      "target_id": "UH-CACHE-10",
+      "owner_wp": "WP06",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "40f227cb4c8a2f9d0c55d142b70ce94757da8d96a37fd0ecbbbbd998a3a80e21"
+    },
+    {
+      "source_id": "MEM-01",
+      "target_id": "UH-MEM-01",
+      "owner_wp": "WP11",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "84cb5556a661fd58de85d08dd80f3d5746c89d00f6ecfed42e546862c3839a8e"
+    },
+    {
+      "source_id": "MEM-02",
+      "target_id": "UH-MEM-02",
+      "owner_wp": "WP11",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "4e6b396e4c46d7daafeb772c0009c33bc25a46df9da7d305e0d0eb19532504da"
+    },
+    {
+      "source_id": "MEM-03",
+      "target_id": "UH-MEM-03",
+      "owner_wp": "WP11",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "a718405f405627c7786593f2bf7d25d45babd46ce6ae497cbe3b499b87450104"
+    },
+    {
+      "source_id": "MEM-04",
+      "target_id": "UH-MEM-04",
+      "owner_wp": "WP11",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "18ce5e0dee18bc521f36e3f4afcd5d63bb4b77189a9bfadbe92e651662c9b4af"
+    },
+    {
+      "source_id": "MEM-05",
+      "target_id": "UH-MEM-05",
+      "owner_wp": "WP11",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "efcf2ae1d4e1c87f5f3fdc170842e1e5e44e097a36241dff2d608c4463e25bca"
+    },
+    {
+      "source_id": "MEM-06",
+      "target_id": "UH-MEM-06",
+      "owner_wp": "WP11",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "de92e21377c87d12ef753e2edb3a5d3a084a50f25bd2ff6ad650f65581391201"
+    },
+    {
+      "source_id": "MEM-07",
+      "target_id": "UH-MEM-07",
+      "owner_wp": "WP11",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "f255111b2c738419e4e7f778e21d9b6f2a807da98063808daa2d6a51a2dc78fd"
+    },
+    {
+      "source_id": "MEM-08",
+      "target_id": "UH-MEM-08",
+      "owner_wp": "WP12",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "73a117589b5b7f62aef15bb1ac6327c2d377359c046ed48007e79bc49d7c29f3"
+    },
+    {
+      "source_id": "MEM-09",
+      "target_id": "UH-MEM-09",
+      "owner_wp": "WP11",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "26480fc8a4bfc67d2d7caaf45516a4e493dc3f96ea5e3acff1100a93c23756fb"
+    },
+    {
+      "source_id": "MEM-10",
+      "target_id": "UH-MEM-10",
+      "owner_wp": "WP11",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "b141df6f2643d602e309b2b08bc19ce8e878a42a31e38826103acd36ba7771a9"
+    },
+    {
+      "source_id": "MEM-11",
+      "target_id": "UH-MEM-11",
+      "owner_wp": "WP11",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "232262062aaa314172beda1aa4113314f3317fd590703a1be5a830f0938e2ed9"
+    },
+    {
+      "source_id": "MEM-12",
+      "target_id": "UH-MEM-12",
+      "owner_wp": "WP17",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "a8e8107fc93a4bdeb69aba82e8137678b3b69a16b49f2c24efd2187560166a7e"
+    },
+    {
+      "source_id": "MEM-13",
+      "target_id": "UH-MEM-13",
+      "owner_wp": "WP11",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "7637a1e4bee227753292f1b7944347cab4fdfcffbaf3365541abb96b1253d168"
+    },
+    {
+      "source_id": "MEM-14",
+      "target_id": "UH-MEM-14",
+      "owner_wp": "WP12",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "96577908b12532c210756234cb884ed3a80a52f98770123481ab56d510fe9f15"
+    },
+    {
+      "source_id": "LEARN-01",
+      "target_id": "UH-LEARN-01",
+      "owner_wp": "WP16",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "f0905f91e0846a959b7cf4e049c207f3cf5a964af332e29359a8f964ffe8b3bf"
+    },
+    {
+      "source_id": "LEARN-02",
+      "target_id": "UH-LEARN-02",
+      "owner_wp": "WP16",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "462964dfede19ad3f57b68f4c5d94a2fb8179c0f5f4d9428944da7308947c9bd"
+    },
+    {
+      "source_id": "LEARN-03",
+      "target_id": "UH-LEARN-03",
+      "owner_wp": "WP16",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "602756faf788ebb47014054ab06c3f5a535d7f309398d124270b49d0012cea9a"
+    },
+    {
+      "source_id": "LEARN-04",
+      "target_id": "UH-LEARN-04",
+      "owner_wp": "WP16",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "7c8c1b163eec47cdc21e9a8f18f32eb63e78a62aa157b2d7cd29a03f6c117005"
+    },
+    {
+      "source_id": "LEARN-05",
+      "target_id": "UH-LEARN-05",
+      "owner_wp": "WP16",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "09ca30d89350d10f0ef3e294bf2e142665ae1b2688cf1bef84f54d74f28be61f"
+    },
+    {
+      "source_id": "LEARN-06",
+      "target_id": "UH-LEARN-06",
+      "owner_wp": "WP20",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "6be9c85afa96cdb55b70febabd940c143a496895d32fcb0fc2a0b7ece4da51bf"
+    },
+    {
+      "source_id": "LEARN-07",
+      "target_id": "UH-LEARN-07",
+      "owner_wp": "WP20",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "039332e370b0ce4a3caedb8bebe04824d1f852f2e7ff8849ef456f66adff6102"
+    },
+    {
+      "source_id": "LEARN-08",
+      "target_id": "UH-LEARN-08",
+      "owner_wp": "WP20",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "9b06b78db2ac763f2e401a71273590a760ed9a5fa6510d6f8d67632ef62e0f0d"
+    },
+    {
+      "source_id": "LEARN-09",
+      "target_id": "UH-LEARN-09",
+      "owner_wp": "WP21",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "f605121214958cf3c59515d44ca01ffcbda845121b2546e902c279d9449439cb"
+    },
+    {
+      "source_id": "LEARN-10",
+      "target_id": "UH-LEARN-10",
+      "owner_wp": "WP21",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "7b3571f813bc7676555aec10205a45ca5d31c65f4aafeaa40f7d8a7cc82974db"
+    },
+    {
+      "source_id": "LEARN-11",
+      "target_id": "UH-LEARN-11",
+      "owner_wp": "WP21",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "7901c0f8d1b4a2f6264129677393a8bb5d0b4ce3b6f412666f7b01142434258d"
+    },
+    {
+      "source_id": "LEARN-12",
+      "target_id": "UH-LEARN-12",
+      "owner_wp": "WP19",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "130b993287ff481857c07b6a418899e4d168e2ba0bb5f137def4a8f5f45b3c49"
+    },
+    {
+      "source_id": "LEARN-13",
+      "target_id": "UH-LEARN-13",
+      "owner_wp": "WP16",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "077272f24d6cc31fa697a616f9c6ddbb2db30daf030e20833dbf34d94e648e72"
+    },
+    {
+      "source_id": "LEARN-14",
+      "target_id": "UH-LEARN-14",
+      "owner_wp": "WP16",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "2f677c90a959a21f34ceb2361bcb5d8cfefed0c1f173c2f59e26d2d194d06f8a"
+    },
+    {
+      "source_id": "OBS-01",
+      "target_id": "UH-OBS-01",
+      "owner_wp": "WP13",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "6543138f44a0d4c0db821b388cd293c6af7712297878f8ba239457a70cee779e"
+    },
+    {
+      "source_id": "OBS-02",
+      "target_id": "UH-OBS-02",
+      "owner_wp": "WP13",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "d041d978d2f137798d3be771d60f28834456482b80e1f34dcdb7df7718828294"
+    },
+    {
+      "source_id": "OBS-03",
+      "target_id": "UH-OBS-03",
+      "owner_wp": "WP13",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "ca559169cd3078a4d2cda778f2e9bbfad511a933a4229784d7cae3700d12db15"
+    },
+    {
+      "source_id": "OBS-04",
+      "target_id": "UH-OBS-04",
+      "owner_wp": "WP13",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "70053e7e094efc7a44c1b40480722cfc12c722009dcfd9ee67e403f7bc796e9e"
+    },
+    {
+      "source_id": "OBS-05",
+      "target_id": "UH-OBS-05",
+      "owner_wp": "WP13",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "0aa1eb4ec66a5bd5eaa8b5bb8fe040238d01270e3e13a25444f08b96df51aa46"
+    },
+    {
+      "source_id": "OBS-06",
+      "target_id": "UH-OBS-06",
+      "owner_wp": "WP13",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "fdeb1a596e3c8a028d5a90654a887e07b385b38b5e0a1619eaee6101663c69ea"
+    },
+    {
+      "source_id": "OBS-07",
+      "target_id": "UH-OBS-07",
+      "owner_wp": "WP13",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "9e6184b5abc8f5dad848f349b403598b47488b8155e60633f32a8c7f44772b7f"
+    },
+    {
+      "source_id": "OBS-08",
+      "target_id": "UH-OBS-08",
+      "owner_wp": "WP13",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "089e36824fdaef4eef446e747c709bf35b3367aa7ea367619d56b4a45e1abf3f"
+    },
+    {
+      "source_id": "OBS-09",
+      "target_id": "UH-OBS-09",
+      "owner_wp": "WP13",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "9c29cc020fa1bb9b1e0166334216b812ca5bb24844bedd6081d1d44dce65b3a9"
+    },
+    {
+      "source_id": "OBS-10",
+      "target_id": "UH-OBS-10",
+      "owner_wp": "WP13",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "615c1050d959c70e678e4859a6eeb19f69ad2f65ba8bb4dbfefa8fc3762d6782"
+    },
+    {
+      "source_id": "OBS-11",
+      "target_id": "UH-OBS-11",
+      "owner_wp": "WP13",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "5319c9dcd988fb5d52ada4f487c6bc3ac16bf57d60553ea1c75f7c878f66cfd3"
+    },
+    {
+      "source_id": "OBS-12",
+      "target_id": "UH-OBS-12",
+      "owner_wp": "WP13",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "fe263352451faca6b1ac8d235487f351b1120a2a47ae2181e964bd5ea00ad680"
+    },
+    {
+      "source_id": "PY-01",
+      "target_id": "UH-PY-01",
+      "owner_wp": "WP22",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "2a540336e5d8ee4f39463c1562b4640966e5cf8048da568f8a9de2fa81ba33be"
+    },
+    {
+      "source_id": "PY-02",
+      "target_id": "UH-PY-02",
+      "owner_wp": "WP22",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "414731a108e57c6851b8338595fe9a69539edb03fe1ccaaf21b6758f5c893a34"
+    },
+    {
+      "source_id": "PY-03",
+      "target_id": "UH-PY-03",
+      "owner_wp": "WP22",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "b48157fb01b43aee574abbc33ba826aecb7e268f55297767b0844875d47bdae8"
+    },
+    {
+      "source_id": "PY-04",
+      "target_id": "UH-PY-04",
+      "owner_wp": "WP22",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "8d943d7bdad4d2e9bf035330dd4252cef36649f76b8a4ac898c67e01f4e44b88"
+    },
+    {
+      "source_id": "PY-05",
+      "target_id": "UH-PY-05",
+      "owner_wp": "WP22",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "b62e327024c3c091facda26c16c94aef505760b10a94f71b15f6d96a14c7ce44"
+    },
+    {
+      "source_id": "PY-06",
+      "target_id": "UH-PY-06",
+      "owner_wp": "WP22",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "a95a36981ab76ee5de783ada11f82f0b6213ddf913fcee0883f26dcefeb91ea2"
+    },
+    {
+      "source_id": "PY-07",
+      "target_id": "UH-PY-07",
+      "owner_wp": "WP22",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "7e632faf8bafdd0bc3504b92b6485487e97bf5dfa7fda0ec7020692ee7b75dce"
+    },
+    {
+      "source_id": "PY-08",
+      "target_id": "UH-PY-08",
+      "owner_wp": "WP22",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "1f0eb8635e3e4118d5b31f76af8a93e7400934bffc78aceade06cf53618a6c59"
+    },
+    {
+      "source_id": "PY-09",
+      "target_id": "UH-PY-09",
+      "owner_wp": "WP22",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "3173a4496e16c4234dbaa5184b8ba38179b7d0f269e705bcc08505430b45d9af"
+    },
+    {
+      "source_id": "PY-10",
+      "target_id": "UH-PY-10",
+      "owner_wp": "WP22",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "821fdc488f2221a4578dd433392ab9f867f7f06ec63604702adc89e3d371a969"
+    },
+    {
+      "source_id": "OPS-01",
+      "target_id": "UH-OPS-01",
+      "owner_wp": "WP22",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "f0c9a151226e2ea20ffe2cd9156abdf585fefe0d8b8cd4339ba1d418f846478d"
+    },
+    {
+      "source_id": "OPS-02",
+      "target_id": "UH-OPS-02",
+      "owner_wp": "WP00",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "862f5215a72358a20b13b1d37e53d018bab476cfbcb1e707acdbb504bd26995b"
+    },
+    {
+      "source_id": "OPS-03",
+      "target_id": "UH-OPS-03",
+      "owner_wp": "WP06",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "5f5d5aaafad8643492548a86a9fa7a1da14e86cc3d5b674334f351526e73a62d"
+    },
+    {
+      "source_id": "OPS-04",
+      "target_id": "UH-OPS-04",
+      "owner_wp": "WP22",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "e24acbda2437b3ce146595165e3783b8874a19b237e8a2856e4ea4ef404ba8ad"
+    },
+    {
+      "source_id": "OPS-05",
+      "target_id": "UH-OPS-05",
+      "owner_wp": "WP02",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "dbf68f232cf5908920123d9aeb110fec2ace02b6c1108951829eb7b4e91e153d"
+    },
+    {
+      "source_id": "OPS-06",
+      "target_id": "UH-OPS-06",
+      "owner_wp": "WP22",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "3f7500e79f3ac6ab47e256bc3e93d326b00ac320b44c83f2356c95b46e63f031"
+    },
+    {
+      "source_id": "OPS-07",
+      "target_id": "UH-OPS-07",
+      "owner_wp": "WP10",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "65e2abd118e6ac9b0d771ecb82d527f8a647c386082dc496ef28e79d5c78a64b"
+    },
+    {
+      "source_id": "OPS-08",
+      "target_id": "UH-OPS-08",
+      "owner_wp": "WP10",
+      "disposition": "add_preserved_obligation",
+      "scenario_sha256": "1c0de6b3f6d34fd80d383bded19f1941f4c89d002c04c21b0d98daca53ba0533"
+    }
+  ],
+  "additional_cases": [
+    "INTEG-AUTH-CONVERSION",
+    "INTEG-STATE-DOMAIN",
+    "INTEG-DELIVERY-BIND",
+    "INTEG-ONLY-WRITE",
+    "INTEG-NATIVE-LOAD",
+    "INTEG-TYPED-PAYLOAD",
+    "INTEG-MISSING-EVIDENCE",
+    "INTEG-COST-RESERVE",
+    "INTEG-JSON-STRICT",
+    "INTEG-MEMORY-VIEW",
+    "INTEG-REVIEW-PROFILE",
+    "INTEG-PARTIAL-UNDO",
+    "INTEG-RUBRIC-HARD",
+    "INTEG-PAUSE-RESUME",
+    "INTEG-RETENTION",
+    "INTEG-MIGRATION",
+    "INTEG-WP-BOOTSTRAP",
+    "INTEG-ROLE-MAPPING",
+    "INTEG-DATASET-COUNT",
+    "INTEG-LEARNING-DEFAULT",
+    "INTEG-SCOPE-ACL",
+    "INTEG-B-STALE-EVAL",
+    "INTEG-ASSURANCE",
+    "INTEG-CANCEL-UNKNOWN"
+  ],
+  "not_execution_evidence": true
+}

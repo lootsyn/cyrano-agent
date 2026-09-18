@@ -1,0 +1,49 @@
+{
+  "kind": "executed_readiness_drill",
+  "drill": "backup_restore",
+  "category": "A",
+  "authorization": "isolated_no_external_effects",
+  "external_effects": false,
+  "argv": [
+    "/home/ubuntu/cyrano-agent-devin/libs/code/.venv/bin/python",
+    "drills.py",
+    "backup_restore"
+  ],
+  "status": "passed",
+  "blockers": [],
+  "checks": [
+    {
+      "name": "events_survive_restore",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "logical_digest_matches",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "tombstones_replayed",
+      "passed": true,
+      "detail": {
+        "restored": 2,
+        "tombstones_replayed": 1,
+        "activated": true
+      }
+    },
+    {
+      "name": "old_writer_refused",
+      "passed": true,
+      "detail": "MIGRATION_REQUIRED"
+    }
+  ],
+  "cleanup": {
+    "path": "/tmp/cyrano-drill-backup-odm5gcgo",
+    "removed": true
+  },
+  "raw": {
+    "events": 3,
+    "dump_digest": "1e3f6b0526fd808eb58c8062c4e4094ef6411b4606abe823bb4636eb2128fff9"
+  },
+  "cleanup_verified": true
+}

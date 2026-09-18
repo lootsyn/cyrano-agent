@@ -1,0 +1,765 @@
+{
+  "revision": "2026-09-16-integration-r2",
+  "guards": [
+    {
+      "id": "workspace_runtime_policy_bound",
+      "owner_wp": "WP06",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "WorkspaceIdentity+RuntimeLock+policy revision+scope ACL",
+      "algorithm": "workspace canonical root/digest와 runtime/policy binding이 신뢰 저장소와 일치; bootstrap에서는 해당 probe 단계만 인정",
+      "error_code": "WORKSPACE_BINDING_MISMATCH",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "trusted_input_and_memory_view_ready",
+      "owner_wp": "WP07",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "TrustedUserEvent+current intent ledger+authorized MemoryAccessBinding",
+      "algorithm": "입력 actor·수신 이벤트와 session 연결을 검증; memory view가 없는 경우 명시 empty-view를 결속하며 타 scope 결과를 섞지 않음",
+      "error_code": "UNTRUSTED_USER_INPUT",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "read_scope_available",
+      "owner_wp": "WP07",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "resolved permission_set+requested evidence paths",
+      "algorithm": "정확 read grant와 deny를 적용; 읽을 수 없는 의무는 질문 또는 scope 요청으로 남김",
+      "error_code": "READ_SCOPE_DENIED",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "no_redundant_question",
+      "owner_wp": "WP07",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "current decision ledger+question candidate+open obligations",
+      "algorithm": "이미 답한 동일 의무를 재질문하지 않음; 요구 변경/충돌/새 근거이면 이유와 supersedes를 기록",
+      "error_code": "REDUNDANT_QUESTION",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "no_unresolved_mandatory_obligation",
+      "owner_wp": "WP07",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "canonical obligation graph+readiness report",
+      "algorithm": "모든 mandatory 의무의 결정/근거/승인 상태 유효; 점수나 낮은 모호도로 blocker 상쇄 금지",
+      "error_code": "UNRESOLVED_BLOCKER",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "evidence_snapshot_provenance_valid",
+      "owner_wp": "WP07",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "evidence artifact+snapshot+scope+source locator",
+      "algorithm": "원문 hash/존재/유효성/ACL 검사; 삭제/만료/다른 snapshot 근거는 false 또는 unavailable",
+      "error_code": "STALE_EVIDENCE",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "read_or_probe_authorized",
+      "owner_wp": "WP03",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "read grant+probe recipe+permit+runtime binding",
+      "algorithm": "단순 read와 실행 probe를 구분; 테스트/import/build는 실행 허가와 recipe 필요",
+      "error_code": "PROBE_NOT_AUTHORIZED",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "trusted_user_event_not_model_report",
+      "owner_wp": "WP07",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "host ingress authentication+event id+raw text digest",
+      "algorithm": "모델 tool body가 아니라 인증된 사용자 수신 사건을 원장에 결속; 원문 보존 정책 적용",
+      "error_code": "UNTRUSTED_USER_EVENT",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "bundle_strict_and_content_addressed",
+      "owner_wp": "WP07",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "strict InterviewContract+artifact refs",
+      "algorithm": "schema와 dangling/crossscope refs 검사 후 CYRANO-C14N-1 subject를 계산; 후보가 준 digest를 독립 재계산",
+      "error_code": "INVALID_BUNDLE",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "finding_targets_current_digest",
+      "owner_wp": "WP07",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "WorkerOutcome+AgentTask+current spec digest",
+      "algorithm": "worker task/revision/input/role/subject 일치; stale 결과의 새 반증은 별도 evidence 후보로 보존",
+      "error_code": "STALE_REVIEW",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "required_current_independent_reviews_and_no_blockers",
+      "owner_wp": "WP07",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "ResolvedTaskProfile+spec reviews+finding dispositions",
+      "algorithm": "critic/blind 및 해당security review가 현재 subject에 결속되고 mandatory finding 미해결0; 자기 review 금지",
+      "error_code": "SPEC_REVIEW_REQUIRED",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "trusted_exact_approve_spec_for_planning",
+      "owner_wp": "WP03",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "TrustedApprovalReceipt+spec digest+display event",
+      "algorithm": "action approve_spec_for_planning과 정확 binding·actor·nonce·기간·철회 검사; 실행권한으로 사용불가",
+      "error_code": "APPROVAL_PURPOSE_MISMATCH",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "spec_approval_current",
+      "owner_wp": "WP07",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "spec approval+current obligation/contract subject",
+      "algorithm": "정정·철회로 무효화되지 않은 승인과 exact spec 참조를 확인",
+      "error_code": "STALE_SPEC_APPROVAL",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "dag_scope_traceability_verification_budget_valid",
+      "owner_wp": "WP09",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "GovernedWorkPlan+exact permissions+recipes+budget ledger",
+      "algorithm": "cycle/dangling/동시writer/requirement누락/create/write/delete혼동 검사; 모든필수검사와 rollback 및 보수예산 존재",
+      "error_code": "INVALID_PLAN",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "current_plan_findings",
+      "owner_wp": "WP09",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "plan review task+current plan subject",
+      "algorithm": "현재 plan digest에 대한 finding만 상태를 변경; stale review는 적용하지 않음",
+      "error_code": "STALE_PLAN_FINDINGS",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "independent_current_plan_review_no_blockers",
+      "owner_wp": "WP09",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "profile+planreview+findingdisposition",
+      "algorithm": "작성자와 분리된 plan-reviewer 실행·현재 digest·필수 finding 해결을 확인",
+      "error_code": "PLAN_REVIEW_REQUIRED",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "trusted_exact_approve_plan",
+      "owner_wp": "WP03",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "receipt+plan subject+display",
+      "algorithm": "action approve_plan 검증; delivery_mode·exactpaths·budget 변경시 다시승인",
+      "error_code": "PLAN_APPROVAL_INVALID",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "display_exact_files_recipes_budget",
+      "owner_wp": "WP07",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "current plan+trusted display event",
+      "algorithm": "사용자가 본 정확한 파일 작업/recipe/예산/납품모드 문서 digest를 기록; 숨은 확대없음",
+      "error_code": "APPROVAL_DISPLAY_MISSING",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "trusted_authorize_execution_scope_intersection",
+      "owner_wp": "WP03",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "authorize_execution receipt+parent approvals+resolved profile",
+      "algorithm": "명세/계획승인과 실행허가를 분리; scope교집합/deny우선/예산min 및 currentepoch 적용",
+      "error_code": "EXECUTION_NOT_AUTHORIZED",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "governed_adapter_audit_budget_preimage_valid",
+      "owner_wp": "WP06",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "governed CompatibilityProbes+permit+reservation+preimage",
+      "algorithm": "모든필수연결verified, audit healthy, lease/fencecurrent, budgetreserved, preimagecurrent일때만dispatch",
+      "error_code": "EXECUTION_PREFLIGHT_FAILED",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "observed_changes_no_unknown_side_effects",
+      "owner_wp": "WP10",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "trusted change manifest+operation journal+workerresult",
+      "algorithm": "actual changedfiles가허가범위이고 실행중/unknown목록없음; 모델요약만으로검증단계진행금지",
+      "error_code": "UNKNOWN_EXECUTION_OUTCOME",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "same_scope_repair_possible",
+      "owner_wp": "WP10",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "failed verification+current grant+remainingbudget",
+      "algorithm": "필수기준변경없이 동일scope/postimage수정계획가능; 범위확대는plan review로복귀",
+      "error_code": "REPLAN_REQUIRED",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "repair_within_current_contract_possible",
+      "owner_wp": "WP10",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "verificationfailure+currentrequirement+failurekind",
+      "algorithm": "환경오류/TDDred/제품오류 분리; 요구변경은CHANGE_ASSESSMENT, 동작수정은boundedrepair",
+      "error_code": "CONTRACT_REVIEW_REQUIRED",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "current_postimage_all_required_evidence",
+      "owner_wp": "WP10",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "all RunnerVerification+current changes+requiredchecks",
+      "algorithm": "동일postimage/run/recipe/schema에 결속; 필수test0/allskip/미실행/unknown없음; 해당비테스트check는test_count_applicable=false",
+      "error_code": "VERIFICATION_EVIDENCE_MISSING",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "current_findings_within_approved_scope",
+      "owner_wp": "WP07",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "finalreview+currentartifact+affectedpaths",
+      "algorithm": "finding이현재postimage를지목하고수정scope유지; 기준약화나신규기능이면재계획",
+      "error_code": "REWORK_SCOPE_MISMATCH",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "existing_or_new_permit_current_and_scope_unchanged",
+      "owner_wp": "WP03",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "repairplan+permit+approval+budget",
+      "algorithm": "남은횟수/기간/epoch/preimage를재검증; 만료permit자동연장금지",
+      "error_code": "PERMIT_EXPIRED_OR_STALE",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "delivery_patch_only_and_all_completion_gates",
+      "owner_wp": "WP10",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "plan.delivery_mode+finalreviews+verification+patchdeliveryreceipt",
+      "algorithm": "patch_only이며현재manifest 전달확인, blocker/requiredgap/unknown0; 원본반영을완료했다고표시금지",
+      "error_code": "DELIVERY_NOT_COMPLETE",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "delivery_apply_to_source_and_all_patch_checks",
+      "owner_wp": "WP10",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "delivery_mode+stagedchanges+finalreview",
+      "algorithm": "apply_to_source이며검증된patch와현재sourcepreimage범위를표시할준비완료; 아직완료아님",
+      "error_code": "APPLY_APPROVAL_REQUIRED",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "trusted_authorize_apply_patch_and_source_preimage_current",
+      "owner_wp": "WP10",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "apply receipt+current source fingerprint+journal",
+      "algorithm": "authorize_apply_patch와정확patch/sourcepreimage 검증후writerlock 획득; 사용자외부수정이면새승인",
+      "error_code": "SOURCE_PREIMAGE_CHANGED",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "source_manifest_and_required_final_checks_passed",
+      "owner_wp": "WP10",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "apply journal+actual sourcepostimage+finalchecks",
+      "algorithm": "모든허가파일의실제사후hash와필수검사가일치; 부분적용/미결작업없음",
+      "error_code": "SOURCE_APPLY_INCOMPLETE",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "durable_journal_exists_or_gap_explicit",
+      "owner_wp": "WP10",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "operationjournal+observedfilesystem+gaprecord",
+      "algorithm": "journal있으면 actual state기록; journal손실은gap과영향범위불명으로명시, 성공추정금지",
+      "error_code": "RECONCILIATION_REQUIRED",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "actual_partial_state_and_recovery_next_action_recorded",
+      "owner_wp": "WP07",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "reconcile report+source snapshot+next action proposal",
+      "algorithm": "적용/미적용/unknown 파일을분류하고복구계획기록; BLOCKED에서자동재시도않음",
+      "error_code": "RECOVERY_PLAN_MISSING",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "affected_entities_invalidated",
+      "owner_wp": "WP07",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "trustedintentchange+dependencygraph",
+      "algorithm": "역의존BFS로affecteddecision/spec/plan/review/approval/permit/context를stale/revoked; 새revision원자저장",
+      "error_code": "INVALIDATION_INCOMPLETE",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "spec_still_valid_and_plan_dependents_invalidated",
+      "owner_wp": "WP09",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "changeassessment+unchangedspecdigest+plangraph",
+      "algorithm": "spec유효성검사후 plan-only영향범위무효화; spec바뀌면FRAME",
+      "error_code": "SPEC_CHANGED",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "no_new_dispatch_and_all_running_ops_accounted_for",
+      "owner_wp": "WP10",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "cancel token+operationledger+budgetliabilities",
+      "algorithm": "신규dispatch정지, 모든running작업settled/reconciled; unknown남으면CANCELLING",
+      "error_code": "CANCEL_PENDING_OPERATIONS",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "trusted_cancel_stop_new_dispatch_immediately",
+      "owner_wp": "WP10",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "trusted user cancel+runid",
+      "algorithm": "인증된취소를원자기록하고runepoch/permits를철회; 실행중작업정리시작",
+      "error_code": "UNTRUSTED_CANCEL",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "persist_resume_checkpoint_and_operation_status",
+      "owner_wp": "WP07",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "phasecheckpoint+runtimebinding+outstandingoperations",
+      "algorithm": "pause사유와안전resumecheckpoint저장; 실행미결을숨기지않음; 더큰권한복귀금지",
+      "error_code": "CHECKPOINT_NOT_DURABLE",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    },
+    {
+      "id": "revoke_affected_permits_and_invalidate_dependents",
+      "owner_wp": "WP03",
+      "result": "GuardDecision(passed, blocker_codes, evidence_refs, evaluated_bindings)",
+      "authority": "trusted_service_only",
+      "failure_action": "deny_transition_and_persist_reason",
+      "implementation_status": "planned",
+      "trusted_inputs": "userchange/securityevent+dependencygraph",
+      "algorithm": "affected권한즉시철회, 신규dispatch정지, 무효화event/outbox를원자저장",
+      "error_code": "REVOCATION_NOT_DURABLE",
+      "evidence_binding": [
+        "scope",
+        "session_id",
+        "control_revision",
+        "policy_digest",
+        "subject_digest",
+        "runtime_lock_digest"
+      ],
+      "on_missing": "blocked_not_false_success"
+    }
+  ]
+}

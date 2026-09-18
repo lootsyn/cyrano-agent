@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "stable_block_order": [
+    "constitution",
+    "role",
+    "tool_inventory",
+    "skill_catalogue"
+  ],
+  "dynamic_tail_order": [
+    "run_binding",
+    "approved_contract",
+    "work_unit",
+    "memory_evidence",
+    "recent_results",
+    "current_request"
+  ],
+  "max_static_bytes": 16384,
+  "max_skill_entry_bytes": 8192,
+  "max_total_context_bytes_diagnostic": 65536,
+  "token_measurement_required_for_hard_model_limit": true,
+  "epoch_pin": [
+    "release",
+    "role",
+    "tools",
+    "skill_catalogue"
+  ],
+  "forbidden_static_fields": [
+    "wall_clock",
+    "request_id",
+    "current_branch",
+    "cwd",
+    "budget_remaining",
+    "dynamic_memory_results",
+    "approval_nonce"
+  ],
+  "provider_cache_control": "native_verified_adapter_only",
+  "keepalive_enabled": false,
+  "ttl_assumption": null,
+  "cross_tenant_cache_key_reuse": false,
+  "source_text_semantic_rewrite_for_cache": false,
+  "memory_release_pin": "run_epoch",
+  "memory_query_result_placement": "dynamic_tail",
+  "stable_frozen_memory": "optional_explicit_context_epoch_only",
+  "security_revoke_overrides_freeze": true,
+  "task_profile_policy": "configs/task-profile-policy.json"
+}

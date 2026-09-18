@@ -1,0 +1,47 @@
+{
+  "kind": "skill_manifest",
+  "schema_version": "1.0",
+  "id": "cache-context",
+  "version": "0.1.0-dev",
+  "name": "cache-context",
+  "description": "정확성·scope를 유지하면서 고정 prefix와 동적 tail을 분리한다.",
+  "entrypoint": "SKILL.md",
+  "content_digest": "sha256:7b2ad6d402ff8d67c556c54b3402c5b502f65935c34bd9cef2d1f47c37d81ffa",
+  "resources": [
+    {
+      "path": "references/checklist.md",
+      "digest": "sha256:7f12b1500048d10fde693910096120877032466f94d20b2096b1cdf36b428f07",
+      "executable": false
+    },
+    {
+      "path": "assets/output.example.json",
+      "digest": "sha256:ba726534b3c734714cc74cb292443c9a7b81d4a6d6b074626158387541c43c9d",
+      "executable": false
+    },
+    {
+      "path": "references/universal-integration.md",
+      "digest": "sha256:b88b34e9e60ab731740bafaecb142a0b3d23917125b2fa0e51d43b137e570e70",
+      "executable": false
+    }
+  ],
+  "allowed_roles": [
+    "implementer",
+    "candidate-author"
+  ],
+  "required_tools": [],
+  "scope": {
+    "tenant": "__BIND_TENANT__",
+    "user": "__BIND_USER__",
+    "workspace": "__BIND_WORKSPACE__"
+  },
+  "context_byte_budget": 8192,
+  "activation_tests": [
+    "SKILL-cache-context-positive"
+  ],
+  "counterexample_tests": [
+    "SKILL-cache-context-negative"
+  ],
+  "release_digest": null,
+  "approval_ref": null,
+  "status": "candidate"
+}

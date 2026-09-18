@@ -1,0 +1,51 @@
+{
+  "schema_version": "udh.approval/2",
+  "receipt_id": "receipt-test-only",
+  "session_id": "session-demo",
+  "actor_id": "test-user",
+  "user_event_id": "user-event-test",
+  "display_event_id": "display-test",
+  "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "action": "approve_plan",
+  "bindings": {
+    "spec_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "plan_digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "scope_digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "policy_digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "snapshot_digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "scope": {
+    "workspace_id": "workspace-demo",
+    "read": [
+      "src/parser.py",
+      "tests/test_parser.py"
+    ],
+    "create": [],
+    "write_existing": [
+      "src/parser.py",
+      "tests/test_parser.py"
+    ],
+    "delete": [],
+    "deny": [
+      ".git",
+      "secrets"
+    ],
+    "recipe_ids": [
+      "python_tests",
+      "python_lint"
+    ],
+    "network": "none",
+    "network_allowlist": []
+  },
+  "issued_at": "2026-09-15T07:00:00Z",
+  "expires_at": "2026-09-15T08:00:00Z",
+  "nonce": "test-fixture-nonce-not-production",
+  "issuer": "fixture-only",
+  "attestation": {
+    "algorithm": "none",
+    "key_id": "fixture-key-only",
+    "canonicalization": "canonical-json-v1",
+    "signature": "pStY0h2fIRK8YXxXot4dh2Y37gOW3rTSZ2Xh2E5lynUxB9J4J_qDctiRCuNJBV9WSErj5rcag0yifndScf5bDA"
+  }
+}

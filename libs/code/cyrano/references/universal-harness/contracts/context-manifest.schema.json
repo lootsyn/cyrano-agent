@@ -1,0 +1,533 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:udh:schema:context-manifest:1",
+  "title": "context-manifest",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "udh.context/1"
+    },
+    "context_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "session_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "phase": {
+      "type": "string",
+      "minLength": 1
+    },
+    "context_epoch": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "release_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "policy_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "tool_schema_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "memory_view_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "blocks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "block_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "layer": {
+            "type": "string",
+            "enum": [
+              "L0",
+              "L1",
+              "L2",
+              "L3",
+              "L4",
+              "L5"
+            ]
+          },
+          "digest": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          },
+          "byte_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "token_count": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+            },
+            "minItems": 0
+          },
+          "mutability": {
+            "type": "string",
+            "enum": [
+              "release",
+              "phase",
+              "run",
+              "task",
+              "dynamic"
+            ]
+          }
+        },
+        "required": [
+          "block_id",
+          "layer",
+          "digest",
+          "byte_count",
+          "token_count",
+          "source_ids",
+          "mutability"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "input_limit_tokens": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "output_reserve_tokens": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "limit_source": {
+      "type": "string",
+      "enum": [
+        "verified_metadata",
+        "operator_budget",
+        "unknown"
+      ]
+    },
+    "prompt_cache_support": {
+      "type": "string",
+      "enum": [
+        "supported",
+        "unsupported",
+        "unknown"
+      ]
+    },
+    "wire_prefix_observed": {
+      "type": "boolean"
+    },
+    "invalidations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "usage": {
+      "$ref": "#/$defs/usage"
+    }
+  },
+  "required": [
+    "schema_version",
+    "context_id",
+    "session_id",
+    "run_id",
+    "phase",
+    "context_epoch",
+    "release_digest",
+    "policy_digest",
+    "tool_schema_digest",
+    "memory_view_digest",
+    "blocks",
+    "input_limit_tokens",
+    "output_reserve_tokens",
+    "limit_source",
+    "prompt_cache_support",
+    "wire_prefix_observed",
+    "invalidations",
+    "usage"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "artifact": {
+      "type": "object",
+      "properties": {
+        "artifact_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "media_type": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "artifact_id",
+        "digest",
+        "media_type"
+      ],
+      "additionalProperties": false
+    },
+    "scope": {
+      "type": "object",
+      "properties": {
+        "workspace_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "read": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\x00]+$"
+          },
+          "minItems": 0
+        },
+        "create": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\x00]+$"
+          },
+          "minItems": 0
+        },
+        "write_existing": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\x00]+$"
+          },
+          "minItems": 0
+        },
+        "delete": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\x00]+$"
+          },
+          "minItems": 0
+        },
+        "deny": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\x00]+$"
+          },
+          "minItems": 0
+        },
+        "recipe_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "minItems": 0
+        },
+        "network": {
+          "type": "string",
+          "enum": [
+            "none",
+            "allowlisted"
+          ]
+        },
+        "network_allowlist": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "workspace_id",
+        "read",
+        "create",
+        "write_existing",
+        "delete",
+        "deny",
+        "recipe_ids",
+        "network",
+        "network_allowlist"
+      ],
+      "additionalProperties": false
+    },
+    "budget": {
+      "type": "object",
+      "properties": {
+        "max_model_attempts": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_tool_calls": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_seconds": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_parallel_workers": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_cost_usd": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^\\d+(?:\\.\\d+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "max_model_attempts",
+        "max_tool_calls",
+        "max_seconds",
+        "max_parallel_workers",
+        "max_cost_usd"
+      ],
+      "additionalProperties": false
+    },
+    "finding": {
+      "type": "object",
+      "properties": {
+        "finding_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "severity": {
+          "type": "string",
+          "enum": [
+            "critical",
+            "major",
+            "minor",
+            "info"
+          ]
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "intent",
+            "scope",
+            "correctness",
+            "security",
+            "plan",
+            "tests",
+            "evidence",
+            "operations",
+            "style"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "minItems": 0
+        },
+        "affected_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "minItems": 1
+        },
+        "required_resolution": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "finding_id",
+        "severity",
+        "category",
+        "summary",
+        "evidence_ids",
+        "affected_ids",
+        "required_resolution"
+      ],
+      "additionalProperties": false
+    },
+    "bindings": {
+      "type": "object",
+      "properties": {
+        "spec_digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "plan_digest": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^sha256:[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "scope_digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "policy_digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "snapshot_digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "release_digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "spec_digest",
+        "plan_digest",
+        "scope_digest",
+        "policy_digest",
+        "snapshot_digest",
+        "release_digest"
+      ],
+      "additionalProperties": false
+    },
+    "usage": {
+      "type": "object",
+      "properties": {
+        "input_tokens": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "output_tokens": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "cached_input_tokens": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "cache_write_tokens": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "cost_usd": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^\\d+(?:\\.\\d+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "currency": {
+          "type": "string",
+          "enum": [
+            "USD"
+          ]
+        },
+        "measurement": {
+          "type": "string",
+          "enum": [
+            "reported",
+            "estimated",
+            "unavailable"
+          ]
+        },
+        "cache_observation": {
+          "type": "string",
+          "enum": [
+            "reported_hit",
+            "reported_zero",
+            "not_reported",
+            "unsupported"
+          ]
+        },
+        "source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "input_tokens",
+        "output_tokens",
+        "cached_input_tokens",
+        "cache_write_tokens",
+        "cost_usd",
+        "currency",
+        "measurement",
+        "cache_observation",
+        "source"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

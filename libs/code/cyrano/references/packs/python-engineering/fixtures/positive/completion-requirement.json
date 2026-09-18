@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "workspace_id": "1f8e5904-f794-41a7-9784-4918565c641d",
+  "attempt_id": "c31675b3-fe2f-4819-b541-59f31f82aa70",
+  "plan_digest": "sha256:ab04213a85b0057a8907129251da7f562bc53a5f6d4329951a884ce989abe9d8",
+  "policy_digest": "sha256:d79af7613061a913656a86d6edfac760c866fc6470f3a2f4733c616d2b5f97a4",
+  "toolchain_digest": "sha256:67da8006d5190ac156be2242368585fc6400548c206fa598ef1cb43071bf9172",
+  "suite_digest": "sha256:71b24ce516e53ce5b10fc9b1ec1df1227301b7730f01122daaf8e14b4a2a4432",
+  "required_check_ids": [
+    "policy_guard",
+    "inventory",
+    "format",
+    "lint",
+    "type",
+    "unit"
+  ],
+  "approved_snapshot_digest": "sha256:c09c556aa6b9f0a97f903c4d57e5ce5149bb1c7f6bb83db0cc94a89c946cceef",
+  "allow_baseline": false,
+  "review_snapshot_digest": "sha256:c09c556aa6b9f0a97f903c4d57e5ce5149bb1c7f6bb83db0cc94a89c946cceef",
+  "review_disposition": "approve",
+  "review_open_blockers": 0
+}

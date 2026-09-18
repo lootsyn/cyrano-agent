@@ -1,0 +1,1770 @@
+{
+  "schema_version": "cyrano.document-routing/1",
+  "not_native_dcode_configuration": true,
+  "generated_from": [
+    ".agents/work/plan.json",
+    "docs/development/test-work-plan.json",
+    "docs/development/r4-work-plan.json",
+    "docs/development/r5-work-plan.json"
+  ],
+  "always": [
+    "AGENTS.md",
+    "docs/NAVIGATION.ko.md"
+  ],
+  "tasks": {
+    "RC00": [
+      "docs/development/refinements/RC00.ko.md",
+      "docs/design/DCODE_INTEGRATION.ko.md"
+    ],
+    "RC01": [
+      "docs/development/refinements/RC01.ko.md",
+      "docs/design/DOCUMENT_GOVERNANCE.ko.md"
+    ],
+    "RC30": [
+      "docs/development/refinements/RC30.ko.md",
+      "docs/design/MEMORY_LIFECYCLE.ko.md"
+    ],
+    "RC31": [
+      "docs/development/refinements/RC31.ko.md",
+      "docs/design/MEMORY_LIFECYCLE.ko.md"
+    ],
+    "RC32": [
+      "docs/development/refinements/RC32.ko.md",
+      "docs/design/MEMORY_LIFECYCLE.ko.md"
+    ],
+    "RC33": [
+      "docs/development/refinements/RC33.ko.md",
+      "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+    ],
+    "RC34": [
+      "docs/development/refinements/RC34.ko.md",
+      "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+    ],
+    "RC35": [
+      "docs/development/refinements/RC35.ko.md",
+      "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+    ],
+    "RC36": [
+      "docs/development/refinements/RC36.ko.md",
+      "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+    ],
+    "RC40": [
+      "docs/development/refinements/RC40.ko.md",
+      "docs/design/OBSERVABILITY_PIPELINE.ko.md"
+    ],
+    "RC41": [
+      "docs/development/refinements/RC41.ko.md",
+      "docs/design/OBSERVABILITY_PIPELINE.ko.md"
+    ],
+    "RC42": [
+      "docs/development/refinements/RC42.ko.md",
+      "docs/design/OBSERVABILITY_PIPELINE.ko.md"
+    ],
+    "RC43": [
+      "docs/development/refinements/RC43.ko.md",
+      "docs/testing/R4_ACCEPTANCE_PROTOCOL.ko.md"
+    ],
+    "RF00": [
+      "docs/development/refinements/RF00.ko.md",
+      "docs/design/RESPONSIBILITY_AND_ADOPTION.ko.md"
+    ],
+    "RF01": [
+      "docs/development/refinements/RF01.ko.md",
+      "docs/design/CODE_INTELLIGENCE_AND_TOOL_ISOLATION.ko.md"
+    ],
+    "RF02": [
+      "docs/development/refinements/RF02.ko.md",
+      "docs/design/CODE_INTELLIGENCE_AND_TOOL_ISOLATION.ko.md"
+    ],
+    "RF03": [
+      "docs/development/refinements/RF03.ko.md",
+      "docs/design/CODE_INTELLIGENCE_AND_TOOL_ISOLATION.ko.md"
+    ],
+    "RF04": [
+      "docs/development/refinements/RF04.ko.md",
+      "docs/design/ADAPTIVE_MEMORY_AND_SKILL_EVOLUTION.ko.md"
+    ],
+    "RF05": [
+      "docs/development/refinements/RF05.ko.md",
+      "docs/design/ADAPTIVE_MEMORY_AND_SKILL_EVOLUTION.ko.md"
+    ],
+    "RF06": [
+      "docs/development/refinements/RF06.ko.md",
+      "docs/design/ADAPTIVE_MEMORY_AND_SKILL_EVOLUTION.ko.md"
+    ],
+    "RF07": [
+      "docs/development/refinements/RF07.ko.md",
+      "docs/design/NATIVE_MONITOR_TUI.ko.md"
+    ],
+    "RF08": [
+      "docs/development/refinements/RF08.ko.md",
+      "docs/design/NATIVE_MONITOR_TUI.ko.md"
+    ],
+    "RF09": [
+      "docs/development/refinements/RF09.ko.md",
+      "docs/design/NATIVE_MONITOR_TUI.ko.md"
+    ],
+    "RF10": [
+      "docs/development/refinements/RF10.ko.md",
+      "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md"
+    ],
+    "RF11": [
+      "docs/development/refinements/RF11.ko.md",
+      "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md"
+    ],
+    "TS00": [
+      "docs/development/test-work/TS00.ko.md",
+      "docs/design/DCODE_INTEGRATION.ko.md"
+    ],
+    "TS01": [
+      "docs/development/test-work/TS01.ko.md",
+      "docs/design/architecture/2026-09-16-data-api.ko.md"
+    ],
+    "TS02": [
+      "docs/development/test-work/TS02.ko.md",
+      "docs/design/architecture/2026-09-16-system-design.ko.md"
+    ],
+    "TS03": [
+      "docs/development/test-work/TS03.ko.md",
+      "docs/design/DCODE_INTEGRATION.ko.md"
+    ],
+    "TS04": [
+      "docs/development/test-work/TS04.ko.md",
+      "docs/design/features/2026-09-16-interview-workflow.ko.md"
+    ],
+    "TS05": [
+      "docs/development/test-work/TS05.ko.md",
+      "docs/design/architecture/2026-09-16-runtime-security.ko.md"
+    ],
+    "TS06": [
+      "docs/development/test-work/TS06.ko.md",
+      "docs/design/MEMORY_LIFECYCLE.ko.md"
+    ],
+    "TS07": [
+      "docs/development/test-work/TS07.ko.md",
+      "docs/design/features/2026-09-16-dream-path-a.ko.md"
+    ],
+    "TS08": [
+      "docs/development/test-work/TS08.ko.md",
+      "docs/design/features/2026-09-16-path-b-improvement.ko.md"
+    ],
+    "TS09": [
+      "docs/development/test-work/TS09.ko.md",
+      "docs/design/OBSERVABILITY_PIPELINE.ko.md"
+    ],
+    "TS10": [
+      "docs/development/test-work/TS10.ko.md",
+      "docs/design/OBSERVABILITY_PIPELINE.ko.md"
+    ],
+    "TS11": [
+      "docs/development/test-work/TS11.ko.md",
+      "docs/design/DCODE_INTEGRATION.ko.md"
+    ],
+    "WP00": [
+      ".agents/work/WP00.ko.md",
+      "docs/design/DCODE_INTEGRATION.ko.md"
+    ],
+    "WP01": [
+      ".agents/work/WP01.ko.md",
+      "docs/design/architecture/2026-09-16-data-api.ko.md"
+    ],
+    "WP02": [
+      ".agents/work/WP02.ko.md",
+      "docs/design/architecture/2026-09-16-data-api.ko.md"
+    ],
+    "WP03": [
+      ".agents/work/WP03.ko.md",
+      "docs/design/architecture/2026-09-16-runtime-security.ko.md"
+    ],
+    "WP04": [
+      ".agents/work/WP04.ko.md",
+      "docs/design/architecture/2026-09-16-system-design.ko.md"
+    ],
+    "WP05": [
+      ".agents/work/WP05.ko.md",
+      "docs/design/architecture/2026-09-16-cache-context.ko.md"
+    ],
+    "WP06": [
+      ".agents/work/WP06.ko.md",
+      "docs/design/DCODE_INTEGRATION.ko.md"
+    ],
+    "WP07": [
+      ".agents/work/WP07.ko.md",
+      "docs/design/features/2026-09-16-interview-workflow.ko.md"
+    ],
+    "WP08": [
+      ".agents/work/WP08.ko.md",
+      "docs/design/features/2026-09-16-interview-workflow.ko.md"
+    ],
+    "WP09": [
+      ".agents/work/WP09.ko.md",
+      "docs/design/features/2026-09-16-plan-memory-execution.ko.md"
+    ],
+    "WP10": [
+      ".agents/work/WP10.ko.md",
+      "docs/design/architecture/2026-09-16-runtime-security.ko.md"
+    ],
+    "WP11": [
+      ".agents/work/WP11.ko.md",
+      "docs/design/MEMORY_LIFECYCLE.ko.md"
+    ],
+    "WP12": [
+      ".agents/work/WP12.ko.md",
+      "docs/design/ADAPTIVE_MEMORY_AND_SKILL_EVOLUTION.ko.md"
+    ],
+    "WP13": [
+      ".agents/work/WP13.ko.md",
+      "docs/design/OBSERVABILITY_PIPELINE.ko.md"
+    ],
+    "WP14": [
+      ".agents/work/WP14.ko.md",
+      "docs/design/features/2026-09-16-dream-path-a.ko.md"
+    ],
+    "WP15": [
+      ".agents/work/WP15.ko.md",
+      "docs/design/features/2026-09-16-dream-path-a.ko.md"
+    ],
+    "WP16": [
+      ".agents/work/WP16.ko.md",
+      "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+    ],
+    "WP17": [
+      ".agents/work/WP17.ko.md",
+      "docs/design/features/2026-09-16-path-b-improvement.ko.md"
+    ],
+    "WP18": [
+      ".agents/work/WP18.ko.md",
+      "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+    ],
+    "WP19": [
+      ".agents/work/WP19.ko.md",
+      "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md"
+    ],
+    "WP20": [
+      ".agents/work/WP20.ko.md",
+      "docs/design/testing/2026-09-16-evaluation-observability.ko.md"
+    ],
+    "WP21": [
+      ".agents/work/WP21.ko.md",
+      "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+    ],
+    "WP22": [
+      ".agents/work/WP22.ko.md",
+      "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md"
+    ],
+    "WP23": [
+      ".agents/work/WP23.ko.md",
+      "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md"
+    ]
+  },
+  "stages": {
+    "RC00": {
+      "plan": [
+        "docs/development/refinements/RC00.ko.md",
+        "docs/design/DCODE_INTEGRATION.ko.md"
+      ],
+      "implement": [
+        "docs/development/refinements/RC00.ko.md",
+        "docs/design/DCODE_INTEGRATION.ko.md"
+      ],
+      "test": [
+        "docs/development/refinements/RC00.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "RC01": {
+      "plan": [
+        "docs/development/refinements/RC01.ko.md",
+        "docs/design/DOCUMENT_GOVERNANCE.ko.md"
+      ],
+      "implement": [
+        "docs/development/refinements/RC01.ko.md",
+        "docs/design/DOCUMENT_GOVERNANCE.ko.md"
+      ],
+      "test": [
+        "docs/development/refinements/RC01.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "RC30": {
+      "plan": [
+        "docs/development/refinements/RC30.ko.md",
+        "docs/design/MEMORY_LIFECYCLE.ko.md"
+      ],
+      "implement": [
+        "docs/development/refinements/RC30.ko.md",
+        "docs/design/MEMORY_LIFECYCLE.ko.md"
+      ],
+      "test": [
+        "docs/development/refinements/RC30.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "RC31": {
+      "plan": [
+        "docs/development/refinements/RC31.ko.md",
+        "docs/design/MEMORY_LIFECYCLE.ko.md"
+      ],
+      "implement": [
+        "docs/development/refinements/RC31.ko.md",
+        "docs/design/MEMORY_LIFECYCLE.ko.md"
+      ],
+      "test": [
+        "docs/development/refinements/RC31.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "RC32": {
+      "plan": [
+        "docs/development/refinements/RC32.ko.md",
+        "docs/design/MEMORY_LIFECYCLE.ko.md"
+      ],
+      "implement": [
+        "docs/development/refinements/RC32.ko.md",
+        "docs/design/MEMORY_LIFECYCLE.ko.md"
+      ],
+      "test": [
+        "docs/development/refinements/RC32.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "RC33": {
+      "plan": [
+        "docs/development/refinements/RC33.ko.md",
+        "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+      ],
+      "implement": [
+        "docs/development/refinements/RC33.ko.md",
+        "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+      ],
+      "test": [
+        "docs/development/refinements/RC33.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "RC34": {
+      "plan": [
+        "docs/development/refinements/RC34.ko.md",
+        "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+      ],
+      "implement": [
+        "docs/development/refinements/RC34.ko.md",
+        "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+      ],
+      "test": [
+        "docs/development/refinements/RC34.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "RC35": {
+      "plan": [
+        "docs/development/refinements/RC35.ko.md",
+        "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+      ],
+      "implement": [
+        "docs/development/refinements/RC35.ko.md",
+        "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+      ],
+      "test": [
+        "docs/development/refinements/RC35.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "RC36": {
+      "plan": [
+        "docs/development/refinements/RC36.ko.md",
+        "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+      ],
+      "implement": [
+        "docs/development/refinements/RC36.ko.md",
+        "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+      ],
+      "test": [
+        "docs/development/refinements/RC36.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "RC40": {
+      "plan": [
+        "docs/development/refinements/RC40.ko.md",
+        "docs/design/OBSERVABILITY_PIPELINE.ko.md"
+      ],
+      "implement": [
+        "docs/development/refinements/RC40.ko.md",
+        "docs/design/OBSERVABILITY_PIPELINE.ko.md"
+      ],
+      "test": [
+        "docs/development/refinements/RC40.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "RC41": {
+      "plan": [
+        "docs/development/refinements/RC41.ko.md",
+        "docs/design/OBSERVABILITY_PIPELINE.ko.md"
+      ],
+      "implement": [
+        "docs/development/refinements/RC41.ko.md",
+        "docs/design/OBSERVABILITY_PIPELINE.ko.md"
+      ],
+      "test": [
+        "docs/development/refinements/RC41.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "RC42": {
+      "plan": [
+        "docs/development/refinements/RC42.ko.md",
+        "docs/design/OBSERVABILITY_PIPELINE.ko.md"
+      ],
+      "implement": [
+        "docs/development/refinements/RC42.ko.md",
+        "docs/design/OBSERVABILITY_PIPELINE.ko.md"
+      ],
+      "test": [
+        "docs/development/refinements/RC42.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "RC43": {
+      "plan": [
+        "docs/development/refinements/RC43.ko.md",
+        "docs/testing/R4_ACCEPTANCE_PROTOCOL.ko.md"
+      ],
+      "implement": [
+        "docs/development/refinements/RC43.ko.md",
+        "docs/testing/R4_ACCEPTANCE_PROTOCOL.ko.md"
+      ],
+      "test": [
+        "docs/development/refinements/RC43.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "RF00": {
+      "plan": [
+        "docs/development/refinements/RF00.ko.md",
+        "docs/design/RESPONSIBILITY_AND_ADOPTION.ko.md"
+      ],
+      "implement": [
+        "docs/development/refinements/RF00.ko.md",
+        "docs/design/RESPONSIBILITY_AND_ADOPTION.ko.md"
+      ],
+      "test": [
+        "docs/development/refinements/RF00.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "RF01": {
+      "plan": [
+        "docs/development/refinements/RF01.ko.md",
+        "docs/design/CODE_INTELLIGENCE_AND_TOOL_ISOLATION.ko.md"
+      ],
+      "implement": [
+        "docs/development/refinements/RF01.ko.md",
+        "docs/design/CODE_INTELLIGENCE_AND_TOOL_ISOLATION.ko.md"
+      ],
+      "test": [
+        "docs/development/refinements/RF01.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "RF02": {
+      "plan": [
+        "docs/development/refinements/RF02.ko.md",
+        "docs/design/CODE_INTELLIGENCE_AND_TOOL_ISOLATION.ko.md"
+      ],
+      "implement": [
+        "docs/development/refinements/RF02.ko.md",
+        "docs/design/CODE_INTELLIGENCE_AND_TOOL_ISOLATION.ko.md"
+      ],
+      "test": [
+        "docs/development/refinements/RF02.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "RF03": {
+      "plan": [
+        "docs/development/refinements/RF03.ko.md",
+        "docs/design/CODE_INTELLIGENCE_AND_TOOL_ISOLATION.ko.md"
+      ],
+      "implement": [
+        "docs/development/refinements/RF03.ko.md",
+        "docs/design/CODE_INTELLIGENCE_AND_TOOL_ISOLATION.ko.md"
+      ],
+      "test": [
+        "docs/development/refinements/RF03.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "RF04": {
+      "plan": [
+        "docs/development/refinements/RF04.ko.md",
+        "docs/design/ADAPTIVE_MEMORY_AND_SKILL_EVOLUTION.ko.md"
+      ],
+      "implement": [
+        "docs/development/refinements/RF04.ko.md",
+        "docs/design/ADAPTIVE_MEMORY_AND_SKILL_EVOLUTION.ko.md"
+      ],
+      "test": [
+        "docs/development/refinements/RF04.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "RF05": {
+      "plan": [
+        "docs/development/refinements/RF05.ko.md",
+        "docs/design/ADAPTIVE_MEMORY_AND_SKILL_EVOLUTION.ko.md"
+      ],
+      "implement": [
+        "docs/development/refinements/RF05.ko.md",
+        "docs/design/ADAPTIVE_MEMORY_AND_SKILL_EVOLUTION.ko.md"
+      ],
+      "test": [
+        "docs/development/refinements/RF05.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "RF06": {
+      "plan": [
+        "docs/development/refinements/RF06.ko.md",
+        "docs/design/ADAPTIVE_MEMORY_AND_SKILL_EVOLUTION.ko.md"
+      ],
+      "implement": [
+        "docs/development/refinements/RF06.ko.md",
+        "docs/design/ADAPTIVE_MEMORY_AND_SKILL_EVOLUTION.ko.md"
+      ],
+      "test": [
+        "docs/development/refinements/RF06.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "RF07": {
+      "plan": [
+        "docs/development/refinements/RF07.ko.md",
+        "docs/design/NATIVE_MONITOR_TUI.ko.md"
+      ],
+      "implement": [
+        "docs/development/refinements/RF07.ko.md",
+        "docs/design/NATIVE_MONITOR_TUI.ko.md"
+      ],
+      "test": [
+        "docs/development/refinements/RF07.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "RF08": {
+      "plan": [
+        "docs/development/refinements/RF08.ko.md",
+        "docs/design/NATIVE_MONITOR_TUI.ko.md"
+      ],
+      "implement": [
+        "docs/development/refinements/RF08.ko.md",
+        "docs/design/NATIVE_MONITOR_TUI.ko.md"
+      ],
+      "test": [
+        "docs/development/refinements/RF08.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "RF09": {
+      "plan": [
+        "docs/development/refinements/RF09.ko.md",
+        "docs/design/NATIVE_MONITOR_TUI.ko.md"
+      ],
+      "implement": [
+        "docs/development/refinements/RF09.ko.md",
+        "docs/design/NATIVE_MONITOR_TUI.ko.md"
+      ],
+      "test": [
+        "docs/development/refinements/RF09.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "RF10": {
+      "plan": [
+        "docs/development/refinements/RF10.ko.md",
+        "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md"
+      ],
+      "implement": [
+        "docs/development/refinements/RF10.ko.md",
+        "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md"
+      ],
+      "test": [
+        "docs/development/refinements/RF10.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "RF11": {
+      "plan": [
+        "docs/development/refinements/RF11.ko.md",
+        "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md"
+      ],
+      "implement": [
+        "docs/development/refinements/RF11.ko.md",
+        "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md"
+      ],
+      "test": [
+        "docs/development/refinements/RF11.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "TS00": {
+      "plan": [
+        "docs/development/test-work/TS00.ko.md",
+        "docs/design/DCODE_INTEGRATION.ko.md"
+      ],
+      "implement": [
+        "docs/development/test-work/TS00.ko.md",
+        "docs/design/DCODE_INTEGRATION.ko.md"
+      ],
+      "test": [
+        "docs/development/test-work/TS00.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "TS01": {
+      "plan": [
+        "docs/development/test-work/TS01.ko.md",
+        "docs/design/architecture/2026-09-16-data-api.ko.md"
+      ],
+      "implement": [
+        "docs/development/test-work/TS01.ko.md",
+        "docs/design/architecture/2026-09-16-data-api.ko.md"
+      ],
+      "test": [
+        "docs/development/test-work/TS01.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "TS02": {
+      "plan": [
+        "docs/development/test-work/TS02.ko.md",
+        "docs/design/architecture/2026-09-16-system-design.ko.md"
+      ],
+      "implement": [
+        "docs/development/test-work/TS02.ko.md",
+        "docs/design/architecture/2026-09-16-system-design.ko.md"
+      ],
+      "test": [
+        "docs/development/test-work/TS02.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "TS03": {
+      "plan": [
+        "docs/development/test-work/TS03.ko.md",
+        "docs/design/DCODE_INTEGRATION.ko.md"
+      ],
+      "implement": [
+        "docs/development/test-work/TS03.ko.md",
+        "docs/design/DCODE_INTEGRATION.ko.md"
+      ],
+      "test": [
+        "docs/development/test-work/TS03.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "TS04": {
+      "plan": [
+        "docs/development/test-work/TS04.ko.md",
+        "docs/design/features/2026-09-16-interview-workflow.ko.md"
+      ],
+      "implement": [
+        "docs/development/test-work/TS04.ko.md",
+        "docs/design/features/2026-09-16-interview-workflow.ko.md"
+      ],
+      "test": [
+        "docs/development/test-work/TS04.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "TS05": {
+      "plan": [
+        "docs/development/test-work/TS05.ko.md",
+        "docs/design/architecture/2026-09-16-runtime-security.ko.md"
+      ],
+      "implement": [
+        "docs/development/test-work/TS05.ko.md",
+        "docs/design/architecture/2026-09-16-runtime-security.ko.md"
+      ],
+      "test": [
+        "docs/development/test-work/TS05.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "TS06": {
+      "plan": [
+        "docs/development/test-work/TS06.ko.md",
+        "docs/design/MEMORY_LIFECYCLE.ko.md"
+      ],
+      "implement": [
+        "docs/development/test-work/TS06.ko.md",
+        "docs/design/MEMORY_LIFECYCLE.ko.md"
+      ],
+      "test": [
+        "docs/development/test-work/TS06.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "TS07": {
+      "plan": [
+        "docs/development/test-work/TS07.ko.md",
+        "docs/design/features/2026-09-16-dream-path-a.ko.md"
+      ],
+      "implement": [
+        "docs/development/test-work/TS07.ko.md",
+        "docs/design/features/2026-09-16-dream-path-a.ko.md"
+      ],
+      "test": [
+        "docs/development/test-work/TS07.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "TS08": {
+      "plan": [
+        "docs/development/test-work/TS08.ko.md",
+        "docs/design/features/2026-09-16-path-b-improvement.ko.md"
+      ],
+      "implement": [
+        "docs/development/test-work/TS08.ko.md",
+        "docs/design/features/2026-09-16-path-b-improvement.ko.md"
+      ],
+      "test": [
+        "docs/development/test-work/TS08.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "TS09": {
+      "plan": [
+        "docs/development/test-work/TS09.ko.md",
+        "docs/design/OBSERVABILITY_PIPELINE.ko.md"
+      ],
+      "implement": [
+        "docs/development/test-work/TS09.ko.md",
+        "docs/design/OBSERVABILITY_PIPELINE.ko.md"
+      ],
+      "test": [
+        "docs/development/test-work/TS09.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "TS10": {
+      "plan": [
+        "docs/development/test-work/TS10.ko.md",
+        "docs/design/OBSERVABILITY_PIPELINE.ko.md"
+      ],
+      "implement": [
+        "docs/development/test-work/TS10.ko.md",
+        "docs/design/OBSERVABILITY_PIPELINE.ko.md"
+      ],
+      "test": [
+        "docs/development/test-work/TS10.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "TS11": {
+      "plan": [
+        "docs/development/test-work/TS11.ko.md",
+        "docs/design/DCODE_INTEGRATION.ko.md"
+      ],
+      "implement": [
+        "docs/development/test-work/TS11.ko.md",
+        "docs/design/DCODE_INTEGRATION.ko.md"
+      ],
+      "test": [
+        "docs/development/test-work/TS11.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "WP00": {
+      "plan": [
+        ".agents/work/WP00.ko.md",
+        "docs/design/DCODE_INTEGRATION.ko.md"
+      ],
+      "implement": [
+        ".agents/work/WP00.ko.md",
+        "docs/design/DCODE_INTEGRATION.ko.md"
+      ],
+      "test": [
+        ".agents/work/WP00.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "WP01": {
+      "plan": [
+        ".agents/work/WP01.ko.md",
+        "docs/design/architecture/2026-09-16-data-api.ko.md"
+      ],
+      "implement": [
+        ".agents/work/WP01.ko.md",
+        "docs/design/architecture/2026-09-16-data-api.ko.md"
+      ],
+      "test": [
+        ".agents/work/WP01.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "WP02": {
+      "plan": [
+        ".agents/work/WP02.ko.md",
+        "docs/design/architecture/2026-09-16-data-api.ko.md"
+      ],
+      "implement": [
+        ".agents/work/WP02.ko.md",
+        "docs/design/architecture/2026-09-16-data-api.ko.md"
+      ],
+      "test": [
+        ".agents/work/WP02.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "WP03": {
+      "plan": [
+        ".agents/work/WP03.ko.md",
+        "docs/design/architecture/2026-09-16-runtime-security.ko.md"
+      ],
+      "implement": [
+        ".agents/work/WP03.ko.md",
+        "docs/design/architecture/2026-09-16-runtime-security.ko.md"
+      ],
+      "test": [
+        ".agents/work/WP03.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "WP04": {
+      "plan": [
+        ".agents/work/WP04.ko.md",
+        "docs/design/architecture/2026-09-16-system-design.ko.md"
+      ],
+      "implement": [
+        ".agents/work/WP04.ko.md",
+        "docs/design/architecture/2026-09-16-system-design.ko.md"
+      ],
+      "test": [
+        ".agents/work/WP04.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "WP05": {
+      "plan": [
+        ".agents/work/WP05.ko.md",
+        "docs/design/architecture/2026-09-16-cache-context.ko.md"
+      ],
+      "implement": [
+        ".agents/work/WP05.ko.md",
+        "docs/design/architecture/2026-09-16-cache-context.ko.md"
+      ],
+      "test": [
+        ".agents/work/WP05.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "WP06": {
+      "plan": [
+        ".agents/work/WP06.ko.md",
+        "docs/design/DCODE_INTEGRATION.ko.md"
+      ],
+      "implement": [
+        ".agents/work/WP06.ko.md",
+        "docs/design/DCODE_INTEGRATION.ko.md"
+      ],
+      "test": [
+        ".agents/work/WP06.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "WP07": {
+      "plan": [
+        ".agents/work/WP07.ko.md",
+        "docs/design/features/2026-09-16-interview-workflow.ko.md"
+      ],
+      "implement": [
+        ".agents/work/WP07.ko.md",
+        "docs/design/features/2026-09-16-interview-workflow.ko.md"
+      ],
+      "test": [
+        ".agents/work/WP07.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "WP08": {
+      "plan": [
+        ".agents/work/WP08.ko.md",
+        "docs/design/features/2026-09-16-interview-workflow.ko.md"
+      ],
+      "implement": [
+        ".agents/work/WP08.ko.md",
+        "docs/design/features/2026-09-16-interview-workflow.ko.md"
+      ],
+      "test": [
+        ".agents/work/WP08.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "WP09": {
+      "plan": [
+        ".agents/work/WP09.ko.md",
+        "docs/design/features/2026-09-16-plan-memory-execution.ko.md"
+      ],
+      "implement": [
+        ".agents/work/WP09.ko.md",
+        "docs/design/features/2026-09-16-plan-memory-execution.ko.md"
+      ],
+      "test": [
+        ".agents/work/WP09.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "WP10": {
+      "plan": [
+        ".agents/work/WP10.ko.md",
+        "docs/design/architecture/2026-09-16-runtime-security.ko.md"
+      ],
+      "implement": [
+        ".agents/work/WP10.ko.md",
+        "docs/design/architecture/2026-09-16-runtime-security.ko.md"
+      ],
+      "test": [
+        ".agents/work/WP10.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "WP11": {
+      "plan": [
+        ".agents/work/WP11.ko.md",
+        "docs/design/MEMORY_LIFECYCLE.ko.md"
+      ],
+      "implement": [
+        ".agents/work/WP11.ko.md",
+        "docs/design/MEMORY_LIFECYCLE.ko.md"
+      ],
+      "test": [
+        ".agents/work/WP11.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "WP12": {
+      "plan": [
+        ".agents/work/WP12.ko.md",
+        "docs/design/ADAPTIVE_MEMORY_AND_SKILL_EVOLUTION.ko.md"
+      ],
+      "implement": [
+        ".agents/work/WP12.ko.md",
+        "docs/design/ADAPTIVE_MEMORY_AND_SKILL_EVOLUTION.ko.md"
+      ],
+      "test": [
+        ".agents/work/WP12.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "WP13": {
+      "plan": [
+        ".agents/work/WP13.ko.md",
+        "docs/design/OBSERVABILITY_PIPELINE.ko.md"
+      ],
+      "implement": [
+        ".agents/work/WP13.ko.md",
+        "docs/design/OBSERVABILITY_PIPELINE.ko.md"
+      ],
+      "test": [
+        ".agents/work/WP13.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "WP14": {
+      "plan": [
+        ".agents/work/WP14.ko.md",
+        "docs/design/features/2026-09-16-dream-path-a.ko.md"
+      ],
+      "implement": [
+        ".agents/work/WP14.ko.md",
+        "docs/design/features/2026-09-16-dream-path-a.ko.md"
+      ],
+      "test": [
+        ".agents/work/WP14.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "WP15": {
+      "plan": [
+        ".agents/work/WP15.ko.md",
+        "docs/design/features/2026-09-16-dream-path-a.ko.md"
+      ],
+      "implement": [
+        ".agents/work/WP15.ko.md",
+        "docs/design/features/2026-09-16-dream-path-a.ko.md"
+      ],
+      "test": [
+        ".agents/work/WP15.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "WP16": {
+      "plan": [
+        ".agents/work/WP16.ko.md",
+        "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+      ],
+      "implement": [
+        ".agents/work/WP16.ko.md",
+        "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+      ],
+      "test": [
+        ".agents/work/WP16.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "WP17": {
+      "plan": [
+        ".agents/work/WP17.ko.md",
+        "docs/design/features/2026-09-16-path-b-improvement.ko.md"
+      ],
+      "implement": [
+        ".agents/work/WP17.ko.md",
+        "docs/design/features/2026-09-16-path-b-improvement.ko.md"
+      ],
+      "test": [
+        ".agents/work/WP17.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "WP18": {
+      "plan": [
+        ".agents/work/WP18.ko.md",
+        "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+      ],
+      "implement": [
+        ".agents/work/WP18.ko.md",
+        "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+      ],
+      "test": [
+        ".agents/work/WP18.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "WP19": {
+      "plan": [
+        ".agents/work/WP19.ko.md",
+        "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md"
+      ],
+      "implement": [
+        ".agents/work/WP19.ko.md",
+        "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md"
+      ],
+      "test": [
+        ".agents/work/WP19.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "WP20": {
+      "plan": [
+        ".agents/work/WP20.ko.md",
+        "docs/design/testing/2026-09-16-evaluation-observability.ko.md"
+      ],
+      "implement": [
+        ".agents/work/WP20.ko.md",
+        "docs/design/testing/2026-09-16-evaluation-observability.ko.md"
+      ],
+      "test": [
+        ".agents/work/WP20.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "WP21": {
+      "plan": [
+        ".agents/work/WP21.ko.md",
+        "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+      ],
+      "implement": [
+        ".agents/work/WP21.ko.md",
+        "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+      ],
+      "test": [
+        ".agents/work/WP21.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "WP22": {
+      "plan": [
+        ".agents/work/WP22.ko.md",
+        "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md"
+      ],
+      "implement": [
+        ".agents/work/WP22.ko.md",
+        "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md"
+      ],
+      "test": [
+        ".agents/work/WP22.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    },
+    "WP23": {
+      "plan": [
+        ".agents/work/WP23.ko.md",
+        "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md"
+      ],
+      "implement": [
+        ".agents/work/WP23.ko.md",
+        "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md"
+      ],
+      "test": [
+        ".agents/work/WP23.ko.md",
+        "docs/testing/STRATEGY.ko.md"
+      ]
+    }
+  },
+  "resources": {
+    "RC00": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "RC01": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "RC30": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "RC31": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "RC32": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "RC33": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "RC34": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "RC35": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "RC36": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "RC40": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "RC41": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "RC42": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "RC43": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "RF00": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "RF01": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "RF02": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "RF03": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "RF04": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "RF05": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "RF06": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "RF07": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "RF08": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "RF09": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "RF10": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "RF11": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "TS00": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "TS01": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "TS02": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "TS03": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "TS04": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "TS05": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "TS06": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "TS07": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "TS08": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "TS09": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "TS10": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "TS11": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "WP00": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "WP01": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "WP02": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "WP03": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "WP04": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "WP05": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "WP06": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "WP07": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "WP08": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "WP09": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "WP10": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "WP11": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "WP12": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "WP13": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "WP14": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "WP15": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "WP16": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "WP17": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "WP18": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "WP19": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "WP20": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "WP21": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "WP22": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "contracts/v2/runtime.schema.json",
+      "tests/acceptance/catalog.json"
+    ],
+    "WP23": [
+      "contracts/v1/cyrano.schema.json",
+      "contracts/contract-registry.json",
+      "contracts/integration/acceptance-map.json",
+      "contracts/v2/governance.schema.json",
+      "contracts/v2/session-state-machine.json",
+      "contracts/assessment/rubric.json",
+      "tests/acceptance/catalog.json"
+    ]
+  },
+  "owner_wp": {
+    "RC00": "WP00",
+    "RC01": "WP00",
+    "RC30": "WP11",
+    "RC31": "WP11",
+    "RC32": "WP11",
+    "RC33": "WP16",
+    "RC34": "WP20",
+    "RC35": "WP21",
+    "RC36": "WP19",
+    "RC40": "WP13",
+    "RC41": "WP13",
+    "RC42": "WP13",
+    "RC43": "WP23",
+    "RF00": "WP00",
+    "RF01": "WP00",
+    "RF02": "WP06",
+    "RF03": "WP11",
+    "RF04": "WP11",
+    "RF05": "WP16",
+    "RF06": "WP20",
+    "RF07": "WP13",
+    "RF08": "WP13",
+    "RF09": "WP13",
+    "RF10": "WP22",
+    "RF11": "WP23",
+    "TS00": "WP00",
+    "TS01": "WP01",
+    "TS02": "WP04",
+    "TS03": "WP06",
+    "TS04": "WP07",
+    "TS05": "WP03",
+    "TS06": "WP11",
+    "TS07": "WP15",
+    "TS08": "WP17",
+    "TS09": "WP13",
+    "TS10": "WP13",
+    "TS11": "WP00",
+    "WP00": "WP00",
+    "WP01": "WP01",
+    "WP02": "WP02",
+    "WP03": "WP03",
+    "WP04": "WP04",
+    "WP05": "WP05",
+    "WP06": "WP06",
+    "WP07": "WP07",
+    "WP08": "WP08",
+    "WP09": "WP09",
+    "WP10": "WP10",
+    "WP11": "WP11",
+    "WP12": "WP12",
+    "WP13": "WP13",
+    "WP14": "WP14",
+    "WP15": "WP15",
+    "WP16": "WP16",
+    "WP17": "WP17",
+    "WP18": "WP18",
+    "WP19": "WP19",
+    "WP20": "WP20",
+    "WP21": "WP21",
+    "WP22": "WP22",
+    "WP23": "WP23"
+  },
+  "rule": "Never inject the full catalog, resources, or research corpus."
+}

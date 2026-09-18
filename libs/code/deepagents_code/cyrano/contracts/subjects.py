@@ -1,0 +1,211 @@
+"""Separate approval subjects from lifecycle and receipt envelopes.
+
+Field ownership is fixed by contracts/v1/digest-projections.json.
+Validate the complete transport document before calling this helper;
+it is not authority.
+"""
+
+from deepagents_code.cyrano.contracts.canonical import digest
+from deepagents_code.cyrano.contracts.types import CyranoError
+
+SUBJECT_FIELDS: dict[str, tuple[str, ...]] = {
+    "CandidateProposal": (
+        "kind",
+        "schema_version",
+        "id",
+        "scope",
+        "parent_release_digest",
+        "artifact_digest",
+        "surface",
+        "hypothesis",
+        "alternative_explanations",
+        "evidence_refs",
+        "patch_paths",
+        "patch_digest",
+        "claimed_effect_class",
+        "learning_work_plan_digest",
+        "expected_effect",
+        "risks",
+        "rollback_release_digest",
+        "requested_scope_expansion",
+        "run_kind",
+        "meta_depth",
+    ),
+    "EvaluationReport": (
+        "kind",
+        "schema_version",
+        "id",
+        "experiment_plan_digest",
+        "candidate_digest",
+        "baseline_release_digest",
+        "route",
+        "actual_pairs",
+        "planned_pairs",
+        "independent_families",
+        "safety_failures",
+        "missing_pairs",
+        "intervals",
+        "replay_supported",
+        "replay_scheduled",
+        "execution_refs",
+        "evaluator_identity",
+        "status",
+        "limitations",
+    ),
+    "ExperimentPlan": (
+        "kind",
+        "schema_version",
+        "id",
+        "candidate_digest",
+        "baseline_release_digest",
+        "scope",
+        "route",
+        "development_manifest_digest",
+        "validation_manifest_digest",
+        "sealed_manifest_ref",
+        "family_kind",
+        "minimum_families",
+        "repeats_per_condition",
+        "planned_pairs",
+        "primary_criterion",
+        "secondary_metrics",
+        "mandatory_safety_tests",
+        "budget",
+        "randomization_seed",
+        "baseline_input_digest",
+        "candidate_input_digest",
+        "cache_condition",
+        "feedback_policy",
+    ),
+    "HarnessRelease": (
+        "kind",
+        "schema_version",
+        "id",
+        "scope",
+        "parent_release_digest",
+        "components",
+        "runtime_compatibility_ref",
+        "evaluation_report_refs",
+        "review_refs",
+        "minimum_schema_version",
+        "rollback_target_digest",
+        "activation_boundary",
+    ),
+    "InterviewContract": (
+        "kind",
+        "schema_version",
+        "id",
+        "scope",
+        "revision",
+        "source_event_ids",
+        "goal",
+        "included",
+        "excluded",
+        "constraints",
+        "decisions",
+        "obligations",
+        "scenarios",
+        "snapshot_digest",
+        "execution_authorized",
+    ),
+    "LearningWorkPlan": (
+        "kind",
+        "schema_version",
+        "id",
+        "scope",
+        "baseline_release_digest",
+        "hypothesis",
+        "alternative_explanations",
+        "evidence_refs",
+        "target_surfaces",
+        "allowed_patch_paths",
+        "expected_effect",
+        "risks",
+        "counterexamples",
+        "evaluation_strategy",
+        "budget",
+        "rollback_release_digest",
+    ),
+    "MemoryRecord": (
+        "kind",
+        "schema_version",
+        "id",
+        "scope",
+        "memory_kind",
+        "title",
+        "content_digest",
+        "evidence_refs",
+        "valid_from",
+        "valid_until",
+        "depends_on_digests",
+        "valid_when",
+        "counterexamples",
+        "supersedes",
+        "lineage_ids",
+        "version",
+    ),
+    "PlanBundle": (
+        "kind",
+        "schema_version",
+        "id",
+        "scope",
+        "contract_digest",
+        "base_snapshot_digest",
+        "work_units",
+    ),
+    "SkillManifest": (
+        "kind",
+        "schema_version",
+        "id",
+        "version",
+        "name",
+        "description",
+        "entrypoint",
+        "content_digest",
+        "resources",
+        "allowed_roles",
+        "required_tools",
+        "scope",
+        "context_byte_budget",
+        "activation_tests",
+        "counterexample_tests",
+    ),
+}
+
+ENVELOPE_FIELDS: dict[str, tuple[str, ...]] = {
+    "CandidateProposal": ("status",),
+    "EvaluationReport": ("signature_ref",),
+    "ExperimentPlan": ("permit_ref", "status"),
+    "HarnessRelease": ("promotion_approval_ref", "signature_ref", "status"),
+    "InterviewContract": ("review_refs", "approval_ref"),
+    "LearningWorkPlan": ("review_refs", "authorization_ref", "status"),
+    "MemoryRecord": ("approval_ref", "status"),
+    "PlanBundle": (
+        "review_refs",
+        "plan_approval_ref",
+        "execution_permit_ref",
+        "status",
+    ),
+    "SkillManifest": ("release_digest", "approval_ref", "status"),
+}
+
+
+def binding_digest(schema_type: str, document: dict[str, object]) -> str:
+    """Hash the approval subject, never authority refs or status."""
+    if schema_type not in SUBJECT_FIELDS:
+        raise CyranoError("UNKNOWN_SUBJECT_TYPE", schema_type)
+    fields = SUBJECT_FIELDS[schema_type]
+    allowed = set(fields) | set(ENVELOPE_FIELDS[schema_type])
+    if set(document) != allowed:
+        raise CyranoError(
+            "INVALID_SUBJECT_FIELDS",
+            "validate the complete typed envelope",
+        )
+    subject = {key: document[key] for key in fields}
+    return digest(
+        {
+            "projection_version": "1",
+            "schema_type": schema_type,
+            "subject": subject,
+        }
+    )

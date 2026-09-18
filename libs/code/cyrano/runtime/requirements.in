@@ -1,0 +1,3 @@
+# Investigated upstream main metadata, not a verified installed runtime lock.
+# WP-00 must resolve artifacts, record hashes and execute the compatibility probes.
+deepagents-code==0.1.69

@@ -1,0 +1,101 @@
+{
+ "kind": "work_package_completion_evidence",
+ "work_package": "WP01",
+ "title": "data contracts, digests, semantic validation",
+ "recorded_by": "implementer (independent post-image review performed)",
+ "success": true,
+ "source_digests": {
+  "deepagents_code/cyrano/contracts/ingress.py": "sha256:ce070b8a86343f46ed2aaa2a16e452b750038da6f0ac301d7dc8631ba4baebd2",
+  "deepagents_code/cyrano/contracts/registry.py": "sha256:7f37faeca90b760f67dd24193c27d664441c72737b6d8cd83e958e6eaad17d05",
+  "deepagents_code/cyrano/contracts/projections.py": "sha256:b86fce8a22bfc5c2fde44ce9ff028415cd9114ddf0720ea0be3bcdc4dcd26741",
+  "deepagents_code/cyrano/contracts/references.py": "sha256:4d8ef56cf0dbb1882c53ece1718c9040ac947ee9e2947710e6312aac32e71665",
+  "deepagents_code/cyrano/contracts/legacy.py": "sha256:29ee2abbfbb0bca69806e46e582cbf53e588668b405ebbca0e190ba3649801b4",
+  "deepagents_code/cyrano/contracts/validation.py": "sha256:6ae26a10ce4b12e6cb696e5eaca51f777c6a49b8ac0bab4fc57223257fa044b2",
+  "deepagents_code/cyrano/contracts/canonical.py": "sha256:62bb1275367dc615a61082a65e595b6b7ae4776ccd9007e96bba165679fe02f8",
+  "deepagents_code/cyrano/contracts/types.py": "sha256:699ef133b2dc92bd2e988fddb07668728bafb662de2caca15423c024b1c92c82",
+  "deepagents_code/cyrano/contracts/subjects.py": "sha256:532e85abf7bb43cf2c2ef3858121077b819fda9b8678675c59c50d8b90c65848",
+  "deepagents_code/cyrano/contracts/__init__.py": "sha256:94ec705e78c9c0b9990f7003515703774c0d49705d4d89b20664f4a98528e47c",
+  "tests/cyrano_product/test_wp01_product.py": "sha256:a71f453d85056f815891e88de3a8d516061177f3ef68580674fde8456dc6d1cd"
+ },
+ "contract_files": {
+  "v1/cyrano.schema.json": "sha256:765d2da6499ddc92726914493baa87c5be32123d1efa9005e1b6e288beae23f7",
+  "v2/governance.schema.json": "sha256:e45db7a8d60157b6a6111c4d6489ebdf33aebf78325455401c0cb470ed290ee1",
+  "v1/digest-projections.json": "sha256:d03efe91dd4aedfbbfc863dc8e8cb57f701e3c7b6a67ec3384fa418b1f17aab0",
+  "v2/digest-projections.json": "sha256:5e98182f5ecab63f76f39f07e16ceaacdeb965d83824e88aeb3b2205f203c070"
+ },
+ "acceptance_evidence": {
+  "CONTRACT-UNKNOWN": "passed — unknown kind UNKNOWN_KIND, future schema_version UNSUPPORTED_SCHEMA_VERSION, unknown field/missing kind/wrong type SCHEMA_INVALID (TestRegistry)",
+  "CONTRACT-DIGEST": "passed — reverse lineage reference FORBIDDEN_REFERENCE, schema rejects undeclared reference field, residual cycle defense _cycles (TestReferences)",
+  "CONTRACT-SUBJECT": "passed — tampered subject field changes binding_digest (TestSubjectDigests.test_body_change_breaks_binding)",
+  "CONTRACT-RECEIPT": "passed — attestation envelope changes full digest but not binding_digest (TestSubjectDigests.test_envelope_change_keeps_subject)",
+  "CONTRACT-FLOAT": "passed — float/NaN/Infinity tokens rejected STRICT_NUMBER at parse boundary (TestStrictIngress)",
+  "INTEG-AUTH-CONVERSION": "passed — legacy bytes preserved, executable=False, LEGACY_AUTHORITY on rename, binding only via trusted_approval_receipt (TestLegacyConversion)",
+  "INTEG-JSON-STRICT": "passed — duplicate keys STRICT_DUPLICATE_KEY, depth STRICT_DEPTH, size STRICT_SIZE, surrogates STRICT_UNICODE, range STRICT_RANGE; no last-wins/coercion (TestStrictIngress)",
+  "WP01-I01": "passed — ContractRegistry indexes explicit kind+schema_version; no default inference; UNKNOWN_KIND/UNSUPPORTED_SCHEMA_VERSION paths tested",
+  "WP01-I02": "passed — strict ingress rejects duplicate keys, floats, depth>32, surrogates, oversize, int>2^53 at the boundary",
+  "WP01-I03": "passed — Governance v2 types validated; v1+v2 projection tables loaded from contract files; binding_digest covers Gov plan/receipt/permit/profile/binding types",
+  "TS01": "partial — registry+projection layer delivered; assessment session functions (create_assessment_session etc.) are WP20-owned surface, not claimed here"
+ },
+ "commands": [
+  {
+   "argv": "uv run --no-sync python -m pytest tests/cyrano_product/test_wp01_product.py -q",
+   "exit": 0,
+   "result": "27 passed"
+  },
+  {
+   "argv": "uv run --no-sync python -m pytest tests/cyrano_product/ -q",
+   "exit": 0,
+   "result": "63 passed"
+  },
+  {
+   "argv": "uv run --no-sync ty check deepagents_code/cyrano/contracts/",
+   "exit": 0,
+   "result": "All checks passed"
+  },
+  {
+   "argv": "basedpyright --project pyrightconfig.json deepagents_code/cyrano/contracts/",
+   "exit": 1,
+   "result": "0 errors, 29 warnings (reportUnknown* on JSON maps; matches overlay baseline style)"
+  },
+  {
+   "argv": ".venv/bin/ruff check --config cyrano/configs/quality/ruff.toml deepagents_code/cyrano/contracts/ tests/cyrano_product/test_wp01_product.py",
+   "exit": 0,
+   "result": "All checks passed (79/72)"
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/dev.py check",
+   "exit": 0,
+   "result": "green incl. 302 unit tests + generated-doc freshness"
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/dev.py schemas",
+   "exit": 0
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/check_integration.py",
+   "exit": 0
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/check_r5.py",
+   "exit": 0
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/dev.py quality",
+   "exit": 1,
+   "result": "pre-existing overlay baseline debt outside contracts/ ownership"
+  }
+ ],
+ "errors": [],
+ "blocked": [],
+ "explicit_blocks": [
+  "dev.py quality still exits 1 on pre-existing overlay-wide debt; contracts/ package files are clean",
+  "RunnerVerification/ExecutionChangeManifest/RunCompletionReport have no signing projections by contract design (evidence artifacts bound by raw digest, not signed subjects)"
+ ],
+ "not_established": [
+  "full JSON Schema keyword coverage (bounded structural check: required/additionalProperties/const/enum/type/minLength-free; pattern/minItems not enforced — documented limitation)",
+  "HTTP/API boundary integration (WP05/WP06 consumers not yet wired)",
+  "Ed25519 signature verification (WP03)"
+ ],
+ "known_limitations": "Bounded schema validator enforces required/unknown-field/const/enum/type and local $ref recursion; format patterns and minItems are not enforced (deferred to full schema validator if required later).",
+ "authority_scope": "contract validation and subject digests only; no execution authority"
+}

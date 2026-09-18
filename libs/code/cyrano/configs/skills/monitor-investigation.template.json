@@ -1,0 +1,33 @@
+{
+  "kind": "skill_manifest",
+  "schema_version": "1.0",
+  "id": "monitor-investigation",
+  "version": "0.1.0-dev",
+  "name": "monitor-investigation",
+  "description": "개발 흐름의 실패 단계·호출·Memory·개선 상태를 조사할 때 사용한다.",
+  "entrypoint": "SKILL.md",
+  "content_digest": "sha256:6fe959a46d17550bfc3349f5d197bafe437b85e7874ee6a41982923d297ad8dd",
+  "resources": [],
+  "allowed_roles": [
+    "verifier",
+    "code-reviewer"
+  ],
+  "required_tools": [
+    "cyrano_session_view"
+  ],
+  "scope": {
+    "tenant": "__BIND_TENANT__",
+    "user": "__BIND_USER__",
+    "workspace": "__BIND_WORKSPACE__"
+  },
+  "context_byte_budget": 8192,
+  "activation_tests": [
+    "R5-RF09-02"
+  ],
+  "counterexample_tests": [
+    "R5-RF09-06"
+  ],
+  "release_digest": null,
+  "approval_ref": null,
+  "status": "candidate"
+}

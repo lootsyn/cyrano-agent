@@ -1,0 +1,253 @@
+{
+  "$defs": {
+    "CheckResult": {
+      "additionalProperties": false,
+      "description": "Preserve raw execution status and separate legacy matching.",
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "check_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Check Id",
+          "type": "string"
+        },
+        "tool": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Tool",
+          "type": "string"
+        },
+        "raw_status": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "ERROR",
+            "BLOCKED",
+            "SKIPPED"
+          ],
+          "title": "Raw Status",
+          "type": "string"
+        },
+        "exit_code": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Exit Code"
+        },
+        "diagnostic_count": {
+          "minimum": 0,
+          "title": "Diagnostic Count",
+          "type": "integer"
+        },
+        "baseline_covered": {
+          "default": false,
+          "title": "Baseline Covered",
+          "type": "boolean"
+        },
+        "baseline_comparison_digest": {
+          "anyOf": [
+            {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Baseline Comparison Digest"
+        },
+        "duration_ms": {
+          "minimum": 0,
+          "title": "Duration Ms",
+          "type": "integer"
+        },
+        "stdout_digest": {
+          "anyOf": [
+            {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Stdout Digest"
+        },
+        "stderr_digest": {
+          "anyOf": [
+            {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Stderr Digest"
+        },
+        "receipt_id": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Receipt Id"
+        },
+        "executed": {
+          "title": "Executed",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "check_id",
+        "tool",
+        "raw_status",
+        "exit_code",
+        "diagnostic_count",
+        "duration_ms",
+        "stdout_digest",
+        "stderr_digest",
+        "receipt_id",
+        "executed"
+      ],
+      "title": "CheckResult",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Hold a report whose declared verdict agrees with its contents.",
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "report_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "title": "Report Id",
+      "type": "string"
+    },
+    "workspace_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "title": "Workspace Id",
+      "type": "string"
+    },
+    "attempt_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "title": "Attempt Id",
+      "type": "string"
+    },
+    "plan_digest": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "title": "Plan Digest",
+      "type": "string"
+    },
+    "policy_digest": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "title": "Policy Digest",
+      "type": "string"
+    },
+    "toolchain_digest": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "title": "Toolchain Digest",
+      "type": "string"
+    },
+    "suite_digest": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "title": "Suite Digest",
+      "type": "string"
+    },
+    "snapshot_before": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "title": "Snapshot Before",
+      "type": "string"
+    },
+    "snapshot_after": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "title": "Snapshot After",
+      "type": "string"
+    },
+    "required_check_ids": {
+      "items": {
+        "maxLength": 128,
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Required Check Ids",
+      "type": "array"
+    },
+    "checks": {
+      "items": {
+        "$ref": "#/$defs/CheckResult"
+      },
+      "title": "Checks",
+      "type": "array"
+    },
+    "verdict": {
+      "enum": [
+        "PASS",
+        "PASS_WITH_BASELINE",
+        "FAIL",
+        "ERROR",
+        "BLOCKED",
+        "STALE"
+      ],
+      "title": "Verdict",
+      "type": "string"
+    },
+    "verification_level": {
+      "enum": [
+        "local_advisory",
+        "governed"
+      ],
+      "title": "Verification Level",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "report_id",
+    "workspace_id",
+    "attempt_id",
+    "plan_digest",
+    "policy_digest",
+    "toolchain_digest",
+    "suite_digest",
+    "snapshot_before",
+    "snapshot_after",
+    "required_check_ids",
+    "checks",
+    "verdict",
+    "verification_level",
+    "created_at"
+  ],
+  "title": "QualityReport",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:udh:quality:QualityReport:1.0"
+}

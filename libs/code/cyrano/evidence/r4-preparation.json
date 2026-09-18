@@ -1,0 +1,22 @@
+{
+  "kind": "r4_preparation_validation",
+  "counts": {
+    "documents": 411,
+    "routed_tasks": 61,
+    "refinements": 13,
+    "r4_case_designs": 52,
+    "r4_schema_fixtures": 15,
+    "target_sql_tables": 46
+  },
+  "success": true,
+  "errors": [],
+  "blocked": [],
+  "not_established": [
+    "native_dcode_import",
+    "operating_authorization",
+    "provider_cache",
+    "product_metrics",
+    "memory_effectiveness",
+    "self_improvement_effectiveness"
+  ]
+}

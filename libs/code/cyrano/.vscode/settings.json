@@ -1,0 +1,26 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "editor.formatOnSave": true,
+  "editor.rulers": [
+    72,
+    79
+  ],
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "python.analysis.extraPaths": [
+    "../deepagents_code/cyrano/contracts/src",
+    "../deepagents_code/cyrano/kernel/src",
+    "../deepagents_code/cyrano/sqlite/src",
+    "../deepagents_code/cyrano/context/src",
+    "../deepagents_code/cyrano/memory/src",
+    "../deepagents_code/cyrano/interview/src",
+    "../deepagents_code/cyrano/workflow/src",
+    "../deepagents_code/cyrano/improvement/src",
+    "../deepagents_code/cyrano/evaluation/src",
+    "../deepagents_code/cyrano/plugins/src",
+    "../deepagents_code/cyrano/events/src",
+    "../deepagents_code/cyrano/dcode/src",
+    "../deepagents_code/cyrano/cli/src"
+  ]
+}

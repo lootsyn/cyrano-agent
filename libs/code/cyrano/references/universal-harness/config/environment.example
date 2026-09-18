@@ -1,0 +1,9 @@
+# Example only. Verify actual dcode version and loader behavior with WP00.
+DEEPAGENTS_CODE_EXPERIMENTAL=1
+# DEEPAGENTS_HOME is an externally provisioned user runtime, not the target repo.
+DEEPAGENTS_HOME=/ABSOLUTE/USER/RUNTIME/deepagents-home
+# UDH-owned variables below are PROPOSED, not native dcode variables.
+UDH_CONTROL_SOCKET=/ABSOLUTE/USER/CONTROL/run.sock
+UDH_SESSION_TOKEN_FILE=/MOUNTED/READ_ONLY/RUN/token
+UDH_ASSURANCE=governed
+# Model credentials are supplied by the approved runtime, never committed here.

@@ -1,0 +1,563 @@
+{
+  "description": "All entries are synthetic design fixtures, not model/dcode executions.",
+  "positive": [
+    {
+      "name": "decision-view",
+      "record": {
+        "record_type": "decision_view",
+        "schema_version": "1.0.0",
+        "round_index": 0,
+        "task_features": {
+          "task_kind": "bugfix",
+          "risk": "medium",
+          "uncertainty": "high"
+        },
+        "observations": [],
+        "legal_actions": [
+          {
+            "action_id": "action-1",
+            "kind": "open_branch",
+            "target_id": "slot-1",
+            "input_commitment": "sha256:e025f7b31bac2ed42b8ef61e25120cadc9fc6d5ecd4da9ac7cac9b766ac96baa",
+            "depends_on_public_node_ids": []
+          }
+        ],
+        "budget": {
+          "remaining_attempts": 4,
+          "remaining_wall_time_s": 600,
+          "remaining_cost_units": null
+        },
+        "worker_cap": 1,
+        "view_digest": "sha256:c137a2b047831eeaacca934f35d060d584f218cbc2eec51a8d9298b415ea1835"
+      }
+    },
+    {
+      "name": "decision-explore",
+      "record": {
+        "record_type": "policy_decision",
+        "schema_version": "1.0.0",
+        "mode": "explore",
+        "action_ids": [
+          "action-1"
+        ],
+        "reason_code": "bootstrap"
+      }
+    },
+    {
+      "name": "decision-stop",
+      "record": {
+        "record_type": "policy_decision",
+        "schema_version": "1.0.0",
+        "mode": "stop_exploration",
+        "action_ids": [],
+        "reason_code": "budget_exhausted"
+      }
+    },
+    {
+      "name": "replay-supported",
+      "record": {
+        "record_type": "replay_step",
+        "schema_version": "1.0.0",
+        "status": "supported",
+        "revealed_attempt_ids": [
+          "attempt-1"
+        ],
+        "cost_label": "historical_proxy",
+        "historical_cost_units": null,
+        "simulated_latency_s": null
+      }
+    },
+    {
+      "name": "replay-unsupported",
+      "record": {
+        "record_type": "replay_step",
+        "schema_version": "1.0.0",
+        "status": "out_of_support",
+        "reason_code": "missing_transition",
+        "revealed_attempt_ids": [],
+        "full_world_score": null
+      }
+    },
+    {
+      "name": "world",
+      "record": {
+        "record_type": "world_manifest",
+        "schema_version": "1.0.0",
+        "world_id": "world-1",
+        "scope": {
+          "scope_id": "synthetic-workspace",
+          "project_family_id": "synthetic-family",
+          "task_family_id": "synthetic-bugfix"
+        },
+        "episode_id": "episode-1",
+        "task_contract_digest": "sha256:a24c7607eb7bc7e0001142daf8a217b08b78f0911b85e89e912f296f60e78966",
+        "initial_snapshot_digest": "sha256:82e618edcfedda73401094c074655458e7bb9e244073200ceb8a3c1fbd1531be",
+        "execution_signature": {
+          "runtime_digest": "sha256:5bf59bfce96e8e88e7e4a4022b8de1629b42115eb9cedd7e9422bb4b8c65b083",
+          "executor_config_digest": "sha256:20faf24cd94167180531f84c23244c19c86bdc485868ff7043b541bdbdad6dc9",
+          "model_config_digest": "sha256:826d4e7eca1d5dbf67e1d5c04a9dcbcb38bd73d6e665887b6f0a5059d3c7d466",
+          "environment_digest": "sha256:fdb61c30795bfb1360eec7664a2aee39dc750ce51540c2b7725e7a442acec531",
+          "tool_inventory_digest": "sha256:c0977e56667678883f4e16c7729fc9a5ed450d0fdc85c4b7e0218fa8e4575d8c",
+          "prompt_template_digest": "sha256:27db635c2726809282099be76a2d3fda937fa9dd563dd51fe8669278381db93d",
+          "memory_release_digest": "sha256:b84dd6a4fc43f96007d45c4016b67cd5603ba6f136362bd901af22f96c7460d7",
+          "evaluator_digest": "sha256:04d3fa3fc1b2b405c095734f22be6f3b510be5f8e393adf619623a9d0e6b134e"
+        },
+        "source_policy_digest": "sha256:bd721ea4378c09aae4f26275894fcab8d2115da8aa85cc557a123c34e71abfde",
+        "common_context_digest": "sha256:96a3c7e700dcac3ec473446de55388c8b77ccb3b31e2508c175f1fb0e2e331e0",
+        "history_cutoff_event_seq": 0,
+        "context_mode": "branch_local",
+        "root_slots": [
+          {
+            "slot_id": "slot-1",
+            "input_commitment": "sha256:e025f7b31bac2ed42b8ef61e25120cadc9fc6d5ecd4da9ac7cac9b766ac96baa",
+            "created_before_outcomes": true
+          }
+        ],
+        "recorded_attempt_ids": [
+          "attempt-1"
+        ],
+        "integrity_status": "complete",
+        "sealed_at": "2026-09-16T00:00:00Z",
+        "closure_watermark": 2,
+        "retention_policy_digest": "sha256:bff909b5dab1bd7d485b9164355c6cac5fa872fa249b06e13d1f3c8684267f18",
+        "lineage_refs": [],
+        "sample_tape_digest": "sha256:7ea322c6cee21f7ad1a729e5c3801f13f06b24d2bfc86fa36c6426abccd50318"
+      }
+    },
+    {
+      "name": "attempt",
+      "record": {
+        "record_type": "attempt_record",
+        "schema_version": "1.0.0",
+        "attempt_id": "attempt-1",
+        "episode_id": "episode-1",
+        "slot_id": "slot-1",
+        "primary_parent_id": null,
+        "dependency_node_ids": [],
+        "action_signature": "sha256:41f9517f0e72d00553e3838eef6619e15ebd5d07d314135840dae627340cba77",
+        "input_manifest_digest": "sha256:b5d68bf083135a2dc733895c417d6ddd8a9cb50ad09b0e2aaa03156891b7dc44",
+        "input_snapshot_digest": "sha256:82e618edcfedda73401094c074655458e7bb9e244073200ceb8a3c1fbd1531be",
+        "output_snapshot_digest": "sha256:28c34a6b2c3c64d4e66389a97c388258e4a2150e6daa37a45673387c083da1bd",
+        "context_manifest_digest": "sha256:96a3c7e700dcac3ec473446de55388c8b77ccb3b31e2508c175f1fb0e2e331e0",
+        "execution_signature": {
+          "runtime_digest": "sha256:5bf59bfce96e8e88e7e4a4022b8de1629b42115eb9cedd7e9422bb4b8c65b083",
+          "executor_config_digest": "sha256:20faf24cd94167180531f84c23244c19c86bdc485868ff7043b541bdbdad6dc9",
+          "model_config_digest": "sha256:826d4e7eca1d5dbf67e1d5c04a9dcbcb38bd73d6e665887b6f0a5059d3c7d466",
+          "environment_digest": "sha256:fdb61c30795bfb1360eec7664a2aee39dc750ce51540c2b7725e7a442acec531",
+          "tool_inventory_digest": "sha256:c0977e56667678883f4e16c7729fc9a5ed450d0fdc85c4b7e0218fa8e4575d8c",
+          "prompt_template_digest": "sha256:27db635c2726809282099be76a2d3fda937fa9dd563dd51fe8669278381db93d",
+          "memory_release_digest": "sha256:b84dd6a4fc43f96007d45c4016b67cd5603ba6f136362bd901af22f96c7460d7",
+          "evaluator_digest": "sha256:04d3fa3fc1b2b405c095734f22be6f3b510be5f8e393adf619623a9d0e6b134e"
+        },
+        "status": "finished",
+        "evaluation_ref": "synthetic-evaluation-1",
+        "cost_ref": "synthetic-cost-1",
+        "started_event_id": "synthetic-event-1",
+        "terminal_event_id": "synthetic-event-2",
+        "failure_class": "none",
+        "expected_failure": false
+      }
+    },
+    {
+      "name": "candidate",
+      "record": {
+        "record_type": "candidate_extension",
+        "schema_version": "1.0.0",
+        "candidate_id": "candidate-1",
+        "subtype": "exploration_policy",
+        "claimed_effect_class": "scheduling_only",
+        "verified_effect_class": "unclassified",
+        "classification_receipt_ref": null,
+        "parent_release_digest": "sha256:146c56f6acc899cfb24db683491eaa71850ca4c1cb42bf546225631a8a0de42a",
+        "artifact_digest": "sha256:5711c33d8095f1e4ad44115b821078b7d8dc66fd40ba894a0675921c5fed5f23",
+        "policy_api_version": "1",
+        "hypothesis": "복구 가능한 branch에 제한된 재시도를 배분하면 재작업이 감소할 수 있다.",
+        "alternative_explanations": [
+          "관측된 차이는 provider 변동일 수 있다."
+        ],
+        "evidence_refs": [
+          "synthetic-episode-1"
+        ],
+        "mutable_surface": "workflow_config",
+        "experiment_plan_digest": "sha256:57692958dbf47eba36e5e586a42a424fec86225d6903404b144fb8bd7c261f42",
+        "budget_permit_ref": "synthetic-permit-not-authorized",
+        "rollback_target": "sha256:146c56f6acc899cfb24db683491eaa71850ca4c1cb42bf546225631a8a0de42a",
+        "scope": {
+          "scope_id": "synthetic-workspace",
+          "project_family_id": "synthetic-family",
+          "task_family_id": "synthetic-bugfix"
+        },
+        "risk": "medium",
+        "new_world_requests": [],
+        "state": "proposed"
+      }
+    },
+    {
+      "name": "evaluation-inconclusive",
+      "record": {
+        "record_type": "evaluation_summary",
+        "schema_version": "1.0.0",
+        "candidate_id": "candidate-1",
+        "experiment_manifest_digest": "sha256:7b427d4542e0ce8f194115095b87dfd07c2524bc75792afded6442718af9bee8",
+        "assessment": "inconclusive",
+        "evidence_level": "design_only",
+        "scheduled_world_count": 1,
+        "full_support_count": 0,
+        "out_of_support_count": 1,
+        "invalid_world_count": 0,
+        "incomplete_world_count": 0,
+        "hard_gate_failures": [],
+        "real_pair_count": 0,
+        "independent_family_count": 0,
+        "objective_version": "screen-v1",
+        "confidence_interval": {
+          "lower": null,
+          "upper": null,
+          "method": "not_computed"
+        },
+        "total_cost_units": null,
+        "cost_coverage": 0,
+        "limitations": [
+          "설명용 합성 fixture이며 실제 평가 결과가 아니다."
+        ],
+        "report_ref": "synthetic-report-not-a-real-run"
+      }
+    },
+    {
+      "name": "policy-ir",
+      "record": {
+        "record_type": "policy_ir",
+        "schema_version": "1.0.0",
+        "policy_api_version": "1",
+        "nodes": [
+          {
+            "node_id": "progress",
+            "op": "feature",
+            "name": "verified_progress_delta"
+          },
+          {
+            "node_id": "stop",
+            "op": "constant",
+            "value": false
+          },
+          {
+            "node_id": "batch",
+            "op": "constant",
+            "value": 1
+          }
+        ],
+        "score_root": "progress",
+        "stop_root": "stop",
+        "batch_size_root": "batch",
+        "tie_break": "stable_opaque_action_id",
+        "max_operations": 64
+      }
+    }
+  ],
+  "negative": [
+    {
+      "name": "future-score-leak",
+      "record": {
+        "record_type": "decision_view",
+        "schema_version": "1.0.0",
+        "round_index": 0,
+        "task_features": {
+          "task_kind": "bugfix",
+          "risk": "medium",
+          "uncertainty": "high"
+        },
+        "observations": [],
+        "legal_actions": [
+          {
+            "action_id": "action-1",
+            "kind": "open_branch",
+            "target_id": "slot-1",
+            "input_commitment": "sha256:e025f7b31bac2ed42b8ef61e25120cadc9fc6d5ecd4da9ac7cac9b766ac96baa",
+            "depends_on_public_node_ids": []
+          }
+        ],
+        "budget": {
+          "remaining_attempts": 4,
+          "remaining_wall_time_s": 600,
+          "remaining_cost_units": null
+        },
+        "worker_cap": 1,
+        "view_digest": "sha256:c137a2b047831eeaacca934f35d060d584f218cbc2eec51a8d9298b415ea1835",
+        "hidden_best_score": 1.0
+      },
+      "expected": "schema_rejection"
+    },
+    {
+      "name": "model-specific-feature",
+      "record": {
+        "record_type": "decision_view",
+        "schema_version": "1.0.0",
+        "round_index": 0,
+        "task_features": {
+          "task_kind": "bugfix",
+          "risk": "medium",
+          "uncertainty": "high",
+          "model_name": "forbidden"
+        },
+        "observations": [],
+        "legal_actions": [
+          {
+            "action_id": "action-1",
+            "kind": "open_branch",
+            "target_id": "slot-1",
+            "input_commitment": "sha256:e025f7b31bac2ed42b8ef61e25120cadc9fc6d5ecd4da9ac7cac9b766ac96baa",
+            "depends_on_public_node_ids": []
+          }
+        ],
+        "budget": {
+          "remaining_attempts": 4,
+          "remaining_wall_time_s": 600,
+          "remaining_cost_units": null
+        },
+        "worker_cap": 1,
+        "view_digest": "sha256:c137a2b047831eeaacca934f35d060d584f218cbc2eec51a8d9298b415ea1835"
+      },
+      "expected": "schema_rejection"
+    },
+    {
+      "name": "duplicate-actions",
+      "record": {
+        "record_type": "policy_decision",
+        "schema_version": "1.0.0",
+        "mode": "explore",
+        "action_ids": [
+          "action-1",
+          "action-1"
+        ],
+        "reason_code": "bootstrap"
+      },
+      "expected": "schema_rejection"
+    },
+    {
+      "name": "empty-explore",
+      "record": {
+        "record_type": "policy_decision",
+        "schema_version": "1.0.0",
+        "mode": "explore",
+        "action_ids": [],
+        "reason_code": "bootstrap"
+      },
+      "expected": "schema_rejection"
+    },
+    {
+      "name": "stop-with-actions",
+      "record": {
+        "record_type": "policy_decision",
+        "schema_version": "1.0.0",
+        "mode": "stop_exploration",
+        "action_ids": [
+          "action-1"
+        ],
+        "reason_code": "budget_exhausted"
+      },
+      "expected": "schema_rejection"
+    },
+    {
+      "name": "unsupported-made-up-score",
+      "record": {
+        "record_type": "replay_step",
+        "schema_version": "1.0.0",
+        "status": "out_of_support",
+        "reason_code": "missing_transition",
+        "revealed_attempt_ids": [],
+        "full_world_score": 1.0
+      },
+      "expected": "schema_rejection"
+    },
+    {
+      "name": "unsupported-reveals-results",
+      "record": {
+        "record_type": "replay_step",
+        "schema_version": "1.0.0",
+        "status": "out_of_support",
+        "reason_code": "missing_transition",
+        "revealed_attempt_ids": [
+          "hidden-attempt"
+        ],
+        "full_world_score": null
+      },
+      "expected": "schema_rejection"
+    },
+    {
+      "name": "incorrect-digest",
+      "record": {
+        "record_type": "world_manifest",
+        "schema_version": "1.0.0",
+        "world_id": "world-1",
+        "scope": {
+          "scope_id": "synthetic-workspace",
+          "project_family_id": "synthetic-family",
+          "task_family_id": "synthetic-bugfix"
+        },
+        "episode_id": "episode-1",
+        "task_contract_digest": "not-a-digest",
+        "initial_snapshot_digest": "sha256:82e618edcfedda73401094c074655458e7bb9e244073200ceb8a3c1fbd1531be",
+        "execution_signature": {
+          "runtime_digest": "sha256:5bf59bfce96e8e88e7e4a4022b8de1629b42115eb9cedd7e9422bb4b8c65b083",
+          "executor_config_digest": "sha256:20faf24cd94167180531f84c23244c19c86bdc485868ff7043b541bdbdad6dc9",
+          "model_config_digest": "sha256:826d4e7eca1d5dbf67e1d5c04a9dcbcb38bd73d6e665887b6f0a5059d3c7d466",
+          "environment_digest": "sha256:fdb61c30795bfb1360eec7664a2aee39dc750ce51540c2b7725e7a442acec531",
+          "tool_inventory_digest": "sha256:c0977e56667678883f4e16c7729fc9a5ed450d0fdc85c4b7e0218fa8e4575d8c",
+          "prompt_template_digest": "sha256:27db635c2726809282099be76a2d3fda937fa9dd563dd51fe8669278381db93d",
+          "memory_release_digest": "sha256:b84dd6a4fc43f96007d45c4016b67cd5603ba6f136362bd901af22f96c7460d7",
+          "evaluator_digest": "sha256:04d3fa3fc1b2b405c095734f22be6f3b510be5f8e393adf619623a9d0e6b134e"
+        },
+        "source_policy_digest": "sha256:bd721ea4378c09aae4f26275894fcab8d2115da8aa85cc557a123c34e71abfde",
+        "common_context_digest": "sha256:96a3c7e700dcac3ec473446de55388c8b77ccb3b31e2508c175f1fb0e2e331e0",
+        "history_cutoff_event_seq": 0,
+        "context_mode": "branch_local",
+        "root_slots": [
+          {
+            "slot_id": "slot-1",
+            "input_commitment": "sha256:e025f7b31bac2ed42b8ef61e25120cadc9fc6d5ecd4da9ac7cac9b766ac96baa",
+            "created_before_outcomes": true
+          }
+        ],
+        "recorded_attempt_ids": [
+          "attempt-1"
+        ],
+        "integrity_status": "complete",
+        "sealed_at": "2026-09-16T00:00:00Z",
+        "closure_watermark": 2,
+        "retention_policy_digest": "sha256:bff909b5dab1bd7d485b9164355c6cac5fa872fa249b06e13d1f3c8684267f18",
+        "lineage_refs": [],
+        "sample_tape_digest": "sha256:7ea322c6cee21f7ad1a729e5c3801f13f06b24d2bfc86fa36c6426abccd50318"
+      },
+      "expected": "schema_rejection"
+    },
+    {
+      "name": "policy-exec-operation",
+      "record": {
+        "record_type": "policy_ir",
+        "schema_version": "1.0.0",
+        "policy_api_version": "1",
+        "nodes": [
+          {
+            "node_id": "progress",
+            "op": "exec",
+            "name": "verified_progress_delta"
+          },
+          {
+            "node_id": "stop",
+            "op": "constant",
+            "value": false
+          },
+          {
+            "node_id": "batch",
+            "op": "constant",
+            "value": 1
+          }
+        ],
+        "score_root": "progress",
+        "stop_root": "stop",
+        "batch_size_root": "batch",
+        "tie_break": "stable_opaque_action_id",
+        "max_operations": 64
+      },
+      "expected": "schema_rejection"
+    },
+    {
+      "name": "policy-model-feature",
+      "record": {
+        "record_type": "policy_ir",
+        "schema_version": "1.0.0",
+        "policy_api_version": "1",
+        "nodes": [
+          {
+            "node_id": "progress",
+            "op": "feature",
+            "name": "model_name"
+          },
+          {
+            "node_id": "stop",
+            "op": "constant",
+            "value": false
+          },
+          {
+            "node_id": "batch",
+            "op": "constant",
+            "value": 1
+          }
+        ],
+        "score_root": "progress",
+        "stop_root": "stop",
+        "batch_size_root": "batch",
+        "tie_break": "stable_opaque_action_id",
+        "max_operations": 64
+      },
+      "expected": "schema_rejection"
+    },
+    {
+      "name": "candidate-bypass-state",
+      "record": {
+        "record_type": "candidate_extension",
+        "schema_version": "1.0.0",
+        "candidate_id": "candidate-1",
+        "subtype": "exploration_policy",
+        "claimed_effect_class": "scheduling_only",
+        "verified_effect_class": "unclassified",
+        "classification_receipt_ref": null,
+        "parent_release_digest": "sha256:146c56f6acc899cfb24db683491eaa71850ca4c1cb42bf546225631a8a0de42a",
+        "artifact_digest": "sha256:5711c33d8095f1e4ad44115b821078b7d8dc66fd40ba894a0675921c5fed5f23",
+        "policy_api_version": "1",
+        "hypothesis": "복구 가능한 branch에 제한된 재시도를 배분하면 재작업이 감소할 수 있다.",
+        "alternative_explanations": [
+          "관측된 차이는 provider 변동일 수 있다."
+        ],
+        "evidence_refs": [
+          "synthetic-episode-1"
+        ],
+        "mutable_surface": "workflow_config",
+        "experiment_plan_digest": "sha256:57692958dbf47eba36e5e586a42a424fec86225d6903404b144fb8bd7c261f42",
+        "budget_permit_ref": "synthetic-permit-not-authorized",
+        "rollback_target": "sha256:146c56f6acc899cfb24db683491eaa71850ca4c1cb42bf546225631a8a0de42a",
+        "scope": {
+          "scope_id": "synthetic-workspace",
+          "project_family_id": "synthetic-family",
+          "task_family_id": "synthetic-bugfix"
+        },
+        "risk": "medium",
+        "new_world_requests": [],
+        "state": "self_approved"
+      },
+      "expected": "schema_rejection"
+    },
+    {
+      "name": "invented-cost-coverage",
+      "record": {
+        "record_type": "evaluation_summary",
+        "schema_version": "1.0.0",
+        "candidate_id": "candidate-1",
+        "experiment_manifest_digest": "sha256:7b427d4542e0ce8f194115095b87dfd07c2524bc75792afded6442718af9bee8",
+        "assessment": "inconclusive",
+        "evidence_level": "design_only",
+        "scheduled_world_count": 1,
+        "full_support_count": 0,
+        "out_of_support_count": 1,
+        "invalid_world_count": 0,
+        "incomplete_world_count": 0,
+        "hard_gate_failures": [],
+        "real_pair_count": 0,
+        "independent_family_count": 0,
+        "objective_version": "screen-v1",
+        "confidence_interval": {
+          "lower": null,
+          "upper": null,
+          "method": "not_computed"
+        },
+        "total_cost_units": null,
+        "cost_coverage": 1.5,
+        "limitations": [
+          "설명용 합성 fixture이며 실제 평가 결과가 아니다."
+        ],
+        "report_ref": "synthetic-report-not-a-real-run"
+      },
+      "expected": "schema_rejection"
+    }
+  ]
+}

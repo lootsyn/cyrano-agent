@@ -1,0 +1,148 @@
+{
+  "revision": "2026-09-16-integration-r2",
+  "mappings": [
+    {
+      "source_path": "references/universal-harness/contracts/work-plan.schema.json",
+      "targets": [
+        "contracts/v2/governance.schema.json#/$defs/GovernedWorkPlan",
+        "contracts/v2/governance.schema.json#/$defs/GovernedWorkUnit"
+      ],
+      "automatic_wire_conversion": false,
+      "authorization_conversion": false,
+      "migration_mode": "explicit_parser_plus_rebinding_and_new_approval_when_authority_changes"
+    },
+    {
+      "source_path": "references/universal-harness/contracts/approval-receipt-v2.schema.json",
+      "targets": [
+        "contracts/v2/governance.schema.json#/$defs/TrustedApprovalReceipt"
+      ],
+      "automatic_wire_conversion": false,
+      "authorization_conversion": false,
+      "migration_mode": "explicit_parser_plus_rebinding_and_new_approval_when_authority_changes"
+    },
+    {
+      "source_path": "references/universal-harness/contracts/execution-permit.schema.json",
+      "targets": [
+        "contracts/v2/governance.schema.json#/$defs/ToolExecutionPermit"
+      ],
+      "automatic_wire_conversion": false,
+      "authorization_conversion": false,
+      "migration_mode": "explicit_parser_plus_rebinding_and_new_approval_when_authority_changes"
+    },
+    {
+      "source_path": "references/universal-harness/contracts/verification-result.schema.json",
+      "targets": [
+        "contracts/v2/governance.schema.json#/$defs/RunnerVerification"
+      ],
+      "automatic_wire_conversion": false,
+      "authorization_conversion": false,
+      "migration_mode": "explicit_parser_plus_rebinding_and_new_approval_when_authority_changes"
+    },
+    {
+      "source_path": "references/universal-harness/contracts/change-manifest.schema.json",
+      "targets": [
+        "contracts/v2/governance.schema.json#/$defs/ExecutionChangeManifest"
+      ],
+      "automatic_wire_conversion": false,
+      "authorization_conversion": false,
+      "migration_mode": "explicit_parser_plus_rebinding_and_new_approval_when_authority_changes"
+    },
+    {
+      "source_path": "references/universal-harness/contracts/run-report.schema.json",
+      "targets": [
+        "contracts/v2/governance.schema.json#/$defs/RunCompletionReport"
+      ],
+      "automatic_wire_conversion": false,
+      "authorization_conversion": false,
+      "migration_mode": "explicit_parser_plus_rebinding_and_new_approval_when_authority_changes"
+    },
+    {
+      "source_path": "references/universal-harness/contracts/memory-record.schema.json",
+      "targets": [
+        "contracts/v2/governance.schema.json#/$defs/MemoryAccessBinding"
+      ],
+      "automatic_wire_conversion": false,
+      "authorization_conversion": false,
+      "migration_mode": "explicit_parser_plus_rebinding_and_new_approval_when_authority_changes"
+    },
+    {
+      "source_path": "references/universal-harness/contracts/event-envelope.schema.json",
+      "targets": [
+        "contracts/v2/governance.schema.json#/$defs/GovernedEvent"
+      ],
+      "automatic_wire_conversion": false,
+      "authorization_conversion": false,
+      "migration_mode": "explicit_parser_plus_rebinding_and_new_approval_when_authority_changes"
+    },
+    {
+      "source_path": "references/universal-harness/contracts/adapter-report.schema.json",
+      "targets": [
+        "contracts/v2/governance.schema.json#/$defs/CompatibilityProbe"
+      ],
+      "automatic_wire_conversion": false,
+      "authorization_conversion": false,
+      "migration_mode": "explicit_parser_plus_rebinding_and_new_approval_when_authority_changes"
+    },
+    {
+      "source_path": "references/universal-harness/contracts/api-dtos.schema.json",
+      "targets": [
+        "contracts/v2/governance.schema.json#/$defs/SessionQuery",
+        "contracts/v2/governance.schema.json#/$defs/NextActionRequest",
+        "contracts/v2/governance.schema.json#/$defs/ApprovalRequest",
+        "contracts/v2/governance.schema.json#/$defs/SessionLifecycleRequest",
+        "contracts/v2/governance.schema.json#/$defs/TrustedUserEvent"
+      ],
+      "automatic_wire_conversion": false,
+      "authorization_conversion": false,
+      "migration_mode": "explicit_parser_plus_rebinding_and_new_approval_when_authority_changes"
+    },
+    {
+      "source_path": "references/universal-harness/contracts/context-manifest.schema.json",
+      "targets": [
+        "contracts/v1/cyrano.schema.json#/$defs/ContextManifest"
+      ],
+      "automatic_wire_conversion": false,
+      "authorization_conversion": false,
+      "migration_mode": "explicit_parser_plus_rebinding_and_new_approval_when_authority_changes"
+    },
+    {
+      "source_path": "references/universal-harness/contracts/review-result.schema.json",
+      "targets": [
+        "contracts/v1/cyrano.schema.json#/$defs/WorkerOutcome"
+      ],
+      "automatic_wire_conversion": false,
+      "authorization_conversion": false,
+      "migration_mode": "explicit_parser_plus_rebinding_and_new_approval_when_authority_changes"
+    },
+    {
+      "source_path": "references/universal-harness/contracts/worker-result-v2.schema.json",
+      "targets": [
+        "contracts/v1/cyrano.schema.json#/$defs/WorkerOutcome"
+      ],
+      "automatic_wire_conversion": false,
+      "authorization_conversion": false,
+      "migration_mode": "explicit_parser_plus_rebinding_and_new_approval_when_authority_changes"
+    },
+    {
+      "source_path": "references/universal-harness/contracts/learning-candidate.schema.json",
+      "targets": [
+        "contracts/v1/cyrano.schema.json#/$defs/CandidateProposal",
+        "contracts/v1/cyrano.schema.json#/$defs/LearningWorkPlan",
+        "contracts/v1/cyrano.schema.json#/$defs/ImpactAssessment"
+      ],
+      "automatic_wire_conversion": false,
+      "authorization_conversion": false,
+      "migration_mode": "explicit_parser_plus_rebinding_and_new_approval_when_authority_changes"
+    },
+    {
+      "source_path": "references/universal-harness/contracts/evaluation-report.schema.json",
+      "targets": [
+        "contracts/v1/cyrano.schema.json#/$defs/EvaluationReport",
+        "contracts/v1/cyrano.schema.json#/$defs/ExperimentPlan"
+      ],
+      "automatic_wire_conversion": false,
+      "authorization_conversion": false,
+      "migration_mode": "explicit_parser_plus_rebinding_and_new_approval_when_authority_changes"
+    }
+  ]
+}

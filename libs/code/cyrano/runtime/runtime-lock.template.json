@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "status": "not_tested",
+  "python": null,
+  "dcode_distribution": null,
+  "dcode_version": null,
+  "artifact_hashes": [],
+  "source_observation": {
+    "version": "0.1.69",
+    "deepagents": "0.7.14",
+    "python_constraint": ">=3.12,<4.0",
+    "kind": "upstream_main_metadata_not_installation"
+  },
+  "probes": {
+    "async_middleware": "not_tested",
+    "cancel_recovery": "not_tested",
+    "child_observation": "not_tested",
+    "context_manifest": "not_tested",
+    "extension_loading": "not_tested",
+    "sandbox_isolation": "not_tested",
+    "tool_mediation": "not_tested",
+    "trusted_approval": "not_tested"
+  }
+}

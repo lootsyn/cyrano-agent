@@ -321,6 +321,17 @@ ignore-var-parameters = true
     "S",        # Security warnings — not applicable to scripts
     "T201",     # `print` found — scripts use print for output
 ]
+"cyrano/scripts/**" = [
+    "BLE001",   # Blind exception catch — resilience in standalone scripts
+    "EM",       # CyranoError takes a stable machine-readable code literal
+    "INP",      # Missing `__init__.py` — scripts are standalone
+    "S",        # Security warnings — not applicable to scripts
+    "T201",     # `print` found — scripts use print for output
+]
+"deepagents_code/cyrano/**" = [
+    "EM101",    # CyranoError takes a stable machine-readable code literal
+    "EM102",    # CyranoError takes a stable machine-readable code literal
+]
 "examples/**" = [
     "ANN001",   # Missing type annotation for function argument — examples prioritize clarity
     "ANN201",   # Missing return type annotation — examples prioritize clarity

@@ -1,0 +1,4 @@
+# Preparation tooling only. Not the native dcode runtime lock.
+# Resolve/lock in RC00 before adding to a project's dependency groups.
+jsonschema>=4.23,<5
+mistune>=3,<4

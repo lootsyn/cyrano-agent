@@ -1,0 +1,195 @@
+{
+ "kind": "work_package_completion_evidence",
+ "work_package": "WP06",
+ "title": "dcode extension와 actual attempt port",
+ "recorded_by": "implementer (independent post-image review performed)",
+ "success": true,
+ "source_digests": {
+  "deepagents_code/cyrano/dcode/bridge.py": "sha256:091e53d63485e292393302f1078c33f5be1da0407e999319c5b0500afc2d2e21",
+  "deepagents_code/cyrano/dcode/middleware.py": "sha256:5543bad0c8eab3b1f7fe0eba54f559b686d34f5054a0b7e72e364f0c7e677c76",
+  "deepagents_code/cyrano/dcode/capabilities.py": "sha256:bcf627aae56822c846432e2ffc1ee7c4abb938d9ceafb6213afeb25bfd0faad9",
+  "deepagents_code/cyrano/dcode/normalization.py": "sha256:5f223f61c50c9dad4f72d59f23cf9192e183382d8e31d6a37e7e26bc095f1868",
+  "deepagents_code/cyrano/quality/policy.py": "sha256:979a2c26f21bd8d1a061a9e81c8b0144d6ae6040c20a98587e6471271f674561",
+  "deepagents_code/cyrano/quality/runner.py": "sha256:d79d351c21905cc44606c4b8ee81f38ae8d9eda0b55d11ed01bcfc2447b0be0e",
+  "deepagents_code/cyrano/quality/documentation.py": "sha256:ff23a4457293c69235f6caef41a5342c97786b26f5265cd77292c2576f3894f9",
+  "deepagents_code/cyrano/quality/__init__.py": "sha256:a2bf20b1c19c180411f5f68519e655b7f461f9c8469b5b9cf8acce80bc8d30c2",
+  "deepagents_code/cyrano/intelligence/lsp.py": "sha256:978a87a66a403bd66cacb41346952557245e118623da8445fc351557e7b6927a",
+  "deepagents_code/cyrano/intelligence/manager.py": "sha256:8774acb448c223785bf80f48254dd890c90c40ab56931ee6e22f7916be922a6e",
+  "deepagents_code/cyrano/intelligence/__init__.py": "sha256:a9b091cddb2932e6eadb9cd401b37a16d95c078bc924404646cf1d7953af4ae6",
+  "cyrano/plugins/cyrano/extension.py": "sha256:85d3dfd57e0d7440f948246ab19835047ab4653ea1dddab04874089dcd0e814d",
+  "tests/cyrano_product/test_wp06_product.py": "sha256:ea731feb67fb37b64d24c13bbaa63337c808380be394c34b8170170500916145",
+  "tests/cyrano_product/test_wp06_protocol.py": "sha256:0b7297781a1d1e1590b5b4ff3e8536ed5387adabc90a7fe27d2b7c0f4cb64739",
+  "tests/cyrano_product/test_wp06_contract_scenarios.py": "sha256:d0bb092380833cca6ec0cbf99c96565d91a45797c8d599ca8da12b5c32720bae",
+  "tests/cyrano_product/test_1_1.py": "sha256:28fd90c8245b4246de7f9078b5dad73f0e0a9d99112e23083d17e3f86950334f",
+  "tests/cyrano_product/test_1_2.py": "sha256:e772bdb8ab75d3353623691d2d6901390c6353890a3f5959d55b8592f2ae7b1d",
+  "tests/cyrano_product/test_1_3.py": "sha256:3197e21fa902b3459fcf1ed81d587723d04f174c2347ef5acaf500d02ee05864",
+  "tests/cyrano_product/test_r5_rf02.py": "sha256:221370fca2ffd0ff960fc02f03095d9f3d28d52c46c0ff105958136d92042ee5"
+ },
+ "contract_files": {
+  "cyrano/contracts/sql/target-schema.sql": "ledger DDL used by report-store tests",
+  "cyrano/tests/assessment/cases.json": "R3-11/12/13 case originals",
+  "cyrano/tests/assessment/python-pack-cases.json": "PEQ-PY-T01..T43 case originals",
+  "cyrano/tests/r5/cases.json": "RF02 case originals",
+  "cyrano/docs/development/test-work/TS02.ko.md": "quality pack ownership",
+  "cyrano/docs/development/test-work/TS03.ko.md": "docstring semantics ownership",
+  "cyrano/docs/development/refinements/RF02.ko.md": "LSP gateway ownership"
+ },
+ "commands": [
+  {
+   "argv": "uv run --no-sync python -m pytest tests/cyrano_product/test_wp06_product.py tests/cyrano_product/test_wp06_protocol.py tests/cyrano_product/test_wp06_contract_scenarios.py tests/cyrano_product/test_1_1.py tests/cyrano_product/test_1_2.py tests/cyrano_product/test_1_3.py tests/cyrano_product/test_r5_rf02.py -q",
+   "exit_code": 0,
+   "result": "86 passed"
+  },
+  {
+   "argv": "uv run --no-sync python -m pytest tests/cyrano_product/ -q",
+   "exit_code": 0,
+   "result": "350 passed"
+  },
+  {
+   "argv": "uv run --no-sync python -m pytest tests/unit_tests/cyrano -q",
+   "exit_code": 0,
+   "result": "302 passed, 29 subtests"
+  },
+  {
+   "argv": "uv run --no-sync ty check deepagents_code/cyrano",
+   "exit_code": 0
+  },
+  {
+   "argv": "basedpyright deepagents_code/cyrano/dcode deepagents_code/cyrano/quality deepagents_code/cyrano/intelligence",
+   "exit_code": 1,
+   "result": "0 errors, 58 warnings (reportUnknown* on json/dict.get boundaries; same class as pre-existing baseline warnings)"
+  },
+  {
+   "argv": "uv run --no-sync ruff check --config cyrano/configs/quality/ruff.toml <wp06 dirs>",
+   "exit_code": 0
+  },
+  {
+   "argv": "uv run --no-sync ruff format --check --config cyrano/configs/quality/ruff.toml <wp06 dirs>",
+   "exit_code": 0
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/dev.py check",
+   "exit_code": 0
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/dev.py schemas",
+   "exit_code": 0
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/check_integration.py",
+   "exit_code": 0
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/check_r5.py",
+   "exit_code": 0
+  }
+ ],
+ "acceptance_evidence": {
+  "DCODE-SETUP": "passed - unverified probe report refuses a handle and dispatch (test_dcode_setup)",
+  "DCODE-CHILD": "passed - child scope exceeding parent is SCOPE_DENIED (test_dcode_child)",
+  "DCODE-VIRTUAL": "passed - no auto host mapping; only explicit mapping resolves (test_dcode_virtual)",
+  "DCODE-OVERRIDE": "passed - unverified/non-allowlisted overrides denied (test_dcode_override)",
+  "UH-RUN-09": "passed - child path inherits the same guard; refusal propagates (test_uh_run_09)",
+  "UH-CACHE-10": "passed - model id is telemetry; resolve() never branches on it (test_uh_cache_10)",
+  "UH-OPS-03": "passed - disabled extension sentinel aborts governed launch (test_uh_ops_03, extension.py governed mode)",
+  "INTEG-NATIVE-LOAD": "passed - project trust configs excluded from launch view; source untouched; exclusion manifest recorded (test_integ_native_load)",
+  "INTEG-ROLE-MAPPING": "passed - only explicit versioned aliases resolve; normalization never grants (test_integ_role_mapping)",
+  "R3-11-01": "passed - real ruff on clean file PASS (test_r3_11_01)",
+  "R3-11-02": "passed - tab indentation diagnosed W191/E101 (test_r3_11_02)",
+  "R3-11-03": "passed - trailing whitespace/blank lines diagnosed (test_r3_11_03)",
+  "R3-11-04": "passed - long comment W505 under 72-col doc policy; URL exempt (test_r3_11_04)",
+  "R3-11-05": "passed - two authoritative formatter policies = POLICY_CONFIG_MISMATCH (test_r3_11_05)",
+  "R3-11-06": "blocked - live_dcode layer; component gate refuses unverified runtime (test_r3_11_06 asserts the refusal)",
+  "R3-12-01": "passed - clean naming/imports PASS under N/I/F (test_r3_12_01)",
+  "R3-12-02": "passed - badFunction/bad_class = N802/N801 (test_r3_12_02)",
+  "R3-12-03": "passed - unused/dup/unsorted imports diagnosed (test_r3_12_03)",
+  "R3-12-04": "passed - conventional short names i/x/y pass (test_r3_12_04)",
+  "R3-12-05": "passed - lint-clean ambiguous names flagged by semantic review (test_r3_12_05)",
+  "R3-12-06": "blocked - live_dcode layer; wheel-import path not_run (test_r3_12_06 asserts the refusal)",
+  "R3-13-01": "passed - documented API inventory clean (test_r3_13_01)",
+  "R3-13-02": "passed - missing public docstring = DOCSTRING_MISSING (test_r3_13_02)",
+  "R3-13-03": "passed - stale Args after signature change flagged (test_r3_13_03)",
+  "R3-13-04": "passed - placeholder docstring flagged (test_r3_13_04)",
+  "R3-13-05": "passed - noqa inside docstring text flagged, real suppression unaffected (test_r3_13_05, test_peq_py_t23)",
+  "R3-13-06": "blocked - live_dcode layer; tool-schema registration not_run (test_r3_13_06 asserts the refusal)",
+  "PEQ-PY-T01": "passed - ruff format raw FAIL preserved (test_peq_py_t01)",
+  "PEQ-PY-T02": "passed - F401 parsed diagnostic FAIL (test_peq_py_t02)",
+  "PEQ-PY-T03": "passed - W505 without max-doc-length = contract FAIL; with it, diagnosed (test_peq_py_t03)",
+  "PEQ-PY-T04": "passed - N rules diagnose naming (test_peq_py_t04)",
+  "PEQ-PY-T05": "passed - D rules diagnose docstrings (test_peq_py_t05)",
+  "PEQ-PY-T06": "passed - B006 diagnosed; code fix resolves (test_peq_py_t06)",
+  "PEQ-PY-T07": "passed - ty raw FAIL on type error (test_peq_py_t07)",
+  "PEQ-PY-T08": "passed - pytest raw FAIL; COMPLETE refused (test_peq_py_t08)",
+  "PEQ-PY-T09": "passed - pytest exit 5 = BLOCKED_NO_TESTS (test_peq_py_t09)",
+  "PEQ-PY-T10": "passed - unmet acceptance keeps attempt INCOMPLETE (test_peq_py_t10)",
+  "PEQ-PY-T11": "passed - FAIL preserved; not averaged by clean files (test_peq_py_t11)",
+  "PEQ-PY-T12": "passed - fix then re-check deterministic; double fix no-op (test_peq_py_t12)",
+  "PEQ-PY-T13": "passed - snapshot inventory scopes the policy (test_peq_py_t13)",
+  "PEQ-PY-T14": "passed - missing scope inventory = BLOCKED (test_peq_py_t14)",
+  "PEQ-PY-T15": "passed - empty scope for Python work = BLOCKED (test_peq_py_t15)",
+  "PEQ-PY-T16": "passed - out-of-scope path = PATH_POLICY_VIOLATION pre-run (test_peq_py_t16)",
+  "PEQ-PY-T17": "passed - tool with no adapter = explicit CAPABILITY_UNAVAILABLE (test_peq_py_t17)",
+  "PEQ-PY-T18": "passed - snapshot-drifted baseline = STALE_BASELINE (test_peq_py_t18)",
+  "PEQ-PY-T19": "passed - old receipt reuse = IDEMPOTENCY_CONFLICT (test_peq_py_t19)",
+  "PEQ-PY-T20": "passed - changed content changes snapshot digest (test_peq_py_t20_t21)",
+  "PEQ-PY-T21": "passed - identical content shares snapshot digest (test_peq_py_t20_t21)",
+  "PEQ-PY-T22": "passed - missing permit = POLICY_VIOLATION (test_peq_py_t22)",
+  "PEQ-PY-T23": "passed - real noqa suppression honored, no false positive (test_peq_py_t23)",
+  "PEQ-PY-T24": "passed - valid permit passes signature/expiry (test_peq_py_t24)",
+  "PEQ-PY-T25": "passed - expired permit denied PERMIT_EXPIRED (test_peq_py_t25)",
+  "PEQ-PY-T26": "passed - report store registration enforced (test_peq_py_t26_t27_t28)",
+  "PEQ-PY-T27": "passed - trust validation refused (test_peq_py_t26_t27_t28)",
+  "PEQ-PY-T28": "passed - identity mismatch = TRUST_MISMATCH (test_peq_py_t26_t27_t28)",
+  "PEQ-PY-T29": "passed - unresolvable policy = contract error (test_peq_py_t29)",
+  "PEQ-PY-T30": "passed - tool protocol error = ERROR_TOOL_PROTOCOL (test_peq_py_t30_t31)",
+  "PEQ-PY-T31": "passed - tool error distinct from code violation (test_peq_py_t30_t31)",
+  "PEQ-PY-T32": "passed - cancel = CANCELLED, no fabricated PASS (test_peq_py_t32)",
+  "PEQ-PY-T33": "passed - oversize output = ERROR_OUTPUT_LIMIT (test_peq_py_t33)",
+  "PEQ-PY-T34": "passed - lost runner = ERROR_RUNNER_LOST (test_peq_py_t34)",
+  "PEQ-PY-T35": "passed - idempotent replay returns same receipt (test_peq_py_t35_t36_t37)",
+  "PEQ-PY-T36": "passed - conflicting payload = IDEMPOTENCY_CONFLICT (test_peq_py_t35_t36_t37)",
+  "PEQ-PY-T37": "passed - stale revision = CAS refusal STALE_REVISION (test_peq_py_t35_t36_t37)",
+  "PEQ-PY-T38": "passed - baseline-equal FAIL = PASS_WITH_BASELINE, raw preserved (test_peq_py_t38)",
+  "PEQ-PY-T39": "passed - equal count, different multiset = FAIL (test_peq_py_t39)",
+  "PEQ-PY-T40": "passed - no baseline = no implicit pass (test_peq_py_t40)",
+  "PEQ-PY-T41": "passed - snapshot drift = STALE_BASELINE (test_peq_py_t41)",
+  "PEQ-PY-T42": "passed - whole-tree ty check catches regression (test_peq_py_t42)",
+  "PEQ-PY-T43": "passed - unsupported tool = CAPABILITY_UNAVAILABLE blocker (test_peq_py_t43)",
+  "R5-RF02-01": "passed - UTF-16 columns correct for Korean+emoji+CRLF (test_r5_rf02_01)",
+  "R5-RF02-02": "passed - workspace/applyEdit DENIED + recorded (test_r5_rf02_02)",
+  "R5-RF02-03": "passed - old-generation response discarded (test_r5_rf02_03)",
+  "R5-RF02-04": "passed - unadvertised capability = CAPABILITY_UNAVAILABLE (test_r5_rf02_04)",
+  "R5-RF02-05": "passed - oversize frame = TOOL_ARGUMENT_LIMIT, no partial parse (test_r5_rf02_05)",
+  "R5-RF02-06": "passed - snapshot change = STALE_SNAPSHOT (test_r5_rf02_06)",
+  "CON-MOD-01": "passed - malformed request never dispatches (test_con_mod_01)",
+  "CON-MOD-02": "passed - unfinalized fragment = INCOMPLETE_TOOL_CALL at finalize (test_con_mod_02)",
+  "CON-MOD-03": "passed - multi-byte UTF-8 across fragments reassembles (test_con_mod_03)",
+  "CON-MOD-04": "passed - call-id reuse across tools = CALL_ID_COLLISION (test_con_mod_04)",
+  "CON-MOD-05": "passed - same tool, distinct ids = independent calls (test_con_mod_05)",
+  "CON-MOD-06": "passed - orphan result recorded, INPUT_INVALID (test_con_mod_06)",
+  "CON-MOD-07": "passed - missing result = synthetic observation_missing (test_con_mod_07)",
+  "CON-MOD-08": "passed - opaque reasoning never exports as text (test_con_mod_08)",
+  "CON-MOD-09": "passed - unsupported content kind = CAPABILITY_UNAVAILABLE (test_con_mod_09)",
+  "CON-MOD-10": "passed - arg size/count hard limits (test_con_mod_10)",
+  "CON-MOD-11": "passed - second retry owner = CONFLICT (test_con_mod_11)",
+  "CON-MOD-12": "passed - cancelled call records usage; late result stale (test_con_mod_12)"
+ },
+ "review_findings": [
+  "bridge unverified-handle refusal delegates to adapter.require_governed to keep DCODE_RUNTIME_NOT_VERIFIED single-owned (WP00 collision test enforces this)",
+  "resolve_quality_policy takes `object` and narrows explicitly; ty rejects Mapping-union narrowing due to invariance",
+  "ruff-format FAIL carries empty diagnostics by design; raw_digest + exit_code preserve evidence",
+  "QualityReportStore binds real ScopedRepository execute_command (CAS + idempotency + outbox), no fixture ledger"
+ ],
+ "known_limitations": [
+  "live_dcode cases R3-11-06/R3-12-06/R3-13-06 recorded blocked/not_run: the component gate is verified, the live wheel/provider path is not",
+  "LspManager gates the read-only surface in-process; no real LSP server subprocess is spawned (RF02 scope is lifecycle/guard semantics)",
+  "basedpyright reports 58 warnings (reportUnknown*/reportUnannotated* on JSON boundaries); 0 errors; same warning class as pre-existing baseline",
+  "style_audit finding_count 447 is pre-existing baseline debt; zero findings in WP06-owned files"
+ ],
+ "blocked_not_run": [
+  "R3-11-06, R3-12-06, R3-13-06: live_dcode layer — no provider key/live wheel authorization in this environment",
+  "dev.py quality gate: fails on pre-existing baseline debt outside WP06 files (recorded, not hidden)"
+ ],
+ "next_work_package_impact": "WP08/WP09/WP10 can consume AttemptBridge/ProtocolNormalizer/QualityReportStore; the governed launch path stays fail-closed until WP00 runtime-lock verification (WP22 gate).",
+ "authority_scope": "component + governed_integration layers only; no live provider or wheel mutation performed"
+}

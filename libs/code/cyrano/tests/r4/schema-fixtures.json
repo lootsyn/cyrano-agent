@@ -1,0 +1,374 @@
+{
+  "scope": "structural_only_not_trusted_authority",
+  "fixtures": [
+    {
+      "id": "MemoryRevisionDetail-valid",
+      "schema": "contracts/r4/memory.schema.json#/$defs/MemoryRevisionDetail",
+      "valid": true,
+      "value": {
+        "memory_id": "m1",
+        "revision": 1,
+        "scope": {
+          "tenant_id": "t1",
+          "user_id": "u1",
+          "workspace_id": "w1",
+          "session_id": null
+        },
+        "kind": "semantic",
+        "status": "active",
+        "content_ref": "artifact:m1",
+        "content_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evidence_refs": [
+          "runner:e1"
+        ],
+        "dependency_digests": [
+          "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        ],
+        "valid_from": "2026-09-16T00:00:00Z",
+        "valid_until": "2026-09-17T00:00:00Z",
+        "approval_ref": "approval:a1",
+        "sensitivity": "internal"
+      }
+    },
+    {
+      "id": "MemoryRevisionDetail-unknown",
+      "schema": "contracts/r4/memory.schema.json#/$defs/MemoryRevisionDetail",
+      "valid": false,
+      "value": {
+        "memory_id": "m1",
+        "revision": 1,
+        "scope": {
+          "tenant_id": "t1",
+          "user_id": "u1",
+          "workspace_id": "w1",
+          "session_id": null
+        },
+        "kind": "semantic",
+        "status": "active",
+        "content_ref": "artifact:m1",
+        "content_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evidence_refs": [
+          "runner:e1"
+        ],
+        "dependency_digests": [
+          "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        ],
+        "valid_from": "2026-09-16T00:00:00Z",
+        "valid_until": "2026-09-17T00:00:00Z",
+        "approval_ref": "approval:a1",
+        "sensitivity": "internal",
+        "unexpected_field": "x"
+      }
+    },
+    {
+      "id": "MemoryApplicationDetail-valid",
+      "schema": "contracts/r4/memory.schema.json#/$defs/MemoryApplicationDetail",
+      "valid": true,
+      "value": {
+        "application_id": "a1",
+        "run_id": "r1",
+        "memory_id": "m1",
+        "memory_revision": 1,
+        "view_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "request_manifest_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "status": "applied",
+        "checker_id": "plan-rule-v1",
+        "plan_artifact": "artifact:p1",
+        "code_artifact": null,
+        "verification_artifact": null,
+        "independent_review_ref": null,
+        "evidence_refs": [
+          "runner:e1"
+        ]
+      }
+    },
+    {
+      "id": "MemoryApplicationDetail-unknown",
+      "schema": "contracts/r4/memory.schema.json#/$defs/MemoryApplicationDetail",
+      "valid": false,
+      "value": {
+        "application_id": "a1",
+        "run_id": "r1",
+        "memory_id": "m1",
+        "memory_revision": 1,
+        "view_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "request_manifest_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "status": "applied",
+        "checker_id": "plan-rule-v1",
+        "plan_artifact": "artifact:p1",
+        "code_artifact": null,
+        "verification_artifact": null,
+        "independent_review_ref": null,
+        "evidence_refs": [
+          "runner:e1"
+        ],
+        "unexpected_field": "x"
+      }
+    },
+    {
+      "id": "PhysicalAttemptObservation-valid",
+      "schema": "contracts/r4/observability.schema.json#/$defs/PhysicalAttemptObservation",
+      "valid": true,
+      "value": {
+        "logical_request_id": "l1",
+        "physical_attempt_id": "a1",
+        "attempt_no": 1,
+        "role": "main",
+        "retry_of": null,
+        "status": "succeeded",
+        "clock_boot_id": "b1",
+        "start_monotonic_ns": 1,
+        "end_monotonic_ns": 2,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cache_read_tokens": null,
+        "usage_semantics": "unknown",
+        "usage_source": "missing",
+        "cost_microunits": null,
+        "currency": null,
+        "cost_kind": "unknown"
+      }
+    },
+    {
+      "id": "PhysicalAttemptObservation-unknown",
+      "schema": "contracts/r4/observability.schema.json#/$defs/PhysicalAttemptObservation",
+      "valid": false,
+      "value": {
+        "logical_request_id": "l1",
+        "physical_attempt_id": "a1",
+        "attempt_no": 1,
+        "role": "main",
+        "retry_of": null,
+        "status": "succeeded",
+        "clock_boot_id": "b1",
+        "start_monotonic_ns": 1,
+        "end_monotonic_ns": 2,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cache_read_tokens": null,
+        "usage_semantics": "unknown",
+        "usage_source": "missing",
+        "cost_microunits": null,
+        "currency": null,
+        "cost_kind": "unknown",
+        "unexpected_field": "x"
+      }
+    },
+    {
+      "id": "ImprovementEvidenceChain-valid",
+      "schema": "contracts/r4/improvement.schema.json#/$defs/ImprovementEvidenceChain",
+      "valid": true,
+      "value": {
+        "candidate_id": "c1",
+        "surface": "skill",
+        "impact": "transition_changing",
+        "parent_release": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "patch_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "learning_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evaluation_manifest_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evaluation_kind": "live_paired",
+        "evaluation_status": "passed",
+        "review_ref": "review:r1",
+        "approval_ref": "approval:a1",
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "next_run_id": null,
+        "next_run_binding_digest": null,
+        "promotion_state": "promoted",
+        "hard_violations": []
+      }
+    },
+    {
+      "id": "ImprovementEvidenceChain-unknown",
+      "schema": "contracts/r4/improvement.schema.json#/$defs/ImprovementEvidenceChain",
+      "valid": false,
+      "value": {
+        "candidate_id": "c1",
+        "surface": "skill",
+        "impact": "transition_changing",
+        "parent_release": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "patch_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "learning_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evaluation_manifest_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evaluation_kind": "live_paired",
+        "evaluation_status": "passed",
+        "review_ref": "review:r1",
+        "approval_ref": "approval:a1",
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "next_run_id": null,
+        "next_run_binding_digest": null,
+        "promotion_state": "promoted",
+        "hard_violations": [],
+        "unexpected_field": "x"
+      }
+    },
+    {
+      "id": "MemoryRevisionDetail-invalid-8",
+      "schema": "contracts/r4/memory.schema.json#/$defs/MemoryRevisionDetail",
+      "valid": false,
+      "value": {
+        "memory_id": "m1",
+        "revision": 1,
+        "scope": {
+          "tenant_id": "t1",
+          "user_id": "u1",
+          "workspace_id": "w1",
+          "session_id": null
+        },
+        "kind": "semantic",
+        "status": "active",
+        "content_ref": "artifact:m1",
+        "content_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evidence_refs": [
+          "runner:e1"
+        ],
+        "dependency_digests": [
+          "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        ],
+        "valid_from": "2026-09-16T00:00:00Z",
+        "valid_until": "2026-09-17T00:00:00Z",
+        "approval_ref": null,
+        "sensitivity": "internal"
+      }
+    },
+    {
+      "id": "MemoryApplicationDetail-invalid-9",
+      "schema": "contracts/r4/memory.schema.json#/$defs/MemoryApplicationDetail",
+      "valid": false,
+      "value": {
+        "application_id": "a1",
+        "run_id": "r1",
+        "memory_id": "m1",
+        "memory_revision": 1,
+        "view_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "request_manifest_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "status": "applied",
+        "checker_id": null,
+        "plan_artifact": "artifact:p1",
+        "code_artifact": null,
+        "verification_artifact": null,
+        "independent_review_ref": null,
+        "evidence_refs": [
+          "runner:e1"
+        ]
+      }
+    },
+    {
+      "id": "PhysicalAttemptObservation-invalid-10",
+      "schema": "contracts/r4/observability.schema.json#/$defs/PhysicalAttemptObservation",
+      "valid": false,
+      "value": {
+        "logical_request_id": "l1",
+        "physical_attempt_id": "a1",
+        "attempt_no": 1,
+        "role": "main",
+        "retry_of": null,
+        "status": "succeeded",
+        "clock_boot_id": "b1",
+        "start_monotonic_ns": 1,
+        "end_monotonic_ns": 2,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cache_read_tokens": null,
+        "usage_semantics": "unknown",
+        "usage_source": "missing",
+        "cost_microunits": 0,
+        "currency": null,
+        "cost_kind": "unknown"
+      }
+    },
+    {
+      "id": "ImprovementEvidenceChain-invalid-11",
+      "schema": "contracts/r4/improvement.schema.json#/$defs/ImprovementEvidenceChain",
+      "valid": false,
+      "value": {
+        "candidate_id": "c1",
+        "surface": "skill",
+        "impact": "transition_changing",
+        "parent_release": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "patch_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "learning_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evaluation_manifest_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evaluation_kind": "replay",
+        "evaluation_status": "passed",
+        "review_ref": "review:r1",
+        "approval_ref": "approval:a1",
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "next_run_id": null,
+        "next_run_binding_digest": null,
+        "promotion_state": "promoted",
+        "hard_violations": []
+      }
+    },
+    {
+      "id": "ImprovementEvidenceChain-invalid-12",
+      "schema": "contracts/r4/improvement.schema.json#/$defs/ImprovementEvidenceChain",
+      "valid": false,
+      "value": {
+        "candidate_id": "c1",
+        "surface": "skill",
+        "impact": "transition_changing",
+        "parent_release": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "patch_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "learning_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evaluation_manifest_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evaluation_kind": "live_paired",
+        "evaluation_status": "passed",
+        "review_ref": "review:r1",
+        "approval_ref": "approval:a1",
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "next_run_id": null,
+        "next_run_binding_digest": null,
+        "promotion_state": "promoted",
+        "hard_violations": [
+          "AUTH_BYPASS"
+        ]
+      }
+    },
+    {
+      "id": "ImprovementEvidenceChain-invalid-13",
+      "schema": "contracts/r4/improvement.schema.json#/$defs/ImprovementEvidenceChain",
+      "valid": false,
+      "value": {
+        "candidate_id": "c1",
+        "surface": "skill",
+        "impact": "transition_changing",
+        "parent_release": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "patch_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "learning_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evaluation_manifest_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evaluation_kind": "live_paired",
+        "evaluation_status": "inconclusive",
+        "review_ref": "review:r1",
+        "approval_ref": "approval:a1",
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "next_run_id": null,
+        "next_run_binding_digest": null,
+        "promotion_state": "promoted",
+        "hard_violations": []
+      }
+    },
+    {
+      "id": "ImprovementEvidenceChain-invalid-14",
+      "schema": "contracts/r4/improvement.schema.json#/$defs/ImprovementEvidenceChain",
+      "valid": false,
+      "value": {
+        "candidate_id": "c1",
+        "surface": "skill",
+        "impact": "protected_change",
+        "parent_release": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "patch_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "learning_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evaluation_manifest_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evaluation_kind": "live_paired",
+        "evaluation_status": "passed",
+        "review_ref": "review:r1",
+        "approval_ref": "approval:a1",
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "next_run_id": null,
+        "next_run_binding_digest": null,
+        "promotion_state": "promoted",
+        "hard_violations": []
+      }
+    }
+  ]
+}

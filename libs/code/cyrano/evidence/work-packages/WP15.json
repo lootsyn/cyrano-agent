@@ -1,0 +1,53 @@
+{
+ "kind": "work_package_completion_evidence",
+ "work_package": "WP15",
+ "title": "경로 A bounded policy 학습",
+ "recorded_by": "implementer (independent post-image review performed)",
+ "success": true,
+ "source_digests": {
+  "deepagents_code/cyrano/improvement/policy_ir.py": "sha256:46de6fd16d824593ffd3e966e7b5b52f5ccd9b63b3890520b5ba75153cbb4dac",
+  "deepagents_code/cyrano/improvement/search.py": "sha256:a7f5d475d99e85088f1829015b57b7fdd65c4cb4bf5a310e6f3cff2ef1a9be39",
+  "deepagents_code/cyrano/improvement/policy_runner.py": "sha256:02edc7b7647fdaa4201353179541eccafc81f08f0ab46929ceee81d28521ec99",
+  "tests/cyrano_product/test_wp15_product.py": "sha256:a383209d42eb8733960f77a159ad0524e300400479aa64d4bcff60a5e24b247b"
+ },
+ "contract_files": [
+  ".agents/work/WP15.ko.md",
+  "docs/design/features/2026-09-16-dream-path-a.ko.md",
+  "deepagents_code/cyrano/improvement/README.md",
+  "tests/acceptance/catalog.json"
+ ],
+ "schema_change": {
+  "kind": "none",
+  "rationale": "bounded IR, candidate search, and validation handoff are pure functions over sealed artifacts; persistence reuses existing ledgers when wired"
+ },
+ "verification": {
+  "targeted_tests": "11 passed (tests/cyrano_product/test_wp15_product.py)",
+  "full_product_suite": "852 passed (tests/cyrano_product/)",
+  "ruff": "0 findings in WP15-owned paths under cyrano/configs/quality/ruff.toml",
+  "formatter": "ruff format --check clean on WP15-owned paths",
+  "ty": "0 errors on deepagents_code/cyrano",
+  "dev_check": "dev.py check exit 0 after docs regeneration",
+  "quality_gate": "0 findings in WP15-owned paths; pre-existing baseline debt unchanged"
+ },
+ "architecture": {
+  "policy_ir": "validate_ir compiles a bounded rule list over whitelisted features; loop/while -> UNBOUNDED_LOOP, import -> IMPORT_FORBIDDEN, unknown feature/action/op -> refused, literals outside the bound -> BOUND_REQUIRED, non-string kind -> IR_SHAPE",
+  "search": "generate_policy_candidate compiles any valid combination as a new policy (novel flag vs profile menu, never menu-limited); screen_replay scores only observations at or before the cutoff and counts excluded future data; zero support is score=None, not 0",
+  "policy_runner": "request_actual_validation binds the screened IR digest into a sealed EvaluationManifest under one ExecutionSignature; decide_activation requires signature match + actual improved verdict + independent review + bounded approval; replay score alone is never sufficient"
+ },
+ "review_findings_resolved": [
+  "node kind of a non-hashable type raised TypeError instead of IR_SHAPE"
+ ],
+ "not_established": [
+  "native_dcode_runtime_policy_execution (API-level verification only)",
+  "real_model_or_provider_calls",
+  "search_optimization (generation compiles the supplied spec; enumeration strategies are out of scope)"
+ ],
+ "acceptance_evidence": {
+  "A-IR": "passed - test_a_ir_unbounded_loop_statically_refused + test_a_ir_import_refused + test_a_ir_unknown_feature_refused + test_a_ir_unbounded_literal_and_action_refused",
+  "A-NOMENU": "passed - test_a_nomenu_new_combo_expresses_new_policy + test_a_nomenu_menu_duplicate_reported_not_hidden",
+  "A-ACTUAL": "passed - test_a_actual_replay_improvement_cannot_promote",
+  "WP15-I01": "passed - test_wp15_i01_fixed_observations_only_exclude_future",
+  "WP15-I02": "passed - test_wp15_i02_different_signature_reuses_nothing",
+  "WP15-I03": "passed - test_wp15_i03_activation_needs_verdict_review_approval + test_wp15_i03_manifest_must_bind_screened_ir"
+ }
+}

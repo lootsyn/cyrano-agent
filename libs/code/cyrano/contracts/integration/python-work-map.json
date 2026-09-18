@@ -1,0 +1,110 @@
+{
+  "mapping": [
+    {
+      "source_id": "PY-W01",
+      "target_wps": [
+        "WP00"
+      ],
+      "status": "planned",
+      "source": "references/packs/python-engineering/docs/development/PY_IMPLEMENTATION_PLAN.ko.md"
+    },
+    {
+      "source_id": "PY-W02",
+      "target_wps": [
+        "WP01",
+        "WP06"
+      ],
+      "status": "planned",
+      "source": "references/packs/python-engineering/docs/development/PY_IMPLEMENTATION_PLAN.ko.md"
+    },
+    {
+      "source_id": "PY-W03",
+      "target_wps": [
+        "WP03",
+        "WP06"
+      ],
+      "status": "planned",
+      "source": "references/packs/python-engineering/docs/development/PY_IMPLEMENTATION_PLAN.ko.md"
+    },
+    {
+      "source_id": "PY-W04",
+      "target_wps": [
+        "WP03",
+        "WP06"
+      ],
+      "status": "planned",
+      "source": "references/packs/python-engineering/docs/development/PY_IMPLEMENTATION_PLAN.ko.md"
+    },
+    {
+      "source_id": "PY-W05",
+      "target_wps": [
+        "WP06"
+      ],
+      "status": "planned",
+      "source": "references/packs/python-engineering/docs/development/PY_IMPLEMENTATION_PLAN.ko.md"
+    },
+    {
+      "source_id": "PY-W06",
+      "target_wps": [
+        "WP06"
+      ],
+      "status": "planned",
+      "source": "references/packs/python-engineering/docs/development/PY_IMPLEMENTATION_PLAN.ko.md"
+    },
+    {
+      "source_id": "PY-W07",
+      "target_wps": [
+        "WP06"
+      ],
+      "status": "planned",
+      "source": "references/packs/python-engineering/docs/development/PY_IMPLEMENTATION_PLAN.ko.md"
+    },
+    {
+      "source_id": "PY-W08",
+      "target_wps": [
+        "WP02",
+        "WP06"
+      ],
+      "status": "planned",
+      "source": "references/packs/python-engineering/docs/development/PY_IMPLEMENTATION_PLAN.ko.md"
+    },
+    {
+      "source_id": "PY-W09",
+      "target_wps": [
+        "WP09",
+        "WP12"
+      ],
+      "status": "planned",
+      "source": "references/packs/python-engineering/docs/development/PY_IMPLEMENTATION_PLAN.ko.md"
+    },
+    {
+      "source_id": "PY-W10",
+      "target_wps": [
+        "WP07",
+        "WP12"
+      ],
+      "status": "planned",
+      "source": "references/packs/python-engineering/docs/development/PY_IMPLEMENTATION_PLAN.ko.md"
+    },
+    {
+      "source_id": "PY-W11",
+      "target_wps": [
+        "WP22",
+        "WP23"
+      ],
+      "status": "planned",
+      "source": "references/packs/python-engineering/docs/development/PY_IMPLEMENTATION_PLAN.ko.md"
+    },
+    {
+      "source_id": "PY-W12",
+      "target_wps": [
+        "WP13",
+        "WP18",
+        "WP20"
+      ],
+      "status": "planned",
+      "source": "references/packs/python-engineering/docs/development/PY_IMPLEMENTATION_PLAN.ko.md"
+    }
+  ],
+  "policy": "Reference work numbering is preserved. Native formatter adaptation is an explicit ADR."
+}

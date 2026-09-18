@@ -1,0 +1,16 @@
+{
+  "schema_version": "udh.runtime-lock/1",
+  "status": "UNRESOLVED_TEMPLATE_DO_NOT_DEPLOY",
+  "python": null,
+  "dcode_distribution": null,
+  "dcode_version": null,
+  "sdk_version": null,
+  "extension_version": null,
+  "installed_artifact_hashes": {},
+  "dependency_lock_digest": null,
+  "dcode_cli_help_digest": null,
+  "adapter_report_digest": null,
+  "sandbox_backend": null,
+  "tool_inventory_digest": null,
+  "verified_at": null
+}

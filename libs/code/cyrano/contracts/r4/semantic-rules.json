@@ -1,0 +1,41 @@
+{
+  "status": "implementation_required",
+  "rules": [
+    {
+      "id": "MEM-TIME",
+      "rule": "valid_until > valid_from; timestamps UTC aware; now from trusted clock"
+    },
+    {
+      "id": "MEM-AUTH",
+      "rule": "approval principal/subject/scope/revoke/expiry checked by broker; schema only enforces nonnull shape"
+    },
+    {
+      "id": "MEM-USE",
+      "rule": "applied requires independent artifact checks, same memory revision, run and request binding"
+    },
+    {
+      "id": "OBS-TIME",
+      "rule": "end >= start only same boot clock; missing start pending/unknown; never clamp negatives"
+    },
+    {
+      "id": "OBS-COUNT",
+      "rule": "dedupe physical_attempt_id; retry_of chain matches same logical request; parent must exist or explicit orphan"
+    },
+    {
+      "id": "LEARN-CHAIN",
+      "rule": "all plan/patch/eval/review/approval/release digests agree with canonical objects and scope"
+    },
+    {
+      "id": "NEXT-RUN",
+      "rule": "promotion alone does not satisfy 3-4; next_run binding and actual context/tool application evidence required"
+    },
+    {
+      "id": "DELETE",
+      "rule": "canonical tombstone blocks every new query even if projection lagged"
+    },
+    {
+      "id": "R4-DDL",
+      "rule": "design extension, not applied migration; compile all three target DDL in order; no schema overwrite"
+    }
+  ]
+}

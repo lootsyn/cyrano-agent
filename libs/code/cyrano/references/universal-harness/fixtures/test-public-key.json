@@ -1,0 +1,6 @@
+{
+  "warning": "TEST FIXTURE ONLY: not a production trust anchor; private key not distributed.",
+  "key_id": "fixture-key-only",
+  "issuer": "fixture-only",
+  "public_key_base64": "t2Ue3SBvWvHmlp42uBokLizQbtCRTbqezlyo6HaTzMA="
+}

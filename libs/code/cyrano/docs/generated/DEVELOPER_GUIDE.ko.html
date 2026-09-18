@@ -1,0 +1,457 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="cyrano-markdown-sha256" content="7a38fb59cf60bff91109ee74f2130f10c7c2b01d911f1fd08f0ed2de421ebb00"><title>
+    Cyrano Agent · dcode 기반 개발 설계</title><style>
+        :root{--ink:#142a3d;--muted:#526675;--line:#dbe4e9;--paper:#ffffff;
+    --nav:#102b3f;--accent:#157a8a}
+        *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;
+    background:#f2f5f7;color:var(--ink);font:16px/1.85 system-ui,
+    -apple-system,'Malgun Gothic','Apple SD Gothic Neo',sans-serif}
+        nav{position:fixed;inset:0 auto 0 0;width:310px;
+    background:var(--nav);color:white;padding:26px 20px;overflow:auto}
+    nav strong{display:block;font-size:21px;line-height:1.4;
+    margin-bottom:18px}nav p{font-size:12px;color:#c1d4e1}
+    nav a{display:block;color:#dde9ef;text-decoration:none;font-size:12px;
+    line-height:1.5;padding:8px 0;border-bottom:1px solid #2a455a;
+    overflow-wrap:anywhere}nav a:hover{color:white}
+        main{margin-left:310px;max-width:1300px;padding:48px 58px;
+    background:var(--paper);min-height:100vh}h1{font-size:34px;
+    line-height:1.35;margin-top:0}h2{font-size:24px;
+    border-top:4px solid var(--accent);padding-top:20px;margin-top:50px;
+    overflow-wrap:anywhere}h3{font-size:22px}h4{font-size:19px;
+    margin-top:30px}h5,h6{font-size:17px}p{margin:0 0 18px}a{color:#126a83}
+    pre{background:#f2f5f8;border:1px solid var(--line);border-radius:5px;
+    padding:20px;overflow:auto;font-size:12px;line-height:1.65}
+    code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}p code,
+    li code{background:#edf3f6;padding:2px 4px;overflow-wrap:anywhere}
+    table{border-collapse:collapse;width:100%;font-size:13px;margin:20px 0;
+    display:block;overflow:auto}th{background:#e7f0f4;text-align:left}th,
+    td{border:1px solid var(--line);padding:10px 13px;vertical-align:top}
+    td code{font-size:12px}hr{border:0;border-top:1px solid var(--line);
+    margin:50px 0}blockquote{border-left:4px solid var(--accent);
+    padding-left:20px;color:var(--muted)}ul,ol{padding-left:25px}
+    footer{font-size:12px;color:var(--muted);margin-top:50px}
+        @media(max-width:1050px){nav{position:static;width:auto;
+    max-height:280px}main{margin:0;padding:24px}h1{font-size:28px}}
+    @media print{nav{display:none}main{margin:0;padding:0;max-width:none}
+    pre{white-space:pre-wrap}h2,h3,h4{break-after:avoid}}
+    </style>
+    </head><body>
+    <nav><strong>Cyrano Agent<br>dcode 기반 개발</strong><p>
+    경로 A/B · 인터뷰 · 캐시 · Memory<br>
+    설계 · 개발계획 · 실행계획<br>개발 준비 / 운영 검증 아님</p>
+    <a href="#section-0001">Cyrano Agent · 개발 수행 가이드</a><a href="#section-0002">01 · docs/execution/R5_EXECUTION_GUIDE.ko.md</a><a href="#section-0011">02 · docs/design/DCODE_INTEGRATION.ko.md</a><a href="#section-0034">03 · docs/development/R5_MASTER_PLAN.ko.md</a><a href="#section-0042">04 · docs/design/DOCUMENT_GOVERNANCE.ko.md</a><a href="#section-0049">05 · docs/testing/STRATEGY.ko.md</a><a href="#section-0061">06 · docs/development/R5_REVIEW.ko.md</a><a href="#section-0067">07 · tools/README.md</a></nav><main><h1 id="section-0001">Cyrano Agent · 개발 수행 가이드</h1>
+<p>현재 실행 가능한 준비 도구와 구현할 제품 기능을 구분한다. 전체 기능 계약은 FULL_DESIGN과 각 원본 문서에 있다.</p>
+<hr />
+<h2 id="section-0002">01 · docs/execution/R5_EXECUTION_GUIDE.ko.md</h2>
+<h3 id="section-0003">Cyrano Agent · 개발 수행 가이드</h3>
+<p>문서 유형: 실행 가이드 — 현재 단일 기준.</p>
+<h4 id="section-0004">1. Base와 작업 위치</h4>
+<p>Base는 공식 deepagents monorepo 전체 checkout이다. 개발용 에이전트의 cwd는 <code>deepagents/libs/code/</code>다. <code>deepagents_code/cyrano/</code>는 우리가 개발할 제품 코드이며 dcode base 자체가 아니다. <code>cyrano/</code>는 설계·개발·실행·참고·검증 지원 자료다. dcode 원본 <code>pyproject.toml</code>, <code>uv.lock</code>, <code>deepagents_code/__init__.py</code>를 Cyrano 파일로 대체하지 않는다.</p>
+<p>현재 배포 ZIP의 <code>copy_to_dcode/</code> <strong>내용</strong>을 <code>libs/code/</code>에 병합한다. ZIP root의 prepare/verify/tests는 복사 보조와 포장 검사 전용이며 실행 프로젝트 밖에 둔다. 이미 수정한 파일이 있으면 diff를 검토하며 무조건 덮어쓰지 않는다. 현재 확인한 소스 기준은 <code>7f9e8ed3a555933902045792da9bb184950ee7b2</code>; 이후 버전은 별도 호환성 검사 없이 승인하지 않는다.</p>
+<h4 id="section-0005">2. 준비</h4>
+<p>깨끗한 전체 clone의 원하는 개발 브랜치에서 먼저 dcode의 DEVELOPMENT.md를 읽는다. 저장소가 달라졌으면 조사 기준과 비교한다. 인터넷·패키지 설치 권한을 확인한 뒤 <code>libs/code</code>에서 <code>uv sync --group test</code> 또는 공식 <code>make bootstrap</code>을 실행한다. bootstrap은 git hooks도 설치하므로 허가 범위를 확인한다. 원본 native smoke/lint/test 결과와 환경을 기록한다. 기존 실패를 새 기능의 성공으로 바꾸지 않는다.</p>
+<p>Cyrano를 병합한 뒤 다음은 현재 실행 가능한 준비 검사다.</p>
+<pre><code class="language-bash">python cyrano/scripts/dev.py check
+python cyrano/scripts/dev.py schemas
+python cyrano/scripts/assessment.py validate
+python cyrano/scripts/doc_route.py --task WP00 --stage plan --content
+</code></pre>
+<p><code>check</code>의 기반 테스트와 schema 검사는 실제 dcode 권한·Memory 효과·provider cache 시험이 아니다. dependency가 없으면 해당 검사는 blocked다.</p>
+<h4 id="section-0006">3. AI 개발 시작</h4>
+<p><code>libs/code</code>를 IDE/terminal cwd로 열고 설치되어 있는 coding assistant를 실행한다. 먼저 <code>AGENTS.md</code>, <code>cyrano/AGENTS.md</code>, <code>cyrano/IMPLEMENTATION_REQUEST.ko.md</code>를 읽힌다. 전체 FULL_DESIGN이나 참고팩을 한꺼번에 주입하지 않는다. 할당 WP의 선행 작업을 확인하고 <code>doc_route.py --task &lt;ID&gt; --stage plan</code>으로 필요한 문서를 선택한다.</p>
+<ol>
+<li>현재 요구·범위·완료 조건을 확정한다. 기존 인터뷰 답변은 현재성·scope를 확인해 재사용하고, 알 수 있는 내용을 다시 묻지 않는다.</li>
+<li>변경 파일·순서·생산/소비 인터페이스·테스트·비용·복구를 계획한다.</li>
+<li>독립 AI 리뷰가 구체적인 finding을 만들고, 수정 또는 반증 뒤 다시 판정한다.</li>
+<li>개발자의 변경 허가 뒤에 코드를 수정한다. 제품 계획 승인과 실행 허가 구현 전에는 advisory 개발 환경임을 명시한다.</li>
+<li>사례 명세를 읽고 거부/오류 테스트부터 작성한다. 권한·프로세스 경계의 fake를 실제 차단 증거로 쓰지 않는다.</li>
+<li>단계별 검증 뒤 변경한 설계·계약·fixtures·문서목차를 갱신한다.</li>
+<li>범위·acceptance·external effect가 달라지면 다시 계획·리뷰·승인한다. 승인된 후보 lineage 안의 정상 코드 수정마다 전체 인터뷰를 되풀이하지 않는다.</li>
+</ol>
+<h4 id="section-0007">4. 문서·계약 갱신</h4>
+<pre><code class="language-bash">python cyrano/scripts/dev.py docs
+python cyrano/scripts/doc_route.py --task WP09 --stage implement --content
+python cyrano/scripts/case_route.py --task WP09
+python cyrano/scripts/dev.py check
+</code></pre>
+<p><code>docs</code>는 기존 WP/TS/RC/RF metadata에서 라우터·목차·통합본을 재생성한다. 수동으로 새 연구팩을 설치하거나 NG를 추가 등록할 단계는 없다. 한 파일의 계약을 수정하면 그 계약을 읽는 작업만 새 digest를 갖는다. 전체 catalog hash를 상시 prompt에 넣지 않는다.</p>
+<h4 id="section-0008">5. 제품 시험 실행</h4>
+<p>할당 WP의 테스트 파일과 실제 dcode adapter가 구현된 뒤에 <code>uv run --no-sync python -m pytest tests/cyrano_product/&lt;담당파일&gt;.py -q</code>를 실행한다. 제품 시험에는 실행환경·source·suite·policy digest와 원시 결과가 필요하다. 0건 수집, 필수 skip, LLM의 완료 주장, fixture-only 통과는 제품 인수 증거가 아니다.</p>
+<h4 id="section-0009">6. 중단·재개·원복</h4>
+<p>현재 작업 사본과 변경 diff를 보존하고 실제 실행 여부를 확인한다. timeout 이후 외부 변경이 불명확하면 unknown_outcome으로 남겨 확인한다. 사용자 수정 파일은 전달 receipt만으로 삭제하지 않는다. 중단된 승인 화면을 재개할 때 pending request ID와 nonce·display subject를 유지/검증하며 임의로 새 허가를 만들지 않는다. 원본 반영·데이터 rollback·publish는 별도 권한과 recipe를 따른다.</p>
+<h4 id="section-0010">7. 완성 판정</h4>
+<p>15개 평가 항목40점은 실제 제품에서 채점한다. 현재 기본 점수표는 not_evaluated다. Memory 지속/실제 적용, before-after/회귀/다음 작업 반영, 전체 native trace/계수/오류 탐색, 승인 전 모든 변경경로 차단을 실험해야 한다. 문서·기반 검사 수를 제품 점수로 치환하지 않는다.</p>
+<hr />
+<h2 id="section-0011">02 · docs/design/DCODE_INTEGRATION.ko.md</h2>
+<h3 id="section-0012">Cyrano Agent · dcode 기반 코드와 복사 경계</h3>
+<p>문서 유형: 상세 설계. 상태: 개발 준비. 이 파일은 base/제품 코드/문서 위치의 단일 원본이다. <strong>Cyrano Agent는 dcode를 기반으로 우리가 개발할 제품명</strong>이다. dcode를 외부 서비스처럼 대체 호출하는 별도 agent loop를 만들지 않는다.</p>
+<h4 id="section-0013">1. 정확한 디렉터리 의미</h4>
+<table>
+<thead>
+<tr>
+  <th>경로(원본 monorepo 기준)</th>
+  <th>소유자</th>
+  <th>현재 ZIP의 처리</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>libs/code/deepagents_code/agent.py</code>, <code>main.py</code>, <code>server/</code>, <code>tui/</code> 등</td>
+  <td>upstream dcode</td>
+  <td>복사 payload에 넣지 않는다. 실제 native 연결 때 소유 WP에서 최소 patch</td>
+</tr>
+<tr>
+  <td><code>libs/code/deepagents_code/cyrano/</code></td>
+  <td>우리가 개발할 Cyrano 제품 Python 코드</td>
+  <td>새 디렉터리. upstream base 코드가 아님</td>
+</tr>
+<tr>
+  <td><code>libs/code/cyrano/</code></td>
+  <td>Cyrano 설계·개발 지원 파일</td>
+  <td>참고 자료·설계·계획·스크립트·개발용 설정. 제품 wheel에 자동 포함된다고 가정하지 않음</td>
+</tr>
+<tr>
+  <td><code>libs/code/tests/unit_tests/cyrano/</code></td>
+  <td>Cyrano 순수 기반 테스트</td>
+  <td>새 디렉터리. 실제 dcode parent import 검사와 별도</td>
+</tr>
+<tr>
+  <td><code>libs/code/tests/cyrano_product/</code></td>
+  <td>Cyrano 제품 수용 테스트</td>
+  <td>구현할 native 통합·격리·실제 평가 테스트</td>
+</tr>
+<tr>
+  <td><code>libs/code/.agents/skills/cyrano-development/</code></td>
+  <td>Cyrano 개발 에이전트 읽기 절차</td>
+  <td>짧은 탐색 skill. 실제 IDE/agent loader 인식은 별도 확인</td>
+</tr>
+<tr>
+  <td><code>libs/deepagents</code>, <code>libs/acp</code>, <code>libs/partners/*</code></td>
+  <td>upstream 로컬 의존성</td>
+  <td>전체 monorepo에 존재해야 한다. <code>libs/code</code>만 복제하지 않음</td>
+</tr>
+</tbody>
+</table>
+<p><strong>복사 단위:</strong> 배포 ZIP의 <code>copy_to_dcode/</code> 안에 있는 내용(폴더 자체가 아님)을 원본 <code>&lt;deepagents&gt;/libs/code/</code>에 합친다. 예를 들어 <code>copy_to_dcode/deepagents_code/cyrano/</code>가 <code>&lt;deepagents&gt;/libs/code/deepagents_code/cyrano/</code>가 된다. <code>libs/code/libs/code</code>나 <code>deepagents_code/deepagents_code</code>를 만들지 않는다.</p>
+<p>현재 원본 확인 커밋은 <code>7f9e8ed3a555933902045792da9bb184950ee7b2</code>다. 날짜가 같아도 다른 SHA면 자동 호환으로 보지 않는다. 기준은 공개 main 조회 결과와 native <code>DEVELOPMENT.md</code>, <code>pyproject.toml</code>, package <code>__init__.py</code>이다. 출처는 <a href="../reference/R4_SOURCE_REVIEW.ko.md">검토 근거</a>.</p>
+<h4 id="section-0014">2. 복사 가능 ≠ 제품 활성화 완료</h4>
+<p>현재 payload는 경로가 충돌하지 않는 개발 소스 추가분이다. 자체 순수 모듈과 준비 검사 도구는 존재한다. 복사만으로 <code>agent.py</code>가 Cyrano를 호출하지는 않는다. 새 import namespace는 native <code>deepagents_code/__init__.py</code> 아래에 놓이며, <strong>원본 parent 초기화와 실제 의존성을 우회하지 않는 import 테스트가 WP00/RC00 완료 조건</strong>이다. standalone namespace test PASS는 해당 증거가 아니다.</p>
+<p>원본 dcode의 설치·실행은 native <code>uv sync --locked --group test</code>와 <code>uv run --no-sync dcode</code> 경로를 사용한다. <code>--locked</code>에서 실패하면 조용히 lock을 재생성하지 말고 원인을 기록·검토한다. 설치 가능한 버전과 credentials/OS가 확보되어야 실제 모델 실행이 가능하다.</p>
+<h4 id="section-0015">3. native 통합 책임</h4>
+<table>
+<thead>
+<tr>
+  <th>변경 대상</th>
+  <th>소유 WP</th>
+  <th>최소 연결 내용</th>
+  <th>완료 증거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>설치/버전/실제 package import</td>
+  <td>WP00, RC00</td>
+  <td>Python·uv·lock·build·source 경로 확인</td>
+  <td>origin 파일·native smoke 결과</td>
+</tr>
+<tr>
+  <td><code>agent.py</code>의 middleware/도구/서브에이전트 구성</td>
+  <td>WP06</td>
+  <td>단일 Cyrano assembly adapter; 중복 관측·중복 승인 방지</td>
+  <td>실제 graph 호출·main/child mode 테스트</td>
+</tr>
+<tr>
+  <td>native Memory·Skills 읽기/쓰기 경로</td>
+  <td>WP05/WP11/WP12, RC31</td>
+  <td>승인된 read-only projection과 query view; 제안 쓰기만 허용</td>
+  <td>세션 재시작·native <code>/remember</code> 우회 거부</td>
+</tr>
+<tr>
+  <td>native model invocation·cost observer</td>
+  <td>WP13, RC41</td>
+  <td>logical request/physical attempt/context export 연결</td>
+  <td>main/child/summary/retry 실측 coverage</td>
+</tr>
+<tr>
+  <td>TUI·headless·ACP·resume 진입점</td>
+  <td>WP06/WP13, RC40/RC43</td>
+  <td>같은 request/run authority 연결, 조회는 읽기 권한 별도</td>
+  <td>각 진입 모드 evidence, 미지원은 blocked</td>
+</tr>
+<tr>
+  <td>종료·cancel·server 재시작</td>
+  <td>WP06/WP13/WP21</td>
+  <td>durable terminal settlement; unknown outcome·recovery</td>
+  <td>crash injection과 중복 outbox 검사</td>
+</tr>
+<tr>
+  <td>native build 설정</td>
+  <td>WP19/WP22, RC00</td>
+  <td>제품에 필요한 JSON/prompt/skill resources를 package resources로 투영</td>
+  <td>wheel unzip + fresh venv import + resource read</td>
+</tr>
+</tbody>
+</table>
+<p>복사 과정에서 base 파일을 수정하지 않는 원칙과, <strong>우리 제품 개발 중 승인된 native integration patch를 허용</strong>하는 원칙은 다르다. 이전 설계의 'core 무수정'은 설치 시 무단 변경 금지로 범위를 제한한다. native integration을 절대 금지하는 뜻으로 해석하지 않는다. 다만 모델 이름별 분기, 핵심 loop 재작성, SDK 대체 agent로의 조용한 전환, upstream 전체 재포맷은 하지 않는다.</p>
+<h4 id="section-0016">4. packaged code와 개발 자료의 분리</h4>
+<p><code>cyrano/contracts</code>, <code>configs</code>, <code>plugins</code>는 현재 개발 원본이다. 제품이 runtime에 필요로 하는 부분만 WP19의 결정적 resource compiler로 <code>deepagents_code/cyrano/resources/</code>에 투영한다. 그 디렉터리는 이번 ZIP에서 가짜 완성 파일로 채우지 않는다. base wheel이 <code>*.json</code> 등을 실제 포함하는지는 빌드로 확인해야 한다. runtime에서 <code>Path(__file__).parents[...] / cyrano/docs</code>로 개발 checkout을 가정하지 않는다.</p>
+<p>제품 distribution 이름/공개 CLI의 최종 변경은 별도 출시 작업이다. 이번 준비 상태의 native launcher 이름은 <code>dcode</code>, public import parent는 <code>deepagents_code</code>를 유지한다. 제품 표시명은 Cyrano Agent, 내부 기능 namespace는 <code>cyrano</code>다. 서비스·policy·approval 등의 active 식별자는 새 namespace를 사용한다.</p>
+<h4 id="section-0017">5. 이전 이름과 기존 설치</h4>
+<p>이전 이름은 본 프로젝트의 확정 명칭이 아니었다. R4 active 코드·설정·작업 문서는 Cyrano로 바꾼다. 원문 참고팩 및 과거 증거의 이름은 바이트 보존을 위해 바꾸지 않으며 현재 지침으로 로딩하지 않는다.</p>
+<p>이름이 다른 이전 추가분이 있는 checkout에는 Cyrano를 중복 활성화하지 않는다. 기본은 <strong>새 worktree 또는 새 clone</strong>이다. 기존 코드·데이터·승인 receipt를 임의 삭제/재서명/재사용하지 않는다. 현재 계약은 contracts/contract-registry.json에 명시한다. 참고 원문 보존과 실제 운영 데이터의 호환성 검증은 별개다. 운영 데이터가 있다면 별도 승인된 migration/backup/복구 검증 전 실행을 차단한다.</p>
+<h4 id="section-0018">6. 직접 복사와 검사</h4>
+<p>사람이 탐색기로 붙여넣을 수 있도록 payload는 dcode code-root 상대 경로다. 다만 기존 파일이 있을 수 있으므로 먼저 root <code>prepare_dcode.py</code>의 dry-run을 실행한다. 복사 후 <code>--verify-installed</code>는 파일의 byte/hash 및 원본 보호 파일을 확인한다. 해당 도구는 버전·경로·복사 검사를 제공하며 모델 실행이나 운영 권한 강제를 제공하지 않는다.</p>
+<p>네트워크 제한으로 이번 환경에서는 전체 upstream clone/uv 설치/제품 실행을 하지 못했다. 저장소의 실제 공개 파일은 connector로 읽었다. 현재 전달 evidence는 payload·준비 코드·synthetic installer 검사와 native source 정적 검토에 한정한다. developer guide가 실제 checkout에서의 검증 단계를 명시한다.</p>
+<h4 id="section-0019">R5 구현 연결</h4>
+<p>native <code>/cyrano</code> 명령·화면 연결과 package asset 배포 계약은 <a href="../design/NATIVE_MONITOR_TUI.ko.md">R5 소유 상세 설계</a>에서 구체화한다. 기존 scope·승인·실제 검증은 유지하며 skill 설정만으로 해당 기능을 구현하지 않는다.</p>
+<h4 id="section-0020">1. 목표와 비목표</h4>
+<p>서로 다른 제공자에서 같은 도구·작업 계약을 표현할 수 있게 한다. 모델 이름으로 역할 프롬프트·지능 점수·분기 정책을 하드코딩하지 않는다. 정상적인 provider adapter가 이미 수행하는 변환을 두 번 하지 않는다. 새 <code>ModelAdapter</code> 전체를 만들기 전에 native provider의 request/response 관측점을 확인한다. <a href="../reference/SOURCES.ko.md#ns13">Pi의 메시지 변환 소스</a>는 도구 ID·signature·missing result 문제를 보여 주지만 그대로 복제할 명세가 아니다.</p>
+<h4 id="section-0021">2. CapabilityEnvelope와 판정</h4>
+<p>각 feature는 <code>unknown / declared / verified_supported / verified_unsupported</code> 중 하나다. context limit, output limit, image input, structured-tool arguments, parallel tool use, cancellation, cache metrics, reasoning replay를 개별 항목으로 둔다. <code>declared</code>가 곧 <code>verified_supported</code>는 아니다. 범용 관측 가능한 프로토콜 feature와 특정 모델의 benchmark 지능 점수를 혼합하지 않는다.</p>
+<p>키는 provider API 종류·endpoint identity·provider model id·adapter version·probe suite digest다. OpenRouter의 model id가 같아도 실제 route가 다르면 별도 조건이다. route를 알 수 없으면 <code>route_observed=false</code>; 특정 upstream 전용 동작은 사용하지 않는다. endpoint가 변경되면 기존 probe 결과를 재사용하지 않는다. secret은 key에 넣지 않고 credential scope identity만 가진다.</p>
+<p><code>resolve_capability(request, runtime)</code>는 feature 필요 여부를 계산한다. 불필요한 image feature가 미지원인 것과 사용자가 첨부한 필수 image를 읽을 수 없는 것은 다르다. 후자는 <code>CAPABILITY_UNAVAILABLE</code>로 pause/검증된 변환 동의 경로를 사용한다. 몰래 이미지를 빼고 완료하지 않는다.</p>
+<h4 id="section-0022">3. 스트림 조립 상태기계</h4>
+<pre><code class="language-text">empty → receiving → complete → schema_validated → authorized → executing → settled
+                     └→ rejected
+receiving → interrupted / malformed
+executing → succeeded / failed / cancelled / unknown_effect
+</code></pre>
+<p><code>complete</code>는 provider가 정의한 종료 표시와 모든 필수 fragment가 수신된 상태다. JSON parse 가능성만으로 실행하지 않는다. 한 번 parse된 prefix가 뒤의 fragment로 의미를 바꿀 수 있기 때문이다. 최대 argument bytes와 fragment 수는 request의 사전 예산에 넣는다. 초과는 <code>TOOL_ARGUMENT_LIMIT</code>이며 잘라서 실행하지 않는다.</p>
+<p>UTF-8 multibyte 분할과 문자열 escape를 stream decoder가 처리한다. 응답의 tool id가 충돌하면 첫 값을 유지하고 나머지를 임의 병합하지 않고 <code>CALL_ID_COLLISION</code>이다. provider id→Cyrano call id 대응은 request별로 결정적이며 결과까지 연결한다. 같은 이름으로 여러 번 호출한 도구는 순서와 독립 call id를 유지한다.</p>
+<h4 id="section-0023">4. 합성 메시지와 실제 효과</h4>
+<p>대화의 call에 result가 없는 경우 허용된 protocol 보정으로 <code>observation_missing</code> 설명을 넣을 수 있다. 이것은 도구 실행 <code>failed</code>/<code>succeeded</code> 이벤트가 아니다. synthetic flag와 원시 관측 공백을 기록하고 실제 효과는 <code>unknown</code>으로 둔다. write 도구는 reconciliation 없이는 다시 실행하지 않는다.</p>
+<p>정규화는 원문을 변경해 저장하지 않는다. 원래 provider record와 변환 map의 artifact digest를 결속하고 재구성 가능 범위를 표시한다. redaction 때문에 원문을 보관하지 않은 경우 <code>full_reconstruction=false</code>로 표시한다. 외부 private chain-of-thought를 수집하거나 사용자에게 노출하도록 요구하지 않는다.</p>
+<h4 id="section-0024">5. reasoning·message·model 전환</h4>
+<p>opaque signed reasoning은 동일 provider/API/model 조건에서만 허용된 replay 처리에 사용한다. 다른 모델로 넘어갈 때 공개 텍스트로 해독·전환하지 않는다. 공개 최종 답·도구 결과·승인된 요약을 이용해 새 epoch를 연다. provider가 요구하는 signature를 임의 삭제한 뒤 같은 효과라고 주장하지 않는다.</p>
+<p>역할 호환성 변환은 lossless, lossy-approved, unsupported 중 하나로 반환한다. system/developer 지침을 user message로 옮기는 것은 권위와 취급이 달라질 수 있어 기본 금지다. 변환하려면 어떤 기능이 달라지는지 별도 consent와 probe가 필요하다.</p>
+<h4 id="section-0025">6. retry·cancel·fallback</h4>
+<p>retry 담당은 한 계층으로 지정한다. provider SDK 내부 retry를 숨긴 상태에서 Cyrano가 다시 retry하면 실제 호출·비용·side effect를 중복할 수 있다. 자동 retry는 byte-level transport/pre-dispatch 실패 또는 검증된 read-only idempotent 도구에 한정한다. HTTP 오류 이름만으로 원격 효과가 없었다고 단정하지 않는다.</p>
+<p>동시 cancel이 발생해도 나중에 받은 usage·request id는 billing ledger에 반영한다. 결과를 작업에 적용하는 권한은 generation/fencing token으로 차단한다. 같은 원리로 fallback 모델의 성공은 원래 모델의 결과로 기록하지 않는다. 설정 없는 무음 model fallback은 금지한다.</p>
+<h4 id="section-0026">7. 구현 API와 완료 조건</h4>
+<p><code>ProtocolNormalizer.validate_request</code>, <code>consume_fragment</code>, <code>finalize</code>, <code>project_history</code>, <code>reconcile_missing_observation</code>은 순수 변환과 I/O를 분리한다. 각 변환은 <code>NormalizationRecord</code>를 돌려준다. native observer가 실제 provider invoke를 감싸는 통합 테스트가 통과하기 전에는 이 pure 코드의 통과를 runtime 호환성으로 표시하지 않는다.</p>
+<p>최소 완료 증거는 동일 대화의 signed blocks·다중 call·취소·중단·unknown usage fixture, 정상 경로의 native provider 입력 비교, 원본/변환 digest, 실제 호출 수 ledger, 차단 시 무효과 증거다. 현재 모델 계열 수나 성공률을 추정하지 않는다.</p>
+<h4 id="section-0027">1. 구분</h4>
+<p>MCP는 Agent↔Tool/Resource/Prompt, ACP는 Client/Editor↔Coding Agent, A2A는 Agent↔Agent 작업 전달을 다룬다. 어느 protocol도 해당 peer를 자동 신뢰하거나 local policy를 생략하라는 뜻이 아니다. 공식 규격의 날짜/버전·구현 adapter·conformance suite를 함께 pin한다. <a href="../reference/SOURCES.ko.md#ns58">NS58–NS60</a></p>
+<h4 id="section-0028">2. 외부 worker 사용 시점</h4>
+<p>기존 dcode가 기본 worker다. 다른 agent는 별도 필요와 실제 호환성 검증이 있는 경우에만 <code>ExternalWorkerPort</code>로 연결한다. 기본 설치에 경쟁하는 daemon과 자격증명을 추가하지 않는다. <code>unknown / configured / installed / verified / authorized / active</code>를 구분하고 어느 단계 실패도 active로 건너뛰지 않는다.</p>
+<p>필요 capability는 읽기·candidate 수정·검증 명령·취소·결과 artifact·trace·permission callback이다. 단순 채팅 답변만 받는 peer는 code execution worker로 간주하지 않는다. 원격 worker가 사용하는 모델 변경은 실험 조건에 기록한다.</p>
+<h4 id="section-0029">3. Capability negotiation과 scope</h4>
+<p>handshake는 endpoint/executable identity, protocol version, schema digest, workspace map, allowed operations, egress, credential refs, budget, deadline을 결속한다. server description·Agent Card·tool annotation은 untrusted declaration이다. 운영자가 허가한 capability의 교집합만 사용한다.</p>
+<p>ACP의 absolute path는 remote URI 또는 허가된 사본의 매핑을 통해 처리한다. 외부 agent가 받은 경로를 host 전체 파일 경로로 해석하지 않는다. filesystem·terminal callback은 Broker를 경유하며 client capability를 이유로 raw shell을 노출하지 않는다. A2A artifact URL은 임의 fetch하지 않고 scheme/host/size/type/redirect 정책을 검사한다.</p>
+<h4 id="section-0030">4. 작업 수명</h4>
+<p><code>submit → accepted → running → input_required / completed / failed / cancelled / unknown</code>을 protocol adapter가 내부 상태로 매핑한다. peer의 completed는 artifact 전달 완료일 뿐 acceptance 통과가 아니다. <code>input_required</code>에서 새 질문이 생기면 기존 HumanDecision 연결로 보낸다. remote worker가 사용자를 대신해 응답하지 않는다.</p>
+<p>cancel 전송은 정지 확인이 아니다. 특히 notification은 응답을 요구하지 않을 수 있다. 취소 후 artifact/usage가 오면 비용·audit에는 기록하되 generation fence로 코드 반영을 막는다. 재연결에 resume가 없으면 새 작업 생성으로 몰래 대체하지 않고 사용자에게 상태를 보여준다.</p>
+<h4 id="section-0031">5. 검증과 원본 반영</h4>
+<p>외부 patch를 허가된 candidate에 적용하고 source digest·diff scope·license/dependency·보안·hidden acceptance를 local trusted runner가 검사한다. peer의 ‘모든 테스트 통과’ 문자열을 verdict로 쓰지 않는다. 외부 trace를 내부 privileged event producer로 위조할 수 없게 provenance를 나눈다.</p>
+<p>MCP schema drift를 감지하면 해당 snapshot으로 시작한 작업의 호출을 중단하고 새 도구 inventory를 review한다. 공격성 설명·리소스·prompt는 낮은 신뢰 자료로 표시한다. output artifact에서 escape·archive bomb·symlink·제어문자를 검사한다.</p>
+<h4 id="section-0032">6. 기한·비용·fallback</h4>
+<p>submit timeout 때 원격 작업이 생성되지 않았다고 단정하지 않는다. protocol이 idempotency를 제공하지 않으면 external request id로 조회하거나 unknown으로 남긴다. 자동 전역 retry는 금지한다. fallback은 동일한 권한·artifact 계약을 검증한 worker만 명시적으로 선택하며 원래 요청과 실행 identity를 분리한다.</p>
+<h4 id="section-0033">검토 기준과 현재 작업 소스의 구분</h4>
+<p>패키지의 native source 기준은 <code>runtime/runtime-lock.template.json</code>과 복사 manifest가 지정한 소스다. 2026-09-17 연구에서 관측한 다른 upstream revision은 조사 정보이며 자동 적용하지 않는다. 실제 <code>uv sync</code>, parent import, wheel, CLI/TUI smoke를 통과하기 전에는 최신 버전 호환을 주장하지 않는다.</p>
+<p>현재 문서·계약·테스트가 개발 기준이다. 과거 응답에서만 언급되고 실제 파일이 확인되지 않은 산출물의 테스트 수나 byte 동일성을 승계하지 않는다. 추가 파일을 찾아야 하는 선행 작업 없이 이 프로젝트에서 바로 개발을 시작한다.</p>
+<p>제품 코드 위치는 <code>libs/code/deepagents_code/cyrano/</code>, 개발 자료는 <code>libs/code/cyrano/</code>, AI 개발 작업 cwd는 <code>libs/code/</code>다. native 핵심 변경은 계획에 소유자·정확한 파일·회귀 검사를 포함한 뒤 수행한다. 설치가 자동으로 원본 파일을 덮어쓰는 것과 검토된 개발 변경은 다르다.</p>
+<hr />
+<h2 id="section-0034">03 · docs/development/R5_MASTER_PLAN.ko.md</h2>
+<h3 id="section-0035">Cyrano Agent · 통합 개발계획</h3>
+<p>문서 유형: 개발계획 — 현재 단일 기준.</p>
+<p>이 문서는 현재 전체 개발의 실행 순서를 설명한다. 제품 구현 상태는 <code>.agents/work/plan.json</code>이 관리한다. WP가 주 작업 소유자이고 TS·RC·RF는 그 작업의 테스트·세분 의무다. 별도 NG 또는 추가팩을 먼저 설치하는 절차는 없다.</p>
+<h4 id="section-0036">선행 관계와 구현 순서</h4>
+<p>계약(WP01), runtime 조사(WP00)는 독립적으로 시작한다. 원장(WP02)과 plugin 수명주기(WP04) 이후 권한·실행 격리(WP03), context(WP05), dcode 포트(WP06)를 연결한다. 인터뷰 kernel(WP07)과 UI·blind handoff(WP08), Memory(WP11), 전수 관측(WP13)이 있어야 계획·리뷰·승인과 dispatch(WP09)를 실제 검증할 수 있다. 그 뒤 실제 구현·검증(WP10)과 평가(WP20)를 연결한다. A/B 개선은 자신의 선행 작업을 통과한 뒤에만 실행한다. 최종 승격(WP21)·패키징/품질/복구(WP22)·실제 효과(WP23)는 마지막이다.</p>
+<p>정확한 topological order는 plan.json에서 계산된다. 숫자순으로 WP14→WP15→WP20을 진행하면 평가기가 없어 막히므로 번호를 순서로 해석하지 않는다. 초기 release는 사람이 검토한 seed이며 학습 엔진이 자신을 승인해야 부팅되는 의존 순환을 만들지 않는다.</p>
+<h4 id="section-0037">개발 lane과 실행 lane</h4>
+<p>테스트 코드는 제품 완성 전에도 fake port를 사용해 먼저 작성할 수 있다. 그러나 이를 native runtime·권한 경계·모델 효과 증거로 보고하지 않는다. 각 TS의 <code>depends_on</code>은 작성 의존성, <code>execute_requires_wp</code>는 실제 실행 선행 조건이다. bootstrap 작업에는 개발자의 명시적 변경 허가와 독립 리뷰를 사용하며 아직 없는 Cyrano 승인 기능으로 자신을 승인했다고 하지 않는다.</p>
+<h4 id="section-0038">품질 검사 시점</h4>
+<p>품질은 WP22 마지막에 몰아서 하지 않는다. 모든 Python 변경에서 dcode 환경의 scoped Ruff lint/format과 native ty, docstring의 역할·입출력·오류 의미 리뷰를 수행한다. 도구 설치 불가·기존 실패는 baseline과 원인을 기록하고 통과로 바꾸지 않는다. WP22는 초기 검사 도입이 아니라 깨끗한 배포물과 전체 결과 재검증이다.</p>
+<h4 id="section-0039">병렬 실행과 공통 파일</h4>
+<p>계약/원장/runtime/context의 owner를 분리한다. 두 작업이 같은 schema·agent.py·command registry·잠금파일을 수정하면 지정 owner가 통합하고 변경된 인터페이스의 모든 consumer를 다시 검증한다. 서로 다른 worktree도 승인·credential·메모리·실험 결과를 공유 쓰기하지 않는다. 공유 budget은 합산 예약이며 자식에게 전체 예산을 복제하지 않는다.</p>
+<h4 id="section-0040">완료와 다음 작업 인계</h4>
+<p>각 WP는 요구→파일→테스트→원시 결과→리뷰를 묶어 evidence를 남긴다. 새 구현과 mock·선언·설계를 구분하고 blocked/not_run을 유지한다. 데이터 계약 변경 시 관련 schema와 fixture·skills 설명·작업 문서·라우터를 같이 갱신한다. commit/push/publication은 사용자의 별도 권한이 있을 때만 한다.</p>
+<h4 id="section-0041">단계별 준비도와 통합 증거</h4>
+<p>plan.json의 depends_on은 해당 선행 WP의 <code>interface_ready</code>를 요구한다. 이는 API 선언만이 아니라 실제 구현된 포트·저장·오류/거부 경로를 검증한 상태다. 모든 하위 기능을 연결한 <code>product_verified</code>와 분리한다. Memory 서비스가 계획 엔진의 선행조건인데, Memory 서비스 완료를 다시 계획 엔진의 통합 실행에 종속시키는 순환은 금지한다. WP11/RF04는 저장/검색/적용 판정 포트를 먼저 검증하고, WP09/WP10 이후 native 새 작업의 실제 활용을 검사한다. WP13/RF09는 durable ingest/query/UI 포트를 먼저 검증하고, downstream 생산자가 완성된 뒤 전체 timeline을 검사한다. 최종 WP22/WP23은 모든 mandatory 제품 acceptances의 product_verified를 요구하며 포트만 통과한 작업에 점수를 부여하지 않는다.</p>
+<hr />
+<h2 id="section-0042">04 · docs/design/DOCUMENT_GOVERNANCE.ko.md</h2>
+<h3 id="section-0043">문서 소유권·자동 등록·작업별 읽기</h3>
+<p>현재 설계·개발·실행 문서는 이 프로젝트 안에서 직접 수정한다. 별도 보완팩, 날짜별 NEXTGEN 문서, 이전 납품판을 따라 읽는 절차를 만들지 않는다. 제품 코드·test·dcode base의 디렉터리는 유지한다.</p>
+<h4 id="section-0044">1. 문서 종류</h4>
+<table>
+<thead>
+<tr>
+  <th>종류</th>
+  <th>위치</th>
+  <th>역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>목표 설계</td>
+  <td><code>docs/design/</code></td>
+  <td>동작·자료형·오류·권한·동시성의 단일 주제 원본</td>
+</tr>
+<tr>
+  <td>개발계획</td>
+  <td><code>.agents/work/plan.json</code>, <code>docs/development/</code></td>
+  <td>담당 WP·파일·함수·선행 작업·작업별 검증</td>
+</tr>
+<tr>
+  <td>실행계획</td>
+  <td><code>docs/execution/</code></td>
+  <td>준비·cwd·명령·fault 주입·증거·정리·복구</td>
+</tr>
+<tr>
+  <td>시험 명세</td>
+  <td><code>docs/testing/</code>, <code>tests/acceptance/catalog.json</code></td>
+  <td>제품 oracle와 사례; 실행 결과가 아님</td>
+</tr>
+<tr>
+  <td>현재 코드 API</td>
+  <td>모듈 README, <code>docs/subsystems/</code></td>
+  <td>현재 순수 foundation과 목표 기능의 구분</td>
+</tr>
+<tr>
+  <td>참고 원문</td>
+  <td><code>references/</code>, <code>docs/reference/</code></td>
+  <td>조사·사용자 원문; 실행 권한을 만들지 않음</td>
+</tr>
+<tr>
+  <td>개발 지침</td>
+  <td><code>AGENTS.md</code>, <code>.agents/skills/</code></td>
+  <td>짧은 상시 규칙과 작업별 절차</td>
+</tr>
+<tr>
+  <td>검증 결과</td>
+  <td><code>evidence/</code></td>
+  <td>현재 입력에서 실제로 실행한 검사만</td>
+</tr>
+<tr>
+  <td>생성 읽기본</td>
+  <td><code>docs/generated/</code></td>
+  <td>원본의 projection; 직접 편집하지 않음</td>
+</tr>
+</tbody>
+</table>
+<p>주제별 소유 문서는 <code>.agents/work/plan.json</code>의 <code>input_refs</code>와 <code>reading_refs</code>에 등록한다. 새 기술은 기존 담당 WP의 <code>implementation_units</code>로 연결한다. 독립적인 NG 작업계획이나 문서만의 새 승인 체계를 추가하지 않는다. 기존 TS/RC/RF ID는 작업 분해 식별자이며 납품판을 차례대로 설치하라는 뜻이 아니다.</p>
+<h4 id="section-0045">2. 자동 등록</h4>
+<p><code>python cyrano/scripts/dev.py docs</code>는 현재 작업계획을 읽어 문서 카탈로그·라우터·목차·통합본을 함께 갱신한다. 새 문서를 저장만 하고 라우터 등록을 후속 사용자 작업으로 남기지 않는다. 등록되지 않은 owner, task, input path, 없는 case, 중복 ID, 순환 dependency는 검사 실패다.</p>
+<p>기계 출력은 <code>docs/document-catalog.json</code>과 <code>.agents/document-routing.json</code>, 사람 목차는 <code>docs/INDEX.ko.md</code>다. 카탈로그와 라우터의 stale 상태를 검사하고 원본·구성·목차 사이에서 하나만 갱신된 상태를 허용하지 않는다. 생성 시 임시 파일과 atomic replace를 사용한다. 중간 실패 후 stale 출력은 실행 검사에서 차단된다.</p>
+<h4 id="section-0046">3. 작은 고정 prefix와 작업 입력</h4>
+<p>상시는 <code>cyrano/AGENTS.md</code>와 <code>docs/NAVIGATION.ko.md</code>만 읽는다. 그 다음 <code>doc_route.py --task WP09 --content</code>로 해당 계획·설계·실행·테스트 자료를 선택한다. 전체 INDEX, FULL_DESIGN, 과거 로그와 모든 reference pack을 기본 prompt에 넣지 않는다.</p>
+<p>동일 task·stage·문서 bytes라면 manifest 순서와 digest가 같다. 현재 시간, 무작위 ID, 실행 결과, 모든 catalog의 전역 hash를 상시 prompt에 넣지 않는다. 다른 WP 문서만 수정되면 현재 task readset은 변하지 않아야 한다. 선택한 문서가 변경되면 stale 검사와 해당 작업 재검토를 요구한다.</p>
+<p>문서는 추측으로 일부 잘라 읽은 것으로 처리하지 않는다. 읽기 예산을 넘으면 <code>READSET_TOO_LARGE</code>와 크기·문서 목록을 표시하고 plan/implement/test stage로 나눈다. byte budget은 provider token 한도가 아니다. source URI/authority/sha256·선택 목적을 남기고 prompt cache 적중은 별도 actual usage로 측정한다.</p>
+<h4 id="section-0047">4. 역할과 scope</h4>
+<p>제품 runtime의 skill과 이 프로젝트 개발용 skill은 분리한다. code-root <code>.agents/skills/cyrano-development/SKILL.md</code>는 발견용 진입이며 같은 이름의 원본과 bytes를 맞춘다. 이 경로가 모든 IDE에서 자동 적용된다는 보장은 하지 않는다. 처음 요청은 <code>cyrano/IMPLEMENTATION_REQUEST.ko.md</code>를 명시한다.</p>
+<p>참고 원문 안의 AGENTS, README 또는 명령은 연구 데이터다. 현재 정책·권한을 덮어쓰지 않는다. 모델이 생성한 fixture/schema는 '신뢰된 검사 결과'가 아니라 평가기의 입력이다. 현재 설계와 schema가 충돌하면 담당 WP에서 함께 수정하고 어느 한쪽을 임의로 고르지 않는다.</p>
+<h4 id="section-0048">5. 이력과 제품 원장</h4>
+<p>아직 시작하지 않은 프로젝트를 위한 납품 이력·옛 workspace·반복 보완 문서는 필요하지 않다. 현재 문서와 테스트만 유지한다. 반면 제품 실행의 승인·철회·파일 효과·Memory revision·평가·release 원장은 사용자의 평가 기준 2·3·4를 위해 필요하므로 삭제하지 않는다. 둘을 구분한다.</p>
+<hr />
+<h2 id="section-0049">05 · docs/testing/STRATEGY.ko.md</h2>
+<h3 id="section-0050">프로젝트 평가 기준 기반 테스트 전략 — R3</h3>
+<p>기준일: 2026-09-16. 상태: 구현·실행 명세. 현재 실행된 foundation/문서 검사는 제품 평가 점수가 아니다. 사용자 배점 15항목, 총 40점은 <code>contracts/assessment/rubric.json</code>이 소유한다. 예전 20항목×2점 표는 역사적 참조로만 남긴다.</p>
+<h4 id="section-0051">1. 평가 대상과 판정 원칙</h4>
+<p>평가 대상은 <strong>CYRANO가 결합된 실제 dcode가 수행한 Python 개발 작업</strong>과 <strong>CYRANO 자체 변경 코드</strong>다. 단위 테스트 fixture, 설계 문서, 프롬프트의 준수 약속만으로 제품 점수를 주지 않는다. 기존 upstream의 미수정 파일은 별도 baseline cohort로 전량 진단하고 승인된 부채를 표시한다. CYRANO delta만 검사한 결과를 dcode 전체가 PEP8 clean이라고 표시하지 않는다. benchmark 생성 코드는 모두 clean이어야 하며 이전 실패 baseline을 적용하지 않는다.</p>
+<p>세 cohort를 report에 고정한다: <code>owned_cyrano_delta</code>, <code>generated_workload</code>, <code>upstream_unchanged</code>. scope를 좁혀 유리한 결과만 제출할 수 없다. 변경 파일은 전체 파일을 검사하며 미수정 파일의 exact diagnostic multiset만 사전 승인 baseline으로 처리한다. 기능 테스트 실패·파서 오류·미지원 도구는 baseline 부채로 감추지 않는다.</p>
+<p>사용자 배점 그대로 1-1/1-2/1-3=3/3/4, 2-1/2-2/2-3/2-4=2/3/3/2, 3-1/3-2/3-3/3-4=2/3/3/2, 4-1/4-2/4-3/4-4=3/3/2/2다. 하위 원자 증거를 1점씩 나눈 것은 운영 제안이며 점수 부여 권한은 독립 평가자에게 있다. 모든 mandatory case가 충족되어야 그 항목의 원자 점수를 심사할 수 있다. missing/blocked/skip/xfail/not_run은 분모에서 삭제하지 않는다. 전체 평가 미수행은 <code>not_evaluated</code>, 실제 평가 실패는 <code>failed</code>로 구분한다.</p>
+<p><code>official_score</code>는 인증된 평가자·서명된 평가 bundle이 없으면 null이다. <code>verified_points=0</code>은 미검증 증거가 없다는 뜻이지 이미 제품을 평가해 0점을 받았다는 뜻이 아니다. 로컬 구조 검증기는 인증된 평가자가 아니며 출처 flag 하나로 신뢰가 생기지 않는다.</p>
+<h4 id="section-0052">2. 독립적인 두 합격 판정</h4>
+<p><strong>개발 준비 판정</strong>은 파일 보존·schema·source import·오프라인 기반·문서 참조·overlay 적용 안전성 검사다. 이 판정은 개발 자료가 일관된지 확인한다.</p>
+<p><strong>제품 판정</strong>은 실제 dcode로 인터뷰→계획→AI 리뷰→승인→코드 변경→품질 검증→메모리·학습→최종 결과→trace 조회를 수행하고 강제 경계·지속성·효과를 확인한다. 개발 준비가 PASS라도 제품 판정이 자동으로 PASS가 되지 않는다.</p>
+<p>40점과 release eligibility도 별개다. 무승인 실행, 승인 위조, cross-scope·비밀 유출, 거짓 완료, 평가기 변조, 필수 모드 미검증 중 하나라도 있으면 출시 차단이다. 경고를 숨겨 합산 점수로 상쇄하지 않는다. 올바르게 차단된 공격 사례는 테스트 자체가 passed일 수 있지만 공격의 제품 업무 상태는 denied/blocked다.</p>
+<h4 id="section-0053">3. 테스트 계층과 실행 책임</h4>
+<table>
+<thead>
+<tr>
+  <th>계층</th>
+  <th>입력과 oracle</th>
+  <th>의미</th>
+  <th>실행 주체</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>L0 자료·계약</td>
+  <td>strict JSON·DAG·파일 digest·schema</td>
+  <td>자료 정합성만</td>
+  <td>개발자 로컬</td>
+</tr>
+<tr>
+  <td>L1 순수 함수</td>
+  <td>deterministic state/reducer/serializer</td>
+  <td>함수 동작</td>
+  <td>unittest/pytest</td>
+</tr>
+<tr>
+  <td>L2 구성요소</td>
+  <td>실제 SQLite·새 프로세스·고정 parser fixture</td>
+  <td>지속성·동시성·오류 계약</td>
+  <td>격리 integration runner</td>
+</tr>
+<tr>
+  <td>L3 실제 dcode·가짜 모델</td>
+  <td>실제 graph/도구·deterministic FakeChatModel</td>
+  <td>native 연결과 강제; 지능 효과 아님</td>
+  <td>source-native test harness</td>
+</tr>
+<tr>
+  <td>L4 실제 모델·governed</td>
+  <td>승인된 과제·실제 LLM·OS 격리</td>
+  <td>전체 개발 능력과 정책 강제</td>
+  <td>trusted external evaluator</td>
+</tr>
+<tr>
+  <td>L5 효과·회귀</td>
+  <td>holdout paired trials·canary</td>
+  <td>개선 효과·회귀·배포</td>
+  <td>평가 서비스+독립 reviewer</td>
+</tr>
+</tbody>
+</table>
+<p>mock이 broker return값을 원하는대로 내놓게 한 L1은 L3/L4 권한 강제의 증거가 아니다. L3도 실제 upstream <code>create_cli_agent</code>와 실제 tool/backend를 통과해야 한다. 본 ZIP의 foundation unittest는 L1이다. L3/L4 테스트 구현이 없는 상태를 fake skip/PASS로 등록하지 않는다.</p>
+<h4 id="section-0054">4. 요청별 Workflow 강제 테스트</h4>
+<p>입력: RequirementSet, ScopeSpec, AcceptanceSet → PlanDraft → IndependentReview → revised Plan → review-current → authenticated PlanApproval → ExecutePermit → WorkUnit. trusted state transition이 모든 mutation tool에서 side effect <strong>이전</strong>에 판정되어야 한다. AI의 문장 약속·AGENTS의 규칙·Stop hook만으로 강제를 충족하지 않는다.</p>
+<p>승인 subject는 tenant/user/workspace/session/task, spec/plan/source/policy/runtime digest, control revision, 허용 action·경로·예산·만료·nonce를 결속한다. dispatch 직전 broker는 현재 revocation·revision을 재확인한다. review V1 뒤 plan V2가 나오면 review와 승인을 무효화한다. scope drift는 일단 pause하고 새 plan·AI review·승인을 거친다. 이미 발생한 effect는 없던 것으로 처리하지 않는다.</p>
+<p>우회 matrix: native write/edit, execute/python/shell redirection, MCP, fork/async child, 별도 tool 이름, 직접 approval JSON 파일 작성, Manual/Auto/YOLO/headless/ACP, resume, symlink/hardlink·TOCTOU. 지원한다고 선언한 모든 모드에서 동일 테스트를 수행한다. 미지원 모드는 launch 전에 차단하며 우회가 발생한 뒤 unsupported로 소급하지 않는다. unmanaged 별도 IDE·사용자의 직접 OS 조작까지 관측·차단한다고 주장하지 않는다.</p>
+<h4 id="section-0055">5. Python 품질 oracle</h4>
+<p>native dcode의 기존 Ruff·ty 도구 계층을 보존한다. CYRANO namespace 신규 코드에는 <strong>Ruff formatter 하나, 79자 code/72자 doc</strong>의 범위화된 정책을 적용한다. Python Engineering pack의 Black은 외부 고객 repository 또는 explicit approved Black profile에 대한 adapter로 유지한다. 같은 파일에 Black과 Ruff format을 동시에 적용하지 않는다. upstream의 나머지 파일에 79자로 전면 reformat하지 않는다. mypy strict 추가는 기존 ty 대체가 아니라 별도 검토·lock 후 보조 정책이다.</p>
+<p>format/lint는 실제 고정 도구 raw exit와 parser 결과를 함께 확인한다. E/W/I/F/N/D와 doc 길이 옵션을 검사한다. formatter 일치만으로 PEP8 전체 합격이라고 부르지 않는다. name regex만으로 의미 있는 이름을 증명할 수 없다. 문서 문자열 존재만으로 역할·입출력 설명을 증명할 수 없다.</p>
+<p>주요 함수 inventory는 public API·모델 tool·서비스 Protocol 구현·권한/직렬화/복구 핵심 private 함수와 WorkPlan의 critical symbols를 합친다. 개발자가 private으로 rename해서 coverage를 피하면 inventory delta review가 차단한다. 자동 검사는 signature/Args/Returns/Raises의 구조 누락을 찾고 독립 리뷰는 실제 구현·type·test와 의미가 맞는지 확인한다. 테스트 fixture의 고의 오류는 승인된 fixture scope에서 제외하지만 제품 코드에 포함된 fixture는 제외하지 않는다.</p>
+<h4 id="section-0056">6. Memory 검증</h4>
+<p>과제 A를 실제로 수행하고 규칙·경험을 저장한다. 프로세스 A를 종료한 후 프로세스 B에서 다른 thread·새 업무 B를 시작한다. 단순히 Python 객체를 다시 읽거나 checkpoint를 resume한 결과를 세션 간 장기 기억 테스트로 대체하지 않는다.</p>
+<p>검색 precision 측정과 실제 적용을 분리한다. <code>queried → selected → injected → referenced → applied</code>를 각각 기록한다. plan clause의 memory_id만으로 applied=true를 만들지 않는다. memory-specific predicate(예: 프로젝트에서 요구한 timeout 처리와 그 테스트)가 plan/code/test의 실제 산출물에 존재하고 동작해야 한다. 관련 기록·무관한 기록·만료 기록·충돌 기록·악성 지시 기록을 함께 제공한다. scope ACL은 top-k 이전에 적용한다.</p>
+<p>memory-on/off 비교는 효과 확인에 쓰며 케이스가 적으면 추정 범위를 보고한다. 현재 사용자 요청은 과거 memory보다 우선한다. 삭제·정정·stale 처리 후 검색·projection·export 잔존 여부도 테스트한다.</p>
+<h4 id="section-0057">7. Self-Improvement 검증</h4>
+<p>3-3은 실제 Agent가 실패/평가 증거에서 <strong>허용된 system prompt 블록·skill·작업 memory</strong>의 후보를 각각 생성하는지 확인한다. 후보에는 source evidence, cause hypothesis와 대안, 정확 patch, scope, expected effect, adverse effect, evaluation plan, parent/rollback release, cost cap이 있어야 한다. TDD red·정상 거부·사용자 변경은 원인 구분 없이 교훈으로 일반화하지 않는다.</p>
+<p>경로 A는 입력 동일성과 지원되는 기록 전이 안에서만 replay한다. 경로 B는 prompt/skill/memory/tool/code 의미가 바뀌므로 실제 baseline/candidate 재실행을 한다. frozen task/source/tool/runtime/model/endpoint/budget을 동일하게 유지하고 순서를 무작위로 배치한다. task family·repo fork·인접 commit·대화 변형은 같은 split에 둔다. 반복 3회는 독립 과제 3개가 아니다.</p>
+<p>초기 계획 예시: 20개 독립 family × 3반복 × 2조건=120개 task episode. 이는 충분한 검정력 보장이 아니다. baseline 성공률·효과 크기·상관 구조로 표본 규모를 사전 정하고 부족하면 inconclusive다. cluster 단위 bootstrap 또는 사전 고정 paired 방법을 사용하고 최소 개선·비열등성 margin·다중 후보/반복 조회 보정을 평가 전 고정한다. 안전 hard fail 1건은 비용 절감으로 상쇄하지 않는다.</p>
+<p>promote 후 독립 새 업무가 new release를 실제 로드했는지 context/skill/memory manifest와 행동으로 확인한다. 진행 중 run은 old release 유지, 보안 revoke는 예외적으로 즉시 pause한다. canary는 별도 동의가 있을 때만; rollback은 harness와 고객 코드 복구를 구분한다.</p>
+<h4 id="section-0058">8. 관측 oracle</h4>
+<p>신뢰된 event store를 기준으로 request/spec/plan/review/approval/mutation/verification/final을 join한다. 모델 self-report와 runner fact는 별도 producer다. opaque request/run/task/attempt/trace/span/parent IDs를 사용한다. 전역 event_seq는 commit 순서이며 인과 순서와 같다고 가정하지 않는다. parent·depends_on으로 인과관계를 표현한다.</p>
+<p>하나의 logical LLM 요청이 세 번 provider attempt를 수행하면 logical_model_calls=1, provider_attempts=3, retries=2다. tool retry와 업무 재작업은 별도다. native 비용 observer와 모델 wrapper가 같은 request를 중복 보고하면 attempt identity로 중복 제거한다. 미관측 internal retry는 unknown이며 0으로 만들지 않는다.</p>
+<p>monotonic clock으로 duration을 측정한다. fake clock 1000→1250ms는 정확히 250ms여야 한다. wall clock 역행은 duration에 영향을 주지 않는다. 병렬 child duration 합은 사용자 대기시간이 아니다. raw output·credential·PII는 저장 전에 redact하고 실패하면 quarantine한다. 원시 데이터가 보존기간 만료로 없어지면 evidence unavailable을 표시한다.</p>
+<p>조회 UI/CLI는 run→timeline→실패 span→error code→source/test artifact→plan/review로 탐색 가능해야 한다. root cause는 raw evidence가 충분할 때만 관측 사실로 표시하고 나머지는 hypothesis/unknown이다. 도구 로그 속 위조 JSON을 trusted event로 ingest하지 않는다.</p>
+<h4 id="section-0059">9. 실험·운영 matrix와 중단 조건</h4>
+<p>Linux Python 3.12를 최초 governed 기준 환경으로 고정한다. Python 3.13, macOS, Windows, 원격 backend는 각각 native import·프로세스 정리·path/permission capability·회귀를 별도로 검사한다. 로컬 오프라인 3.13 테스트 결과로 다른 플랫폼을 supported라고 하지 않는다. provider별 특화 정책은 추가하지 않되 모델·endpoint 변경은 실험 조건을 분리한다.</p>
+<p>예산 0, 키 없음, 불충분한 sandbox, 승인 없음, signed suite mismatch면 L4/L5는 blocked다. 라이브 과제는 실제 고객 repository·운영 네트워크를 쓰지 않고 승인된 disposable workspaces를 사용한다. 중요 단계 audit append 불가, side effect unknown, 승인 철회, 비용 상한 초과가 있으면 dispatch를 멈추고 원인·cleanup을 기록한다.</p>
+<h4 id="section-0060">10. 산출물과 완료 기준</h4>
+<p><code>tests/assessment/cases.json</code>의 현재 평가 사례, <code>python-pack-cases.json</code>의 60개 원본 의무, 단일 수용 catalog의 모든 의무를 추적한다. 합계는 중복 실행을 요구하는 숫자가 아니라 요구 ID inventory이며 공유 recipe는 alias를 명시한다. 공통 fixture/schema 검사는 각각의 제품 수용 성공을 대체하지 않는다.</p>
+<p>완료: 15항목 증거 연결, 모든 필수 case의 actual result·동일 snapshot binding·독립 review, skip/unknown 0 또는 사전 승인 not-applicable와 점수 영향 명시, 안전 hard gates 통과, 실패와 재실행의 원본 이력 보존, 실제 다음 작업 release 적용까지 확인. 설계 문서가 길다는 이유로 완료 판정을 하지 않는다.</p>
+<hr />
+<h2 id="section-0061">06 · docs/development/R5_REVIEW.ko.md</h2>
+<h3 id="section-0062">현재 설계 정합성 및 개발 시작 판정</h3>
+<h4 id="section-0063">구조와 책임</h4>
+<p>dcode가 유일한 agent loop다. Cyrano 제품 namespace·테스트·개발자료 위치는 그대로 유지했다. 연구팩의 설계는 기존 owner에 직접 반영하며 설치할 별도 보완팩이 없다. runtime audit/approval/release 이력은 제품 기능이고, 준비 ZIP의 revision 역사와 구분한다.</p>
+<h4 id="section-0064">해결한 설계 충돌</h4>
+<p>계획 승인과 ExecutionPermit를 분리했다. WorkflowIR에 자기 허가 receipt를 넣어 subject digest가 순환하는 구조를 제거했다. Control revision과 관측 seq를 분리해 정상 이벤트가 매번 승인을 무효화하지 않도록 했다. 초기 seed release와 학습 승격을 분리해 부팅 의존 순환을 없앴다. Memory와 관측을 계획 실제 실행의 선행 조건으로 명시했다. LangGraph resume 전역 효과 중복, 늦은 비용 결과 누락, 제품 권한과 개발용 skill 지침 혼동을 상세 설계에 반영했다.</p>
+<h4 id="section-0065">남는 구현 의무</h4>
+<p>현재 제품 서비스·권한 강제·provider 계측·native TUI/승인 UI의 모든 연결이 구현 완료된 것은 아니다. 자기개선 효과는 실제 비교 실험으로 확인해야 한다. 문서와 schema의 구조 통과는 사용자 평가 점수가 아니다. 현재 검사 결과는 evidence의 최신 report를 참조하고 과거 납품 PASS를 현재 소스 판정으로 재사용하지 않는다.</p>
+<h4 id="section-0066">독립성</h4>
+<p>이번 문서 대조는 작성자 검토다. 별도의 인증된 모델 reviewer 또는 사람 승인 절차를 실제로 실행했다고 하지 않는다. 구현 단계에서 입력·리뷰 assignment·finding·검증 evidence를 연결해 독립 리뷰를 수행한다.</p>
+<hr />
+<h2 id="section-0067">07 · tools/README.md</h2>
+<h3 id="section-0068">프로젝트 단위 도구 설치</h3>
+<p>Manifest는 top-level pin과 공식 설치 경로를 담는다. 실행 파일·가중치·node_modules를 ZIP에 넣지 않는다. 최초 설치에는 네트워크, Python/uv 또는 Node/npm이 필요하다. 배포 상태의 <code>not_resolved</code>를 완료 lock으로 해석하지 않는다. 인터넷 없는 환경에서는 RF01에서 작성한 검증된 artifact mirror가 별도로 필요하다.</p>
+<p><code>python cyrano/scripts/toolchain.py plan --tool graphify</code>는 변경 없이 명령을 보여 준다. <code>resolve --apply --allow-network</code>가 프로젝트 하위 <code>tools/.state/&lt;id&gt;/</code>에 lock을 만들며, <code>approve-lock --apply</code>는 현재 lock hash를 기록한다. <code>install --apply --allow-network</code>는 승인한 lock만 사용한다. native npm build 또는 Serena source 설치에는 <code>--allow-build</code>도 필요하다. Serena 모든 쓰기 단계에는 <code>--ack-gpl</code>이 필요하다. 이 CLI flag는 로컬 개발자의 명시 선택이지 제품 운영의 서명 승인 대체가 아니다.</p>
+<p>Python은 uv pip compile --generate-hashes와 uv pip sync --require-hashes --only-binary :all:를 사용한다. 지원 wheel이 없으면 실패하며 임의 source build로 우회하지 않는다. npm은 package-lock-only --ignore-scripts 뒤 npm ci를 사용한다. QMD native lifecycle script는 따로 검토한 build 허가를 요구한다. 소스 방식 Serena는 정확한 Git commit과 upstream uv.lock을 확인한 뒤 frozen sync한다.</p>
+<p>상태·캐시 경로를 프로젝트 안에 고정하지만 이것만으로 프로세스 보안 격리가 생기지는 않는다. 설치·build는 secret 없는 외부 작업 환경에서 수행한다. 실제 분석 실행은 RF02/RF03의 readonly snapshot·broker·네트워크 차단 테스트가 완료되어야 제품에 연결한다. <code>doctor</code>는 설치 receipt 존재 검사이며 LSP/MCP 기능 검증을 대신하지 않는다.</p>
+<footer>
+    Generated from canonical project sources. SHA256: 7a38fb59cf60bff91109ee74f2130f10c7c2b01d911f1fd08f0ed2de421ebb00</footer>
+    </main></body></html>

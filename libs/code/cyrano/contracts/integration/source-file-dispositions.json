@@ -1,0 +1,665 @@
+{
+  "revision": "2026-09-16-integration-r2",
+  "files": [
+    {
+      "path": "FULL_DESIGN.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "source_provenance_and_handoff",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "IMPLEMENTER_HANDOFF.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "source_provenance_and_handoff",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "MANIFEST.sha256",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "source_provenance_and_handoff",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "START_HERE.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "source_provenance_and_handoff",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "CYRANO_FULL_DESIGN.ko.html",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "source_provenance_and_handoff",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "VALIDATION.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "source_provenance_and_handoff",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "VALIDATION_REPORT.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "source_provenance_and_handoff",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "config/dcode-extensions.template.toml",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "config/environment.example",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "config/harness-policy.example.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "config/plugin-manifest.template.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "config/python-quality.toml",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "config/runtime-lock.template.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "contracts/adapter-report.schema.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "target_contract_mapping",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "contracts/api-dtos.schema.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "target_contract_mapping",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "contracts/approval-receipt-v2.schema.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "target_contract_mapping",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "contracts/change-manifest.schema.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "target_contract_mapping",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "contracts/context-manifest.schema.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "target_contract_mapping",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "contracts/evaluation-report.schema.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "target_contract_mapping",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "contracts/event-catalog.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "target_contract_mapping",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "contracts/event-envelope.schema.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "target_contract_mapping",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "contracts/execution-permit.schema.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "target_contract_mapping",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "contracts/learning-candidate.schema.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "target_contract_mapping",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "contracts/memory-record.schema.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "target_contract_mapping",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "contracts/requirements40-rubric.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "target_contract_mapping",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "contracts/review-result.schema.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "target_contract_mapping",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "contracts/run-report.schema.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "target_contract_mapping",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "contracts/state-machine.catalog.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "target_contract_mapping",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "contracts/verification-result.schema.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "target_contract_mapping",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "contracts/work-plan.schema.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "target_contract_mapping",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "contracts/worker-result-v2.schema.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "target_contract_mapping",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "docs/01_ARCHITECTURE_AND_WORKFLOW.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "docs/02_RUNTIME_MEMORY_AND_LEARNING.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "docs/03_OBSERVABILITY_QUALITY_AND_OPERATIONS.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "docs/04_MODULE_API_AND_IMPLEMENTATION.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "docs/05_CONTRACT_DETAILS_AND_TESTING.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "docs/06_SOURCES_AND_TRACEABILITY.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/acceptance-cases.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/invalid/active-unapproved-memory.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/invalid/empty-work-units.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/invalid/execution-without-plan.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/invalid/false-completed-report.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/invalid/float-budget.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/invalid/improved-without-holdout.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/invalid/negative-token-count.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/invalid/passed-without-evidence.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/invalid/promoted-without-eval.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/invalid/unknown-authority-field.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/invalid/unknown-model-profile.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/invalid/unsafe-parent-path.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/invalid/untyped-event-payload.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/invalid/wrong-signing-algorithm.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/negative-index.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/source-interview-manifest.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/test-public-key.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/valid/adapter-report.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/valid/approval-receipt-v2.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/valid/change-manifest.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/valid/context-manifest.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/valid/evaluation-report.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/valid/event-envelope.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/valid/execution-permit.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/valid/learning-candidate.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/valid/memory-record.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/valid/review-result.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/valid/run-report.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/valid/verification-result.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/valid/work-plan.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "fixtures/valid/worker-result-v2.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "prompts/AGENTS.template.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "prompts/COMMON_WORKER.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "prompts/blind_handoff_reviewer.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "prompts/counterexample_critic.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "prompts/evaluator.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "prompts/evidence_scout.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "prompts/facilitator.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "prompts/final_reviewer.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "prompts/implementer.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "prompts/learning_analyst.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "prompts/plan_reviewer.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "prompts/planner.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "prompts/security_reviewer.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "prompts/skills/cyrano-evaluate/SKILL.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "prompts/skills/cyrano-implement/SKILL.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "prompts/skills/cyrano-improve/SKILL.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "prompts/skills/cyrano-interview/SKILL.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "prompts/skills/cyrano-investigate/SKILL.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "prompts/skills/cyrano-plan/SKILL.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "prompts/skills/cyrano-review/SKILL.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "prompts/skills/cyrano-verify/SKILL.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "prompts/verifier.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "canonical_design_and_work_items",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "reference/TEST_OUTPUT.txt",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "reference/kernel_oracle.py",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "reference/test_kernel_oracle.py",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "case_and_rubric_traceability",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "source_interview/DESIGN.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "source_provenance_and_handoff",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "source_interview/IMPLEMENTATION_PLAN.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "source_provenance_and_handoff",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "source_interview/SOURCES.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "source_provenance_and_handoff",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "source_interview/START_HERE.ko.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "source_provenance_and_handoff",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "source_interview/VALIDATION.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "source_provenance_and_handoff",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "source_interview/contracts/approval-receipt.schema.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "source_provenance_and_handoff",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "source_interview/contracts/worker-result.schema.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "source_provenance_and_handoff",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "source_interview/fixtures/readiness-cases.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "source_provenance_and_handoff",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "source_interview/fixtures/worker-result.example.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "source_provenance_and_handoff",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "source_interview/policy.example.json",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "source_provenance_and_handoff",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "source_interview/prompts/blind-handoff-reviewer.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "source_provenance_and_handoff",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "source_interview/prompts/critic.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "source_provenance_and_handoff",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "source_interview/prompts/evidence-scout.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "source_provenance_and_handoff",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "source_interview/prompts/facilitator.md",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "source_provenance_and_handoff",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "sql/001_initial.sql",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "target_contract_mapping",
+      "runtime_execution_allowed": false
+    },
+    {
+      "path": "tools/validate_package.py",
+      "disposition": "reference_only_byte_preserved",
+      "integration_surface": "source_provenance_and_handoff",
+      "runtime_execution_allowed": false
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "kind": "format_guidance_not_evidence",
+  "schema_type": "WorkerOutcome",
+  "schema_ref": "contracts/v1/cyrano.schema.json#/$defs/WorkerOutcome",
+  "authority": "proposal_only",
+  "note": "This file is guidance, not a valid execution receipt or active release."
+}

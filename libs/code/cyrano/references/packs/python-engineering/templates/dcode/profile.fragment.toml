@@ -1,0 +1,7 @@
+# Merge only into an explicitly approved, isolated governed dcode profile.
+# These settings do not establish OS isolation or quality completion authority.
+[update]
+auto_update = false
+
+[memory]
+auto_save = false

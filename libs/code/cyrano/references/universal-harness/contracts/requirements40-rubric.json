@@ -1,0 +1,268 @@
+{
+  "schema_version": "udh.rubric/1",
+  "total_max": 40,
+  "status": "evaluation_spec_not_awarded_points",
+  "criteria": [
+    {
+      "criterion_id": "PY-Q1",
+      "area": "python_quality",
+      "max_points": 2,
+      "criterion": "명시 PEP8/프로젝트 규약",
+      "evidence_type": "quality-policy",
+      "acceptance_case_ids": [
+        "PY-02"
+      ],
+      "points_0": "기능 누락, 실패, 미실행 또는 출처 불명 주장",
+      "points_1": "구현·제한된 검증은 있으나 명시한 실제 경계/E2E 증거 일부 누락",
+      "points_2": "정상·실패·경계 사례의 실제 실행 evidence와 독립 확인이 모두 있음"
+    },
+    {
+      "criterion_id": "PY-Q2",
+      "area": "python_quality",
+      "max_points": 2,
+      "criterion": "단일 formatter와 lint 실제 검사",
+      "evidence_type": "quality-report",
+      "acceptance_case_ids": [
+        "PY-01"
+      ],
+      "points_0": "기능 누락, 실패, 미실행 또는 출처 불명 주장",
+      "points_1": "구현·제한된 검증은 있으나 명시한 실제 경계/E2E 증거 일부 누락",
+      "points_2": "정상·실패·경계 사례의 실제 실행 evidence와 독립 확인이 모두 있음"
+    },
+    {
+      "criterion_id": "PY-Q3",
+      "area": "python_quality",
+      "max_points": 2,
+      "criterion": "typing/docstrings/오류 처리",
+      "evidence_type": "type-and-review-report",
+      "acceptance_case_ids": [
+        "PY-09"
+      ],
+      "points_0": "기능 누락, 실패, 미실행 또는 출처 불명 주장",
+      "points_1": "구현·제한된 검증은 있으나 명시한 실제 경계/E2E 증거 일부 누락",
+      "points_2": "정상·실패·경계 사례의 실제 실행 evidence와 독립 확인이 모두 있음"
+    },
+    {
+      "criterion_id": "PY-Q4",
+      "area": "python_quality",
+      "max_points": 2,
+      "criterion": "실제 테스트/보안·예외 검사",
+      "evidence_type": "verification-results",
+      "acceptance_case_ids": [
+        "PY-05"
+      ],
+      "points_0": "기능 누락, 실패, 미실행 또는 출처 불명 주장",
+      "points_1": "구현·제한된 검증은 있으나 명시한 실제 경계/E2E 증거 일부 누락",
+      "points_2": "정상·실패·경계 사례의 실제 실행 evidence와 독립 확인이 모두 있음"
+    },
+    {
+      "criterion_id": "PY-Q5",
+      "area": "python_quality",
+      "max_points": 2,
+      "criterion": "범위 내 변경·독립 검토·CI",
+      "evidence_type": "scope-and-review-evidence",
+      "acceptance_case_ids": [
+        "PY-08"
+      ],
+      "points_0": "기능 누락, 실패, 미실행 또는 출처 불명 주장",
+      "points_1": "구현·제한된 검증은 있으나 명시한 실제 경계/E2E 증거 일부 누락",
+      "points_2": "정상·실패·경계 사례의 실제 실행 evidence와 독립 확인이 모두 있음"
+    },
+    {
+      "criterion_id": "PL-Q1",
+      "area": "planning_review",
+      "max_points": 2,
+      "criterion": "요구·결정·시나리오 추적",
+      "evidence_type": "traceability",
+      "acceptance_case_ids": [
+        "PLAN-03"
+      ],
+      "points_0": "기능 누락, 실패, 미실행 또는 출처 불명 주장",
+      "points_1": "구현·제한된 검증은 있으나 명시한 실제 경계/E2E 증거 일부 누락",
+      "points_2": "정상·실패·경계 사례의 실제 실행 evidence와 독립 확인이 모두 있음"
+    },
+    {
+      "criterion_id": "PL-Q2",
+      "area": "planning_review",
+      "max_points": 2,
+      "criterion": "구체 WorkUnit DAG",
+      "evidence_type": "work-plan",
+      "acceptance_case_ids": [
+        "PLAN-02"
+      ],
+      "points_0": "기능 누락, 실패, 미실행 또는 출처 불명 주장",
+      "points_1": "구현·제한된 검증은 있으나 명시한 실제 경계/E2E 증거 일부 누락",
+      "points_2": "정상·실패·경계 사례의 실제 실행 evidence와 독립 확인이 모두 있음"
+    },
+    {
+      "criterion_id": "PL-Q3",
+      "area": "planning_review",
+      "max_points": 2,
+      "criterion": "파일·명령·검증·복구 명세",
+      "evidence_type": "work-plan",
+      "acceptance_case_ids": [
+        "PLAN-04"
+      ],
+      "points_0": "기능 누락, 실패, 미실행 또는 출처 불명 주장",
+      "points_1": "구현·제한된 검증은 있으나 명시한 실제 경계/E2E 증거 일부 누락",
+      "points_2": "정상·실패·경계 사례의 실제 실행 evidence와 독립 확인이 모두 있음"
+    },
+    {
+      "criterion_id": "PL-Q4",
+      "area": "planning_review",
+      "max_points": 2,
+      "criterion": "독립 계획 리뷰",
+      "evidence_type": "review-result",
+      "acceptance_case_ids": [
+        "PLAN-05"
+      ],
+      "points_0": "기능 누락, 실패, 미실행 또는 출처 불명 주장",
+      "points_1": "구현·제한된 검증은 있으나 명시한 실제 경계/E2E 증거 일부 누락",
+      "points_2": "정상·실패·경계 사례의 실제 실행 evidence와 독립 확인이 모두 있음"
+    },
+    {
+      "criterion_id": "PL-Q5",
+      "area": "planning_review",
+      "max_points": 2,
+      "criterion": "계획/실행 사전 승인 구분",
+      "evidence_type": "approval-and-denial-evidence",
+      "acceptance_case_ids": [
+        "PLAN-07"
+      ],
+      "points_0": "기능 누락, 실패, 미실행 또는 출처 불명 주장",
+      "points_1": "구현·제한된 검증은 있으나 명시한 실제 경계/E2E 증거 일부 누락",
+      "points_2": "정상·실패·경계 사례의 실제 실행 evidence와 독립 확인이 모두 있음"
+    },
+    {
+      "criterion_id": "ML-Q1",
+      "area": "memory_learning",
+      "max_points": 2,
+      "criterion": "지속성과 scope 격리",
+      "evidence_type": "memory-evidence",
+      "acceptance_case_ids": [
+        "MEM-03"
+      ],
+      "points_0": "기능 누락, 실패, 미실행 또는 출처 불명 주장",
+      "points_1": "구현·제한된 검증은 있으나 명시한 실제 경계/E2E 증거 일부 누락",
+      "points_2": "정상·실패·경계 사례의 실제 실행 evidence와 독립 확인이 모두 있음"
+    },
+    {
+      "criterion_id": "ML-Q2",
+      "area": "memory_learning",
+      "max_points": 2,
+      "criterion": "proactive recall 실제 적용",
+      "evidence_type": "memory-applied-evidence",
+      "acceptance_case_ids": [
+        "MEM-10"
+      ],
+      "points_0": "기능 누락, 실패, 미실행 또는 출처 불명 주장",
+      "points_1": "구현·제한된 검증은 있으나 명시한 실제 경계/E2E 증거 일부 누락",
+      "points_2": "정상·실패·경계 사례의 실제 실행 evidence와 독립 확인이 모두 있음"
+    },
+    {
+      "criterion_id": "ML-Q3",
+      "area": "memory_learning",
+      "max_points": 2,
+      "criterion": "freshness/모순/삭제",
+      "evidence_type": "memory-lifecycle-evidence",
+      "acceptance_case_ids": [
+        "MEM-11"
+      ],
+      "points_0": "기능 누락, 실패, 미실행 또는 출처 불명 주장",
+      "points_1": "구현·제한된 검증은 있으나 명시한 실제 경계/E2E 증거 일부 누락",
+      "points_2": "정상·실패·경계 사례의 실제 실행 evidence와 독립 확인이 모두 있음"
+    },
+    {
+      "criterion_id": "ML-Q4",
+      "area": "memory_learning",
+      "max_points": 2,
+      "criterion": "후보와 독립 eval",
+      "evidence_type": "evaluation-report",
+      "acceptance_case_ids": [
+        "LEARN-06"
+      ],
+      "points_0": "기능 누락, 실패, 미실행 또는 출처 불명 주장",
+      "points_1": "구현·제한된 검증은 있으나 명시한 실제 경계/E2E 증거 일부 누락",
+      "points_2": "정상·실패·경계 사례의 실제 실행 evidence와 독립 확인이 모두 있음"
+    },
+    {
+      "criterion_id": "ML-Q5",
+      "area": "memory_learning",
+      "max_points": 2,
+      "criterion": "승인된 promotion/canary/rollback",
+      "evidence_type": "release-history",
+      "acceptance_case_ids": [
+        "LEARN-11"
+      ],
+      "points_0": "기능 누락, 실패, 미실행 또는 출처 불명 주장",
+      "points_1": "구현·제한된 검증은 있으나 명시한 실제 경계/E2E 증거 일부 누락",
+      "points_2": "정상·실패·경계 사례의 실제 실행 evidence와 독립 확인이 모두 있음"
+    },
+    {
+      "criterion_id": "OB-Q1",
+      "area": "monitoring",
+      "max_points": 2,
+      "criterion": "전 lifecycle·trace 연결",
+      "evidence_type": "event-coverage",
+      "acceptance_case_ids": [
+        "OBS-07"
+      ],
+      "points_0": "기능 누락, 실패, 미실행 또는 출처 불명 주장",
+      "points_1": "구현·제한된 검증은 있으나 명시한 실제 경계/E2E 증거 일부 누락",
+      "points_2": "정상·실패·경계 사례의 실제 실행 evidence와 독립 확인이 모두 있음"
+    },
+    {
+      "criterion_id": "OB-Q2",
+      "area": "monitoring",
+      "max_points": 2,
+      "criterion": "모델/tool/변경/검증 계측",
+      "evidence_type": "coverage-and-attempts",
+      "acceptance_case_ids": [
+        "OBS-06"
+      ],
+      "points_0": "기능 누락, 실패, 미실행 또는 출처 불명 주장",
+      "points_1": "구현·제한된 검증은 있으나 명시한 실제 경계/E2E 증거 일부 누락",
+      "points_2": "정상·실패·경계 사례의 실제 실행 evidence와 독립 확인이 모두 있음"
+    },
+    {
+      "criterion_id": "OB-Q3",
+      "area": "monitoring",
+      "max_points": 2,
+      "criterion": "비용/cache/memory/learning 측정",
+      "evidence_type": "usage-report",
+      "acceptance_case_ids": [
+        "OBS-01"
+      ],
+      "points_0": "기능 누락, 실패, 미실행 또는 출처 불명 주장",
+      "points_1": "구현·제한된 검증은 있으나 명시한 실제 경계/E2E 증거 일부 누락",
+      "points_2": "정상·실패·경계 사례의 실제 실행 evidence와 독립 확인이 모두 있음"
+    },
+    {
+      "criterion_id": "OB-Q4",
+      "area": "monitoring",
+      "max_points": 2,
+      "criterion": "장애/누락/복구",
+      "evidence_type": "incident-drill",
+      "acceptance_case_ids": [
+        "OBS-04"
+      ],
+      "points_0": "기능 누락, 실패, 미실행 또는 출처 불명 주장",
+      "points_1": "구현·제한된 검증은 있으나 명시한 실제 경계/E2E 증거 일부 누락",
+      "points_2": "정상·실패·경계 사례의 실제 실행 evidence와 독립 확인이 모두 있음"
+    },
+    {
+      "criterion_id": "OB-Q5",
+      "area": "monitoring",
+      "max_points": 2,
+      "criterion": "dashboard/권한/프라이버시/보고",
+      "evidence_type": "dashboard-e2e",
+      "acceptance_case_ids": [
+        "OBS-09"
+      ],
+      "points_0": "기능 누락, 실패, 미실행 또는 출처 불명 주장",
+      "points_1": "구현·제한된 검증은 있으나 명시한 실제 경계/E2E 증거 일부 누락",
+      "points_2": "정상·실패·경계 사례의 실제 실행 evidence와 독립 확인이 모두 있음"
+    }
+  ],
+  "release_rule": "모든 요구 기능의 증거 충족과 hard gates 별도 통과; 합계만으로 보안/의도 회귀를 상쇄하지 않는다."
+}

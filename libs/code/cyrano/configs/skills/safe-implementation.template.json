@@ -1,0 +1,46 @@
+{
+  "kind": "skill_manifest",
+  "schema_version": "1.0",
+  "id": "safe-implementation",
+  "version": "0.1.0-dev",
+  "name": "safe-implementation",
+  "description": "허가된 WorkUnit만 외부 작업 사본에서 구현하고 변경·검증 근거를 제출한다.",
+  "entrypoint": "SKILL.md",
+  "content_digest": "sha256:0a26b9f92d8c49b3fca8201dd48572226bea18fd5670d72898626cf1cdca6de8",
+  "resources": [
+    {
+      "path": "references/checklist.md",
+      "digest": "sha256:f69b1f495a3fcd4382757131acf1a6c225b957d792f3801be1fb5525ac6fba8f",
+      "executable": false
+    },
+    {
+      "path": "assets/output.example.json",
+      "digest": "sha256:8431b0ccacc40f885765fd7ceeac06de2bc55f0b957473e23454a65bb8dbaf05",
+      "executable": false
+    },
+    {
+      "path": "references/universal-integration.md",
+      "digest": "sha256:79091b750ff0c88455ac1c7884181f7d35c1d6bb9c6ee54ce847f711600a3484",
+      "executable": false
+    }
+  ],
+  "allowed_roles": [
+    "implementer"
+  ],
+  "required_tools": [],
+  "scope": {
+    "tenant": "__BIND_TENANT__",
+    "user": "__BIND_USER__",
+    "workspace": "__BIND_WORKSPACE__"
+  },
+  "context_byte_budget": 8192,
+  "activation_tests": [
+    "SKILL-safe-implementation-positive"
+  ],
+  "counterexample_tests": [
+    "SKILL-safe-implementation-negative"
+  ],
+  "release_digest": null,
+  "approval_ref": null,
+  "status": "candidate"
+}

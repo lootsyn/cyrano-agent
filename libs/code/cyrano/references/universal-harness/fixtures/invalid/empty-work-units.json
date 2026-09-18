@@ -1,0 +1,49 @@
+{
+  "schema_version": "udh.work-plan/1",
+  "plan_id": "plan-demo",
+  "session_id": "session-demo",
+  "revision": 1,
+  "spec_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "snapshot_digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "policy_digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "requirement_ids": [
+    "DEMO-REQ-1"
+  ],
+  "scope": {
+    "workspace_id": "workspace-demo",
+    "read": [
+      "src/parser.py",
+      "tests/test_parser.py"
+    ],
+    "create": [],
+    "write_existing": [
+      "src/parser.py",
+      "tests/test_parser.py"
+    ],
+    "delete": [],
+    "deny": [
+      ".git",
+      "secrets"
+    ],
+    "recipe_ids": [
+      "python_tests",
+      "python_lint"
+    ],
+    "network": "none",
+    "network_allowlist": []
+  },
+  "work_units": [],
+  "review_roles": [
+    "plan_reviewer"
+  ],
+  "unresolved_items": [],
+  "budget": {
+    "max_model_attempts": 32,
+    "max_tool_calls": 100,
+    "max_seconds": 3600,
+    "max_parallel_workers": 3,
+    "max_cost_usd": null
+  },
+  "delivery_mode": "patch_only"
+}

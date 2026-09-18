@@ -1,0 +1,66 @@
+{
+ "kind": "work_package_completion_evidence",
+ "work_package": "WP17",
+ "title": "경로 B Memory·Skill 실제 평가",
+ "recorded_by": "implementer (independent post-image review performed)",
+ "success": true,
+ "source_digests": {
+  "deepagents_code/cyrano/improvement/knowledge_lane.py": "sha256:69020ba1cb1120aeda26428299acb215046ab9547a9257cc55d3839a0f7289e8",
+  "deepagents_code/cyrano/improvement/skill_lane.py": "sha256:70ba7e7c599a4b50f5fa73059b48437899aec73feb69909c78b5d5316ec7f731",
+  "tests/cyrano_product/test_wp17_product.py": "sha256:0a14cfdd2ef404b3d884c09b2cc1dd926ef9cc16992ae3fd257b916d40bd693b",
+  "tests/cyrano_product/test_wp17_contract_scenarios.py": "sha256:a3fe2395b654f43cca4fa69ef95907c26c9fcb7bff5773f67e5657e4f63503a0",
+  "tests/unit_tests/cyrano/test_wp17_knowledge.py": "sha256:b33db4152da1dd0cfcaf3f53c57a1855df474523ac5385b1918a8dbd0b332bc8"
+ },
+ "contract_files": [
+  ".agents/work/WP17.ko.md",
+  "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md",
+  "tests/acceptance/catalog.json"
+ ],
+ "schema_change": {
+  "kind": "none",
+  "rationale": "lane objects are pure value types; durable persistence reuses existing ledgers when wired"
+ },
+ "verification": {
+  "targeted_tests": "25 passed (test_wp17_product.py, test_wp17_contract_scenarios.py, test_wp17_knowledge.py)",
+  "full_product_suite": "872 passed (tests/cyrano_product/)",
+  "ruff": "0 findings in WP17-owned paths under cyrano/configs/quality/ruff.toml",
+  "formatter": "ruff format --check clean on WP17-owned paths",
+  "ty": "0 errors on deepagents_code/cyrano",
+  "dev_check": "dev.py check exit 0 after docs regeneration",
+  "quality_gate": "0 findings in WP17-owned paths; pre-existing baseline debt unchanged"
+ },
+ "architecture": {
+  "knowledge_lane": "validate_knowledge_candidate enforces per-kind obligations: fact binds source_snapshot and refuses global generalization; preference supersedes only for the same trusted subject; procedure requires a precondition; evaluate_memory_pairs counts only applied-with-success as causal; promote_scope demands a scope-bound evaluation plus approval; apply_recipe is conditional on an unsatisfied precondition (already-done migrations produce no side effect)",
+  "skill_lane": "propose_skill_candidate requires repeats+scope+counterexamples and stores candidate-only; extract_lesson classifies expected-red as expected_failure; check_skill_impact blocks protected paths and reports .py changes claimed as wording as code/high-risk; SkillRegistry.promote is CAS requiring actual_paired evidence with the exact body digest (STALE_EVIDENCE otherwise) and REBASE_REQUIRED for stale parents; revoke pauses running tasks and demands re-binding; bind_run keeps pre-promotion runs on known pinned releases, binds new runs to live, and pauses revoked/unknown pins; prepare_memory_skill_bundle refuses merges that drop counterexamples"
+ },
+ "review_findings_resolved": [
+  "bind_run accepted a pin to a release that never existed when used==pinned"
+ ],
+ "not_established": [
+  "native_dcode_runtime_skill_activation (API-level verification only)",
+  "real_model_or_provider_calls",
+  "durable_skill_registry_persistence (in-memory lane; ledger wiring belongs to a later WP)"
+ ],
+ "acceptance_evidence": {
+  "B-FACT": "passed - test_b_fact_snapshot_scope_authority_no_global",
+  "B-PREF": "passed - test_b_pref_trusted_subject_supersedes_own_only",
+  "B-SKILL": "passed - test_b_skill_reads_up_accuracy_down_not_offset",
+  "B-NEGATIVE": "passed - test_b_negative_done_migration_applies_conditionally",
+  "UH-MEM-12": "passed - test_uh_mem_12_workspace_lesson_global_needs_eval",
+  "CON-SKL-01": "passed - test_con_skl_01_repeated_lesson_stored_as_candidate_only",
+  "CON-SKL-02": "passed - test_con_skl_02_expected_red_classified_expected_failure",
+  "CON-SKL-03": "passed - test_con_skl_03_hidden_acceptance_delete_is_protected",
+  "CON-SKL-04": "passed - test_con_skl_04_body_change_with_replay_only_blocked",
+  "CON-SKL-05": "passed - test_con_skl_05_py_change_claimed_as_wording_is_code",
+  "CON-SKL-06": "passed - test_con_skl_06_merge_dropping_counterexample_invalid",
+  "CON-SKL-07": "passed - test_con_skl_07_one_char_edit_is_stale_evidence",
+  "CON-SKL-08": "passed - test_con_skl_08_cas_same_parent_one_winner",
+  "CON-SKL-09": "passed - test_con_skl_09_new_task_binds_new_release",
+  "CON-SKL-10": "passed - test_con_skl_10_running_r1_stays_new_run_gets_r2",
+  "CON-SKL-11": "passed - test_con_skl_11_revoke_pauses_and_rebinds",
+  "CON-SKL-12": "passed - test_con_skl_12_small_sample_wide_interval_inconclusive",
+  "WP17-I01": "passed - kind-specific validation in test_b_fact/b_pref + procedure precondition unit tests",
+  "WP17-I02": "passed - test_wp17_i02_code_vs_wording_classification",
+  "WP17-I03": "passed - test_wp17_i03_revoked_release_pauses_running + scope/bundle guards"
+ }
+}

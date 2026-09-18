@@ -1,0 +1,21 @@
+{
+  "schema_version": "udh.review/1",
+  "review_id": "review-demo",
+  "assignment_id": "assignment-demo",
+  "reviewer_id": "worker-review",
+  "session_id": "session-demo",
+  "role": "plan_reviewer",
+  "input_bundle_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "snapshot_digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "checklist_digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "status": "completed",
+  "findings": [],
+  "checked_requirement_ids": [
+    "DEMO-REQ-1"
+  ],
+  "evidence_ids": [
+    "evidence-1"
+  ],
+  "blind_context_manifest_digest": null,
+  "created_at": "2026-09-15T07:00:00Z"
+}

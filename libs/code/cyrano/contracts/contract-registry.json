@@ -1,0 +1,58 @@
+{
+  "revision": "current-design",
+  "default_schema_version_inference": "forbidden",
+  "root_schema_validation": "forbidden_select_explicit_defs",
+  "canonical_sources": [
+    "contracts/v1/cyrano.schema.json",
+    "contracts/v2/governance.schema.json",
+    "contracts/v2/event-payloads.schema.json",
+    "contracts/v2/runtime.schema.json",
+    "contracts/v2/planning.schema.json"
+  ],
+  "unchanged_v1_sha256": "765d2da6499ddc92726914493baa87c5be32123d1efa9005e1b6e288beae23f7",
+  "target_replacements": [
+    {
+      "legacy": "PlanBundle@1.0",
+      "governed": "GovernedWorkPlan@2.0",
+      "automatic_conversion": false
+    },
+    {
+      "legacy": "Permit@1.0",
+      "governed": "ToolExecutionPermit@2.0",
+      "automatic_conversion": false
+    },
+    {
+      "legacy": "EventEnvelope@1.0",
+      "governed": "GovernedEvent@2.0",
+      "automatic_conversion": false
+    }
+  ],
+  "unchanged_feature_types": [
+    "CandidateProposal",
+    "LearningWorkPlan",
+    "ImpactAssessment",
+    "ExperimentPlan",
+    "EvaluationReport",
+    "HarnessRelease",
+    "SkillManifest",
+    "MemoryRecord",
+    "WorkerOutcome",
+    "InterviewContract"
+  ],
+  "source_contracts_are_runtime_types": false,
+  "imported_approval_may_authorize": false,
+  "semantic_rule_source": "contracts/v2/semantic-rules.json",
+  "assessment_r3": {
+    "rubric": "contracts/assessment/rubric.json",
+    "export_metadata": "contracts/assessment/evidence.schema.json",
+    "replaces_scoring_only": "contracts/v2/requirements40-rubric.json",
+    "does_not_rewrite_frozen_contracts": true
+  },
+  "branding_boundary": {
+    "previous_project_name": "UDH",
+    "new_project_name": "Cyrano Agent",
+    "old_artifacts_authorize": false,
+    "deployed_migration_implemented": false,
+    "rule": "Cyrano current contracts only. Reference source approval artifacts cannot authorize runtime actions."
+  }
+}

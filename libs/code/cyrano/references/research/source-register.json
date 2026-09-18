@@ -1,0 +1,740 @@
+[
+  {
+    "id": "NS01",
+    "title": "dcode current main",
+    "url": "https://api.github.com/repos/langchain-ai/deepagents/branches/main",
+    "accessed": "2026-09-17",
+    "evidence_level": "repository_metadata",
+    "inspected_scope": "0.1.70 release commit; dependency installation and publishing were not verified",
+    "immutable_ref": "229ffef3d41bbe6dcfff3852bbd2058331aabe01",
+    "executed": false
+  },
+  {
+    "id": "NS02",
+    "title": "dcode extensions",
+    "url": "https://github.com/langchain-ai/deepagents/blob/7f9e8ed3a555933902045792da9bb184950ee7b2/libs/code/EXTENSIONS.md",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "async extension registration, no custom slash command API",
+    "immutable_ref": "7f9e8ed3a555933902045792da9bb184950ee7b2",
+    "executed": false
+  },
+  {
+    "id": "NS03",
+    "title": "dcode source baseline",
+    "url": "https://github.com/langchain-ai/deepagents/blob/7f9e8ed3a555933902045792da9bb184950ee7b2/libs/code/deepagents_code/agent.py",
+    "accessed": "2026-09-17",
+    "evidence_level": "prior_baseline_source",
+    "inspected_scope": "Existing reviewed baseline; current 0.1.70 source not fully re-audited",
+    "immutable_ref": "7f9e8ed3a555933902045792da9bb184950ee7b2",
+    "executed": false
+  },
+  {
+    "id": "NS04",
+    "title": "Hermes memory implementation",
+    "url": "https://github.com/NousResearch/hermes-agent/blob/16bddc88dd325c5eef27c2cc71bbb14c16b870aa/tools/memory_tool.py",
+    "accessed": "2026-09-17",
+    "evidence_level": "source_slice",
+    "inspected_scope": "lines 1–190: frozen session prompt, staging, gate import fallback, background consolidation",
+    "immutable_ref": "16bddc88dd325c5eef27c2cc71bbb14c16b870aa",
+    "executed": false
+  },
+  {
+    "id": "NS05",
+    "title": "Hermes releases",
+    "url": "https://github.com/NousResearch/hermes-agent/releases",
+    "accessed": "2026-09-17",
+    "evidence_level": "release_notes",
+    "inspected_scope": "tag v2026.9.14, display v0.21.3; latest release observed, not installed",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS06",
+    "title": "Hermes memory guide",
+    "url": "https://hermes-agent.nousresearch.com/docs/user-guide/features/memory",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "small persistent memory and search; do not infer security enforcement",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS07",
+    "title": "Gajae ambiguity floor",
+    "url": "https://github.com/Yeachan-Heo/gajae-code/blob/9da99cdd708ce3b97d64111d8eefc98a7e0921ee/packages/coding-agent/src/gjc-runtime/deep-interview-ambiguity.ts",
+    "accessed": "2026-09-17",
+    "evidence_level": "source_slice",
+    "inspected_scope": "lines 1–200: fact disputes, gap pressure, score floor, retraction",
+    "immutable_ref": "9da99cdd708ce3b97d64111d8eefc98a7e0921ee",
+    "executed": false
+  },
+  {
+    "id": "NS08",
+    "title": "Gajae releases",
+    "url": "https://github.com/Yeachan-Heo/gajae-code/releases",
+    "accessed": "2026-09-17",
+    "evidence_level": "release_notes",
+    "inspected_scope": "v0.16.7 and v0.16.8-nightly.20260913102120.34830784995.g9da99cdd708c",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS09",
+    "title": "OMO recall gate",
+    "url": "https://github.com/code-yeongyu/oh-my-openagent/blob/fbcc57e374c180c41ffc8562c0ab7e7414935811/packages/memory-core/src/recall/gate.ts",
+    "accessed": "2026-09-17",
+    "evidence_level": "source_slice",
+    "inspected_scope": "lines 1–180: candidate membership, caps, pending identity, expiry, hint admission",
+    "immutable_ref": "fbcc57e374c180c41ffc8562c0ab7e7414935811",
+    "executed": false
+  },
+  {
+    "id": "NS10",
+    "title": "OMO releases",
+    "url": "https://github.com/code-yeongyu/oh-my-openagent/releases",
+    "accessed": "2026-09-17",
+    "evidence_level": "release_notes",
+    "inspected_scope": "Latest-labelled v5.0.0-beta.68 is prerelease, not stable",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS11",
+    "title": "Senpi keepalive implementation",
+    "url": "https://github.com/code-yeongyu/senpi/blob/f32905c8199b70e45acd866159170d390e48715b/packages/coding-agent/src/core/extensions/builtin/cache-keepalive/index.ts",
+    "accessed": "2026-09-17",
+    "evidence_level": "source_slice",
+    "inspected_scope": "lines 1–260: generation, idle, request cap, cost, lastCompletedAt scheduling",
+    "immutable_ref": "f32905c8199b70e45acd866159170d390e48715b",
+    "executed": false
+  },
+  {
+    "id": "NS12",
+    "title": "Senpi releases",
+    "url": "https://github.com/code-yeongyu/senpi/releases",
+    "accessed": "2026-09-17",
+    "evidence_level": "release_notes",
+    "inspected_scope": "v2026.9.16-3; experimental project classification retained",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS13",
+    "title": "Pi message transformation",
+    "url": "https://github.com/earendil-works/pi/blob/e4c75a73222ae2c72abb5f5314fa35ee8effc508/packages/ai/src/api/transform-messages.ts",
+    "accessed": "2026-09-17",
+    "evidence_level": "source_slice",
+    "inspected_scope": "lines 1–185: IDs, opaque thinking, images, synthetic missing results",
+    "immutable_ref": "e4c75a73222ae2c72abb5f5314fa35ee8effc508",
+    "executed": false
+  },
+  {
+    "id": "NS14",
+    "title": "Pi releases",
+    "url": "https://github.com/earendil-works/pi/releases",
+    "accessed": "2026-09-17",
+    "evidence_level": "release_notes",
+    "inspected_scope": "release history reviewed; latest stable tag not reliably captured",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS15",
+    "title": "Oh My Pi hashline prompt",
+    "url": "https://github.com/can1357/oh-my-pi/blob/a2d83061c5d673bf3ee495d7652b63ee5a0ceb14/packages/coding-agent/src/edit/hashline-compact.md",
+    "accessed": "2026-09-17",
+    "evidence_level": "source_excerpt",
+    "inspected_scope": "model-visible patch language; parser/runtime implementation not audited",
+    "immutable_ref": "a2d83061c5d673bf3ee495d7652b63ee5a0ceb14",
+    "executed": false
+  },
+  {
+    "id": "NS16",
+    "title": "Oh My Pi releases",
+    "url": "https://github.com/can1357/oh-my-pi/releases",
+    "accessed": "2026-09-17",
+    "evidence_level": "release_notes",
+    "inspected_scope": "v18.2.2, replay-safe retry and context notes",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS17",
+    "title": "protoCLI SprintContractService",
+    "url": "https://github.com/protoLabsAI/protoCLI/blob/480f23e1c119a7fe305fcbb20092b2d1394623d4/packages/core/src/services/sprintContractService.ts",
+    "accessed": "2026-09-17",
+    "evidence_level": "source_file",
+    "inspected_scope": "parse, activateScopeLock, persist, load, resumeFromDisk",
+    "immutable_ref": "480f23e1c119a7fe305fcbb20092b2d1394623d4",
+    "executed": false
+  },
+  {
+    "id": "NS18",
+    "title": "protoCLI harness guide",
+    "url": "https://github.com/protoLabsAI/protoCLI/blob/480f23e1c119a7fe305fcbb20092b2d1394623d4/docs/explanation/agent-harness.md",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "scope primitive retained despite removing opinionated skill",
+    "immutable_ref": "480f23e1c119a7fe305fcbb20092b2d1394623d4",
+    "executed": false
+  },
+  {
+    "id": "NS19",
+    "title": "protoAgent repository metadata",
+    "url": "https://api.github.com/repos/protoLabsAI/protoAgent",
+    "accessed": "2026-09-17",
+    "evidence_level": "repository_metadata",
+    "inspected_scope": "Python/LangGraph/A2A; updated 2026-09-16; not full source review",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS20",
+    "title": "protoAgent releases",
+    "url": "https://github.com/protoLabsAI/protoAgent/releases",
+    "accessed": "2026-09-17",
+    "evidence_level": "release_notes",
+    "inspected_scope": "v0.168.0; late A2A responses, output budget, timestamps removed from model messages",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS21",
+    "title": "Open SWE architecture and operations",
+    "url": "https://github.com/langchain-ai/open-swe/blob/main/README.md",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "Agent, Reviewer, Analyzer, Chat, Scheduler; persistent sandbox; limitations",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS22",
+    "title": "Open SWE releases",
+    "url": "https://github.com/langchain-ai/open-swe/releases",
+    "accessed": "2026-09-17",
+    "evidence_level": "release_notes",
+    "inspected_scope": "Desktop v0.2.10 observed; not a backend version",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS23",
+    "title": "Pactrail workspace transaction",
+    "url": "https://github.com/AKMessi/pactrail/blob/582a22db473b455f7f5bdc185bf430639b88a49f/crates/pactrail-workspace/src/transaction.rs",
+    "accessed": "2026-09-17",
+    "evidence_level": "source_slice",
+    "inspected_scope": "lines 1–220: snapshot copying, source reread, strict reopen; full apply routine not audited",
+    "immutable_ref": "582a22db473b455f7f5bdc185bf430639b88a49f",
+    "executed": false
+  },
+  {
+    "id": "NS24",
+    "title": "Pactrail overview",
+    "url": "https://github.com/AKMessi/pactrail/blob/main/README.md",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "transaction/evidence architecture; project claims, not independent runtime validation",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS25",
+    "title": "Pactrail package manifest",
+    "url": "https://github.com/AKMessi/pactrail/blob/main/Cargo.toml",
+    "accessed": "2026-09-17",
+    "evidence_level": "source_file",
+    "inspected_scope": "version 1.0.0 and Rust 1.95; release publication not separately verified",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS26",
+    "title": "OpenCode agent modes",
+    "url": "https://opencode.ai/docs/agents/",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "Build/Plan permissions; Plan write/bash ask is not a sandbox",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS27",
+    "title": "OpenCode releases",
+    "url": "https://github.com/anomalyco/opencode/releases",
+    "accessed": "2026-09-17",
+    "evidence_level": "release_notes",
+    "inspected_scope": "v1.18.31; ACP/history/auth fixes",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS28",
+    "title": "Cline Plan and Act",
+    "url": "https://docs.cline.bot/core-workflows/plan-and-act",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "planning/execution interaction, not enforcement proof",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS29",
+    "title": "Cline releases",
+    "url": "https://github.com/cline/cline/releases",
+    "accessed": "2026-09-17",
+    "evidence_level": "release_notes",
+    "inspected_scope": "Desktop 0.0.29, SDK 0.0.83 and CLI 3.0.62 are separate components",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS30",
+    "title": "OpenHands SDK",
+    "url": "https://docs.openhands.dev/sdk",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "agent, tool, workspace and security SDK; benchmark claims not transferred",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS31",
+    "title": "OpenHands releases",
+    "url": "https://github.com/OpenHands/OpenHands/releases",
+    "accessed": "2026-09-17",
+    "evidence_level": "release_notes",
+    "inspected_scope": "v1.19.0 product repo; SDK package versions are separate",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS32",
+    "title": "Continue modes",
+    "url": "https://docs.continue.dev/ide-extensions/agent/how-it-works",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "Chat/Plan/Agent and tool availability; link can redirect",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS33",
+    "title": "Continue releases",
+    "url": "https://github.com/continuedev/continue/releases",
+    "accessed": "2026-09-17",
+    "evidence_level": "release_notes",
+    "inspected_scope": "v2.0.0-vscode observed; other component latest unresolved",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS34",
+    "title": "Qwen Code overview",
+    "url": "https://github.com/QwenLM/qwen-code",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "terminal/IDE/headless/SDK; qwen serve experimental",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS35",
+    "title": "Qwen Code releases",
+    "url": "https://github.com/QwenLM/qwen-code/releases",
+    "accessed": "2026-09-17",
+    "evidence_level": "release_notes",
+    "inspected_scope": "v0.24.0 and 0.24.0-nightly.20260916.b8def02aad",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS36",
+    "title": "Crush overview",
+    "url": "https://github.com/charmbracelet/crush",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "terminal and tool integrations; native runtime not copied",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS37",
+    "title": "Crush releases",
+    "url": "https://github.com/charmbracelet/crush/releases",
+    "accessed": "2026-09-17",
+    "evidence_level": "release_notes",
+    "inspected_scope": "v0.95.0 and nightly channel",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS38",
+    "title": "Kilo Code releases",
+    "url": "https://github.com/Kilo-Org/kilocode/releases",
+    "accessed": "2026-09-17",
+    "evidence_level": "release_notes",
+    "inspected_scope": "v7.7.2; goal/review/worktree product surfaces, docs endpoints failed",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS39",
+    "title": "Goose overview",
+    "url": "https://github.com/aaif-goose/goose",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "canonical redirect from block/goose; recipe and tool harness overview",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS40",
+    "title": "Goose releases",
+    "url": "https://github.com/aaif-goose/goose/releases",
+    "accessed": "2026-09-17",
+    "evidence_level": "release_notes",
+    "inspected_scope": "v1.50.1; preceding release includes cache anchors and ACP context changes",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS41",
+    "title": "Aider repository map",
+    "url": "https://aider.chat/docs/repomap.html",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "compact repository map and selective context; not a full dynamic call graph",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS42",
+    "title": "Aider releases",
+    "url": "https://github.com/Aider-AI/aider/releases",
+    "accessed": "2026-09-17",
+    "evidence_level": "release_notes",
+    "inspected_scope": "v0.86.0; not presented as a 2026 innovation",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS43",
+    "title": "mini-SWE-agent docs",
+    "url": "https://mini-swe-agent.com/latest/",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "minimal model-agent-environment architecture, ablation baseline",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS44",
+    "title": "mini-SWE-agent releases",
+    "url": "https://github.com/SWE-agent/mini-swe-agent/releases",
+    "accessed": "2026-09-17",
+    "evidence_level": "release_notes",
+    "inspected_scope": "v2.4.6",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS45",
+    "title": "Gemini CLI core",
+    "url": "https://geminicli.com/docs/core/",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "core tools/policy/sessions; experimental routing not a portability proof",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS46",
+    "title": "Gemini CLI releases",
+    "url": "https://github.com/google-gemini/gemini-cli/releases",
+    "accessed": "2026-09-17",
+    "evidence_level": "release_notes",
+    "inspected_scope": "v0.60.0 stable, prerelease channel separate",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS47",
+    "title": "Kiro specifications",
+    "url": "https://kiro.dev/docs/specs/",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "feature/bugfix/quick specs; capability differs across IDE/CLI/Web",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS48",
+    "title": "Kiro changelog",
+    "url": "https://kiro.dev/changelog/",
+    "accessed": "2026-09-17",
+    "evidence_level": "release_notes",
+    "inspected_scope": "IDE 1.1 on 2026-09-14; CLI v2 path separate; closed internals",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS49",
+    "title": "Amp documentation",
+    "url": "https://ampcode.com/docs",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "commercial product interface; source internals unverified",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS50",
+    "title": "Amp chronicle",
+    "url": "https://ampcode.com/chronicle",
+    "accessed": "2026-09-17",
+    "evidence_level": "release_notes",
+    "inspected_scope": "2026-09-13 Free Agent and other updates; no verified numeric stable",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS51",
+    "title": "Cursor Plan mode",
+    "url": "https://cursor.com/docs/agent/plan-mode",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "reviewable planning before build; no independent authorization guarantee",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS52",
+    "title": "Cursor changelog",
+    "url": "https://cursor.com/changelog",
+    "accessed": "2026-09-17",
+    "evidence_level": "release_notes",
+    "inspected_scope": "Projects beta and 2026-09-02 self-hosted agents; no version conflation",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS53",
+    "title": "Claude prompt caching",
+    "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "TTL starts at request START, prefix identity, provider-specific boundaries",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS54",
+    "title": "OpenAI prompt caching",
+    "url": "https://developers.openai.com/api/docs/guides/prompt-caching",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "provider caching guide; no assumed uniform TTL or shared cache",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS55",
+    "title": "Gemini context caching",
+    "url": "https://ai.google.dev/gemini-api/docs/caching",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "provider-specific cache semantics; not a generic local cache",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS56",
+    "title": "LangGraph persistence",
+    "url": "https://docs.langchain.com/oss/python/langgraph/persistence",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "checkpoint/resume; business authority remains Cyrano-owned",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS57",
+    "title": "LangGraph interrupts",
+    "url": "https://docs.langchain.com/oss/python/langgraph/interrupts",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "interrupt and resume; no external exactly-once guarantee",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS58",
+    "title": "Agent Client Protocol v1",
+    "url": "https://agentclientprotocol.com/protocol/v1/overview",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_specification",
+    "inspected_scope": "capability negotiation, prompt, cancel, permission, filesystem and terminal",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS59",
+    "title": "A2A specification",
+    "url": "https://a2a-protocol.org/latest/specification/",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_specification",
+    "inspected_scope": "agent tasks/status/artifacts; dynamic latest must be pinned before implementation",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS60",
+    "title": "MCP 2025-11-25",
+    "url": "https://modelcontextprotocol.io/specification/2025-11-25",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_specification",
+    "inspected_scope": "dated tool/resource/prompt protocol; not asserted latest",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS61",
+    "title": "Agent Skills specification",
+    "url": "https://agentskills.io/specification",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_specification",
+    "inspected_scope": "progressive skill discovery; instructions are not execution authority",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS62",
+    "title": "ACE paper",
+    "url": "https://arxiv.org/abs/2510.04618",
+    "accessed": "2026-09-17",
+    "evidence_level": "paper_abstract",
+    "inspected_scope": "2025 incremental playbook/context adaptation; abstract-level review only",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS63",
+    "title": "MemRL paper",
+    "url": "https://arxiv.org/abs/2601.03192",
+    "accessed": "2026-09-17",
+    "evidence_level": "paper_abstract",
+    "inspected_scope": "2026 retrieval relevance plus utility, frozen model; abstract-level review only",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS64",
+    "title": "LLMCompiler paper",
+    "url": "https://arxiv.org/abs/2312.04511",
+    "accessed": "2026-09-17",
+    "evidence_level": "paper_abstract",
+    "inspected_scope": "2023 foundational planner/task scheduler/executor; not new in 2026",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS65",
+    "title": "Mem2Evolve paper",
+    "url": "https://arxiv.org/abs/2604.10923",
+    "accessed": "2026-09-17",
+    "evidence_level": "paper_abstract",
+    "inspected_scope": "2026 experience and asset evolution; abstract only, code not executed",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS66",
+    "title": "Beads repository",
+    "url": "https://github.com/gastownhall/beads",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "canonical redirect; dependency-aware task ledger, not a replacement store",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS67",
+    "title": "Superpowers planning",
+    "url": "https://github.com/obra/superpowers/blob/main/skills/writing-plans/SKILL.md",
+    "accessed": "2026-09-17",
+    "evidence_level": "prior_reference",
+    "inspected_scope": "R6 conversation reference; no current-version source reread in this supplement",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS68",
+    "title": "Spec Kit agentic SDD",
+    "url": "https://github.com/github/spec-kit/blob/main/docs/reference/agentic-sdd.md",
+    "accessed": "2026-09-17",
+    "evidence_level": "prior_reference",
+    "inspected_scope": "R6 conversation reference; keep existing review/approval separation",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS69",
+    "title": "OpenSpec",
+    "url": "https://github.com/Fission-AI/OpenSpec",
+    "accessed": "2026-09-17",
+    "evidence_level": "prior_reference",
+    "inspected_scope": "change-scoped documents, no second workflow authority",
+    "immutable_ref": null,
+    "executed": false
+  },
+  {
+    "id": "NS70",
+    "title": "Inception official repository",
+    "url": "https://github.com/Milind220/inception/blob/main/README.md",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "Milind220/inception matches generated-workflow description; npm publication marked incomplete; claims not independently reproduced",
+    "immutable_ref": "blob:8181018b5360df6641f6ab27e820b978c0c5f29a",
+    "executed": false
+  },
+  {
+    "id": "NS71",
+    "title": "Inception execution implementation",
+    "url": "https://github.com/Milind220/inception/blob/main/packages/runtime/src/run.ts",
+    "accessed": "2026-09-17",
+    "evidence_level": "source_slice",
+    "inspected_scope": "lines 1–240: shared budget/depth/limiter, null on item failure, best-effort orchestration; no runtime execution",
+    "immutable_ref": "blob:9778fddb87aa6bebb7b5f9b87c08659499c25b43",
+    "executed": false
+  },
+  {
+    "id": "NS72",
+    "title": "Inception journal implementation",
+    "url": "https://github.com/Milind220/inception/blob/main/packages/runtime/src/journal.ts",
+    "accessed": "2026-09-17",
+    "evidence_level": "source_file",
+    "inspected_scope": "call key, schema fingerprint fallback, image-count key, best-effort journal, occurrence matching",
+    "immutable_ref": "blob:9fd4aee15f18494ed6275e60835440ecd6a9dfca",
+    "executed": false
+  },
+  {
+    "id": "NS73",
+    "title": "LangGraph Interrupts",
+    "url": "https://docs.langchain.com/oss/python/langgraph/interrupts",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "resume reruns node prefix; correlate parallel interrupt IDs; not a Cyrano authorization implementation",
+    "executed": false
+  },
+  {
+    "id": "NS74",
+    "title": "LangGraph Persistence",
+    "url": "https://docs.langchain.com/oss/python/langgraph/persistence",
+    "accessed": "2026-09-17",
+    "evidence_level": "official_documentation",
+    "inspected_scope": "checkpoint persistence; no external exactly-once guarantee inferred",
+    "executed": false
+  }
+]

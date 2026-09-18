@@ -1,0 +1,35 @@
+test_authorized_baseline_structure (test_contracts.ContractTests.test_authorized_baseline_structure) ... ok
+test_baseline_is_distinct (test_contracts.ContractTests.test_baseline_is_distinct) ... ok
+test_clean_binding (test_contracts.ContractTests.test_clean_binding) ... ok
+test_duplicate_check_blocks (test_contracts.ContractTests.test_duplicate_check_blocks) ... ok
+test_empty_requirements_block (test_contracts.ContractTests.test_empty_requirements_block) ... ok
+test_error_priority (test_contracts.ContractTests.test_error_priority) ... ok
+test_every_identity_binding (test_contracts.ContractTests.test_every_identity_binding) ... ok
+test_local_report_not_governed (test_contracts.ContractTests.test_local_report_not_governed) ... ok
+test_missing_check_blocks (test_contracts.ContractTests.test_missing_check_blocks) ... ok
+test_missing_review_approval (test_contracts.ContractTests.test_missing_review_approval) ... ok
+test_negative_manifest (test_contracts.ContractTests.test_negative_manifest) ... ok
+test_positive_manifest (test_contracts.ContractTests.test_positive_manifest) ... ok
+test_raw_fail_cannot_be_claimed_as_pass (test_contracts.ContractTests.test_raw_fail_cannot_be_claimed_as_pass) ... ok
+test_report_frozen (test_contracts.ContractTests.test_report_frozen) ... ok
+test_required_set_binding (test_contracts.ContractTests.test_required_set_binding) ... ok
+test_required_skip_blocks (test_contracts.ContractTests.test_required_skip_blocks) ... ok
+test_review_blockers (test_contracts.ContractTests.test_review_blockers) ... ok
+test_stale_report_reducer (test_contracts.ContractTests.test_stale_report_reducer) ... ok
+test_stale_review (test_contracts.ContractTests.test_stale_review) ... ok
+test_test_failure_baseline_rejected (test_contracts.ContractTests.test_test_failure_baseline_rejected) ... ok
+test_timeout_is_executed_error (test_contracts.ContractTests.test_timeout_is_executed_error) ... ok
+test_unexecuted_pass_rejected (test_contracts.ContractTests.test_unexecuted_pass_rejected) ... ok
+test_valid_policy (test_contracts.ContractTests.test_valid_policy) ... ok
+test_all_python_syntax (test_templates.TemplateTests.test_all_python_syntax) ... ok
+test_all_schemas_valid (test_templates.TemplateTests.test_all_schemas_valid) ... ok
+test_ci_contract_not_claimed_as_workflow (test_templates.TemplateTests.test_ci_contract_not_claimed_as_workflow) ... ok
+test_policy_alignment (test_templates.TemplateTests.test_policy_alignment) ... ok
+test_positive_schema_instances (test_templates.TemplateTests.test_positive_schema_instances) ... ok
+test_skill_frontmatter (test_templates.TemplateTests.test_skill_frontmatter) ... ok
+test_toml_files_parse (test_templates.TemplateTests.test_toml_files_parse) ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 0.053s
+
+OK

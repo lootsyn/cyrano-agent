@@ -1,0 +1,9 @@
+{
+  "name": "cyrano-development-harness",
+  "version": "0.1.0-dev.0",
+  "extensions": {
+    "com.langchain.deepagents.code": {
+      "pythonExtensions": "./extension.py"
+    }
+  }
+}

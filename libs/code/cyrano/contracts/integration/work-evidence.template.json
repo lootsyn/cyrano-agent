@@ -1,0 +1,17 @@
+{
+  "schema_version": "cyrano.work-evidence/2",
+  "template": true,
+  "wp_id": "WP00",
+  "revision": "2026-09-16-integration-r2",
+  "status": "not_run",
+  "base_manifest_digest": null,
+  "postimage_manifest_digest": null,
+  "plan_artifact_ref": null,
+  "independent_plan_review_ref": null,
+  "authorized_scope_ref": null,
+  "commands": [],
+  "acceptance_results": [],
+  "independent_result_review_ref": null,
+  "blockers": [],
+  "product_verified": false
+}

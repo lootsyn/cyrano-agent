@@ -1,0 +1,134 @@
+{
+  "kind": "executed_readiness_drill",
+  "drill": "clean_env_install",
+  "category": "A",
+  "authorization": "isolated_no_external_effects",
+  "external_effects": false,
+  "argv": [
+    "/home/ubuntu/cyrano-agent-devin/libs/code/.venv/bin/python",
+    "drills.py",
+    "clean_env_install"
+  ],
+  "status": "passed",
+  "blockers": [],
+  "checks": [
+    {
+      "name": "wheel_installed_and_importable",
+      "passed": true,
+      "detail": "cyrano import ok"
+    },
+    {
+      "name": "install_confined_to_venv",
+      "passed": true,
+      "detail": "/tmp/cyrano-drill-cleanenv-slt1t2o4/venv"
+    }
+  ],
+  "cleanup": {
+    "path": "/tmp/cyrano-drill-cleanenv-slt1t2o4",
+    "removed": true
+  },
+  "raw": {
+    "commands": [
+      {
+        "argv": [
+          "/home/ubuntu/.local/bin/uv",
+          "venv",
+          "/tmp/cyrano-drill-cleanenv-slt1t2o4/venv",
+          "--seed"
+        ],
+        "exit": 0,
+        "stdout": "",
+        "stderr": "Using CPython 3.13.15\nCreating virtual environment with seed packages at: /tmp/cyrano-drill-cleanenv-slt1t2o4/venv\n + pip==26.2.1\nActivate with: source /tmp/cyrano-drill-cleanenv-slt1t2o4/venv/bin/activate\n"
+      },
+      {
+        "argv": [
+          "/home/ubuntu/.local/bin/uv",
+          "pip",
+          "install",
+          "--offline",
+          "--python",
+          "/tmp/cyrano-drill-cleanenv-slt1t2o4/venv/bin/python",
+          "--find-links",
+          "/tmp/cyrano-drill-cleanenv-slt1t2o4/wheelhouse",
+          "deepagents-code==0.1.70"
+        ],
+        "exit": 1,
+        "stdout": "",
+        "stderr": "Using Python 3.13.15 environment at: /tmp/cyrano-drill-cleanenv-slt1t2o4/venv\n  \u00d7 No solution found when resolving dependencies:\n  \u2570\u2500\u25b6 Because only genai-prices<=0.1.6 is available and\n      deepagents-code>=0.1.70 depends on genai-prices>=0.1.7,<0.2.0, we can\n      conclude that deepagents-code>=0.1.70 cannot be used.\n      And because you require deepagents-code==0.1.70, we can conclude that\n      your requirements are unsatisfiable.\n"
+      },
+      {
+        "argv": [
+          "/home/ubuntu/.local/bin/uv",
+          "pip",
+          "install",
+          "--offline",
+          "--python",
+          "/tmp/cyrano-drill-cleanenv-slt1t2o4/venv/bin/python",
+          "--find-links",
+          "/tmp/cyrano-drill-cleanenv-slt1t2o4/wheelhouse",
+          "deepagents-code==0.1.70"
+        ],
+        "exit": 1,
+        "stdout": "",
+        "stderr": "Using Python 3.13.15 environment at: /tmp/cyrano-drill-cleanenv-slt1t2o4/venv\n  \u00d7 No solution found when resolving dependencies:\n  \u2570\u2500\u25b6 Because only langchain<=1.4.0 is available and deepagents-code>=0.1.70\n      depends on langchain>=1.4.1,<2.0.0, we can conclude that\n      deepagents-code>=0.1.70 cannot be used.\n      And because you require deepagents-code==0.1.70, we can conclude that\n      your requirements are unsatisfiable.\n"
+      },
+      {
+        "argv": [
+          "/home/ubuntu/.local/bin/uv",
+          "pip",
+          "install",
+          "--offline",
+          "--python",
+          "/tmp/cyrano-drill-cleanenv-slt1t2o4/venv/bin/python",
+          "--find-links",
+          "/tmp/cyrano-drill-cleanenv-slt1t2o4/wheelhouse",
+          "deepagents-code==0.1.70"
+        ],
+        "exit": 1,
+        "stdout": "",
+        "stderr": "Using Python 3.13.15 environment at: /tmp/cyrano-drill-cleanenv-slt1t2o4/venv\n  \u00d7 No solution found when resolving dependencies:\n  \u2570\u2500\u25b6 Because only langsmith[sandbox]<=0.12.4 is available and\n      deepagents-code>=0.1.70 depends on langsmith[sandbox]>=0.12.6, we can\n      conclude that deepagents-code>=0.1.70 cannot be used.\n      And because you require deepagents-code==0.1.70, we can conclude that\n      your requirements are unsatisfiable.\n"
+      },
+      {
+        "argv": [
+          "/home/ubuntu/.local/bin/uv",
+          "pip",
+          "install",
+          "--offline",
+          "--python",
+          "/tmp/cyrano-drill-cleanenv-slt1t2o4/venv/bin/python",
+          "--find-links",
+          "/tmp/cyrano-drill-cleanenv-slt1t2o4/wheelhouse",
+          "deepagents-code==0.1.70"
+        ],
+        "exit": 0,
+        "stdout": "",
+        "stderr": "Using Python 3.13.15 environment at: /tmp/cyrano-drill-cleanenv-slt1t2o4/venv\nResolved 135 packages in 33ms\nPrepared 5 packages in 53ms\nInstalled 135 packages in 94ms\n + agent-client-protocol==1.0.0rc1\n + aiosqlite==0.22.1\n + annotated-types==0.8.0\n + anthropic==1.5.0\n + anyio==4.15.1\n + attrs==26.1.0\n + beautifulsoup4==4.15.0\n + blockbuster==1.5.27\n + bracex==3.0.1\n + bsdiff4==1.2.6\n + certifi==2026.7.22\n + cffi==2.1.1\n + charset-normalizer==3.5.1\n + click==8.5.0\n + cloudpickle==3.1.2\n + croniter==6.2.4\n + cryptography==50.0.1\n + deepagents==0.7.15\n + deepagents-acp==0.0.11\n + deepagents-code==0.1.70\n + distro==1.9.0\n + docstring-parser==0.18.0\n + filelock==3.29.7\n + filetype==1.2.0\n + forbiddenfruit==0.1.4\n + genai-prices==0.1.7\n + google-auth==2.58.0\n + google-genai==2.23.0\n + googleapis-common-protos==1.75.3\n + grpcio==1.81.1\n + grpcio-health-checking==1.81.1\n + grpcio-tools==1.81.1\n + h11==0.16.0\n + httpcore==1.0.9\n + httpcore2==2.13.0\n + httptools==0.8.0\n + httpx==0.28.1\n + httpx-sse==0.4.3\n + httpx2==2.13.0\n + idna==3.20\n + jiter==0.17.0\n + jsonpatch==1.33\n + jsonpointer==3.1.1\n + jsonschema==4.26.0\n + jsonschema-rs==0.44.1\n + jsonschema-specifications==2025.9.1\n + langchain==1.4.1\n + langchain-anthropic==1.7.2\n + langchain-core==1.6.3\n + langchain-google-genai==4.4.0\n + langchain-mcp-adapters==0.3.2\n + langchain-openai==1.6.2\n + langchain-protocol==0.0.19\n + langchain-quickjs==0.3.7\n + langgraph==1.2.11\n + langgraph-api==0.16.0.dev4\n + langgraph-checkpoint==4.2.0\n + langgraph-checkpoint-sqlite==3.1.1\n + langgraph-cli==0.4.31\n + langgraph-prebuilt==1.1.0\n + langgraph-runtime-inmem==0.36.0.dev4\n + langgraph-sdk==0.4.4\n + langsmith==0.12.6\n + linkify-it-py==2.2.0\n + markdown-it-py==4.2.0\n + markdownify==1.2.3\n + mcp==1.30.0\n + mdit-py-plugins==0.6.1\n + mdurl==0.1.2\n + openai==3.14.0\n + opentelemetry-api==1.42.1\n + opentelemetry-exporter-otlp-proto-common==1.42.1\n + opentelemetry-exporter-otlp-proto-http==1.42.1\n + opentelemetry-exporter-prometheus==0.63b1\n + opentelemetry-proto==1.42.1\n + opentelemetry-sdk==1.42.1\n + opentelemetry-semantic-conventions==0.63b1\n + orjson==3.12.0\n + ormsgpack==1.12.2\n + packaging==26.3\n + pathspec==1.1.1\n + pillow==12.3.0\n + platformdirs==4.11.9\n + prometheus-client==0.26.0\n + prompt-toolkit==3.0.53\n + protobuf==6.33.6\n + pyasn1==0.6.4\n + pyasn1-modules==0.4.2\n + pycparser==3.0\n + pydantic==2.13.5\n + pydantic-core==2.46.5\n + pydantic-settings==2.15.0\n + pygments==2.21.0\n + pyjwt==2.14.0\n + pyperclip==1.11.0\n + python-dateutil==2.9.0.post0\n + python-dotenv==1.2.3\n + python-multipart==0.0.32\n + pyyaml==6.0.3\n + quickjs-rs==0.2.5\n + referencing==0.37.0\n + regex==2026.9.10\n + requests==2.34.2\n + requests-toolbelt==1.0.0\n + rich==15.0.0\n + rpds-py==2026.6.3\n + setuptools==84.0.0\n + six==1.17.0\n + sniffio==1.3.1\n + soupsieve==2.9.2\n + sqlite-vec==0.1.10a4\n + sse-starlette==3.4.11\n + starlette==1.6.0\n + structlog==25.5.0\n + tavily-python==0.8.3\n + tenacity==9.1.4\n + textual==8.2.8\n + textual-autocomplete==4.0.6\n + textual-speedups==0.2.1\n + tiktoken==0.14.0\n + tomli-w==1.2.0\n + truststore==0.10.4\n + typing-extensions==4.16.0\n + typing-inspection==0.4.4\n + urllib3==2.7.0\n + uuid-utils==0.17.1\n + uvicorn==0.53.0\n + uvloop==0.22.1\n + wasmtime==48.0.0\n + watchfiles==1.2.0\n + wcmatch==11.0.1\n + wcwidth==0.8.4\n + websockets==16.1.1\n + xxhash==4.0.1\n + zstandard==0.25.0\n"
+      },
+      {
+        "argv": [
+          "/tmp/cyrano-drill-cleanenv-slt1t2o4/venv/bin/python",
+          "-c",
+          "import deepagents_code.cyrano; print('cyrano import ok')"
+        ],
+        "exit": 0,
+        "stdout": "cyrano import ok\n",
+        "stderr": ""
+      }
+    ],
+    "repacked": [
+      {
+        "package": "genai-prices",
+        "wheel": "genai_prices-0.1.7-py3-none-any.whl"
+      },
+      {
+        "package": "langchain",
+        "wheel": "langchain-1.4.1-py3-none-any.whl"
+      },
+      {
+        "package": "langsmith",
+        "wheel": "langsmith-0.12.6-py3-none-any.whl"
+      }
+    ]
+  },
+  "cleanup_verified": true
+}

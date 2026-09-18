@@ -1,0 +1,340 @@
+[
+  {
+    "id": "T01",
+    "technique": "Provider capability/typed message normalization",
+    "decision": "ADAPT",
+    "complexity": "중간",
+    "expected_benefit": "프로토콜 손실·재시도 오류 감소",
+    "risk": "SDK 중복변환·서명손상",
+    "dependency": "native adapter 검사·현재 probe",
+    "fallback": "unsupported를 명시; 원래검증경로유지",
+    "owner_work_packages": [
+      "WP06"
+    ],
+    "status": "design_decision_not_runtime_activation"
+  },
+  {
+    "id": "T02",
+    "technique": "Streaming call completion gate",
+    "decision": "ADOPT",
+    "complexity": "중간",
+    "expected_benefit": "부분 JSON의 조기실행 차단",
+    "risk": "내부 retry 중복",
+    "dependency": "실제 stream hook",
+    "fallback": "불완전call은실행하지않음",
+    "owner_work_packages": [
+      "WP06"
+    ],
+    "status": "design_decision_not_runtime_activation"
+  },
+  {
+    "id": "T03",
+    "technique": "고정 prefix·context epoch",
+    "decision": "ADOPT",
+    "complexity": "중간",
+    "expected_benefit": "cache 안정성과재현성",
+    "risk": "중요정보갱신지연",
+    "dependency": "context manifest",
+    "fallback": "철회는cache보다우선",
+    "owner_work_packages": [
+      "WP05"
+    ],
+    "status": "design_decision_not_runtime_activation"
+  },
+  {
+    "id": "T04",
+    "technique": "유휴 cache warming",
+    "decision": "EXPERIMENT",
+    "complexity": "중간~높음",
+    "expected_benefit": "후속호출비용절감가설",
+    "risk": "과금·TTL오해·취소경합",
+    "dependency": "provider실측·명시예산",
+    "fallback": "기본off;사용자작업우선",
+    "owner_work_packages": [
+      "WP05"
+    ],
+    "status": "design_decision_not_runtime_activation"
+  },
+  {
+    "id": "T05",
+    "technique": "의무 보존 compaction",
+    "decision": "ADAPT",
+    "complexity": "중간",
+    "expected_benefit": "맥락압박에도권한/계획보존",
+    "risk": "요약의사실손실",
+    "dependency": "원문artifact·kernel원장",
+    "fallback": "실패시기존epoch유지/pause",
+    "owner_work_packages": [
+      "WP05"
+    ],
+    "status": "design_decision_not_runtime_activation"
+  },
+  {
+    "id": "T06",
+    "technique": "Kibitzer형 JIT recall",
+    "decision": "ADAPT",
+    "complexity": "중간",
+    "expected_benefit": "관련기억만주입",
+    "risk": "retrievalpollution·주입공격",
+    "dependency": "ACL+freshness+evidence",
+    "fallback": "hint거부·필요근거재조회",
+    "owner_work_packages": [
+      "WP11"
+    ],
+    "status": "design_decision_not_runtime_activation"
+  },
+  {
+    "id": "T07",
+    "technique": "기억 utility 학습",
+    "decision": "EXPERIMENT",
+    "complexity": "높음",
+    "expected_benefit": "반복효과반영",
+    "risk": "selectionbias·stale상승",
+    "dependency": "pairedsample·불확실성",
+    "fallback": "기본관련성검색유지",
+    "owner_work_packages": [
+      "WP11",
+      "WP20"
+    ],
+    "status": "design_decision_not_runtime_activation"
+  },
+  {
+    "id": "T08",
+    "technique": "Lesson→skill delta·deprecation",
+    "decision": "ADAPT",
+    "complexity": "높음",
+    "expected_benefit": "재사용절차개선",
+    "risk": "검증기준변조·근거소실",
+    "dependency": "B actual eval·release broker",
+    "fallback": "oldrelease/revoke",
+    "owner_work_packages": [
+      "WP16"
+    ],
+    "status": "design_decision_not_runtime_activation"
+  },
+  {
+    "id": "T09",
+    "technique": "Bounded WorkflowIR",
+    "decision": "ADAPT",
+    "complexity": "중간~높음",
+    "expected_benefit": "병렬실행재현성",
+    "risk": "DAG확장권한우회",
+    "dependency": "기존workflow/permit",
+    "fallback": "compile거부·기존검증계획",
+    "owner_work_packages": [
+      "WP09"
+    ],
+    "status": "design_decision_not_runtime_activation"
+  },
+  {
+    "id": "T10",
+    "technique": "임의 generated JavaScript/Python 실행",
+    "decision": "REJECT",
+    "complexity": "높음",
+    "expected_benefit": "현재목표보다위험큼",
+    "risk": "권한우회·무한loop·dependency폭증",
+    "dependency": "새runtime필요",
+    "fallback": "허용IR로표현",
+    "owner_work_packages": [
+      "WP09"
+    ],
+    "status": "design_decision_not_runtime_activation"
+  },
+  {
+    "id": "T11",
+    "technique": "Task lease·mailbox·작업원장",
+    "decision": "ADOPT",
+    "complexity": "중간",
+    "expected_benefit": "장기작업재개와충돌방지",
+    "risk": "이중claim·stale결과",
+    "dependency": "transaction+fencing",
+    "fallback": "pause·reconciliation",
+    "owner_work_packages": [
+      "WP09"
+    ],
+    "status": "design_decision_not_runtime_activation"
+  },
+  {
+    "id": "T12",
+    "technique": "worktree 후보 격리",
+    "decision": "ADOPT",
+    "complexity": "중간",
+    "expected_benefit": "파일충돌감소",
+    "risk": "Git공유·OS미격리",
+    "dependency": "Broker/sandbox",
+    "fallback": "단일approvedcandidate",
+    "owner_work_packages": [
+      "WP09"
+    ],
+    "status": "design_decision_not_runtime_activation"
+  },
+  {
+    "id": "T13",
+    "technique": "Hash anchored edits",
+    "decision": "ADAPT",
+    "complexity": "중간",
+    "expected_benefit": "잘못된대상편집감소",
+    "risk": "짧은hash충돌·인코딩",
+    "dependency": "snapshot+전체digest",
+    "fallback": "정확재읽기;fuzzy금지",
+    "owner_work_packages": [
+      "WP03"
+    ],
+    "status": "design_decision_not_runtime_activation"
+  },
+  {
+    "id": "T14",
+    "technique": "LSP/AST/graph 단계 조회",
+    "decision": "ADAPT",
+    "complexity": "중간~높음",
+    "expected_benefit": "관련코드탐색",
+    "risk": "stale/추정edge오용",
+    "dependency": "검증tool/indexbinding",
+    "fallback": "text탐색만낮은보장으로표시",
+    "owner_work_packages": [
+      "WP03"
+    ],
+    "status": "design_decision_not_runtime_activation"
+  },
+  {
+    "id": "T15",
+    "technique": "ACP 외부 coding worker",
+    "decision": "EXPERIMENT",
+    "complexity": "높음",
+    "expected_benefit": "worker교체가능성",
+    "risk": "원격효과·권한손실",
+    "dependency": "capabilityconformance",
+    "fallback": "dcode기본worker유지",
+    "owner_work_packages": [
+      "WP10"
+    ],
+    "status": "design_decision_not_runtime_activation"
+  },
+  {
+    "id": "T16",
+    "technique": "A2A 기본제품활성",
+    "decision": "DEFER",
+    "complexity": "높음",
+    "expected_benefit": "지금필수아님",
+    "risk": "인증/운영/비용증가",
+    "dependency": "실제remote요구",
+    "fallback": "adapter설계만",
+    "owner_work_packages": [
+      "WP10"
+    ],
+    "status": "design_decision_not_runtime_activation"
+  },
+  {
+    "id": "T17",
+    "technique": "MCP scope/schema snapshot",
+    "decision": "ADOPT",
+    "complexity": "중간",
+    "expected_benefit": "도구권한일관성",
+    "risk": "discovery/schema drift",
+    "dependency": "trustedprofile·protocolpin",
+    "fallback": "stale서버호출차단",
+    "owner_work_packages": [
+      "WP10"
+    ],
+    "status": "design_decision_not_runtime_activation"
+  },
+  {
+    "id": "T18",
+    "technique": "Evidence transaction/effect fence",
+    "decision": "ADAPT",
+    "complexity": "높음",
+    "expected_benefit": "완료·복구진실성",
+    "risk": "다중파일원자성오해",
+    "dependency": "trustedrunner·저장소",
+    "fallback": "unknown효과확인",
+    "owner_work_packages": [
+      "WP03",
+      "WP13"
+    ],
+    "status": "design_decision_not_runtime_activation"
+  },
+  {
+    "id": "T19",
+    "technique": "OTel 선택 exporter",
+    "decision": "ADAPT",
+    "complexity": "중간",
+    "expected_benefit": "기존관측backend연동",
+    "risk": "개인정보·queueoverflow",
+    "dependency": "redaction·localjournal",
+    "fallback": "localCLI조회유지",
+    "owner_work_packages": [
+      "WP13"
+    ],
+    "status": "design_decision_not_runtime_activation"
+  },
+  {
+    "id": "T20",
+    "technique": "Agent의 정책·승인키·holdout 자기수정",
+    "decision": "REJECT",
+    "complexity": "해당없음",
+    "expected_benefit": "목표와모순",
+    "risk": "평가기준조작",
+    "dependency": "보호경로",
+    "fallback": "정상candidate제안만",
+    "owner_work_packages": [
+      "WP16"
+    ],
+    "status": "design_decision_not_runtime_activation"
+  },
+  {
+    "id": "T21",
+    "technique": "dcode 대체 engine/별도 task DB",
+    "decision": "REJECT",
+    "complexity": "높음",
+    "expected_benefit": "구조보존요구위반",
+    "risk": "이중상태·migration",
+    "dependency": "불필요",
+    "fallback": "기존모듈확장",
+    "owner_work_packages": [
+      "WP00"
+    ],
+    "status": "design_decision_not_runtime_activation"
+  },
+  {
+    "id": "T22",
+    "technique": "상시 peer swarm",
+    "decision": "DEFER",
+    "complexity": "높음",
+    "expected_benefit": "소규모task효용미확인",
+    "risk": "비용폭증·coordination",
+    "dependency": "실측효과",
+    "fallback": "필요worker만dispatch",
+    "owner_work_packages": [
+      "WP09"
+    ],
+    "status": "design_decision_not_runtime_activation"
+  },
+  {
+    "id": "T23",
+    "technique": "Review feedback 학습",
+    "decision": "ADAPT",
+    "complexity": "중간",
+    "expected_benefit": "수정반복감소",
+    "risk": "취향을정답으로오인",
+    "dependency": "finding·evidence·B eval",
+    "fallback": "scope제한candidate",
+    "owner_work_packages": [
+      "WP16"
+    ],
+    "status": "design_decision_not_runtime_activation"
+  },
+  {
+    "id": "T24",
+    "technique": "Thin model-name behavior preset",
+    "decision": "REJECT",
+    "complexity": "높음",
+    "expected_benefit": "범용목표에불필요",
+    "risk": "profile증식·근거없는능력점수",
+    "dependency": "protocol차이만필요",
+    "fallback": "thin protocol adapter",
+    "owner_work_packages": [
+      "WP06"
+    ],
+    "status": "design_decision_not_runtime_activation"
+  }
+]

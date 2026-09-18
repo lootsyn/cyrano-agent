@@ -1,0 +1,48 @@
+{
+  "kind": "skill_manifest",
+  "schema_version": "1.0",
+  "id": "verification-recipe",
+  "version": "0.1.0-dev",
+  "name": "verification-recipe",
+  "description": "실제 산출물에서 정확성·사용자 acceptance·회귀를 확인한다.",
+  "entrypoint": "SKILL.md",
+  "content_digest": "sha256:f06558a2bbbde044e92ffaf63d066dbf4c2b9869399853c28cb0fed88fe378a2",
+  "resources": [
+    {
+      "path": "references/checklist.md",
+      "digest": "sha256:427b01e182955ebd9ec9c3e71de43b3202628a61fbcdf7dc931d67424827877e",
+      "executable": false
+    },
+    {
+      "path": "assets/output.example.json",
+      "digest": "sha256:8431b0ccacc40f885765fd7ceeac06de2bc55f0b957473e23454a65bb8dbaf05",
+      "executable": false
+    },
+    {
+      "path": "references/universal-integration.md",
+      "digest": "sha256:a8e7cf64454c398aec7a7e510e7d7b0d24ef086c34edace533ca5658c1de8fdc",
+      "executable": false
+    }
+  ],
+  "allowed_roles": [
+    "critic",
+    "plan-reviewer",
+    "verifier"
+  ],
+  "required_tools": [],
+  "scope": {
+    "tenant": "__BIND_TENANT__",
+    "user": "__BIND_USER__",
+    "workspace": "__BIND_WORKSPACE__"
+  },
+  "context_byte_budget": 8192,
+  "activation_tests": [
+    "SKILL-verification-recipe-positive"
+  ],
+  "counterexample_tests": [
+    "SKILL-verification-recipe-negative"
+  ],
+  "release_digest": null,
+  "approval_ref": null,
+  "status": "candidate"
+}

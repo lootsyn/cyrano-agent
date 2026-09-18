@@ -1,0 +1,1502 @@
+{
+  "fixtures": [
+    {
+      "id": "subject-valid",
+      "schema": "contracts/v2/planning.schema.json#/$defs/PlanReviewSubject",
+      "value": {
+        "subject_id": "subject-1",
+        "plan_id": "plan-1",
+        "revision": 1,
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "review_scopes": [
+          "requirements",
+          "implementation",
+          "testing",
+          "operations"
+        ],
+        "dependency_ids": [],
+        "requirements_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "design_decisions_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_baseline_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "test_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "recovery_recipe_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "budget_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "valid": true
+    },
+    {
+      "id": "subject-missing-subject_id",
+      "schema": "contracts/v2/planning.schema.json#/$defs/PlanReviewSubject",
+      "value": {
+        "plan_id": "plan-1",
+        "revision": 1,
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "review_scopes": [
+          "requirements",
+          "implementation",
+          "testing",
+          "operations"
+        ],
+        "dependency_ids": [],
+        "requirements_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "design_decisions_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_baseline_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "test_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "recovery_recipe_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "budget_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "valid": false
+    },
+    {
+      "id": "subject-missing-plan_id",
+      "schema": "contracts/v2/planning.schema.json#/$defs/PlanReviewSubject",
+      "value": {
+        "subject_id": "subject-1",
+        "revision": 1,
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "review_scopes": [
+          "requirements",
+          "implementation",
+          "testing",
+          "operations"
+        ],
+        "dependency_ids": [],
+        "requirements_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "design_decisions_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_baseline_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "test_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "recovery_recipe_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "budget_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "valid": false
+    },
+    {
+      "id": "subject-missing-revision",
+      "schema": "contracts/v2/planning.schema.json#/$defs/PlanReviewSubject",
+      "value": {
+        "subject_id": "subject-1",
+        "plan_id": "plan-1",
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "review_scopes": [
+          "requirements",
+          "implementation",
+          "testing",
+          "operations"
+        ],
+        "dependency_ids": [],
+        "requirements_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "design_decisions_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_baseline_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "test_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "recovery_recipe_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "budget_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "valid": false
+    },
+    {
+      "id": "subject-missing-scope",
+      "schema": "contracts/v2/planning.schema.json#/$defs/PlanReviewSubject",
+      "value": {
+        "subject_id": "subject-1",
+        "plan_id": "plan-1",
+        "revision": 1,
+        "review_scopes": [
+          "requirements",
+          "implementation",
+          "testing",
+          "operations"
+        ],
+        "dependency_ids": [],
+        "requirements_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "design_decisions_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_baseline_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "test_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "recovery_recipe_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "budget_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "valid": false
+    },
+    {
+      "id": "subject-missing-review_scopes",
+      "schema": "contracts/v2/planning.schema.json#/$defs/PlanReviewSubject",
+      "value": {
+        "subject_id": "subject-1",
+        "plan_id": "plan-1",
+        "revision": 1,
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "dependency_ids": [],
+        "requirements_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "design_decisions_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_baseline_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "test_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "recovery_recipe_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "budget_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "valid": false
+    },
+    {
+      "id": "subject-missing-dependency_ids",
+      "schema": "contracts/v2/planning.schema.json#/$defs/PlanReviewSubject",
+      "value": {
+        "subject_id": "subject-1",
+        "plan_id": "plan-1",
+        "revision": 1,
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "review_scopes": [
+          "requirements",
+          "implementation",
+          "testing",
+          "operations"
+        ],
+        "requirements_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "design_decisions_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_baseline_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "test_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "recovery_recipe_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "budget_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "valid": false
+    },
+    {
+      "id": "subject-missing-requirements_digest",
+      "schema": "contracts/v2/planning.schema.json#/$defs/PlanReviewSubject",
+      "value": {
+        "subject_id": "subject-1",
+        "plan_id": "plan-1",
+        "revision": 1,
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "review_scopes": [
+          "requirements",
+          "implementation",
+          "testing",
+          "operations"
+        ],
+        "dependency_ids": [],
+        "design_decisions_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_baseline_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "test_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "recovery_recipe_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "budget_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "valid": false
+    },
+    {
+      "id": "subject-missing-design_decisions_digest",
+      "schema": "contracts/v2/planning.schema.json#/$defs/PlanReviewSubject",
+      "value": {
+        "subject_id": "subject-1",
+        "plan_id": "plan-1",
+        "revision": 1,
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "review_scopes": [
+          "requirements",
+          "implementation",
+          "testing",
+          "operations"
+        ],
+        "dependency_ids": [],
+        "requirements_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_baseline_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "test_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "recovery_recipe_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "budget_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "valid": false
+    },
+    {
+      "id": "subject-missing-work_plan_digest",
+      "schema": "contracts/v2/planning.schema.json#/$defs/PlanReviewSubject",
+      "value": {
+        "subject_id": "subject-1",
+        "plan_id": "plan-1",
+        "revision": 1,
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "review_scopes": [
+          "requirements",
+          "implementation",
+          "testing",
+          "operations"
+        ],
+        "dependency_ids": [],
+        "requirements_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "design_decisions_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_baseline_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "test_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "recovery_recipe_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "budget_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "valid": false
+    },
+    {
+      "id": "subject-missing-source_baseline_digest",
+      "schema": "contracts/v2/planning.schema.json#/$defs/PlanReviewSubject",
+      "value": {
+        "subject_id": "subject-1",
+        "plan_id": "plan-1",
+        "revision": 1,
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "review_scopes": [
+          "requirements",
+          "implementation",
+          "testing",
+          "operations"
+        ],
+        "dependency_ids": [],
+        "requirements_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "design_decisions_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "test_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "recovery_recipe_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "budget_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "valid": false
+    },
+    {
+      "id": "subject-missing-policy_digest",
+      "schema": "contracts/v2/planning.schema.json#/$defs/PlanReviewSubject",
+      "value": {
+        "subject_id": "subject-1",
+        "plan_id": "plan-1",
+        "revision": 1,
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "review_scopes": [
+          "requirements",
+          "implementation",
+          "testing",
+          "operations"
+        ],
+        "dependency_ids": [],
+        "requirements_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "design_decisions_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_baseline_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "test_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "recovery_recipe_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "budget_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "valid": false
+    },
+    {
+      "id": "subject-missing-runtime_digest",
+      "schema": "contracts/v2/planning.schema.json#/$defs/PlanReviewSubject",
+      "value": {
+        "subject_id": "subject-1",
+        "plan_id": "plan-1",
+        "revision": 1,
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "review_scopes": [
+          "requirements",
+          "implementation",
+          "testing",
+          "operations"
+        ],
+        "dependency_ids": [],
+        "requirements_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "design_decisions_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_baseline_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "test_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "recovery_recipe_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "budget_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "valid": false
+    },
+    {
+      "id": "subject-missing-test_plan_digest",
+      "schema": "contracts/v2/planning.schema.json#/$defs/PlanReviewSubject",
+      "value": {
+        "subject_id": "subject-1",
+        "plan_id": "plan-1",
+        "revision": 1,
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "review_scopes": [
+          "requirements",
+          "implementation",
+          "testing",
+          "operations"
+        ],
+        "dependency_ids": [],
+        "requirements_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "design_decisions_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_baseline_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "recovery_recipe_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "budget_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "valid": false
+    },
+    {
+      "id": "subject-missing-recovery_recipe_digest",
+      "schema": "contracts/v2/planning.schema.json#/$defs/PlanReviewSubject",
+      "value": {
+        "subject_id": "subject-1",
+        "plan_id": "plan-1",
+        "revision": 1,
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "review_scopes": [
+          "requirements",
+          "implementation",
+          "testing",
+          "operations"
+        ],
+        "dependency_ids": [],
+        "requirements_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "design_decisions_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_baseline_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "test_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "budget_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "valid": false
+    },
+    {
+      "id": "subject-missing-budget_digest",
+      "schema": "contracts/v2/planning.schema.json#/$defs/PlanReviewSubject",
+      "value": {
+        "subject_id": "subject-1",
+        "plan_id": "plan-1",
+        "revision": 1,
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "review_scopes": [
+          "requirements",
+          "implementation",
+          "testing",
+          "operations"
+        ],
+        "dependency_ids": [],
+        "requirements_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "design_decisions_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_baseline_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "test_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "recovery_recipe_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "valid": false
+    },
+    {
+      "id": "subject-missing-permission_digest",
+      "schema": "contracts/v2/planning.schema.json#/$defs/PlanReviewSubject",
+      "value": {
+        "subject_id": "subject-1",
+        "plan_id": "plan-1",
+        "revision": 1,
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "review_scopes": [
+          "requirements",
+          "implementation",
+          "testing",
+          "operations"
+        ],
+        "dependency_ids": [],
+        "requirements_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "design_decisions_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_baseline_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "test_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "recovery_recipe_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "budget_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "valid": false
+    },
+    {
+      "id": "subject-missing-subject_digest",
+      "schema": "contracts/v2/planning.schema.json#/$defs/PlanReviewSubject",
+      "value": {
+        "subject_id": "subject-1",
+        "plan_id": "plan-1",
+        "revision": 1,
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "review_scopes": [
+          "requirements",
+          "implementation",
+          "testing",
+          "operations"
+        ],
+        "dependency_ids": [],
+        "requirements_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "design_decisions_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_baseline_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "test_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "recovery_recipe_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "budget_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "valid": false
+    },
+    {
+      "id": "subject-unknown-authority",
+      "schema": "contracts/v2/planning.schema.json#/$defs/PlanReviewSubject",
+      "value": {
+        "subject_id": "subject-1",
+        "plan_id": "plan-1",
+        "revision": 1,
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "review_scopes": [
+          "requirements",
+          "implementation",
+          "testing",
+          "operations"
+        ],
+        "dependency_ids": [],
+        "requirements_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "design_decisions_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_baseline_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "test_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "recovery_recipe_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "budget_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "trusted": true
+      },
+      "valid": false
+    },
+    {
+      "id": "request-valid",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionRequest",
+      "value": {
+        "decision_id": "decision-1",
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "purpose": "plan_approval",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "request_revision": 1,
+        "nonce": "nonce-1",
+        "expires_at": "2030-01-01T00:10:00Z",
+        "allowed_responses": [
+          "approve",
+          "reject",
+          "defer",
+          "cancel",
+          "request_changes",
+          "ask_question"
+        ],
+        "state": "pending"
+      },
+      "valid": true
+    },
+    {
+      "id": "request-missing-decision_id",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionRequest",
+      "value": {
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "purpose": "plan_approval",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "request_revision": 1,
+        "nonce": "nonce-1",
+        "expires_at": "2030-01-01T00:10:00Z",
+        "allowed_responses": [
+          "approve",
+          "reject",
+          "defer",
+          "cancel",
+          "request_changes",
+          "ask_question"
+        ],
+        "state": "pending"
+      },
+      "valid": false
+    },
+    {
+      "id": "request-missing-scope",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionRequest",
+      "value": {
+        "decision_id": "decision-1",
+        "purpose": "plan_approval",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "request_revision": 1,
+        "nonce": "nonce-1",
+        "expires_at": "2030-01-01T00:10:00Z",
+        "allowed_responses": [
+          "approve",
+          "reject",
+          "defer",
+          "cancel",
+          "request_changes",
+          "ask_question"
+        ],
+        "state": "pending"
+      },
+      "valid": false
+    },
+    {
+      "id": "request-missing-purpose",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionRequest",
+      "value": {
+        "decision_id": "decision-1",
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "request_revision": 1,
+        "nonce": "nonce-1",
+        "expires_at": "2030-01-01T00:10:00Z",
+        "allowed_responses": [
+          "approve",
+          "reject",
+          "defer",
+          "cancel",
+          "request_changes",
+          "ask_question"
+        ],
+        "state": "pending"
+      },
+      "valid": false
+    },
+    {
+      "id": "request-missing-subject_digest",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionRequest",
+      "value": {
+        "decision_id": "decision-1",
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "purpose": "plan_approval",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "request_revision": 1,
+        "nonce": "nonce-1",
+        "expires_at": "2030-01-01T00:10:00Z",
+        "allowed_responses": [
+          "approve",
+          "reject",
+          "defer",
+          "cancel",
+          "request_changes",
+          "ask_question"
+        ],
+        "state": "pending"
+      },
+      "valid": false
+    },
+    {
+      "id": "request-missing-display_digest",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionRequest",
+      "value": {
+        "decision_id": "decision-1",
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "purpose": "plan_approval",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "request_revision": 1,
+        "nonce": "nonce-1",
+        "expires_at": "2030-01-01T00:10:00Z",
+        "allowed_responses": [
+          "approve",
+          "reject",
+          "defer",
+          "cancel",
+          "request_changes",
+          "ask_question"
+        ],
+        "state": "pending"
+      },
+      "valid": false
+    },
+    {
+      "id": "request-missing-request_revision",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionRequest",
+      "value": {
+        "decision_id": "decision-1",
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "purpose": "plan_approval",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "nonce": "nonce-1",
+        "expires_at": "2030-01-01T00:10:00Z",
+        "allowed_responses": [
+          "approve",
+          "reject",
+          "defer",
+          "cancel",
+          "request_changes",
+          "ask_question"
+        ],
+        "state": "pending"
+      },
+      "valid": false
+    },
+    {
+      "id": "request-missing-nonce",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionRequest",
+      "value": {
+        "decision_id": "decision-1",
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "purpose": "plan_approval",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "request_revision": 1,
+        "expires_at": "2030-01-01T00:10:00Z",
+        "allowed_responses": [
+          "approve",
+          "reject",
+          "defer",
+          "cancel",
+          "request_changes",
+          "ask_question"
+        ],
+        "state": "pending"
+      },
+      "valid": false
+    },
+    {
+      "id": "request-missing-expires_at",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionRequest",
+      "value": {
+        "decision_id": "decision-1",
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "purpose": "plan_approval",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "request_revision": 1,
+        "nonce": "nonce-1",
+        "allowed_responses": [
+          "approve",
+          "reject",
+          "defer",
+          "cancel",
+          "request_changes",
+          "ask_question"
+        ],
+        "state": "pending"
+      },
+      "valid": false
+    },
+    {
+      "id": "request-missing-allowed_responses",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionRequest",
+      "value": {
+        "decision_id": "decision-1",
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "purpose": "plan_approval",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "request_revision": 1,
+        "nonce": "nonce-1",
+        "expires_at": "2030-01-01T00:10:00Z",
+        "state": "pending"
+      },
+      "valid": false
+    },
+    {
+      "id": "request-missing-state",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionRequest",
+      "value": {
+        "decision_id": "decision-1",
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "purpose": "plan_approval",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "request_revision": 1,
+        "nonce": "nonce-1",
+        "expires_at": "2030-01-01T00:10:00Z",
+        "allowed_responses": [
+          "approve",
+          "reject",
+          "defer",
+          "cancel",
+          "request_changes",
+          "ask_question"
+        ]
+      },
+      "valid": false
+    },
+    {
+      "id": "request-unknown-authority",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionRequest",
+      "value": {
+        "decision_id": "decision-1",
+        "scope": {
+          "tenant": "tenant-1",
+          "user": "human-1",
+          "workspace": "workspace-1"
+        },
+        "purpose": "plan_approval",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "request_revision": 1,
+        "nonce": "nonce-1",
+        "expires_at": "2030-01-01T00:10:00Z",
+        "allowed_responses": [
+          "approve",
+          "reject",
+          "defer",
+          "cancel",
+          "request_changes",
+          "ask_question"
+        ],
+        "state": "pending",
+        "trusted": true
+      },
+      "valid": false
+    },
+    {
+      "id": "response-valid",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionResponse",
+      "value": {
+        "decision_id": "decision-1",
+        "expected_revision": 1,
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "nonce": "nonce-1",
+        "response": "approve",
+        "comment": "",
+        "amendment_artifact_id": null,
+        "selected_work_unit_ids": [],
+        "client_event_id": "event-1"
+      },
+      "valid": true
+    },
+    {
+      "id": "response-missing-decision_id",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionResponse",
+      "value": {
+        "expected_revision": 1,
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "nonce": "nonce-1",
+        "response": "approve",
+        "comment": "",
+        "amendment_artifact_id": null,
+        "selected_work_unit_ids": [],
+        "client_event_id": "event-1"
+      },
+      "valid": false
+    },
+    {
+      "id": "response-missing-expected_revision",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionResponse",
+      "value": {
+        "decision_id": "decision-1",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "nonce": "nonce-1",
+        "response": "approve",
+        "comment": "",
+        "amendment_artifact_id": null,
+        "selected_work_unit_ids": [],
+        "client_event_id": "event-1"
+      },
+      "valid": false
+    },
+    {
+      "id": "response-missing-subject_digest",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionResponse",
+      "value": {
+        "decision_id": "decision-1",
+        "expected_revision": 1,
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "nonce": "nonce-1",
+        "response": "approve",
+        "comment": "",
+        "amendment_artifact_id": null,
+        "selected_work_unit_ids": [],
+        "client_event_id": "event-1"
+      },
+      "valid": false
+    },
+    {
+      "id": "response-missing-display_digest",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionResponse",
+      "value": {
+        "decision_id": "decision-1",
+        "expected_revision": 1,
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "nonce": "nonce-1",
+        "response": "approve",
+        "comment": "",
+        "amendment_artifact_id": null,
+        "selected_work_unit_ids": [],
+        "client_event_id": "event-1"
+      },
+      "valid": false
+    },
+    {
+      "id": "response-missing-nonce",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionResponse",
+      "value": {
+        "decision_id": "decision-1",
+        "expected_revision": 1,
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "response": "approve",
+        "comment": "",
+        "amendment_artifact_id": null,
+        "selected_work_unit_ids": [],
+        "client_event_id": "event-1"
+      },
+      "valid": false
+    },
+    {
+      "id": "response-missing-response",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionResponse",
+      "value": {
+        "decision_id": "decision-1",
+        "expected_revision": 1,
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "nonce": "nonce-1",
+        "comment": "",
+        "amendment_artifact_id": null,
+        "selected_work_unit_ids": [],
+        "client_event_id": "event-1"
+      },
+      "valid": false
+    },
+    {
+      "id": "response-missing-comment",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionResponse",
+      "value": {
+        "decision_id": "decision-1",
+        "expected_revision": 1,
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "nonce": "nonce-1",
+        "response": "approve",
+        "amendment_artifact_id": null,
+        "selected_work_unit_ids": [],
+        "client_event_id": "event-1"
+      },
+      "valid": false
+    },
+    {
+      "id": "response-missing-amendment_artifact_id",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionResponse",
+      "value": {
+        "decision_id": "decision-1",
+        "expected_revision": 1,
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "nonce": "nonce-1",
+        "response": "approve",
+        "comment": "",
+        "selected_work_unit_ids": [],
+        "client_event_id": "event-1"
+      },
+      "valid": false
+    },
+    {
+      "id": "response-missing-selected_work_unit_ids",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionResponse",
+      "value": {
+        "decision_id": "decision-1",
+        "expected_revision": 1,
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "nonce": "nonce-1",
+        "response": "approve",
+        "comment": "",
+        "amendment_artifact_id": null,
+        "client_event_id": "event-1"
+      },
+      "valid": false
+    },
+    {
+      "id": "response-missing-client_event_id",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionResponse",
+      "value": {
+        "decision_id": "decision-1",
+        "expected_revision": 1,
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "nonce": "nonce-1",
+        "response": "approve",
+        "comment": "",
+        "amendment_artifact_id": null,
+        "selected_work_unit_ids": []
+      },
+      "valid": false
+    },
+    {
+      "id": "response-unknown-authority",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionResponse",
+      "value": {
+        "decision_id": "decision-1",
+        "expected_revision": 1,
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "nonce": "nonce-1",
+        "response": "approve",
+        "comment": "",
+        "amendment_artifact_id": null,
+        "selected_work_unit_ids": [],
+        "client_event_id": "event-1",
+        "trusted": true
+      },
+      "valid": false
+    },
+    {
+      "id": "finding-valid",
+      "schema": "contracts/v2/planning.schema.json#/$defs/ReviewFinding",
+      "value": {
+        "finding_id": "finding-1",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "reviewer_run_id": "review-1",
+        "author_run_id": "author-1",
+        "requirement_ids": [
+          "R1"
+        ],
+        "work_unit_ids": [
+          "A"
+        ],
+        "evidence_ids": [
+          "ev-1"
+        ],
+        "severity": "blocking",
+        "description": "Missing rollback for the schema change.",
+        "resolution_condition": "Verified recovery recipe and test.",
+        "refutation_condition": "Evidence that no schema change exists.",
+        "state": "open"
+      },
+      "valid": true
+    },
+    {
+      "id": "finding-missing-finding_id",
+      "schema": "contracts/v2/planning.schema.json#/$defs/ReviewFinding",
+      "value": {
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "reviewer_run_id": "review-1",
+        "author_run_id": "author-1",
+        "requirement_ids": [
+          "R1"
+        ],
+        "work_unit_ids": [
+          "A"
+        ],
+        "evidence_ids": [
+          "ev-1"
+        ],
+        "severity": "blocking",
+        "description": "Missing rollback for the schema change.",
+        "resolution_condition": "Verified recovery recipe and test.",
+        "refutation_condition": "Evidence that no schema change exists.",
+        "state": "open"
+      },
+      "valid": false
+    },
+    {
+      "id": "finding-missing-subject_digest",
+      "schema": "contracts/v2/planning.schema.json#/$defs/ReviewFinding",
+      "value": {
+        "finding_id": "finding-1",
+        "reviewer_run_id": "review-1",
+        "author_run_id": "author-1",
+        "requirement_ids": [
+          "R1"
+        ],
+        "work_unit_ids": [
+          "A"
+        ],
+        "evidence_ids": [
+          "ev-1"
+        ],
+        "severity": "blocking",
+        "description": "Missing rollback for the schema change.",
+        "resolution_condition": "Verified recovery recipe and test.",
+        "refutation_condition": "Evidence that no schema change exists.",
+        "state": "open"
+      },
+      "valid": false
+    },
+    {
+      "id": "finding-missing-reviewer_run_id",
+      "schema": "contracts/v2/planning.schema.json#/$defs/ReviewFinding",
+      "value": {
+        "finding_id": "finding-1",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "author_run_id": "author-1",
+        "requirement_ids": [
+          "R1"
+        ],
+        "work_unit_ids": [
+          "A"
+        ],
+        "evidence_ids": [
+          "ev-1"
+        ],
+        "severity": "blocking",
+        "description": "Missing rollback for the schema change.",
+        "resolution_condition": "Verified recovery recipe and test.",
+        "refutation_condition": "Evidence that no schema change exists.",
+        "state": "open"
+      },
+      "valid": false
+    },
+    {
+      "id": "finding-missing-author_run_id",
+      "schema": "contracts/v2/planning.schema.json#/$defs/ReviewFinding",
+      "value": {
+        "finding_id": "finding-1",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "reviewer_run_id": "review-1",
+        "requirement_ids": [
+          "R1"
+        ],
+        "work_unit_ids": [
+          "A"
+        ],
+        "evidence_ids": [
+          "ev-1"
+        ],
+        "severity": "blocking",
+        "description": "Missing rollback for the schema change.",
+        "resolution_condition": "Verified recovery recipe and test.",
+        "refutation_condition": "Evidence that no schema change exists.",
+        "state": "open"
+      },
+      "valid": false
+    },
+    {
+      "id": "finding-missing-requirement_ids",
+      "schema": "contracts/v2/planning.schema.json#/$defs/ReviewFinding",
+      "value": {
+        "finding_id": "finding-1",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "reviewer_run_id": "review-1",
+        "author_run_id": "author-1",
+        "work_unit_ids": [
+          "A"
+        ],
+        "evidence_ids": [
+          "ev-1"
+        ],
+        "severity": "blocking",
+        "description": "Missing rollback for the schema change.",
+        "resolution_condition": "Verified recovery recipe and test.",
+        "refutation_condition": "Evidence that no schema change exists.",
+        "state": "open"
+      },
+      "valid": false
+    },
+    {
+      "id": "finding-missing-work_unit_ids",
+      "schema": "contracts/v2/planning.schema.json#/$defs/ReviewFinding",
+      "value": {
+        "finding_id": "finding-1",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "reviewer_run_id": "review-1",
+        "author_run_id": "author-1",
+        "requirement_ids": [
+          "R1"
+        ],
+        "evidence_ids": [
+          "ev-1"
+        ],
+        "severity": "blocking",
+        "description": "Missing rollback for the schema change.",
+        "resolution_condition": "Verified recovery recipe and test.",
+        "refutation_condition": "Evidence that no schema change exists.",
+        "state": "open"
+      },
+      "valid": false
+    },
+    {
+      "id": "finding-missing-evidence_ids",
+      "schema": "contracts/v2/planning.schema.json#/$defs/ReviewFinding",
+      "value": {
+        "finding_id": "finding-1",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "reviewer_run_id": "review-1",
+        "author_run_id": "author-1",
+        "requirement_ids": [
+          "R1"
+        ],
+        "work_unit_ids": [
+          "A"
+        ],
+        "severity": "blocking",
+        "description": "Missing rollback for the schema change.",
+        "resolution_condition": "Verified recovery recipe and test.",
+        "refutation_condition": "Evidence that no schema change exists.",
+        "state": "open"
+      },
+      "valid": false
+    },
+    {
+      "id": "finding-missing-severity",
+      "schema": "contracts/v2/planning.schema.json#/$defs/ReviewFinding",
+      "value": {
+        "finding_id": "finding-1",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "reviewer_run_id": "review-1",
+        "author_run_id": "author-1",
+        "requirement_ids": [
+          "R1"
+        ],
+        "work_unit_ids": [
+          "A"
+        ],
+        "evidence_ids": [
+          "ev-1"
+        ],
+        "description": "Missing rollback for the schema change.",
+        "resolution_condition": "Verified recovery recipe and test.",
+        "refutation_condition": "Evidence that no schema change exists.",
+        "state": "open"
+      },
+      "valid": false
+    },
+    {
+      "id": "finding-missing-description",
+      "schema": "contracts/v2/planning.schema.json#/$defs/ReviewFinding",
+      "value": {
+        "finding_id": "finding-1",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "reviewer_run_id": "review-1",
+        "author_run_id": "author-1",
+        "requirement_ids": [
+          "R1"
+        ],
+        "work_unit_ids": [
+          "A"
+        ],
+        "evidence_ids": [
+          "ev-1"
+        ],
+        "severity": "blocking",
+        "resolution_condition": "Verified recovery recipe and test.",
+        "refutation_condition": "Evidence that no schema change exists.",
+        "state": "open"
+      },
+      "valid": false
+    },
+    {
+      "id": "finding-missing-resolution_condition",
+      "schema": "contracts/v2/planning.schema.json#/$defs/ReviewFinding",
+      "value": {
+        "finding_id": "finding-1",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "reviewer_run_id": "review-1",
+        "author_run_id": "author-1",
+        "requirement_ids": [
+          "R1"
+        ],
+        "work_unit_ids": [
+          "A"
+        ],
+        "evidence_ids": [
+          "ev-1"
+        ],
+        "severity": "blocking",
+        "description": "Missing rollback for the schema change.",
+        "refutation_condition": "Evidence that no schema change exists.",
+        "state": "open"
+      },
+      "valid": false
+    },
+    {
+      "id": "finding-missing-refutation_condition",
+      "schema": "contracts/v2/planning.schema.json#/$defs/ReviewFinding",
+      "value": {
+        "finding_id": "finding-1",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "reviewer_run_id": "review-1",
+        "author_run_id": "author-1",
+        "requirement_ids": [
+          "R1"
+        ],
+        "work_unit_ids": [
+          "A"
+        ],
+        "evidence_ids": [
+          "ev-1"
+        ],
+        "severity": "blocking",
+        "description": "Missing rollback for the schema change.",
+        "resolution_condition": "Verified recovery recipe and test.",
+        "state": "open"
+      },
+      "valid": false
+    },
+    {
+      "id": "finding-missing-state",
+      "schema": "contracts/v2/planning.schema.json#/$defs/ReviewFinding",
+      "value": {
+        "finding_id": "finding-1",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "reviewer_run_id": "review-1",
+        "author_run_id": "author-1",
+        "requirement_ids": [
+          "R1"
+        ],
+        "work_unit_ids": [
+          "A"
+        ],
+        "evidence_ids": [
+          "ev-1"
+        ],
+        "severity": "blocking",
+        "description": "Missing rollback for the schema change.",
+        "resolution_condition": "Verified recovery recipe and test.",
+        "refutation_condition": "Evidence that no schema change exists."
+      },
+      "valid": false
+    },
+    {
+      "id": "finding-unknown-authority",
+      "schema": "contracts/v2/planning.schema.json#/$defs/ReviewFinding",
+      "value": {
+        "finding_id": "finding-1",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "reviewer_run_id": "review-1",
+        "author_run_id": "author-1",
+        "requirement_ids": [
+          "R1"
+        ],
+        "work_unit_ids": [
+          "A"
+        ],
+        "evidence_ids": [
+          "ev-1"
+        ],
+        "severity": "blocking",
+        "description": "Missing rollback for the schema change.",
+        "resolution_condition": "Verified recovery recipe and test.",
+        "refutation_condition": "Evidence that no schema change exists.",
+        "state": "open",
+        "trusted": true
+      },
+      "valid": false
+    },
+    {
+      "id": "approve-with-amendment",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionResponse",
+      "value": {
+        "decision_id": "decision-1",
+        "expected_revision": 1,
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "nonce": "nonce-1",
+        "response": "approve",
+        "comment": "",
+        "amendment_artifact_id": "patch-1",
+        "selected_work_unit_ids": [],
+        "client_event_id": "event-1"
+      },
+      "valid": false
+    },
+    {
+      "id": "change-request",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionResponse",
+      "value": {
+        "decision_id": "decision-1",
+        "expected_revision": 1,
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "nonce": "nonce-1",
+        "response": "request_changes",
+        "comment": "DB는 건드리지 않는다.",
+        "amendment_artifact_id": "patch-1",
+        "selected_work_unit_ids": [],
+        "client_event_id": "event-1"
+      },
+      "valid": true
+    },
+    {
+      "id": "empty-change-request",
+      "schema": "contracts/v2/planning.schema.json#/$defs/DecisionResponse",
+      "value": {
+        "decision_id": "decision-1",
+        "expected_revision": 1,
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "nonce": "nonce-1",
+        "response": "request_changes",
+        "comment": "",
+        "amendment_artifact_id": null,
+        "selected_work_unit_ids": [],
+        "client_event_id": "event-1"
+      },
+      "valid": false
+    }
+  ],
+  "execution_scope": "json_schema_only_not_authorization"
+}

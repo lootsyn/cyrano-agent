@@ -1,0 +1,199 @@
+{
+  "schema_version": "udh.policy/1",
+  "name": "universal-governed",
+  "model_specific_rules": [],
+  "assurance": "governed",
+  "default_source_access": "read_only",
+  "unknown_tool": "deny",
+  "installation": {
+    "target_repo_mutation": false,
+    "dcode_core_mutation": false,
+    "auto_fallback_advisory": false
+  },
+  "profiles": {
+    "phases": [
+      "interview",
+      "investigate",
+      "plan",
+      "implement",
+      "verify",
+      "review",
+      "improve",
+      "evaluate"
+    ],
+    "task_kinds": [
+      "bugfix",
+      "feature",
+      "refactor",
+      "migration",
+      "documentation",
+      "analysis"
+    ],
+    "risks": [
+      "low",
+      "standard",
+      "high",
+      "critical"
+    ],
+    "permission_composition": "intersection_deny_wins",
+    "required_checks_composition": "union",
+    "budget_composition": "minimum"
+  },
+  "interview": {
+    "minimum_questions": 0,
+    "question_soft_limit": 6,
+    "max_model_attempts": 32,
+    "max_workers": 3,
+    "max_spawn_depth": 0,
+    "scalar_score_can_authorize": false,
+    "required_reviews": [
+      "counterexample_critic",
+      "blind_handoff_reviewer"
+    ]
+  },
+  "planning": {
+    "independent_review_required": true,
+    "exact_file_scope_required": true,
+    "dag_required": true,
+    "verification_required": true,
+    "rollback_required": true
+  },
+  "authorization": {
+    "separate_actions": [
+      "approve_spec_for_planning",
+      "approve_plan",
+      "authorize_execution",
+      "authorize_sandbox_probe",
+      "approve_memory_promotion",
+      "approve_harness_release",
+      "authorize_apply_patch"
+    ],
+    "signature": "Ed25519",
+    "worker_may_approve": false,
+    "permit_ttl_seconds": 900,
+    "new_file_requires_exact_approval": true,
+    "deny_paths": [
+      ".git",
+      "credential_store",
+      "approval_keys",
+      "active_release",
+      "control_database"
+    ],
+    "trusted_host_required": true
+  },
+  "sandbox": {
+    "source_mount": "read_only",
+    "broker_is_only_source_writer": true,
+    "network": "off",
+    "host_home_mount": false,
+    "docker_socket_mount": false,
+    "credentials_mount": false,
+    "max_seconds": 3600,
+    "max_output_bytes": 1048576,
+    "write_scope": "scratch_only"
+  },
+  "context": {
+    "stable_layers": [
+      "L0",
+      "L1",
+      "L2",
+      "L3"
+    ],
+    "dynamic_layers": [
+      "L4",
+      "L5"
+    ],
+    "memory_view": "frozen_per_run",
+    "security_revoke_overrides_freeze": true,
+    "max_context_tokens": null,
+    "context_limit_source": "must_verify_or_configure",
+    "cache_parameters": "native_verified_only",
+    "missing_usage": null,
+    "response_memoization": false,
+    "auto_add_dynamic_ids_to_stable_prompt": false
+  },
+  "memory": {
+    "store": "sqlite_fts5",
+    "kinds": [
+      "working",
+      "episodic",
+      "semantic",
+      "procedural",
+      "preference",
+      "evidence"
+    ],
+    "scope_filter_before_rank": true,
+    "query_at": [
+      "intake",
+      "frame",
+      "plan",
+      "implement",
+      "verify",
+      "review",
+      "improve"
+    ],
+    "top_k": 8,
+    "max_query_top_k": 20,
+    "active_write_by_agent": false,
+    "default_promotion": "human_approval",
+    "scope_widening_requires_approval": true,
+    "raw_observations_in_prompt": false,
+    "embeddings": "optional_not_required"
+  },
+  "learning": {
+    "enabled": true,
+    "default_mode": "observe_propose_evaluate_approval",
+    "auto_global_promote": false,
+    "minimum_sample_policy": "evaluate_power_and_effect_not_magic_count",
+    "starter_task_families": 20,
+    "starter_replicates": 3,
+    "data_split_unit": "repository_task_family",
+    "holdout_hidden_from_optimizer": true,
+    "self_edit_evaluator": false,
+    "extension_code_target": "proposal_via_normal_development_only",
+    "active_run_mutation": false,
+    "hard_gate_failures_allowed": 0,
+    "verdicts": [
+      "improved",
+      "regressed",
+      "inconclusive",
+      "invalid"
+    ]
+  },
+  "monitoring": {
+    "critical_events_sampled": false,
+    "redact_before_storage": true,
+    "remote_export": "off_until_approved",
+    "local_durable_outbox": true,
+    "audit_failure_action": "block_side_effect",
+    "coverage_gap_action": "report_and_block_if_security_critical",
+    "cost_aggregation": "leaf_attempt_only",
+    "private_chain_of_thought": "not_collected"
+  },
+  "quality": {
+    "formatter": "black",
+    "line_length": 79,
+    "comment_docstring_line_length": 72,
+    "linter": "ruff",
+    "type_checker": "mypy",
+    "tests": "pytest",
+    "target_project_conventions": "respect_existing_with_explicit_exceptions",
+    "skip_is_pass": false,
+    "not_run_is_pass": false
+  },
+  "limits": {
+    "request_bytes": 1048576,
+    "artifact_bytes": 10485760,
+    "event_bytes": 65536,
+    "sqlite_busy_timeout_ms": 5000,
+    "max_parallel_workers": 3
+  },
+  "retention": {
+    "policy_status": "initial_operational_default_not_legal_advice",
+    "raw_redacted_logs_days": 30,
+    "security_audit_days": 180,
+    "evaluation_summary_days": 365,
+    "memory": "until_expiry_revocation_or_user_deletion",
+    "backup_delete": "document_and_execute_schedule"
+  }
+}

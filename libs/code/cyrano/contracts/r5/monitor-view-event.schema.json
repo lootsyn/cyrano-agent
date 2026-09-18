@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cyrano.invalid/contracts/r5/monitor-view-event",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "commit_seq": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "workspace_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "generation": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "event_type": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "payload": {
+      "type": "object"
+    },
+    "source_event_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 256
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "projection_version": {
+      "const": "cyrano.monitor-view/1"
+    }
+  },
+  "required": [
+    "event_id",
+    "commit_seq",
+    "workspace_id",
+    "request_id",
+    "generation",
+    "event_type",
+    "payload",
+    "source_event_ids",
+    "projection_version"
+  ]
+}

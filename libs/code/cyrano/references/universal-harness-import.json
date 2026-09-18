@@ -1,0 +1,671 @@
+{
+  "revision": "2026-09-16-integration-r2",
+  "archive_name": "dcode-universal-harness-design-kit.zip",
+  "archive_sha256": "21be42393a995c6775a51d8ec430e4917a6bc316169c7b22bd6d41007c26e3a6",
+  "baseline_archive_sha256": "695d03d14a75a8e6a6851de55820ff79e80a939323baa247a7cf264c8bc50c2e",
+  "file_count": 110,
+  "files": [
+    {
+      "source_path": "FULL_DESIGN.ko.md",
+      "project_path": "references/universal-harness/FULL_DESIGN.ko.md",
+      "bytes": 479461,
+      "sha256": "41bf0f8f59b6ad907d27fbeb9b4bc476cc094c5f886b20993f60feb7405b4353"
+    },
+    {
+      "source_path": "IMPLEMENTER_HANDOFF.ko.md",
+      "project_path": "references/universal-harness/IMPLEMENTER_HANDOFF.ko.md",
+      "bytes": 4537,
+      "sha256": "74a04dbc9635f584f80941cf261ed2b1dcdb5377dd6397b70fe072a212c83284"
+    },
+    {
+      "source_path": "MANIFEST.sha256",
+      "project_path": "references/universal-harness/MANIFEST.sha256",
+      "bytes": 11088,
+      "sha256": "3c915cbb8ebb1824fdee8ccb8e98e1b1c3ed865236647be7ddc2e7b9a91ef0bd"
+    },
+    {
+      "source_path": "START_HERE.ko.md",
+      "project_path": "references/universal-harness/START_HERE.ko.md",
+      "bytes": 2697,
+      "sha256": "8e21630d5d472a5a73fb23971cb7c2b69bb1612ea666bfaaddd57a8a040c2218"
+    },
+    {
+      "source_path": "CYRANO_FULL_DESIGN.ko.html",
+      "project_path": "references/universal-harness/UDH_FULL_DESIGN.ko.html",
+      "bytes": 633992,
+      "sha256": "6f77d798a08a3e36834b40653c297596d0dc294744ba63b909a3adbcaee332c6"
+    },
+    {
+      "source_path": "VALIDATION.ko.md",
+      "project_path": "references/universal-harness/VALIDATION.ko.md",
+      "bytes": 2399,
+      "sha256": "c1e4cf452dcf36f327b835e595459d0d114917a4ae38cf5acfe8b2a0ef76ef60"
+    },
+    {
+      "source_path": "VALIDATION_REPORT.json",
+      "project_path": "references/universal-harness/VALIDATION_REPORT.json",
+      "bytes": 2054,
+      "sha256": "b729d48c8643167b92f3230628fd63802e579dea84e86ecaec225c3219763f3f"
+    },
+    {
+      "source_path": "config/dcode-extensions.template.toml",
+      "project_path": "references/universal-harness/config/dcode-extensions.template.toml",
+      "bytes": 312,
+      "sha256": "99c304189f915d3aad289fe500401ef14618e8f012fff11345370a7a59f8c8f0"
+    },
+    {
+      "source_path": "config/environment.example",
+      "project_path": "references/universal-harness/config/environment.example",
+      "bytes": 519,
+      "sha256": "c7e99ba4941587260083dee8e10a282ce682cf48ba4c6eae276e72ccdd1d3a9f"
+    },
+    {
+      "source_path": "config/harness-policy.example.json",
+      "project_path": "references/universal-harness/config/harness-policy.example.json",
+      "bytes": 5140,
+      "sha256": "2334d118cae00fd6336ed3f891295d0e7046f787580ecb613bad6ac76852c593"
+    },
+    {
+      "source_path": "config/plugin-manifest.template.json",
+      "project_path": "references/universal-harness/config/plugin-manifest.template.json",
+      "bytes": 161,
+      "sha256": "b0e31f2e1efd03034fa75ca8f4c8b03c9fcb423168c413f3ae3bde75f83ff00d"
+    },
+    {
+      "source_path": "config/python-quality.toml",
+      "project_path": "references/universal-harness/config/python-quality.toml",
+      "bytes": 930,
+      "sha256": "f805c9d5d7d45e319f519db1e6dd3e0e4efbe47a1b9813063d3c751293d8ecbe"
+    },
+    {
+      "source_path": "config/runtime-lock.template.json",
+      "project_path": "references/universal-harness/config/runtime-lock.template.json",
+      "bytes": 437,
+      "sha256": "71339fe7279f59dbd24cfc6b92a278a36ceedb41c5a8ad4944b6662e02a84d58"
+    },
+    {
+      "source_path": "contracts/adapter-report.schema.json",
+      "project_path": "references/universal-harness/contracts/adapter-report.schema.json",
+      "bytes": 10565,
+      "sha256": "5dfb39eddb05c6c8d700989d61071bad53c02bf3bd18529dd6b7b011a7dd0e82"
+    },
+    {
+      "source_path": "contracts/api-dtos.schema.json",
+      "project_path": "references/universal-harness/contracts/api-dtos.schema.json",
+      "bytes": 93761,
+      "sha256": "216cd6ae5c3c800f39932049d6aecf3b3d2b54faf96e78844df72c9f2c975721"
+    },
+    {
+      "source_path": "contracts/approval-receipt-v2.schema.json",
+      "project_path": "references/universal-harness/contracts/approval-receipt-v2.schema.json",
+      "bytes": 11109,
+      "sha256": "6cd306aed9fb21d9f4c929d02079bf40955a1a0f99a2b2752f683ab370aee572"
+    },
+    {
+      "source_path": "contracts/change-manifest.schema.json",
+      "project_path": "references/universal-harness/contracts/change-manifest.schema.json",
+      "bytes": 11085,
+      "sha256": "7a2d114bfb9032386d9f1f7ec2f1ee22acea0f9009f75dea8f80f57f71af9c46"
+    },
+    {
+      "source_path": "contracts/context-manifest.schema.json",
+      "project_path": "references/universal-harness/contracts/context-manifest.schema.json",
+      "bytes": 11880,
+      "sha256": "6a468376a4c478b5b181f6bb701936b656bdd2476ba1742b647e8d2d7886f7ba"
+    },
+    {
+      "source_path": "contracts/evaluation-report.schema.json",
+      "project_path": "references/universal-harness/contracts/evaluation-report.schema.json",
+      "bytes": 12255,
+      "sha256": "999521bea1e3dc9c9c4facb9df525626072c9127de87ee6da13a15dd9aa9e25f"
+    },
+    {
+      "source_path": "contracts/event-catalog.json",
+      "project_path": "references/universal-harness/contracts/event-catalog.json",
+      "bytes": 1674,
+      "sha256": "23164fdae5b1c755cf0848430d5c61fd26359b80771cf5e1a3bc7534b8b44759"
+    },
+    {
+      "source_path": "contracts/event-envelope.schema.json",
+      "project_path": "references/universal-harness/contracts/event-envelope.schema.json",
+      "bytes": 26975,
+      "sha256": "fef60f2f59ba65c31d63aea0e02b25f5b68858204cebe4dab6fc7e546998a20d"
+    },
+    {
+      "source_path": "contracts/execution-permit.schema.json",
+      "project_path": "references/universal-harness/contracts/execution-permit.schema.json",
+      "bytes": 10709,
+      "sha256": "7b635ee93e8fca63898f8b6250a31841801cb2cdff3804d68e94a17dfc65d5f8"
+    },
+    {
+      "source_path": "contracts/learning-candidate.schema.json",
+      "project_path": "references/universal-harness/contracts/learning-candidate.schema.json",
+      "bytes": 12937,
+      "sha256": "6a549eb30e2366b6e1f097bc6006fbb965d62fb9ea55b19370aafafedec9c34f"
+    },
+    {
+      "source_path": "contracts/memory-record.schema.json",
+      "project_path": "references/universal-harness/contracts/memory-record.schema.json",
+      "bytes": 13557,
+      "sha256": "cc983a6f4bd69f9a8b21e89648500f63c4e35aed871cb7ef80294297fa3c6d81"
+    },
+    {
+      "source_path": "contracts/requirements40-rubric.json",
+      "project_path": "references/universal-harness/contracts/requirements40-rubric.json",
+      "bytes": 11335,
+      "sha256": "951f2c69eb0a6073afec7fd4e3ea984b6865438fb426023af6272e30d67ebd5f"
+    },
+    {
+      "source_path": "contracts/review-result.schema.json",
+      "project_path": "references/universal-harness/contracts/review-result.schema.json",
+      "bytes": 10526,
+      "sha256": "8b1beed098c18a4ae87db23b71263f55c41e24ab73cd754726f500bed929d1a4"
+    },
+    {
+      "source_path": "contracts/run-report.schema.json",
+      "project_path": "references/universal-harness/contracts/run-report.schema.json",
+      "bytes": 14118,
+      "sha256": "ab3d74a1e746870f358890bd4708816d957120475a39064e07f696aaf12c2c5f"
+    },
+    {
+      "source_path": "contracts/state-machine.catalog.json",
+      "project_path": "references/universal-harness/contracts/state-machine.catalog.json",
+      "bytes": 9270,
+      "sha256": "b9d2a02399ea36ae6f73174dac5cd2c60428ea4898d1cfd779388fd44099664c"
+    },
+    {
+      "source_path": "contracts/verification-result.schema.json",
+      "project_path": "references/universal-harness/contracts/verification-result.schema.json",
+      "bytes": 11891,
+      "sha256": "b1bd27ab4f6dc3b4fc08449de412e3a26c655065dd12fe2b39df23cd7f35f76c"
+    },
+    {
+      "source_path": "contracts/work-plan.schema.json",
+      "project_path": "references/universal-harness/contracts/work-plan.schema.json",
+      "bytes": 16496,
+      "sha256": "64fc536621400f8c73065038a899608feab6c72c1d166473ba0a81cedebb7f18"
+    },
+    {
+      "source_path": "contracts/worker-result-v2.schema.json",
+      "project_path": "references/universal-harness/contracts/worker-result-v2.schema.json",
+      "bytes": 11434,
+      "sha256": "3d4dab85c7dfd453981e8cbaf88b4b43794e1fbeaba2f70eacc3d9ec17ac9a73"
+    },
+    {
+      "source_path": "docs/01_ARCHITECTURE_AND_WORKFLOW.ko.md",
+      "project_path": "references/universal-harness/docs/01_ARCHITECTURE_AND_WORKFLOW.ko.md",
+      "bytes": 33089,
+      "sha256": "c018efc3aeae7e51ab545746ed3cbc79f867c207a56d24b264d35287788d1f8b"
+    },
+    {
+      "source_path": "docs/02_RUNTIME_MEMORY_AND_LEARNING.ko.md",
+      "project_path": "references/universal-harness/docs/02_RUNTIME_MEMORY_AND_LEARNING.ko.md",
+      "bytes": 29614,
+      "sha256": "c26c559ad5ad4fdda9764b8313f406201690a71ae30e264b77929afca54abb06"
+    },
+    {
+      "source_path": "docs/03_OBSERVABILITY_QUALITY_AND_OPERATIONS.ko.md",
+      "project_path": "references/universal-harness/docs/03_OBSERVABILITY_QUALITY_AND_OPERATIONS.ko.md",
+      "bytes": 22745,
+      "sha256": "b4da533dc4e21b57d0d073d0db82a3f5d63f2fc02b69c4d19058333f96ef3047"
+    },
+    {
+      "source_path": "docs/04_MODULE_API_AND_IMPLEMENTATION.ko.md",
+      "project_path": "references/universal-harness/docs/04_MODULE_API_AND_IMPLEMENTATION.ko.md",
+      "bytes": 20213,
+      "sha256": "bedbac6495f7b243bb161b2058f7b47dca564d87832bb5efb115c67a923cfba6"
+    },
+    {
+      "source_path": "docs/05_CONTRACT_DETAILS_AND_TESTING.ko.md",
+      "project_path": "references/universal-harness/docs/05_CONTRACT_DETAILS_AND_TESTING.ko.md",
+      "bytes": 19226,
+      "sha256": "56499bc4f33a022eb8ae011b2b7183444ed021f357e06209e647690e3cbd12a4"
+    },
+    {
+      "source_path": "docs/06_SOURCES_AND_TRACEABILITY.ko.md",
+      "project_path": "references/universal-harness/docs/06_SOURCES_AND_TRACEABILITY.ko.md",
+      "bytes": 5781,
+      "sha256": "d154a67079aa591c521e1b2307ae56cb7067df5733c24544eb20ffdeee9436c7"
+    },
+    {
+      "source_path": "fixtures/acceptance-cases.json",
+      "project_path": "references/universal-harness/fixtures/acceptance-cases.json",
+      "bytes": 70919,
+      "sha256": "c3efadf9b8fd405206949650b12c47487926aaf583bedc74aa5bf5c16acd6d55"
+    },
+    {
+      "source_path": "fixtures/invalid/active-unapproved-memory.json",
+      "project_path": "references/universal-harness/fixtures/invalid/active-unapproved-memory.json",
+      "bytes": 869,
+      "sha256": "ecce79fec4d98437e1f992902f558ccbb1e3bb178892a4d0a093519e2ec12427"
+    },
+    {
+      "source_path": "fixtures/invalid/empty-work-units.json",
+      "project_path": "references/universal-harness/fixtures/invalid/empty-work-units.json",
+      "bytes": 1239,
+      "sha256": "5eab1b4965977e520d297f97e7361c2bbc790cda053b2945913395343bdc3e4f"
+    },
+    {
+      "source_path": "fixtures/invalid/execution-without-plan.json",
+      "project_path": "references/universal-harness/fixtures/invalid/execution-without-plan.json",
+      "bytes": 1679,
+      "sha256": "c31ad9660f9db35048b6309293a3576332768ceb5d6ab84102dee2c6f7a715aa"
+    },
+    {
+      "source_path": "fixtures/invalid/false-completed-report.json",
+      "project_path": "references/universal-harness/fixtures/invalid/false-completed-report.json",
+      "bytes": 1249,
+      "sha256": "6d1d1ddd2d501a652769b89e9b6bda0702492d6d73fb1d7bfc20cfbbe0f77ac3"
+    },
+    {
+      "source_path": "fixtures/invalid/float-budget.json",
+      "project_path": "references/universal-harness/fixtures/invalid/float-budget.json",
+      "bytes": 4289,
+      "sha256": "f99d33cd4c340f9b9d47eb34c4f56fe8442ff6a54d9b479950d3d939b3d5b967"
+    },
+    {
+      "source_path": "fixtures/invalid/improved-without-holdout.json",
+      "project_path": "references/universal-harness/fixtures/invalid/improved-without-holdout.json",
+      "bytes": 1424,
+      "sha256": "c8270c14abaa023e5414f238b4003ea386459891d4ff991da5ec78af7a676ac1"
+    },
+    {
+      "source_path": "fixtures/invalid/negative-token-count.json",
+      "project_path": "references/universal-harness/fixtures/invalid/negative-token-count.json",
+      "bytes": 1323,
+      "sha256": "7f91f6f5dd0df3fa1a7e9bf46b01bbe7370c180bec23744f7fc5104e1e13c04c"
+    },
+    {
+      "source_path": "fixtures/invalid/passed-without-evidence.json",
+      "project_path": "references/universal-harness/fixtures/invalid/passed-without-evidence.json",
+      "bytes": 779,
+      "sha256": "b06360383d39e76a081e3ecdc1a43aae95c34d4619d187c94d79272840a2f4df"
+    },
+    {
+      "source_path": "fixtures/invalid/promoted-without-eval.json",
+      "project_path": "references/universal-harness/fixtures/invalid/promoted-without-eval.json",
+      "bytes": 1682,
+      "sha256": "8ad712b70def1961c95e0d9306d9babbe4ad41609b0ba36b01c5ecfc5c63a692"
+    },
+    {
+      "source_path": "fixtures/invalid/unknown-authority-field.json",
+      "project_path": "references/universal-harness/fixtures/invalid/unknown-authority-field.json",
+      "bytes": 1057,
+      "sha256": "1b872bdac3e35f87ce0ea41a94d7592dac6306f753647c55857e072ca72c626d"
+    },
+    {
+      "source_path": "fixtures/invalid/unknown-model-profile.json",
+      "project_path": "references/universal-harness/fixtures/invalid/unknown-model-profile.json",
+      "bytes": 4331,
+      "sha256": "b35db62b91044052d16a4d6a23b1ce337ab8e5bc615a773e425e92f3432f39bb"
+    },
+    {
+      "source_path": "fixtures/invalid/unsafe-parent-path.json",
+      "project_path": "references/universal-harness/fixtures/invalid/unsafe-parent-path.json",
+      "bytes": 4217,
+      "sha256": "34a410a31cd59b6993691c43fcb93a95aea269418b81fc2cf9984b33c5befe81"
+    },
+    {
+      "source_path": "fixtures/invalid/untyped-event-payload.json",
+      "project_path": "references/universal-harness/fixtures/invalid/untyped-event-payload.json",
+      "bytes": 916,
+      "sha256": "45b6a3764a14c86d5c73c13b7a6bbf137bef9a911ae69e3522d1ab6ce6f9c3dd"
+    },
+    {
+      "source_path": "fixtures/invalid/wrong-signing-algorithm.json",
+      "project_path": "references/universal-harness/fixtures/invalid/wrong-signing-algorithm.json",
+      "bytes": 1738,
+      "sha256": "8ed29fa8da95aec9677db709045671f1984dd98660c5c7a9d1024121bfd3dbab"
+    },
+    {
+      "source_path": "fixtures/negative-index.json",
+      "project_path": "references/universal-harness/fixtures/negative-index.json",
+      "bytes": 3161,
+      "sha256": "19cf43ce27e07e7408c734325715bd74f36e4eae9cb7bcdc12059da8f3ddd525"
+    },
+    {
+      "source_path": "fixtures/source-interview-manifest.json",
+      "project_path": "references/universal-harness/fixtures/source-interview-manifest.json",
+      "bytes": 2525,
+      "sha256": "96e7549c63daf778a764af188d41b829ba70a6f6cf9ab5725724a237408d2a16"
+    },
+    {
+      "source_path": "fixtures/test-public-key.json",
+      "project_path": "references/universal-harness/fixtures/test-public-key.json",
+      "bytes": 229,
+      "sha256": "4fe5a9e1d7c9b176a4fb553602c09e13c2e58b7096ac6a22286a6c4ff58d13c7"
+    },
+    {
+      "source_path": "fixtures/valid/adapter-report.json",
+      "project_path": "references/universal-harness/fixtures/valid/adapter-report.json",
+      "bytes": 734,
+      "sha256": "6b4ee2f1a2ecfa9d63deee60dd0af91a4ae7d917755cf017720f24c93c02bb96"
+    },
+    {
+      "source_path": "fixtures/valid/approval-receipt-v2.json",
+      "project_path": "references/universal-harness/fixtures/valid/approval-receipt-v2.json",
+      "bytes": 1741,
+      "sha256": "25f915e98cd4b734d5676887d33ce1f6b71fca2c6c105298e237f56fd1c922d7"
+    },
+    {
+      "source_path": "fixtures/valid/change-manifest.json",
+      "project_path": "references/universal-harness/fixtures/valid/change-manifest.json",
+      "bytes": 810,
+      "sha256": "35c67049a6f30eb81e3c6b0a0f49f1549cd946165f034f82eaae83a213e32a1b"
+    },
+    {
+      "source_path": "fixtures/valid/context-manifest.json",
+      "project_path": "references/universal-harness/fixtures/valid/context-manifest.json",
+      "bytes": 1325,
+      "sha256": "d996b70636b219ae127d72f5147cce7ffd93ef6543b6cba4901d799ddc82b202"
+    },
+    {
+      "source_path": "fixtures/valid/evaluation-report.json",
+      "project_path": "references/universal-harness/fixtures/valid/evaluation-report.json",
+      "bytes": 1428,
+      "sha256": "2b7a24f67cde13586b16e887014160bd1f3849bc4d8100e79d6f435133d98de4"
+    },
+    {
+      "source_path": "fixtures/valid/event-envelope.json",
+      "project_path": "references/universal-harness/fixtures/valid/event-envelope.json",
+      "bytes": 1407,
+      "sha256": "e494df877c25e85ebe6e315b43db6a74e2654fe8a7bf5fd1d5b2a44b45a748c5"
+    },
+    {
+      "source_path": "fixtures/valid/execution-permit.json",
+      "project_path": "references/universal-harness/fixtures/valid/execution-permit.json",
+      "bytes": 1160,
+      "sha256": "7358caa7e324fec4c08fbd79748b49dba845910fb0e9c8b79f9e0e825d095869"
+    },
+    {
+      "source_path": "fixtures/valid/learning-candidate.json",
+      "project_path": "references/universal-harness/fixtures/valid/learning-candidate.json",
+      "bytes": 1682,
+      "sha256": "cf26ac1318fa9bc43767519b39f2f3ab7c1ff7fce9c73af8f8d064a905cb3ad0"
+    },
+    {
+      "source_path": "fixtures/valid/memory-record.json",
+      "project_path": "references/universal-harness/fixtures/valid/memory-record.json",
+      "bytes": 872,
+      "sha256": "606f9a3c9ab23e2407120dbc0a02eb3a9d5829f727891be0510a639ed6b80073"
+    },
+    {
+      "source_path": "fixtures/valid/review-result.json",
+      "project_path": "references/universal-harness/fixtures/valid/review-result.json",
+      "bytes": 712,
+      "sha256": "13fac323cfe1987dc1190f51ccdd98c9660426c51fc5885943b9d5a7a7b63b9c"
+    },
+    {
+      "source_path": "fixtures/valid/run-report.json",
+      "project_path": "references/universal-harness/fixtures/valid/run-report.json",
+      "bytes": 1247,
+      "sha256": "94a75b0058ce1156c3cb3ca1903c261c15c45dd826a09a2190fba74bb6835b28"
+    },
+    {
+      "source_path": "fixtures/valid/verification-result.json",
+      "project_path": "references/universal-harness/fixtures/valid/verification-result.json",
+      "bytes": 780,
+      "sha256": "53745d0bb5bfd6e767b75b445ea920410ad6ea95f7b9c68d7044f495a56c02c6"
+    },
+    {
+      "source_path": "fixtures/valid/work-plan.json",
+      "project_path": "references/universal-harness/fixtures/valid/work-plan.json",
+      "bytes": 4289,
+      "sha256": "2693ab74451d180cccad4720a4b7a28cf57c9050f9a3d55620e0cb80a58e7241"
+    },
+    {
+      "source_path": "fixtures/valid/worker-result-v2.json",
+      "project_path": "references/universal-harness/fixtures/valid/worker-result-v2.json",
+      "bytes": 1037,
+      "sha256": "10fc05dba700c46a837a638e8a7c147e8216a9d7f59c7f60a5553acc665093e2"
+    },
+    {
+      "source_path": "prompts/AGENTS.template.md",
+      "project_path": "references/universal-harness/prompts/AGENTS.template.md",
+      "bytes": 1103,
+      "sha256": "8bef8e7654acecd686ee4b53ce4052c3deef51d3a22cf130b5f64082fa4ff69a"
+    },
+    {
+      "source_path": "prompts/COMMON_WORKER.ko.md",
+      "project_path": "references/universal-harness/prompts/COMMON_WORKER.ko.md",
+      "bytes": 1368,
+      "sha256": "42a76ebe60dbc65e1300062e497125431f44e9f89ae400d9dd9f54a40df83c2c"
+    },
+    {
+      "source_path": "prompts/blind_handoff_reviewer.ko.md",
+      "project_path": "references/universal-harness/prompts/blind_handoff_reviewer.ko.md",
+      "bytes": 1226,
+      "sha256": "063910361143e08312534810f6b77c24f3e4f555add9785d5572343c2648c954"
+    },
+    {
+      "source_path": "prompts/counterexample_critic.ko.md",
+      "project_path": "references/universal-harness/prompts/counterexample_critic.ko.md",
+      "bytes": 1176,
+      "sha256": "fcac13783985a3c09fd5f65b328d7044bf6dc87142de506daa9bc53e33738cba"
+    },
+    {
+      "source_path": "prompts/evaluator.ko.md",
+      "project_path": "references/universal-harness/prompts/evaluator.ko.md",
+      "bytes": 1224,
+      "sha256": "97ab2df22d06bb23b50ddcb29d920a57fbc7f8c4974eb7abc087e3a4ecdb14d7"
+    },
+    {
+      "source_path": "prompts/evidence_scout.ko.md",
+      "project_path": "references/universal-harness/prompts/evidence_scout.ko.md",
+      "bytes": 1181,
+      "sha256": "4dbf1acf64e6fcd9f7238c9d2f2e5026e5da7771e381829d49e8cd431fa9c327"
+    },
+    {
+      "source_path": "prompts/facilitator.ko.md",
+      "project_path": "references/universal-harness/prompts/facilitator.ko.md",
+      "bytes": 1256,
+      "sha256": "66481a0668eb359787599eed1b6268a96be358677bfd9e36c05afa16b1dcb1ba"
+    },
+    {
+      "source_path": "prompts/final_reviewer.ko.md",
+      "project_path": "references/universal-harness/prompts/final_reviewer.ko.md",
+      "bytes": 1171,
+      "sha256": "56418703aa984b9b77666ec5b46f4aac39b5ad5a20c1ffe374e81ccf1eaa3de6"
+    },
+    {
+      "source_path": "prompts/implementer.ko.md",
+      "project_path": "references/universal-harness/prompts/implementer.ko.md",
+      "bytes": 1205,
+      "sha256": "f45f6aec0c4d339a318dbc8fb7fd692b7558099025ec956748b3dcb5b1e165e7"
+    },
+    {
+      "source_path": "prompts/learning_analyst.ko.md",
+      "project_path": "references/universal-harness/prompts/learning_analyst.ko.md",
+      "bytes": 1239,
+      "sha256": "cf0372f738fcad8e17e094dee40684233d9f96c8522e5b2421225af952dab07c"
+    },
+    {
+      "source_path": "prompts/plan_reviewer.ko.md",
+      "project_path": "references/universal-harness/prompts/plan_reviewer.ko.md",
+      "bytes": 1165,
+      "sha256": "2c8bf6c239e06d6c8f2dbdac495a094037c90f16a370bbe0e7720c91df34a55c"
+    },
+    {
+      "source_path": "prompts/planner.ko.md",
+      "project_path": "references/universal-harness/prompts/planner.ko.md",
+      "bytes": 1209,
+      "sha256": "02a49d675b302c2981f62f869ba180affac0277326543fd359c2f1b295b924d8"
+    },
+    {
+      "source_path": "prompts/security_reviewer.ko.md",
+      "project_path": "references/universal-harness/prompts/security_reviewer.ko.md",
+      "bytes": 1173,
+      "sha256": "e1ef182f590eda5fb4138bd39296bfdc9b597ee70a64ac63e6555f1b224dee24"
+    },
+    {
+      "source_path": "prompts/skills/cyrano-evaluate/SKILL.md",
+      "project_path": "references/universal-harness/prompts/skills/udh-evaluate/SKILL.md",
+      "bytes": 1053,
+      "sha256": "ee397c97d07343b1e129e276f19fc20423e0009182763e1e820f2679f73c644e"
+    },
+    {
+      "source_path": "prompts/skills/cyrano-implement/SKILL.md",
+      "project_path": "references/universal-harness/prompts/skills/udh-implement/SKILL.md",
+      "bytes": 1079,
+      "sha256": "19f7060c27fab978515d156427d246c4b7125de21a14aa0fb27517701841f6f8"
+    },
+    {
+      "source_path": "prompts/skills/cyrano-improve/SKILL.md",
+      "project_path": "references/universal-harness/prompts/skills/udh-improve/SKILL.md",
+      "bytes": 1027,
+      "sha256": "2185005efe269959ecab391b46324b7c3dba2591ee930857204296648a84b5cf"
+    },
+    {
+      "source_path": "prompts/skills/cyrano-interview/SKILL.md",
+      "project_path": "references/universal-harness/prompts/skills/udh-interview/SKILL.md",
+      "bytes": 1079,
+      "sha256": "8846b5e162d1df033f24aaf4c21048c3a817c75a9fcc14486fde7d7b2ba7782e"
+    },
+    {
+      "source_path": "prompts/skills/cyrano-investigate/SKILL.md",
+      "project_path": "references/universal-harness/prompts/skills/udh-investigate/SKILL.md",
+      "bytes": 1051,
+      "sha256": "1bb0daaad506911b0ac8631c8f6f3451d013780f52f161bb7ed10864c09e884c"
+    },
+    {
+      "source_path": "prompts/skills/cyrano-plan/SKILL.md",
+      "project_path": "references/universal-harness/prompts/skills/udh-plan/SKILL.md",
+      "bytes": 1056,
+      "sha256": "b89bd55e372936cd54b0f82445929d38452a6026927a1681fbab41037e3130d4"
+    },
+    {
+      "source_path": "prompts/skills/cyrano-review/SKILL.md",
+      "project_path": "references/universal-harness/prompts/skills/udh-review/SKILL.md",
+      "bytes": 1018,
+      "sha256": "0a72cca6f9627b9b524cb88655ee37932449acfad11d6f01272ac181a1d50b1a"
+    },
+    {
+      "source_path": "prompts/skills/cyrano-verify/SKILL.md",
+      "project_path": "references/universal-harness/prompts/skills/udh-verify/SKILL.md",
+      "bytes": 1066,
+      "sha256": "0e49423a98a15fd3908687ed57db9e57adffd2497729d1c4f06618341a417642"
+    },
+    {
+      "source_path": "prompts/verifier.ko.md",
+      "project_path": "references/universal-harness/prompts/verifier.ko.md",
+      "bytes": 1194,
+      "sha256": "d4e914f9e374d8650900bdbaf1e7a13a4a56d46956fb9edbd4f71972764ad3d7"
+    },
+    {
+      "source_path": "reference/TEST_OUTPUT.txt",
+      "project_path": "references/universal-harness/reference/TEST_OUTPUT.txt",
+      "bytes": 2901,
+      "sha256": "1b9ace9f1d7e8c907ac6082e0061290b086b931a8b9255e5326f62576dcafcbd"
+    },
+    {
+      "source_path": "reference/kernel_oracle.py",
+      "project_path": "references/universal-harness/reference/kernel_oracle.py",
+      "bytes": 4715,
+      "sha256": "f0a49e48cf8a18160c6318a307d6287b094ae17817506dbf9a3685dbd4dc2b13"
+    },
+    {
+      "source_path": "reference/test_kernel_oracle.py",
+      "project_path": "references/universal-harness/reference/test_kernel_oracle.py",
+      "bytes": 6058,
+      "sha256": "9e792d576a1fb9b412a3e1a79b9e0cb57e17e47220ad1b745f830a94055bd932"
+    },
+    {
+      "source_path": "source_interview/DESIGN.ko.md",
+      "project_path": "references/universal-harness/source_interview/DESIGN.ko.md",
+      "bytes": 30871,
+      "sha256": "9928d7f8f137d99d7364f9a04204ef82659df1532fb7bb9dd07bf10318d2ef8c"
+    },
+    {
+      "source_path": "source_interview/IMPLEMENTATION_PLAN.ko.md",
+      "project_path": "references/universal-harness/source_interview/IMPLEMENTATION_PLAN.ko.md",
+      "bytes": 5281,
+      "sha256": "305afb3fd70b6d20fc830e4f1a0a401b348b216302b55309cdaaba7d49b8fd14"
+    },
+    {
+      "source_path": "source_interview/SOURCES.md",
+      "project_path": "references/universal-harness/source_interview/SOURCES.md",
+      "bytes": 3421,
+      "sha256": "a64c95fe9a0e165f60ccb69daf2b6180e020cf6bc3eab2d9a25b17035e1e3657"
+    },
+    {
+      "source_path": "source_interview/START_HERE.ko.md",
+      "project_path": "references/universal-harness/source_interview/START_HERE.ko.md",
+      "bytes": 1479,
+      "sha256": "eac2fcd5da489ab7cc8693983d4e4f4b663149be230b0e51c6a78f6d78573bd8"
+    },
+    {
+      "source_path": "source_interview/VALIDATION.md",
+      "project_path": "references/universal-harness/source_interview/VALIDATION.md",
+      "bytes": 839,
+      "sha256": "c4377bb6a0072ef0226801b8a1e7d6230a26d93b843308eb196615ff56ce73ea"
+    },
+    {
+      "source_path": "source_interview/contracts/approval-receipt.schema.json",
+      "project_path": "references/universal-harness/source_interview/contracts/approval-receipt.schema.json",
+      "bytes": 2654,
+      "sha256": "dd0138414cc0b70946efc30c79b2b8aab4cb3f5a39bb85f229599f83855101c6"
+    },
+    {
+      "source_path": "source_interview/contracts/worker-result.schema.json",
+      "project_path": "references/universal-harness/source_interview/contracts/worker-result.schema.json",
+      "bytes": 8263,
+      "sha256": "454b06a7c9daa48b19a9520a61e5a5e67fdb2144d088dc02833507eb7af2f7a0"
+    },
+    {
+      "source_path": "source_interview/fixtures/readiness-cases.json",
+      "project_path": "references/universal-harness/source_interview/fixtures/readiness-cases.json",
+      "bytes": 6821,
+      "sha256": "ed1983e6d8ad9cbaa51f51c0690c4cb4bab6c152e33ad92be266594dc9b308ba"
+    },
+    {
+      "source_path": "source_interview/fixtures/worker-result.example.json",
+      "project_path": "references/universal-harness/source_interview/fixtures/worker-result.example.json",
+      "bytes": 2250,
+      "sha256": "c129e14312fe6909884fab948b2132b7399770a4049094cd13bb919c0a262346"
+    },
+    {
+      "source_path": "source_interview/policy.example.json",
+      "project_path": "references/universal-harness/source_interview/policy.example.json",
+      "bytes": 1569,
+      "sha256": "c11698e1f5b2d2fefa13492c0c4867476908cc9b7b267f8373f41068be0c4076"
+    },
+    {
+      "source_path": "source_interview/prompts/blind-handoff-reviewer.md",
+      "project_path": "references/universal-harness/source_interview/prompts/blind-handoff-reviewer.md",
+      "bytes": 935,
+      "sha256": "8389c7513987dab06bd858097c326e5570b0e24716f4c2309fd665c2ab30db1c"
+    },
+    {
+      "source_path": "source_interview/prompts/critic.md",
+      "project_path": "references/universal-harness/source_interview/prompts/critic.md",
+      "bytes": 966,
+      "sha256": "7ea3c89318d30184b1f8d64c9164b7d79211a9b5faf42ea510e3c656421f16d7"
+    },
+    {
+      "source_path": "source_interview/prompts/evidence-scout.md",
+      "project_path": "references/universal-harness/source_interview/prompts/evidence-scout.md",
+      "bytes": 867,
+      "sha256": "bcfd9511d65e61d15adb8e891cd0dffa42bdfdad5bb03000497e93c5b27d721a"
+    },
+    {
+      "source_path": "source_interview/prompts/facilitator.md",
+      "project_path": "references/universal-harness/source_interview/prompts/facilitator.md",
+      "bytes": 1298,
+      "sha256": "304caf10313556e10fc1f61376705e2593f4470c2664c33bf72c8975f273dda2"
+    },
+    {
+      "source_path": "sql/001_initial.sql",
+      "project_path": "references/universal-harness/sql/001_initial.sql",
+      "bytes": 11503,
+      "sha256": "b502a5aee971b01a60045182308f6ee9244ed68eef77d83304b9a4550fec40b0"
+    },
+    {
+      "source_path": "tools/validate_package.py",
+      "project_path": "references/universal-harness/tools/validate_package.py",
+      "bytes": 7278,
+      "sha256": "6634f2bc6c868085098e3cfb8bc6e7645f7265e47942e233725c206861297cfe"
+    }
+  ],
+  "trust": "reference_data_not_executable_configuration",
+  "upstream_live_verification": "not_repeated; preserve source observation dates; WP00 must verify actual distribution"
+}

@@ -1,0 +1,27 @@
+{
+  "kind": "agent_role",
+  "schema_version": "1.0",
+  "id": "evidence-scout",
+  "description": "근거 수집과 최신성·관측 한계 확인",
+  "prompt_path": "plugins/cyrano/agents/evidence-scout.md",
+  "input_schema": "contracts/v1/cyrano.schema.json#/$defs/AgentTask",
+  "output_schema": "contracts/v1/interview-worker-result.schema.json",
+  "skills": [
+    "evidence-scout",
+    "scoped-memory",
+    "cyrano-code-intelligence"
+  ],
+  "allowed_tools": [
+    "cyrano_evidence_read",
+    "cyrano_memory_query",
+    "cyrano_report_result",
+    "cyrano_session_view",
+    "cyrano_memory_read",
+    "cyrano_code_query",
+    "cyrano_docs_query"
+  ],
+  "authority": "proposal_only",
+  "context_epoch_policy": "pinned_per_phase",
+  "read_scope": "current_task",
+  "max_delegation_depth": 0
+}

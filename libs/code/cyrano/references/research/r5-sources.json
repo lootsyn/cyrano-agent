@@ -1,0 +1,181 @@
+{
+  "observed_at": "2026-09-16",
+  "sources": [
+    {
+      "id": "S01",
+      "title": "dcode native command registry",
+      "url": "https://github.com/langchain-ai/deepagents/blob/7f9e8ed3a555933902045792da9bb184950ee7b2/libs/code/deepagents_code/command_registry.py",
+      "revision": "7f9e8ed3a555933902045792da9bb184950ee7b2",
+      "finding": "SlashCommand/BypassTier; native command integration is code, not skill",
+      "verification": "primary_document_read_not_runtime_benchmark"
+    },
+    {
+      "id": "S02",
+      "title": "dcode COMMANDS and extension limits",
+      "url": "https://github.com/langchain-ai/deepagents/blob/7f9e8ed3a555933902045792da9bb184950ee7b2/libs/code/EXTENSIONS.md",
+      "revision": "7f9e8ed3a555933902045792da9bb184950ee7b2",
+      "finding": "Python extension exposes middleware/tools/routes/shutdown; no custom slash command API",
+      "verification": "primary_document_read_not_runtime_benchmark"
+    },
+    {
+      "id": "S03",
+      "title": "Hermes persistent memory",
+      "url": "https://hermes-agent.nousresearch.com/docs/user-guide/features/memory",
+      "revision": null,
+      "finding": "bounded frozen session snapshot, session_search, staged approvals, review accounting; do not copy permissive defaults",
+      "verification": "primary_document_read_not_runtime_benchmark"
+    },
+    {
+      "id": "S04",
+      "title": "ACE",
+      "url": "https://arxiv.org/html/2510.04618v1",
+      "revision": "2510.04618v1",
+      "finding": "structured incremental context/playbook updates; generator/reflection/curation",
+      "verification": "primary_document_read_not_runtime_benchmark"
+    },
+    {
+      "id": "S05",
+      "title": "MemRL",
+      "url": "https://arxiv.org/html/2601.03192v1",
+      "revision": "2601.03192v1",
+      "finding": "episodic retrieval relevance then utility; frozen model; our utility overlay is an adaptation not reproduction",
+      "verification": "primary_document_read_not_runtime_benchmark"
+    },
+    {
+      "id": "S06",
+      "title": "A-Mem",
+      "url": "https://arxiv.org/html/2502.12110v9",
+      "revision": "2502.12110v9",
+      "finding": "atomic notes and dynamic relationships; our links remain evidence-bound and revisioned",
+      "verification": "primary_document_read_not_runtime_benchmark"
+    },
+    {
+      "id": "S07",
+      "title": "Mem-pi",
+      "url": "https://arxiv.org/html/2605.21463v1",
+      "revision": "2605.21463v1",
+      "finding": "learned timing/content memory policy; defer trained policy, test abstention without training",
+      "verification": "primary_document_read_not_runtime_benchmark"
+    },
+    {
+      "id": "S08",
+      "title": "Evaluating AGENTS.md",
+      "url": "https://arxiv.org/html/2602.11988v2",
+      "revision": "2602.11988v2",
+      "finding": "context does not generally improve success in studied conditions; inference overhead; no universal conclusion",
+      "verification": "primary_document_read_not_runtime_benchmark"
+    },
+    {
+      "id": "S09",
+      "title": "Two-Agent context ablation",
+      "url": "https://arxiv.org/html/2607.27250",
+      "revision": "2607.27250v1",
+      "finding": "bounded null in limited repos/tasks; mandatory agent context is not evidence of improvement",
+      "verification": "primary_document_read_not_runtime_benchmark"
+    },
+    {
+      "id": "S10",
+      "title": "ty server",
+      "url": "https://docs.astral.sh/ty/editors/",
+      "revision": null,
+      "finding": "ty server, competing LSP avoidance; verify pinned 0.0.61 capabilities rather than assuming current docs apply",
+      "verification": "primary_document_read_not_runtime_benchmark"
+    },
+    {
+      "id": "S11",
+      "title": "LSP protocol",
+      "url": "https://microsoft.github.io/language-server-protocol/",
+      "revision": null,
+      "finding": "initialize capabilities, URIs, positions and request/notification lifecycle",
+      "verification": "primary_document_read_not_runtime_benchmark"
+    },
+    {
+      "id": "S12",
+      "title": "Serena install",
+      "url": "https://oraios.github.io/serena/02-usage/020_running.html",
+      "revision": null,
+      "finding": "official uv / source installs; isolate managed tools; do not import whole runtime",
+      "verification": "primary_document_read_not_runtime_benchmark"
+    },
+    {
+      "id": "S13",
+      "title": "Serena license and dependencies",
+      "url": "https://github.com/oraios/serena/blob/1bbe53546124c00e4238972f1599a91fbf8c6539/pyproject.toml",
+      "revision": "1bbe53546124c00e4238972f1599a91fbf8c6539",
+      "finding": "GPL-3.0-or-later; development optional, not bundled product dependency; license acknowledgement is not legal clearance",
+      "verification": "primary_document_read_not_runtime_benchmark"
+    },
+    {
+      "id": "S14",
+      "title": "Graphify current branch/package",
+      "url": "https://github.com/Graphify-Labs/graphify/blob/c7ec1082083e3e876443f643ecf86ebcfae177c2/pyproject.toml",
+      "revision": "c7ec1082083e3e876443f643ecf86ebcfae177c2",
+      "finding": "default branch v8, graphifyy 0.9.62, Apache-2.0 plus LICENSE-MIT/NOTICE; main was stale",
+      "verification": "primary_document_read_not_runtime_benchmark"
+    },
+    {
+      "id": "S15",
+      "title": "Graphify official usage",
+      "url": "https://github.com/Graphify-Labs/graphify",
+      "revision": null,
+      "finding": "extract --code-only --no-cluster; project install mutates agent files; disable automatic hooks, LLM and graph reflect",
+      "verification": "primary_document_read_not_runtime_benchmark"
+    },
+    {
+      "id": "S16",
+      "title": "QMD official package",
+      "url": "https://github.com/tobi/qmd/blob/04e4dbd8245c527a88f1a8f0bda547aef9ca81fb/package.json",
+      "revision": "04e4dbd8245c527a88f1a8f0bda547aef9ca81fb",
+      "finding": "@tobilu/qmd 2.8.3 MIT, Node>=22, native dependencies and local model side effects",
+      "verification": "primary_document_read_not_runtime_benchmark"
+    },
+    {
+      "id": "S17",
+      "title": "QMD official usage/SDK",
+      "url": "https://github.com/tobi/qmd",
+      "revision": null,
+      "finding": "local npm install; createStore explicit dbPath/config; searchLex keyword vs search semantic models; never rely on unverified request options as ACL",
+      "verification": "primary_document_read_not_runtime_benchmark"
+    },
+    {
+      "id": "S18",
+      "title": "SCIP Python usage",
+      "url": "https://github.com/sourcegraph/scip-python",
+      "revision": null,
+      "finding": "npm local @sourcegraph/scip-python; index/environment; no automatic Sourcegraph upload",
+      "verification": "primary_document_read_not_runtime_benchmark"
+    },
+    {
+      "id": "S19",
+      "title": "SCIP package",
+      "url": "https://github.com/sourcegraph/scip-python/blob/scip/packages/pyright-scip/package.json",
+      "revision": null,
+      "finding": "0.6.6 MIT, package metadata observed; exact package pin and local lock required",
+      "verification": "primary_document_read_not_runtime_benchmark"
+    },
+    {
+      "id": "S20",
+      "title": "Knip official install",
+      "url": "https://knip.dev/overview/getting-started",
+      "revision": null,
+      "finding": "JS/TS unused dependency/export/file analysis; local manual npm install; never a Python linter",
+      "verification": "primary_document_read_not_runtime_benchmark"
+    },
+    {
+      "id": "S21",
+      "title": "Knip package",
+      "url": "https://github.com/webpro-nl/knip/blob/main/packages/knip/package.json",
+      "revision": null,
+      "finding": "6.35.1 ISC, Node ^20.19 or >=22.12; package metadata observed",
+      "verification": "primary_document_read_not_runtime_benchmark"
+    },
+    {
+      "id": "S22",
+      "title": "Textual test guide",
+      "url": "https://textual.textualize.io/guide/testing/",
+      "revision": null,
+      "finding": "App.run_test Pilot event/input testing; native connection separate",
+      "verification": "primary_document_read_not_runtime_benchmark"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "kind": "skill_manifest",
+  "schema_version": "1.0",
+  "id": "blind-handoff",
+  "version": "0.1.0-dev",
+  "name": "blind-handoff",
+  "description": "대화 없이 계약만 읽는 구현자가 추가 가정을 해야 하는 부분을 발견한다.",
+  "entrypoint": "SKILL.md",
+  "content_digest": "sha256:d5551f350023d264c4be155b03863ae551fa65cc3ccd91a9dd33ae568988f2c0",
+  "resources": [
+    {
+      "path": "references/checklist.md",
+      "digest": "sha256:21f023d1f4b5133790dc3d4a39d5b9662a693e2bd4c70fc5530d1563907e959f",
+      "executable": false
+    },
+    {
+      "path": "assets/output.example.json",
+      "digest": "sha256:8431b0ccacc40f885765fd7ceeac06de2bc55f0b957473e23454a65bb8dbaf05",
+      "executable": false
+    }
+  ],
+  "allowed_roles": [
+    "blind-handoff-reviewer"
+  ],
+  "required_tools": [],
+  "scope": {
+    "tenant": "__BIND_TENANT__",
+    "user": "__BIND_USER__",
+    "workspace": "__BIND_WORKSPACE__"
+  },
+  "context_byte_budget": 8192,
+  "activation_tests": [
+    "SKILL-blind-handoff-positive"
+  ],
+  "counterexample_tests": [
+    "SKILL-blind-handoff-negative"
+  ],
+  "release_digest": null,
+  "approval_ref": null,
+  "status": "candidate"
+}

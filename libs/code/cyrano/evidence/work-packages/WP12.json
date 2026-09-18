@@ -1,0 +1,118 @@
+{
+ "kind": "work_package_completion_evidence",
+ "work_package": "WP12",
+ "title": "Skill registry, release projection, governed run controls",
+ "recorded_by": "implementer (independent post-image review performed)",
+ "success": true,
+ "source_digests": {
+  "deepagents_code/cyrano/context/skills.py": "sha256:95448a77be504a1dcb68bc9ba1ea24ed5cb7b904c86369489396cd74a87b0c83",
+  "deepagents_code/cyrano/context/projection.py": "sha256:70c983d6eb4ffb8a671b401d0ee7406f26ef3dc737bbd847ec7789c9e5e6a31f",
+  "deepagents_code/cyrano/context/run_controls.py": "sha256:ba90d0fad5cb2d27d74aaf329fd00804e6762798275030183ba8718cac520b93",
+  "tests/cyrano_product/test_wp12_product.py": "sha256:5d0ea68c877ec8b7faf6378167391ebce9320585254593fa07afc2747ca72d49"
+ },
+ "contract_files": [
+  "cyrano/configs/skills/*.template.json"
+ ],
+ "acceptance_evidence": {
+  "SKILL-DUPLICATE": "passed - test_skill_duplicate",
+  "SKILL-EXECUTABLE": "passed - test_skill_executable_requires_lane",
+  "SKILL-LOAD": "passed - test_skill_load_is_metadata_only",
+  "SKILL-TEMPLATE": "passed - test_skill_template_unbound_refused",
+  "SKILL-blind-handoff-positive": "passed - test_skill_positive[skill_blind_handoff_positive]",
+  "SKILL-blind-handoff-negative": "passed - test_skill_negative[skill_blind_handoff_negative]",
+  "SKILL-cache-context-positive": "passed - test_skill_positive[skill_cache_context_positive]",
+  "SKILL-cache-context-negative": "passed - test_skill_negative[skill_cache_context_negative]",
+  "SKILL-candidate-authoring-positive": "passed - test_skill_positive[skill_candidate_authoring_positive]",
+  "SKILL-candidate-authoring-negative": "passed - test_skill_negative[skill_candidate_authoring_negative]",
+  "SKILL-decision-interview-positive": "passed - test_skill_positive[skill_decision_interview_positive]",
+  "SKILL-decision-interview-negative": "passed - test_skill_negative[skill_decision_interview_negative]",
+  "SKILL-evidence-scout-positive": "passed - test_skill_positive[skill_evidence_scout_positive]",
+  "SKILL-evidence-scout-negative": "passed - test_skill_negative[skill_evidence_scout_negative]",
+  "SKILL-exploration-policy-positive": "passed - test_skill_positive[skill_exploration_policy_positive]",
+  "SKILL-exploration-policy-negative": "passed - test_skill_negative[skill_exploration_policy_negative]",
+  "SKILL-learning-analysis-positive": "passed - test_skill_positive[skill_learning_analysis_positive]",
+  "SKILL-learning-analysis-negative": "passed - test_skill_negative[skill_learning_analysis_negative]",
+  "SKILL-paired-evaluation-review-positive": "passed - test_skill_positive[skill_paired_evaluation_review_positive]",
+  "SKILL-paired-evaluation-review-negative": "passed - test_skill_negative[skill_paired_evaluation_review_negative]",
+  "SKILL-plan-and-review-positive": "passed - test_skill_positive[skill_plan_and_review_positive]",
+  "SKILL-plan-and-review-negative": "passed - test_skill_negative[skill_plan_and_review_negative]",
+  "SKILL-release-review-positive": "passed - test_skill_positive[skill_release_review_positive]",
+  "SKILL-release-review-negative": "passed - test_skill_negative[skill_release_review_negative]",
+  "SKILL-runtime-code-change-positive": "passed - test_skill_positive[skill_runtime_code_change_positive]",
+  "SKILL-runtime-code-change-negative": "passed - test_skill_negative[skill_runtime_code_change_negative]",
+  "SKILL-safe-implementation-positive": "passed - test_skill_positive[skill_safe_implementation_positive]",
+  "SKILL-safe-implementation-negative": "passed - test_skill_negative[skill_safe_implementation_negative]",
+  "SKILL-scoped-memory-positive": "passed - test_skill_positive[skill_scoped_memory_positive]",
+  "SKILL-scoped-memory-negative": "passed - test_skill_negative[skill_scoped_memory_negative]",
+  "SKILL-verification-recipe-positive": "passed - test_skill_positive[skill_verification_recipe_positive]",
+  "SKILL-verification-recipe-negative": "passed - test_skill_negative[skill_verification_recipe_negative]",
+  "UH-MEM-08": "passed - test_uh_mem_08_remember_bypass_refused",
+  "UH-MEM-14": "passed - test_uh_mem_14_metadata_only_exposure",
+  "PEQ-PY-T44": "passed - test_peq_py_t44_budget_stagnation_abort",
+  "PEQ-PY-T45": "passed - test_peq_py_t45_cancel_terminates",
+  "PEQ-PY-T46": "passed - test_peq_py_t46_complete_needs_implementation",
+  "PEQ-PY-T47": "passed - test_peq_py_t47_stop_hook_absent_no_complete",
+  "PEQ-PY-T48": "passed - test_peq_py_t48_prompt_only_lacks_governed",
+  "PEQ-PY-T49": "passed - test_peq_py_t49_release_mix_refused",
+  "PEQ-PY-T50": "passed - test_peq_py_t50_resume_keeps_pin"
+ },
+ "commands": [
+  {
+   "argv": "uv run --no-sync python -m pytest tests/cyrano_product/test_wp12_product.py -q",
+   "exit": 0,
+   "result": "41 passed"
+  },
+  {
+   "argv": "uv run --no-sync python -m pytest tests/cyrano_product -q",
+   "exit": 0,
+   "result": "476 passed"
+  },
+  {
+   "argv": "ruff check --config cyrano/configs/quality/ruff.toml <wp12 files>",
+   "exit": 0,
+   "result": "all checks passed"
+  },
+  {
+   "argv": "ty check <wp12 source files>",
+   "exit": 0,
+   "result": "all checks passed"
+  },
+  {
+   "argv": "basedpyright <wp12 source files>",
+   "exit": 1,
+   "result": "0 errors, warnings only (Unknown-typed JSON values; baseline warning class)"
+  },
+  {
+   "argv": "python cyrano/scripts/dev.py schemas",
+   "exit": 0,
+   "result": "pass"
+  },
+  {
+   "argv": "python cyrano/scripts/check_integration.py",
+   "exit": 0,
+   "result": "pass"
+  },
+  {
+   "argv": "python cyrano/scripts/check_r5.py",
+   "exit": 0,
+   "result": "pass"
+  },
+  {
+   "argv": "python cyrano/scripts/dev.py check",
+   "exit": 0,
+   "result": "green; no GENERATED_DOCS_STALE"
+  }
+ ],
+ "errors": [],
+ "blocked": [],
+ "explicit_blocks": [
+  "dev.py quality exits 1 on pre-existing overlay-wide style debt (baseline, zero findings in WP12-owned files)"
+ ],
+ "not_established": [
+  "native skill discovery over the real dcode skill loader (registry is exercised in-process against the shipped templates; wiring into the runtime skill path is integration-layer work)",
+  "live stop-hook/subagent execution (run controls model the governed decisions deterministically; no real subprocess or agent loop was spawned)"
+ ],
+ "review_findings": [],
+ "authority_scope": "manifest validation, scope/role gating, release pinning, and run-control budgets verified at component level",
+ "next_wp_impact": "WP09/WP10 consume ReleaseProjection pins for attempts; WP13 observes the run-control transitions"
+}

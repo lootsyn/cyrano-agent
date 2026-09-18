@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "status": "template_requires_verified_dcode_binding",
+  "source": "CYRANO_role_and_skill_manifests_not_native_dcode_agent_format",
+  "role_selection": "task_phase_and_risk_not_model_name",
+  "provider_selection": "operator_configuration",
+  "authority": "proposal_only",
+  "roles": [
+    "facilitator",
+    "evidence-scout",
+    "critic",
+    "blind-handoff-reviewer",
+    "planner",
+    "plan-reviewer",
+    "implementer",
+    "verifier",
+    "learning-analyst",
+    "candidate-author",
+    "experiment-reviewer",
+    "exploration-policy",
+    "code-reviewer",
+    "security-reviewer"
+  ],
+  "catalogue_loading": "metadata_only_then_selected_bodies",
+  "mutation": "new_release_new_run_or_authorized_episode"
+}

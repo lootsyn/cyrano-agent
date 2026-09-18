@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cyrano.invalid/contracts/r5/recall-decision",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "work_unit_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "core_release_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "scope_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "action": {
+      "enum": [
+        "recall",
+        "no_recall_needed",
+        "insufficient_relevant_memory"
+      ]
+    },
+    "required_rule_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 256
+      }
+    },
+    "entry_revisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "entry_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "entry_id",
+          "revision"
+        ]
+      }
+    },
+    "utility_mode": {
+      "enum": [
+        "disabled",
+        "experimental_bounded"
+      ]
+    },
+    "causality": {
+      "enum": [
+        "not_measured",
+        "correlational",
+        "controlled_comparison"
+      ]
+    },
+    "reason_code": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    }
+  },
+  "required": [
+    "work_unit_id",
+    "core_release_digest",
+    "scope_id",
+    "action",
+    "required_rule_ids",
+    "entry_revisions",
+    "utility_mode",
+    "causality",
+    "reason_code"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "action": {
+            "enum": [
+              "no_recall_needed",
+              "insufficient_relevant_memory"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "entry_revisions": {
+            "maxItems": 0
+          }
+        }
+      }
+    }
+  ]
+}

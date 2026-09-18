@@ -1,0 +1,66 @@
+{
+  "review_date": "2026-09-16",
+  "document_status": "design_proposal",
+  "external_sources": [
+    {
+      "id": "S01",
+      "title": "DREAM 프로젝트 페이지",
+      "url": "https://dream-rsi.com/",
+      "verified_scope": "개념·공개 결과·주장 범위. 데모는 설명용이다."
+    },
+    {
+      "id": "S02",
+      "title": "DREAM 논문 PDF",
+      "url": "https://dream-rsi.com/assets/dream-rsi.pdf",
+      "verified_scope": "36쪽 기술 보고서. §3 정책/replay, §4–5 평가, 부록 B 운영 prompt를 확인했다. 전체 정책 엔진의 실행 재현은 하지 않았다."
+    },
+    {
+      "id": "S03",
+      "title": "DREAM 공식 저장소",
+      "url": "https://github.com/zhengkid/Dream-RSI",
+      "verified_scope": "조회 시 README Release plan에서 full codebase/reproduction scripts는 공개 준비 중. 논문 부록의 코드 조각과 전체 코드베이스 공개는 구분한다."
+    },
+    {
+      "id": "S04",
+      "title": "dcode Python extensions",
+      "url": "https://raw.githubusercontent.com/langchain-ai/deepagents/main/libs/code/EXTENSIONS.md",
+      "verified_scope": "실험적 async extension 등록, middleware/tools/backend/shutdown, slash command 제외, 격리·승인 책임. main은 불변 버전이 아니므로 WP-D00에서 실제 설치 artifact를 고정한다."
+    },
+    {
+      "id": "S05",
+      "title": "dcode Hooks",
+      "url": "https://raw.githubusercontent.com/langchain-ai/deepagents/main/libs/code/HOOKS.md",
+      "verified_scope": "lifecycle hooks, 동시 실행, exit/timeout 의미. 일반 오류를 fail-closed 보안 장치로 간주하지 않는다."
+    },
+    {
+      "id": "S06",
+      "title": "Deep Agents Memory",
+      "url": "https://docs.langchain.com/oss/python/deepagents/memory",
+      "verified_scope": "파일/backend 기반 장기 기억과 scope, short-term state와의 구분. UDH 승격 엔진이 내장됐다는 뜻이 아니다."
+    },
+    {
+      "id": "S07",
+      "title": "Deep Agents Skills",
+      "url": "https://docs.langchain.com/oss/python/deepagents/skills",
+      "verified_scope": "절차 기억과 on-demand loading. 모델별 특화 layer 도입 근거가 아니다."
+    },
+    {
+      "id": "S08",
+      "title": "LangChain custom middleware",
+      "url": "https://docs.langchain.com/oss/python/langchain/middleware/custom",
+      "verified_scope": "node/model/tool lifecycle 확장 표면. 모든 nested 호출 관측은 실제 통합 검사가 필요하다."
+    }
+  ],
+  "baseline": {
+    "id": "B01",
+    "title": "UDH_FULL_DESIGN.ko.md",
+    "version": "1.0, 2026-09-15",
+    "surface": "user Library",
+    "reviewed_sections": [
+      "0–3",
+      "11–16",
+      "LEARN acceptance requirements"
+    ],
+    "note": "관련 원문을 검색·읽어 제약을 확인했다. 원본 전체를 이 패키지에 복제하거나 수정하지 않았다."
+  }
+}

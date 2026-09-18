@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "mode": "governed",
+  "enabled": false,
+  "requires_runtime_compatibility": "all_required_verified",
+  "components": [
+    "control",
+    "dcode_bridge",
+    "action_broker",
+    "sandbox",
+    "interview",
+    "workflow",
+    "memory",
+    "context",
+    "learning",
+    "evaluation",
+    "release",
+    "observability"
+  ],
+  "learning_enabled": false,
+  "auto_promotion_enabled": false,
+  "canary_percent": 0,
+  "remote_trace_export": false,
+  "same_principal_isolation_allowed": false,
+  "unverified_fallback_allowed": false
+}

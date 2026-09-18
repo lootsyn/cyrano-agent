@@ -1,0 +1,30 @@
+{
+  "schema_version": "cyrano.capability-ownership/1",
+  "status": "target_requires_verified_runtime",
+  "features": [
+    {
+      "id": "code_intelligence",
+      "code_owner": "intelligence/manager.py",
+      "procedure_owner": "cyrano-code-intelligence",
+      "config_owner": "tools/manifest.json",
+      "enforcement": "code_and_process_boundary_not_prompt",
+      "default_enabled": false
+    },
+    {
+      "id": "memory_consolidation",
+      "code_owner": "improvement/consolidation.py",
+      "procedure_owner": "memory-curation",
+      "config_owner": "configs/r5-memory-policy.json",
+      "enforcement": "code_and_process_boundary_not_prompt",
+      "default_enabled": false
+    },
+    {
+      "id": "native_monitor",
+      "code_owner": "monitor/native.py",
+      "procedure_owner": "monitor-investigation",
+      "config_owner": "configs/monitoring-policy.json",
+      "enforcement": "code_and_process_boundary_not_prompt",
+      "default_enabled": false
+    }
+  ]
+}

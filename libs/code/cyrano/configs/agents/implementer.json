@@ -1,0 +1,31 @@
+{
+  "kind": "agent_role",
+  "schema_version": "1.0",
+  "id": "implementer",
+  "description": "허가된 작업 구현",
+  "prompt_path": "plugins/cyrano/agents/implementer.md",
+  "input_schema": "contracts/v1/cyrano.schema.json#/$defs/AgentTask",
+  "output_schema": "contracts/v1/cyrano.schema.json#/$defs/WorkerOutcome",
+  "skills": [
+    "safe-implementation",
+    "cache-context",
+    "scoped-memory",
+    "cyrano-code-intelligence"
+  ],
+  "allowed_tools": [
+    "cyrano_evidence_read",
+    "cyrano_skill_read",
+    "cyrano_memory_query",
+    "cyrano_request_execution",
+    "cyrano_propose_artifact",
+    "cyrano_report_result",
+    "cyrano_session_view",
+    "cyrano_memory_read",
+    "cyrano_code_query",
+    "cyrano_docs_query"
+  ],
+  "authority": "proposal_only",
+  "context_epoch_policy": "pinned_per_phase",
+  "read_scope": "current_task",
+  "max_delegation_depth": 0
+}

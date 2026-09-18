@@ -1,0 +1,180 @@
+{
+  "schema_version": "1.0",
+  "status": "target_ports_not_native_dcode_names",
+  "tools": [
+    {
+      "id": "cyrano_contract_read",
+      "owner": "interview",
+      "effect": "read",
+      "description": "현재 계약·결정·의무와 revision을 읽는다.",
+      "input_type": "ContractRead",
+      "requires_runtime_binding": true,
+      "can_issue_approval": false,
+      "production_implementation": "planned"
+    },
+    {
+      "id": "cyrano_evidence_read",
+      "owner": "evidence",
+      "effect": "read",
+      "description": "근거 ID를 scope와 sensitivity 검사 후 읽는다.",
+      "input_type": "EvidenceRead",
+      "requires_runtime_binding": true,
+      "can_issue_approval": false,
+      "production_implementation": "planned"
+    },
+    {
+      "id": "cyrano_memory_query",
+      "owner": "memory",
+      "effect": "read",
+      "description": "scope·active·freshness로 필터한 기억 view를 읽는다.",
+      "input_type": "MemoryQuery",
+      "requires_runtime_binding": true,
+      "can_issue_approval": false,
+      "production_implementation": "planned"
+    },
+    {
+      "id": "cyrano_propose_action",
+      "owner": "improvement",
+      "effect": "proposal",
+      "description": "합법 탐색 action 후보를 제출한다.",
+      "input_type": "ActionProposal",
+      "requires_runtime_binding": true,
+      "can_issue_approval": false,
+      "production_implementation": "planned"
+    },
+    {
+      "id": "cyrano_propose_artifact",
+      "owner": "kernel",
+      "effect": "proposal",
+      "description": "후보 artifact를 제출한다. active 상태는 변경하지 않는다.",
+      "input_type": "ArtifactProposal",
+      "requires_runtime_binding": true,
+      "can_issue_approval": false,
+      "production_implementation": "planned"
+    },
+    {
+      "id": "cyrano_replay_observe",
+      "owner": "improvement",
+      "effect": "read",
+      "description": "이미 공개된 replay observation만 읽는다.",
+      "input_type": "ReplayObserve",
+      "requires_runtime_binding": true,
+      "can_issue_approval": false,
+      "production_implementation": "planned"
+    },
+    {
+      "id": "cyrano_report_result",
+      "owner": "kernel",
+      "effect": "proposal",
+      "description": "워커 결과를 제출한다. trusted runner 판정을 대체하지 않는다.",
+      "input_type": "WorkerOutcome",
+      "requires_runtime_binding": true,
+      "can_issue_approval": false,
+      "production_implementation": "planned"
+    },
+    {
+      "id": "cyrano_request_execution",
+      "owner": "runtime",
+      "effect": "request",
+      "description": "broker에 허가된 작업 실행을 요청한다. 직접 shell이 아니다.",
+      "input_type": "ExecutionRequest",
+      "requires_runtime_binding": true,
+      "can_issue_approval": false,
+      "production_implementation": "planned"
+    },
+    {
+      "id": "cyrano_request_experiment",
+      "owner": "evaluation",
+      "effect": "request",
+      "description": "승인된 ExperimentPlan의 평가 실행을 요청한다.",
+      "input_type": "ExperimentRequest",
+      "requires_runtime_binding": true,
+      "can_issue_approval": false,
+      "production_implementation": "planned"
+    },
+    {
+      "id": "cyrano_request_review",
+      "owner": "workflow",
+      "effect": "proposal",
+      "description": "독립 검토 job을 요청한다. 승인권을 발급하지 않는다.",
+      "input_type": "ReviewRequest",
+      "requires_runtime_binding": true,
+      "can_issue_approval": false,
+      "production_implementation": "planned"
+    },
+    {
+      "id": "cyrano_skill_read",
+      "owner": "context",
+      "effect": "read",
+      "description": "release에 고정된 skill 본문/참조를 읽는다.",
+      "input_type": "SkillRead",
+      "requires_runtime_binding": true,
+      "can_issue_approval": false,
+      "production_implementation": "planned"
+    },
+    {
+      "id": "cyrano_session_view",
+      "owner": "kernel",
+      "effect": "read",
+      "description": "run binding에 맞는 현재 업무 상태·blocker를 읽는다.",
+      "input_type": "SessionQuery",
+      "requires_runtime_binding": true,
+      "can_issue_approval": false,
+      "production_implementation": "planned",
+      "schema_file": "contracts/v2/governance.schema.json"
+    },
+    {
+      "id": "cyrano_next_action",
+      "owner": "interview",
+      "effect": "read",
+      "description": "질문·조사·검토의 허용된 다음 행동을 계산한다.",
+      "input_type": "NextActionRequest",
+      "requires_runtime_binding": true,
+      "can_issue_approval": false,
+      "production_implementation": "planned",
+      "schema_file": "contracts/v2/governance.schema.json"
+    },
+    {
+      "id": "cyrano_request_approval",
+      "owner": "kernel",
+      "effect": "proposal",
+      "description": "별도 사용자 표시 요청만 생성하고 승인하지 않는다.",
+      "input_type": "ApprovalRequest",
+      "requires_runtime_binding": true,
+      "can_issue_approval": false,
+      "production_implementation": "planned",
+      "schema_file": "contracts/v2/governance.schema.json"
+    },
+    {
+      "id": "cyrano_memory_read",
+      "owner": "memory",
+      "effect": "read",
+      "description": "선택된 view와 scope에 묶인 기억 본문을 제한해서 읽는다.",
+      "input_type": "MemoryReadRequest",
+      "requires_runtime_binding": true,
+      "can_issue_approval": false,
+      "production_implementation": "planned",
+      "schema_file": "contracts/v2/governance.schema.json"
+    },
+    {
+      "id": "cyrano_code_query",
+      "owner": "intelligence",
+      "effect": "read",
+      "description": "검증된 snapshot의 읽기 전용 symbol 질의를 수행한다.",
+      "input_type": "CodeQuery",
+      "requires_runtime_binding": true,
+      "can_issue_approval": false,
+      "production_implementation": "planned"
+    },
+    {
+      "id": "cyrano_docs_query",
+      "owner": "intelligence",
+      "effect": "read",
+      "description": "승인된 scope의 문서 corpus를 조회한다.",
+      "input_type": "DocumentQuery",
+      "requires_runtime_binding": true,
+      "can_issue_approval": false,
+      "production_implementation": "planned"
+    }
+  ]
+}

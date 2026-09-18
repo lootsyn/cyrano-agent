@@ -1,0 +1,25 @@
+{
+  "kind": "agent_role",
+  "schema_version": "1.0",
+  "id": "candidate-author",
+  "description": "승인된 학습계획의 후보 변경 작성",
+  "prompt_path": "plugins/cyrano/agents/candidate-author.md",
+  "input_schema": "contracts/v1/cyrano.schema.json#/$defs/AgentTask",
+  "output_schema": "contracts/v1/cyrano.schema.json#/$defs/CandidateProposal",
+  "skills": [
+    "candidate-authoring",
+    "cache-context",
+    "memory-curation"
+  ],
+  "allowed_tools": [
+    "cyrano_evidence_read",
+    "cyrano_skill_read",
+    "cyrano_propose_artifact",
+    "cyrano_session_view",
+    "cyrano_memory_query"
+  ],
+  "authority": "proposal_only",
+  "context_epoch_policy": "pinned_per_phase",
+  "read_scope": "current_task",
+  "max_delegation_depth": 0
+}

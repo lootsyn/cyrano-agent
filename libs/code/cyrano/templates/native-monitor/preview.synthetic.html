@@ -1,0 +1,38 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><title>Cyrano Monitor — Synthetic prototype</title><style>body{font:16px system-ui;margin:3rem auto;max-width:1100px;padding:1rem;background:#0b1520;color:#ecf2f5}header{padding:1.5rem;border:1px solid #486070}nav{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0}button{padding:.7rem;border:1px solid #55758c;background:#183449;color:white;cursor:pointer}section{padding:1.5rem;border:1px solid #486070;margin:1rem 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:14px ui-monospace,monospace}.badge{color:#ffd68a}</style><header><h1>Cyrano Agent · 내부 Monitor 설계 시연</h1><p class="badge">SYNTHETIC / 실제 dcode 제품 화면·실행 증거 아님</p><p>R-DEMO · W-DEMO · 연결되지 않음 · 계측 범위 불명</p></header><nav><button onclick="document.getElementById('overview').scrollIntoView()">요약</button><button onclick="document.getElementById('timeline').scrollIntoView()">흐름</button><button onclick="document.getElementById('calls').scrollIntoView()">호출</button><button onclick="document.getElementById('changes').scrollIntoView()">변경·검증</button><button onclick="document.getElementById('memory').scrollIntoView()">기억</button><button onclick="document.getElementById('learning').scrollIntoView()">개선</button><button onclick="document.getElementById('health').scrollIntoView()">도구·상태</button></nav><section id="overview"><h2>요약</h2><pre>합성 데모 / 제품 실행 아님
+계획 rev4 · VERIFY
+{
+  &quot;logical_requests_observed&quot;: 1,
+  &quot;physical_attempts_observed&quot;: 3,
+  &quot;retries_observed&quot;: 2,
+  &quot;memory_applications_observed&quot;: 1,
+  &quot;candidates_observed&quot;: 1,
+  &quot;promotions_observed&quot;: 0,
+  &quot;first_observed_failure&quot;: {
+    &quot;commit_seq&quot;: 15,
+    &quot;event_id&quot;: &quot;E-5&quot;,
+    &quot;event_type&quot;: &quot;test.failed&quot;,
+    &quot;generation&quot;: &quot;G-DEMO&quot;,
+    &quot;payload&quot;: {
+      &quot;cause&quot;: &quot;unknown&quot;,
+      &quot;code&quot;: &quot;ASSERTION_MISMATCH&quot;
+    },
+    &quot;request_id&quot;: &quot;R-DEMO&quot;,
+    &quot;workspace_id&quot;: &quot;W-DEMO&quot;
+  },
+  &quot;cursor&quot;: 21,
+  &quot;connected&quot;: false,
+  &quot;coverage&quot;: &quot;partial_or_unknown&quot;
+}</pre></section><section id="timeline"><h2>흐름</h2><pre>3: plan.reviewed
+6: model.attempt_started
+9: model.attempt_started
+12: model.attempt_started
+15: test.failed
+18: memory.applied
+21: learning.proposed</pre></section><section id="calls"><h2>호출</h2><pre>논리 요청 1 / 실제 시도 3 / 재시도 2
+사용량·cache·비용: 미측정</pre></section><section id="changes"><h2>변경·검증</h2><pre>test.failed: ASSERTION_MISMATCH
+확정 원인: unknown
+원본 코드 변경 없음</pre></section><section id="memory"><h2>기억</h2><pre>적용 검증 synthetic 1개
+실제 Memory DB 연결 안 됨</pre></section><section id="learning"><h2>개선</h2><pre>후보 synthetic C1
+실제 생성·평가·승격 미실행</pre></section><section id="health"><h2>도구·상태</h2><pre>UI data source: synthetic
+도구 설치·모델 호출 없음
+관측 coverage: unknown</pre></section></html>

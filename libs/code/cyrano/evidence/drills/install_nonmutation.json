@@ -1,0 +1,40 @@
+{
+  "kind": "executed_readiness_drill",
+  "drill": "install_nonmutation",
+  "category": "A",
+  "authorization": "isolated_no_external_effects",
+  "external_effects": false,
+  "argv": [
+    "/home/ubuntu/cyrano-agent-devin/libs/code/.venv/bin/python",
+    "drills.py",
+    "install_nonmutation"
+  ],
+  "status": "passed",
+  "blockers": [],
+  "checks": [
+    {
+      "name": "target_manifest_unchanged",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "wheel_contents_outside_target",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "tamper_detected",
+      "passed": true,
+      "detail": "INSTALL_MUTATION"
+    }
+  ],
+  "cleanup": {
+    "path": "/tmp/cyrano-drill-install-yp31hgy0",
+    "removed": true
+  },
+  "raw": {
+    "wheel": "deepagents_code-0.1.70-py3-none-any.whl",
+    "target_files": 2
+  },
+  "cleanup_verified": true
+}

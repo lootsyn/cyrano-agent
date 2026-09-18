@@ -1,0 +1,540 @@
+{
+  "schema_version": "cyrano.r5-work-plan/1",
+  "status": "planned",
+  "refinements": [
+    {
+      "id": "RF00",
+      "title": "책임·권한·도구 inventory 정합성",
+      "owner_wp": "WP00",
+      "depends_on": [],
+      "requires_verified_wp_interfaces": [
+        "WP01"
+      ],
+      "status": "planned",
+      "design": "docs/design/RESPONSIBILITY_AND_ADOPTION.ko.md",
+      "document": "docs/development/refinements/RF00.ko.md",
+      "output_paths": [
+        "cyrano/configs/capability-ownership.json",
+        "cyrano/contracts/r5/feature-state.schema.json"
+      ],
+      "methods": [
+        {
+          "signature": "resolve_feature_state(manifest, probes, permits)",
+          "contract": "구성/설치/probe/허가/활성 다섯 조건을 분리하고 usable 여부·차단 이유 반환"
+        },
+        {
+          "signature": "validate_ownership(inventory)",
+          "contract": "강제 책임에 code owner·반례, skill에는 proposal_only 여부를 검사"
+        }
+      ],
+      "case_ids": [
+        "R5-RF00-01",
+        "R5-RF00-02",
+        "R5-RF00-03",
+        "R5-RF00-04",
+        "R5-RF00-05",
+        "R5-RF00-06"
+      ],
+      "evidence": "evidence/work-packages/RF00.json"
+    },
+    {
+      "id": "RF01",
+      "title": "프로젝트 로컬 도구 설치·lock·probe",
+      "owner_wp": "WP00",
+      "depends_on": [
+        "RF00"
+      ],
+      "requires_verified_wp_interfaces": [],
+      "status": "planned",
+      "design": "docs/design/CODE_INTELLIGENCE_AND_TOOL_ISOLATION.ko.md",
+      "document": "docs/development/refinements/RF01.ko.md",
+      "output_paths": [
+        "cyrano/scripts/toolchain.py",
+        "cyrano/tools/manifest.json",
+        "cyrano/tools/recipes/"
+      ],
+      "methods": [
+        {
+          "signature": "resolve(tool, consent)",
+          "contract": "공식 package/commit만 resolve; transitive lock·raw 명령·license inventory 저장"
+        },
+        {
+          "signature": "install(tool, lock_receipt)",
+          "contract": "hash와 source revision 확인 후 격리 설치; 불완전 설치 비활성"
+        },
+        {
+          "signature": "probe(tool, sandbox)",
+          "contract": "version/help/기능·파일/네트워크 부작용 결과를 ProbeReport로 반환"
+        }
+      ],
+      "case_ids": [
+        "R5-RF01-01",
+        "R5-RF01-02",
+        "R5-RF01-03",
+        "R5-RF01-04",
+        "R5-RF01-05",
+        "R5-RF01-06"
+      ],
+      "evidence": "evidence/work-packages/RF01.json"
+    },
+    {
+      "id": "RF02",
+      "title": "읽기 전용 LSP lifecycle·snapshot gateway",
+      "owner_wp": "WP06",
+      "depends_on": [
+        "RF00",
+        "RF01"
+      ],
+      "requires_verified_wp_interfaces": [
+        "WP03",
+        "WP05"
+      ],
+      "status": "planned",
+      "design": "docs/design/CODE_INTELLIGENCE_AND_TOOL_ISOLATION.ko.md",
+      "document": "docs/development/refinements/RF02.ko.md",
+      "output_paths": [
+        "deepagents_code/cyrano/intelligence/lsp.py",
+        "deepagents_code/cyrano/intelligence/manager.py",
+        "deepagents_code/cyrano/intelligence/contracts.py"
+      ],
+      "methods": [
+        {
+          "signature": "open_analysis(binding, capabilities)",
+          "contract": "승인된 executable·snapshot·environment로 generation 발급"
+        },
+        {
+          "signature": "query(session, request)",
+          "contract": "capabilities/encoding/version 검증 후 제한된 read operation 결과"
+        },
+        {
+          "signature": "close_analysis(session)",
+          "contract": "shutdown/exit→deadline→owned process tree 정리"
+        }
+      ],
+      "case_ids": [
+        "R5-RF02-01",
+        "R5-RF02-02",
+        "R5-RF02-03",
+        "R5-RF02-04",
+        "R5-RF02-05",
+        "R5-RF02-06"
+      ],
+      "evidence": "evidence/work-packages/RF02.json"
+    },
+    {
+      "id": "RF03",
+      "title": "Graphify·SCIP·QMD 승인 corpus/index",
+      "owner_wp": "WP11",
+      "depends_on": [
+        "RF01",
+        "RF02"
+      ],
+      "requires_verified_wp_interfaces": [
+        "WP02",
+        "WP05"
+      ],
+      "status": "planned",
+      "design": "docs/design/CODE_INTELLIGENCE_AND_TOOL_ISOLATION.ko.md",
+      "document": "docs/development/refinements/RF03.ko.md",
+      "output_paths": [
+        "deepagents_code/cyrano/intelligence/indexes.py",
+        "deepagents_code/cyrano/intelligence/corpus.py",
+        "deepagents_code/cyrano/intelligence/qmd.py"
+      ],
+      "methods": [
+        {
+          "signature": "export_corpus(scope, refs)",
+          "contract": "ACL·freshness·tombstone 후 immutable docs만 복사"
+        },
+        {
+          "signature": "import_index(manifest, bytes)",
+          "contract": "환경/source/acl/digest와 위치·크기 검증"
+        },
+        {
+          "signature": "search_documents(view, query)",
+          "contract": "searchLex 기본, 경로 재검증; 정답 없으면 빈 결과"
+        }
+      ],
+      "case_ids": [
+        "R5-RF03-01",
+        "R5-RF03-02",
+        "R5-RF03-03",
+        "R5-RF03-04",
+        "R5-RF03-05",
+        "R5-RF03-06"
+      ],
+      "evidence": "evidence/work-packages/RF03.json"
+    },
+    {
+      "id": "RF04",
+      "title": "bounded core·episodic recall·실제 적용",
+      "owner_wp": "WP11",
+      "depends_on": [
+        "RF00",
+        "RF03"
+      ],
+      "requires_verified_wp_interfaces": [
+        "WP05",
+        "WP02"
+      ],
+      "status": "planned",
+      "design": "docs/design/ADAPTIVE_MEMORY_AND_SKILL_EVOLUTION.ko.md",
+      "document": "docs/development/refinements/RF04.ko.md",
+      "output_paths": [
+        "deepagents_code/cyrano/memory/core_projection.py",
+        "deepagents_code/cyrano/memory/exposure.py",
+        "deepagents_code/cyrano/memory/recall.py"
+      ],
+      "methods": [
+        {
+          "signature": "bind_core(release, epoch)",
+          "contract": "고정 snapshot·budget·required rules 보존"
+        },
+        {
+          "signature": "select_recall(work_unit, scope)",
+          "contract": "관련성 우선, 충분한 근거 없으면 abstain"
+        },
+        {
+          "signature": "record_application(exposure, artifacts)",
+          "contract": "plan/code/test detector 근거로 applied/unknown 구분"
+        }
+      ],
+      "case_ids": [
+        "R5-RF04-01",
+        "R5-RF04-02",
+        "R5-RF04-03",
+        "R5-RF04-04",
+        "R5-RF04-05",
+        "R5-RF04-06"
+      ],
+      "evidence": "evidence/work-packages/RF04.json",
+      "end_to_end_requires_wp": [
+        "WP09",
+        "WP10"
+      ],
+      "milestones": {
+        "interface_ready": "real memory storage/recall/application-detector ports with bound fixtures; not 3-2 product credit",
+        "product_verified": "actual new native session consumes plan/code/test; requires WP09/WP10"
+      }
+    },
+    {
+      "id": "RF05",
+      "title": "typed skill delta·consolidation queue",
+      "owner_wp": "WP16",
+      "depends_on": [
+        "RF04"
+      ],
+      "requires_verified_wp_interfaces": [
+        "WP02",
+        "WP12"
+      ],
+      "status": "planned",
+      "design": "docs/design/ADAPTIVE_MEMORY_AND_SKILL_EVOLUTION.ko.md",
+      "document": "docs/development/refinements/RF05.ko.md",
+      "output_paths": [
+        "deepagents_code/cyrano/memory/playbook.py",
+        "deepagents_code/cyrano/improvement/consolidation.py",
+        "deepagents_code/cyrano/improvement/delta_validator.py"
+      ],
+      "methods": [
+        {
+          "signature": "validate_delta(base, delta)",
+          "contract": "expected revision·scope·근거·보호필드·크기 검증; candidate 반환"
+        },
+        {
+          "signature": "enqueue_review(terminal, release)",
+          "contract": "동일 tx outbox+idempotency; 중복 coalesce 조건 기록"
+        },
+        {
+          "signature": "run_review(job, budget)",
+          "contract": "foreground 우선·cancel/defer·실패dead-letter, 추가 권한 없음"
+        }
+      ],
+      "case_ids": [
+        "R5-RF05-01",
+        "R5-RF05-02",
+        "R5-RF05-03",
+        "R5-RF05-04",
+        "R5-RF05-05",
+        "R5-RF05-06"
+      ],
+      "evidence": "evidence/work-packages/RF05.json"
+    },
+    {
+      "id": "RF06",
+      "title": "memory utility·ablation·next-run 효과",
+      "owner_wp": "WP20",
+      "depends_on": [
+        "RF05"
+      ],
+      "requires_verified_wp_interfaces": [
+        "WP10",
+        "WP13"
+      ],
+      "status": "planned",
+      "design": "docs/design/ADAPTIVE_MEMORY_AND_SKILL_EVOLUTION.ko.md",
+      "document": "docs/development/refinements/RF06.ko.md",
+      "output_paths": [
+        "deepagents_code/cyrano/evaluation/memory_arms.py",
+        "deepagents_code/cyrano/evaluation/utility.py",
+        "deepagents_code/cyrano/evaluation/next_run.py"
+      ],
+      "methods": [
+        {
+          "signature": "build_memory_arms(candidate, dataset)",
+          "contract": "A0/A1/A2/A3 독립 변경과 policy 고정"
+        },
+        {
+          "signature": "estimate_utility(exposures, outcomes)",
+          "contract": "관련성/권한 불변, causal vs correlation 구분"
+        },
+        {
+          "signature": "verify_next_run(release, run)",
+          "contract": "새process·task·release/context/행동 실제 일치"
+        }
+      ],
+      "case_ids": [
+        "R5-RF06-01",
+        "R5-RF06-02",
+        "R5-RF06-03",
+        "R5-RF06-04",
+        "R5-RF06-05",
+        "R5-RF06-06"
+      ],
+      "evidence": "evidence/work-packages/RF06.json"
+    },
+    {
+      "id": "RF07",
+      "title": "native /cyrano 진입·인증 query",
+      "owner_wp": "WP13",
+      "depends_on": [
+        "RF00"
+      ],
+      "requires_verified_wp_interfaces": [
+        "WP06",
+        "WP02"
+      ],
+      "status": "planned",
+      "design": "docs/design/NATIVE_MONITOR_TUI.ko.md",
+      "document": "docs/development/refinements/RF07.ko.md",
+      "output_paths": [
+        "deepagents_code/command_registry.py",
+        "deepagents_code/app.py",
+        "deepagents_code/cyrano/monitor/query.py",
+        "deepagents_code/cyrano/monitor/native.py"
+      ],
+      "methods": [
+        {
+          "signature": "open_cyrano_monitor(app, tab)",
+          "contract": "현재 native request/workspace 확인, noLLM·read-only modal"
+        },
+        {
+          "signature": "get_snapshot(principal, request)",
+          "contract": "same read tx snapshot+high_watermark+generation"
+        },
+        {
+          "signature": "follow_view(cursor, filters)",
+          "contract": "scope-bound cursor/retention reset, canonical→view 변환"
+        }
+      ],
+      "case_ids": [
+        "R5-RF07-01",
+        "R5-RF07-02",
+        "R5-RF07-03",
+        "R5-RF07-04",
+        "R5-RF07-05",
+        "R5-RF07-06"
+      ],
+      "evidence": "evidence/work-packages/RF07.json"
+    },
+    {
+      "id": "RF08",
+      "title": "Textual 화면·통계·안전 렌더",
+      "owner_wp": "WP13",
+      "depends_on": [
+        "RF07"
+      ],
+      "requires_verified_wp_interfaces": [
+        "WP05"
+      ],
+      "status": "planned",
+      "design": "docs/design/NATIVE_MONITOR_TUI.ko.md",
+      "document": "docs/development/refinements/RF08.ko.md",
+      "output_paths": [
+        "deepagents_code/cyrano/monitor/screen.py",
+        "deepagents_code/cyrano/monitor/projection.py",
+        "deepagents_code/cyrano/monitor/presenters.py"
+      ],
+      "methods": [
+        {
+          "signature": "render_snapshot(snapshot)",
+          "contract": "7pane·정확상태·누락표시; no rawmarkup"
+        },
+        {
+          "signature": "ingest(view_event)",
+          "contract": "scope/generation/idempotency/seq 검증; boundedprojection"
+        },
+        {
+          "signature": "close_screen()",
+          "contract": "화면worker만 취소, nativeagent 계속실행"
+        }
+      ],
+      "case_ids": [
+        "R5-RF08-01",
+        "R5-RF08-02",
+        "R5-RF08-03",
+        "R5-RF08-04",
+        "R5-RF08-05",
+        "R5-RF08-06"
+      ],
+      "evidence": "evidence/work-packages/RF08.json"
+    },
+    {
+      "id": "RF09",
+      "title": "Pilot·native CLI 통합·관측 증거",
+      "owner_wp": "WP13",
+      "depends_on": [
+        "RF08",
+        "RF06"
+      ],
+      "requires_verified_wp_interfaces": [
+        "WP02",
+        "WP03",
+        "WP06"
+      ],
+      "status": "planned",
+      "design": "docs/design/NATIVE_MONITOR_TUI.ko.md",
+      "document": "docs/development/refinements/RF09.ko.md",
+      "output_paths": [
+        "tests/cyrano_product/test_r5_rf09.py",
+        "tests/cyrano_product/fixtures/monitor/",
+        "cyrano/evidence/r5/"
+      ],
+      "methods": [
+        {
+          "signature": "run_pilot_cases(app_fixture)",
+          "contract": "실제 Textual eventloop·key·resize 검증"
+        },
+        {
+          "signature": "run_native_flow(runtime)",
+          "contract": "plan→review→code→test→memory→learn trace를 실제조회"
+        },
+        {
+          "signature": "compare_source_counts(trace, display)",
+          "contract": "runner 원시count와 UI집계 비교; missing측정"
+        }
+      ],
+      "case_ids": [
+        "R5-RF09-01",
+        "R5-RF09-02",
+        "R5-RF09-03",
+        "R5-RF09-04",
+        "R5-RF09-05",
+        "R5-RF09-06"
+      ],
+      "evidence": "evidence/work-packages/RF09.json",
+      "end_to_end_requires_wp": [
+        "WP10",
+        "WP17"
+      ],
+      "milestones": {
+        "interface_ready": "durable ingest/query, real Textual eventloop; partial product coverage explicitly reported",
+        "product_verified": "actual interview/plan/review/code/test/memory/learning trace; requires downstream feature producers"
+      }
+    },
+    {
+      "id": "RF10",
+      "title": "배포 asset·SBOM·upgrade·복구",
+      "owner_wp": "WP22",
+      "depends_on": [
+        "RF01",
+        "RF03",
+        "RF05",
+        "RF08"
+      ],
+      "requires_verified_wp_interfaces": [
+        "WP19",
+        "WP21"
+      ],
+      "status": "planned",
+      "design": "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md",
+      "document": "docs/development/refinements/RF10.ko.md",
+      "output_paths": [
+        "libs/code/pyproject.toml (native reviewed edit)",
+        "deepagents_code/cyrano/assets/",
+        "cyrano/contracts/r5/asset-manifest.json"
+      ],
+      "methods": [
+        {
+          "signature": "build_assets(source_catalog)",
+          "contract": "runtime허용asset만생성·각hash/권한"
+        },
+        {
+          "signature": "verify_wheel(wheel, manifest)",
+          "contract": "새temp설치·source없는상태·importlibresources 검증"
+        },
+        {
+          "signature": "restore_with_deletions(backup, ledger)",
+          "contract": "복구 후tombstone우선·구버전write차단"
+        }
+      ],
+      "case_ids": [
+        "R5-RF10-01",
+        "R5-RF10-02",
+        "R5-RF10-03",
+        "R5-RF10-04",
+        "R5-RF10-05",
+        "R5-RF10-06"
+      ],
+      "evidence": "evidence/work-packages/RF10.json"
+    },
+    {
+      "id": "RF11",
+      "title": "전체 수용·40점 evidence·최종 handoff",
+      "owner_wp": "WP23",
+      "depends_on": [
+        "RF02",
+        "RF03",
+        "RF04",
+        "RF05",
+        "RF06",
+        "RF09",
+        "RF10"
+      ],
+      "requires_verified_wp_interfaces": [
+        "WP22"
+      ],
+      "status": "planned",
+      "design": "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md",
+      "document": "docs/development/refinements/RF11.ko.md",
+      "output_paths": [
+        "cyrano/evidence/product-scorecard.json",
+        "cyrano/docs/execution/R5_EXECUTION_GUIDE.ko.md",
+        "cyrano/scripts/check_r5.py"
+      ],
+      "methods": [
+        {
+          "signature": "collect_release_evidence(release)",
+          "contract": "source/runtime/tool/suite/policy/hash같은 증거만 수집"
+        },
+        {
+          "signature": "evaluate_rubric(evidence)",
+          "contract": "15항목 정확배점·hardgate·notrun비점수"
+        },
+        {
+          "signature": "seal_handoff(manifest)",
+          "contract": "실제수행/미수행/불명/권한·원복·후속 적용 명시"
+        }
+      ],
+      "case_ids": [
+        "R5-RF11-01",
+        "R5-RF11-02",
+        "R5-RF11-03",
+        "R5-RF11-04",
+        "R5-RF11-05",
+        "R5-RF11-06"
+      ],
+      "evidence": "evidence/work-packages/RF11.json"
+    }
+  ]
+}

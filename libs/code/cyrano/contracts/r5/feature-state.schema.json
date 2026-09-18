@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cyrano.invalid/contracts/r5/feature-state",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "feature_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "configured": {
+      "type": "boolean"
+    },
+    "installed": {
+      "type": "boolean"
+    },
+    "probe_verified": {
+      "type": "boolean"
+    },
+    "authorized": {
+      "type": "boolean"
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "usable": {
+      "type": "boolean"
+    },
+    "blocked_reasons": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 256
+      },
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "feature_id",
+    "configured",
+    "installed",
+    "probe_verified",
+    "authorized",
+    "enabled",
+    "usable",
+    "blocked_reasons"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "usable": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "configured": {
+            "const": true
+          },
+          "installed": {
+            "const": true
+          },
+          "probe_verified": {
+            "const": true
+          },
+          "authorized": {
+            "const": true
+          },
+          "enabled": {
+            "const": true
+          },
+          "blocked_reasons": {
+            "maxItems": 0
+          }
+        }
+      }
+    }
+  ]
+}

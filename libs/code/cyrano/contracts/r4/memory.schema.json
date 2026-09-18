@@ -1,0 +1,304 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:cyrano:detail:memory:r4",
+  "description": "Implementation target supplemental detail; schema success alone is not authority or effectiveness.",
+  "$defs": {
+    "MemoryRevisionDetail": {
+      "type": "object",
+      "properties": {
+        "memory_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "scope": {
+          "type": "object",
+          "properties": {
+            "tenant_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "user_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "workspace_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "session_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "tenant_id",
+            "user_id",
+            "workspace_id",
+            "session_id"
+          ],
+          "additionalProperties": false
+        },
+        "kind": {
+          "enum": [
+            "episodic",
+            "semantic",
+            "procedural",
+            "preference",
+            "working"
+          ]
+        },
+        "status": {
+          "enum": [
+            "candidate",
+            "reviewed",
+            "active",
+            "stale",
+            "superseded",
+            "revoked",
+            "archived"
+          ]
+        },
+        "content_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content_digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "dependency_digests": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          }
+        },
+        "valid_from": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "valid_until": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "approval_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sensitivity": {
+          "enum": [
+            "public",
+            "internal",
+            "restricted"
+          ]
+        }
+      },
+      "required": [
+        "memory_id",
+        "revision",
+        "scope",
+        "kind",
+        "status",
+        "content_ref",
+        "content_digest",
+        "evidence_refs",
+        "dependency_digests",
+        "valid_from",
+        "valid_until",
+        "approval_ref",
+        "sensitivity"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "active"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "approval_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_refs": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "MemoryApplicationDetail": {
+      "type": "object",
+      "properties": {
+        "application_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "run_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "memory_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "memory_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "view_digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "request_manifest_digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "status": {
+          "enum": [
+            "referenced",
+            "unverified",
+            "applied",
+            "rejected"
+          ]
+        },
+        "checker_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "plan_artifact": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "code_artifact": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "verification_artifact": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "independent_review_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "application_id",
+        "run_id",
+        "memory_id",
+        "memory_revision",
+        "view_digest",
+        "request_manifest_digest",
+        "status",
+        "checker_id",
+        "plan_artifact",
+        "code_artifact",
+        "verification_artifact",
+        "independent_review_ref",
+        "evidence_refs"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "applied"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "checker_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_refs": {
+                "minItems": 1
+              }
+            },
+            "anyOf": [
+              {
+                "properties": {
+                  "plan_artifact": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "plan_artifact"
+                ]
+              },
+              {
+                "properties": {
+                  "code_artifact": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "code_artifact"
+                ]
+              },
+              {
+                "properties": {
+                  "verification_artifact": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "verification_artifact"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

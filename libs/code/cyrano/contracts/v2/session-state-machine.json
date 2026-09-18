@@ -1,0 +1,365 @@
+{
+  "schema_version": "cyrano.session-machine/2",
+  "states": [
+    "CREATED",
+    "INTAKE",
+    "FRAME",
+    "ACQUIRE",
+    "RESOLVE",
+    "SPEC_DRAFT",
+    "SPEC_REVIEW",
+    "AWAIT_SPEC_APPROVAL",
+    "APPROVED_FOR_PLANNING",
+    "PLAN_DRAFT",
+    "PLAN_REVIEW",
+    "AWAIT_PLAN_APPROVAL",
+    "APPROVED_PLAN",
+    "AWAIT_EXECUTION_AUTH",
+    "READY_TO_EXECUTE",
+    "EXECUTING",
+    "VERIFYING",
+    "FINAL_REVIEW",
+    "AWAIT_APPLY_APPROVAL",
+    "APPLYING",
+    "RECONCILING",
+    "REWORK",
+    "CHANGE_ASSESSMENT",
+    "PAUSED",
+    "BLOCKED",
+    "CANCELLING",
+    "CANCELLED",
+    "FAILED",
+    "COMPLETED"
+  ],
+  "transitions": [
+    {
+      "from": "CREATED",
+      "event": "start",
+      "to": "INTAKE",
+      "guard_id": "workspace_runtime_policy_bound"
+    },
+    {
+      "from": "INTAKE",
+      "event": "intake_recorded",
+      "to": "FRAME",
+      "guard_id": "trusted_input_and_memory_view_ready"
+    },
+    {
+      "from": "FRAME",
+      "event": "facts_needed",
+      "to": "ACQUIRE",
+      "guard_id": "read_scope_available"
+    },
+    {
+      "from": "FRAME",
+      "event": "user_decision_needed",
+      "to": "RESOLVE",
+      "guard_id": "no_redundant_question"
+    },
+    {
+      "from": "FRAME",
+      "event": "obligations_satisfied",
+      "to": "SPEC_DRAFT",
+      "guard_id": "no_unresolved_mandatory_obligation"
+    },
+    {
+      "from": "ACQUIRE",
+      "event": "evidence_recorded",
+      "to": "RESOLVE",
+      "guard_id": "evidence_snapshot_provenance_valid"
+    },
+    {
+      "from": "RESOLVE",
+      "event": "more_facts_needed",
+      "to": "ACQUIRE",
+      "guard_id": "read_or_probe_authorized"
+    },
+    {
+      "from": "RESOLVE",
+      "event": "answer_recorded",
+      "to": "RESOLVE",
+      "guard_id": "trusted_user_event_not_model_report"
+    },
+    {
+      "from": "RESOLVE",
+      "event": "obligations_satisfied",
+      "to": "SPEC_DRAFT",
+      "guard_id": "no_unresolved_mandatory_obligation"
+    },
+    {
+      "from": "SPEC_DRAFT",
+      "event": "spec_compiled",
+      "to": "SPEC_REVIEW",
+      "guard_id": "bundle_strict_and_content_addressed"
+    },
+    {
+      "from": "SPEC_REVIEW",
+      "event": "changes_required",
+      "to": "RESOLVE",
+      "guard_id": "finding_targets_current_digest"
+    },
+    {
+      "from": "SPEC_REVIEW",
+      "event": "reviews_satisfied",
+      "to": "AWAIT_SPEC_APPROVAL",
+      "guard_id": "required_current_independent_reviews_and_no_blockers"
+    },
+    {
+      "from": "AWAIT_SPEC_APPROVAL",
+      "event": "spec_receipt_verified",
+      "to": "APPROVED_FOR_PLANNING",
+      "guard_id": "trusted_exact_approve_spec_for_planning"
+    },
+    {
+      "from": "APPROVED_FOR_PLANNING",
+      "event": "planning_started",
+      "to": "PLAN_DRAFT",
+      "guard_id": "spec_approval_current"
+    },
+    {
+      "from": "PLAN_DRAFT",
+      "event": "plan_submitted",
+      "to": "PLAN_REVIEW",
+      "guard_id": "dag_scope_traceability_verification_budget_valid"
+    },
+    {
+      "from": "PLAN_REVIEW",
+      "event": "changes_required",
+      "to": "PLAN_DRAFT",
+      "guard_id": "current_plan_findings"
+    },
+    {
+      "from": "PLAN_REVIEW",
+      "event": "reviews_satisfied",
+      "to": "AWAIT_PLAN_APPROVAL",
+      "guard_id": "independent_current_plan_review_no_blockers"
+    },
+    {
+      "from": "AWAIT_PLAN_APPROVAL",
+      "event": "plan_receipt_verified",
+      "to": "APPROVED_PLAN",
+      "guard_id": "trusted_exact_approve_plan"
+    },
+    {
+      "from": "APPROVED_PLAN",
+      "event": "execution_requested",
+      "to": "AWAIT_EXECUTION_AUTH",
+      "guard_id": "display_exact_files_recipes_budget"
+    },
+    {
+      "from": "AWAIT_EXECUTION_AUTH",
+      "event": "execution_receipt_verified",
+      "to": "READY_TO_EXECUTE",
+      "guard_id": "trusted_authorize_execution_scope_intersection"
+    },
+    {
+      "from": "READY_TO_EXECUTE",
+      "event": "lease_acquired",
+      "to": "EXECUTING",
+      "guard_id": "governed_adapter_audit_budget_preimage_valid"
+    },
+    {
+      "from": "EXECUTING",
+      "event": "work_units_finished",
+      "to": "VERIFYING",
+      "guard_id": "observed_changes_no_unknown_side_effects"
+    },
+    {
+      "from": "EXECUTING",
+      "event": "repair_required",
+      "to": "REWORK",
+      "guard_id": "same_scope_repair_possible"
+    },
+    {
+      "from": "VERIFYING",
+      "event": "checks_failed",
+      "to": "REWORK",
+      "guard_id": "repair_within_current_contract_possible"
+    },
+    {
+      "from": "VERIFYING",
+      "event": "required_checks_passed",
+      "to": "FINAL_REVIEW",
+      "guard_id": "current_postimage_all_required_evidence"
+    },
+    {
+      "from": "FINAL_REVIEW",
+      "event": "changes_required",
+      "to": "REWORK",
+      "guard_id": "current_findings_within_approved_scope"
+    },
+    {
+      "from": "REWORK",
+      "event": "repair_authorized",
+      "to": "EXECUTING",
+      "guard_id": "existing_or_new_permit_current_and_scope_unchanged"
+    },
+    {
+      "from": "FINAL_REVIEW",
+      "event": "final_review_passed",
+      "to": "COMPLETED",
+      "guard_id": "delivery_patch_only_and_all_completion_gates"
+    },
+    {
+      "from": "FINAL_REVIEW",
+      "event": "source_apply_required",
+      "to": "AWAIT_APPLY_APPROVAL",
+      "guard_id": "delivery_apply_to_source_and_all_patch_checks"
+    },
+    {
+      "from": "AWAIT_APPLY_APPROVAL",
+      "event": "apply_receipt_verified",
+      "to": "APPLYING",
+      "guard_id": "trusted_authorize_apply_patch_and_source_preimage_current"
+    },
+    {
+      "from": "APPLYING",
+      "event": "application_verified",
+      "to": "COMPLETED",
+      "guard_id": "source_manifest_and_required_final_checks_passed"
+    },
+    {
+      "from": "APPLYING",
+      "event": "partial_or_unknown",
+      "to": "RECONCILING",
+      "guard_id": "durable_journal_exists_or_gap_explicit"
+    },
+    {
+      "from": "RECONCILING",
+      "event": "effect_reconciled",
+      "to": "BLOCKED",
+      "guard_id": "actual_partial_state_and_recovery_next_action_recorded"
+    },
+    {
+      "from": "CHANGE_ASSESSMENT",
+      "event": "requirements_changed",
+      "to": "FRAME",
+      "guard_id": "affected_entities_invalidated"
+    },
+    {
+      "from": "CHANGE_ASSESSMENT",
+      "event": "plan_only_changed",
+      "to": "PLAN_DRAFT",
+      "guard_id": "spec_still_valid_and_plan_dependents_invalidated"
+    },
+    {
+      "from": "CANCELLING",
+      "event": "all_effects_reconciled",
+      "to": "CANCELLED",
+      "guard_id": "no_new_dispatch_and_all_running_ops_accounted_for"
+    }
+  ],
+  "global_transitions": [
+    {
+      "from_set": [
+        "CREATED",
+        "INTAKE",
+        "FRAME",
+        "ACQUIRE",
+        "RESOLVE",
+        "SPEC_DRAFT",
+        "SPEC_REVIEW",
+        "AWAIT_SPEC_APPROVAL",
+        "APPROVED_FOR_PLANNING",
+        "PLAN_DRAFT",
+        "PLAN_REVIEW",
+        "AWAIT_PLAN_APPROVAL",
+        "APPROVED_PLAN",
+        "AWAIT_EXECUTION_AUTH",
+        "READY_TO_EXECUTE",
+        "EXECUTING",
+        "VERIFYING",
+        "FINAL_REVIEW",
+        "AWAIT_APPLY_APPROVAL",
+        "APPLYING",
+        "RECONCILING",
+        "REWORK",
+        "CHANGE_ASSESSMENT",
+        "PAUSED",
+        "BLOCKED"
+      ],
+      "event": "user_cancel",
+      "to": "CANCELLING",
+      "guard_id": "trusted_cancel_stop_new_dispatch_immediately"
+    },
+    {
+      "from_set": [
+        "CREATED",
+        "INTAKE",
+        "FRAME",
+        "ACQUIRE",
+        "RESOLVE",
+        "SPEC_DRAFT",
+        "SPEC_REVIEW",
+        "AWAIT_SPEC_APPROVAL",
+        "APPROVED_FOR_PLANNING",
+        "PLAN_DRAFT",
+        "PLAN_REVIEW",
+        "AWAIT_PLAN_APPROVAL",
+        "APPROVED_PLAN",
+        "AWAIT_EXECUTION_AUTH",
+        "READY_TO_EXECUTE",
+        "EXECUTING",
+        "VERIFYING",
+        "FINAL_REVIEW",
+        "AWAIT_APPLY_APPROVAL",
+        "APPLYING",
+        "REWORK",
+        "CHANGE_ASSESSMENT"
+      ],
+      "event": "pause_required",
+      "to": "PAUSED",
+      "guard_id": "persist_resume_checkpoint_and_operation_status"
+    },
+    {
+      "from_set": [
+        "CREATED",
+        "INTAKE",
+        "FRAME",
+        "ACQUIRE",
+        "RESOLVE",
+        "SPEC_DRAFT",
+        "SPEC_REVIEW",
+        "AWAIT_SPEC_APPROVAL",
+        "APPROVED_FOR_PLANNING",
+        "PLAN_DRAFT",
+        "PLAN_REVIEW",
+        "AWAIT_PLAN_APPROVAL",
+        "APPROVED_PLAN",
+        "AWAIT_EXECUTION_AUTH",
+        "READY_TO_EXECUTE",
+        "EXECUTING",
+        "VERIFYING",
+        "FINAL_REVIEW",
+        "AWAIT_APPLY_APPROVAL",
+        "APPLYING",
+        "RECONCILING",
+        "REWORK",
+        "PAUSED",
+        "BLOCKED"
+      ],
+      "event": "material_change",
+      "to": "CHANGE_ASSESSMENT",
+      "guard_id": "revoke_affected_permits_and_invalidate_dependents"
+    }
+  ],
+  "resume_rule": "Persisted resume checkpoint plus current trusted guards; no caller-selected target. Material intent changes return CHANGE_ASSESSMENT; active/unknown effects reconcile first.",
+  "failure_rule": "회복 불가 실패는 실제 side effect 상태를 reconcile한 뒤 FAILED. 그 전에는 RECONCILING 또는 BLOCKED로 남기고 unknown outcome을 숨기지 않는다.",
+  "unknown_event": "INVALID_TRANSITION",
+  "terminal_resume": "금지; 새 세션 또는 명시적 후속 승인 작업으로 시작",
+  "source_catalog": "references/universal-harness/contracts/state-machine.catalog.json",
+  "implementation_status": "specified_not_runtime_implemented",
+  "domain": "work_session_not_candidate",
+  "additional_rules": {
+    "transition_evaluation": "explicit transitions first, unique global event match second, otherwise INVALID_TRANSITION",
+    "guard_origin": "trusted kernel services, never a model-supplied boolean",
+    "terminal_states": [
+      "COMPLETED",
+      "CANCELLED",
+      "FAILED"
+    ],
+    "terminal_emission": "at most one logical terminal event and one learning job identity per run",
+    "failure_effects": "unknown effects prevent terminal FAILED",
+    "cancelling_material_change": "record changed intent, do not re-enable dispatch; follow-up work is a new approved session"
+  }
+}

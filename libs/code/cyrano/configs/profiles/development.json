@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "mode": "development_foundation",
+  "components": [
+    "contracts",
+    "kernel",
+    "sqlite",
+    "compiler",
+    "interview",
+    "memory",
+    "workflow",
+    "improvement",
+    "evaluation",
+    "lifecycle",
+    "events"
+  ],
+  "network_enabled": false,
+  "live_model_enabled": false,
+  "learning_enabled": false,
+  "auto_promotion_enabled": false,
+  "canary_percent": 0,
+  "remote_trace_export": false
+}

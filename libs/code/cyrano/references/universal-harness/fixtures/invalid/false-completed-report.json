@@ -1,0 +1,44 @@
+{
+  "schema_version": "udh.run-report/1",
+  "session_id": "session-demo",
+  "workspace_id": "workspace-demo",
+  "status": "completed",
+  "assurance": "advisory",
+  "spec_digest": null,
+  "plan_digest": null,
+  "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "runtime_lock_digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "approval_ids": [],
+  "change_set_ids": [],
+  "verification_ids": [],
+  "review_ids": [],
+  "blockers": [
+    "실제 구현과 runtime 검증이 필요하다."
+  ],
+  "coverage_gaps": [
+    "not_tested"
+  ],
+  "memory_applied_ids": [],
+  "learning_job_ids": [],
+  "usage": {
+    "input_tokens": null,
+    "output_tokens": null,
+    "cached_input_tokens": null,
+    "cache_write_tokens": null,
+    "cost_usd": null,
+    "currency": "USD",
+    "measurement": "unavailable",
+    "cache_observation": "not_reported",
+    "source": null
+  },
+  "evidence": [],
+  "assessment": {
+    "python_quality": "not_tested",
+    "planning_review": "not_tested",
+    "memory_learning": "not_tested",
+    "monitoring": "not_tested"
+  },
+  "generated_at": "2026-09-15T07:00:00Z",
+  "delivery_mode": "patch_only",
+  "source_application_status": "not_requested"
+}

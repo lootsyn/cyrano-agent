@@ -1,0 +1,132 @@
+{
+  "revision": "2026-09-16-integration-r2",
+  "status": "specified_not_implemented_by_shape_validator",
+  "rules": [
+    {
+      "id": "GOV-SEM-01",
+      "applies_to": "all external documents",
+      "owner_wp": "WP01",
+      "algorithm": "Reject duplicate keys, non-finite/float numeric values, unpaired surrogate, excess depth/bytes and unknown kind/version before digest. Money is nonnegative decimal text; integral budgets are bounded safe integers.",
+      "error_code": "INVALID_SERIALIZATION"
+    },
+    {
+      "id": "GOV-SEM-02",
+      "applies_to": "GovernedWorkPlan",
+      "owner_wp": "WP09",
+      "algorithm": "Recompute exact subject. WorkUnit IDs are unique; dependency graph is acyclic; every required obligation/scenario maps to work plus required verification. Sum/reserve bounded cost without float; overlapping writers need serialization.",
+      "error_code": "INVALID_PLAN_GRAPH"
+    },
+    {
+      "id": "GOV-SEM-03",
+      "applies_to": "PermissionSet",
+      "owner_wp": "WP03",
+      "algorithm": "Resolve authenticated root_id to tenant/user/workspace. Missing grant is empty. Effective grants are intersections, deny is union. Require fd-level root and alias protections. only_write must be disjoint from every readable mount/fd and uses artifact_write action; unsupported capability is rejected.",
+      "error_code": "PERMISSION_BOUNDARY_UNAVAILABLE"
+    },
+    {
+      "id": "GOV-SEM-04",
+      "applies_to": "TrustedApprovalReceipt",
+      "owner_wp": "WP03",
+      "algorithm": "Verify issuer allowlist/signature over exact v2 projection, authenticated actor and display event, nonce consumption, expiry ordering/current time and revocation. Spec-for-planning, approve_plan, authorize_execution and authorize_apply_patch are distinct; a new display is required when subject or delivery changes.",
+      "error_code": "INVALID_APPROVAL_BINDING"
+    },
+    {
+      "id": "GOV-SEM-05",
+      "applies_to": "ToolExecutionPermit",
+      "owner_wp": "WP03",
+      "algorithm": "Check all parent approvals current and action-compatible; effective scope/budget is a subset; compare policy epoch, fencing token, runtime/tool inventory, work unit, sandbox and preimage at dispatch. A worker never renews its own token.",
+      "error_code": "INVALID_EXECUTION_CAPABILITY"
+    },
+    {
+      "id": "GOV-SEM-06",
+      "applies_to": "RunnerVerification",
+      "owner_wp": "WP10",
+      "algorithm": "Authenticate runner. Check run/work_unit/check/recipe/runtime/postimage match required verification spec. started_at<=finished_at. With applicable counts require nonnegative observed integers, passed+failed+skipped<=collected, collected>0 and passed>0 for final pass. Setup error, zero collected, all skipped and expected TDD red are not final pass.",
+      "error_code": "INVALID_VERIFICATION_EVIDENCE"
+    },
+    {
+      "id": "GOV-SEM-07",
+      "applies_to": "ExecutionChangeManifest",
+      "owner_wp": "WP10",
+      "algorithm": "Observe each exact change from trusted runner. create requires absent before; delete absent after; modify present before/after. No duplicate or unexpected paths. Compare postimage and operation journal, never infer atomic whole-workspace apply.",
+      "error_code": "CHANGE_MANIFEST_MISMATCH"
+    },
+    {
+      "id": "GOV-SEM-08",
+      "applies_to": "RunCompletionReport",
+      "owner_wp": "WP10",
+      "algorithm": "Recompute from current source and trusted evidence, not submitted claims. Every required check and reviewer binds the final subject/postimage; no unresolved blocker or mandatory coverage gap or unknown effect. apply_to_source additionally requires exact apply approval, completed journal and final actual-source checks.",
+      "error_code": "FALSE_COMPLETION"
+    },
+    {
+      "id": "GOV-SEM-09",
+      "applies_to": "MemoryAccessBinding",
+      "owner_wp": "WP11",
+      "algorithm": "Apply full tenant/user/workspace plus optional session/task ACL before ranking. Verify memory, evidence, release and freshness; active preferences/procedures require relevant trusted approval. Deleted/revoked dependencies invalidate selected views and replay support.",
+      "error_code": "MEMORY_BINDING_INVALID"
+    },
+    {
+      "id": "GOV-SEM-10",
+      "applies_to": "GovernedEvent",
+      "owner_wp": "WP13",
+      "algorithm": "Resolve payload_schema_ref from fixed event catalog, not caller path; verify payload discriminant and canonical redacted digest, producer identity and scope. event_seq allocated by DB; producer_seq deduped. Only listed semantic mutations may advance control_revision.",
+      "error_code": "EVENT_AUTHORITY_MISMATCH"
+    },
+    {
+      "id": "GOV-SEM-11",
+      "applies_to": "model/tool/budget event payloads",
+      "owner_wp": "WP13",
+      "algorithm": "Record observed statuses, not event-name inference alone. Nullable usage is unknown, not zero; measured requires usable semantics. Parent spans are not billable leaves. Reconcile actual charges and keep unknown reservation liability before allowing new billable work.",
+      "error_code": "USAGE_ACCOUNTING_INCOMPLETE"
+    },
+    {
+      "id": "GOV-SEM-12",
+      "applies_to": "LearningTriggerObservation",
+      "owner_wp": "WP16",
+      "algorithm": "Classify expected red, correct denial, environment issue and requirements change separately. Read evidence from current terminal event. Deduplicate run/terminal/policy job identity and bound meta depth; a failed job cannot rewrite completed user-work outcome.",
+      "error_code": "INVALID_LEARNING_SIGNAL"
+    },
+    {
+      "id": "GOV-SEM-13",
+      "applies_to": "CandidateProposal/EvaluationReport",
+      "owner_wp": "WP20",
+      "algorithm": "Impact classification comes from reviewed diff. All B and final A require actual current paired evidence. Check candidate/baseline/dataset/runtime/model/endpoint/budget bindings and project-family/time split. Changing any measured subject invalidates the old evaluation.",
+      "error_code": "STALE_OR_LEAKED_EVALUATION"
+    },
+    {
+      "id": "GOV-SEM-14",
+      "applies_to": "ResolvedTaskProfile",
+      "owner_wp": "WP05",
+      "algorithm": "Intersect permissions, union mandatory checks/reviews, minimum budgets with explicit currency; no missing default broadening. Map legacy standard risk only at validated version adapter; model identity never branches role instructions. Recompute profile digest excluding own hash.",
+      "error_code": "PROFILE_RESOLUTION_INVALID"
+    },
+    {
+      "id": "GOV-SEM-15",
+      "applies_to": "CompatibilityProbe",
+      "owner_wp": "WP06",
+      "algorithm": "verified requires actually executed evidence bound to exact installed artifact and host. Metadata-only probes cannot satisfy governed isolation, child interception or operational tests. All required stages must be verified for selected assurance; no silent downgrade.",
+      "error_code": "COMPATIBILITY_NOT_VERIFIED"
+    },
+    {
+      "id": "GOV-SEM-16",
+      "applies_to": "session lifecycle",
+      "owner_wp": "WP07",
+      "algorithm": "Resolve resume from saved checkpoint/current guards. User cancel stops new dispatch; unknown existing effects keep CANCELLING/RECONCILING. Material change revokes dependent authorization. Candidate lifecycle is a different aggregate.",
+      "error_code": "INVALID_SESSION_TRANSITION"
+    },
+    {
+      "id": "GOV-SEM-17",
+      "applies_to": "source migration",
+      "owner_wp": "WP02",
+      "algorithm": "Preserve signed source bytes and historical events. Quarantine unresolved scope, do not assign global. Backup/dry-run/invariant/restore evidence and new approvals are required before write enable. target SQL syntax pass is not migration evidence.",
+      "error_code": "MIGRATION_NOT_AUTHORIZED"
+    },
+    {
+      "id": "GOV-SEM-18",
+      "applies_to": "CommandEnvelope/work.settle",
+      "owner_wp": "WP10",
+      "algorithm": "Transport envelope v1 version is independent of explicit payload schema version. work.settle ingests a RunnerVerification for the current operation; it does not mark the whole WorkUnit complete. Trusted workflow service correlates all checks, change manifests and reviews before completion.",
+      "error_code": "INCOMPLETE_WORK_SETTLEMENT"
+    }
+  ]
+}

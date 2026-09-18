@@ -1,0 +1,18 @@
+{
+  "schema_version": "cyrano.native-quality/3",
+  "formatter": "ruff",
+  "code_line_length": 79,
+  "doc_line_length": 72,
+  "native_type_checker": "ty",
+  "additional_type_checker": "none_for_native_default; external-target adapters require reviewed toolchain",
+  "scope": [
+    "deepagents_code/cyrano",
+    "tests/unit_tests/cyrano",
+    "cyrano/scripts"
+  ],
+  "upstream_format_preserved": true,
+  "target_repository_formatter": "discovered_existing_else_Black_after_approval",
+  "single_formatter_per_file": true,
+  "quality_tools_status": "not_installed_or_not_pinned_here",
+  "arbitrary_global_reformat_allowed": false
+}

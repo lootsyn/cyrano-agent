@@ -1,0 +1,6 @@
+{
+  "kind": "canonical_reference",
+  "canonical_path": "contracts/assessment/rubric.json",
+  "scoring_allowed": false,
+  "reason": "사용자가 지정한 15개 기준/40점만 현재 평가 기준이다. 이 경로의 독립 배점표는 없다."
+}

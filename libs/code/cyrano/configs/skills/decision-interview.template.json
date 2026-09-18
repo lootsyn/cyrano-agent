@@ -1,0 +1,47 @@
+{
+  "kind": "skill_manifest",
+  "schema_version": "1.0",
+  "id": "decision-interview",
+  "version": "0.1.0-dev",
+  "name": "decision-interview",
+  "description": "모호한 개발 요청을 의무·결정·관측 가능한 계약으로 만든다.",
+  "entrypoint": "SKILL.md",
+  "content_digest": "sha256:5be6435e279de3bdb8d5a3144ad9dc09b4ba7510fbe28448a344ec636ec8f47c",
+  "resources": [
+    {
+      "path": "references/checklist.md",
+      "digest": "sha256:6a52c5bbb66bc5cb952141d7196474316700c321c74c938e3918c524e663030a",
+      "executable": false
+    },
+    {
+      "path": "assets/output.example.json",
+      "digest": "sha256:97abbca8e24158bff54d3a5b20d89177e014648c13f4e41e1711bc4337406afc",
+      "executable": false
+    },
+    {
+      "path": "references/universal-integration.md",
+      "digest": "sha256:7fb666c8e4a05f29f3aa78284e0a62ae82a9d49275c1e4a4b2fe80d7a361b8bb",
+      "executable": false
+    }
+  ],
+  "allowed_roles": [
+    "facilitator",
+    "critic"
+  ],
+  "required_tools": [],
+  "scope": {
+    "tenant": "__BIND_TENANT__",
+    "user": "__BIND_USER__",
+    "workspace": "__BIND_WORKSPACE__"
+  },
+  "context_byte_budget": 8192,
+  "activation_tests": [
+    "SKILL-decision-interview-positive"
+  ],
+  "counterexample_tests": [
+    "SKILL-decision-interview-negative"
+  ],
+  "release_digest": null,
+  "approval_ref": null,
+  "status": "candidate"
+}

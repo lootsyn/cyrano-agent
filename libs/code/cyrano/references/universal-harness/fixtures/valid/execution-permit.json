@@ -1,0 +1,49 @@
+{
+  "schema_version": "udh.permit/1",
+  "permit_id": "permit-demo",
+  "session_id": "session-demo",
+  "run_id": "run-demo",
+  "task_id": "task-1",
+  "approval_ids": [
+    "receipt-execution-demo"
+  ],
+  "policy_epoch": 1,
+  "scope": {
+    "workspace_id": "workspace-demo",
+    "read": [
+      "src/parser.py",
+      "tests/test_parser.py"
+    ],
+    "create": [],
+    "write_existing": [
+      "src/parser.py",
+      "tests/test_parser.py"
+    ],
+    "delete": [],
+    "deny": [
+      ".git",
+      "secrets"
+    ],
+    "recipe_ids": [
+      "python_tests",
+      "python_lint"
+    ],
+    "network": "none",
+    "network_allowlist": []
+  },
+  "preimage_digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "sandbox_id": "sandbox-demo",
+  "issued_at": "2026-09-15T07:00:00Z",
+  "expires_at": "2026-09-15T07:15:00Z",
+  "max_calls": 20,
+  "max_seconds": 900,
+  "max_output_bytes": 1048576,
+  "nonce": "fixture-permit",
+  "issuer": "fixture-only",
+  "attestation": {
+    "algorithm": "Ed25519",
+    "key_id": "fixture-key-only",
+    "canonicalization": "canonical-json-v1",
+    "signature": "SCHEMA-ONLY-NOT-A-SIGNED-PERMIT"
+  }
+}

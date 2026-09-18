@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "8a2ea949-58f4-44f6-8580-1fb259661394",
+  "style_profile": "team88-doc72",
+  "python_version": "3.12",
+  "formatter": "ruff",
+  "type_checker": "mypy",
+  "mode": "clean",
+  "source_roots": [
+    "packages",
+    "apps"
+  ],
+  "test_roots": [
+    "tests"
+  ],
+  "required_check_ids": [
+    "policy_guard",
+    "inventory",
+    "format",
+    "lint",
+    "type",
+    "unit"
+  ],
+  "max_repair_rounds": 3,
+  "max_external_retries": 1,
+  "max_no_progress": 2
+}

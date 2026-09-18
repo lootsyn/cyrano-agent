@@ -1,0 +1,47 @@
+{
+  "kind": "skill_manifest",
+  "schema_version": "1.0",
+  "id": "plan-and-review",
+  "version": "0.1.0-dev",
+  "name": "plan-and-review",
+  "description": "승인된 요구를 검증 가능한 WorkUnit DAG로 분해하고 독립 리뷰에 전달한다.",
+  "entrypoint": "SKILL.md",
+  "content_digest": "sha256:4ce4b88a3b2be7bea0622acb48101031a5e0d59574006c9d50d45dce3761910f",
+  "resources": [
+    {
+      "path": "references/checklist.md",
+      "digest": "sha256:30b3bcc44ce5da34653673b843d7758ee99b989ab3ec2bb5d95449b9974043cd",
+      "executable": false
+    },
+    {
+      "path": "assets/output.example.json",
+      "digest": "sha256:3af20c84e60defec048033079c4d44e86b6aa70c33fea24b8d0b8067619a0985",
+      "executable": false
+    },
+    {
+      "path": "references/universal-integration.md",
+      "digest": "sha256:594617f88fd00e93a0a7d08055a6e6d25180f46cc27198ccec0a9cc604ba347f",
+      "executable": false
+    }
+  ],
+  "allowed_roles": [
+    "planner",
+    "plan-reviewer"
+  ],
+  "required_tools": [],
+  "scope": {
+    "tenant": "__BIND_TENANT__",
+    "user": "__BIND_USER__",
+    "workspace": "__BIND_WORKSPACE__"
+  },
+  "context_byte_budget": 8192,
+  "activation_tests": [
+    "SKILL-plan-and-review-positive"
+  ],
+  "counterexample_tests": [
+    "SKILL-plan-and-review-negative"
+  ],
+  "release_digest": null,
+  "approval_ref": null,
+  "status": "candidate"
+}

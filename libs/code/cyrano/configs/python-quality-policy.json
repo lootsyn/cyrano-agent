@@ -1,0 +1,18 @@
+{
+  "schema_version": "cyrano.python-quality-policy/2",
+  "formatter": "black",
+  "code_line_length": 79,
+  "comment_docstring_line_length": 72,
+  "linter": "ruff",
+  "type_checker": "mypy_strict",
+  "test_runner": "pytest_with_existing_unittest_compatibility",
+  "current_fixture_runner": "unittest",
+  "style_migration": "WP00_inventory_WP22_close_before_release",
+  "target_project_policy": "respect_existing_no_installation_mutation",
+  "exceptions": "specific_file_rule_reason_owner_expiry_and_review; no_blanket_noqa",
+  "formatter_is_not_full_pep8_proof": true,
+  "missing_tools": "blocked",
+  "zero_collected_required_tests": "failed",
+  "all_skipped_required_tests": "failed",
+  "current_foundation_style_status": "requires_actual_audit"
+}

@@ -1,0 +1,71 @@
+{
+  "kind": "executed_readiness_drill",
+  "drill": "governed_screens",
+  "category": "A",
+  "authorization": "isolated_no_external_effects",
+  "external_effects": false,
+  "argv": [
+    "/home/ubuntu/cyrano-agent-devin/libs/code/.venv/bin/python",
+    "drills.py",
+    "governed_screens"
+  ],
+  "status": "passed",
+  "blockers": [],
+  "checks": [
+    {
+      "name": "all_views_rendered",
+      "passed": true,
+      "detail": [
+        "calls",
+        "changes",
+        "connection",
+        "health",
+        "learning",
+        "memory",
+        "overview",
+        "timeline"
+      ]
+    },
+    {
+      "name": "markup_rendered_literally",
+      "passed": true,
+      "detail": "overview body [bold]x[/bold]\ufffd[31mred\ufffd[0m \ufffd]8;;https://evil\ufffdL"
+    },
+    {
+      "name": "no_ansi_or_osc_leakage",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no_mutation_keybindings",
+      "passed": true,
+      "detail": [
+        "escape",
+        "r"
+      ]
+    },
+    {
+      "name": "denied_read_masks_content",
+      "passed": true,
+      "detail": "\ub370\uc774\ud130 \uc228\uae40 \u00b7 \uc5f0\uacb0\uacfc \uc870\ud68c \uad8c\ud55c\uc744 \ub2e4\uc2dc \ud655\uc778\ud558\uc138\uc694"
+    }
+  ],
+  "cleanup": {
+    "path": "/tmp/cyrano-drill-screens-lnvfbz_m",
+    "removed": true
+  },
+  "raw": {
+    "tier": "headless",
+    "views": [
+      "calls",
+      "changes",
+      "connection",
+      "health",
+      "learning",
+      "memory",
+      "overview",
+      "timeline"
+    ]
+  },
+  "cleanup_verified": true
+}

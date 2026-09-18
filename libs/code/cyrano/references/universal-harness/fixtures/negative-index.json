@@ -1,0 +1,100 @@
+[
+  {
+    "case_id": "unknown-authority-field",
+    "schema": "worker-result-v2",
+    "file": "fixtures/invalid/unknown-authority-field.json",
+    "must_reject": true,
+    "reason": "Worker는 승인 boolean을 추가할 수 없다."
+  },
+  {
+    "case_id": "empty-work-units",
+    "schema": "work-plan",
+    "file": "fixtures/invalid/empty-work-units.json",
+    "must_reject": true,
+    "reason": "계획 없는 개발 실행을 금지한다."
+  },
+  {
+    "case_id": "unknown-model-profile",
+    "schema": "work-plan",
+    "file": "fixtures/invalid/unknown-model-profile.json",
+    "must_reject": true,
+    "reason": "모델별 커스텀 필드를 허용하지 않는다."
+  },
+  {
+    "case_id": "float-budget",
+    "schema": "work-plan",
+    "file": "fixtures/invalid/float-budget.json",
+    "must_reject": true,
+    "reason": "서명 대상 소수는 문자열로 고정한다."
+  },
+  {
+    "case_id": "unsafe-parent-path",
+    "schema": "work-plan",
+    "file": "fixtures/invalid/unsafe-parent-path.json",
+    "must_reject": true,
+    "reason": "상위 경로 우회를 금지한다."
+  },
+  {
+    "case_id": "execution-without-plan",
+    "schema": "approval-receipt-v2",
+    "file": "fixtures/invalid/execution-without-plan.json",
+    "must_reject": true,
+    "reason": "실행 승인은 plan digest 없이 유효하지 않다."
+  },
+  {
+    "case_id": "wrong-signing-algorithm",
+    "schema": "approval-receipt-v2",
+    "file": "fixtures/invalid/wrong-signing-algorithm.json",
+    "must_reject": true,
+    "reason": "서명 알고리즘 downgrade 금지"
+  },
+  {
+    "case_id": "active-unapproved-memory",
+    "schema": "memory-record",
+    "file": "fixtures/invalid/active-unapproved-memory.json",
+    "must_reject": true,
+    "reason": "활성 절차 기억은 승인/릴리스가 필요하다."
+  },
+  {
+    "case_id": "promoted-without-eval",
+    "schema": "learning-candidate",
+    "file": "fixtures/invalid/promoted-without-eval.json",
+    "must_reject": true,
+    "reason": "평가·승인 없이 승격할 수 없다."
+  },
+  {
+    "case_id": "improved-without-holdout",
+    "schema": "evaluation-report",
+    "file": "fixtures/invalid/improved-without-holdout.json",
+    "must_reject": true,
+    "reason": "holdout 없는 성능 향상 확정 금지"
+  },
+  {
+    "case_id": "passed-without-evidence",
+    "schema": "verification-result",
+    "file": "fixtures/invalid/passed-without-evidence.json",
+    "must_reject": true,
+    "reason": "실행 증거 없는 pass 금지"
+  },
+  {
+    "case_id": "false-completed-report",
+    "schema": "run-report",
+    "file": "fixtures/invalid/false-completed-report.json",
+    "must_reject": true,
+    "reason": "blocker와 검증 누락이 있으면 완료 불가"
+  },
+  {
+    "case_id": "untyped-event-payload",
+    "schema": "event-envelope",
+    "file": "fixtures/invalid/untyped-event-payload.json",
+    "must_reject": true,
+    "reason": "이벤트별 payload 계약을 강제한다."
+  },
+  {
+    "case_id": "negative-token-count",
+    "schema": "context-manifest",
+    "file": "fixtures/invalid/negative-token-count.json",
+    "must_reject": true,
+    "reason": "사용량 음수 금지"
+  }
+]

@@ -1,0 +1,47 @@
+{
+  "kind": "skill_manifest",
+  "schema_version": "1.0",
+  "id": "release-review",
+  "version": "0.1.0-dev",
+  "name": "release-review",
+  "description": "평가·검토·승인이 연결된 불변 release의 적용과 복구를 검토한다.",
+  "entrypoint": "SKILL.md",
+  "content_digest": "sha256:22a053cb9f64123daf86c29a7e939d100832dd24444d27c5efa69fdfeb6baae7",
+  "resources": [
+    {
+      "path": "references/checklist.md",
+      "digest": "sha256:222e567ee474f1eacb160bc1c486eaf8f69a73dfef1fc15fca18da36624a9d0c",
+      "executable": false
+    },
+    {
+      "path": "assets/output.example.json",
+      "digest": "sha256:8431b0ccacc40f885765fd7ceeac06de2bc55f0b957473e23454a65bb8dbaf05",
+      "executable": false
+    },
+    {
+      "path": "references/universal-integration.md",
+      "digest": "sha256:1bd35389a8b622230d53b29d15a067c2f22857fca6be4713565547d3deb912a8",
+      "executable": false
+    }
+  ],
+  "allowed_roles": [
+    "code-reviewer",
+    "security-reviewer"
+  ],
+  "required_tools": [],
+  "scope": {
+    "tenant": "__BIND_TENANT__",
+    "user": "__BIND_USER__",
+    "workspace": "__BIND_WORKSPACE__"
+  },
+  "context_byte_budget": 8192,
+  "activation_tests": [
+    "SKILL-release-review-positive"
+  ],
+  "counterexample_tests": [
+    "SKILL-release-review-negative"
+  ],
+  "release_digest": null,
+  "approval_ref": null,
+  "status": "candidate"
+}

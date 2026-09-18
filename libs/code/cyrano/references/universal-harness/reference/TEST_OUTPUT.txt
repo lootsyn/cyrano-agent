@@ -1,0 +1,40 @@
+test_array_order (test_kernel_oracle.CanonicalTests.test_array_order) ... ok
+test_boolean_preserved (test_kernel_oracle.CanonicalTests.test_boolean_preserved) ... ok
+test_bytes_rejected (test_kernel_oracle.CanonicalTests.test_bytes_rejected) ... ok
+test_decimal_string (test_kernel_oracle.CanonicalTests.test_decimal_string) ... ok
+test_empty_object (test_kernel_oracle.CanonicalTests.test_empty_object) ... ok
+test_float_rejected (test_kernel_oracle.CanonicalTests.test_float_rejected) ... ok
+test_key_order (test_kernel_oracle.CanonicalTests.test_key_order) ... ok
+test_nested_float_rejected (test_kernel_oracle.CanonicalTests.test_nested_float_rejected) ... ok
+test_non_string_keys_rejected (test_kernel_oracle.CanonicalTests.test_non_string_keys_rejected) ... ok
+test_unicode_preserved (test_kernel_oracle.CanonicalTests.test_unicode_preserved) ... ok
+test_cycle (test_kernel_oracle.DagTests.test_cycle) ... ok
+test_empty (test_kernel_oracle.DagTests.test_empty) ... ok
+test_self_cycle (test_kernel_oracle.DagTests.test_self_cycle) ... ok
+test_unknown (test_kernel_oracle.DagTests.test_unknown) ... ok
+test_valid (test_kernel_oracle.DagTests.test_valid) ... ok
+test_adapter_failure (test_kernel_oracle.GateTests.test_adapter_failure) ... ok
+test_audit_failure (test_kernel_oracle.GateTests.test_audit_failure) ... ok
+test_cancel (test_kernel_oracle.GateTests.test_cancel) ... ok
+test_complete_facts (test_kernel_oracle.GateTests.test_complete_facts) ... ok
+test_final_review_missing (test_kernel_oracle.GateTests.test_final_review_missing) ... ok
+test_missing_plan_approval (test_kernel_oracle.GateTests.test_missing_plan_approval) ... ok
+test_missing_review (test_kernel_oracle.GateTests.test_missing_review) ... ok
+test_plan_not_execution_approval (test_kernel_oracle.GateTests.test_plan_not_execution_approval) ... ok
+test_scope_denied (test_kernel_oracle.GateTests.test_scope_denied) ... ok
+test_scores_not_accepted (test_kernel_oracle.GateTests.test_scores_not_accepted) ... ok
+test_spec_approval_for_plan (test_kernel_oracle.GateTests.test_spec_approval_for_plan) ... ok
+test_stale_review (test_kernel_oracle.GateTests.test_stale_review) ... ok
+test_unknown_stage (test_kernel_oracle.GateTests.test_unknown_stage) ... ok
+test_unresolved_blocks (test_kernel_oracle.GateTests.test_unresolved_blocks) ... ok
+test_verification_failure (test_kernel_oracle.GateTests.test_verification_failure) ... ok
+test_allowed (test_kernel_oracle.PromotionTests.test_allowed) ... ok
+test_approval (test_kernel_oracle.PromotionTests.test_approval) ... ok
+test_inconclusive (test_kernel_oracle.PromotionTests.test_inconclusive) ... ok
+test_parent_conflict (test_kernel_oracle.PromotionTests.test_parent_conflict) ... ok
+test_security_regression (test_kernel_oracle.PromotionTests.test_security_regression) ... ok
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.002s
+
+OK

@@ -1,0 +1,289 @@
+{
+  "coverage_type": "unconstrained_pairwise_design_not_runtime_execution",
+  "factors": {
+    "surface": [
+      "tui",
+      "headless",
+      "acp",
+      "child"
+    ],
+    "purpose": [
+      "plan_approval",
+      "execution_permission",
+      "source_apply"
+    ],
+    "permission": [
+      "valid",
+      "missing",
+      "expired",
+      "revoked"
+    ],
+    "revision": [
+      "current",
+      "stale"
+    ],
+    "response": [
+      "approve",
+      "request_changes",
+      "defer",
+      "duplicate"
+    ],
+    "phase": [
+      "before_commit",
+      "after_commit",
+      "after_dispatch"
+    ],
+    "audit": [
+      "available",
+      "unavailable"
+    ]
+  },
+  "cartesian_size": 2304,
+  "required_pairs": 205,
+  "covered_pairs": 205,
+  "rows": [
+    {
+      "id": "PAIR-001",
+      "surface": "tui",
+      "purpose": "plan_approval",
+      "permission": "valid",
+      "revision": "current",
+      "response": "approve",
+      "phase": "before_commit",
+      "audit": "available",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PAIR-002",
+      "surface": "tui",
+      "purpose": "execution_permission",
+      "permission": "missing",
+      "revision": "stale",
+      "response": "request_changes",
+      "phase": "after_commit",
+      "audit": "unavailable",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PAIR-003",
+      "surface": "headless",
+      "purpose": "source_apply",
+      "permission": "expired",
+      "revision": "current",
+      "response": "defer",
+      "phase": "after_dispatch",
+      "audit": "unavailable",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PAIR-004",
+      "surface": "acp",
+      "purpose": "plan_approval",
+      "permission": "revoked",
+      "revision": "stale",
+      "response": "duplicate",
+      "phase": "after_dispatch",
+      "audit": "available",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PAIR-005",
+      "surface": "child",
+      "purpose": "execution_permission",
+      "permission": "expired",
+      "revision": "current",
+      "response": "duplicate",
+      "phase": "after_commit",
+      "audit": "available",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PAIR-006",
+      "surface": "child",
+      "purpose": "source_apply",
+      "permission": "revoked",
+      "revision": "stale",
+      "response": "approve",
+      "phase": "before_commit",
+      "audit": "unavailable",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PAIR-007",
+      "surface": "acp",
+      "purpose": "source_apply",
+      "permission": "missing",
+      "revision": "current",
+      "response": "request_changes",
+      "phase": "before_commit",
+      "audit": "available",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PAIR-008",
+      "surface": "headless",
+      "purpose": "plan_approval",
+      "permission": "valid",
+      "revision": "stale",
+      "response": "defer",
+      "phase": "after_commit",
+      "audit": "available",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PAIR-009",
+      "surface": "acp",
+      "purpose": "execution_permission",
+      "permission": "valid",
+      "revision": "current",
+      "response": "approve",
+      "phase": "after_dispatch",
+      "audit": "unavailable",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PAIR-010",
+      "surface": "headless",
+      "purpose": "execution_permission",
+      "permission": "revoked",
+      "revision": "current",
+      "response": "defer",
+      "phase": "before_commit",
+      "audit": "available",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PAIR-011",
+      "surface": "child",
+      "purpose": "plan_approval",
+      "permission": "missing",
+      "revision": "current",
+      "response": "request_changes",
+      "phase": "after_dispatch",
+      "audit": "unavailable",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PAIR-012",
+      "surface": "tui",
+      "purpose": "source_apply",
+      "permission": "expired",
+      "revision": "stale",
+      "response": "duplicate",
+      "phase": "before_commit",
+      "audit": "unavailable",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PAIR-013",
+      "surface": "headless",
+      "purpose": "source_apply",
+      "permission": "missing",
+      "revision": "current",
+      "response": "approve",
+      "phase": "after_commit",
+      "audit": "available",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PAIR-014",
+      "surface": "acp",
+      "purpose": "plan_approval",
+      "permission": "expired",
+      "revision": "current",
+      "response": "approve",
+      "phase": "after_commit",
+      "audit": "available",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PAIR-015",
+      "surface": "tui",
+      "purpose": "plan_approval",
+      "permission": "missing",
+      "revision": "current",
+      "response": "defer",
+      "phase": "after_dispatch",
+      "audit": "available",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PAIR-016",
+      "surface": "tui",
+      "purpose": "plan_approval",
+      "permission": "revoked",
+      "revision": "current",
+      "response": "request_changes",
+      "phase": "after_commit",
+      "audit": "available",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PAIR-017",
+      "surface": "headless",
+      "purpose": "source_apply",
+      "permission": "valid",
+      "revision": "current",
+      "response": "request_changes",
+      "phase": "before_commit",
+      "audit": "available",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PAIR-018",
+      "surface": "headless",
+      "purpose": "plan_approval",
+      "permission": "valid",
+      "revision": "current",
+      "response": "duplicate",
+      "phase": "before_commit",
+      "audit": "available",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PAIR-019",
+      "surface": "child",
+      "purpose": "plan_approval",
+      "permission": "valid",
+      "revision": "current",
+      "response": "defer",
+      "phase": "before_commit",
+      "audit": "available",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PAIR-020",
+      "surface": "tui",
+      "purpose": "plan_approval",
+      "permission": "missing",
+      "revision": "current",
+      "response": "duplicate",
+      "phase": "before_commit",
+      "audit": "available",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PAIR-021",
+      "surface": "tui",
+      "purpose": "plan_approval",
+      "permission": "expired",
+      "revision": "current",
+      "response": "request_changes",
+      "phase": "before_commit",
+      "audit": "available",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PAIR-022",
+      "surface": "acp",
+      "purpose": "plan_approval",
+      "permission": "valid",
+      "revision": "current",
+      "response": "defer",
+      "phase": "before_commit",
+      "audit": "available",
+      "execution_status": "not_run"
+    }
+  ],
+  "risk_note": "Pairwise does not prove ordered event safety. Sequence cases and real concurrency/fault tests are mandatory."
+}

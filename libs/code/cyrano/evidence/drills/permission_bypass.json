@@ -1,0 +1,80 @@
+{
+  "kind": "executed_readiness_drill",
+  "drill": "permission_bypass",
+  "category": "A",
+  "authorization": "isolated_no_external_effects",
+  "external_effects": false,
+  "argv": [
+    "/home/ubuntu/cyrano-agent-devin/libs/code/.venv/bin/python",
+    "drills.py",
+    "permission_bypass"
+  ],
+  "status": "passed",
+  "blockers": [],
+  "checks": [
+    {
+      "name": "no_permit_denied",
+      "passed": true,
+      "detail": "APPROVAL_REQUIRED"
+    },
+    {
+      "name": "revoked_permit_denied",
+      "passed": true,
+      "detail": "PERMIT_REVOKED"
+    },
+    {
+      "name": "wrong_scope_denied",
+      "passed": true,
+      "detail": "SUBJECT_MISMATCH"
+    },
+    {
+      "name": "wrong_purpose_denied",
+      "passed": true,
+      "detail": "WRONG_APPROVAL_ACTION"
+    },
+    {
+      "name": "forged_signature_denied",
+      "passed": true,
+      "detail": "INVALID_SIGNATURE"
+    },
+    {
+      "name": "ungranted_path_denied",
+      "passed": true,
+      "detail": "SCOPE_DENIED"
+    },
+    {
+      "name": "scope_tool_denied",
+      "passed": true,
+      "detail": "SCOPE_DENIED"
+    },
+    {
+      "name": "unopened_display_no_receipt",
+      "passed": true,
+      "detail": "deferred"
+    },
+    {
+      "name": "wrong_actor_denied",
+      "passed": true,
+      "detail": "ACL_DENIED"
+    },
+    {
+      "name": "forged_patch_never_applies",
+      "passed": true,
+      "detail": "INVALID_SIGNATURE"
+    },
+    {
+      "name": "denials_audited",
+      "passed": true,
+      "detail": 1
+    }
+  ],
+  "cleanup": {
+    "path": "/tmp/cyrano-drill-perms-zfvu4asx",
+    "removed": true
+  },
+  "raw": {
+    "attempts": 11,
+    "audit_events": 1
+  },
+  "cleanup_verified": true
+}

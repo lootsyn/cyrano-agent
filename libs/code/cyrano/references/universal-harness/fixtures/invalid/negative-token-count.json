@@ -1,0 +1,42 @@
+{
+  "schema_version": "udh.context/1",
+  "context_id": "context-demo",
+  "session_id": "session-demo",
+  "run_id": "run-demo",
+  "phase": "plan",
+  "context_epoch": 1,
+  "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "policy_digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "tool_schema_digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "memory_view_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "blocks": [
+    {
+      "block_id": "block-common",
+      "layer": "L1",
+      "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "byte_count": 128,
+      "token_count": null,
+      "source_ids": [
+        "policy-1"
+      ],
+      "mutability": "release"
+    }
+  ],
+  "input_limit_tokens": null,
+  "output_reserve_tokens": null,
+  "limit_source": "unknown",
+  "prompt_cache_support": "unknown",
+  "wire_prefix_observed": false,
+  "invalidations": [],
+  "usage": {
+    "input_tokens": -1,
+    "output_tokens": null,
+    "cached_input_tokens": null,
+    "cache_write_tokens": null,
+    "cost_usd": null,
+    "currency": "USD",
+    "measurement": "unavailable",
+    "cache_observation": "not_reported",
+    "source": null
+  }
+}

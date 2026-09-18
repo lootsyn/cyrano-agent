@@ -1,0 +1,16 @@
+{
+  "kind": "worker_outcome",
+  "schema_version": "1.0",
+  "id": "worker-1",
+  "task_id": "task-1",
+  "role": "implementer",
+  "base_revision": 1,
+  "input_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "status": "completed",
+  "summary": "synthetic format example, not execution evidence",
+  "evidence_refs": [],
+  "findings": [],
+  "proposed_artifacts": [],
+  "failure_code": null,
+  "authority": "proposal_only"
+}

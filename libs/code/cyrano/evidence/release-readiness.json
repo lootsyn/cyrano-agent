@@ -1,0 +1,44 @@
+{
+  "kind": "executed_release_readiness",
+  "scorecard": "evidence/product-scorecard.json",
+  "verified_points": 40,
+  "release_eligible": false,
+  "unevaluated": [],
+  "unmet_gates": [
+    "live_effectiveness"
+  ],
+  "quality_gate": "passed",
+  "required_gates": {
+    "quality_gate": "passed",
+    "wheel_build_and_content": "passed",
+    "live_effectiveness": "not_run",
+    "clean_env_install": "passed",
+    "permission_bypass_drill": "passed",
+    "disk_full_drill": "passed",
+    "key_rotation_drill": "passed",
+    "backup_restore_drill": "passed",
+    "install_nonmutation_drill": "passed",
+    "governed_screens": "passed"
+  },
+  "packaging": {
+    "excluded": 0,
+    "excluded_samples": [],
+    "wheel": {
+      "built": true,
+      "wheel": "deepagents_code-0.1.70-py3-none-any.whl",
+      "sha256": "935e5648ecd03e313dbf84a45db355fc029f1c8eab1cc873beb8bcdc41f545ad",
+      "cyrano_files": 165,
+      "asset_check": {
+        "complete": true,
+        "missing": [],
+        "source_fallback": false
+      },
+      "forbidden_entries": []
+    }
+  },
+  "does_not_establish": [
+    "operator launch approval",
+    "live effectiveness evidence",
+    "native clean-environment wheel install"
+  ]
+}

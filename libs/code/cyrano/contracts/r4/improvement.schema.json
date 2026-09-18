@@ -1,0 +1,208 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:cyrano:detail:improvement:r4",
+  "description": "Implementation target supplemental detail; schema success alone is not authority or effectiveness.",
+  "$defs": {
+    "ImprovementEvidenceChain": {
+      "type": "object",
+      "properties": {
+        "candidate_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "surface": {
+          "enum": [
+            "system_prompt",
+            "skill",
+            "working_memory",
+            "semantic_memory",
+            "procedure_memory",
+            "interview",
+            "plan",
+            "review",
+            "context_config",
+            "verification_recipe",
+            "extension_code_proposal",
+            "search_policy"
+          ]
+        },
+        "impact": {
+          "enum": [
+            "scheduling_only",
+            "transition_changing",
+            "protected_change"
+          ]
+        },
+        "parent_release": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "patch_digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "learning_plan_digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "evaluation_manifest_digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "evaluation_kind": {
+          "enum": [
+            "replay",
+            "live_paired",
+            "static_only"
+          ]
+        },
+        "evaluation_status": {
+          "enum": [
+            "passed",
+            "failed",
+            "inconclusive",
+            "invalid",
+            "not_run"
+          ]
+        },
+        "review_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "approval_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "release_digest": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "next_run_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "next_run_binding_digest": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "promotion_state": {
+          "enum": [
+            "proposed",
+            "evaluating",
+            "await_approval",
+            "promoted",
+            "rejected",
+            "revoked"
+          ]
+        },
+        "hard_violations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "candidate_id",
+        "surface",
+        "impact",
+        "parent_release",
+        "patch_digest",
+        "learning_plan_digest",
+        "evaluation_manifest_digest",
+        "evaluation_kind",
+        "evaluation_status",
+        "review_ref",
+        "approval_ref",
+        "release_digest",
+        "next_run_id",
+        "next_run_binding_digest",
+        "promotion_state",
+        "hard_violations"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "promotion_state": {
+                "const": "promoted"
+              }
+            },
+            "required": [
+              "promotion_state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "evaluation_status": {
+                "const": "passed"
+              },
+              "review_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "approval_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "release_digest": {
+                "type": "string",
+                "pattern": "^sha256:[0-9a-f]{64}$"
+              },
+              "hard_violations": {
+                "maxItems": 0
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "impact": {
+                      "const": "transition_changing"
+                    }
+                  },
+                  "required": [
+                    "impact"
+                  ]
+                },
+                "then": {
+                  "properties": {
+                    "evaluation_kind": {
+                      "const": "live_paired"
+                    }
+                  }
+                }
+              },
+              {
+                "not": {
+                  "properties": {
+                    "impact": {
+                      "const": "protected_change"
+                    }
+                  },
+                  "required": [
+                    "impact"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

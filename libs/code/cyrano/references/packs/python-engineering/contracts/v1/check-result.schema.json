@@ -1,0 +1,131 @@
+{
+  "additionalProperties": false,
+  "description": "Preserve raw execution status and separate legacy matching.",
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "check_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "title": "Check Id",
+      "type": "string"
+    },
+    "tool": {
+      "maxLength": 128,
+      "minLength": 1,
+      "title": "Tool",
+      "type": "string"
+    },
+    "raw_status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "ERROR",
+        "BLOCKED",
+        "SKIPPED"
+      ],
+      "title": "Raw Status",
+      "type": "string"
+    },
+    "exit_code": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Exit Code"
+    },
+    "diagnostic_count": {
+      "minimum": 0,
+      "title": "Diagnostic Count",
+      "type": "integer"
+    },
+    "baseline_covered": {
+      "default": false,
+      "title": "Baseline Covered",
+      "type": "boolean"
+    },
+    "baseline_comparison_digest": {
+      "anyOf": [
+        {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Baseline Comparison Digest"
+    },
+    "duration_ms": {
+      "minimum": 0,
+      "title": "Duration Ms",
+      "type": "integer"
+    },
+    "stdout_digest": {
+      "anyOf": [
+        {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Stdout Digest"
+    },
+    "stderr_digest": {
+      "anyOf": [
+        {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Stderr Digest"
+    },
+    "receipt_id": {
+      "anyOf": [
+        {
+          "maxLength": 128,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Receipt Id"
+    },
+    "executed": {
+      "title": "Executed",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "check_id",
+    "tool",
+    "raw_status",
+    "exit_code",
+    "diagnostic_count",
+    "duration_ms",
+    "stdout_digest",
+    "stderr_digest",
+    "receipt_id",
+    "executed"
+  ],
+  "title": "CheckResult",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:udh:quality:CheckResult:1.0"
+}

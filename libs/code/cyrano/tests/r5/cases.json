@@ -1,0 +1,2454 @@
+{
+  "schema_version": "cyrano.r5-cases/1",
+  "status": "specifications_not_execution",
+  "cases": [
+    {
+      "id": "R5-RF00-01",
+      "area": "r5_final_review",
+      "title": "지침만 있는 승인 차단",
+      "given": "skill에 변경 금지만 있고 Broker 없음",
+      "when": "feature 상태를 조회",
+      "then": "configured=true, enforced=false; governed 실행 거부",
+      "owner_wp": "WP00",
+      "owner_refinement": "RF00",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf00.py",
+      "test_function": "test_rf00_01",
+      "fixture": "fixture_rf00_01",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "skill에 변경 금지만 있고 Broker 없음 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "feature 상태를 조회 동작을 실제 소유 서비스로 실행한다.",
+        "configured=true, enforced=false; governed 실행 거부 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF00.ko.md#r5-rf00-01"
+    },
+    {
+      "id": "R5-RF00-02",
+      "area": "r5_final_review",
+      "title": "숨겨진 capability",
+      "given": "등록되지 않은 MCP tool 이름",
+      "when": "모델이 호출",
+      "then": "UNKNOWN_CAPABILITY; 외부 호출·쓰기 0",
+      "owner_wp": "WP00",
+      "owner_refinement": "RF00",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf00.py",
+      "test_function": "test_rf00_02",
+      "fixture": "fixture_rf00_02",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "등록되지 않은 MCP tool 이름 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "모델이 호출 동작을 실제 소유 서비스로 실행한다.",
+        "UNKNOWN_CAPABILITY; 외부 호출·쓰기 0 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF00.ko.md#r5-rf00-02"
+    },
+    {
+      "id": "R5-RF00-03",
+      "area": "r5_final_review",
+      "title": "설치만 완료",
+      "given": "receipt는 있지만 native probe 없음",
+      "when": "사용 가능 판정",
+      "then": "installed=true, verified=false; 활성 거부",
+      "owner_wp": "WP00",
+      "owner_refinement": "RF00",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf00.py",
+      "test_function": "test_rf00_03",
+      "fixture": "fixture_rf00_03",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "receipt는 있지만 native probe 없음 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "사용 가능 판정 동작을 실제 소유 서비스로 실행한다.",
+        "installed=true, verified=false; 활성 거부 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF00.ko.md#r5-rf00-03"
+    },
+    {
+      "id": "R5-RF00-04",
+      "area": "r5_final_review",
+      "title": "정상 결속",
+      "given": "동일 runtime/probe/permit/hash",
+      "when": "기능 활성화",
+      "then": "정확한 scope에서만 usable",
+      "owner_wp": "WP00",
+      "owner_refinement": "RF00",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf00.py",
+      "test_function": "test_rf00_04",
+      "fixture": "fixture_rf00_04",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "동일 runtime/probe/permit/hash 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "기능 활성화 동작을 실제 소유 서비스로 실행한다.",
+        "정확한 scope에서만 usable 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF00.ko.md#r5-rf00-04"
+    },
+    {
+      "id": "R5-RF00-05",
+      "area": "r5_final_review",
+      "title": "기능 비활성 기본",
+      "given": "학습·외부 도구 OFF",
+      "when": "새 요청 실행",
+      "then": "불필요 모델·네트워크 호출 0",
+      "owner_wp": "WP00",
+      "owner_refinement": "RF00",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf00.py",
+      "test_function": "test_rf00_05",
+      "fixture": "fixture_rf00_05",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "학습·외부 도구 OFF 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "새 요청 실행 동작을 실제 소유 서비스로 실행한다.",
+        "불필요 모델·네트워크 호출 0 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF00.ko.md#r5-rf00-05"
+    },
+    {
+      "id": "R5-RF00-06",
+      "area": "r5_final_review",
+      "title": "scope 확대",
+      "given": "기존 기능 이름에 write 권한 추가",
+      "when": "manifest 변경",
+      "then": "새 승인 필요, 기존 run 권한 불변",
+      "owner_wp": "WP00",
+      "owner_refinement": "RF00",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf00.py",
+      "test_function": "test_rf00_06",
+      "fixture": "fixture_rf00_06",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "기존 기능 이름에 write 권한 추가 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "manifest 변경 동작을 실제 소유 서비스로 실행한다.",
+        "새 승인 필요, 기존 run 권한 불변 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF00.ko.md#r5-rf00-06"
+    },
+    {
+      "id": "R5-RF01-01",
+      "area": "r5_final_review",
+      "title": "무변경 plan",
+      "given": "빈 tools/.state",
+      "when": "plan --tool qmd",
+      "then": "표준 argv만 출력; 폴더·설치·network 0",
+      "owner_wp": "WP00",
+      "owner_refinement": "RF01",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf01.py",
+      "test_function": "test_rf01_01",
+      "fixture": "fixture_rf01_01",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "빈 tools/.state 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "plan --tool qmd 동작을 실제 소유 서비스로 실행한다.",
+        "표준 argv만 출력; 폴더·설치·network 0 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF01.ko.md#r5-rf01-01"
+    },
+    {
+      "id": "R5-RF01-02",
+      "area": "r5_final_review",
+      "title": "변경된 lock",
+      "given": "승인 후 dependency lock 1byte 변경",
+      "when": "install",
+      "then": "LOCK_CHANGED; 실행 0",
+      "owner_wp": "WP00",
+      "owner_refinement": "RF01",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf01.py",
+      "test_function": "test_rf01_02",
+      "fixture": "fixture_rf01_02",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "승인 후 dependency lock 1byte 변경 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "install 동작을 실제 소유 서비스로 실행한다.",
+        "LOCK_CHANGED; 실행 0 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF01.ko.md#r5-rf01-02"
+    },
+    {
+      "id": "R5-RF01-03",
+      "area": "r5_final_review",
+      "title": "무승인 build",
+      "given": "QMD native build 또는 Serena source",
+      "when": "allow-build 없이 설치",
+      "then": "BUILD_CONSENT_REQUIRED",
+      "owner_wp": "WP00",
+      "owner_refinement": "RF01",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf01.py",
+      "test_function": "test_rf01_03",
+      "fixture": "fixture_rf01_03",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "QMD native build 또는 Serena source 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "allow-build 없이 설치 동작을 실제 소유 서비스로 실행한다.",
+        "BUILD_CONSENT_REQUIRED 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF01.ko.md#r5-rf01-03"
+    },
+    {
+      "id": "R5-RF01-04",
+      "area": "r5_final_review",
+      "title": "라이선스 분리",
+      "given": "Serena GPL ack 없음",
+      "when": "resolve/install",
+      "then": "거부, product bundle에는 Serena 없음",
+      "owner_wp": "WP00",
+      "owner_refinement": "RF01",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf01.py",
+      "test_function": "test_rf01_04",
+      "fixture": "fixture_rf01_04",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "Serena GPL ack 없음 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "resolve/install 동작을 실제 소유 서비스로 실행한다.",
+        "거부, product bundle에는 Serena 없음 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF01.ko.md#r5-rf01-04"
+    },
+    {
+      "id": "R5-RF01-05",
+      "area": "r5_final_review",
+      "title": "부분 설치",
+      "given": "resolver 성공 후 install 실패",
+      "when": "재실행/doctor",
+      "then": "runtime_verified=false; 성공 receipt 생성 금지",
+      "owner_wp": "WP00",
+      "owner_refinement": "RF01",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf01.py",
+      "test_function": "test_rf01_05",
+      "fixture": "fixture_rf01_05",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "resolver 성공 후 install 실패 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "재실행/doctor 동작을 실제 소유 서비스로 실행한다.",
+        "runtime_verified=false; 성공 receipt 생성 금지 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF01.ko.md#r5-rf01-05"
+    },
+    {
+      "id": "R5-RF01-06",
+      "area": "r5_final_review",
+      "title": "전역 오염",
+      "given": "HOME sentinel·npmrc·API key 준비",
+      "when": "허가된 local install fixture",
+      "then": "sentinel 불변, secret 미전달; 실제 sandbox 시험 별도",
+      "owner_wp": "WP00",
+      "owner_refinement": "RF01",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf01.py",
+      "test_function": "test_rf01_06",
+      "fixture": "fixture_rf01_06",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "HOME sentinel·npmrc·API key 준비 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "허가된 local install fixture 동작을 실제 소유 서비스로 실행한다.",
+        "sentinel 불변, secret 미전달; 실제 sandbox 시험 별도 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF01.ko.md#r5-rf01-06"
+    },
+    {
+      "id": "R5-RF02-01",
+      "area": "r5_final_review",
+      "title": "UTF16 위치",
+      "given": "한국어+이모지+CRLF 파일",
+      "when": "references/definition",
+      "then": "byte/character 범위가 원본 fixture와 일치",
+      "owner_wp": "WP06",
+      "owner_refinement": "RF02",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf02.py",
+      "test_function": "test_rf02_01",
+      "fixture": "fixture_rf02_01",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "한국어+이모지+CRLF 파일 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "references/definition 동작을 실제 소유 서비스로 실행한다.",
+        "byte/character 범위가 원본 fixture와 일치 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF02.ko.md#r5-rf02-01"
+    },
+    {
+      "id": "R5-RF02-02",
+      "area": "r5_final_review",
+      "title": "실행 명령 거부",
+      "given": "server가 workspace/applyEdit 요청",
+      "when": "처리",
+      "then": "원본 불변, DENIED와 event 기록",
+      "owner_wp": "WP06",
+      "owner_refinement": "RF02",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf02.py",
+      "test_function": "test_rf02_02",
+      "fixture": "fixture_rf02_02",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "server가 workspace/applyEdit 요청 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "처리 동작을 실제 소유 서비스로 실행한다.",
+        "원본 불변, DENIED와 event 기록 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF02.ko.md#r5-rf02-02"
+    },
+    {
+      "id": "R5-RF02-03",
+      "area": "r5_final_review",
+      "title": "late response",
+      "given": "서버 재시작 후 이전 id 응답",
+      "when": "수신",
+      "then": "generation mismatch 폐기; 새 호출로 오인 안함",
+      "owner_wp": "WP06",
+      "owner_refinement": "RF02",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf02.py",
+      "test_function": "test_rf02_03",
+      "fixture": "fixture_rf02_03",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "서버 재시작 후 이전 id 응답 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "수신 동작을 실제 소유 서비스로 실행한다.",
+        "generation mismatch 폐기; 새 호출로 오인 안함 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF02.ko.md#r5-rf02-03"
+    },
+    {
+      "id": "R5-RF02-04",
+      "area": "r5_final_review",
+      "title": "기능 미지원",
+      "given": "initialize에 references 없음",
+      "when": "references 호출",
+      "then": "unsupported; lexical 성공으로 위장 안함",
+      "owner_wp": "WP06",
+      "owner_refinement": "RF02",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf02.py",
+      "test_function": "test_rf02_04",
+      "fixture": "fixture_rf02_04",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "initialize에 references 없음 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "references 호출 동작을 실제 소유 서비스로 실행한다.",
+        "unsupported; lexical 성공으로 위장 안함 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF02.ko.md#r5-rf02-04"
+    },
+    {
+      "id": "R5-RF02-05",
+      "area": "r5_final_review",
+      "title": "framing 공격",
+      "given": "과대·분할·손상 JSON-RPC",
+      "when": "파서 처리",
+      "then": "메모리 제한·명시 오류·lease 정리",
+      "owner_wp": "WP06",
+      "owner_refinement": "RF02",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf02.py",
+      "test_function": "test_rf02_05",
+      "fixture": "fixture_rf02_05",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "과대·분할·손상 JSON-RPC 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "파서 처리 동작을 실제 소유 서비스로 실행한다.",
+        "메모리 제한·명시 오류·lease 정리 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF02.ko.md#r5-rf02-05"
+    },
+    {
+      "id": "R5-RF02-06",
+      "area": "r5_final_review",
+      "title": "snapshot 변경",
+      "given": "동일 path 내용 hash 바뀜",
+      "when": "캐시 query",
+      "then": "stale; 이전 symbol 결과 자동 재사용 안함",
+      "owner_wp": "WP06",
+      "owner_refinement": "RF02",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf02.py",
+      "test_function": "test_rf02_06",
+      "fixture": "fixture_rf02_06",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "동일 path 내용 hash 바뀜 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "캐시 query 동작을 실제 소유 서비스로 실행한다.",
+        "stale; 이전 symbol 결과 자동 재사용 안함 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF02.ko.md#r5-rf02-06"
+    },
+    {
+      "id": "R5-RF03-01",
+      "area": "r5_final_review",
+      "title": "다른 scope 문서",
+      "given": "W-A/W-B에 같은 제목 비밀문서",
+      "when": "W-A 검색",
+      "then": "W-B 제목·snippet·path 모두 미노출",
+      "owner_wp": "WP11",
+      "owner_refinement": "RF03",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf03.py",
+      "test_function": "test_rf03_01",
+      "fixture": "fixture_rf03_01",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "W-A/W-B에 같은 제목 비밀문서 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "W-A 검색 동작을 실제 소유 서비스로 실행한다.",
+        "W-B 제목·snippet·path 모두 미노출 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF03.ko.md#r5-rf03-01"
+    },
+    {
+      "id": "R5-RF03-02",
+      "area": "r5_final_review",
+      "title": "QMD 모델 다운로드",
+      "given": "keyword-only·network deny",
+      "when": "update/searchLex",
+      "then": "모델 다운로드·LLM 호출 0; failure는 unknown/blocked",
+      "owner_wp": "WP11",
+      "owner_refinement": "RF03",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf03.py",
+      "test_function": "test_rf03_02",
+      "fixture": "fixture_rf03_02",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "keyword-only·network deny 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "update/searchLex 동작을 실제 소유 서비스로 실행한다.",
+        "모델 다운로드·LLM 호출 0; failure는 unknown/blocked 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF03.ko.md#r5-rf03-02"
+    },
+    {
+      "id": "R5-RF03-03",
+      "area": "r5_final_review",
+      "title": "Graphify hooks",
+      "given": "AGENTS/git hooks sentinel",
+      "when": "extract --code-only --no-cluster",
+      "then": "sentinel 동일; code snapshot 외 쓰기 없음",
+      "owner_wp": "WP11",
+      "owner_refinement": "RF03",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf03.py",
+      "test_function": "test_rf03_03",
+      "fixture": "fixture_rf03_03",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "AGENTS/git hooks sentinel 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "extract --code-only --no-cluster 동작을 실제 소유 서비스로 실행한다.",
+        "sentinel 동일; code snapshot 외 쓰기 없음 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF03.ko.md#r5-rf03-03"
+    },
+    {
+      "id": "R5-RF03-04",
+      "area": "r5_final_review",
+      "title": "SCIP 외부 경로",
+      "given": "index에 ../secret 또는 file://외부",
+      "when": "import",
+      "then": "거부·source readonly·remote upload 0",
+      "owner_wp": "WP11",
+      "owner_refinement": "RF03",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf03.py",
+      "test_function": "test_rf03_04",
+      "fixture": "fixture_rf03_04",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "index에 ../secret 또는 file://외부 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "import 동작을 실제 소유 서비스로 실행한다.",
+        "거부·source readonly·remote upload 0 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF03.ko.md#r5-rf03-04"
+    },
+    {
+      "id": "R5-RF03-05",
+      "area": "r5_final_review",
+      "title": "오래된 인덱스",
+      "given": "source/environment/ACL 중1개 변경",
+      "when": "검색",
+      "then": "binding mismatch·재생성 요구",
+      "owner_wp": "WP11",
+      "owner_refinement": "RF03",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf03.py",
+      "test_function": "test_rf03_05",
+      "fixture": "fixture_rf03_05",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "source/environment/ACL 중1개 변경 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "검색 동작을 실제 소유 서비스로 실행한다.",
+        "binding mismatch·재생성 요구 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF03.ko.md#r5-rf03-05"
+    },
+    {
+      "id": "R5-RF03-06",
+      "area": "r5_final_review",
+      "title": "한글 검색 품질",
+      "given": "한글 복합어·영문symbol 혼합 corpus",
+      "when": "lexical baseline 비교",
+      "then": "정답 근거와 recall측정; 저품질시 강제 활성 금지",
+      "owner_wp": "WP11",
+      "owner_refinement": "RF03",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf03.py",
+      "test_function": "test_rf03_06",
+      "fixture": "fixture_rf03_06",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "한글 복합어·영문symbol 혼합 corpus 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "lexical baseline 비교 동작을 실제 소유 서비스로 실행한다.",
+        "정답 근거와 recall측정; 저품질시 강제 활성 금지 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF03.ko.md#r5-rf03-06"
+    },
+    {
+      "id": "R5-RF04-01",
+      "area": "r5_final_review",
+      "title": "두 프로세스 유지",
+      "given": "A가 저장·종료; B 새세션 대화없음",
+      "when": "관련 작업 계획",
+      "then": "DB의 승인된 revision 회수·plan 반영 확인",
+      "owner_wp": "WP11",
+      "owner_refinement": "RF04",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf04.py",
+      "test_function": "test_rf04_01",
+      "fixture": "fixture_rf04_01",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "A가 저장·종료; B 새세션 대화없음 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "관련 작업 계획 동작을 실제 소유 서비스로 실행한다.",
+        "DB의 승인된 revision 회수·plan 반영 확인 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF04.ko.md#r5-rf04-01"
+    },
+    {
+      "id": "R5-RF04-02",
+      "area": "r5_final_review",
+      "title": "관련 없는 기억",
+      "given": "높은 utility지만 다른 task",
+      "when": "검색",
+      "then": "관련성 gate에서 제외·no_recall reason",
+      "owner_wp": "WP11",
+      "owner_refinement": "RF04",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf04.py",
+      "test_function": "test_rf04_02",
+      "fixture": "fixture_rf04_02",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "높은 utility지만 다른 task 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "검색 동작을 실제 소유 서비스로 실행한다.",
+        "관련성 gate에서 제외·no_recall reason 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF04.ko.md#r5-rf04-02"
+    },
+    {
+      "id": "R5-RF04-03",
+      "area": "r5_final_review",
+      "title": "stable prefix",
+      "given": "동일 release 두 호출의 동적결과만 변경",
+      "when": "context 조립",
+      "then": "stable hash 동일; 실제 cachehit은 별도unknown",
+      "owner_wp": "WP11",
+      "owner_refinement": "RF04",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf04.py",
+      "test_function": "test_rf04_03",
+      "fixture": "fixture_rf04_03",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "동일 release 두 호출의 동적결과만 변경 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "context 조립 동작을 실제 소유 서비스로 실행한다.",
+        "stable hash 동일; 실제 cachehit은 별도unknown 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF04.ko.md#r5-rf04-03"
+    },
+    {
+      "id": "R5-RF04-04",
+      "area": "r5_final_review",
+      "title": "사용자 정정",
+      "given": "고정 기억이 현재source와 충돌",
+      "when": "다음 요청",
+      "then": "stale 경고·rebind; 캐시 위해 오류사실 유지 금지",
+      "owner_wp": "WP11",
+      "owner_refinement": "RF04",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf04.py",
+      "test_function": "test_rf04_04",
+      "fixture": "fixture_rf04_04",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "고정 기억이 현재source와 충돌 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "다음 요청 동작을 실제 소유 서비스로 실행한다.",
+        "stale 경고·rebind; 캐시 위해 오류사실 유지 금지 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF04.ko.md#r5-rf04-04"
+    },
+    {
+      "id": "R5-RF04-05",
+      "area": "r5_final_review",
+      "title": "사용 자가보고",
+      "given": "모델이 memory id만 출력",
+      "when": "적용 판정",
+      "then": "referenced까지; applied 아님",
+      "owner_wp": "WP11",
+      "owner_refinement": "RF04",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf04.py",
+      "test_function": "test_rf04_05",
+      "fixture": "fixture_rf04_05",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "모델이 memory id만 출력 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "적용 판정 동작을 실제 소유 서비스로 실행한다.",
+        "referenced까지; applied 아님 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF04.ko.md#r5-rf04-05"
+    },
+    {
+      "id": "R5-RF04-06",
+      "area": "r5_final_review",
+      "title": "삭제 후 복구",
+      "given": "삭제 ledger 뒤 오래된 backup",
+      "when": "restore/retrieval",
+      "then": "tombstone replay 전 검색 차단·삭제기억 재등장 0",
+      "owner_wp": "WP11",
+      "owner_refinement": "RF04",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf04.py",
+      "test_function": "test_rf04_06",
+      "fixture": "fixture_rf04_06",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "삭제 ledger 뒤 오래된 backup 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "restore/retrieval 동작을 실제 소유 서비스로 실행한다.",
+        "tombstone replay 전 검색 차단·삭제기억 재등장 0 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF04.ko.md#r5-rf04-06"
+    },
+    {
+      "id": "R5-RF05-01",
+      "area": "r5_final_review",
+      "title": "전체 규칙 덮어쓰기",
+      "given": "핵심 승인규칙 삭제 delta",
+      "when": "정적 검토",
+      "then": "protected_change; active bytes 불변",
+      "owner_wp": "WP16",
+      "owner_refinement": "RF05",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf05.py",
+      "test_function": "test_rf05_01",
+      "fixture": "fixture_rf05_01",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "핵심 승인규칙 삭제 delta 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "정적 검토 동작을 실제 소유 서비스로 실행한다.",
+        "protected_change; active bytes 불변 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF05.ko.md#r5-rf05-01"
+    },
+    {
+      "id": "R5-RF05-02",
+      "area": "r5_final_review",
+      "title": "정상 부분 수정",
+      "given": "같은 scope·known evidence·정확revision",
+      "when": "refine",
+      "then": "새 candidate revision, active unchanged",
+      "owner_wp": "WP16",
+      "owner_refinement": "RF05",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf05.py",
+      "test_function": "test_rf05_02",
+      "fixture": "fixture_rf05_02",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "같은 scope·known evidence·정확revision 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "refine 동작을 실제 소유 서비스로 실행한다.",
+        "새 candidate revision, active unchanged 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF05.ko.md#r5-rf05-02"
+    },
+    {
+      "id": "R5-RF05-03",
+      "area": "r5_final_review",
+      "title": "동시 후보",
+      "given": "같은 parent entry의 두 delta",
+      "when": "연속 적용",
+      "then": "첫 승인만 CAS; 두번째 rebase/eval",
+      "owner_wp": "WP16",
+      "owner_refinement": "RF05",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf05.py",
+      "test_function": "test_rf05_03",
+      "fixture": "fixture_rf05_03",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "같은 parent entry의 두 delta 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "연속 적용 동작을 실제 소유 서비스로 실행한다.",
+        "첫 승인만 CAS; 두번째 rebase/eval 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF05.ko.md#r5-rf05-03"
+    },
+    {
+      "id": "R5-RF05-04",
+      "area": "r5_final_review",
+      "title": "queue crash",
+      "given": "terminal+outbox commit 직후 프로세스 종료",
+      "when": "worker restart",
+      "then": "job 회수1개·미완료학습 재개",
+      "owner_wp": "WP16",
+      "owner_refinement": "RF05",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf05.py",
+      "test_function": "test_rf05_04",
+      "fixture": "fixture_rf05_04",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "terminal+outbox commit 직후 프로세스 종료 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "worker restart 동작을 실제 소유 서비스로 실행한다.",
+        "job 회수1개·미완료학습 재개 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF05.ko.md#r5-rf05-04"
+    },
+    {
+      "id": "R5-RF05-05",
+      "area": "r5_final_review",
+      "title": "용량 압박",
+      "given": "작은core초과·중요예외 포함",
+      "when": "consolidate",
+      "then": "중요예외 누락시 거부; memory 자동파괴 안함",
+      "owner_wp": "WP16",
+      "owner_refinement": "RF05",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf05.py",
+      "test_function": "test_rf05_05",
+      "fixture": "fixture_rf05_05",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "작은core초과·중요예외 포함 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "consolidate 동작을 실제 소유 서비스로 실행한다.",
+        "중요예외 누락시 거부; memory 자동파괴 안함 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF05.ko.md#r5-rf05-05"
+    },
+    {
+      "id": "R5-RF05-06",
+      "area": "r5_final_review",
+      "title": "skill resource 실행코드",
+      "given": "md와 scripts/*.py 동시변경",
+      "when": "impact 분류",
+      "then": "B-code 경로, 빌드·권한검사 생략 금지",
+      "owner_wp": "WP16",
+      "owner_refinement": "RF05",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf05.py",
+      "test_function": "test_rf05_06",
+      "fixture": "fixture_rf05_06",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "md와 scripts/*.py 동시변경 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "impact 분류 동작을 실제 소유 서비스로 실행한다.",
+        "B-code 경로, 빌드·권한검사 생략 금지 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF05.ko.md#r5-rf05-06"
+    },
+    {
+      "id": "R5-RF06-01",
+      "area": "r5_final_review",
+      "title": "누수 family",
+      "given": "동일repo clone train/holdout",
+      "when": "split check",
+      "then": "DATA_LEAKAGE, 실험무효",
+      "owner_wp": "WP20",
+      "owner_refinement": "RF06",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf06.py",
+      "test_function": "test_rf06_01",
+      "fixture": "fixture_rf06_01",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "동일repo clone train/holdout 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "split check 동작을 실제 소유 서비스로 실행한다.",
+        "DATA_LEAKAGE, 실험무효 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF06.ko.md#r5-rf06-01"
+    },
+    {
+      "id": "R5-RF06-02",
+      "area": "r5_final_review",
+      "title": "안전 회귀",
+      "given": "성공률상승과 secret누출1건",
+      "when": "승격 판정",
+      "then": "hard reject; 비용절감 상쇄 안함",
+      "owner_wp": "WP20",
+      "owner_refinement": "RF06",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf06.py",
+      "test_function": "test_rf06_02",
+      "fixture": "fixture_rf06_02",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "성공률상승과 secret누출1건 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "승격 판정 동작을 실제 소유 서비스로 실행한다.",
+        "hard reject; 비용절감 상쇄 안함 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF06.ko.md#r5-rf06-02"
+    },
+    {
+      "id": "R5-RF06-03",
+      "area": "r5_final_review",
+      "title": "소표본 혼재",
+      "given": "표본적고 방향변동",
+      "when": "분석",
+      "then": "inconclusive; 자동승격 안함",
+      "owner_wp": "WP20",
+      "owner_refinement": "RF06",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf06.py",
+      "test_function": "test_rf06_03",
+      "fixture": "fixture_rf06_03",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "표본적고 방향변동 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "분석 동작을 실제 소유 서비스로 실행한다.",
+        "inconclusive; 자동승격 안함 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF06.ko.md#r5-rf06-03"
+    },
+    {
+      "id": "R5-RF06-04",
+      "area": "r5_final_review",
+      "title": "메모리 보상 오인",
+      "given": "노출memory5개 성공1개task",
+      "when": "utility",
+      "then": "모든entry에 causal reward 부여 금지",
+      "owner_wp": "WP20",
+      "owner_refinement": "RF06",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf06.py",
+      "test_function": "test_rf06_04",
+      "fixture": "fixture_rf06_04",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "노출memory5개 성공1개task 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "utility 동작을 실제 소유 서비스로 실행한다.",
+        "모든entry에 causal reward 부여 금지 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF06.ko.md#r5-rf06-04"
+    },
+    {
+      "id": "R5-RF06-05",
+      "area": "r5_final_review",
+      "title": "입력 변경 replay",
+      "given": "skill본문 바꿔 A replay만실행",
+      "when": "효과판정",
+      "then": "B live_eval 필요·replay로승격안함",
+      "owner_wp": "WP20",
+      "owner_refinement": "RF06",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf06.py",
+      "test_function": "test_rf06_05",
+      "fixture": "fixture_rf06_05",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "skill본문 바꿔 A replay만실행 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "효과판정 동작을 실제 소유 서비스로 실행한다.",
+        "B live_eval 필요·replay로승격안함 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF06.ko.md#r5-rf06-05"
+    },
+    {
+      "id": "R5-RF06-06",
+      "area": "r5_final_review",
+      "title": "다음 작업 미적용",
+      "given": "promotion 성공 but 새run oldrelease",
+      "when": "3-4 검증",
+      "then": "실패·영향목록·rollback절차",
+      "owner_wp": "WP20",
+      "owner_refinement": "RF06",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf06.py",
+      "test_function": "test_rf06_06",
+      "fixture": "fixture_rf06_06",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "promotion 성공 but 새run oldrelease 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "3-4 검증 동작을 실제 소유 서비스로 실행한다.",
+        "실패·영향목록·rollback절차 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF06.ko.md#r5-rf06-06"
+    },
+    {
+      "id": "R5-RF07-01",
+      "area": "r5_final_review",
+      "title": "busy 진입",
+      "given": "tool 장시간 실행",
+      "when": "/cyrano monitor",
+      "then": "즉시 UI열림; LLM/추가tool 호출0",
+      "owner_wp": "WP13",
+      "owner_refinement": "RF07",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf07.py",
+      "test_function": "test_rf07_01",
+      "fixture": "fixture_rf07_01",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "tool 장시간 실행 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "/cyrano monitor 동작을 실제 소유 서비스로 실행한다.",
+        "즉시 UI열림; LLM/추가tool 호출0 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF07.ko.md#r5-rf07-01"
+    },
+    {
+      "id": "R5-RF07-02",
+      "area": "r5_final_review",
+      "title": "기존 명령 보존",
+      "given": "/trace 및 /cost",
+      "when": "각 실행",
+      "then": "기존 동작 유지; catalog 중복없음",
+      "owner_wp": "WP13",
+      "owner_refinement": "RF07",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf07.py",
+      "test_function": "test_rf07_02",
+      "fixture": "fixture_rf07_02",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "/trace 및 /cost 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "각 실행 동작을 실제 소유 서비스로 실행한다.",
+        "기존 동작 유지; catalog 중복없음 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF07.ko.md#r5-rf07-02"
+    },
+    {
+      "id": "R5-RF07-03",
+      "area": "r5_final_review",
+      "title": "thread switch",
+      "given": "이전request stream늦게옴",
+      "when": "현재화면 조회",
+      "then": "다른request record 표시0",
+      "owner_wp": "WP13",
+      "owner_refinement": "RF07",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf07.py",
+      "test_function": "test_rf07_03",
+      "fixture": "fixture_rf07_03",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "이전request stream늦게옴 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "현재화면 조회 동작을 실제 소유 서비스로 실행한다.",
+        "다른request record 표시0 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF07.ko.md#r5-rf07-03"
+    },
+    {
+      "id": "R5-RF07-04",
+      "area": "r5_final_review",
+      "title": "권한 없는 cursor",
+      "given": "W-B request cursor 재사용",
+      "when": "query",
+      "then": "deny; 이름/코드/snippet 미노출",
+      "owner_wp": "WP13",
+      "owner_refinement": "RF07",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf07.py",
+      "test_function": "test_rf07_04",
+      "fixture": "fixture_rf07_04",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "W-B request cursor 재사용 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "query 동작을 실제 소유 서비스로 실행한다.",
+        "deny; 이름/코드/snippet 미노출 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF07.ko.md#r5-rf07-04"
+    },
+    {
+      "id": "R5-RF07-05",
+      "area": "r5_final_review",
+      "title": "snapshot race",
+      "given": "snapshot과subscribe사이 eventcommit",
+      "when": "follow",
+      "then": "중복제거 후 event누락0",
+      "owner_wp": "WP13",
+      "owner_refinement": "RF07",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf07.py",
+      "test_function": "test_rf07_05",
+      "fixture": "fixture_rf07_05",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "snapshot과subscribe사이 eventcommit 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "follow 동작을 실제 소유 서비스로 실행한다.",
+        "중복제거 후 event누락0 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF07.ko.md#r5-rf07-05"
+    },
+    {
+      "id": "R5-RF07-06",
+      "area": "r5_final_review",
+      "title": "extension한계",
+      "given": "custom slash 없는extension",
+      "when": "부팅/명령조회",
+      "then": "native없으면 feature unavailable; 가짜registered안함",
+      "owner_wp": "WP13",
+      "owner_refinement": "RF07",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf07.py",
+      "test_function": "test_rf07_06",
+      "fixture": "fixture_rf07_06",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "custom slash 없는extension 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "부팅/명령조회 동작을 실제 소유 서비스로 실행한다.",
+        "native없으면 feature unavailable; 가짜registered안함 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF07.ko.md#r5-rf07-06"
+    },
+    {
+      "id": "R5-RF08-01",
+      "area": "r5_final_review",
+      "title": "실제호출 계산",
+      "given": "한 logical에 attempts3 retry2",
+      "when": "summary",
+      "then": "1/3/2; 중복이벤트 재전송 수치불변",
+      "owner_wp": "WP13",
+      "owner_refinement": "RF08",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf08.py",
+      "test_function": "test_rf08_01",
+      "fixture": "fixture_rf08_01",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "한 logical에 attempts3 retry2 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "summary 동작을 실제 소유 서비스로 실행한다.",
+        "1/3/2; 중복이벤트 재전송 수치불변 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF08.ko.md#r5-rf08-01"
+    },
+    {
+      "id": "R5-RF08-02",
+      "area": "r5_final_review",
+      "title": "전역 seq gap",
+      "given": "ACL-filtered seq1,4,9",
+      "when": "projection",
+      "then": "gap을 누락으로단정안함;coverage별도",
+      "owner_wp": "WP13",
+      "owner_refinement": "RF08",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf08.py",
+      "test_function": "test_rf08_02",
+      "fixture": "fixture_rf08_02",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "ACL-filtered seq1,4,9 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "projection 동작을 실제 소유 서비스로 실행한다.",
+        "gap을 누락으로단정안함;coverage별도 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF08.ko.md#r5-rf08-02"
+    },
+    {
+      "id": "R5-RF08-03",
+      "area": "r5_final_review",
+      "title": "ANSI OSC 공격",
+      "given": "ESC·OSC52·bidi·markup 출력",
+      "when": "render",
+      "then": "터미널/clipboard변경0·문자그대로·CJK보존",
+      "owner_wp": "WP13",
+      "owner_refinement": "RF08",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf08.py",
+      "test_function": "test_rf08_03",
+      "fixture": "fixture_rf08_03",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "ESC·OSC52·bidi·markup 출력 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "render 동작을 실제 소유 서비스로 실행한다.",
+        "터미널/clipboard변경0·문자그대로·CJK보존 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF08.ko.md#r5-rf08-03"
+    },
+    {
+      "id": "R5-RF08-04",
+      "area": "r5_final_review",
+      "title": "작은 터미널",
+      "given": "120x40/80x24/60x20",
+      "when": "resize/tab",
+      "then": "핵심status와navigation 접근가능·crash0",
+      "owner_wp": "WP13",
+      "owner_refinement": "RF08",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf08.py",
+      "test_function": "test_rf08_04",
+      "fixture": "fixture_rf08_04",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "120x40/80x24/60x20 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "resize/tab 동작을 실제 소유 서비스로 실행한다.",
+        "핵심status와navigation 접근가능·crash0 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF08.ko.md#r5-rf08-04"
+    },
+    {
+      "id": "R5-RF08-05",
+      "area": "r5_final_review",
+      "title": "상세종료",
+      "given": "활성agent+screenworker",
+      "when": "Esc",
+      "then": "chat복귀; screenworker종료·agent미취소",
+      "owner_wp": "WP13",
+      "owner_refinement": "RF08",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf08.py",
+      "test_function": "test_rf08_05",
+      "fixture": "fixture_rf08_05",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "활성agent+screenworker 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "Esc 동작을 실제 소유 서비스로 실행한다.",
+        "chat복귀; screenworker종료·agent미취소 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF08.ko.md#r5-rf08-05"
+    },
+    {
+      "id": "R5-RF08-06",
+      "area": "r5_final_review",
+      "title": "overflow/연결끊김",
+      "given": "cap초과 또는stream단절",
+      "when": "갱신",
+      "then": "snapshot_required/stale표시;전수완료거짓표시안함",
+      "owner_wp": "WP13",
+      "owner_refinement": "RF08",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf08.py",
+      "test_function": "test_rf08_06",
+      "fixture": "fixture_rf08_06",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "cap초과 또는stream단절 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "갱신 동작을 실제 소유 서비스로 실행한다.",
+        "snapshot_required/stale표시;전수완료거짓표시안함 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF08.ko.md#r5-rf08-06"
+    },
+    {
+      "id": "R5-RF09-01",
+      "area": "r5_final_review",
+      "title": "Pilot순서",
+      "given": "run_test Pilot 실제입력",
+      "when": "탭/검색/뒤로",
+      "then": "focus·선택 상태 일치, fake스냅샷은제품증거아님",
+      "owner_wp": "WP13",
+      "owner_refinement": "RF09",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf09.py",
+      "test_function": "test_rf09_01",
+      "fixture": "fixture_rf09_01",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "run_test Pilot 실제입력 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "탭/검색/뒤로 동작을 실제 소유 서비스로 실행한다.",
+        "focus·선택 상태 일치, fake스냅샷은제품증거아님 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF09.ko.md#r5-rf09-01"
+    },
+    {
+      "id": "R5-RF09-02",
+      "area": "r5_final_review",
+      "title": "최초실패조회",
+      "given": "중첩도구 실패와 retry",
+      "when": "UI evidence 열기",
+      "then": "첫관측실패와확정원인 구분·runnerartifact일치",
+      "owner_wp": "WP13",
+      "owner_refinement": "RF09",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf09.py",
+      "test_function": "test_rf09_02",
+      "fixture": "fixture_rf09_02",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "중첩도구 실패와 retry 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "UI evidence 열기 동작을 실제 소유 서비스로 실행한다.",
+        "첫관측실패와확정원인 구분·runnerartifact일치 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF09.ko.md#r5-rf09-02"
+    },
+    {
+      "id": "R5-RF09-03",
+      "area": "r5_final_review",
+      "title": "headless출력",
+      "given": "isatty=false",
+      "when": "명시monitor query",
+      "then": "ANSI없음·JSONschema·noPrompt",
+      "owner_wp": "WP13",
+      "owner_refinement": "RF09",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf09.py",
+      "test_function": "test_rf09_03",
+      "fixture": "fixture_rf09_03",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "isatty=false 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "명시monitor query 동작을 실제 소유 서비스로 실행한다.",
+        "ANSI없음·JSONschema·noPrompt 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF09.ko.md#r5-rf09-03"
+    },
+    {
+      "id": "R5-RF09-04",
+      "area": "r5_final_review",
+      "title": "취소와복귀",
+      "given": "runtime재시작 중 모달",
+      "when": "재연결",
+      "then": "generationreset·draft보존·request혼합0",
+      "owner_wp": "WP13",
+      "owner_refinement": "RF09",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf09.py",
+      "test_function": "test_rf09_04",
+      "fixture": "fixture_rf09_04",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "runtime재시작 중 모달 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "재연결 동작을 실제 소유 서비스로 실행한다.",
+        "generationreset·draft보존·request혼합0 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF09.ko.md#r5-rf09-04"
+    },
+    {
+      "id": "R5-RF09-05",
+      "area": "r5_final_review",
+      "title": "부하coalesce",
+      "given": "1초1000event 합성",
+      "when": "10초갱신",
+      "then": "화면응답·boundedmemory·이벤트원장무손실",
+      "owner_wp": "WP13",
+      "owner_refinement": "RF09",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf09.py",
+      "test_function": "test_rf09_05",
+      "fixture": "fixture_rf09_05",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "1초1000event 합성 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "10초갱신 동작을 실제 소유 서비스로 실행한다.",
+        "화면응답·boundedmemory·이벤트원장무손실 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF09.ko.md#r5-rf09-05"
+    },
+    {
+      "id": "R5-RF09-06",
+      "area": "r5_final_review",
+      "title": "승인UI우회",
+      "given": "모델이approve프롬프트출력",
+      "when": "monitor조회",
+      "then": "mutation0;신뢰된operator행동만승인",
+      "owner_wp": "WP13",
+      "owner_refinement": "RF09",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf09.py",
+      "test_function": "test_rf09_06",
+      "fixture": "fixture_rf09_06",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "모델이approve프롬프트출력 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "monitor조회 동작을 실제 소유 서비스로 실행한다.",
+        "mutation0;신뢰된operator행동만승인 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF09.ko.md#r5-rf09-06"
+    },
+    {
+      "id": "R5-RF10-01",
+      "area": "r5_final_review",
+      "title": "wheel asset누락",
+      "given": "소스에JSON있지만wheel없음",
+      "when": "cleaninstall실행",
+      "then": "실패·해당asset명, 소스fallback안함",
+      "owner_wp": "WP22",
+      "owner_refinement": "RF10",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf10.py",
+      "test_function": "test_rf10_01",
+      "fixture": "fixture_rf10_01",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "소스에JSON있지만wheel없음 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "cleaninstall실행 동작을 실제 소유 서비스로 실행한다.",
+        "실패·해당asset명, 소스fallback안함 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF10.ko.md#r5-rf10-01"
+    },
+    {
+      "id": "R5-RF10-02",
+      "area": "r5_final_review",
+      "title": "개발자료유출",
+      "given": "원본팩/APIkey/holdout을package에추가",
+      "when": "wheel검사",
+      "then": "reject·빌드evidence",
+      "owner_wp": "WP22",
+      "owner_refinement": "RF10",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf10.py",
+      "test_function": "test_rf10_02",
+      "fixture": "fixture_rf10_02",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "원본팩/APIkey/holdout을package에추가 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "wheel검사 동작을 실제 소유 서비스로 실행한다.",
+        "reject·빌드evidence 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF10.ko.md#r5-rf10-02"
+    },
+    {
+      "id": "R5-RF10-03",
+      "area": "r5_final_review",
+      "title": "라이선스 inventory",
+      "given": "Serena 또는transitiveNOTICE누락",
+      "when": "release검토",
+      "then": "blocked; process분리만면책안함",
+      "owner_wp": "WP22",
+      "owner_refinement": "RF10",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf10.py",
+      "test_function": "test_rf10_03",
+      "fixture": "fixture_rf10_03",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "Serena 또는transitiveNOTICE누락 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "release검토 동작을 실제 소유 서비스로 실행한다.",
+        "blocked; process분리만면책안함 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF10.ko.md#r5-rf10-03"
+    },
+    {
+      "id": "R5-RF10-04",
+      "area": "r5_final_review",
+      "title": "자동업데이트",
+      "given": "toolversion사용중교체",
+      "when": "reload",
+      "then": "currentepoch고정·새probe/review필요",
+      "owner_wp": "WP22",
+      "owner_refinement": "RF10",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf10.py",
+      "test_function": "test_rf10_04",
+      "fixture": "fixture_rf10_04",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "toolversion사용중교체 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "reload 동작을 실제 소유 서비스로 실행한다.",
+        "currentepoch고정·새probe/review필요 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF10.ko.md#r5-rf10-04"
+    },
+    {
+      "id": "R5-RF10-05",
+      "area": "r5_final_review",
+      "title": "migration실패",
+      "given": "데이터변환중crash",
+      "when": "restart/restore",
+      "then": "oldgeneration보존·partialactivation안함",
+      "owner_wp": "WP22",
+      "owner_refinement": "RF10",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf10.py",
+      "test_function": "test_rf10_05",
+      "fixture": "fixture_rf10_05",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "데이터변환중crash 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "restart/restore 동작을 실제 소유 서비스로 실행한다.",
+        "oldgeneration보존·partialactivation안함 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF10.ko.md#r5-rf10-05"
+    },
+    {
+      "id": "R5-RF10-06",
+      "area": "r5_final_review",
+      "title": "kill switch",
+      "given": "취약provider긴급revoke",
+      "when": "새/기존run",
+      "then": "신규dispatch중지·기존pause·대체표시",
+      "owner_wp": "WP22",
+      "owner_refinement": "RF10",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf10.py",
+      "test_function": "test_rf10_06",
+      "fixture": "fixture_rf10_06",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "취약provider긴급revoke 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "새/기존run 동작을 실제 소유 서비스로 실행한다.",
+        "신규dispatch중지·기존pause·대체표시 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF10.ko.md#r5-rf10-06"
+    },
+    {
+      "id": "R5-RF11-01",
+      "area": "r5_final_review",
+      "title": "명세수과장",
+      "given": "601case설계만존재",
+      "when": "score",
+      "then": "not_evaluated;개수로점수부여안함",
+      "owner_wp": "WP23",
+      "owner_refinement": "RF11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf11.py",
+      "test_function": "test_rf11_01",
+      "fixture": "fixture_rf11_01",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "601case설계만존재 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "score 동작을 실제 소유 서비스로 실행한다.",
+        "not_evaluated;개수로점수부여안함 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF11.ko.md#r5-rf11-01"
+    },
+    {
+      "id": "R5-RF11-02",
+      "area": "r5_final_review",
+      "title": "stale증거",
+      "given": "이전release테스트PASS",
+      "when": "채점",
+      "then": "source/policy mismatch로reject",
+      "owner_wp": "WP23",
+      "owner_refinement": "RF11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf11.py",
+      "test_function": "test_rf11_02",
+      "fixture": "fixture_rf11_02",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "이전release테스트PASS 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "채점 동작을 실제 소유 서비스로 실행한다.",
+        "source/policy mismatch로reject 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF11.ko.md#r5-rf11-02"
+    },
+    {
+      "id": "R5-RF11-03",
+      "area": "r5_final_review",
+      "title": "선택기능OFF",
+      "given": "LSP/QMD불가",
+      "when": "기본코딩수용",
+      "then": "기본기능유지·분석한계명시",
+      "owner_wp": "WP23",
+      "owner_refinement": "RF11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf11.py",
+      "test_function": "test_rf11_03",
+      "fixture": "fixture_rf11_03",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "LSP/QMD불가 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "기본코딩수용 동작을 실제 소유 서비스로 실행한다.",
+        "기본기능유지·분석한계명시 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF11.ko.md#r5-rf11-03"
+    },
+    {
+      "id": "R5-RF11-04",
+      "area": "r5_final_review",
+      "title": "실험전체비용",
+      "given": "foreground절감 but 학습비용증가",
+      "when": "경제성보고",
+      "then": "전체비용공개·순절감거짓주장안함",
+      "owner_wp": "WP23",
+      "owner_refinement": "RF11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf11.py",
+      "test_function": "test_rf11_04",
+      "fixture": "fixture_rf11_04",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "foreground절감 but 학습비용증가 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "경제성보고 동작을 실제 소유 서비스로 실행한다.",
+        "전체비용공개·순절감거짓주장안함 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF11.ko.md#r5-rf11-04"
+    },
+    {
+      "id": "R5-RF11-05",
+      "area": "r5_final_review",
+      "title": "깨끗한machine",
+      "given": "새checkout+추가payload",
+      "when": "guide따라prepare",
+      "then": "사용자전역미수정·blockers정확보고",
+      "owner_wp": "WP23",
+      "owner_refinement": "RF11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf11.py",
+      "test_function": "test_rf11_05",
+      "fixture": "fixture_rf11_05",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "새checkout+추가payload 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "guide따라prepare 동작을 실제 소유 서비스로 실행한다.",
+        "사용자전역미수정·blockers정확보고 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF11.ko.md#r5-rf11-05"
+    },
+    {
+      "id": "R5-RF11-06",
+      "area": "r5_final_review",
+      "title": "최종강제조건",
+      "given": "plan미승인/관측누락/회귀",
+      "when": "release",
+      "then": "hardreject·공식점수로상쇄안함",
+      "owner_wp": "WP23",
+      "owner_refinement": "RF11",
+      "test_layer": "product_integration",
+      "execution_status": "not_run",
+      "test_path": "../tests/cyrano_product/test_r5_rf11.py",
+      "test_function": "test_rf11_06",
+      "fixture": "fixture_rf11_06",
+      "procedure": [
+        "고정 fixture snapshot·scope·runtime·정책·예산을 기록하고 별도 temp/home을 만든다.",
+        "plan미승인/관측누락/회귀 상태를 준비하고 기준 원시 event/file manifest를 저장한다.",
+        "release 동작을 실제 소유 서비스로 실행한다.",
+        "hardreject·공식점수로상쇄안함 결과를 exact assertion과 원시 artifact로 대조한다.",
+        "허가된 worker/temp만 정리하고 원본·다른 scope·HOME sentinel hash를 다시 비교한다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/tool digests",
+        "실행 argv·exitcode·runner 원시결과",
+        "허용/거부된 부작용·event IDs",
+        "관측 공백·unknown·cleanup 상태"
+      ],
+      "not_sufficient": [
+        "문서/fixture/schema 검사만 통과",
+        "mock provider를 실제 설치/계측으로 보고",
+        "skip 또는 0 tests 실행"
+      ],
+      "origin": "docs/testing/r5/RF11.ko.md#r5-rf11-06"
+    }
+  ]
+}

@@ -1,0 +1,533 @@
+{
+  "fixtures": [
+    {
+      "id": "index-binding:valid",
+      "schema": "contracts/r5/index-binding.schema.json",
+      "valid": true,
+      "value": {
+        "workspace_id": "w",
+        "source_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "environment_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "acl_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "provider_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "schema_version": "1"
+      }
+    },
+    {
+      "id": "index-binding:missing",
+      "schema": "contracts/r5/index-binding.schema.json",
+      "valid": false,
+      "value": {
+        "source_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "environment_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "acl_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "provider_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "schema_version": "1"
+      }
+    },
+    {
+      "id": "index-binding:extra",
+      "schema": "contracts/r5/index-binding.schema.json",
+      "valid": false,
+      "value": {
+        "workspace_id": "w",
+        "source_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "environment_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "acl_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "provider_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "schema_version": "1",
+        "arbitrary_override": true
+      }
+    },
+    {
+      "id": "feature-state:valid",
+      "schema": "contracts/r5/feature-state.schema.json",
+      "valid": true,
+      "value": {
+        "feature_id": "lsp",
+        "configured": true,
+        "installed": false,
+        "probe_verified": false,
+        "authorized": false,
+        "enabled": false,
+        "usable": false,
+        "blocked_reasons": [
+          "NOT_INSTALLED"
+        ]
+      }
+    },
+    {
+      "id": "feature-state:missing",
+      "schema": "contracts/r5/feature-state.schema.json",
+      "valid": false,
+      "value": {
+        "configured": true,
+        "installed": false,
+        "probe_verified": false,
+        "authorized": false,
+        "enabled": false,
+        "usable": false,
+        "blocked_reasons": [
+          "NOT_INSTALLED"
+        ]
+      }
+    },
+    {
+      "id": "feature-state:extra",
+      "schema": "contracts/r5/feature-state.schema.json",
+      "valid": false,
+      "value": {
+        "feature_id": "lsp",
+        "configured": true,
+        "installed": false,
+        "probe_verified": false,
+        "authorized": false,
+        "enabled": false,
+        "usable": false,
+        "blocked_reasons": [
+          "NOT_INSTALLED"
+        ],
+        "arbitrary_override": true
+      }
+    },
+    {
+      "id": "entry-delta:valid",
+      "schema": "contracts/r5/entry-delta.schema.json",
+      "valid": true,
+      "value": {
+        "candidate_id": "c",
+        "base_release_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "operation": "add",
+        "entry_id": "e",
+        "expected_revision": 0,
+        "scope_id": "w",
+        "content": "초기화 명령을 검증한다",
+        "evidence_ids": [
+          "ev1"
+        ],
+        "applies_when": [
+          "db tests"
+        ],
+        "does_not_apply_when": [
+          "no db"
+        ],
+        "linked_entry_id": null,
+        "link_kind": null
+      }
+    },
+    {
+      "id": "entry-delta:missing",
+      "schema": "contracts/r5/entry-delta.schema.json",
+      "valid": false,
+      "value": {
+        "base_release_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "operation": "add",
+        "entry_id": "e",
+        "expected_revision": 0,
+        "scope_id": "w",
+        "content": "초기화 명령을 검증한다",
+        "evidence_ids": [
+          "ev1"
+        ],
+        "applies_when": [
+          "db tests"
+        ],
+        "does_not_apply_when": [
+          "no db"
+        ],
+        "linked_entry_id": null,
+        "link_kind": null
+      }
+    },
+    {
+      "id": "entry-delta:extra",
+      "schema": "contracts/r5/entry-delta.schema.json",
+      "valid": false,
+      "value": {
+        "candidate_id": "c",
+        "base_release_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "operation": "add",
+        "entry_id": "e",
+        "expected_revision": 0,
+        "scope_id": "w",
+        "content": "초기화 명령을 검증한다",
+        "evidence_ids": [
+          "ev1"
+        ],
+        "applies_when": [
+          "db tests"
+        ],
+        "does_not_apply_when": [
+          "no db"
+        ],
+        "linked_entry_id": null,
+        "link_kind": null,
+        "arbitrary_override": true
+      }
+    },
+    {
+      "id": "recall-decision:valid",
+      "schema": "contracts/r5/recall-decision.schema.json",
+      "valid": true,
+      "value": {
+        "work_unit_id": "wu",
+        "core_release_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "scope_id": "w",
+        "action": "no_recall_needed",
+        "required_rule_ids": [
+          "safety"
+        ],
+        "entry_revisions": [],
+        "utility_mode": "disabled",
+        "causality": "not_measured",
+        "reason_code": "IRRELEVANT"
+      }
+    },
+    {
+      "id": "recall-decision:missing",
+      "schema": "contracts/r5/recall-decision.schema.json",
+      "valid": false,
+      "value": {
+        "core_release_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "scope_id": "w",
+        "action": "no_recall_needed",
+        "required_rule_ids": [
+          "safety"
+        ],
+        "entry_revisions": [],
+        "utility_mode": "disabled",
+        "causality": "not_measured",
+        "reason_code": "IRRELEVANT"
+      }
+    },
+    {
+      "id": "recall-decision:extra",
+      "schema": "contracts/r5/recall-decision.schema.json",
+      "valid": false,
+      "value": {
+        "work_unit_id": "wu",
+        "core_release_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "scope_id": "w",
+        "action": "no_recall_needed",
+        "required_rule_ids": [
+          "safety"
+        ],
+        "entry_revisions": [],
+        "utility_mode": "disabled",
+        "causality": "not_measured",
+        "reason_code": "IRRELEVANT",
+        "arbitrary_override": true
+      }
+    },
+    {
+      "id": "monitor-view-event:valid",
+      "schema": "contracts/r5/monitor-view-event.schema.json",
+      "valid": true,
+      "value": {
+        "event_id": "view-e1",
+        "commit_seq": 2,
+        "workspace_id": "w",
+        "request_id": "r",
+        "generation": "g",
+        "event_type": "model.attempt_started",
+        "payload": {
+          "attempt_id": "a",
+          "logical_request_id": "l",
+          "is_retry": false
+        },
+        "source_event_ids": [
+          "e1"
+        ],
+        "projection_version": "cyrano.monitor-view/1"
+      }
+    },
+    {
+      "id": "monitor-view-event:missing",
+      "schema": "contracts/r5/monitor-view-event.schema.json",
+      "valid": false,
+      "value": {
+        "commit_seq": 2,
+        "workspace_id": "w",
+        "request_id": "r",
+        "generation": "g",
+        "event_type": "model.attempt_started",
+        "payload": {
+          "attempt_id": "a",
+          "logical_request_id": "l",
+          "is_retry": false
+        },
+        "source_event_ids": [
+          "e1"
+        ],
+        "projection_version": "cyrano.monitor-view/1"
+      }
+    },
+    {
+      "id": "monitor-view-event:extra",
+      "schema": "contracts/r5/monitor-view-event.schema.json",
+      "valid": false,
+      "value": {
+        "event_id": "view-e1",
+        "commit_seq": 2,
+        "workspace_id": "w",
+        "request_id": "r",
+        "generation": "g",
+        "event_type": "model.attempt_started",
+        "payload": {
+          "attempt_id": "a",
+          "logical_request_id": "l",
+          "is_retry": false
+        },
+        "source_event_ids": [
+          "e1"
+        ],
+        "projection_version": "cyrano.monitor-view/1",
+        "arbitrary_override": true
+      }
+    },
+    {
+      "id": "monitor-snapshot:valid",
+      "schema": "contracts/r5/monitor-snapshot.schema.json",
+      "valid": true,
+      "value": {
+        "schema_version": "cyrano.monitor-snapshot/1",
+        "request_id": "r",
+        "workspace_id": "w",
+        "generation": "g",
+        "high_watermark": 2,
+        "cursor": "opaque",
+        "coverage": "unknown",
+        "missing_observers": [
+          "offload"
+        ],
+        "summary": {
+          "logical_requests": 1,
+          "physical_attempts": 1,
+          "retries": 0,
+          "elapsed_ms": null,
+          "cost_microunits": null,
+          "cost_kind": "unknown"
+        },
+        "recent_events": [
+          {
+            "event_id": "view-e1",
+            "commit_seq": 2,
+            "workspace_id": "w",
+            "request_id": "r",
+            "generation": "g",
+            "event_type": "model.attempt_started",
+            "payload": {
+              "attempt_id": "a",
+              "logical_request_id": "l",
+              "is_retry": false
+            },
+            "source_event_ids": [
+              "e1"
+            ],
+            "projection_version": "cyrano.monitor-view/1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "monitor-snapshot:missing",
+      "schema": "contracts/r5/monitor-snapshot.schema.json",
+      "valid": false,
+      "value": {
+        "request_id": "r",
+        "workspace_id": "w",
+        "generation": "g",
+        "high_watermark": 2,
+        "cursor": "opaque",
+        "coverage": "unknown",
+        "missing_observers": [
+          "offload"
+        ],
+        "summary": {
+          "logical_requests": 1,
+          "physical_attempts": 1,
+          "retries": 0,
+          "elapsed_ms": null,
+          "cost_microunits": null,
+          "cost_kind": "unknown"
+        },
+        "recent_events": [
+          {
+            "event_id": "view-e1",
+            "commit_seq": 2,
+            "workspace_id": "w",
+            "request_id": "r",
+            "generation": "g",
+            "event_type": "model.attempt_started",
+            "payload": {
+              "attempt_id": "a",
+              "logical_request_id": "l",
+              "is_retry": false
+            },
+            "source_event_ids": [
+              "e1"
+            ],
+            "projection_version": "cyrano.monitor-view/1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "monitor-snapshot:extra",
+      "schema": "contracts/r5/monitor-snapshot.schema.json",
+      "valid": false,
+      "value": {
+        "schema_version": "cyrano.monitor-snapshot/1",
+        "request_id": "r",
+        "workspace_id": "w",
+        "generation": "g",
+        "high_watermark": 2,
+        "cursor": "opaque",
+        "coverage": "unknown",
+        "missing_observers": [
+          "offload"
+        ],
+        "summary": {
+          "logical_requests": 1,
+          "physical_attempts": 1,
+          "retries": 0,
+          "elapsed_ms": null,
+          "cost_microunits": null,
+          "cost_kind": "unknown"
+        },
+        "recent_events": [
+          {
+            "event_id": "view-e1",
+            "commit_seq": 2,
+            "workspace_id": "w",
+            "request_id": "r",
+            "generation": "g",
+            "event_type": "model.attempt_started",
+            "payload": {
+              "attempt_id": "a",
+              "logical_request_id": "l",
+              "is_retry": false
+            },
+            "source_event_ids": [
+              "e1"
+            ],
+            "projection_version": "cyrano.monitor-view/1"
+          }
+        ],
+        "arbitrary_override": true
+      }
+    },
+    {
+      "id": "feature-state:semantic-18",
+      "schema": "contracts/r5/feature-state.schema.json",
+      "valid": false,
+      "value": {
+        "feature_id": "lsp",
+        "configured": true,
+        "installed": false,
+        "probe_verified": false,
+        "authorized": false,
+        "enabled": false,
+        "usable": true,
+        "blocked_reasons": [
+          "NOT_INSTALLED"
+        ]
+      }
+    },
+    {
+      "id": "entry-delta:semantic-19",
+      "schema": "contracts/r5/entry-delta.schema.json",
+      "valid": false,
+      "value": {
+        "candidate_id": "c",
+        "base_release_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "operation": "add",
+        "entry_id": "e",
+        "expected_revision": 2,
+        "scope_id": "w",
+        "content": "초기화 명령을 검증한다",
+        "evidence_ids": [
+          "ev1"
+        ],
+        "applies_when": [
+          "db tests"
+        ],
+        "does_not_apply_when": [
+          "no db"
+        ],
+        "linked_entry_id": null,
+        "link_kind": null
+      }
+    },
+    {
+      "id": "entry-delta:semantic-20",
+      "schema": "contracts/r5/entry-delta.schema.json",
+      "valid": false,
+      "value": {
+        "candidate_id": "c",
+        "base_release_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "operation": "link",
+        "entry_id": "e",
+        "expected_revision": 0,
+        "scope_id": "w",
+        "content": "초기화 명령을 검증한다",
+        "evidence_ids": [
+          "ev1"
+        ],
+        "applies_when": [
+          "db tests"
+        ],
+        "does_not_apply_when": [
+          "no db"
+        ],
+        "linked_entry_id": null,
+        "link_kind": null
+      }
+    },
+    {
+      "id": "recall-decision:semantic-21",
+      "schema": "contracts/r5/recall-decision.schema.json",
+      "valid": false,
+      "value": {
+        "work_unit_id": "wu",
+        "core_release_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "scope_id": "w",
+        "action": "no_recall_needed",
+        "required_rule_ids": [
+          "safety"
+        ],
+        "entry_revisions": [
+          {
+            "entry_id": "e",
+            "revision": 1
+          }
+        ],
+        "utility_mode": "disabled",
+        "causality": "not_measured",
+        "reason_code": "IRRELEVANT"
+      }
+    },
+    {
+      "id": "monitor-view-event:semantic-22",
+      "schema": "contracts/r5/monitor-view-event.schema.json",
+      "valid": false,
+      "value": {
+        "event_id": "view-e1",
+        "commit_seq": true,
+        "workspace_id": "w",
+        "request_id": "r",
+        "generation": "g",
+        "event_type": "model.attempt_started",
+        "payload": {
+          "attempt_id": "a",
+          "logical_request_id": "l",
+          "is_retry": false
+        },
+        "source_event_ids": [
+          "e1"
+        ],
+        "projection_version": "cyrano.monitor-view/1"
+      }
+    }
+  ]
+}

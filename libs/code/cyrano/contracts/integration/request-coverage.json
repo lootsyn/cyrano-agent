@@ -1,0 +1,449 @@
+{
+  "sections": [
+    {
+      "request_section": 0,
+      "subject": "전체흐름",
+      "document_owners": [
+        "docs/design/architecture/2026-09-16-system-design.ko.md",
+        "docs/development/R5_MASTER_PLAN.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 1,
+      "subject": "유명세제외·1차근거",
+      "document_owners": [
+        "docs/reference/R5_RESEARCH.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 2,
+      "subject": "조사기준일·최신상태",
+      "document_owners": [
+        "docs/reference/SOURCES.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 3,
+      "subject": "명시25개·추가탐색",
+      "document_owners": [
+        "docs/reference/R5_RESEARCH.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 4,
+      "subject": "core/model portability",
+      "document_owners": [
+        "docs/design/DCODE_INTEGRATION.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 5,
+      "subject": "context engineering",
+      "document_owners": [
+        "docs/design/architecture/2026-09-16-cache-context.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 6,
+      "subject": "prompt/KV cache",
+      "document_owners": [
+        "docs/design/architecture/2026-09-16-cache-context.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 7,
+      "subject": "planning/interview/HITL",
+      "document_owners": [
+        "docs/design/features/2026-09-16-interview-workflow.ko.md",
+        "docs/design/features/2026-09-16-plan-memory-execution.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 8,
+      "subject": "generated orchestration",
+      "document_owners": [
+        "docs/design/features/2026-09-16-plan-memory-execution.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 9,
+      "subject": "teams",
+      "document_owners": [
+        "docs/design/features/2026-09-16-plan-memory-execution.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 10,
+      "subject": "worktree/sandbox",
+      "document_owners": [
+        "docs/design/architecture/2026-09-16-runtime-security.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 11,
+      "subject": "code intelligence",
+      "document_owners": [
+        "docs/design/CODE_INTELLIGENCE_AND_TOOL_ISOLATION.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 12,
+      "subject": "memory분류",
+      "document_owners": [
+        "docs/design/MEMORY_LIFECYCLE.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 13,
+      "subject": "self improvement",
+      "document_owners": [
+        "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md",
+        "docs/design/features/2026-09-16-path-b-improvement.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 14,
+      "subject": "skills",
+      "document_owners": [
+        "docs/design/ADAPTIVE_MEMORY_AND_SKILL_EVOLUTION.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 15,
+      "subject": "MCP/ACP/A2A",
+      "document_owners": [
+        "docs/design/DCODE_INTEGRATION.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 16,
+      "subject": "verification/evidence",
+      "document_owners": [
+        "docs/design/testing/2026-09-16-evaluation-observability.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 17,
+      "subject": "hooks/enforcement",
+      "document_owners": [
+        "docs/design/architecture/2026-09-16-runtime-security.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 18,
+      "subject": "monitoring",
+      "document_owners": [
+        "docs/design/OBSERVABILITY_PIPELINE.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 19,
+      "subject": "durable/recovery",
+      "document_owners": [
+        "docs/design/architecture/2026-09-16-data-api.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 20,
+      "subject": "채택판단",
+      "document_owners": [
+        "docs/reference/R5_RESEARCH.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 21,
+      "subject": "복잡성/YAGNI",
+      "document_owners": [
+        "docs/design/RESPONSIBILITY_AND_ADOPTION.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 22,
+      "subject": "target architecture",
+      "document_owners": [
+        "docs/design/architecture/2026-09-16-system-design.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 23,
+      "subject": "상세타입/API",
+      "document_owners": [
+        "docs/design/architecture/2026-09-16-data-api.ko.md",
+        "contracts/v2/runtime.schema.json",
+        "contracts/v2/planning.schema.json"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 24,
+      "subject": "development plan",
+      "document_owners": [
+        "docs/development/R5_MASTER_PLAN.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 25,
+      "subject": "phase별의무",
+      "document_owners": [
+        ".agents/work/plan.json"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 26,
+      "subject": "execution plan",
+      "document_owners": [
+        "docs/execution/R5_EXECUTION_GUIDE.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 27,
+      "subject": "parallel/dependency",
+      "document_owners": [
+        "docs/development/R5_MASTER_PLAN.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 28,
+      "subject": "migration",
+      "document_owners": [
+        "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 29,
+      "subject": "benchmark",
+      "document_owners": [
+        "docs/design/testing/2026-09-16-evaluation-observability.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 30,
+      "subject": "모델별조건검증",
+      "document_owners": [
+        "docs/design/testing/2026-09-16-evaluation-observability.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 31,
+      "subject": "후보반론",
+      "document_owners": [
+        "docs/reference/R5_RESEARCH.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 32,
+      "subject": "3회검토",
+      "document_owners": [
+        "docs/development/R5_REVIEW.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 33,
+      "subject": "산출물트리",
+      "document_owners": [
+        "docs/design/DCODE_INTEGRATION.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 34,
+      "subject": "start",
+      "document_owners": [
+        "docs/NAVIGATION.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 35,
+      "subject": "handoff",
+      "document_owners": [
+        "IMPLEMENTATION_REQUEST.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 36,
+      "subject": "lower-model prompt",
+      "document_owners": [
+        "IMPLEMENTATION_REQUEST.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 37,
+      "subject": "reviewer prompt",
+      "document_owners": [
+        ".agents/roles/reviewer.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 38,
+      "subject": "설명형비교",
+      "document_owners": [
+        "docs/reference/R5_RESEARCH.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 39,
+      "subject": "1차출처",
+      "document_owners": [
+        "docs/reference/SOURCES.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 40,
+      "subject": "금지사항",
+      "document_owners": [
+        "AGENTS.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 41,
+      "subject": "판단원칙",
+      "document_owners": [
+        "IMPLEMENTATION_REQUEST.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 42,
+      "subject": "완료조건",
+      "document_owners": [
+        "docs/development/R5_REVIEW.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    },
+    {
+      "request_section": 43,
+      "subject": "최종목적",
+      "document_owners": [
+        "docs/design/architecture/2026-09-16-system-design.ko.md"
+      ],
+      "status": "integrated_design_not_product_execution",
+      "source_ref": "references/research/project-request.txt",
+      "coverage_status": "integrated_design_not_implemented"
+    }
+  ]
+}

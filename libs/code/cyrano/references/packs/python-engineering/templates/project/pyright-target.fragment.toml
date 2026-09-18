@@ -1,0 +1,9 @@
+# Optional for an existing target repository using Pyright.
+# This is NOT a replacement for UDH's Python 3.12 / mypy policy.
+[tool.pyright]
+pythonVersion = "3.11"
+typeCheckingMode = "strict"
+include = ["src", "tests"]
+# Confirm this environment exists before using these paths.
+venvPath = "."
+venv = ".venv"

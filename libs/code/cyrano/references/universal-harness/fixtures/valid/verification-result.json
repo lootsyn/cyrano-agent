@@ -1,0 +1,27 @@
+{
+  "schema_version": "udh.verification/1",
+  "verification_id": "verification-demo",
+  "session_id": "session-demo",
+  "task_id": "task-1",
+  "check_id": "check-1",
+  "recipe_id": "python_tests",
+  "requirement_ids": [
+    "DEMO-REQ-1"
+  ],
+  "scenario_ids": [
+    "scenario-empty"
+  ],
+  "postimage_digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "runtime_lock_digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "runner_id": "fixture-runner",
+  "status": "not_run",
+  "exit_code": null,
+  "tests_collected": null,
+  "tests_passed": null,
+  "tests_failed": null,
+  "tests_skipped": null,
+  "started_at": null,
+  "finished_at": null,
+  "evidence": [],
+  "reason": "설계 예시: 실행 결과가 아님"
+}

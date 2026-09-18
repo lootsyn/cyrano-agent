@@ -1,0 +1,189 @@
+{
+  "revision": "2026-09-16-integration-r2",
+  "requirements": [
+    {
+      "id": "BASE-01",
+      "title": "dcode core 무수정·실제 호환성",
+      "owner_wps": [
+        "WP00",
+        "WP06",
+        "WP22"
+      ],
+      "required": true,
+      "product_status": "not_verified",
+      "source": "references/universal-harness/docs/01_ARCHITECTURE_AND_WORKFLOW.ko.md#0.2"
+    },
+    {
+      "id": "BASE-02",
+      "title": "고객 저장소 설치 비침습성",
+      "owner_wps": [
+        "WP03",
+        "WP10",
+        "WP22"
+      ],
+      "required": true,
+      "product_status": "not_verified",
+      "source": "references/universal-harness/docs/01_ARCHITECTURE_AND_WORKFLOW.ko.md#0.2"
+    },
+    {
+      "id": "GEN-01",
+      "title": "모델 비특화·전체 기능 유지",
+      "owner_wps": [
+        "WP01",
+        "WP05",
+        "WP15",
+        "WP18",
+        "WP20",
+        "WP23"
+      ],
+      "required": true,
+      "product_status": "not_verified",
+      "source": "references/universal-harness/docs/01_ARCHITECTURE_AND_WORKFLOW.ko.md#0.2"
+    },
+    {
+      "id": "CACHE-01",
+      "title": "캐시 친화적 컨텍스트·정확한 usage",
+      "owner_wps": [
+        "WP05",
+        "WP06",
+        "WP11",
+        "WP12",
+        "WP13",
+        "WP18",
+        "WP23"
+      ],
+      "required": true,
+      "product_status": "not_verified",
+      "source": "references/universal-harness/docs/01_ARCHITECTURE_AND_WORKFLOW.ko.md#0.2"
+    },
+    {
+      "id": "PROFILE-01",
+      "title": "작업·위험도 프로필과 권한 합성",
+      "owner_wps": [
+        "WP03",
+        "WP05",
+        "WP09"
+      ],
+      "required": true,
+      "product_status": "not_verified",
+      "source": "references/universal-harness/docs/01_ARCHITECTURE_AND_WORKFLOW.ko.md#0.2"
+    },
+    {
+      "id": "INT-01",
+      "title": "Decision Interview 원본·handoff",
+      "owner_wps": [
+        "WP07",
+        "WP08"
+      ],
+      "required": true,
+      "product_status": "not_verified",
+      "source": "references/universal-harness/docs/01_ARCHITECTURE_AND_WORKFLOW.ko.md#0.2"
+    },
+    {
+      "id": "PLAN-01",
+      "title": "구체 계획·독립 리뷰·실행 전 승인",
+      "owner_wps": [
+        "WP09",
+        "WP10"
+      ],
+      "required": true,
+      "product_status": "not_verified",
+      "source": "references/universal-harness/docs/01_ARCHITECTURE_AND_WORKFLOW.ko.md#0.2"
+    },
+    {
+      "id": "MEM-01",
+      "title": "범위화·적극 recall·수명주기",
+      "owner_wps": [
+        "WP11",
+        "WP12",
+        "WP17"
+      ],
+      "required": true,
+      "product_status": "not_verified",
+      "source": "references/universal-harness/docs/01_ARCHITECTURE_AND_WORKFLOW.ko.md#0.2"
+    },
+    {
+      "id": "LEARN-01",
+      "title": "경로 A/B 후보·평가·승격·rollback",
+      "owner_wps": [
+        "WP14",
+        "WP15",
+        "WP16",
+        "WP17",
+        "WP18",
+        "WP19",
+        "WP20",
+        "WP21"
+      ],
+      "required": true,
+      "product_status": "not_verified",
+      "source": "references/universal-harness/docs/01_ARCHITECTURE_AND_WORKFLOW.ko.md#0.2"
+    },
+    {
+      "id": "OBS-01",
+      "title": "전체 작업 관측·누락·완료 보고",
+      "owner_wps": [
+        "WP06",
+        "WP13",
+        "WP22"
+      ],
+      "required": true,
+      "product_status": "not_verified",
+      "source": "references/universal-harness/docs/01_ARCHITECTURE_AND_WORKFLOW.ko.md#0.2"
+    },
+    {
+      "id": "PY-01",
+      "title": "79/72 품질·실제 검사·변경 범위",
+      "owner_wps": [
+        "WP00",
+        "WP01",
+        "WP10",
+        "WP22"
+      ],
+      "required": true,
+      "product_status": "not_verified",
+      "source": "references/universal-harness/docs/01_ARCHITECTURE_AND_WORKFLOW.ko.md#0.2"
+    },
+    {
+      "id": "AUTH-01",
+      "title": "신뢰 승인·정확 권한·격리",
+      "owner_wps": [
+        "WP03",
+        "WP06",
+        "WP09",
+        "WP10",
+        "WP21"
+      ],
+      "required": true,
+      "product_status": "not_verified",
+      "source": "references/universal-harness/docs/01_ARCHITECTURE_AND_WORKFLOW.ko.md#0.2"
+    },
+    {
+      "id": "REL-01",
+      "title": "중단·복구·CAS·lease·예산",
+      "owner_wps": [
+        "WP02",
+        "WP07",
+        "WP09",
+        "WP10",
+        "WP21",
+        "WP22"
+      ],
+      "required": true,
+      "product_status": "not_verified",
+      "source": "references/universal-harness/docs/01_ARCHITECTURE_AND_WORKFLOW.ko.md#0.2"
+    },
+    {
+      "id": "EVAL-01",
+      "title": "기능·회귀·효과·증거 수준",
+      "owner_wps": [
+        "WP20",
+        "WP22",
+        "WP23"
+      ],
+      "required": true,
+      "product_status": "not_verified",
+      "source": "references/universal-harness/docs/01_ARCHITECTURE_AND_WORKFLOW.ko.md#0.2"
+    }
+  ]
+}

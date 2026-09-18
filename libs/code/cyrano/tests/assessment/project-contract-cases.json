@@ -1,0 +1,821 @@
+{
+  "cases": [
+    {
+      "id": "CON-CFG-01",
+      "title": "문서와runtime 구분",
+      "area": "cfg",
+      "owner_wp": "WP00",
+      "criteria": [],
+      "given": "현재 schema registry에 정의됐지만 runtime 연결이 없는 계약",
+      "when": "packageinspection",
+      "then": "specified_not_implemented를 표시",
+      "forbidden_effect": "schema 존재를 실제 enforcement로 주장 금지",
+      "fixture": "F0 + 명시 perturbation; 고정 가짜 시계/명시 test principal",
+      "test_layer": "preparation_contract",
+      "execution_status": "not_run",
+      "test_path": "tests/assessment/test_project_contracts.py",
+      "test_function": "test_con_cfg_01",
+      "procedure": [
+        "현재 schema registry에 정의됐지만 runtime 연결이 없는 계약",
+        "packageinspection",
+        "specified_not_implemented를 표시",
+        "불필요한 외부 실행 없이 준비 명세를 확인하고 원시 결과를 남긴다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/plan/release digests",
+        "actual argv·cwd·exit·runner result",
+        "before/after manifest·physical call IDs",
+        "cleanup and missing-coverage report"
+      ],
+      "not_sufficient": [
+        "schema/fixture only",
+        "self-report",
+        "zero tests",
+        "missing prerequisites hidden as pass"
+      ]
+    },
+    {
+      "id": "CON-CFG-02",
+      "title": "참고 AGENTS 권위",
+      "area": "cfg",
+      "owner_wp": "WP00",
+      "criteria": [],
+      "given": "importedreference에강한지시포함",
+      "when": "docselection",
+      "then": "참고신뢰수준",
+      "forbidden_effect": "현재AGENTS덮어쓰기 0",
+      "fixture": "F0 + 명시 perturbation; 고정 가짜 시계/명시 test principal",
+      "test_layer": "preparation_contract",
+      "execution_status": "not_run",
+      "test_path": "tests/assessment/test_project_contracts.py",
+      "test_function": "test_con_cfg_02",
+      "procedure": [
+        "importedreference에강한지시포함",
+        "docselection",
+        "참고신뢰수준",
+        "불필요한 외부 실행 없이 준비 명세를 확인하고 원시 결과를 남긴다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/plan/release digests",
+        "actual argv·cwd·exit·runner result",
+        "before/after manifest·physical call IDs",
+        "cleanup and missing-coverage report"
+      ],
+      "not_sufficient": [
+        "schema/fixture only",
+        "self-report",
+        "zero tests",
+        "missing prerequisites hidden as pass"
+      ]
+    },
+    {
+      "id": "CON-CFG-03",
+      "title": "모델별능력추정",
+      "area": "cfg",
+      "owner_wp": "WP00",
+      "criteria": [],
+      "given": "modelname만보고highskill평가하려함",
+      "when": "configreview",
+      "then": "근거없는profile거부",
+      "forbidden_effect": "모델명별프롬프트분기 0",
+      "fixture": "F0 + 명시 perturbation; 고정 가짜 시계/명시 test principal",
+      "test_layer": "preparation_contract",
+      "execution_status": "not_run",
+      "test_path": "tests/assessment/test_project_contracts.py",
+      "test_function": "test_con_cfg_03",
+      "procedure": [
+        "modelname만보고highskill평가하려함",
+        "configreview",
+        "근거없는profile거부",
+        "불필요한 외부 실행 없이 준비 명세를 확인하고 원시 결과를 남긴다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/plan/release digests",
+        "actual argv·cwd·exit·runner result",
+        "before/after manifest·physical call IDs",
+        "cleanup and missing-coverage report"
+      ],
+      "not_sufficient": [
+        "schema/fixture only",
+        "self-report",
+        "zero tests",
+        "missing prerequisites hidden as pass"
+      ]
+    },
+    {
+      "id": "CON-CFG-04",
+      "title": "원본 없는 과거 검증 수치 승계 금지",
+      "area": "cfg",
+      "owner_wp": "WP00",
+      "criteria": [],
+      "given": "대화에 과거 테스트 통과 수가 있지만 실행 파일·원시 결과는 없음",
+      "when": "현재 프로젝트 검증 보고 생성",
+      "then": "현재 실제 실행 결과만 기록하고 과거 원본의 동일성은 주장하지 않음",
+      "forbidden_effect": "존재하지 않는 코드·검증 결과를 복원 완료로 기록하지 않음",
+      "fixture": "F0 + 명시 perturbation; 고정 가짜 시계/명시 test principal",
+      "test_layer": "preparation_contract",
+      "execution_status": "not_run",
+      "test_path": "tests/assessment/test_project_contracts.py",
+      "test_function": "test_con_cfg_04",
+      "procedure": [
+        "대화에 과거 테스트 통과 수가 있지만 실행 파일·원시 결과는 없음",
+        "현재 프로젝트 검증 보고 생성",
+        "현재 실제 실행 결과만 기록하고 과거 원본의 동일성은 주장하지 않음",
+        "불필요한 외부 실행 없이 준비 명세를 확인하고 원시 결과를 남긴다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/plan/release digests",
+        "actual argv·cwd·exit·runner result",
+        "before/after manifest·physical call IDs",
+        "cleanup and missing-coverage report"
+      ],
+      "not_sufficient": [
+        "schema/fixture only",
+        "self-report",
+        "zero tests",
+        "missing prerequisites hidden as pass"
+      ]
+    },
+    {
+      "id": "CON-CFG-05",
+      "title": "새폴더 구조요청충돌",
+      "area": "cfg",
+      "owner_wp": "WP00",
+      "criteria": [],
+      "given": "첨부예시에01research루트있음",
+      "when": "현재user제약적용",
+      "then": "기존docs분류사용",
+      "forbidden_effect": "새프로젝트root생성 0",
+      "fixture": "F0 + 명시 perturbation; 고정 가짜 시계/명시 test principal",
+      "test_layer": "preparation_contract",
+      "execution_status": "not_run",
+      "test_path": "tests/assessment/test_project_contracts.py",
+      "test_function": "test_con_cfg_05",
+      "procedure": [
+        "첨부예시에01research루트있음",
+        "현재user제약적용",
+        "기존docs분류사용",
+        "불필요한 외부 실행 없이 준비 명세를 확인하고 원시 결과를 남긴다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/plan/release digests",
+        "actual argv·cwd·exit·runner result",
+        "before/after manifest·physical call IDs",
+        "cleanup and missing-coverage report"
+      ],
+      "not_sufficient": [
+        "schema/fixture only",
+        "self-report",
+        "zero tests",
+        "missing prerequisites hidden as pass"
+      ]
+    },
+    {
+      "id": "CON-CFG-06",
+      "title": "source 범위과장",
+      "area": "cfg",
+      "owner_wp": "WP00",
+      "criteria": [],
+      "given": "README만읽은후source검증표기",
+      "when": "researchreview",
+      "then": "evidenceleveldocs",
+      "forbidden_effect": "실행/소스감사완료주장 0",
+      "fixture": "F0 + 명시 perturbation; 고정 가짜 시계/명시 test principal",
+      "test_layer": "preparation_contract",
+      "execution_status": "not_run",
+      "test_path": "tests/assessment/test_project_contracts.py",
+      "test_function": "test_con_cfg_06",
+      "procedure": [
+        "README만읽은후source검증표기",
+        "researchreview",
+        "evidenceleveldocs",
+        "불필요한 외부 실행 없이 준비 명세를 확인하고 원시 결과를 남긴다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/plan/release digests",
+        "actual argv·cwd·exit·runner result",
+        "before/after manifest·physical call IDs",
+        "cleanup and missing-coverage report"
+      ],
+      "not_sufficient": [
+        "schema/fixture only",
+        "self-report",
+        "zero tests",
+        "missing prerequisites hidden as pass"
+      ]
+    },
+    {
+      "id": "CON-CFG-07",
+      "title": "beta latest혼동",
+      "area": "cfg",
+      "owner_wp": "WP00",
+      "criteria": [],
+      "given": "GitHubLatest가beta태그",
+      "when": "versionrecord",
+      "then": "prerelease로기록",
+      "forbidden_effect": "stable자동표기 0",
+      "fixture": "F0 + 명시 perturbation; 고정 가짜 시계/명시 test principal",
+      "test_layer": "preparation_contract",
+      "execution_status": "not_run",
+      "test_path": "tests/assessment/test_project_contracts.py",
+      "test_function": "test_con_cfg_07",
+      "procedure": [
+        "GitHubLatest가beta태그",
+        "versionrecord",
+        "prerelease로기록",
+        "불필요한 외부 실행 없이 준비 명세를 확인하고 원시 결과를 남긴다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/plan/release digests",
+        "actual argv·cwd·exit·runner result",
+        "before/after manifest·physical call IDs",
+        "cleanup and missing-coverage report"
+      ],
+      "not_sufficient": [
+        "schema/fixture only",
+        "self-report",
+        "zero tests",
+        "missing prerequisites hidden as pass"
+      ]
+    },
+    {
+      "id": "CON-CFG-08",
+      "title": "제품별버전혼동",
+      "area": "cfg",
+      "owner_wp": "WP00",
+      "criteria": [],
+      "given": "Desktop버전만관측",
+      "when": "backend정보표",
+      "then": "backendunknown",
+      "forbidden_effect": "전제품version동일가정 0",
+      "fixture": "F0 + 명시 perturbation; 고정 가짜 시계/명시 test principal",
+      "test_layer": "preparation_contract",
+      "execution_status": "not_run",
+      "test_path": "tests/assessment/test_project_contracts.py",
+      "test_function": "test_con_cfg_08",
+      "procedure": [
+        "Desktop버전만관측",
+        "backend정보표",
+        "backendunknown",
+        "불필요한 외부 실행 없이 준비 명세를 확인하고 원시 결과를 남긴다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/plan/release digests",
+        "actual argv·cwd·exit·runner result",
+        "before/after manifest·physical call IDs",
+        "cleanup and missing-coverage report"
+      ],
+      "not_sufficient": [
+        "schema/fixture only",
+        "self-report",
+        "zero tests",
+        "missing prerequisites hidden as pass"
+      ]
+    },
+    {
+      "id": "CON-CFG-09",
+      "title": "공식id미확정",
+      "area": "cfg",
+      "owner_wp": "WP00",
+      "criteria": [],
+      "given": "Orin단어만있음",
+      "when": "adoption",
+      "then": "identityunresolved·DEFER",
+      "forbidden_effect": "동명hardware로대체 0",
+      "fixture": "F0 + 명시 perturbation; 고정 가짜 시계/명시 test principal",
+      "test_layer": "preparation_contract",
+      "execution_status": "not_run",
+      "test_path": "tests/assessment/test_project_contracts.py",
+      "test_function": "test_con_cfg_09",
+      "procedure": [
+        "Orin단어만있음",
+        "adoption",
+        "identityunresolved·DEFER",
+        "불필요한 외부 실행 없이 준비 명세를 확인하고 원시 결과를 남긴다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/plan/release digests",
+        "actual argv·cwd·exit·runner result",
+        "before/after manifest·physical call IDs",
+        "cleanup and missing-coverage report"
+      ],
+      "not_sufficient": [
+        "schema/fixture only",
+        "self-report",
+        "zero tests",
+        "missing prerequisites hidden as pass"
+      ]
+    },
+    {
+      "id": "CON-CFG-10",
+      "title": "도구role 노출예산",
+      "area": "cfg",
+      "owner_wp": "WP00",
+      "criteria": [],
+      "given": "불필요tool100개",
+      "when": "phaseinventoryreview",
+      "then": "검증된작업도구만",
+      "forbidden_effect": "cache위해모든tool상시주입 0",
+      "fixture": "F0 + 명시 perturbation; 고정 가짜 시계/명시 test principal",
+      "test_layer": "preparation_contract",
+      "execution_status": "not_run",
+      "test_path": "tests/assessment/test_project_contracts.py",
+      "test_function": "test_con_cfg_10",
+      "procedure": [
+        "불필요tool100개",
+        "phaseinventoryreview",
+        "검증된작업도구만",
+        "불필요한 외부 실행 없이 준비 명세를 확인하고 원시 결과를 남긴다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/plan/release digests",
+        "actual argv·cwd·exit·runner result",
+        "before/after manifest·physical call IDs",
+        "cleanup and missing-coverage report"
+      ],
+      "not_sufficient": [
+        "schema/fixture only",
+        "self-report",
+        "zero tests",
+        "missing prerequisites hidden as pass"
+      ]
+    },
+    {
+      "id": "CON-CFG-11",
+      "title": "live 명령미구현",
+      "area": "cfg",
+      "owner_wp": "WP00",
+      "criteria": [],
+      "given": "문서의미래test파일없음",
+      "when": "runbook진행",
+      "then": "not_run/blocked",
+      "forbidden_effect": "0tests성공으로표시 0",
+      "fixture": "F0 + 명시 perturbation; 고정 가짜 시계/명시 test principal",
+      "test_layer": "preparation_contract",
+      "execution_status": "not_run",
+      "test_path": "tests/assessment/test_project_contracts.py",
+      "test_function": "test_con_cfg_11",
+      "procedure": [
+        "문서의미래test파일없음",
+        "runbook진행",
+        "not_run/blocked",
+        "불필요한 외부 실행 없이 준비 명세를 확인하고 원시 결과를 남긴다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/plan/release digests",
+        "actual argv·cwd·exit·runner result",
+        "before/after manifest·physical call IDs",
+        "cleanup and missing-coverage report"
+      ],
+      "not_sufficient": [
+        "schema/fixture only",
+        "self-report",
+        "zero tests",
+        "missing prerequisites hidden as pass"
+      ]
+    },
+    {
+      "id": "CON-CFG-12",
+      "title": "두formatter 충돌",
+      "area": "cfg",
+      "owner_wp": "WP00",
+      "criteria": [],
+      "given": "nativeRuff와외부Black혼합설정제안",
+      "when": "품질계획검토",
+      "then": "소유환경별분리",
+      "forbidden_effect": "동일파일두formatter자동실행 0",
+      "fixture": "F0 + 명시 perturbation; 고정 가짜 시계/명시 test principal",
+      "test_layer": "preparation_contract",
+      "execution_status": "not_run",
+      "test_path": "tests/assessment/test_project_contracts.py",
+      "test_function": "test_con_cfg_12",
+      "procedure": [
+        "nativeRuff와외부Black혼합설정제안",
+        "품질계획검토",
+        "소유환경별분리",
+        "불필요한 외부 실행 없이 준비 명세를 확인하고 원시 결과를 남긴다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/plan/release digests",
+        "actual argv·cwd·exit·runner result",
+        "before/after manifest·physical call IDs",
+        "cleanup and missing-coverage report"
+      ],
+      "not_sufficient": [
+        "schema/fixture only",
+        "self-report",
+        "zero tests",
+        "missing prerequisites hidden as pass"
+      ]
+    },
+    {
+      "id": "CON-PKG-01",
+      "title": "전체 프로젝트 추가분 포함",
+      "area": "pkg",
+      "owner_wp": "WP00",
+      "criteria": [],
+      "given": "제품코드·테스트·문서·설정·도구 recipe가 현재 프로젝트에 존재",
+      "when": "납품 ZIP을 재해제",
+      "then": "copy_to_dcode 아래의 현재 전체 추가분이 포함되고 별도 현재 문서팩이 없음",
+      "forbidden_effect": "제품코드·테스트 누락 또는 dcode 원본 덮어쓰기 없음",
+      "fixture": "F0 + 명시 perturbation; 고정 가짜 시계/명시 test principal",
+      "test_layer": "preparation_contract",
+      "execution_status": "not_run",
+      "test_path": "tests/assessment/test_project_contracts.py",
+      "test_function": "test_con_pkg_01",
+      "procedure": [
+        "제품코드·테스트·문서·설정·도구 recipe가 현재 프로젝트에 존재",
+        "납품 ZIP을 재해제",
+        "copy_to_dcode 아래의 현재 전체 추가분이 포함되고 별도 현재 문서팩이 없음",
+        "불필요한 외부 실행 없이 준비 명세를 확인하고 원시 결과를 남긴다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/plan/release digests",
+        "actual argv·cwd·exit·runner result",
+        "before/after manifest·physical call IDs",
+        "cleanup and missing-coverage report"
+      ],
+      "not_sufficient": [
+        "schema/fixture only",
+        "self-report",
+        "zero tests",
+        "missing prerequisites hidden as pass"
+      ]
+    },
+    {
+      "id": "CON-PKG-02",
+      "title": "기존파일충돌",
+      "area": "pkg",
+      "owner_wp": "WP00",
+      "criteria": [],
+      "given": "추가path가baseline에존재",
+      "when": "preflight",
+      "then": "collision거부",
+      "forbidden_effect": "기존파일덮어쓰기 0",
+      "fixture": "F0 + 명시 perturbation; 고정 가짜 시계/명시 test principal",
+      "test_layer": "preparation_contract",
+      "execution_status": "not_run",
+      "test_path": "tests/assessment/test_project_contracts.py",
+      "test_function": "test_con_pkg_02",
+      "procedure": [
+        "추가path가baseline에존재",
+        "preflight",
+        "collision거부",
+        "불필요한 외부 실행 없이 준비 명세를 확인하고 원시 결과를 남긴다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/plan/release digests",
+        "actual argv·cwd·exit·runner result",
+        "before/after manifest·physical call IDs",
+        "cleanup and missing-coverage report"
+      ],
+      "not_sufficient": [
+        "schema/fixture only",
+        "self-report",
+        "zero tests",
+        "missing prerequisites hidden as pass"
+      ]
+    },
+    {
+      "id": "CON-PKG-03",
+      "title": "zip traversal",
+      "area": "pkg",
+      "owner_wp": "WP00",
+      "criteria": [],
+      "given": "../outside멤버를합성",
+      "when": "archivecheck",
+      "then": "INPUT_INVALID",
+      "forbidden_effect": "해제외부쓰기 0",
+      "fixture": "F0 + 명시 perturbation; 고정 가짜 시계/명시 test principal",
+      "test_layer": "preparation_contract",
+      "execution_status": "not_run",
+      "test_path": "tests/assessment/test_project_contracts.py",
+      "test_function": "test_con_pkg_03",
+      "procedure": [
+        "../outside멤버를합성",
+        "archivecheck",
+        "INPUT_INVALID",
+        "불필요한 외부 실행 없이 준비 명세를 확인하고 원시 결과를 남긴다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/plan/release digests",
+        "actual argv·cwd·exit·runner result",
+        "before/after manifest·physical call IDs",
+        "cleanup and missing-coverage report"
+      ],
+      "not_sufficient": [
+        "schema/fixture only",
+        "self-report",
+        "zero tests",
+        "missing prerequisites hidden as pass"
+      ]
+    },
+    {
+      "id": "CON-PKG-04",
+      "title": "zip symlink",
+      "area": "pkg",
+      "owner_wp": "WP00",
+      "criteria": [],
+      "given": "entrymode가symlink",
+      "when": "archivecheck",
+      "then": "INPUT_INVALID",
+      "forbidden_effect": "symlink배포 0",
+      "fixture": "F0 + 명시 perturbation; 고정 가짜 시계/명시 test principal",
+      "test_layer": "preparation_contract",
+      "execution_status": "not_run",
+      "test_path": "tests/assessment/test_project_contracts.py",
+      "test_function": "test_con_pkg_04",
+      "procedure": [
+        "entrymode가symlink",
+        "archivecheck",
+        "INPUT_INVALID",
+        "불필요한 외부 실행 없이 준비 명세를 확인하고 원시 결과를 남긴다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/plan/release digests",
+        "actual argv·cwd·exit·runner result",
+        "before/after manifest·physical call IDs",
+        "cleanup and missing-coverage report"
+      ],
+      "not_sufficient": [
+        "schema/fixture only",
+        "self-report",
+        "zero tests",
+        "missing prerequisites hidden as pass"
+      ]
+    },
+    {
+      "id": "CON-PKG-05",
+      "title": "내용무결성",
+      "area": "pkg",
+      "owner_wp": "WP00",
+      "criteria": [],
+      "given": "manifest후문서1byte변경",
+      "when": "verifyhash",
+      "then": "불일치실패",
+      "forbidden_effect": "손상팩PASS 0",
+      "fixture": "F0 + 명시 perturbation; 고정 가짜 시계/명시 test principal",
+      "test_layer": "preparation_contract",
+      "execution_status": "not_run",
+      "test_path": "tests/assessment/test_project_contracts.py",
+      "test_function": "test_con_pkg_05",
+      "procedure": [
+        "manifest후문서1byte변경",
+        "verifyhash",
+        "불일치실패",
+        "불필요한 외부 실행 없이 준비 명세를 확인하고 원시 결과를 남긴다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/plan/release digests",
+        "actual argv·cwd·exit·runner result",
+        "before/after manifest·physical call IDs",
+        "cleanup and missing-coverage report"
+      ],
+      "not_sufficient": [
+        "schema/fixture only",
+        "self-report",
+        "zero tests",
+        "missing prerequisites hidden as pass"
+      ]
+    },
+    {
+      "id": "CON-PKG-06",
+      "title": "경로대소문자충돌",
+      "area": "pkg",
+      "owner_wp": "WP00",
+      "criteria": [],
+      "given": "Windows에서동일한대소문자변형파일",
+      "when": "inventorycheck",
+      "then": "충돌거부",
+      "forbidden_effect": "한파일무음교체 0",
+      "fixture": "F0 + 명시 perturbation; 고정 가짜 시계/명시 test principal",
+      "test_layer": "preparation_contract",
+      "execution_status": "not_run",
+      "test_path": "tests/assessment/test_project_contracts.py",
+      "test_function": "test_con_pkg_06",
+      "procedure": [
+        "Windows에서동일한대소문자변형파일",
+        "inventorycheck",
+        "충돌거부",
+        "불필요한 외부 실행 없이 준비 명세를 확인하고 원시 결과를 남긴다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/plan/release digests",
+        "actual argv·cwd·exit·runner result",
+        "before/after manifest·physical call IDs",
+        "cleanup and missing-coverage report"
+      ],
+      "not_sufficient": [
+        "schema/fixture only",
+        "self-report",
+        "zero tests",
+        "missing prerequisites hidden as pass"
+      ]
+    },
+    {
+      "id": "CON-PKG-07",
+      "title": "문서 통합 중 제품 코드 보존",
+      "area": "pkg",
+      "owner_wp": "WP00",
+      "criteria": [],
+      "given": "기존 제품 Python 모듈의 file manifest",
+      "when": "문서·작업·schema·router 통합",
+      "then": "기존 제품 Python 모듈 byte 동일; 문서·개발 지원 변경만 허용",
+      "forbidden_effect": "모델 runtime 권한이 무음 활성화되지 않음",
+      "fixture": "F0 + 명시 perturbation; 고정 가짜 시계/명시 test principal",
+      "test_layer": "preparation_contract",
+      "execution_status": "not_run",
+      "test_path": "tests/assessment/test_project_contracts.py",
+      "test_function": "test_con_pkg_07",
+      "procedure": [
+        "기존 제품 Python 모듈의 file manifest",
+        "문서·작업·schema·router 통합",
+        "기존 제품 Python 모듈 byte 동일; 문서·개발 지원 변경만 허용",
+        "불필요한 외부 실행 없이 준비 명세를 확인하고 원시 결과를 남긴다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/plan/release digests",
+        "actual argv·cwd·exit·runner result",
+        "before/after manifest·physical call IDs",
+        "cleanup and missing-coverage report"
+      ],
+      "not_sufficient": [
+        "schema/fixture only",
+        "self-report",
+        "zero tests",
+        "missing prerequisites hidden as pass"
+      ]
+    },
+    {
+      "id": "CON-PKG-08",
+      "title": "요청서 원문보존",
+      "area": "pkg",
+      "owner_wp": "WP00",
+      "criteria": [],
+      "given": "첨부bytes와참고사본",
+      "when": "hash비교",
+      "then": "동일",
+      "forbidden_effect": "원문몰래교정 0",
+      "fixture": "F0 + 명시 perturbation; 고정 가짜 시계/명시 test principal",
+      "test_layer": "preparation_contract",
+      "execution_status": "not_run",
+      "test_path": "tests/assessment/test_project_contracts.py",
+      "test_function": "test_con_pkg_08",
+      "procedure": [
+        "첨부bytes와참고사본",
+        "hash비교",
+        "동일",
+        "불필요한 외부 실행 없이 준비 명세를 확인하고 원시 결과를 남긴다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/plan/release digests",
+        "actual argv·cwd·exit·runner result",
+        "before/after manifest·physical call IDs",
+        "cleanup and missing-coverage report"
+      ],
+      "not_sufficient": [
+        "schema/fixture only",
+        "self-report",
+        "zero tests",
+        "missing prerequisites hidden as pass"
+      ]
+    },
+    {
+      "id": "CON-PKG-09",
+      "title": "담당 문서·작업 라우트 누락",
+      "area": "pkg",
+      "owner_wp": "WP00",
+      "criteria": [],
+      "given": "현재 WP input이 없는 문서를 참조",
+      "when": "통합 준비 검사",
+      "then": "누락된 경로와 담당 WP를 표시하며 실패",
+      "forbidden_effect": "unknown 참조를 무시하고 성공 금지",
+      "fixture": "F0 + 명시 perturbation; 고정 가짜 시계/명시 test principal",
+      "test_layer": "preparation_contract",
+      "execution_status": "not_run",
+      "test_path": "tests/assessment/test_project_contracts.py",
+      "test_function": "test_con_pkg_09",
+      "procedure": [
+        "현재 WP input이 없는 문서를 참조",
+        "통합 준비 검사",
+        "누락된 경로와 담당 WP를 표시하며 실패",
+        "불필요한 외부 실행 없이 준비 명세를 확인하고 원시 결과를 남긴다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/plan/release digests",
+        "actual argv·cwd·exit·runner result",
+        "before/after manifest·physical call IDs",
+        "cleanup and missing-coverage report"
+      ],
+      "not_sufficient": [
+        "schema/fixture only",
+        "self-report",
+        "zero tests",
+        "missing prerequisites hidden as pass"
+      ]
+    },
+    {
+      "id": "CON-PKG-10",
+      "title": "단일 작업 DAG 순환",
+      "area": "pkg",
+      "owner_wp": "WP00",
+      "criteria": [],
+      "given": "기존 WP 의존성에 순환 edge 추가",
+      "when": "통합 준비 검사",
+      "then": "cycle 경로와 함께 실패",
+      "forbidden_effect": "알 수 없는 dependency를 자동 node 생성 후 허용 금지",
+      "fixture": "F0 + 명시 perturbation; 고정 가짜 시계/명시 test principal",
+      "test_layer": "preparation_contract",
+      "execution_status": "not_run",
+      "test_path": "tests/assessment/test_project_contracts.py",
+      "test_function": "test_con_pkg_10",
+      "procedure": [
+        "기존 WP 의존성에 순환 edge 추가",
+        "통합 준비 검사",
+        "cycle 경로와 함께 실패",
+        "불필요한 외부 실행 없이 준비 명세를 확인하고 원시 결과를 남긴다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/plan/release digests",
+        "actual argv·cwd·exit·runner result",
+        "before/after manifest·physical call IDs",
+        "cleanup and missing-coverage report"
+      ],
+      "not_sufficient": [
+        "schema/fixture only",
+        "self-report",
+        "zero tests",
+        "missing prerequisites hidden as pass"
+      ]
+    },
+    {
+      "id": "CON-PKG-11",
+      "title": "중복testid",
+      "area": "pkg",
+      "owner_wp": "WP00",
+      "criteria": [],
+      "given": "두case동일현재-ID",
+      "when": "catalogcheck",
+      "then": "검사실패",
+      "forbidden_effect": "case수부풀림 0",
+      "fixture": "F0 + 명시 perturbation; 고정 가짜 시계/명시 test principal",
+      "test_layer": "preparation_contract",
+      "execution_status": "not_run",
+      "test_path": "tests/assessment/test_project_contracts.py",
+      "test_function": "test_con_pkg_11",
+      "procedure": [
+        "두case동일현재-ID",
+        "catalogcheck",
+        "검사실패",
+        "불필요한 외부 실행 없이 준비 명세를 확인하고 원시 결과를 남긴다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/plan/release digests",
+        "actual argv·cwd·exit·runner result",
+        "before/after manifest·physical call IDs",
+        "cleanup and missing-coverage report"
+      ],
+      "not_sufficient": [
+        "schema/fixture only",
+        "self-report",
+        "zero tests",
+        "missing prerequisites hidden as pass"
+      ]
+    },
+    {
+      "id": "CON-PKG-12",
+      "title": "HTML 생성일관성",
+      "area": "pkg",
+      "owner_wp": "WP00",
+      "criteria": [],
+      "given": "MDowner변경후HTML구버전",
+      "when": "generation/hashcheck",
+      "then": "재생성필요",
+      "forbidden_effect": "오래된통합본을현재로표시 0",
+      "fixture": "F0 + 명시 perturbation; 고정 가짜 시계/명시 test principal",
+      "test_layer": "preparation_contract",
+      "execution_status": "not_run",
+      "test_path": "tests/assessment/test_project_contracts.py",
+      "test_function": "test_con_pkg_12",
+      "procedure": [
+        "MDowner변경후HTML구버전",
+        "generation/hashcheck",
+        "재생성필요",
+        "불필요한 외부 실행 없이 준비 명세를 확인하고 원시 결과를 남긴다."
+      ],
+      "evidence": [
+        "source/runtime/policy/suite/plan/release digests",
+        "actual argv·cwd·exit·runner result",
+        "before/after manifest·physical call IDs",
+        "cleanup and missing-coverage report"
+      ],
+      "not_sufficient": [
+        "schema/fixture only",
+        "self-report",
+        "zero tests",
+        "missing prerequisites hidden as pass"
+      ]
+    }
+  ],
+  "purpose": "preparation_only_no_product_credit"
+}

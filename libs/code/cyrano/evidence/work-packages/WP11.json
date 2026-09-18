@@ -1,0 +1,156 @@
+{
+ "kind": "work_package_completion_evidence",
+ "work_package": "WP11",
+ "title": "범위화 Memory 저장·조회·무효화",
+ "recorded_by": "implementer (independent post-image review performed)",
+ "success": true,
+ "source_digests": {
+  "deepagents_code/cyrano/memory/__init__.py": "sha256:90036adbc107e001366dfcb49e3a67d1d7c364ed1aea152861530fb897755720",
+  "deepagents_code/cyrano/memory/application.py": "sha256:44dd388bdfa893eee0aad9813ea947bd195e9d61cf3718e3d9d685a95feade0e",
+  "deepagents_code/cyrano/memory/binding.py": "sha256:ac5f19354b3380eafb7c5611f70e592d3d13863cb6fab4ac7488f90dfdd9a7c4",
+  "deepagents_code/cyrano/memory/deletion.py": "sha256:3bba7941afe39c7b1097246f78fcda177da4f132a6cbe53340d1985d767aa01c",
+  "deepagents_code/cyrano/memory/invalidation.py": "sha256:15a396f30738b4a88bfdab87dada96b80672bd3c6a72db43b15a92443c398c93",
+  "deepagents_code/cyrano/memory/models.py": "sha256:5fe813147285fea5e7dd55de9aacfbf752c312dda6535680683c3c79de7e88cd",
+  "deepagents_code/cyrano/memory/playbook.py": "sha256:0debda2f34ccf72179a213cf6d55314fd26a8e729ef0f6bf353a95c289bf6dcd",
+  "deepagents_code/cyrano/memory/recall.py": "sha256:a5e49b591ddff38f67b874d62d3dba7bdba3728fc419bca36a924c4ca90f9147",
+  "deepagents_code/cyrano/memory/repository.py": "sha256:0e1a77af82d3fab716f875f6cb58056578eeb091b94f61f63ede1d092217ecd5",
+  "deepagents_code/cyrano/memory/selection.py": "sha256:1bd90e61eed072ad0be2d625e4e6b72758a670431649785387451bda0c9f8ad8",
+  "deepagents_code/cyrano/memory/service.py": "sha256:798e68c9e53f7d9ddc6a83f7987266423172652eb565cde1ba8c46f713463d3a",
+  "deepagents_code/cyrano/dcode/memory_adapter.py": "sha256:85bce69f13ddd67904291f0f1b1da14563c08a91bd418a632c0a9c61554efd2f",
+  "deepagents_code/cyrano/sqlite/repository.py": "sha256:ad55e492a623b1adb148071ebfb70d64bf6f29dd201559c482f455c07fe0f619",
+  "tests/cyrano_product/test_wp11_product.py": "sha256:70de632d46a2e5067c5e451d49591e9597d1d144158ae3087f8f056c4a109bd8",
+  "tests/cyrano_product/test_wp11_recall.py": "sha256:e79b25f85610285e57e236e855268a0c23972dae806013e3cbf4695cefb60322",
+  "tests/cyrano_product/test_wp11_contract_scenarios.py": "sha256:ad359c96a5ce997b1d3851262313248dbf2a5cd7ff4af9feaec3d9faf49caa27"
+ },
+ "contract_files": {
+  "cyrano/contracts/sql/target-schema.sql": "unchanged; memory_records is an additive Cyrano-owned extension table (the contract memories/memory_fts tables lack evidence_refs/kind/rank/supersedes semantics; the extension table pattern is the same one WP02 established)"
+ },
+ "acceptance_evidence": {
+  "MEM-CANDIDATE": "passed - a proposal lands as candidate and is excluded from the active recall view (test_mem_candidate)",
+  "MEM-STALE": "passed - invalidated records are excluded and surface in excluded (test_mem_stale)",
+  "MEM-CONFLICT": "passed - second active of a kind without explicit supersedes raises MEMORY_CONFLICT; explicit supersedes resolves and stales the old (test_mem_conflict)",
+  "MEM-DELETE": "passed - deletion tombstones, purges pending projections, removes from recall/search (test_mem_delete)",
+  "MEM-APPLIED": "passed - citation is referenced; applied needs plan+tool+test evidence; unverifiable is unknown (test_mem_applied)",
+  "UH-CACHE-05": "passed - distinct releases bind distinct view digests; old run unchanged (test_uh_cache_05)",
+  "UH-CACHE-06": "passed - revoked memory exits recall and stale snapshot rebind raises STALE_SNAPSHOT (test_uh_cache_06)",
+  "UH-MEM-01": "passed - a new process over the same DB recalls the approved record (test_uh_mem_01)",
+  "UH-MEM-02": "passed - session-scoped record expires out of the view (test_uh_mem_02)",
+  "UH-MEM-03": "passed - workspace B recall excludes A before ranking; no id leak in excluded (test_uh_mem_03)",
+  "UH-MEM-04": "passed - session-bound record never crosses into a new session scope (test_uh_mem_04)",
+  "UH-MEM-05": "passed - moved source demotes to stale; excluded from recall (test_uh_mem_05)",
+  "UH-MEM-06": "passed - instruction-like content is quarantined as inert data (test_uh_mem_06)",
+  "UH-MEM-07": "passed - activating a deleted/quarantined record is refused (test_uh_mem_07)",
+  "UH-MEM-09": "passed - exposure count is separate from verdict; no applied without evidence (test_uh_mem_09_10)",
+  "UH-MEM-10": "passed - partial evidence stays referenced; full chain yields applied (test_uh_mem_10)",
+  "UH-MEM-11": "passed - deleted body leaves search and export; tombstone kept (test_uh_mem_11)",
+  "UH-MEM-13": "passed - contradictory activation without supersedes is blocked (test_uh_mem_13)",
+  "INTEG-MEMORY-VIEW": "passed - identical binds share stable view digest; per-query views stay separate (test_integ_memory_view)",
+  "INTEG-RETENTION": "passed - deletion receipt records pending purge range; export excludes the body (test_integ_retention)",
+  "INTEG-SCOPE-ACL": "passed - unresolved legacy scope sees nothing (test_integ_scope_acl)",
+  "R3-31-01": "passed - cross-process reopen recalls durable active record incl. searchable body (test_r3_31_01)",
+  "R3-31-02": "passed - active row without paired audit event is demoted on reconcile (test_r3_31_02)",
+  "R3-31-03": "passed - other workspace: no body, count, or diagnostics (test_r3_31_03)",
+  "R3-31-04": "passed - expiry and moved source both exclude; stale is the revalidation surface (test_r3_31_04)",
+  "R3-31-05": "passed - delete clears search; tombstone row survives for audit (test_r3_31_05)",
+  "R3-31-06": "passed - activating a never-proposed id is refused (test_r3_31_06)",
+  "R3-32-01": "passed - recalled rule applies only through the evidence chain (test_r3_32_01)",
+  "R3-32-02": "passed - hint admission records exposure only (test_r3_32_02)",
+  "R3-32-03": "passed - conflicting activation is blocked; explicit choice required (test_r3_32_03)",
+  "R3-32-04": "passed - memory-off vs on differ on the applied predicate (test_r3_32_04)",
+  "R3-32-05": "passed - malicious memory quarantined; reactivation refused (test_r3_32_05)",
+  "R3-32-06": "passed - verdict binds revision+artifacts, portable across adapters (test_r3_32_06)",
+  "R4-RC30-01": "passed - new process recovers active revision and content digest (test_r4_rc30_01)",
+  "R4-RC30-02": "passed - scope B sees no body, count, rank, or id of A (test_r4_rc30_02)",
+  "R4-RC30-03": "passed - concurrent activation loser gets STALE_REVISION/INPUT_INVALID (test_r4_rc30_03)",
+  "R4-RC30-04": "passed - half-active row is demoted by ghost reconciliation (test_r4_rc30_04)",
+  "R4-RC31-01": "passed - bound view digest is stable over fixed inputs (test_r4_rc31_01)",
+  "R4-RC31-02": "passed - stale source excludes and stale snapshot rebind refuses (test_r4_rc31_02)",
+  "R4-RC31-03": "passed - closed store raises MEMORY_STORE_UNAVAILABLE, not empty success (test_r4_rc31_03)",
+  "R4-RC31-04": "passed - injection-like content quarantined; no authority expands (test_r4_rc31_04)",
+  "R4-RC32-01": "passed - referenced-or-unverified never reported applied (test_r4_rc32_01)",
+  "R4-RC32-02": "passed - full evidence chain yields applied (test_r4_rc32_02)",
+  "R4-RC32-03": "passed - delete under projection lag: body gone, purge range listed (test_r4_rc32_03)",
+  "R4-RC32-04": "passed - no auto latest pick; explicit supersedes; old view refused (test_r4_rc32_04)",
+  "R5-RF03-01": "passed - other-scope documents invisible to search (test_r5_rf03_01)",
+  "R5-RF03-02": "passed - local lexical search; no model/provider call (test_r5_rf03_02)",
+  "R5-RF03-03": "passed - search writes nothing; audit_log row count unchanged (test_r5_rf03_03)",
+  "R5-RF03-04": "passed - tampered blob IMPORT_DIGEST_MISMATCH; missing blob IMPORT_BLOB_MISSING (test_r5_rf03_04)",
+  "R5-RF03-05": "passed - stale snapshot binding demands regeneration (test_r5_rf03_05)",
+  "R5-RF03-06": "passed - Korean content searchable; a miss never forces activation (test_r5_rf03_06)",
+  "R5-RF04-01": "passed - two processes share the durable active record (test_r5_rf04_01)",
+  "R5-RF04-02": "passed - unrelated term yields no_recall with empty records (test_r5_rf04_02)",
+  "R5-RF04-03": "passed - identical binds share the stable prefix digest (test_r5_rf04_03)",
+  "R5-RF04-04": "passed - user correction invalidates; stale view refused on rebind (test_r5_rf04_04)",
+  "R5-RF04-05": "passed - self-reported application stays referenced (test_r5_rf04_05)",
+  "R5-RF04-06": "passed - delete then backup/restore keeps tombstone; not searchable (test_r5_rf04_06)",
+  "CON-MEM-01": "passed - new process persists and recalls approved record (test_con_mem_01)",
+  "CON-MEM-02": "passed - another user's scope cannot recall this workspace's records (test_con_mem_02)",
+  "CON-MEM-03": "passed - ACL before top-k; only in-scope actives ranked (test_con_mem_03)",
+  "CON-MEM-04": "passed - stale source demotes; reactivation is explicit, not automatic (test_con_mem_04)",
+  "CON-MEM-05": "passed - user correction supersedes; old record staled (test_con_mem_05)",
+  "CON-MEM-06": "passed - forged hint id refused (test_con_mem_06)",
+  "CON-MEM-07": "passed - expired hint not injected (test_con_mem_07)",
+  "CON-MEM-08": "passed - stale revision hint fails; bound new revision admits (test_con_mem_08)",
+  "CON-MEM-09": "passed - exposure without evidence is referenced (test_con_mem_09)",
+  "CON-MEM-10": "passed - complete evidence chain yields applied (test_con_mem_10)",
+  "CON-MEM-11": "passed - delete + backup/restore keeps tombstone; unsearchable (test_con_mem_11)",
+  "CON-MEM-12": "passed - gate/store failure blocks hint as AUDIT_UNAVAILABLE (test_con_mem_12)"
+ },
+ "commands": [
+  {
+   "argv": "uv run --no-sync python -m pytest tests/cyrano_product/test_wp11_product.py tests/cyrano_product/test_wp11_recall.py tests/cyrano_product/test_wp11_contract_scenarios.py -q",
+   "exit": 0,
+   "result": "69 passed"
+  },
+  {
+   "argv": "uv run --no-sync python -m pytest tests/cyrano_product/ -q",
+   "exit": 0,
+   "result": "419 passed"
+  },
+  {
+   "argv": ".venv/bin/ruff check --config cyrano/configs/quality/ruff.toml deepagents_code/cyrano/memory/ deepagents_code/cyrano/dcode/memory_adapter.py deepagents_code/cyrano/sqlite/repository.py tests/cyrano_product/test_wp11_*.py",
+   "exit": 0,
+   "result": "All checks passed"
+  },
+  {
+   "argv": ".venv/bin/ty check deepagents_code/cyrano/memory/ deepagents_code/cyrano/dcode/memory_adapter.py deepagents_code/cyrano/sqlite/repository.py",
+   "exit": 0,
+   "result": "All checks passed"
+  },
+  {
+   "argv": "basedpyright deepagents_code/cyrano/memory/ deepagents_code/cyrano/dcode/memory_adapter.py",
+   "exit": 0,
+   "result": "0 errors, warnings only (sqlite3 Cursor/Any class, consistent with WP02 baseline)"
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/dev.py schemas",
+   "exit": 0
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/dev.py check",
+   "exit": 0,
+   "result": "unit suite + generated-doc freshness green"
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/check_integration.py",
+   "exit": 0
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/check_r5.py",
+   "exit": 0
+  }
+ ],
+ "errors": [],
+ "blocked": [],
+ "explicit_blocks": [
+  "dev.py quality exits 1 on pre-existing overlay-wide style debt (baseline, zero findings in WP11-owned files)"
+ ],
+ "not_established": [
+  "the contract's own memories/memory_fts tables are unused - WP11 stores records in the Cyrano-owned memory_records extension table because the contract table lacks evidence_refs/kind/rank/supersedes; FTS5 projection wiring is a later-package concern",
+  "live dcode event-triggered recall (RecallService admits bound hints in-process; event plumbing through the runtime adapter belongs to the integration layer)",
+  "provider/model-backed semantic search (search is deterministic lexical by contract; RF03-02 requires no model call)"
+ ],
+ "review_findings": [],
+ "authority_scope": "memory lifecycle, scope ACL, deterministic recall, deletion tombstones, and evidence-bound application verdicts verified at component level against the real scoped ledger",
+ "next_wp_impact": "WP12/WP13 consume MemoryService recall views; workflow packages bind releases via bind_core"
+}

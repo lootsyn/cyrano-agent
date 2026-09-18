@@ -1,0 +1,685 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:udh:schema:work-plan:1",
+  "title": "work-plan",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "udh.work-plan/1"
+    },
+    "plan_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "session_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "spec_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "snapshot_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "policy_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "release_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "requirement_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+      },
+      "minItems": 1
+    },
+    "scope": {
+      "$ref": "#/$defs/scope"
+    },
+    "work_units": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requirement_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+            },
+            "minItems": 1
+          },
+          "decision_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+            },
+            "minItems": 0
+          },
+          "scenario_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+            },
+            "minItems": 1
+          },
+          "depends_on": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+            },
+            "minItems": 0
+          },
+          "input_artifacts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/artifact"
+            },
+            "minItems": 0
+          },
+          "expected_preimage_digest": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          },
+          "scope": {
+            "$ref": "#/$defs/scope"
+          },
+          "preconditions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "step_id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                },
+                "instruction": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "expected_observation": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "step_id",
+                "instruction",
+                "expected_observation"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          },
+          "interface_changes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "error_handling": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "verification": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "check_id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                },
+                "recipe_id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                },
+                "requirement_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                  },
+                  "minItems": 1
+                },
+                "scenario_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                  },
+                  "minItems": 1
+                },
+                "expected_exit_codes": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "minItems": 1
+                },
+                "required": {
+                  "type": "boolean"
+                },
+                "expected_evidence": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "check_id",
+                "recipe_id",
+                "requirement_ids",
+                "scenario_ids",
+                "expected_exit_codes",
+                "required",
+                "expected_evidence"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          },
+          "rollback": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "risk": {
+            "type": "string",
+            "enum": [
+              "low",
+              "standard",
+              "high",
+              "critical"
+            ]
+          },
+          "budget": {
+            "$ref": "#/$defs/budget"
+          },
+          "done_when": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "owner_role": {
+            "type": "string",
+            "enum": [
+              "implementer",
+              "verifier",
+              "evidence_scout"
+            ]
+          }
+        },
+        "required": [
+          "task_id",
+          "objective",
+          "requirement_ids",
+          "decision_ids",
+          "scenario_ids",
+          "depends_on",
+          "input_artifacts",
+          "expected_preimage_digest",
+          "scope",
+          "preconditions",
+          "steps",
+          "interface_changes",
+          "error_handling",
+          "verification",
+          "rollback",
+          "risk",
+          "budget",
+          "done_when",
+          "owner_role"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "review_roles": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "plan_reviewer",
+          "security_reviewer"
+        ]
+      },
+      "minItems": 1
+    },
+    "unresolved_items": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+      },
+      "minItems": 0
+    },
+    "budget": {
+      "$ref": "#/$defs/budget"
+    },
+    "delivery_mode": {
+      "type": "string",
+      "enum": [
+        "patch_only",
+        "apply_to_source"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "plan_id",
+    "session_id",
+    "revision",
+    "spec_digest",
+    "snapshot_digest",
+    "policy_digest",
+    "release_digest",
+    "requirement_ids",
+    "scope",
+    "work_units",
+    "review_roles",
+    "unresolved_items",
+    "budget",
+    "delivery_mode"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "artifact": {
+      "type": "object",
+      "properties": {
+        "artifact_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "media_type": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "artifact_id",
+        "digest",
+        "media_type"
+      ],
+      "additionalProperties": false
+    },
+    "scope": {
+      "type": "object",
+      "properties": {
+        "workspace_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "read": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\x00]+$"
+          },
+          "minItems": 0
+        },
+        "create": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\x00]+$"
+          },
+          "minItems": 0
+        },
+        "write_existing": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\x00]+$"
+          },
+          "minItems": 0
+        },
+        "delete": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\x00]+$"
+          },
+          "minItems": 0
+        },
+        "deny": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\x00]+$"
+          },
+          "minItems": 0
+        },
+        "recipe_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "minItems": 0
+        },
+        "network": {
+          "type": "string",
+          "enum": [
+            "none",
+            "allowlisted"
+          ]
+        },
+        "network_allowlist": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "workspace_id",
+        "read",
+        "create",
+        "write_existing",
+        "delete",
+        "deny",
+        "recipe_ids",
+        "network",
+        "network_allowlist"
+      ],
+      "additionalProperties": false
+    },
+    "budget": {
+      "type": "object",
+      "properties": {
+        "max_model_attempts": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_tool_calls": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_seconds": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_parallel_workers": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_cost_usd": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^\\d+(?:\\.\\d+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "max_model_attempts",
+        "max_tool_calls",
+        "max_seconds",
+        "max_parallel_workers",
+        "max_cost_usd"
+      ],
+      "additionalProperties": false
+    },
+    "finding": {
+      "type": "object",
+      "properties": {
+        "finding_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "severity": {
+          "type": "string",
+          "enum": [
+            "critical",
+            "major",
+            "minor",
+            "info"
+          ]
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "intent",
+            "scope",
+            "correctness",
+            "security",
+            "plan",
+            "tests",
+            "evidence",
+            "operations",
+            "style"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "minItems": 0
+        },
+        "affected_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "minItems": 1
+        },
+        "required_resolution": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "finding_id",
+        "severity",
+        "category",
+        "summary",
+        "evidence_ids",
+        "affected_ids",
+        "required_resolution"
+      ],
+      "additionalProperties": false
+    },
+    "bindings": {
+      "type": "object",
+      "properties": {
+        "spec_digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "plan_digest": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^sha256:[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "scope_digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "policy_digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "snapshot_digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "release_digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "spec_digest",
+        "plan_digest",
+        "scope_digest",
+        "policy_digest",
+        "snapshot_digest",
+        "release_digest"
+      ],
+      "additionalProperties": false
+    },
+    "usage": {
+      "type": "object",
+      "properties": {
+        "input_tokens": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "output_tokens": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "cached_input_tokens": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "cache_write_tokens": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "cost_usd": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^\\d+(?:\\.\\d+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "currency": {
+          "type": "string",
+          "enum": [
+            "USD"
+          ]
+        },
+        "measurement": {
+          "type": "string",
+          "enum": [
+            "reported",
+            "estimated",
+            "unavailable"
+          ]
+        },
+        "cache_observation": {
+          "type": "string",
+          "enum": [
+            "reported_hit",
+            "reported_zero",
+            "not_reported",
+            "unsupported"
+          ]
+        },
+        "source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "input_tokens",
+        "output_tokens",
+        "cached_input_tokens",
+        "cache_write_tokens",
+        "cost_usd",
+        "currency",
+        "measurement",
+        "cache_observation",
+        "source"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

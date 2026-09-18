@@ -1,0 +1,56 @@
+# 설계 예시. 사용자 승인·예산·호환성 검증 전 실행하지 않는다.
+schema_version: 1.0.0-design
+enabled: false
+operating_mode: advisory
+runtime_binding: doctor_verified_only
+target_repository_installation: forbidden
+learning:
+  track_a_scheduling_replay: true
+  track_b_content_live_evaluation: true
+  max_meta_depth: 1
+  max_candidates_per_experiment: 8
+  candidate_limit_is: initial_policy_not_empirical_optimum
+  require_experiment_permit: true
+  paid_execution_budget: null
+  budget_missing_behavior: block_paid_execution
+policy:
+  format: bounded_rule_graph
+  api_version: '1'
+  max_nodes: 128
+  max_operations: 2048
+  max_depth: 16
+  network: deny
+  filesystem: deny
+  model_name_features: forbidden
+  python_proposals: human_reviewed_isolated_package_only
+replay:
+  round_semantics: barrier
+  common_context: frozen_at_episode_start
+  branch_context: branch_local_or_dependencies_tracked
+  unsupported_action: inconclusive_and_request_new_world
+  silent_world_exclusion: false
+  synthetic_outcomes_as_evidence: false
+  require_complete_worlds: true
+  cost_label: historical_proxy
+evaluation:
+  family_split_required: true
+  sealed_holdout_required: true
+  real_paired_evaluation_required: true
+  noninferiority_margin: null
+  minimum_effect: null
+  confidence_plan: null
+  missing_pre_registered_criteria: block_promotion
+  evaluator_mutation_by_candidate: forbidden
+release:
+  automatic_promotion: false
+  canary_enabled: false
+  canary_fraction_example: 0.1
+  canary_requires_scope_approval: true
+  existing_runs: pin_release
+  active_pointer_update: compare_and_swap
+  emergency_revoke: pause_affected_runs
+  harness_rollback_reverts_workspace: false
+privacy:
+  external_trace_body_export: false
+  redact_before_persist: true
+  policy_store_access_to_raw_worlds: false

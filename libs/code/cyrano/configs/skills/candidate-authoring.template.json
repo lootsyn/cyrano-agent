@@ -1,0 +1,41 @@
+{
+  "kind": "skill_manifest",
+  "schema_version": "1.0",
+  "id": "candidate-authoring",
+  "version": "0.1.0-dev",
+  "name": "candidate-authoring",
+  "description": "승인된 학습계획에 따라 최소 변경 후보를 만들고 근거·위험·평가 요구를 명시한다.",
+  "entrypoint": "SKILL.md",
+  "content_digest": "sha256:a35800bb9a22fc8572c56508abb3aa23e4ed8b60116fe6d2d1c9f3f4f766a2b6",
+  "resources": [
+    {
+      "path": "references/checklist.md",
+      "digest": "sha256:6f1ccf762bfac36a0cb858f5660aebada806d45a9713ba388a47e7ad42188be6",
+      "executable": false
+    },
+    {
+      "path": "assets/output.example.json",
+      "digest": "sha256:8d7daf6390254cafa654f9559bf6198b17823dba336f0fb6414373f0afac4550",
+      "executable": false
+    }
+  ],
+  "allowed_roles": [
+    "candidate-author"
+  ],
+  "required_tools": [],
+  "scope": {
+    "tenant": "__BIND_TENANT__",
+    "user": "__BIND_USER__",
+    "workspace": "__BIND_WORKSPACE__"
+  },
+  "context_byte_budget": 8192,
+  "activation_tests": [
+    "SKILL-candidate-authoring-positive"
+  ],
+  "counterexample_tests": [
+    "SKILL-candidate-authoring-negative"
+  ],
+  "release_digest": null,
+  "approval_ref": null,
+  "status": "candidate"
+}

@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cyrano.invalid/contracts/r5/monitor-snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "cyrano.monitor-snapshot/1"
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "workspace_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "generation": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "high_watermark": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "cursor": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "coverage": {
+      "enum": [
+        "complete",
+        "partial",
+        "unknown"
+      ]
+    },
+    "missing_observers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 256
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "logical_requests": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "physical_attempts": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "retries": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "elapsed_ms": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "cost_microunits": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "cost_kind": {
+          "enum": [
+            "actual",
+            "estimated",
+            "unknown"
+          ]
+        }
+      },
+      "required": [
+        "logical_requests",
+        "physical_attempts",
+        "retries",
+        "elapsed_ms",
+        "cost_microunits",
+        "cost_kind"
+      ]
+    },
+    "recent_events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "commit_seq": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "workspace_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "request_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "generation": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "event_type": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "payload": {
+            "type": "object"
+          },
+          "source_event_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "projection_version": {
+            "const": "cyrano.monitor-view/1"
+          }
+        },
+        "required": [
+          "event_id",
+          "commit_seq",
+          "workspace_id",
+          "request_id",
+          "generation",
+          "event_type",
+          "payload",
+          "source_event_ids",
+          "projection_version"
+        ]
+      },
+      "maxItems": 1000
+    }
+  },
+  "required": [
+    "schema_version",
+    "request_id",
+    "workspace_id",
+    "generation",
+    "high_watermark",
+    "cursor",
+    "coverage",
+    "missing_observers",
+    "summary",
+    "recent_events"
+  ]
+}

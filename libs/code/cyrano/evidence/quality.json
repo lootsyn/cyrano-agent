@@ -1,0 +1,68 @@
+{
+  "kind": "source_native_quality_preparation",
+  "status": "passed",
+  "missing": [],
+  "results": [
+    {
+      "argv": [
+        "/home/ubuntu/cyrano-agent-devin/libs/code/.venv/bin/ruff",
+        "format",
+        "--check",
+        "--config",
+        "cyrano/configs/quality/ruff.toml",
+        "deepagents_code/cyrano",
+        "tests/unit_tests/cyrano",
+        "cyrano/scripts",
+        "cyrano/plugins"
+      ],
+      "cwd": "/home/ubuntu/cyrano-agent-devin/libs/code",
+      "exit_code": 0,
+      "stdout_sha256": "999a839c35dc03f3f34663ba68a8a3ed1913c9e7c466b22b04a16eb263bb9eec",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/home/ubuntu/cyrano-agent-devin/libs/code/.venv/bin/ruff",
+        "check",
+        "--config",
+        "cyrano/configs/quality/ruff.toml",
+        "deepagents_code/cyrano",
+        "tests/unit_tests/cyrano",
+        "cyrano/scripts",
+        "cyrano/plugins"
+      ],
+      "cwd": "/home/ubuntu/cyrano-agent-devin/libs/code",
+      "exit_code": 0,
+      "stdout_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/home/ubuntu/cyrano-agent-devin/libs/code/.venv/bin/ty",
+        "check",
+        "deepagents_code/cyrano"
+      ],
+      "cwd": "/home/ubuntu/cyrano-agent-devin/libs/code",
+      "exit_code": 0,
+      "stdout_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "tools": [
+    {
+      "name": "ruff",
+      "path": "/home/ubuntu/cyrano-agent-devin/libs/code/.venv/bin/ruff",
+      "sha256": "096c13aa6293c464c9e187e622f993e91cdb75bbc795e9d8ae629645dc336182",
+      "version": "ruff 0.16.0"
+    },
+    {
+      "name": "ty",
+      "path": "/home/ubuntu/cyrano-agent-devin/libs/code/.venv/bin/ty",
+      "sha256": "989b64d821aa6e752e3dc808c8c772ca30cfeaa64214b4de54c7a23815cf2a97",
+      "version": "ty 0.0.61"
+    }
+  ],
+  "line_audit_exit": 0,
+  "full_PEP8_compliance_claimed": false,
+  "note": "Executable identities require WP00 runtime-lock review."
+}

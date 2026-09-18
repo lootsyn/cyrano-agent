@@ -1,0 +1,75 @@
+{
+  "version": "udh.event-catalog/1",
+  "families": {
+    "lifecycle": [
+      "session.started",
+      "session.paused",
+      "session.resumed",
+      "session.cancelled",
+      "session.completed",
+      "work.started",
+      "work.finished",
+      "work.rework",
+      "recovery.reconciled"
+    ],
+    "interview": [
+      "interview.question_proposed",
+      "interview.question_asked",
+      "user.answer_received",
+      "decision.proposed",
+      "decision.decided",
+      "decision.superseded",
+      "evidence.collected",
+      "evidence.stale",
+      "spec.compiled",
+      "plan.compiled"
+    ],
+    "review": [
+      "review.requested",
+      "review.completed",
+      "review.failed"
+    ],
+    "approval": [
+      "approval.requested",
+      "approval.granted",
+      "approval.denied",
+      "approval.revoked",
+      "permit.issued",
+      "permit.denied"
+    ],
+    "model": [
+      "model.started",
+      "model.finished",
+      "model.failed",
+      "model.retry"
+    ],
+    "action": [
+      "tool.requested",
+      "tool.denied",
+      "tool.started",
+      "tool.finished",
+      "tool.failed",
+      "tool.unknown_outcome",
+      "file.changed",
+      "verification.finished"
+    ],
+    "memory": [
+      "memory.queried",
+      "memory.selected",
+      "memory.injected",
+      "memory.referenced",
+      "memory.applied",
+      "memory.stale"
+    ],
+    "learning": [
+      "learning.proposed",
+      "eval.finished",
+      "release.promoted",
+      "release.rolled_back"
+    ],
+    "health": [
+      "telemetry.gap"
+    ]
+  },
+  "semantic_validation": "이벤트 유형별 상태·주체·참조 의미 검증은 kernel가 추가 수행한다."
+}

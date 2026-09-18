@@ -1,0 +1,980 @@
+{
+  "cases": [
+    {
+      "id": "PEQ-PY-T01",
+      "source_id": "PY-T01",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "스페이스/빈 줄이 잘못된 .py",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "Black raw FAIL; format 후 재검사 필요",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T02",
+      "source_id": "PY-T02",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "unused import",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "Ruff F401; 새 위반이면 FAIL",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-2"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T03",
+      "source_id": "PY-T03",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "긴 문장 docstring",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "W505 발생; max-doc-length 누락 시 config contract FAIL",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T04",
+      "source_id": "PY-T04",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "함수 badName, 클래스 bad_class",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "선택한 N 규칙 진단",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-2"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T05",
+      "source_id": "PY-T05",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "public 함수 docstring 없음",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "선택한 D 규칙 진단",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T06",
+      "source_id": "PY-T06",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "mutable default list",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "B006; 자동 ignore 대신 수정",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T07",
+      "source_id": "PY-T07",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "strict type mismatch",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "mypy/Pyright raw FAIL",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T08",
+      "source_id": "PY-T08",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "실제 회귀",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "pytest raw FAIL, COMPLETE 거부",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T09",
+      "source_id": "PY-T09",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "테스트 0개",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "BLOCKED_NO_TESTS; exit 5를 성공으로 보지 않음",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T10",
+      "source_id": "PY-T10",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "모든 필수 acceptance skip",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "acceptance 미충족; COMPLETE 거부",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T11",
+      "source_id": "PY-T11",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "mandatory setup/teardown 오류",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "FAIL/ERROR를 보존, passed 수로 덮지 않음",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T12",
+      "source_id": "PY-T12",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "Black/Ruff format 반복",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "안전 fix→Black을 두 번 실행한 diff가 동일",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T13",
+      "source_id": "PY-T13",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "`.pyi`만 수정",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "inventory 포함, type/lint 정책 적용",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T14",
+      "source_id": "PY-T14",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "`.gitignore`로 변경 Python 숨김",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "guard/inventory 실패",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T15",
+      "source_id": "PY-T15",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "source_root 빈 디렉터리",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "Python 작업인데 empty scope이면 BLOCKED",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T16",
+      "source_id": "PY-T16",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "symlink/../absolute path 탈출",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "실행 전 PATH_POLICY_VIOLATION",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T17",
+      "source_id": "PY-T17",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "공백·한글·개행 파일명",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "지원 계약대로 정확히 처리하거나 명시적 blocker; 누락 PASS 금지",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T18",
+      "source_id": "PY-T18",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "quality check 실행 중 source 변경",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "STALE 또는 immutable snapshot 영향 없음; 현재 후보 완료 거부",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "2-4"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T19",
+      "source_id": "PY-T19",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "성공 후 source/test/resource 한 byte 수정",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "과거 receipt 재사용 거부",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "2-4"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T20",
+      "source_id": "PY-T20",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "같은 HEAD, dirty 내용만 변경",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "다른 snapshot digest",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T21",
+      "source_id": "PY-T21",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "같은 파일 bytes, 다른 수정 시각",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "동일 snapshot 콘텐츠 digest",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T22",
+      "source_id": "PY-T22",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "rule disable, noqa/type-ignore 추가",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "permit 없으면 POLICY_VIOLATION",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "2-4"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T23",
+      "source_id": "PY-T23",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "문자열 내부의 '# noqa' 예제",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "suppression으로 오탐하지 않음",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T24",
+      "source_id": "PY-T24",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "승인된 정확한 suppression",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "permit 범위/expiry 검사 후 허용",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "2-4"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T25",
+      "source_id": "PY-T25",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "만료 또는 광범위 예외",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "거부",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "2-4"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T26",
+      "source_id": "PY-T26",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "임의 generated PASS JSON",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "trusted report store 등록/완료 불가",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "2-4"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T27",
+      "source_id": "PY-T27",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "local_advisory report를 governed로 제출",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "trust validation 거부",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "2-4"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T28",
+      "source_id": "PY-T28",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "다른 attempt의 정상 PASS report",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "identity mismatch 거부",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "2-4"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T29",
+      "source_id": "PY-T29",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "필수 lint 결과 누락/중복",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "BLOCKED 또는 contract error",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T30",
+      "source_id": "PY-T30",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "command exit 0 + malformed JSON",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "ERROR_TOOL_PROTOCOL",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T31",
+      "source_id": "PY-T31",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "Ruff exit 2 / Black exit 123",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "코드 위반이 아닌 tool ERROR",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T32",
+      "source_id": "PY-T32",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "timeout + 자식 프로세스",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "process group/sandbox 정리, PASS 없음",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T33",
+      "source_id": "PY-T33",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "stdout/stderr output cap 초과",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "ERROR_OUTPUT_LIMIT; 잘린 JSON PASS 금지",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T34",
+      "source_id": "PY-T34",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "verifier crash/lease 만료",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "ERROR_RUNNER_LOST; 재개 시 허위 완료 없음",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T35",
+      "source_id": "PY-T35",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "동일 idempotency key/동일 payload",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "동일 report 반환, 중복 완료 없음",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T36",
+      "source_id": "PY-T36",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "동일 key/다른 payload",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "CONFLICT",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T37",
+      "source_id": "PY-T37",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "완료 transaction 중 workspace revision 변경",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "CAS 거부, 성공 event 없음",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "2-4"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T38",
+      "source_id": "PY-T38",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "baseline 진단 3개가 그대로, 파일 동일",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "PASS_WITH_BASELINE, raw FAIL 보존",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T39",
+      "source_id": "PY-T39",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "before 3개 제거하고 새 3개",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "count 같아도 new violation FAIL",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T40",
+      "source_id": "PY-T40",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "baseline 파일에 한 줄 삽입",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "changed file clean 규칙; 자동 baseline matching 금지",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T41",
+      "source_id": "PY-T41",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "tool version/config 변경 후 baseline 재사용",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "STALE_BASELINE",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T42",
+      "source_id": "PY-T42",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "다른 파일 수정으로 미수정 파일 새 type error",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "전체 type 검사로 회귀 검출",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T43",
+      "source_id": "PY-T43",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "기존 실패 테스트를 baseline에 넣음",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "지원하지 않음, BLOCKED",
+      "owner_wp": "WP06",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T44",
+      "source_id": "PY-T44",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "동일 오류 수정 3회, 정체 2회",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "예산/정체 규칙대로 중단",
+      "owner_wp": "WP12",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T45",
+      "source_id": "PY-T45",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "user cancel",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "children 종료, CANCELLED, 대화 종료 허용",
+      "owner_wp": "WP12",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T46",
+      "source_id": "PY-T46",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "no implementation, assistant says '완료'",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "COMPLETE 전이 없음",
+      "owner_wp": "WP12",
+      "criterion_ids": [
+        "2-4"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T47",
+      "source_id": "PY-T47",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "Stop Hook timeout/미설치/재작업 상한",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "native 종료 가능, CYRANO COMPLETE는 불가",
+      "owner_wp": "WP12",
+      "criterion_ids": [
+        "2-4"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T48",
+      "source_id": "PY-T48",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "subagent prompt만 read-only",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "governed capability 미충족으로 탐지",
+      "owner_wp": "WP12",
+      "criterion_ids": [
+        "2-4"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T49",
+      "source_id": "PY-T49",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "Skill 중복 경로/본문 변경",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "실제 resolved path/digest 기록, release 혼합 금지",
+      "owner_wp": "WP12",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T50",
+      "source_id": "PY-T50",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "resume 후 다른 policy release",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "기존 attempt pin 유지 또는 명시적 재시작",
+      "owner_wp": "WP12",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T51",
+      "source_id": "PY-T51",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "candidate가 gate.py를 always-0으로 변경",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "trusted runner/guard가 차단",
+      "owner_wp": "WP22",
+      "criterion_ids": [
+        "2-4"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T52",
+      "source_id": "PY-T52",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "CI 필수 job skipped/cancelled",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "최종 aggregate 실패",
+      "owner_wp": "WP22",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T53",
+      "source_id": "PY-T53",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "dependency install 중 lock 변경 필요",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "--locked 실패; lock 자동 재작성 없음",
+      "owner_wp": "WP22",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T54",
+      "source_id": "PY-T54",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "PYTEST_ADDOPTS 또는 plugin 환경 주입",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "sanitize/allowlist로 scope 우회 불가",
+      "owner_wp": "WP22",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T55",
+      "source_id": "PY-T55",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "동작이 바뀐 Skill을 replay 점수만으로 승격",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "경로 B 규칙으로 거부",
+      "owner_wp": "WP20",
+      "criterion_ids": [
+        "3-3",
+        "3-4"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T56",
+      "source_id": "PY-T56",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "holdout family가 학습 데이터와 겹침",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "평가 manifest 검사 실패",
+      "owner_wp": "WP20",
+      "criterion_ids": [
+        "3-3",
+        "3-4"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T57",
+      "source_id": "PY-T57",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "유료 평가 budget 0",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "실제 provider 호출 없음",
+      "owner_wp": "WP20",
+      "criterion_ids": [
+        "3-3",
+        "3-4"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T58",
+      "source_id": "PY-T58",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "lint 개선 but acceptance regression",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "승격 거부",
+      "owner_wp": "WP20",
+      "criterion_ids": [
+        "3-3",
+        "3-4"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T59",
+      "source_id": "PY-T59",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "cache usage가 제공되지 않음",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "null/unknown, 0%나 hit로 위조하지 않음",
+      "owner_wp": "WP20",
+      "criterion_ids": [
+        "3-3",
+        "3-4"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    },
+    {
+      "id": "PEQ-PY-T60",
+      "source_id": "PY-T60",
+      "source_path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "given": "새 policy/Skill 배포 후 회귀",
+      "when": "원본 승인 fixture와 pinned QualityRunner recipe를 실행한다.",
+      "then": "이전 immutable release로 rollback, 기존 evidence 유지",
+      "owner_wp": "WP20",
+      "criterion_ids": [
+        "3-3",
+        "3-4"
+      ],
+      "execution_status": "not_run",
+      "test_layer": "governed_integration",
+      "adaptation": "원문 Black 테스트는 외부 Black adapter에서 그대로 수행; native CYRANO Ruff adapter는 동등 목적의 추가 케이스로 따로 검증한다."
+    }
+  ]
+}

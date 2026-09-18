@@ -1,0 +1,22 @@
+{
+  "kind": "executed_project_structure_check",
+  "counts": {
+    "packages": 13,
+    "work_packages": 24,
+    "acceptance_specifications": 857,
+    "product_roles": 14,
+    "product_skills": 17,
+    "developer_skills": 10,
+    "local_links_checked": 892,
+    "python_sources_parsed": 170,
+    "target_sql_tables": 24
+  },
+  "errors": [],
+  "success": true,
+  "does_not_establish": [
+    "full_lint_typecheck",
+    "production_dcode",
+    "OS_security",
+    "live_effectiveness"
+  ]
+}

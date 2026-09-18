@@ -1,0 +1,39 @@
+{
+  "schema_version": "udh.evaluation/1",
+  "evaluation_id": "eval-demo",
+  "candidate_id": "candidate-demo",
+  "baseline_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "candidate_artifact_digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "runtime_lock_digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "split_manifest_digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "train_family_count": 0,
+  "holdout_family_count": 0,
+  "replicates": 1,
+  "criteria_digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "verdict": "improved",
+  "hard_gate_failures": [],
+  "metrics": [],
+  "evidence": [
+    {
+      "artifact_id": "artifact-demo",
+      "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "media_type": "text/plain"
+    }
+  ],
+  "usage": {
+    "input_tokens": null,
+    "output_tokens": null,
+    "cached_input_tokens": null,
+    "cache_write_tokens": null,
+    "cost_usd": null,
+    "currency": "USD",
+    "measurement": "unavailable",
+    "cache_observation": "not_reported",
+    "source": null
+  },
+  "started_at": "2026-09-15T07:00:00Z",
+  "finished_at": "2026-09-15T07:00:00Z",
+  "limitations": [
+    "이 파일은 schema 예시이며 실제 LLM 평가는 수행하지 않았다."
+  ]
+}

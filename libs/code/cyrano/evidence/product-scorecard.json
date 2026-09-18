@@ -1,0 +1,150 @@
+{
+  "schema_version": "cyrano.assessment-scorecard/3",
+  "status": "computed_from_wp_evidence",
+  "official_score": null,
+  "verified_points": 40,
+  "maximum": 40,
+  "criteria": [
+    {
+      "id": "1-1",
+      "maximum": 3,
+      "status": "evaluated",
+      "points": 3,
+      "evidence_refs": [
+        "evidence/work-packages/WP06.json"
+      ]
+    },
+    {
+      "id": "1-2",
+      "maximum": 3,
+      "status": "evaluated",
+      "points": 3,
+      "evidence_refs": [
+        "evidence/work-packages/WP06.json"
+      ]
+    },
+    {
+      "id": "1-3",
+      "maximum": 4,
+      "status": "evaluated",
+      "points": 4,
+      "evidence_refs": [
+        "evidence/work-packages/WP06.json"
+      ]
+    },
+    {
+      "id": "2-1",
+      "maximum": 2,
+      "status": "evaluated",
+      "points": 2,
+      "evidence_refs": [
+        "evidence/work-packages/WP08.json",
+        "evidence/work-packages/WP09.json"
+      ]
+    },
+    {
+      "id": "2-2",
+      "maximum": 3,
+      "status": "evaluated",
+      "points": 3,
+      "evidence_refs": [
+        "evidence/work-packages/WP09.json"
+      ]
+    },
+    {
+      "id": "2-3",
+      "maximum": 3,
+      "status": "evaluated",
+      "points": 3,
+      "evidence_refs": [
+        "evidence/work-packages/WP09.json"
+      ]
+    },
+    {
+      "id": "2-4",
+      "maximum": 2,
+      "status": "evaluated",
+      "points": 2,
+      "evidence_refs": [
+        "evidence/work-packages/WP02.json",
+        "evidence/work-packages/WP03.json",
+        "evidence/work-packages/WP10.json"
+      ]
+    },
+    {
+      "id": "3-1",
+      "maximum": 2,
+      "status": "evaluated",
+      "points": 2,
+      "evidence_refs": [
+        "evidence/work-packages/WP11.json"
+      ]
+    },
+    {
+      "id": "3-2",
+      "maximum": 3,
+      "status": "evaluated",
+      "points": 3,
+      "evidence_refs": [
+        "evidence/work-packages/WP11.json"
+      ]
+    },
+    {
+      "id": "3-3",
+      "maximum": 3,
+      "status": "evaluated",
+      "points": 3,
+      "evidence_refs": [
+        "evidence/work-packages/WP18.json"
+      ]
+    },
+    {
+      "id": "3-4",
+      "maximum": 2,
+      "status": "evaluated",
+      "points": 2,
+      "evidence_refs": [
+        "evidence/work-packages/WP20.json"
+      ]
+    },
+    {
+      "id": "4-1",
+      "maximum": 3,
+      "status": "evaluated",
+      "points": 3,
+      "evidence_refs": [
+        "evidence/work-packages/WP13.json"
+      ]
+    },
+    {
+      "id": "4-2",
+      "maximum": 3,
+      "status": "evaluated",
+      "points": 3,
+      "evidence_refs": [
+        "evidence/work-packages/WP13.json"
+      ]
+    },
+    {
+      "id": "4-3",
+      "maximum": 2,
+      "status": "evaluated",
+      "points": 2,
+      "evidence_refs": [
+        "evidence/work-packages/WP13.json"
+      ]
+    },
+    {
+      "id": "4-4",
+      "maximum": 2,
+      "status": "evaluated",
+      "points": 2,
+      "evidence_refs": [
+        "evidence/work-packages/WP14.json"
+      ]
+    }
+  ],
+  "release_eligible": false,
+  "hard_failures": [],
+  "basis": "WP-verified acceptance evidence and independent review per criterion; preparation artifacts award no points. Official score requires operator confirmation."
+}

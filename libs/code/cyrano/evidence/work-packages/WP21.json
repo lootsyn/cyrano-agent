@@ -1,0 +1,70 @@
+{
+ "kind": "work_package_completion_evidence",
+ "work_package": "WP21",
+ "title": "release·CAS·canary·rollback",
+ "recorded_by": "implementer (independent post-image review performed)",
+ "success": true,
+ "source_digests": {
+  "deepagents_code/cyrano/kernel/releases.py": "sha256:6d82952f1ef58e2a62fdc8a1e992866f6a7053bbe5ecf7a0dceaa1a03bb64eea",
+  "deepagents_code/cyrano/kernel/rollout.py": "sha256:dff0f09de1c2ddd00b39dafde8e92cf1b6cce507aabccb0f618f9d1d658bbb71",
+  "deepagents_code/cyrano/kernel/recovery.py": "sha256:ac3cf70b07f9770a5d6b2aed0f64298e7e2870f4817fb9133c64134d2f395aad",
+  "tests/cyrano_product/test_wp21_product.py": "sha256:2bdbbabc5727cd01e53ab5c8620e2c011505b706ec6c67913bced0a288d36007",
+  "tests/cyrano_product/test_r4_rc35.py": "sha256:bd5cfe556b33f2f0a8b55344a6df8b1249c84e0db5d84c93f292db7af99d145d"
+ },
+ "contract_files": [
+  ".agents/work/WP21.ko.md",
+  "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md",
+  "docs/execution/runbooks/runtime-upgrade.ko.md",
+  "tests/acceptance/catalog.json"
+ ],
+ "schema_change": {
+  "kind": "none",
+  "rationale": "release lane is a pure CAS structure; durable persistence reuses the WP02 ledger when wired"
+ },
+ "verification": {
+  "targeted_tests": "18 passed (test_wp21_product.py, test_r4_rc35.py)",
+  "full_product_suite": "912 passed (tests/cyrano_product/)",
+  "ruff": "0 findings in WP21-owned paths under cyrano/configs/quality/ruff.toml",
+  "formatter": "ruff format --check clean on WP21-owned paths",
+  "ty": "0 errors on deepagents_code/cyrano",
+  "dev_check": "dev.py check exit 0 after docs regeneration",
+  "quality_gate": "0 findings in WP21-owned paths; pre-existing baseline debt unchanged"
+ },
+ "architecture": {
+  "releases": "prepare_release refuses without a human approval_id or scoped delegation (RELEASE_APPROVAL_REQUIRED); ReleaseLane.promote is CAS: evaluated-digest drift -> APPROVAL_INVALID, stale parent -> STALE_REVISION, pointer moves only on success; revoke marks durably; rollback moves the live pointer while history persists",
+  "rollout": "assign_canary pins an explicit cohort to the live release; bind_dispatch checks revocation first (revoked run or revoked pin -> paused), binds post-promotion runs to live, keeps pre-promotion runs on known pins, pauses unknown pins; stop_dispatch reports the stopped state",
+  "recovery": "rollback_or_revoke moves the pointer (default parent for live revoke, explicit target otherwise, no move when revoking a non-live release), reports impacted sessions separately, stops new dispatch only when the live pointer is affected, and never reverts user code"
+ },
+ "review_findings_resolved": [
+  "approval dict without approval_id fabricated a delegation:False ref -> refused",
+  "revoking a non-live release rolled the live pointer back -> pointer only moves for live revoke or explicit target",
+  "bind_dispatch bound new runs to a revoked live release -> paused",
+  "PLAN_APPROVAL_REQUIRED collided with WP00-owned code -> RELEASE_APPROVAL_REQUIRED"
+ ],
+ "not_established": [
+  "native_dispatch_wiring (lane verified at API level; scheduler integration belongs to WP22/23)",
+  "signed_release_provenance (subjects are digest-bound, not signed)",
+  "real_canary_infrastructure (cohort assignment is logical)"
+ ],
+ "acceptance_evidence": {
+  "DREAM-REL-01": "passed - test_dream_rel_01_two_candidates_one_cas_winner",
+  "DREAM-REL-02": "passed - test_dream_rel_02_running_pins_new_runs_bind_live",
+  "DREAM-REL-03": "passed - test_dream_rel_03_revoke_pauses_beats_pin",
+  "DREAM-REL-04": "passed - test_dream_rel_04_rollback_pointer_only_no_workspace_revert",
+  "DREAM-REL-05": "passed - test_dream_rel_05_no_approval_no_auto_promotion",
+  "REL-CAS": "passed - test_dream_rel_01/rc35_03 CAS semantics",
+  "REL-PIN": "passed - test_rel_pin_running_unchanged_new_bound",
+  "REL-REVOKE": "passed - test_rel_revoke_stops_dispatch_pauses_runs",
+  "REL-CODE": "passed - test_rel_code_rollback_separates_harness_from_user_code",
+  "UH-LEARN-09": "passed - test_uh_learn_09_same_parent_second_rebases",
+  "UH-LEARN-10": "passed - test_uh_learn_10_context_of_running_run_unchanged",
+  "UH-LEARN-11": "passed - test_uh_learn_11_canary_regression_stops_dispatch_reports",
+  "R4-RC35-01": "passed - test_rc35_01_new_run_binds_promoted_old_run_keeps_pin",
+  "R4-RC35-02": "passed - test_rc35_02_digest_changed_after_eval_invalidates_approval",
+  "R4-RC35-03": "passed - test_rc35_03_same_parent_concurrent_one_wins",
+  "R4-RC35-04": "passed - test_rc35_04_rollback_separates_dispatch_and_user_code",
+  "WP21-I01": "passed - prepare_release approval/delegation gate + promote CAS order",
+  "WP21-I02": "passed - concurrent-candidate rebase + running-run pin tests",
+  "WP21-I03": "passed - revoke stops dispatch + impacted-session reporting"
+ }
+}

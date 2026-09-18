@@ -1,0 +1,17 @@
+{
+  "kind": "executed_line_length_migration_audit",
+  "source_files": 170,
+  "finding_count": 0,
+  "status": "no_findings",
+  "success": true,
+  "findings": [],
+  "limits": {
+    "code": 79,
+    "comments_and_docstrings": 72
+  },
+  "limitations": [
+    "not native Ruff/ty or semantic documentation review",
+    "not full PEP8 verification",
+    "physical lines; reviewed URL/string exceptions not inferred"
+  ]
+}

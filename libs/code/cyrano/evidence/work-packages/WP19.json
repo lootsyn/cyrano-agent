@@ -1,0 +1,58 @@
+{
+ "kind": "work_package_completion_evidence",
+ "work_package": "WP19",
+ "title": "경로 B 코드·wheel·migration 제안",
+ "recorded_by": "implementer (independent post-image review performed)",
+ "success": true,
+ "source_digests": {
+  "deepagents_code/cyrano/improvement/code_lane.py": "sha256:3739de5ed2a65bd35a362ea99fb22b064deb55a7174983c262308cae37bc903b",
+  "tests/cyrano_product/test_wp19_product.py": "sha256:daa4eabe83acdc6dfc8fc4a38e82441681d3024c4a8ca5046cbf2845d29e5eda",
+  "tests/cyrano_product/test_r4_rc36.py": "sha256:3154172f5b5d7f77a3c49fed0b1b859f4eb98c97a3904415294ffecf2134efd6"
+ },
+ "contract_files": [
+  ".agents/work/WP19.ko.md",
+  "docs/execution/runbooks/runtime-upgrade.ko.md",
+  "deepagents_code/cyrano/dcode/package_build.py (reused, unchanged)",
+  "tests/acceptance/catalog.json"
+ ],
+ "schema_change": {
+  "kind": "none",
+  "rationale": "lane functions are pure; existing package_build copy/wheel primitives reused unmodified"
+ },
+ "verification": {
+  "targeted_tests": "11 passed (test_wp19_product.py, test_r4_rc36.py)",
+  "full_product_suite": "894 passed (tests/cyrano_product/)",
+  "ruff": "0 findings in WP19-owned paths under cyrano/configs/quality/ruff.toml",
+  "formatter": "ruff format --check clean on WP19-owned paths",
+  "ty": "0 errors on deepagents_code/cyrano",
+  "dev_check": "dev.py check exit 0 after docs regeneration",
+  "quality_gate": "0 findings in WP19-owned paths; pre-existing baseline debt unchanged"
+ },
+ "architecture": {
+  "code_lane": "guard_self_edit denies writes under deepagents_code/, pyproject.toml, uv.lock and any .. /absolute escape (INVALID_PATH) with a code_proposal redirect; prepare_code_workspace stages payloads into isolated dirs via fail-closed plan_copy; run_code_checks keeps evidence incomplete until source tests AND wheel resource checks pass; plan_migration blocks incompatible schema changes without an approved restore plan; prepare_runtime_candidate seals only complete builds with wheel byte digests and evidence refs",
+  "reused": "dcode/package_build.py plan_copy/apply_copy/check_wheel_resources provide the isolated-copy and wheel-verification primitives unchanged"
+ },
+ "review_findings_resolved": [
+  "wheel_digest was computed from the wheel name, not bytes -> now raw_digest of file contents, missing wheel raises RUNTIME_ARTIFACT_MISSING",
+  "guard_self_edit missed .. path escapes (PurePosixPath does not resolve them) -> INVALID_PATH",
+  "WHEEL_MISSING collided with package_build's code per WP00 collision guard -> RUNTIME_ARTIFACT_MISSING"
+ ],
+ "not_established": [
+  "native_dcode_process_patch (writes to the live process remain denied; candidates are sealed artifacts)",
+  "real_ci_or_signed_wheel_pipeline (wheel bytes hashed locally; no signature authority exists yet)",
+  "actual_db_migration_execution (plan gate only)"
+ ],
+ "acceptance_evidence": {
+  "B-SELFEDIT": "passed - test_b_selfedit_live_write_denied_redirected_to_proposal",
+  "B-WHEEL": "passed - test_b_wheel_source_pass_clean_import_fail_is_incomplete",
+  "B-MIGRATION": "passed - test_b_migration_incompatible_needs_restore_plan",
+  "UH-LEARN-12": "passed - test_uh_learn_12_learning_write_denied_becomes_proposal",
+  "R4-RC36-01": "passed - test_rc36_01_isolated_build_running_files_immutable",
+  "R4-RC36-02": "passed - test_rc36_02_protected_write_denied_with_audit_marker",
+  "R4-RC36-03": "passed - test_rc36_03_incompatible_schema_blocked_without_plan",
+  "R4-RC36-04": "passed - test_rc36_04_wheel_missing_required_files_fails_smoke",
+  "WP19-I01": "passed - test_wp19_i01_isolated_workspace_leaves_source_untouched + rc36_01",
+  "WP19-I02": "passed - guard_self_edit live-path denials (test_b_selfedit, rc36_02)",
+  "WP19-I03": "passed - test_b_migration_incompatible_needs_restore_plan (code rollback vs data migration split)"
+ }
+}

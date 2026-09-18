@@ -1,0 +1,15 @@
+{
+  "schema_version": "cyrano.retention-policy/2",
+  "status": "initial_defaults_require_operator_approval_not_legal_guidance",
+  "metadata_days": 30,
+  "redacted_body_days": 7,
+  "security_audit_metadata_days": 180,
+  "evaluation_summary_days": 365,
+  "memory": "until_expiry_revocation_or_authorized_deletion",
+  "secret_raw_storage": "disabled",
+  "redact_before_storage": true,
+  "backup_policy": "deletion_manifest_and_expiring_backups_required",
+  "external_export_enabled": false,
+  "deletion_requires": "active_projection_fts_optional_vector_exports_backups_replay_dependency_closure",
+  "source_conflict_resolved": "source prose 30/7/90 vs source policy 30/180/365; choose body7 metadata30 audit180 summary365 explicitly, not silent dual defaults"
+}

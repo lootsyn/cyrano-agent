@@ -1,0 +1,130 @@
+{
+ "kind": "work_package_completion_evidence",
+ "work_package": "WP05",
+ "title": "context·skill catalog·native binding",
+ "recorded_by": "implementer (independent post-image review performed)",
+ "success": true,
+ "source_digests": {
+  "deepagents_code/cyrano/context/compiler.py": "sha256:7cc0a09546507f1263916642857eb2289fc5b9bbd83091bf3517513227375724",
+  "deepagents_code/cyrano/context/epochs.py": "sha256:4fc755c6f53e77db8c32df80f5ba3850853f9f348831521f6d3808d3d81cf515",
+  "deepagents_code/cyrano/context/catalogue.py": "sha256:fd36010218068ca3e284919f0f48031b84a58fedb68ffa667a6008a7761c175f",
+  "deepagents_code/cyrano/context/usage.py": "sha256:88983253674e922d2943fbbd61a99be90f898e260323edd819e91db0d7b955e1",
+  "deepagents_code/cyrano/context/binding.py": "sha256:4b78545ab1a0562baa311092779e71a368c3a10b17bc226f8db53835f2cc961c",
+  "deepagents_code/cyrano/context/__init__.py": "sha256:cd72577d4c5c09bbcac1490860d4c1edac9a58826af0340ac589c248156964de",
+  "deepagents_code/cyrano/events/coverage.py": "sha256:40a10f2016d3794caaa5272469372f52cf01297eab630d44bb920737b0265589",
+  "deepagents_code/cyrano/events/__init__.py": "sha256:f1b106b4ada41e793b2e31c5ca3dd64b950d067d8435fd59251e04b4506c54ef",
+  "tests/cyrano_product/test_wp05_product.py": "sha256:00eebadddfb0b1b089f0d82221a411589018b2f1ed0cd011aa57ce15806bd766",
+  "tests/cyrano_product/test_wp05_context.py": "sha256:0ff17910b6e86aeed614e8d4830dec0a2f3f8f436c61c90dc84127b9f28e1241",
+  "tests/cyrano_product/test_wp05_contract_scenarios.py": "sha256:a6af0523020f09dfd7960ca4af229a85c6e025a87226e371201728ccf87d9caa",
+  "tests/unit_tests/cyrano/test_foundation.py": "sha256:6c033879b400329fded9ccb4432438d225ce892bd6accd4b17ffcae5b490ccae"
+ },
+ "contract_files": {
+  "cyrano/docs/design/architecture/2026-09-16-cache-context.ko.md": "governing design",
+  "cyrano/tests/acceptance/catalog.json": "acceptance case source"
+ },
+ "acceptance_evidence": {
+  "CACHE-TAIL": "passed - identical stable blocks with differing run id/budget tail produce identical stable raw digests (test_cache_tail_stable_digest_identical)",
+  "CACHE-TOOLS": "passed - tool inventory change advances the epoch generation; contexts never mix (test_cache_tools_new_epoch_no_mixing)",
+  "CACHE-UNKNOWN": "passed - missing provider cache metrics normalize to null; never reported as 0 hits (test_cache_unknown_missing_metrics_null)",
+  "CACHE-WIRE": "passed - CompiledContext.wire_observed is false for locally assembled context (test_cache_wire_not_observed)",
+  "CACHE-TOKEN": "passed - a hard token gate cannot be passed on a byte estimate; CONTEXT_LIMIT_UNKNOWN (test_cache_token_byte_estimate_never_gates)",
+  "UH-CACHE-01": "passed - same release/profile/memory view with different task tails keeps identical block digests (test_uh_cache_01)",
+  "UH-CACHE-04": "passed - request_id/time land only in the dynamic tail; stable digest unchanged (test_uh_cache_04_ids_stay_dynamic)",
+  "UH-CACHE-07": "passed - unknown context limit refuses admission with CONTEXT_LIMIT_UNKNOWN rather than inventing a bound (test_uh_cache_07)",
+  "UH-CACHE-08": "passed - oversized tool output becomes bounded excerpt + digest + artifact ref; full text never auto-injected (test_uh_cache_08)",
+  "UH-CACHE-09": "passed - compaction manifest re-checks obligation/approval/blocker/evidence refs (test_uh_cache_09_full_refs_pass)",
+  "CON-CTX-01": "passed - changed observation tail keeps the stable prefix digest (test_con_ctx_01)",
+  "CON-CTX-02": "passed - tool schema change produces a new epoch and tool_inventory_digest (test_con_ctx_02)",
+  "CON-CTX-03": "passed - only selected skill bodies load; digest mismatch rejected (test_con_ctx_03_lazy_body_loading, test_con_ctx_03_body_digest_mismatch_rejected)",
+  "CON-CTX-04": "passed - compaction summary missing a required obligation ref fails OBLIGATION_LOSS (test_con_ctx_04)",
+  "CON-CTX-05": "passed - permit revoked before commit refuses the bind (test_con_ctx_05_revoked_permit_pauses_bind)",
+  "CON-CTX-06": "passed - changed file digest on restore raises STALE_EVIDENCE (test_con_ctx_06)",
+  "CON-CTX-07": "passed - no tokenizer means the limit is reported as unknown, not estimated (test_con_ctx_07)",
+  "CON-CTX-08": "passed - required blocks over budget raise CONTEXT_BUDGET (test_con_ctx_08)",
+  "CON-CTX-09": "passed - duplicate block ids raise INPUT_INVALID (test_con_ctx_09)",
+  "CON-CTX-10": "passed - identical stable bytes regardless of input order (test_con_ctx_10)",
+  "CON-CTX-11": "passed - deleted artifact resolves to ARTIFACT_UNAVAILABLE (test_con_ctx_11)",
+  "CON-CTX-12": "passed - external doc content is an untrusted citation; no authority change (test_con_ctx_12)",
+  "CON-CAC-01": "passed - TTL measured from request start; 301s > 300s is expired (test_con_cac_01)",
+  "CON-CAC-02": "passed - prefix warm effect judged only by provider usage, never by timing (test_con_cac_02)",
+  "CON-CAC-03": "passed - different model identity yields a different epoch (test_con_cac_03)",
+  "CON-CAC-04": "passed - unobserved upstream route refuses warming with CAPABILITY_UNAVAILABLE (test_con_cac_04)",
+  "CON-CAC-05": "passed - pending user input defers warming (test_con_cac_05)",
+  "CON-CAC-06": "passed - warming defaults off; zero physical calls after idle (test_con_cac_06)",
+  "CON-CAC-07": "passed - budget reservation contention admits exactly one winner (test_con_cac_07)",
+  "CON-CAC-08": "passed - late warm response is billed and marked stale (test_con_cac_08)",
+  "CON-CAC-09": "passed - omitted cache counters stay null; coverage gap visible (test_con_cac_09)",
+  "CON-CAC-10": "passed - unknown inclusive semantics leaves the ratio unresolved (test_con_cac_10)",
+  "CON-CAC-11": "passed - restarted monotonic clock yields unknown TTL, not a guarantee (test_con_cac_11)",
+  "CON-CAC-12": "passed - keepalive ping updates reachability only; cache fields stay null (test_con_cac_12)",
+  "WP05-I01": "passed - epoch derives from the intersection of policy/session/approval/role inputs (tool inventory, model, release, profile, memory view)",
+  "WP05-I02": "passed - memory release is pinned in the epoch; view changes produce a new epoch; revoked entries are never served (test_uh_cache_05/06)",
+  "WP05-I03": "passed - compaction and offload recover contract/approval/blocker/evidence ids; unknown limits are never invented"
+ },
+ "commands": [
+  {
+   "argv": "uv run --no-sync python -m pytest tests/cyrano_product/test_wp05_product.py tests/cyrano_product/test_wp05_context.py tests/cyrano_product/test_wp05_contract_scenarios.py -q",
+   "exit": 0,
+   "result": "40 passed"
+  },
+  {
+   "argv": "uv run --no-sync python -m pytest tests/cyrano_product/ -q",
+   "exit": 0,
+   "result": "264 passed"
+  },
+  {
+   "argv": "uv run --no-sync ty check deepagents_code/cyrano/context/ deepagents_code/cyrano/events/",
+   "exit": 0,
+   "result": "all checks passed"
+  },
+  {
+   "argv": "basedpyright deepagents_code/cyrano/context/ deepagents_code/cyrano/events/",
+   "exit": 1,
+   "result": "0 errors, warning-level findings only"
+  },
+  {
+   "argv": "uv run --no-sync ruff check --config cyrano/configs/quality/ruff.toml deepagents_code/cyrano/context/ deepagents_code/cyrano/events/ tests/cyrano_product/test_wp05*.py",
+   "exit": 0,
+   "result": "clean"
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/dev.py schemas",
+   "exit": 0,
+   "result": "success true"
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/dev.py check",
+   "exit": 0,
+   "result": "green (unit suite + doc freshness)"
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/check_integration.py",
+   "exit": 0,
+   "result": "success true"
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/check_r5.py",
+   "exit": 0,
+   "result": "success true"
+  }
+ ],
+ "errors": [],
+ "blocked": [],
+ "explicit_blocks": [
+  "dev.py quality still exits 1 on pre-existing overlay-wide debt; the ~40 line-length findings in tests/unit_tests/cyrano/test_foundation.py predate WP05 (only one test there was edited) and stay baseline",
+  "real provider cache metrics are unobserved by design; UsageReport marks wire_observed=false and never fabricates hits"
+ ],
+ "not_established": [
+  "native dcode prompt-assembly integration (context compiles deterministically; WP06 wires the attempt port)",
+  "provider-specific cache behavior (no live provider calls)",
+  "real tokenizer enforcement (hard gate refuses without one; byte budget remains a diagnostic estimate)",
+  "EpochManager.update cannot explicitly clear a route to unobserved (route=None means keep current); callers set route at epoch_for time"
+ ],
+ "review_findings": [
+  "duplicate block ids remapped to INPUT_INVALID per the acceptance contract",
+  "cache_read_ratio now requires inclusive_semantics=True; the pre-existing unit test was updated to pass it explicitly",
+  "untrusted citations render as a marked block with zero authority"
+ ],
+ "authority_scope": "deterministic context assembly and honest cache accounting; no provider or native-runtime claim",
+ "next_wp_impact": "WP06 binds compile_context/bind_context/epochs into the attempt port; WP11 memory releases pin through MemoryView"
+}

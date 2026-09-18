@@ -1,0 +1,67 @@
+{
+  "schema_version": "cyrano.task-profile-policy/2",
+  "status": "specified_requires_runtime_resolver",
+  "axes": [
+    "phase",
+    "task_kind",
+    "risk",
+    "permission_scope",
+    "budget"
+  ],
+  "phases": [
+    "interview",
+    "investigate",
+    "plan",
+    "implement",
+    "verify",
+    "review",
+    "improve",
+    "evaluate"
+  ],
+  "task_kinds": [
+    "bugfix",
+    "feature",
+    "refactor",
+    "migration",
+    "documentation",
+    "analysis",
+    "security_review"
+  ],
+  "risks": [
+    "low",
+    "medium",
+    "high",
+    "critical"
+  ],
+  "legacy_risk_mapping": {
+    "standard": "medium"
+  },
+  "permission_composition": "intersection_deny_wins",
+  "required_reviews_composition": "union",
+  "budget_composition": "minimum",
+  "default_required_reviews": {
+    "spec": [
+      "critic",
+      "blind-handoff-reviewer"
+    ],
+    "plan": [
+      "plan-reviewer"
+    ],
+    "final": [
+      "code-reviewer"
+    ],
+    "learning_plan": [
+      "experiment-reviewer"
+    ],
+    "evaluation": [
+      "experiment-reviewer"
+    ]
+  },
+  "high_critical_extra_reviews": [
+    "security-reviewer"
+  ],
+  "max_parallel_workers": 3,
+  "max_spawn_depth": 0,
+  "model_name_branching": false,
+  "context_epoch_on_permission_or_tool_change": true
+}

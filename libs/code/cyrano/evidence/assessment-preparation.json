@@ -1,0 +1,12 @@
+{
+  "kind": "assessment_preparation_not_product_evaluation",
+  "success": true,
+  "criteria": 15,
+  "point_atoms": 40,
+  "new_grading_cases": 178,
+  "python_pack_cases": 60,
+  "all_acceptance_specs": 857,
+  "preserved_new_reference_files": 138,
+  "test_development_tasks": 12,
+  "errors": []
+}

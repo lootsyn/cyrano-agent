@@ -1,0 +1,1030 @@
+{
+  "schema_version": "cyrano.test-work-plan/3",
+  "tasks": [
+    {
+      "id": "TS00",
+      "title": "native 배치·버전·평가 대상 고정",
+      "status": "planned_not_executed",
+      "depends_on": [],
+      "execute_requires_wp": [
+        "WP00"
+      ],
+      "criteria": [],
+      "case_ids": [],
+      "implementation_paths": [
+        "../tests/unit_tests/cyrano/test_native_layout.py",
+        "runtime/runtime-lock.json"
+      ],
+      "functions": [
+        "resolve_native_checkout -> CodeRoot",
+        "freeze_runtime -> RuntimeManifest",
+        "enumerate_owned_delta -> SourceInventory"
+      ],
+      "procedure": "exact main SHA와 dcode project.name·sibling 경로를 확인한다. 깨끗한 native preimage에서 overlay를 dry-run한 뒤 file collision과 AGENTS append를 검토한다. snapshot은 tracked+허용 untracked bytes를 포함하고 제외목록을 봉인한다.",
+      "reviewer": "independent reviewer; security reviewer for authority/data/isolation",
+      "commands": [
+        {
+          "cwd": "libs/code",
+          "argv": [
+            "python",
+            "cyrano/scripts/assessment.py",
+            "validate"
+          ],
+          "meaning": "preparation only"
+        },
+        {
+          "cwd": "libs/code",
+          "argv": [
+            "python",
+            "cyrano/scripts/assessment.py",
+            "product",
+            "--collect-only"
+          ],
+          "meaning": "현재 AST 위치검사; missing이면 blocked. actual trusted product runner는 TS01/TS11에서 구현"
+        }
+      ],
+      "evidence_path": "evidence/test-work/TS00.json",
+      "done_when": [
+        "기능과 negative branch를 실제 runner로 실행",
+        "정해진 source/policy/runtime/suite 동일성을 확인",
+        "필수 test IDs의 수집·실행·skip 상태를 남김",
+        "독립 plan/code review finding 해결",
+        "not_run/blocked를 숨기지 않음"
+      ],
+      "rollback": "임시 fixture·worker·lease만 정리한다. 고객 코드·DB·release rollback은 별도 승인과 사전 recipe를 따른다."
+    },
+    {
+      "id": "TS01",
+      "title": "평가 계약·신뢰된 증거·점수 판정",
+      "status": "planned_not_executed",
+      "depends_on": [
+        "TS00"
+      ],
+      "execute_requires_wp": [
+        "WP01",
+        "WP02",
+        "WP20"
+      ],
+      "criteria": [],
+      "case_ids": [],
+      "implementation_paths": [
+        "../deepagents_code/cyrano/evaluation/assessment.py",
+        "../tests/cyrano_product/test_assessment_authority.py"
+      ],
+      "functions": [
+        "create_assessment_session -> AssessmentSession",
+        "register_case_attempt -> Receipt",
+        "verify_evidence_bindings -> VerifiedEvidence",
+        "decide_atom -> AtomDecision",
+        "finalize_scorecard -> AssessmentReport"
+      ],
+      "procedure": "구조검사와 서명/원장 검증을 분리한다. 공개 도구에서 점수·서명·숨은 oracle에 쓰기 접근을 주지 않는다. fixture PASS·빈 suite·다른 snapshot·만료 reviewer·중복 결과·실패 재시도 숨기기를 모두 차단한다.",
+      "reviewer": "independent reviewer; security reviewer for authority/data/isolation",
+      "commands": [
+        {
+          "cwd": "libs/code",
+          "argv": [
+            "python",
+            "cyrano/scripts/assessment.py",
+            "validate"
+          ],
+          "meaning": "preparation only"
+        },
+        {
+          "cwd": "libs/code",
+          "argv": [
+            "python",
+            "cyrano/scripts/assessment.py",
+            "product",
+            "--collect-only"
+          ],
+          "meaning": "현재 AST 위치검사; missing이면 blocked. actual trusted product runner는 TS01/TS11에서 구현"
+        }
+      ],
+      "evidence_path": "evidence/test-work/TS01.json",
+      "done_when": [
+        "기능과 negative branch를 실제 runner로 실행",
+        "정해진 source/policy/runtime/suite 동일성을 확인",
+        "필수 test IDs의 수집·실행·skip 상태를 남김",
+        "독립 plan/code review finding 해결",
+        "not_run/blocked를 숨기지 않음"
+      ],
+      "rollback": "임시 fixture·worker·lease만 정리한다. 고객 코드·DB·release rollback은 별도 승인과 사전 recipe를 따른다."
+    },
+    {
+      "id": "TS02",
+      "title": "Python 스타일·명명·import 실행",
+      "status": "planned_not_executed",
+      "depends_on": [
+        "TS01"
+      ],
+      "execute_requires_wp": [
+        "WP00",
+        "WP10"
+      ],
+      "criteria": [
+        "1-1",
+        "1-2"
+      ],
+      "case_ids": [
+        "R3-11-01",
+        "R3-11-02",
+        "R3-11-03",
+        "R3-11-04",
+        "R3-11-05",
+        "R3-11-06",
+        "R3-12-01",
+        "R3-12-02",
+        "R3-12-03",
+        "R3-12-04",
+        "R3-12-05",
+        "R3-12-06",
+        "PEQ-PY-T01",
+        "PEQ-PY-T02",
+        "PEQ-PY-T03",
+        "PEQ-PY-T04",
+        "PEQ-PY-T05",
+        "PEQ-PY-T06",
+        "PEQ-PY-T07",
+        "PEQ-PY-T08",
+        "PEQ-PY-T09",
+        "PEQ-PY-T10",
+        "PEQ-PY-T11",
+        "PEQ-PY-T12",
+        "PEQ-PY-T13",
+        "PEQ-PY-T14",
+        "PEQ-PY-T15",
+        "PEQ-PY-T16",
+        "PEQ-PY-T17",
+        "PEQ-PY-T18",
+        "PEQ-PY-T19",
+        "PEQ-PY-T20",
+        "PEQ-PY-T21",
+        "PEQ-PY-T22",
+        "PEQ-PY-T23",
+        "PEQ-PY-T24",
+        "PEQ-PY-T25",
+        "PEQ-PY-T26",
+        "PEQ-PY-T27",
+        "PEQ-PY-T28",
+        "PEQ-PY-T29",
+        "PEQ-PY-T30",
+        "PEQ-PY-T31",
+        "PEQ-PY-T32",
+        "PEQ-PY-T33",
+        "PEQ-PY-T34",
+        "PEQ-PY-T35",
+        "PEQ-PY-T36",
+        "PEQ-PY-T37",
+        "PEQ-PY-T38",
+        "PEQ-PY-T39",
+        "PEQ-PY-T40",
+        "PEQ-PY-T41",
+        "PEQ-PY-T42",
+        "PEQ-PY-T43"
+      ],
+      "implementation_paths": [
+        "../deepagents_code/cyrano/quality/policy.py",
+        "../deepagents_code/cyrano/quality/runner.py",
+        "../tests/cyrano_product/test_1_1.py",
+        "../tests/cyrano_product/test_1_2.py"
+      ],
+      "functions": [
+        "resolve_quality_policy -> QualityPolicy",
+        "snapshot_python_files -> SnapshotManifest",
+        "run_native_checks -> RawCheckReport",
+        "compare_diagnostic_multisets -> BaselineDecision"
+      ],
+      "procedure": "Python pack 정책 발견·immutable snapshot·변경 파일 전체 clean을 구현한다. source-native Ruff와 target Black adapter를 다른 policy identity로 실행한다. lint/format 결과를 예전 stdout 또는 tool exit만으로 성공 처리하지 않는다.",
+      "reviewer": "independent reviewer; security reviewer for authority/data/isolation",
+      "commands": [
+        {
+          "cwd": "libs/code",
+          "argv": [
+            "python",
+            "cyrano/scripts/assessment.py",
+            "validate"
+          ],
+          "meaning": "preparation only"
+        },
+        {
+          "cwd": "libs/code",
+          "argv": [
+            "python",
+            "cyrano/scripts/assessment.py",
+            "product",
+            "--collect-only"
+          ],
+          "meaning": "현재 AST 위치검사; missing이면 blocked. actual trusted product runner는 TS01/TS11에서 구현"
+        }
+      ],
+      "evidence_path": "evidence/test-work/TS02.json",
+      "done_when": [
+        "기능과 negative branch를 실제 runner로 실행",
+        "정해진 source/policy/runtime/suite 동일성을 확인",
+        "필수 test IDs의 수집·실행·skip 상태를 남김",
+        "독립 plan/code review finding 해결",
+        "not_run/blocked를 숨기지 않음"
+      ],
+      "rollback": "임시 fixture·worker·lease만 정리한다. 고객 코드·DB·release rollback은 별도 승인과 사전 recipe를 따른다."
+    },
+    {
+      "id": "TS03",
+      "title": "Docstring·주석의 내용 검토",
+      "status": "planned_not_executed",
+      "depends_on": [
+        "TS02"
+      ],
+      "execute_requires_wp": [
+        "WP09",
+        "WP10"
+      ],
+      "criteria": [
+        "1-3"
+      ],
+      "case_ids": [
+        "R3-13-01",
+        "R3-13-02",
+        "R3-13-03",
+        "R3-13-04",
+        "R3-13-05",
+        "R3-13-06",
+        "PEQ-PY-T01",
+        "PEQ-PY-T02",
+        "PEQ-PY-T03",
+        "PEQ-PY-T04",
+        "PEQ-PY-T05",
+        "PEQ-PY-T06",
+        "PEQ-PY-T07",
+        "PEQ-PY-T08",
+        "PEQ-PY-T09",
+        "PEQ-PY-T10",
+        "PEQ-PY-T11",
+        "PEQ-PY-T12",
+        "PEQ-PY-T13",
+        "PEQ-PY-T14",
+        "PEQ-PY-T15",
+        "PEQ-PY-T16",
+        "PEQ-PY-T17",
+        "PEQ-PY-T18",
+        "PEQ-PY-T19",
+        "PEQ-PY-T20",
+        "PEQ-PY-T21",
+        "PEQ-PY-T22",
+        "PEQ-PY-T23",
+        "PEQ-PY-T24",
+        "PEQ-PY-T25",
+        "PEQ-PY-T26",
+        "PEQ-PY-T27",
+        "PEQ-PY-T28",
+        "PEQ-PY-T29",
+        "PEQ-PY-T30",
+        "PEQ-PY-T31",
+        "PEQ-PY-T32",
+        "PEQ-PY-T33",
+        "PEQ-PY-T34",
+        "PEQ-PY-T35",
+        "PEQ-PY-T36",
+        "PEQ-PY-T37",
+        "PEQ-PY-T38",
+        "PEQ-PY-T39",
+        "PEQ-PY-T40",
+        "PEQ-PY-T41",
+        "PEQ-PY-T42",
+        "PEQ-PY-T43",
+        "PEQ-PY-T44",
+        "PEQ-PY-T45",
+        "PEQ-PY-T46",
+        "PEQ-PY-T47",
+        "PEQ-PY-T48",
+        "PEQ-PY-T49",
+        "PEQ-PY-T50"
+      ],
+      "implementation_paths": [
+        "../deepagents_code/cyrano/quality/documentation.py",
+        "../tests/cyrano_product/test_1_3.py"
+      ],
+      "functions": [
+        "inventory_public_symbols -> SymbolInventory",
+        "check_docstring_signature -> DocFinding",
+        "run_semantic_review -> IndependentReview"
+      ],
+      "procedure": "함수명·인자·반환·예외·부작용과 실제 본문을 비교한다. 주요 private 함수의 포함 기준을 manifest에 적고 주석 개수 목표를 두지 않는다. 잘못된 docstring·불필요한 설명·stale 권한 주석 반례를 evaluator fixture로 둔다.",
+      "reviewer": "independent reviewer; security reviewer for authority/data/isolation",
+      "commands": [
+        {
+          "cwd": "libs/code",
+          "argv": [
+            "python",
+            "cyrano/scripts/assessment.py",
+            "validate"
+          ],
+          "meaning": "preparation only"
+        },
+        {
+          "cwd": "libs/code",
+          "argv": [
+            "python",
+            "cyrano/scripts/assessment.py",
+            "product",
+            "--collect-only"
+          ],
+          "meaning": "현재 AST 위치검사; missing이면 blocked. actual trusted product runner는 TS01/TS11에서 구현"
+        }
+      ],
+      "evidence_path": "evidence/test-work/TS03.json",
+      "done_when": [
+        "기능과 negative branch를 실제 runner로 실행",
+        "정해진 source/policy/runtime/suite 동일성을 확인",
+        "필수 test IDs의 수집·실행·skip 상태를 남김",
+        "독립 plan/code review finding 해결",
+        "not_run/blocked를 숨기지 않음"
+      ],
+      "rollback": "임시 fixture·worker·lease만 정리한다. 고객 코드·DB·release rollback은 별도 승인과 사전 recipe를 따른다."
+    },
+    {
+      "id": "TS04",
+      "title": "요구사항·계획·AI 리뷰",
+      "status": "planned_not_executed",
+      "depends_on": [
+        "TS01"
+      ],
+      "execute_requires_wp": [
+        "WP07",
+        "WP08",
+        "WP09",
+        "WP03",
+        "WP10",
+        "WP13"
+      ],
+      "criteria": [
+        "2-1",
+        "2-2",
+        "2-3"
+      ],
+      "case_ids": [
+        "R3-21-01",
+        "R3-21-02",
+        "R3-21-03",
+        "R3-21-04",
+        "R3-21-05",
+        "R3-21-06",
+        "R3-22-01",
+        "R3-22-02",
+        "R3-22-03",
+        "R3-22-04",
+        "R3-22-05",
+        "R3-22-06",
+        "R3-23-01",
+        "R3-23-02",
+        "R3-23-03",
+        "R3-23-04",
+        "R3-23-05",
+        "R3-23-06",
+        "PLAN-001",
+        "PLAN-002",
+        "PLAN-003",
+        "PLAN-004",
+        "PLAN-005",
+        "PLAN-006",
+        "PLAN-007",
+        "PLAN-008",
+        "PLAN-009",
+        "PLAN-010",
+        "PLAN-011",
+        "PLAN-012",
+        "REVIEW-001",
+        "REVIEW-002",
+        "REVIEW-003",
+        "REVIEW-004",
+        "REVIEW-005",
+        "REVIEW-006",
+        "REVIEW-007",
+        "REVIEW-008",
+        "REVIEW-009",
+        "REVIEW-010",
+        "REVIEW-011",
+        "REVIEW-012"
+      ],
+      "implementation_paths": [
+        "../deepagents_code/cyrano/interview",
+        "../deepagents_code/cyrano/workflow",
+        "../tests/cyrano_product/test_2_1.py",
+        "../tests/cyrano_product/test_2_2.py",
+        "../tests/cyrano_product/test_2_3.py"
+      ],
+      "functions": [
+        "compile_intent -> IntentSnapshot",
+        "compile_work_plan -> Plan",
+        "review_plan -> ReviewFindingSet",
+        "apply_findings -> NewPlanRevision"
+      ],
+      "procedure": "R01–R22를 보존하고 구체 변경파일·순서·테스트가 없는 계획을 거부한다. 실제 AI reviewer가 결함을 찾아 plan V2에 반영한 evidence를 수집한다. reviewer 실패/timeout은 review 완료가 아니다.",
+      "reviewer": "independent reviewer; security reviewer for authority/data/isolation",
+      "commands": [
+        {
+          "cwd": "libs/code",
+          "argv": [
+            "python",
+            "cyrano/scripts/assessment.py",
+            "validate"
+          ],
+          "meaning": "preparation only"
+        },
+        {
+          "cwd": "libs/code",
+          "argv": [
+            "python",
+            "cyrano/scripts/assessment.py",
+            "product",
+            "--collect-only"
+          ],
+          "meaning": "현재 AST 위치검사; missing이면 blocked. actual trusted product runner는 TS01/TS11에서 구현"
+        }
+      ],
+      "evidence_path": "evidence/test-work/TS04.json",
+      "done_when": [
+        "기능과 negative branch를 실제 runner로 실행",
+        "정해진 source/policy/runtime/suite 동일성을 확인",
+        "필수 test IDs의 수집·실행·skip 상태를 남김",
+        "독립 plan/code review finding 해결",
+        "not_run/blocked를 숨기지 않음"
+      ],
+      "rollback": "임시 fixture·worker·lease만 정리한다. 고객 코드·DB·release rollback은 별도 승인과 사전 recipe를 따른다."
+    },
+    {
+      "id": "TS05",
+      "title": "승인 전 수정 차단·재검토 강제",
+      "status": "planned_not_executed",
+      "depends_on": [
+        "TS04"
+      ],
+      "execute_requires_wp": [
+        "WP03",
+        "WP04",
+        "WP05",
+        "WP09",
+        "WP10",
+        "WP13"
+      ],
+      "criteria": [
+        "2-4"
+      ],
+      "case_ids": [
+        "R3-24-01",
+        "R3-24-02",
+        "R3-24-03",
+        "R3-24-04",
+        "R3-24-05",
+        "R3-24-06",
+        "HUMAN-001",
+        "HUMAN-002",
+        "HUMAN-003",
+        "HUMAN-004",
+        "HUMAN-005",
+        "HUMAN-006",
+        "HUMAN-007",
+        "HUMAN-008",
+        "HUMAN-009",
+        "HUMAN-010",
+        "HUMAN-011",
+        "HUMAN-012",
+        "HUMAN-013",
+        "HUMAN-014",
+        "HUMAN-015",
+        "HUMAN-016",
+        "CHANGE-001",
+        "CHANGE-002",
+        "CHANGE-003",
+        "CHANGE-004",
+        "CHANGE-005",
+        "CHANGE-006",
+        "CHANGE-007",
+        "CHANGE-008",
+        "CHANGE-009",
+        "CHANGE-010",
+        "CHANGE-011",
+        "CHANGE-012",
+        "RESUME-001",
+        "RESUME-002",
+        "RESUME-003",
+        "RESUME-004",
+        "RESUME-005",
+        "RESUME-006",
+        "RESUME-007",
+        "RESUME-008",
+        "RESUME-009",
+        "RESUME-010",
+        "RESUME-011",
+        "RESUME-012",
+        "COMPLETE-001",
+        "COMPLETE-002",
+        "COMPLETE-003",
+        "COMPLETE-004",
+        "COMPLETE-005",
+        "COMPLETE-006",
+        "COMPLETE-007",
+        "COMPLETE-008",
+        "COMPLETE-009",
+        "COMPLETE-010",
+        "COMPLETE-011",
+        "COMPLETE-012",
+        "ISOLATE-001",
+        "ISOLATE-002",
+        "ISOLATE-003",
+        "ISOLATE-004",
+        "ISOLATE-005",
+        "ISOLATE-006",
+        "ISOLATE-007",
+        "ISOLATE-008",
+        "ISOLATE-009",
+        "ISOLATE-010",
+        "ISOLATE-011",
+        "ISOLATE-012"
+      ],
+      "implementation_paths": [
+        "../deepagents_code/cyrano/authorization",
+        "../deepagents_code/cyrano/dcode/guards.py",
+        "../tests/cyrano_product/test_2_4.py"
+      ],
+      "functions": [
+        "authorize_plan -> Permit",
+        "validate_action_scope -> Decision",
+        "apply_patch_via_broker -> Snapshot",
+        "invalidate_on_scope_change -> Revocation"
+      ],
+      "procedure": "각 실제 mode와 edit/shell/MCP/child/ACP/YOLO/resume 경로에서 무승인 mutation을 시도한다. 이벤트상의 deny뿐 아니라 inode/bytes pre-post와 외부 side effect 부재를 독립 runner가 확인한다. symlink/hardlink와 old permit CAS를 포함한다.",
+      "reviewer": "independent reviewer; security reviewer for authority/data/isolation",
+      "commands": [
+        {
+          "cwd": "libs/code",
+          "argv": [
+            "python",
+            "cyrano/scripts/assessment.py",
+            "validate"
+          ],
+          "meaning": "preparation only"
+        },
+        {
+          "cwd": "libs/code",
+          "argv": [
+            "python",
+            "cyrano/scripts/assessment.py",
+            "product",
+            "--collect-only"
+          ],
+          "meaning": "현재 AST 위치검사; missing이면 blocked. actual trusted product runner는 TS01/TS11에서 구현"
+        }
+      ],
+      "evidence_path": "evidence/test-work/TS05.json",
+      "done_when": [
+        "기능과 negative branch를 실제 runner로 실행",
+        "정해진 source/policy/runtime/suite 동일성을 확인",
+        "필수 test IDs의 수집·실행·skip 상태를 남김",
+        "독립 plan/code review finding 해결",
+        "not_run/blocked를 숨기지 않음"
+      ],
+      "rollback": "임시 fixture·worker·lease만 정리한다. 고객 코드·DB·release rollback은 별도 승인과 사전 recipe를 따른다."
+    },
+    {
+      "id": "TS06",
+      "title": "세션 간 Memory 유지·실제 적용",
+      "status": "planned_not_executed",
+      "depends_on": [
+        "TS01",
+        "TS04"
+      ],
+      "execute_requires_wp": [
+        "WP11",
+        "WP12"
+      ],
+      "criteria": [
+        "3-1",
+        "3-2"
+      ],
+      "case_ids": [
+        "R3-31-01",
+        "R3-31-02",
+        "R3-31-03",
+        "R3-31-04",
+        "R3-31-05",
+        "R3-31-06",
+        "R3-32-01",
+        "R3-32-02",
+        "R3-32-03",
+        "R3-32-04",
+        "R3-32-05",
+        "R3-32-06"
+      ],
+      "implementation_paths": [
+        "../deepagents_code/cyrano/memory",
+        "../tests/cyrano_product/test_3_1.py",
+        "../tests/cyrano_product/test_3_2.py"
+      ],
+      "functions": [
+        "persist_memory -> MemoryRevision",
+        "query_memory -> ScopedView",
+        "collect_memory_application -> AppliedEvidence",
+        "invalidate_memory -> Tombstone"
+      ],
+      "procedure": "프로세스 A를 종료한 후 다른 thread의 프로세스 B를 시작한다. ACL은 rank 전에 적용하고 정정/삭제/TTL/digest 변화를 검사한다. plan delta·patch·verifier로 실제 적용을 판정하며 memory hit와 ID 출력만으로 점수를 주지 않는다.",
+      "reviewer": "independent reviewer; security reviewer for authority/data/isolation",
+      "commands": [
+        {
+          "cwd": "libs/code",
+          "argv": [
+            "python",
+            "cyrano/scripts/assessment.py",
+            "validate"
+          ],
+          "meaning": "preparation only"
+        },
+        {
+          "cwd": "libs/code",
+          "argv": [
+            "python",
+            "cyrano/scripts/assessment.py",
+            "product",
+            "--collect-only"
+          ],
+          "meaning": "현재 AST 위치검사; missing이면 blocked. actual trusted product runner는 TS01/TS11에서 구현"
+        }
+      ],
+      "evidence_path": "evidence/test-work/TS06.json",
+      "done_when": [
+        "기능과 negative branch를 실제 runner로 실행",
+        "정해진 source/policy/runtime/suite 동일성을 확인",
+        "필수 test IDs의 수집·실행·skip 상태를 남김",
+        "독립 plan/code review finding 해결",
+        "not_run/blocked를 숨기지 않음"
+      ],
+      "rollback": "임시 fixture·worker·lease만 정리한다. 고객 코드·DB·release rollback은 별도 승인과 사전 recipe를 따른다."
+    },
+    {
+      "id": "TS07",
+      "title": "실패 분석·개선 후보 생성",
+      "status": "planned_not_executed",
+      "depends_on": [
+        "TS06"
+      ],
+      "execute_requires_wp": [
+        "WP15",
+        "WP16",
+        "WP17",
+        "WP18",
+        "WP19"
+      ],
+      "criteria": [
+        "3-3"
+      ],
+      "case_ids": [
+        "R3-33-01",
+        "R3-33-02",
+        "R3-33-03",
+        "R3-33-04",
+        "R3-33-05",
+        "R3-33-06"
+      ],
+      "implementation_paths": [
+        "../deepagents_code/cyrano/improvement",
+        "../tests/cyrano_product/test_3_3.py"
+      ],
+      "functions": [
+        "close_episode -> Episode",
+        "draft_learning_plan -> LearningWorkPlan",
+        "propose_improvement -> Candidate",
+        "classify_actual_diff -> ImpactClass"
+      ],
+      "procedure": "system prompt 허용 블록·skills·작업 memory·code 네 표면의 후보를 실제 생성한다. TDD red·정상 권한거부·요구 변경을 잘못 학습하지 않는다. 테스트삭제/권한완화/비밀추출은 보호표면 검사로 차단한다.",
+      "reviewer": "independent reviewer; security reviewer for authority/data/isolation",
+      "commands": [
+        {
+          "cwd": "libs/code",
+          "argv": [
+            "python",
+            "cyrano/scripts/assessment.py",
+            "validate"
+          ],
+          "meaning": "preparation only"
+        },
+        {
+          "cwd": "libs/code",
+          "argv": [
+            "python",
+            "cyrano/scripts/assessment.py",
+            "product",
+            "--collect-only"
+          ],
+          "meaning": "현재 AST 위치검사; missing이면 blocked. actual trusted product runner는 TS01/TS11에서 구현"
+        }
+      ],
+      "evidence_path": "evidence/test-work/TS07.json",
+      "done_when": [
+        "기능과 negative branch를 실제 runner로 실행",
+        "정해진 source/policy/runtime/suite 동일성을 확인",
+        "필수 test IDs의 수집·실행·skip 상태를 남김",
+        "독립 plan/code review finding 해결",
+        "not_run/blocked를 숨기지 않음"
+      ],
+      "rollback": "임시 fixture·worker·lease만 정리한다. 고객 코드·DB·release rollback은 별도 승인과 사전 recipe를 따른다."
+    },
+    {
+      "id": "TS08",
+      "title": "개선 전후·회귀·다음 작업 적용",
+      "status": "planned_not_executed",
+      "depends_on": [
+        "TS07",
+        "TS01"
+      ],
+      "execute_requires_wp": [
+        "WP20",
+        "WP21",
+        "WP17",
+        "WP18",
+        "WP19"
+      ],
+      "criteria": [
+        "3-4"
+      ],
+      "case_ids": [
+        "R3-34-01",
+        "R3-34-02",
+        "R3-34-03",
+        "R3-34-04",
+        "R3-34-05",
+        "R3-34-06",
+        "PEQ-PY-T55",
+        "PEQ-PY-T56",
+        "PEQ-PY-T57",
+        "PEQ-PY-T58",
+        "PEQ-PY-T59",
+        "PEQ-PY-T60"
+      ],
+      "implementation_paths": [
+        "../deepagents_code/cyrano/evaluation",
+        "../deepagents_code/cyrano/release",
+        "../tests/cyrano_product/test_3_4.py"
+      ],
+      "functions": [
+        "seal_experiment -> EvaluationManifest",
+        "run_paired_trials -> TrialLedger",
+        "decide_effect -> EffectVerdict",
+        "promote_release -> Release",
+        "rollback_release -> Receipt"
+      ],
+      "procedure": "경로 B는 입력 변경이므로 새 actual run을 사용한다. baseline/candidate를 같은 snapshot/runtime/budget으로 비교하고 family split·고정 분석방법·confidence와 비용을 기록한다. inconclusive는 유지하며 parent CAS 승격 후 새 task만 새release를 받는지 확인한다.",
+      "reviewer": "independent reviewer; security reviewer for authority/data/isolation",
+      "commands": [
+        {
+          "cwd": "libs/code",
+          "argv": [
+            "python",
+            "cyrano/scripts/assessment.py",
+            "validate"
+          ],
+          "meaning": "preparation only"
+        },
+        {
+          "cwd": "libs/code",
+          "argv": [
+            "python",
+            "cyrano/scripts/assessment.py",
+            "product",
+            "--collect-only"
+          ],
+          "meaning": "현재 AST 위치검사; missing이면 blocked. actual trusted product runner는 TS01/TS11에서 구현"
+        }
+      ],
+      "evidence_path": "evidence/test-work/TS08.json",
+      "done_when": [
+        "기능과 negative branch를 실제 runner로 실행",
+        "정해진 source/policy/runtime/suite 동일성을 확인",
+        "필수 test IDs의 수집·실행·skip 상태를 남김",
+        "독립 plan/code review finding 해결",
+        "not_run/blocked를 숨기지 않음"
+      ],
+      "rollback": "임시 fixture·worker·lease만 정리한다. 고객 코드·DB·release rollback은 별도 승인과 사전 recipe를 따른다."
+    },
+    {
+      "id": "TS09",
+      "title": "전 과정·LLM 도구 기억 학습 계측",
+      "status": "planned_not_executed",
+      "depends_on": [
+        "TS01"
+      ],
+      "execute_requires_wp": [
+        "WP13",
+        "WP14"
+      ],
+      "criteria": [
+        "4-1",
+        "4-2",
+        "4-3"
+      ],
+      "case_ids": [
+        "R3-41-01",
+        "R3-41-02",
+        "R3-41-03",
+        "R3-41-04",
+        "R3-41-05",
+        "R3-41-06",
+        "R3-42-01",
+        "R3-42-02",
+        "R3-42-03",
+        "R3-42-04",
+        "R3-42-05",
+        "R3-42-06",
+        "R3-43-01",
+        "R3-43-02",
+        "R3-43-03",
+        "R3-43-04",
+        "R3-43-05",
+        "R3-43-06"
+      ],
+      "implementation_paths": [
+        "../deepagents_code/cyrano/observability",
+        "../tests/cyrano_product/test_4_1.py",
+        "../tests/cyrano_product/test_4_2.py",
+        "../tests/cyrano_product/test_4_3.py"
+      ],
+      "functions": [
+        "emit_control_event -> EventReceipt",
+        "observe_provider_attempt -> AttemptSpan",
+        "normalize_usage -> UsageRecord",
+        "aggregate_metrics -> MetricSnapshot"
+      ],
+      "procedure": "native source 실제 hook을 연결하며 child/classifier/grader/summarizer/내부 retry를 누락시키지 않는다. logical=1 physical=3 retries=2, 실패·취소·미확인을 구분한다. double-counting·wallclock 역전·누락 usage를 반례로 검사한다.",
+      "reviewer": "independent reviewer; security reviewer for authority/data/isolation",
+      "commands": [
+        {
+          "cwd": "libs/code",
+          "argv": [
+            "python",
+            "cyrano/scripts/assessment.py",
+            "validate"
+          ],
+          "meaning": "preparation only"
+        },
+        {
+          "cwd": "libs/code",
+          "argv": [
+            "python",
+            "cyrano/scripts/assessment.py",
+            "product",
+            "--collect-only"
+          ],
+          "meaning": "현재 AST 위치검사; missing이면 blocked. actual trusted product runner는 TS01/TS11에서 구현"
+        }
+      ],
+      "evidence_path": "evidence/test-work/TS09.json",
+      "done_when": [
+        "기능과 negative branch를 실제 runner로 실행",
+        "정해진 source/policy/runtime/suite 동일성을 확인",
+        "필수 test IDs의 수집·실행·skip 상태를 남김",
+        "독립 plan/code review finding 해결",
+        "not_run/blocked를 숨기지 않음"
+      ],
+      "rollback": "임시 fixture·worker·lease만 정리한다. 고객 코드·DB·release rollback은 별도 승인과 사전 recipe를 따른다."
+    },
+    {
+      "id": "TS10",
+      "title": "Trace 조회·실패 원인·접근권한",
+      "status": "planned_not_executed",
+      "depends_on": [
+        "TS09"
+      ],
+      "execute_requires_wp": [
+        "WP13",
+        "WP14"
+      ],
+      "criteria": [
+        "4-4"
+      ],
+      "case_ids": [
+        "R3-44-01",
+        "R3-44-02",
+        "R3-44-03",
+        "R3-44-04",
+        "R3-44-05",
+        "R3-44-06"
+      ],
+      "implementation_paths": [
+        "../deepagents_code/cyrano/observability/query.py",
+        "../tests/cyrano_product/test_4_4.py"
+      ],
+      "functions": [
+        "query_trace -> PaginatedTrace",
+        "resolve_failure -> CausalEvidence",
+        "resume_stream -> EventCursor"
+      ],
+      "procedure": "계획 미승인·테스트 실패·provider timeout·worker loss 네 fixture를 UI/CLI로 탐색한다. 실패 span에서 원시 근거로 이동하고 확정할 수 없는 원인은 unknown으로 반환한다. scope ACL·SSE 중복·pagination·redaction을 포함한다.",
+      "reviewer": "independent reviewer; security reviewer for authority/data/isolation",
+      "commands": [
+        {
+          "cwd": "libs/code",
+          "argv": [
+            "python",
+            "cyrano/scripts/assessment.py",
+            "validate"
+          ],
+          "meaning": "preparation only"
+        },
+        {
+          "cwd": "libs/code",
+          "argv": [
+            "python",
+            "cyrano/scripts/assessment.py",
+            "product",
+            "--collect-only"
+          ],
+          "meaning": "현재 AST 위치검사; missing이면 blocked. actual trusted product runner는 TS01/TS11에서 구현"
+        }
+      ],
+      "evidence_path": "evidence/test-work/TS10.json",
+      "done_when": [
+        "기능과 negative branch를 실제 runner로 실행",
+        "정해진 source/policy/runtime/suite 동일성을 확인",
+        "필수 test IDs의 수집·실행·skip 상태를 남김",
+        "독립 plan/code review finding 해결",
+        "not_run/blocked를 숨기지 않음"
+      ],
+      "rollback": "임시 fixture·worker·lease만 정리한다. 고객 코드·DB·release rollback은 별도 승인과 사전 recipe를 따른다."
+    },
+    {
+      "id": "TS11",
+      "title": "실제 통합·CI·점수·출시 evidence",
+      "status": "planned_not_executed",
+      "depends_on": [
+        "TS02",
+        "TS03",
+        "TS05",
+        "TS06",
+        "TS08",
+        "TS10"
+      ],
+      "execute_requires_wp": [
+        "WP00",
+        "WP20",
+        "WP22",
+        "WP23"
+      ],
+      "criteria": [],
+      "case_ids": [
+        "PEQ-PY-T51",
+        "PEQ-PY-T52",
+        "PEQ-PY-T53",
+        "PEQ-PY-T54",
+        "PEQ-PY-T55",
+        "PEQ-PY-T56",
+        "PEQ-PY-T57",
+        "PEQ-PY-T58",
+        "PEQ-PY-T59",
+        "PEQ-PY-T60"
+      ],
+      "implementation_paths": [
+        "../tests/cyrano_product",
+        "configs/assessment/ci-plan.json",
+        "evidence/assessment"
+      ],
+      "functions": [
+        "collect_exact_nodeids -> CollectionReceipt",
+        "run_release_matrix -> ExecutionReceipts",
+        "verify_required_checks -> RemotePolicyEvidence",
+        "publish_assessment -> AssessmentReport"
+      ],
+      "procedure": "upstream 회귀와 CYRANO owned delta를 모두 검사한다. zero/skip/xfail/deselected를 mandatory PASS로 처리하지 않고 source가 바뀌면 증거를 다시 생성한다. native install/wheel/entrypoint와 실제 branch protection을 검증한 뒤 운영자가 결과를 확정한다.",
+      "reviewer": "independent reviewer; security reviewer for authority/data/isolation",
+      "commands": [
+        {
+          "cwd": "libs/code",
+          "argv": [
+            "python",
+            "cyrano/scripts/assessment.py",
+            "validate"
+          ],
+          "meaning": "preparation only"
+        },
+        {
+          "cwd": "libs/code",
+          "argv": [
+            "python",
+            "cyrano/scripts/assessment.py",
+            "product",
+            "--collect-only"
+          ],
+          "meaning": "현재 AST 위치검사; missing이면 blocked. actual trusted product runner는 TS01/TS11에서 구현"
+        }
+      ],
+      "evidence_path": "evidence/test-work/TS11.json",
+      "done_when": [
+        "기능과 negative branch를 실제 runner로 실행",
+        "정해진 source/policy/runtime/suite 동일성을 확인",
+        "필수 test IDs의 수집·실행·skip 상태를 남김",
+        "독립 plan/code review finding 해결",
+        "not_run/blocked를 숨기지 않음"
+      ],
+      "rollback": "임시 fixture·worker·lease만 정리한다. 고객 코드·DB·release rollback은 별도 승인과 사전 recipe를 따른다."
+    }
+  ],
+  "note": "Tests are implemented before product features; execution requires specified real WPs."
+}

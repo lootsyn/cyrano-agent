@@ -1,0 +1,11 @@
+{
+  "name": "cyrano-tool-scip-python",
+  "private": true,
+  "version": "0.0.0",
+  "dependencies": {
+    "@sourcegraph/scip-python": "0.6.6"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

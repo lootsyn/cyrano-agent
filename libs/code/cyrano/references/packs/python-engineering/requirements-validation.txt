@@ -1,0 +1,3 @@
+# Design-kit checks only; not a production toolchain lock.
+pydantic==2.13.4
+jsonschema==4.26.0

@@ -1,0 +1,23 @@
+{
+  "kind": "executed_preparation_validation_not_product",
+  "success": true,
+  "counts": {
+    "refinements": 12,
+    "new_product_case_specs": 72,
+    "all_product_case_specs": 857,
+    "optional_tool_recipes": 5,
+    "new_skill_bindings": 3,
+    "schema_fixtures": 23,
+    "target_ddl_tables": 50
+  },
+  "errors": [],
+  "blocked": [],
+  "not_established": [
+    "native_dcode_runtime",
+    "Textual_screen_execution",
+    "third_party_tool_installation",
+    "operating_isolation",
+    "memory_or_learning_effectiveness",
+    "provider_cache"
+  ]
+}

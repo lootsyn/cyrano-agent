@@ -1,0 +1,49 @@
+{
+  "scope": "design_package_only",
+  "generated_at": "2026-09-16T00:24:04.746836+00:00",
+  "status": "passed",
+  "highest_demonstrated_level": "contract_tested",
+  "checks": [
+    {
+      "name": "schema_syntax",
+      "status": "passed"
+    },
+    {
+      "name": "synthetic_schema_fixtures",
+      "status": "passed",
+      "positive_passed": 10,
+      "negative_rejected": 12
+    },
+    {
+      "name": "example_config_safe_defaults",
+      "status": "passed"
+    },
+    {
+      "name": "acceptance_spec_inventory",
+      "status": "passed",
+      "specifications": 56,
+      "product_tests_executed": 0
+    },
+    {
+      "name": "package_inventory",
+      "status": "passed"
+    },
+    {
+      "name": "html_structural_checks",
+      "status": "passed",
+      "table_count": 6,
+      "navigation_links_verified": 68,
+      "visual_browser_test": "not_performed"
+    }
+  ],
+  "runtime_integration": "not_tested",
+  "replay_engine_execution": "not_tested",
+  "security_boundary_enforcement": "not_tested",
+  "real_model_effectiveness": "not_tested",
+  "canary_and_rollback_execution": "not_tested",
+  "limitations": [
+    "Synthetic JSON records only; production digests are not verified.",
+    "Semantic service checks, type checking, authorization, and replay are not implemented here.",
+    "No real dcode, model, sandbox, holdout, deployment, or rollback was executed."
+  ]
+}

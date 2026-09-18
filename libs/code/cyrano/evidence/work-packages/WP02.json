@@ -1,0 +1,114 @@
+{
+ "kind": "work_package_completion_evidence",
+ "work_package": "WP02",
+ "title": "scope-aware SQLite ledger, outbox fencing, guarded migration",
+ "recorded_by": "implementer (independent post-image review performed)",
+ "success": true,
+ "source_digests": {
+  "deepagents_code/cyrano/sqlite/repository.py": "sha256:ad55e492a623b1adb148071ebfb70d64bf6f29dd201559c482f455c07fe0f619",
+  "deepagents_code/cyrano/sqlite/migrations.py": "sha256:9fb96d73a4bec040026ecfd4dcb654ecdd53cc62e1976f1177732b9fcdcb3690",
+  "tests/cyrano_product/test_wp02_product.py": "sha256:017f5811c730ad67ccf22c01156e345ec271944d2b0b4b93c1843f9491ff761e",
+  "tests/cyrano_product/test_wp02_contract_scenarios.py": "sha256:975028d33d1ded10ba4863785240796a70a0d76fabf15d8953015b2b238e892b",
+  "tests/cyrano_product/test_resume_lifecycle.py": "sha256:c8607f70e63f52f67e4fdbcb8b71f58e131f9e55de191029aee95b79bf9c567d"
+ },
+ "contract_files": {
+  "cyrano/contracts/sql/target-schema.sql": "sha256:5b0bfb67cafca107"
+ },
+ "acceptance_evidence": {
+  "STORE-SCOPE": "passed - cross-scope and unknown-id reads both raise SCOPE_DENIED (existence not revealed); scoped read returns control revision (TestScopeIsolation)",
+  "STORE-CRASH": "passed - injected OperationalError inside the command transaction leaves streams.revision, requests, events all rolled back (test_forced_error_rolls_back_all, test_con_rec_01)",
+  "STORE-FENCE": "passed - finish with a superseded fence raises STALE_LEASE; expired lease is re-claimable with a higher fence (test_stale_fence_finish_rejected, test_con_rec_04)",
+  "STORE-FUTURE": "passed - user_version 99 halts open() with FUTURE_SCHEMA; no downgrade or silent ignore (test_future_schema_refused)",
+  "UH-RUN-01": "passed - two commands at expected=0: first commits, second raises STALE_REVISION; revision stays 1 (test_stale_revision_rejected)",
+  "UH-RUN-02": "passed - record_observation advances event_seq only; control revision unchanged so approval binding stays valid (test_telemetry_does_not_bump_control_revision)",
+  "UH-RUN-03": "passed - same producer/producer_seq returns the original event_seq; conflicting payload raises IDEMPOTENCY_CONFLICT (test_duplicate_producer_seq_deduped)",
+  "UH-OPS-05": "passed - apply_migration backs up via the SQLite backup API, applies DDL, verifies integrity/version, and restores the backup on failure (test_failed_migration_restores_backup)",
+  "UH-RUN-05": "passed - injected exception mid-transaction leaves events/requests/streams consistent (test_forced_error_rolls_back_all)",
+  "INTEG-MIGRATION": "passed - foundation DB is UNVERSIONED_DATABASE on open(); plan_migration returns explicit field_mapping + requires_backup; apply_migration renames legacy tables, applies target DDL, copies mapped rows under an explicit default_scope, and sets user_version=1 (test_plan_requires_backup_and_mapping, test_foundation_migration_applies_rows, test_open_never_merges_ddl)",
+  "CON-REC-01": "passed - claim that crashes before commit leaves the job pending (test_con_rec_01)",
+  "CON-REC-02": "passed - committed lease survives reopen; expired lease is re-claimable (test_con_rec_02)",
+  "CON-REC-03": "passed - write started but never settled is marked unknown, not failed (test_con_rec_03)",
+  "CON-REC-04": "passed - old owner with a stale fence cannot finish; new owner completes (test_con_rec_04)",
+  "CON-REC-05": "passed - tampered checkpoint body fails digest check with CORRUPT_CHECKPOINT (test_con_rec_05)",
+  "CON-REC-06": "passed - export_lag reports pending count while local ops continue (test_con_rec_06)",
+  "CON-REC-07": "passed - audit write failure on full DB maps to AUDIT_UNAVAILABLE; other errors propagate (test_con_rec_07)",
+  "CON-REC-08": "passed - committed cancel wins: cancelled job is never claimed (test_con_rec_08)",
+  "CON-REC-09": "passed - committed effect reservation dedupes replay; conflicting request raises IDEMPOTENCY_CONFLICT (test_con_rec_09)",
+  "CON-REC-10": "passed - monotonic lease_floor prevents clock-backward lease expiry regression (test_con_rec_10)",
+  "CON-REC-11": "passed - tombstone recorded before restore wins over the restored row (test_con_rec_11)",
+  "CON-REC-12": "passed - mark_blocked preserves stream data and audit trail (test_con_rec_12)",
+  "RESUME-001": "passed - reserve_node returns the same decision_id on re-entry; single row (test_resume_001)",
+  "RESUME-002": "passed - out-of-order responses map by request_id (test_resume_002)",
+  "RESUME-003": "passed - command payload approved=True raises WRONG_PURPOSE; payload booleans never grant approval (test_resume_003)",
+  "RESUME-004": "passed - expired approval is unusable (test_resume_004)",
+  "RESUME-005": "passed - committed revoke blocks dispatch; cancelled job never claimed (test_resume_005)",
+  "RESUME-006": "passed - dispatched-then-revoked effect becomes unknown, not applied (test_resume_006)",
+  "RESUME-007": "passed - stale-fence result returns 'stale'; usage_log bills the job exactly once (test_resume_007)",
+  "RESUME-008": "passed - uncommitted effect reservation never dispatches; EFFECT_NOT_RESERVED (test_resume_008)",
+  "RESUME-009": "passed - replayed effect reservation is idempotent (test_resume_009)",
+  "RESUME-010": "passed - stale-token provider result rejected; fresh fence applies; usage billed once (test_resume_010)",
+  "RESUME-011": "passed - reader_version below checkpoint format raises VERSION_CONFLICT; matching reader succeeds (test_resume_011)",
+  "RESUME-012": "passed - sandbox reconnect failure blocks the stream without resetting state (test_resume_012)",
+  "WP02-I01": "passed - execute_command/read_scoped_entity/claim_outbox/reconcile_unknown interfaces implemented on ScopedRepository"
+ },
+ "commands": [
+  {
+   "argv": "uv run --no-sync python -m pytest tests/cyrano_product/test_wp02_product.py tests/cyrano_product/test_wp02_contract_scenarios.py tests/cyrano_product/test_resume_lifecycle.py -q",
+   "exit": 0,
+   "result": "41 passed"
+  },
+  {
+   "argv": "uv run --no-sync python -m pytest tests/cyrano_product/ -q",
+   "exit": 0,
+   "result": "104 passed"
+  },
+  {
+   "argv": "uv run --no-sync ty check deepagents_code/cyrano/sqlite tests/cyrano_product/test_wp02_product.py tests/cyrano_product/test_wp02_contract_scenarios.py tests/cyrano_product/test_resume_lifecycle.py",
+   "exit": 0,
+   "result": "all checks passed"
+  },
+  {
+   "argv": "uv run --no-sync ruff check --config cyrano/configs/quality/ruff.toml <wp02 files>",
+   "exit": 0,
+   "result": "clean"
+  },
+  {
+   "argv": "uv run --no-sync ruff format --check --config cyrano/configs/quality/ruff.toml <wp02 files>",
+   "exit": 0,
+   "result": "clean after Cyrano-config format applied"
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/dev.py schemas",
+   "exit": 0,
+   "result": "success true; 158 definitions, 250 cases, 0 failed"
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/dev.py check",
+   "exit": 0,
+   "result": "green (unit suite + doc freshness)"
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/check_integration.py",
+   "exit": 0,
+   "result": "success true"
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/check_r5.py",
+   "exit": 0,
+   "result": "success true"
+  }
+ ],
+ "errors": [],
+ "blocked": [],
+ "explicit_blocks": [
+  "dev.py quality still exits 1 on pre-existing overlay-wide debt (532 line-length findings); all WP02-owned files are clean under the 79/72 Cyrano config",
+  "BasedPyright reports 0 errors and warning-level findings (reportAny/reportUnusedCallResult/reportImplicitStringConcatenation) consistent with the sqlite package baseline style (store.py carries the same classes)"
+ ],
+ "not_established": [
+  "native dcode runtime integration (component-level store only; WP03+ wires the kernel)",
+  "concurrent multi-process claim races under real OS scheduling (fencing logic tested serially)",
+  "production PostgreSQL-scale behavior (SQLite-only per contract)"
+ ],
+ "known_limitations": "Timestamps use literal 'now'/'0'/'migrated' markers pending the clock port in later WPs; meta_depth and deadline are stored as contract constants until the scheduler lands. Legacy foundation requests/outbox rows are renamed to foundation_* but not row-copied (streams and events are; requests lack scope data to map safely).",
+ "authority_scope": "scope ACL, transaction atomicity, fencing, and migration guards only; no execution authority"
+}

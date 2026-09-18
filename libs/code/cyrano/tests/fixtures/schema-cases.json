@@ -1,0 +1,1991 @@
+{
+  "kind": "synthetic_contract_fixtures_not_execution_evidence",
+  "cases": [
+    {
+      "id": "InterviewContract-valid",
+      "schema_type": "InterviewContract",
+      "valid": true,
+      "payload": {
+        "kind": "interview_contract",
+        "schema_version": "1.0",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "revision": 0,
+        "source_event_ids": [
+          "sample"
+        ],
+        "goal": "sample",
+        "included": [
+          "sample"
+        ],
+        "excluded": [],
+        "constraints": [],
+        "decisions": [],
+        "obligations": [],
+        "scenarios": [
+          {
+            "id": "sample",
+            "requirement_ids": [
+              "sample"
+            ],
+            "given": "sample",
+            "when": "sample",
+            "then": "sample",
+            "forbidden": [],
+            "verification_kind": "automated",
+            "test_ref": "sample",
+            "execution_status": "not_run"
+          }
+        ],
+        "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "review_refs": [],
+        "approval_ref": "sample",
+        "execution_authorized": false
+      }
+    },
+    {
+      "id": "InterviewContract-unknown-key",
+      "schema_type": "InterviewContract",
+      "valid": false,
+      "payload": {
+        "kind": "interview_contract",
+        "schema_version": "1.0",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "revision": 0,
+        "source_event_ids": [
+          "sample"
+        ],
+        "goal": "sample",
+        "included": [
+          "sample"
+        ],
+        "excluded": [],
+        "constraints": [],
+        "decisions": [],
+        "obligations": [],
+        "scenarios": [
+          {
+            "id": "sample",
+            "requirement_ids": [
+              "sample"
+            ],
+            "given": "sample",
+            "when": "sample",
+            "then": "sample",
+            "forbidden": [],
+            "verification_kind": "automated",
+            "test_ref": "sample",
+            "execution_status": "not_run"
+          }
+        ],
+        "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "review_refs": [],
+        "approval_ref": "sample",
+        "execution_authorized": false,
+        "undeclared_field": true
+      }
+    },
+    {
+      "id": "InterviewContract-missing-version",
+      "schema_type": "InterviewContract",
+      "valid": false,
+      "payload": {
+        "kind": "interview_contract",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "revision": 0,
+        "source_event_ids": [
+          "sample"
+        ],
+        "goal": "sample",
+        "included": [
+          "sample"
+        ],
+        "excluded": [],
+        "constraints": [],
+        "decisions": [],
+        "obligations": [],
+        "scenarios": [
+          {
+            "id": "sample",
+            "requirement_ids": [
+              "sample"
+            ],
+            "given": "sample",
+            "when": "sample",
+            "then": "sample",
+            "forbidden": [],
+            "verification_kind": "automated",
+            "test_ref": "sample",
+            "execution_status": "not_run"
+          }
+        ],
+        "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "review_refs": [],
+        "approval_ref": "sample",
+        "execution_authorized": false
+      }
+    },
+    {
+      "id": "PlanBundle-valid",
+      "schema_type": "PlanBundle",
+      "valid": true,
+      "payload": {
+        "kind": "plan_bundle",
+        "schema_version": "1.0",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "contract_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_units": [
+          {
+            "id": "sample",
+            "depends_on": [],
+            "requirement_ids": [
+              "sample"
+            ],
+            "acceptance_ids": [
+              "sample"
+            ],
+            "read_paths": [],
+            "write_paths": [],
+            "commands": [],
+            "risk": "low",
+            "owner_role": "sample",
+            "rollback_recipe": "sample",
+            "estimated_budget": {
+              "model_calls": 0,
+              "input_tokens": 0,
+              "output_tokens": 0,
+              "tool_calls": 0,
+              "wall_seconds": 0,
+              "cost_limit": "0",
+              "currency": "USD",
+              "unknown_cost_action": "pause"
+            }
+          }
+        ],
+        "review_refs": [],
+        "plan_approval_ref": "sample",
+        "execution_permit_ref": "sample",
+        "status": "draft"
+      }
+    },
+    {
+      "id": "PlanBundle-unknown-key",
+      "schema_type": "PlanBundle",
+      "valid": false,
+      "payload": {
+        "kind": "plan_bundle",
+        "schema_version": "1.0",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "contract_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_units": [
+          {
+            "id": "sample",
+            "depends_on": [],
+            "requirement_ids": [
+              "sample"
+            ],
+            "acceptance_ids": [
+              "sample"
+            ],
+            "read_paths": [],
+            "write_paths": [],
+            "commands": [],
+            "risk": "low",
+            "owner_role": "sample",
+            "rollback_recipe": "sample",
+            "estimated_budget": {
+              "model_calls": 0,
+              "input_tokens": 0,
+              "output_tokens": 0,
+              "tool_calls": 0,
+              "wall_seconds": 0,
+              "cost_limit": "0",
+              "currency": "USD",
+              "unknown_cost_action": "pause"
+            }
+          }
+        ],
+        "review_refs": [],
+        "plan_approval_ref": "sample",
+        "execution_permit_ref": "sample",
+        "status": "draft",
+        "undeclared_field": true
+      }
+    },
+    {
+      "id": "PlanBundle-missing-version",
+      "schema_type": "PlanBundle",
+      "valid": false,
+      "payload": {
+        "kind": "plan_bundle",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "contract_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_units": [
+          {
+            "id": "sample",
+            "depends_on": [],
+            "requirement_ids": [
+              "sample"
+            ],
+            "acceptance_ids": [
+              "sample"
+            ],
+            "read_paths": [],
+            "write_paths": [],
+            "commands": [],
+            "risk": "low",
+            "owner_role": "sample",
+            "rollback_recipe": "sample",
+            "estimated_budget": {
+              "model_calls": 0,
+              "input_tokens": 0,
+              "output_tokens": 0,
+              "tool_calls": 0,
+              "wall_seconds": 0,
+              "cost_limit": "0",
+              "currency": "USD",
+              "unknown_cost_action": "pause"
+            }
+          }
+        ],
+        "review_refs": [],
+        "plan_approval_ref": "sample",
+        "execution_permit_ref": "sample",
+        "status": "draft"
+      }
+    },
+    {
+      "id": "LearningWorkPlan-valid",
+      "schema_type": "LearningWorkPlan",
+      "valid": true,
+      "payload": {
+        "kind": "learning_work_plan",
+        "schema_version": "1.0",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "baseline_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "hypothesis": "sample",
+        "alternative_explanations": [
+          "sample"
+        ],
+        "evidence_refs": [
+          {
+            "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "locator": "sample",
+            "claim": "sample",
+            "observed_at": "2026-09-16T00:00:00Z",
+            "trust": "runner_observed"
+          }
+        ],
+        "target_surfaces": [
+          "sample"
+        ],
+        "allowed_patch_paths": [
+          "sample"
+        ],
+        "expected_effect": "sample",
+        "risks": [
+          "sample"
+        ],
+        "counterexamples": [
+          "sample"
+        ],
+        "evaluation_strategy": "sample",
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "rollback_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "review_refs": [],
+        "authorization_ref": "sample",
+        "status": "draft"
+      }
+    },
+    {
+      "id": "LearningWorkPlan-unknown-key",
+      "schema_type": "LearningWorkPlan",
+      "valid": false,
+      "payload": {
+        "kind": "learning_work_plan",
+        "schema_version": "1.0",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "baseline_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "hypothesis": "sample",
+        "alternative_explanations": [
+          "sample"
+        ],
+        "evidence_refs": [
+          {
+            "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "locator": "sample",
+            "claim": "sample",
+            "observed_at": "2026-09-16T00:00:00Z",
+            "trust": "runner_observed"
+          }
+        ],
+        "target_surfaces": [
+          "sample"
+        ],
+        "allowed_patch_paths": [
+          "sample"
+        ],
+        "expected_effect": "sample",
+        "risks": [
+          "sample"
+        ],
+        "counterexamples": [
+          "sample"
+        ],
+        "evaluation_strategy": "sample",
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "rollback_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "review_refs": [],
+        "authorization_ref": "sample",
+        "status": "draft",
+        "undeclared_field": true
+      }
+    },
+    {
+      "id": "LearningWorkPlan-missing-version",
+      "schema_type": "LearningWorkPlan",
+      "valid": false,
+      "payload": {
+        "kind": "learning_work_plan",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "baseline_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "hypothesis": "sample",
+        "alternative_explanations": [
+          "sample"
+        ],
+        "evidence_refs": [
+          {
+            "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "locator": "sample",
+            "claim": "sample",
+            "observed_at": "2026-09-16T00:00:00Z",
+            "trust": "runner_observed"
+          }
+        ],
+        "target_surfaces": [
+          "sample"
+        ],
+        "allowed_patch_paths": [
+          "sample"
+        ],
+        "expected_effect": "sample",
+        "risks": [
+          "sample"
+        ],
+        "counterexamples": [
+          "sample"
+        ],
+        "evaluation_strategy": "sample",
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "rollback_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "review_refs": [],
+        "authorization_ref": "sample",
+        "status": "draft"
+      }
+    },
+    {
+      "id": "CandidateProposal-valid",
+      "schema_type": "CandidateProposal",
+      "valid": true,
+      "payload": {
+        "kind": "candidate_proposal",
+        "schema_version": "1.0",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "parent_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "surface": "exploration_policy",
+        "hypothesis": "sample",
+        "alternative_explanations": [
+          "sample"
+        ],
+        "evidence_refs": [
+          {
+            "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "locator": "sample",
+            "claim": "sample",
+            "observed_at": "2026-09-16T00:00:00Z",
+            "trust": "runner_observed"
+          }
+        ],
+        "patch_paths": [
+          "sample"
+        ],
+        "patch_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "claimed_effect_class": "scheduling_only",
+        "learning_work_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "expected_effect": "sample",
+        "risks": [
+          "sample"
+        ],
+        "rollback_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "requested_scope_expansion": false,
+        "run_kind": "learning",
+        "meta_depth": 0,
+        "status": "proposed"
+      }
+    },
+    {
+      "id": "CandidateProposal-unknown-key",
+      "schema_type": "CandidateProposal",
+      "valid": false,
+      "payload": {
+        "kind": "candidate_proposal",
+        "schema_version": "1.0",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "parent_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "surface": "exploration_policy",
+        "hypothesis": "sample",
+        "alternative_explanations": [
+          "sample"
+        ],
+        "evidence_refs": [
+          {
+            "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "locator": "sample",
+            "claim": "sample",
+            "observed_at": "2026-09-16T00:00:00Z",
+            "trust": "runner_observed"
+          }
+        ],
+        "patch_paths": [
+          "sample"
+        ],
+        "patch_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "claimed_effect_class": "scheduling_only",
+        "learning_work_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "expected_effect": "sample",
+        "risks": [
+          "sample"
+        ],
+        "rollback_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "requested_scope_expansion": false,
+        "run_kind": "learning",
+        "meta_depth": 0,
+        "status": "proposed",
+        "undeclared_field": true
+      }
+    },
+    {
+      "id": "CandidateProposal-missing-version",
+      "schema_type": "CandidateProposal",
+      "valid": false,
+      "payload": {
+        "kind": "candidate_proposal",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "parent_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "surface": "exploration_policy",
+        "hypothesis": "sample",
+        "alternative_explanations": [
+          "sample"
+        ],
+        "evidence_refs": [
+          {
+            "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "locator": "sample",
+            "claim": "sample",
+            "observed_at": "2026-09-16T00:00:00Z",
+            "trust": "runner_observed"
+          }
+        ],
+        "patch_paths": [
+          "sample"
+        ],
+        "patch_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "claimed_effect_class": "scheduling_only",
+        "learning_work_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "expected_effect": "sample",
+        "risks": [
+          "sample"
+        ],
+        "rollback_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "requested_scope_expansion": false,
+        "run_kind": "learning",
+        "meta_depth": 0,
+        "status": "proposed"
+      }
+    },
+    {
+      "id": "ImpactAssessment-valid",
+      "schema_type": "ImpactAssessment",
+      "valid": true,
+      "payload": {
+        "kind": "impact_assessment",
+        "schema_version": "1.0",
+        "id": "sample",
+        "candidate_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "verified_effect_class": "scheduling_only",
+        "route": "A",
+        "input_semantics_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "required_evaluators": [
+          "sample"
+        ],
+        "requires_actual_execution": true,
+        "classifier_version": "sample",
+        "review_ref": "sample"
+      }
+    },
+    {
+      "id": "ImpactAssessment-unknown-key",
+      "schema_type": "ImpactAssessment",
+      "valid": false,
+      "payload": {
+        "kind": "impact_assessment",
+        "schema_version": "1.0",
+        "id": "sample",
+        "candidate_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "verified_effect_class": "scheduling_only",
+        "route": "A",
+        "input_semantics_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "required_evaluators": [
+          "sample"
+        ],
+        "requires_actual_execution": true,
+        "classifier_version": "sample",
+        "review_ref": "sample",
+        "undeclared_field": true
+      }
+    },
+    {
+      "id": "ImpactAssessment-missing-version",
+      "schema_type": "ImpactAssessment",
+      "valid": false,
+      "payload": {
+        "kind": "impact_assessment",
+        "id": "sample",
+        "candidate_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "verified_effect_class": "scheduling_only",
+        "route": "A",
+        "input_semantics_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "required_evaluators": [
+          "sample"
+        ],
+        "requires_actual_execution": true,
+        "classifier_version": "sample",
+        "review_ref": "sample"
+      }
+    },
+    {
+      "id": "MemoryRecord-valid",
+      "schema_type": "MemoryRecord",
+      "valid": true,
+      "payload": {
+        "kind": "memory_record",
+        "schema_version": "1.0",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "memory_kind": "episodic",
+        "status": "candidate",
+        "title": "sample",
+        "content_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evidence_refs": [
+          {
+            "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "locator": "sample",
+            "claim": "sample",
+            "observed_at": "2026-09-16T00:00:00Z",
+            "trust": "runner_observed"
+          }
+        ],
+        "valid_from": "2026-09-16T00:00:00Z",
+        "valid_until": "2026-09-16T00:00:00Z",
+        "depends_on_digests": [],
+        "valid_when": "sample",
+        "counterexamples": [],
+        "supersedes": [],
+        "approval_ref": "sample",
+        "lineage_ids": [],
+        "version": 1
+      }
+    },
+    {
+      "id": "MemoryRecord-unknown-key",
+      "schema_type": "MemoryRecord",
+      "valid": false,
+      "payload": {
+        "kind": "memory_record",
+        "schema_version": "1.0",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "memory_kind": "episodic",
+        "status": "candidate",
+        "title": "sample",
+        "content_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evidence_refs": [
+          {
+            "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "locator": "sample",
+            "claim": "sample",
+            "observed_at": "2026-09-16T00:00:00Z",
+            "trust": "runner_observed"
+          }
+        ],
+        "valid_from": "2026-09-16T00:00:00Z",
+        "valid_until": "2026-09-16T00:00:00Z",
+        "depends_on_digests": [],
+        "valid_when": "sample",
+        "counterexamples": [],
+        "supersedes": [],
+        "approval_ref": "sample",
+        "lineage_ids": [],
+        "version": 1,
+        "undeclared_field": true
+      }
+    },
+    {
+      "id": "MemoryRecord-missing-version",
+      "schema_type": "MemoryRecord",
+      "valid": false,
+      "payload": {
+        "kind": "memory_record",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "memory_kind": "episodic",
+        "status": "candidate",
+        "title": "sample",
+        "content_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evidence_refs": [
+          {
+            "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "locator": "sample",
+            "claim": "sample",
+            "observed_at": "2026-09-16T00:00:00Z",
+            "trust": "runner_observed"
+          }
+        ],
+        "valid_from": "2026-09-16T00:00:00Z",
+        "valid_until": "2026-09-16T00:00:00Z",
+        "depends_on_digests": [],
+        "valid_when": "sample",
+        "counterexamples": [],
+        "supersedes": [],
+        "approval_ref": "sample",
+        "lineage_ids": [],
+        "version": 1
+      }
+    },
+    {
+      "id": "SkillManifest-valid",
+      "schema_type": "SkillManifest",
+      "valid": true,
+      "payload": {
+        "kind": "skill_manifest",
+        "schema_version": "1.0",
+        "id": "sample",
+        "version": "sample",
+        "name": "sample",
+        "description": "sample",
+        "entrypoint": "SKILL.md",
+        "content_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "resources": [],
+        "allowed_roles": [
+          "sample"
+        ],
+        "required_tools": [],
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "context_byte_budget": 0,
+        "activation_tests": [
+          "sample"
+        ],
+        "counterexample_tests": [
+          "sample"
+        ],
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approval_ref": "sample",
+        "status": "candidate"
+      }
+    },
+    {
+      "id": "SkillManifest-unknown-key",
+      "schema_type": "SkillManifest",
+      "valid": false,
+      "payload": {
+        "kind": "skill_manifest",
+        "schema_version": "1.0",
+        "id": "sample",
+        "version": "sample",
+        "name": "sample",
+        "description": "sample",
+        "entrypoint": "SKILL.md",
+        "content_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "resources": [],
+        "allowed_roles": [
+          "sample"
+        ],
+        "required_tools": [],
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "context_byte_budget": 0,
+        "activation_tests": [
+          "sample"
+        ],
+        "counterexample_tests": [
+          "sample"
+        ],
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approval_ref": "sample",
+        "status": "candidate",
+        "undeclared_field": true
+      }
+    },
+    {
+      "id": "SkillManifest-missing-version",
+      "schema_type": "SkillManifest",
+      "valid": false,
+      "payload": {
+        "kind": "skill_manifest",
+        "id": "sample",
+        "version": "sample",
+        "name": "sample",
+        "description": "sample",
+        "entrypoint": "SKILL.md",
+        "content_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "resources": [],
+        "allowed_roles": [
+          "sample"
+        ],
+        "required_tools": [],
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "context_byte_budget": 0,
+        "activation_tests": [
+          "sample"
+        ],
+        "counterexample_tests": [
+          "sample"
+        ],
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approval_ref": "sample",
+        "status": "candidate"
+      }
+    },
+    {
+      "id": "ExperimentPlan-valid",
+      "schema_type": "ExperimentPlan",
+      "valid": true,
+      "payload": {
+        "kind": "experiment_plan",
+        "schema_version": "1.0",
+        "id": "sample",
+        "candidate_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "baseline_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "route": "A",
+        "development_manifest_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "validation_manifest_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sealed_manifest_ref": "sample",
+        "family_kind": "repository",
+        "minimum_families": 1,
+        "repeats_per_condition": 1,
+        "planned_pairs": 1,
+        "primary_criterion": {
+          "metric": "sample",
+          "direction": "higher",
+          "minimum_effect": "0",
+          "noninferiority_margin": "0",
+          "analysis_policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "secondary_metrics": [],
+        "mandatory_safety_tests": [
+          "sample"
+        ],
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "permit_ref": "sample",
+        "randomization_seed": 0,
+        "baseline_input_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "candidate_input_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "cache_condition": "production_observed",
+        "feedback_policy": "development_detailed_validation_aggregate_sealed_withheld",
+        "status": "draft"
+      }
+    },
+    {
+      "id": "ExperimentPlan-unknown-key",
+      "schema_type": "ExperimentPlan",
+      "valid": false,
+      "payload": {
+        "kind": "experiment_plan",
+        "schema_version": "1.0",
+        "id": "sample",
+        "candidate_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "baseline_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "route": "A",
+        "development_manifest_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "validation_manifest_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sealed_manifest_ref": "sample",
+        "family_kind": "repository",
+        "minimum_families": 1,
+        "repeats_per_condition": 1,
+        "planned_pairs": 1,
+        "primary_criterion": {
+          "metric": "sample",
+          "direction": "higher",
+          "minimum_effect": "0",
+          "noninferiority_margin": "0",
+          "analysis_policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "secondary_metrics": [],
+        "mandatory_safety_tests": [
+          "sample"
+        ],
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "permit_ref": "sample",
+        "randomization_seed": 0,
+        "baseline_input_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "candidate_input_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "cache_condition": "production_observed",
+        "feedback_policy": "development_detailed_validation_aggregate_sealed_withheld",
+        "status": "draft",
+        "undeclared_field": true
+      }
+    },
+    {
+      "id": "ExperimentPlan-missing-version",
+      "schema_type": "ExperimentPlan",
+      "valid": false,
+      "payload": {
+        "kind": "experiment_plan",
+        "id": "sample",
+        "candidate_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "baseline_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "route": "A",
+        "development_manifest_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "validation_manifest_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sealed_manifest_ref": "sample",
+        "family_kind": "repository",
+        "minimum_families": 1,
+        "repeats_per_condition": 1,
+        "planned_pairs": 1,
+        "primary_criterion": {
+          "metric": "sample",
+          "direction": "higher",
+          "minimum_effect": "0",
+          "noninferiority_margin": "0",
+          "analysis_policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "secondary_metrics": [],
+        "mandatory_safety_tests": [
+          "sample"
+        ],
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "permit_ref": "sample",
+        "randomization_seed": 0,
+        "baseline_input_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "candidate_input_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "cache_condition": "production_observed",
+        "feedback_policy": "development_detailed_validation_aggregate_sealed_withheld",
+        "status": "draft"
+      }
+    },
+    {
+      "id": "EvaluationReport-valid",
+      "schema_type": "EvaluationReport",
+      "valid": true,
+      "payload": {
+        "kind": "evaluation_report",
+        "schema_version": "1.0",
+        "id": "sample",
+        "experiment_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "candidate_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "baseline_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "route": "A",
+        "actual_pairs": 0,
+        "planned_pairs": 0,
+        "independent_families": 0,
+        "safety_failures": 0,
+        "missing_pairs": 0,
+        "intervals": [],
+        "replay_supported": 0,
+        "replay_scheduled": 0,
+        "execution_refs": [],
+        "evaluator_identity": "sample",
+        "signature_ref": "sample",
+        "status": "invalid",
+        "limitations": []
+      }
+    },
+    {
+      "id": "EvaluationReport-unknown-key",
+      "schema_type": "EvaluationReport",
+      "valid": false,
+      "payload": {
+        "kind": "evaluation_report",
+        "schema_version": "1.0",
+        "id": "sample",
+        "experiment_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "candidate_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "baseline_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "route": "A",
+        "actual_pairs": 0,
+        "planned_pairs": 0,
+        "independent_families": 0,
+        "safety_failures": 0,
+        "missing_pairs": 0,
+        "intervals": [],
+        "replay_supported": 0,
+        "replay_scheduled": 0,
+        "execution_refs": [],
+        "evaluator_identity": "sample",
+        "signature_ref": "sample",
+        "status": "invalid",
+        "limitations": [],
+        "undeclared_field": true
+      }
+    },
+    {
+      "id": "EvaluationReport-missing-version",
+      "schema_type": "EvaluationReport",
+      "valid": false,
+      "payload": {
+        "kind": "evaluation_report",
+        "id": "sample",
+        "experiment_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "candidate_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "baseline_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "route": "A",
+        "actual_pairs": 0,
+        "planned_pairs": 0,
+        "independent_families": 0,
+        "safety_failures": 0,
+        "missing_pairs": 0,
+        "intervals": [],
+        "replay_supported": 0,
+        "replay_scheduled": 0,
+        "execution_refs": [],
+        "evaluator_identity": "sample",
+        "signature_ref": "sample",
+        "status": "invalid",
+        "limitations": []
+      }
+    },
+    {
+      "id": "ContextManifest-valid",
+      "schema_type": "ContextManifest",
+      "valid": true,
+      "payload": {
+        "kind": "context_manifest",
+        "schema_version": "1.0",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "epoch": 0,
+        "run_id": "sample",
+        "runtime_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "role_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "tool_inventory_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "stable_blocks": [
+          {
+            "id": "sample",
+            "order": 0,
+            "raw_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "bytes": 0
+          }
+        ],
+        "dynamic_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "memory_versions": [],
+        "evidence_refs": [],
+        "skill_versions": [],
+        "token_count": 0,
+        "token_measurement_source": "provider",
+        "wire_observed": false,
+        "wire_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "reconstruction_status": "complete_authorized",
+        "change_reason": "sample"
+      }
+    },
+    {
+      "id": "ContextManifest-unknown-key",
+      "schema_type": "ContextManifest",
+      "valid": false,
+      "payload": {
+        "kind": "context_manifest",
+        "schema_version": "1.0",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "epoch": 0,
+        "run_id": "sample",
+        "runtime_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "role_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "tool_inventory_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "stable_blocks": [
+          {
+            "id": "sample",
+            "order": 0,
+            "raw_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "bytes": 0
+          }
+        ],
+        "dynamic_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "memory_versions": [],
+        "evidence_refs": [],
+        "skill_versions": [],
+        "token_count": 0,
+        "token_measurement_source": "provider",
+        "wire_observed": false,
+        "wire_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "reconstruction_status": "complete_authorized",
+        "change_reason": "sample",
+        "undeclared_field": true
+      }
+    },
+    {
+      "id": "ContextManifest-missing-version",
+      "schema_type": "ContextManifest",
+      "valid": false,
+      "payload": {
+        "kind": "context_manifest",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "epoch": 0,
+        "run_id": "sample",
+        "runtime_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "role_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "tool_inventory_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "stable_blocks": [
+          {
+            "id": "sample",
+            "order": 0,
+            "raw_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "bytes": 0
+          }
+        ],
+        "dynamic_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "memory_versions": [],
+        "evidence_refs": [],
+        "skill_versions": [],
+        "token_count": 0,
+        "token_measurement_source": "provider",
+        "wire_observed": false,
+        "wire_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "reconstruction_status": "complete_authorized",
+        "change_reason": "sample"
+      }
+    },
+    {
+      "id": "AgentTask-valid",
+      "schema_type": "AgentTask",
+      "valid": true,
+      "payload": {
+        "kind": "agent_task",
+        "schema_version": "1.0",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "role": "sample",
+        "parent_run_id": "sample",
+        "base_revision": 0,
+        "input_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "context_manifest_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "input_refs": [
+          "sample"
+        ],
+        "output_schema_ref": "sample",
+        "allowed_tools": [],
+        "forbidden_refs": [],
+        "deadline": "2026-09-16T00:00:00Z",
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "permit_ref": "sample",
+        "session_isolated": true
+      }
+    },
+    {
+      "id": "AgentTask-unknown-key",
+      "schema_type": "AgentTask",
+      "valid": false,
+      "payload": {
+        "kind": "agent_task",
+        "schema_version": "1.0",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "role": "sample",
+        "parent_run_id": "sample",
+        "base_revision": 0,
+        "input_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "context_manifest_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "input_refs": [
+          "sample"
+        ],
+        "output_schema_ref": "sample",
+        "allowed_tools": [],
+        "forbidden_refs": [],
+        "deadline": "2026-09-16T00:00:00Z",
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "permit_ref": "sample",
+        "session_isolated": true,
+        "undeclared_field": true
+      }
+    },
+    {
+      "id": "AgentTask-missing-version",
+      "schema_type": "AgentTask",
+      "valid": false,
+      "payload": {
+        "kind": "agent_task",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "role": "sample",
+        "parent_run_id": "sample",
+        "base_revision": 0,
+        "input_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "context_manifest_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "input_refs": [
+          "sample"
+        ],
+        "output_schema_ref": "sample",
+        "allowed_tools": [],
+        "forbidden_refs": [],
+        "deadline": "2026-09-16T00:00:00Z",
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "permit_ref": "sample",
+        "session_isolated": true
+      }
+    },
+    {
+      "id": "HarnessRelease-valid",
+      "schema_type": "HarnessRelease",
+      "valid": true,
+      "payload": {
+        "kind": "harness_release",
+        "schema_version": "1.0",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "parent_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "components": [
+          {
+            "id": "sample",
+            "version": "sample",
+            "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "kind": "policy"
+          }
+        ],
+        "runtime_compatibility_ref": "sample",
+        "evaluation_report_refs": [
+          "sample"
+        ],
+        "review_refs": [
+          "sample"
+        ],
+        "promotion_approval_ref": "sample",
+        "minimum_schema_version": 1,
+        "signature_ref": "sample",
+        "status": "staged",
+        "rollback_target_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "activation_boundary": "new_run_or_authorized_episode"
+      }
+    },
+    {
+      "id": "HarnessRelease-unknown-key",
+      "schema_type": "HarnessRelease",
+      "valid": false,
+      "payload": {
+        "kind": "harness_release",
+        "schema_version": "1.0",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "parent_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "components": [
+          {
+            "id": "sample",
+            "version": "sample",
+            "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "kind": "policy"
+          }
+        ],
+        "runtime_compatibility_ref": "sample",
+        "evaluation_report_refs": [
+          "sample"
+        ],
+        "review_refs": [
+          "sample"
+        ],
+        "promotion_approval_ref": "sample",
+        "minimum_schema_version": 1,
+        "signature_ref": "sample",
+        "status": "staged",
+        "rollback_target_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "activation_boundary": "new_run_or_authorized_episode",
+        "undeclared_field": true
+      }
+    },
+    {
+      "id": "HarnessRelease-missing-version",
+      "schema_type": "HarnessRelease",
+      "valid": false,
+      "payload": {
+        "kind": "harness_release",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "parent_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "components": [
+          {
+            "id": "sample",
+            "version": "sample",
+            "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "kind": "policy"
+          }
+        ],
+        "runtime_compatibility_ref": "sample",
+        "evaluation_report_refs": [
+          "sample"
+        ],
+        "review_refs": [
+          "sample"
+        ],
+        "promotion_approval_ref": "sample",
+        "minimum_schema_version": 1,
+        "signature_ref": "sample",
+        "status": "staged",
+        "rollback_target_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "activation_boundary": "new_run_or_authorized_episode"
+      }
+    },
+    {
+      "id": "EventEnvelope-valid",
+      "schema_type": "EventEnvelope",
+      "valid": true,
+      "payload": {
+        "kind": "event_envelope",
+        "schema_version": "1.0",
+        "id": "sample",
+        "event_type": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "session_id": "sample",
+        "run_id": "sample",
+        "parent_run_id": "sample",
+        "producer": "sample",
+        "producer_seq": 0,
+        "event_seq": 0,
+        "occurred_at": "2026-09-16T00:00:00Z",
+        "ingested_at": "2026-09-16T00:00:00Z",
+        "payload_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "payload_ref": "sample",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sensitivity": "public",
+        "observation_kind": "trusted_runner"
+      }
+    },
+    {
+      "id": "EventEnvelope-unknown-key",
+      "schema_type": "EventEnvelope",
+      "valid": false,
+      "payload": {
+        "kind": "event_envelope",
+        "schema_version": "1.0",
+        "id": "sample",
+        "event_type": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "session_id": "sample",
+        "run_id": "sample",
+        "parent_run_id": "sample",
+        "producer": "sample",
+        "producer_seq": 0,
+        "event_seq": 0,
+        "occurred_at": "2026-09-16T00:00:00Z",
+        "ingested_at": "2026-09-16T00:00:00Z",
+        "payload_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "payload_ref": "sample",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sensitivity": "public",
+        "observation_kind": "trusted_runner",
+        "undeclared_field": true
+      }
+    },
+    {
+      "id": "EventEnvelope-missing-version",
+      "schema_type": "EventEnvelope",
+      "valid": false,
+      "payload": {
+        "kind": "event_envelope",
+        "id": "sample",
+        "event_type": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "session_id": "sample",
+        "run_id": "sample",
+        "parent_run_id": "sample",
+        "producer": "sample",
+        "producer_seq": 0,
+        "event_seq": 0,
+        "occurred_at": "2026-09-16T00:00:00Z",
+        "ingested_at": "2026-09-16T00:00:00Z",
+        "payload_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "payload_ref": "sample",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sensitivity": "public",
+        "observation_kind": "trusted_runner"
+      }
+    },
+    {
+      "id": "Permit-valid",
+      "schema_type": "Permit",
+      "valid": true,
+      "payload": {
+        "kind": "permit",
+        "schema_version": "1.0",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "action_kind": "inspect",
+        "bundle_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "subject_ref": "sample",
+        "allowed_paths": [],
+        "allowed_tools": [],
+        "network_allowlist": [],
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "issued_at": "2026-09-16T00:00:00Z",
+        "expires_at": "2026-09-16T00:00:00Z",
+        "nonce": "sample",
+        "issuer_ref": "sample",
+        "signature_ref": "sample",
+        "revocation_revision": 0
+      }
+    },
+    {
+      "id": "Permit-unknown-key",
+      "schema_type": "Permit",
+      "valid": false,
+      "payload": {
+        "kind": "permit",
+        "schema_version": "1.0",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "action_kind": "inspect",
+        "bundle_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "subject_ref": "sample",
+        "allowed_paths": [],
+        "allowed_tools": [],
+        "network_allowlist": [],
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "issued_at": "2026-09-16T00:00:00Z",
+        "expires_at": "2026-09-16T00:00:00Z",
+        "nonce": "sample",
+        "issuer_ref": "sample",
+        "signature_ref": "sample",
+        "revocation_revision": 0,
+        "undeclared_field": true
+      }
+    },
+    {
+      "id": "Permit-missing-version",
+      "schema_type": "Permit",
+      "valid": false,
+      "payload": {
+        "kind": "permit",
+        "id": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "action_kind": "inspect",
+        "bundle_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "subject_ref": "sample",
+        "allowed_paths": [],
+        "allowed_tools": [],
+        "network_allowlist": [],
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "issued_at": "2026-09-16T00:00:00Z",
+        "expires_at": "2026-09-16T00:00:00Z",
+        "nonce": "sample",
+        "issuer_ref": "sample",
+        "signature_ref": "sample",
+        "revocation_revision": 0
+      }
+    },
+    {
+      "id": "AgentRole-valid",
+      "schema_type": "AgentRole",
+      "valid": true,
+      "payload": {
+        "kind": "agent_role",
+        "schema_version": "1.0",
+        "id": "sample",
+        "description": "sample",
+        "prompt_path": "sample",
+        "input_schema": "sample",
+        "output_schema": "sample",
+        "skills": [],
+        "allowed_tools": [],
+        "authority": "proposal_only",
+        "context_epoch_policy": "pinned_per_phase",
+        "read_scope": "current_task",
+        "max_delegation_depth": 0
+      }
+    },
+    {
+      "id": "AgentRole-unknown-key",
+      "schema_type": "AgentRole",
+      "valid": false,
+      "payload": {
+        "kind": "agent_role",
+        "schema_version": "1.0",
+        "id": "sample",
+        "description": "sample",
+        "prompt_path": "sample",
+        "input_schema": "sample",
+        "output_schema": "sample",
+        "skills": [],
+        "allowed_tools": [],
+        "authority": "proposal_only",
+        "context_epoch_policy": "pinned_per_phase",
+        "read_scope": "current_task",
+        "max_delegation_depth": 0,
+        "undeclared_field": true
+      }
+    },
+    {
+      "id": "AgentRole-missing-version",
+      "schema_type": "AgentRole",
+      "valid": false,
+      "payload": {
+        "kind": "agent_role",
+        "id": "sample",
+        "description": "sample",
+        "prompt_path": "sample",
+        "input_schema": "sample",
+        "output_schema": "sample",
+        "skills": [],
+        "allowed_tools": [],
+        "authority": "proposal_only",
+        "context_epoch_policy": "pinned_per_phase",
+        "read_scope": "current_task",
+        "max_delegation_depth": 0
+      }
+    },
+    {
+      "id": "PluginDescriptor-valid",
+      "schema_type": "PluginDescriptor",
+      "valid": true,
+      "payload": {
+        "kind": "plugin_descriptor",
+        "schema_version": "1.0",
+        "id": "sample",
+        "version": "sample",
+        "provides": [
+          "sample"
+        ],
+        "requires": [],
+        "entrypoint": "sample",
+        "config_schema": "sample",
+        "privilege_class": "agent",
+        "disposal_policy": "reverse_dependency_order",
+        "hot_reload": false
+      }
+    },
+    {
+      "id": "PluginDescriptor-unknown-key",
+      "schema_type": "PluginDescriptor",
+      "valid": false,
+      "payload": {
+        "kind": "plugin_descriptor",
+        "schema_version": "1.0",
+        "id": "sample",
+        "version": "sample",
+        "provides": [
+          "sample"
+        ],
+        "requires": [],
+        "entrypoint": "sample",
+        "config_schema": "sample",
+        "privilege_class": "agent",
+        "disposal_policy": "reverse_dependency_order",
+        "hot_reload": false,
+        "undeclared_field": true
+      }
+    },
+    {
+      "id": "PluginDescriptor-missing-version",
+      "schema_type": "PluginDescriptor",
+      "valid": false,
+      "payload": {
+        "kind": "plugin_descriptor",
+        "id": "sample",
+        "version": "sample",
+        "provides": [
+          "sample"
+        ],
+        "requires": [],
+        "entrypoint": "sample",
+        "config_schema": "sample",
+        "privilege_class": "agent",
+        "disposal_policy": "reverse_dependency_order",
+        "hot_reload": false
+      }
+    },
+    {
+      "id": "CommandEnvelope-valid",
+      "schema_type": "CommandEnvelope",
+      "valid": true,
+      "payload": {
+        "kind": "command_envelope",
+        "schema_version": "1.0",
+        "id": "sample",
+        "command": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "expected_revision": 0,
+        "input_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "idempotency_key": "sample",
+        "actor_ref": "sample",
+        "payload_ref": "sample",
+        "permit_ref": "sample"
+      }
+    },
+    {
+      "id": "CommandEnvelope-unknown-key",
+      "schema_type": "CommandEnvelope",
+      "valid": false,
+      "payload": {
+        "kind": "command_envelope",
+        "schema_version": "1.0",
+        "id": "sample",
+        "command": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "expected_revision": 0,
+        "input_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "idempotency_key": "sample",
+        "actor_ref": "sample",
+        "payload_ref": "sample",
+        "permit_ref": "sample",
+        "undeclared_field": true
+      }
+    },
+    {
+      "id": "CommandEnvelope-missing-version",
+      "schema_type": "CommandEnvelope",
+      "valid": false,
+      "payload": {
+        "kind": "command_envelope",
+        "id": "sample",
+        "command": "sample",
+        "scope": {
+          "tenant": "sample",
+          "user": "sample",
+          "workspace": "sample"
+        },
+        "expected_revision": 0,
+        "input_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "idempotency_key": "sample",
+        "actor_ref": "sample",
+        "payload_ref": "sample",
+        "permit_ref": "sample"
+      }
+    },
+    {
+      "id": "ErrorEnvelope-valid",
+      "schema_type": "ErrorEnvelope",
+      "valid": true,
+      "payload": {
+        "kind": "error_envelope",
+        "schema_version": "1.0",
+        "code": "sample",
+        "message": "sample",
+        "retryable": false,
+        "current_revision": 0,
+        "related_ids": [],
+        "next_allowed_action": "sample"
+      }
+    },
+    {
+      "id": "ErrorEnvelope-unknown-key",
+      "schema_type": "ErrorEnvelope",
+      "valid": false,
+      "payload": {
+        "kind": "error_envelope",
+        "schema_version": "1.0",
+        "code": "sample",
+        "message": "sample",
+        "retryable": false,
+        "current_revision": 0,
+        "related_ids": [],
+        "next_allowed_action": "sample",
+        "undeclared_field": true
+      }
+    },
+    {
+      "id": "ErrorEnvelope-missing-version",
+      "schema_type": "ErrorEnvelope",
+      "valid": false,
+      "payload": {
+        "kind": "error_envelope",
+        "code": "sample",
+        "message": "sample",
+        "retryable": false,
+        "current_revision": 0,
+        "related_ids": [],
+        "next_allowed_action": "sample"
+      }
+    },
+    {
+      "id": "B-replay-only-cannot-be-eligible",
+      "schema_type": "EvaluationReport",
+      "valid": false,
+      "payload": {
+        "kind": "evaluation_report",
+        "schema_version": "1.0",
+        "id": "sample",
+        "experiment_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "candidate_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "baseline_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "route": "B",
+        "actual_pairs": 0,
+        "planned_pairs": 0,
+        "independent_families": 0,
+        "safety_failures": 0,
+        "missing_pairs": 0,
+        "intervals": [],
+        "replay_supported": 0,
+        "replay_scheduled": 0,
+        "execution_refs": [
+          "exec-a",
+          "exec-b"
+        ],
+        "evaluator_identity": "sample",
+        "signature_ref": "sample",
+        "status": "eligible_for_review",
+        "limitations": []
+      }
+    },
+    {
+      "id": "WorkerOutcome-valid",
+      "schema_type": "WorkerOutcome",
+      "valid": true,
+      "payload": {
+        "kind": "worker_outcome",
+        "schema_version": "1.0",
+        "id": "worker-1",
+        "task_id": "task-1",
+        "role": "implementer",
+        "base_revision": 1,
+        "input_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "status": "completed",
+        "summary": "synthetic format example, not execution evidence",
+        "evidence_refs": [],
+        "findings": [],
+        "proposed_artifacts": [],
+        "failure_code": null,
+        "authority": "proposal_only"
+      }
+    },
+    {
+      "id": "WorkerOutcome-no-authority",
+      "schema_type": "WorkerOutcome",
+      "valid": false,
+      "payload": {
+        "kind": "worker_outcome",
+        "schema_version": "1.0",
+        "id": "worker-1",
+        "task_id": "task-1",
+        "role": "implementer",
+        "base_revision": 1,
+        "input_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "status": "completed",
+        "summary": "synthetic format example, not execution evidence",
+        "evidence_refs": [],
+        "findings": [],
+        "proposed_artifacts": [],
+        "failure_code": null,
+        "authority": "approve"
+      }
+    },
+    {
+      "id": "WorkerOutcome-failure-reason-required",
+      "schema_type": "WorkerOutcome",
+      "valid": false,
+      "payload": {
+        "kind": "worker_outcome",
+        "schema_version": "1.0",
+        "id": "worker-1",
+        "task_id": "task-1",
+        "role": "implementer",
+        "base_revision": 1,
+        "input_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "status": "failed",
+        "summary": "synthetic format example, not execution evidence",
+        "evidence_refs": [],
+        "findings": [],
+        "proposed_artifacts": [],
+        "failure_code": null,
+        "authority": "proposal_only"
+      }
+    }
+  ]
+}

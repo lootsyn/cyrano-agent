@@ -1,0 +1,31 @@
+{
+  "schema_version": "cyrano.memory-experiment/1",
+  "enabled": false,
+  "core_projection": "release_frozen_epoch",
+  "episode_recall": "scoped_fresh_related",
+  "utility_overlay_enabled": false,
+  "max_utility_adjustment": 0.1,
+  "min_independent_families_before_utility": 20,
+  "consolidation": {
+    "enabled": false,
+    "trigger": "terminal_episode_or_explicit_request",
+    "queue": "durable_outbox",
+    "max_attempts": 2,
+    "max_concurrent_workers": 1,
+    "model_calls_budget": 4,
+    "auto_promote": false
+  },
+  "candidate_operations": [
+    "add",
+    "refine",
+    "link",
+    "deprecate"
+  ],
+  "current_pure_operations": [
+    "add",
+    "refine",
+    "deprecate"
+  ],
+  "current_status": "prototype_validation_not_runtime",
+  "protected_core_mutable": false
+}

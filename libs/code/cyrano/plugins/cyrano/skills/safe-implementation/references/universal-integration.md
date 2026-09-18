@@ -1,0 +1,5 @@
+# Universal Harness 통합 적용
+
+source readonly/scratch 분리와 permission_set의 read/create/write_existing/delete/only_write를구분한다. 승인된정확경로만요청하며only_write는읽기없는broker sink다. sourcepreimage·fence·permit을확인하고unknownsideeffect가남으면완료라고말하지않는다. 납품모드는currentplan에고정되며apply_to_source는추가승인·sourcepostimage검증이필요하다.
+
+세부wire필드는현contract registry를조회하고, 원본첨부의다른버전/필드명을추정해사용하지않는다. 이문서는지침이며실행권한을부여하지않는다.

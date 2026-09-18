@@ -1,0 +1,7 @@
+# Documented user-level extension configuration; verify effective root in WP00.
+# This is not to be placed in the target repository.
+[extensions]
+enabled = true
+trust = "never"
+extra_files = ["/ABSOLUTE/TRUSTED/RELEASE/udh_extension.py"]
+# Choose this OR versioned plugin discovery, not duplicate registrations.

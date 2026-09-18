@@ -1,0 +1,72 @@
+{
+ "kind": "work_package_completion_evidence",
+ "work_package": "WP04",
+ "title": "explicit composition, plugin lifecycle, reverse teardown",
+ "recorded_by": "implementer (independent post-image review performed)",
+ "success": true,
+ "source_digests": {
+  "deepagents_code/cyrano/plugins/composition.py": "sha256:ebb09d44b1f36a9c7944c336686595c0102f72c809c9097b74c4f5cc354482b3",
+  "deepagents_code/cyrano/plugins/registry.py": "sha256:7902ee41faa2be09d86304dfd268be40cceba40a80b7e86674783a6f72ac3d15",
+  "tests/cyrano_product/test_wp04_product.py": "sha256:6ef3ceb9ba7e35da10721cbd2a1e43aec104428738dcc50cd22976361cdb314b"
+ },
+ "contract_files": {
+  "cyrano/configs/profiles/governed.template.json": "sha256:1056aa1d7c2f9a83"
+ },
+ "acceptance_evidence": {
+  "PLUGIN-CONFIG": "passed - unknown component UNKNOWN_COMPONENT, dependency cycle PLUGIN_CYCLE, module/entry-point reference RUNTIME_DISCOVERY_REQUIRED, unknown field PLUGIN_CONFIG, future schema_version UNSUPPORTED_CONFIG_VERSION; all fail before any start (TestPluginConfig)",
+  "PLUGIN-PARTIAL": "passed - factory failure at second component closes the started handle in reverse order and unloads registry contributions added since baseline; registry.services empty after failure (test_second_setup_failure_rolls_back)",
+  "PLUGIN-DISPOSE": "passed - failing disposer does not stop remaining reverse teardown; CleanupReport records closed names and per-component errors (test_failed_disposer_reports_and_continues, test_close_reports_all_failures)",
+  "WP04-I01": "passed - single ResolvedComposition bound to exact canonical config digest; fixed 12-component KNOWN_COMPONENTS inventory; changing components changes the digest (test_exact_config_digest, test_fixed_inventory)",
+  "WP04-I02": "passed - reverse-order teardown, partial-registration cleanup via Registry.load rollback, no import-time work (module only defines data/functions) (test_registry_unload_reverse_order)",
+  "WP04-I03": "passed - config can only name fixed components; module/entry_point/import/path/plugin_dir/auto_load keys raise RUNTIME_DISCOVERY_REQUIRED, deferring extension/hook/MCP trust to the separate runtime discovery responsibility (test_code_expression_config_rejected)"
+ },
+ "commands": [
+  {
+   "argv": "uv run --no-sync python -m pytest tests/cyrano_product/test_wp04_product.py -q",
+   "exit": 0,
+   "result": "13 passed"
+  },
+  {
+   "argv": "uv run --no-sync python -m pytest tests/cyrano_product/ -q",
+   "exit": 0,
+   "result": "117 passed"
+  },
+  {
+   "argv": "uv run --no-sync ty check deepagents_code/cyrano/plugins tests/cyrano_product/test_wp04_product.py",
+   "exit": 0,
+   "result": "all checks passed"
+  },
+  {
+   "argv": "uv run --no-sync ruff check --config cyrano/configs/quality/ruff.toml <wp04 files>",
+   "exit": 0,
+   "result": "clean"
+  },
+  {
+   "argv": "uv run --no-sync ruff format --check --config cyrano/configs/quality/ruff.toml <wp04 files>",
+   "exit": 0,
+   "result": "clean after Cyrano-config format applied"
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/dev.py schemas",
+   "exit": 0,
+   "result": "success true"
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/dev.py check",
+   "exit": 0,
+   "result": "green after docs regeneration"
+  }
+ ],
+ "errors": [],
+ "blocked": [],
+ "explicit_blocks": [
+  "dev.py quality exits 1 on pre-existing overlay-wide debt (532 line-length findings); WP04-owned files are clean under the 79/72 config",
+  "start_components uses the Registry._loaded internals for rollback of plugin contributions; a public contribution-tracking API is a registry.py refinement candidate, not a correctness gap"
+ ],
+ "not_established": [
+  "real provider/host factories (config only names components; production factories bind in WP05/WP06 composition root)",
+  "async component startup/cancellation (sync lifecycle only per contract)"
+ ],
+ "known_limitations": "ComponentHandle typing is duck-typed via close(); MISSING_FACTORY treats an unbound component as a startup failure and rolls back prior components.",
+ "authority_scope": "component composition and lifecycle only; no runtime extension trust, no execution authority"
+}

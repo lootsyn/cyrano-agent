@@ -1,0 +1,50 @@
+{
+  "kind": "skill_manifest",
+  "schema_version": "1.0",
+  "id": "scoped-memory",
+  "version": "0.1.0-dev",
+  "name": "scoped-memory",
+  "description": "작업 단계에 맞는 검증된 기억을 선택하고 사용 근거를 남긴다.",
+  "entrypoint": "SKILL.md",
+  "content_digest": "sha256:765f7b8a0ac11c68f33828f21d99da3af8ae84bb51af6987af0d85c446edba63",
+  "resources": [
+    {
+      "path": "references/checklist.md",
+      "digest": "sha256:913a15a0f6f0edc8a2f1eab2c6d6596f933c7088f8b99ee3c6f55f40b57a242a",
+      "executable": false
+    },
+    {
+      "path": "assets/output.example.json",
+      "digest": "sha256:8431b0ccacc40f885765fd7ceeac06de2bc55f0b957473e23454a65bb8dbaf05",
+      "executable": false
+    },
+    {
+      "path": "references/universal-integration.md",
+      "digest": "sha256:289dbf77444e6de83cfd202fd38c44570b25730fb2276d3396df929f3f45d619",
+      "executable": false
+    }
+  ],
+  "allowed_roles": [
+    "facilitator",
+    "evidence-scout",
+    "planner",
+    "implementer",
+    "learning-analyst"
+  ],
+  "required_tools": [],
+  "scope": {
+    "tenant": "__BIND_TENANT__",
+    "user": "__BIND_USER__",
+    "workspace": "__BIND_WORKSPACE__"
+  },
+  "context_byte_budget": 8192,
+  "activation_tests": [
+    "SKILL-scoped-memory-positive"
+  ],
+  "counterexample_tests": [
+    "SKILL-scoped-memory-negative"
+  ],
+  "release_digest": null,
+  "approval_ref": null,
+  "status": "candidate"
+}

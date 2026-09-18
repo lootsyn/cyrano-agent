@@ -1,0 +1,113 @@
+{
+  "additionalProperties": false,
+  "description": "Describe repository quality choices without granting any approval.",
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "policy_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "title": "Policy Id",
+      "type": "string"
+    },
+    "style_profile": {
+      "enum": [
+        "team88-doc72",
+        "pep8-79-doc72"
+      ],
+      "title": "Style Profile",
+      "type": "string"
+    },
+    "python_version": {
+      "pattern": "^3\\.[0-9]+$",
+      "title": "Python Version",
+      "type": "string"
+    },
+    "formatter": {
+      "const": "black",
+      "default": "black",
+      "title": "Formatter",
+      "type": "string"
+    },
+    "type_checker": {
+      "enum": [
+        "mypy",
+        "pyright"
+      ],
+      "title": "Type Checker",
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "clean",
+        "legacy"
+      ],
+      "title": "Mode",
+      "type": "string"
+    },
+    "source_roots": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Source Roots",
+      "type": "array"
+    },
+    "test_roots": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Test Roots",
+      "type": "array"
+    },
+    "required_check_ids": {
+      "items": {
+        "maxLength": 128,
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Required Check Ids",
+      "type": "array"
+    },
+    "max_repair_rounds": {
+      "default": 3,
+      "maximum": 10,
+      "minimum": 0,
+      "title": "Max Repair Rounds",
+      "type": "integer"
+    },
+    "max_external_retries": {
+      "default": 1,
+      "maximum": 3,
+      "minimum": 0,
+      "title": "Max External Retries",
+      "type": "integer"
+    },
+    "max_no_progress": {
+      "default": 2,
+      "maximum": 10,
+      "minimum": 1,
+      "title": "Max No Progress",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "policy_id",
+    "style_profile",
+    "python_version",
+    "type_checker",
+    "mode",
+    "source_roots",
+    "test_roots",
+    "required_check_ids"
+  ],
+  "title": "QualityPolicy",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:udh:quality:QualityPolicy:1.0"
+}

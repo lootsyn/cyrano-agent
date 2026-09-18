@@ -1,0 +1,7 @@
+{
+  "kind": "format_guidance_not_evidence",
+  "schema_type": "PlanBundle",
+  "schema_ref": "contracts/v1/cyrano.schema.json#/$defs/PlanBundle",
+  "authority": "proposal_only",
+  "note": "This file is guidance, not a valid execution receipt or active release."
+}

@@ -1,0 +1,97 @@
+{
+  "kind": "work_package_completion_evidence",
+  "work_package": "WP00",
+  "title": "actual runtime/development tool compatibility pinning",
+  "recorded_by": "implementer (independent post-image review performed)",
+  "success": true,
+  "runtime_lock": {
+    "path": "cyrano/runtime/runtime-lock.json",
+    "status": "not_verified",
+    "governed_ready": false,
+    "doctor_verdict": "bootstrap_only",
+    "probes_verified": 6,
+    "probes_not_tested": [
+      "context_manifest",
+      "cancel_recovery"
+    ],
+    "note": "verified means API-surface compatibility only; runtime semantics stay not_tested per WP00-I03 until WP06/WP22"
+  },
+  "acceptance_evidence": {
+    "RUNTIME-HASH": "tests/cyrano_product/test_wp00_product.py::test_runtime_hash_mismatch_refuses_governed",
+    "RUNTIME-MISSING": "tests/cyrano_product/test_wp00_product.py::test_runtime_missing_reported_not_faked",
+    "RUNTIME-NATIVE": "tests/cyrano_product/test_wp00_product.py::test_runtime_native_unsupported_recorded",
+    "UH-OPS-02": "tests/cyrano_product/test_wp00_product.py::test_uh_ops_02_missing_extension_surface_blocks",
+    "INTEG-WP-BOOTSTRAP": "tests/cyrano_product/test_wp00_product.py::test_integ_wp_bootstrap_partial_not_verified",
+    "R4-RC00-01..04": "tests/cyrano_product/test_r4_rc00.py (additive copy, protected preimage, real parent import, wheel + fresh-venv install, conflict refusal)",
+    "R4-RC01-01..04": "tests/cyrano_product/test_r4_rc01.py (deterministic readset, reference consent, docstring audit, permit-bound mutation)",
+    "R5-RF00-01..06": "tests/cyrano_product/test_r5_rf00.py (feature-state resolution, capability/permit gates, ownership validation)",
+    "R5-RF01-01..06": "tests/cyrano_product/test_r5_rf01.py (toolchain consent, lock digest, managed credential-free env)"
+  },
+  "commands": [
+    {
+      "argv": ["uv", "run", "--no-sync", "python", "-m", "pytest", "tests/cyrano_product/", "-q"],
+      "cwd": "libs/code",
+      "exit_code": 0,
+      "result": "36 passed in 2.00s"
+    },
+    {
+      "argv": ["uv", "run", "--no-sync", "python", "cyrano/scripts/dev.py", "schemas"],
+      "cwd": "libs/code",
+      "exit_code": 0
+    },
+    {
+      "argv": ["uv", "run", "--no-sync", "python", "cyrano/scripts/dev.py", "check"],
+      "cwd": "libs/code",
+      "exit_code": 0,
+      "note": "includes 302 unit tests and generated-doc freshness"
+    },
+    {
+      "argv": ["uv", "run", "--no-sync", "python", "cyrano/scripts/check_integration.py"],
+      "cwd": "libs/code",
+      "exit_code": 0
+    },
+    {
+      "argv": ["uv", "run", "--no-sync", "python", "cyrano/scripts/check_r5.py"],
+      "cwd": "libs/code",
+      "exit_code": 0
+    },
+    {
+      "argv": ["uv", "run", "--no-sync", "ty", "check", "deepagents_code/cyrano/"],
+      "cwd": "libs/code",
+      "exit_code": 0
+    },
+    {
+      "argv": ["basedpyright", "--project", "pyrightconfig.json", "deepagents_code/cyrano/"],
+      "cwd": "libs/code",
+      "exit_code": 1,
+      "result": "6 errors, all pre-existing in evaluation/assessment.py (untouched by WP00); WP00-owned files report 0 errors"
+    },
+    {
+      "argv": ["uv", "run", "--no-sync", "ruff", "check", "--config", "cyrano/configs/quality/ruff.toml", "<WP00-owned files>"],
+      "cwd": "libs/code",
+      "exit_code": 0
+    },
+    {
+      "argv": ["uv", "run", "--no-sync", "python", "cyrano/scripts/dev.py", "quality"],
+      "cwd": "libs/code",
+      "exit_code": 1,
+      "result": "556 line-length findings across 74 source files; findings are pre-existing migration debt outside WP00-owned files, which are clean under the 79/72 config"
+    }
+  ],
+  "errors": [],
+  "blocked": [],
+  "explicit_blocks": [
+    "dev.py quality gate fails on pre-existing overlay line-length debt (556 findings); WP00-owned files pass the Cyrano 79/72 config",
+    "basedpyright reports 6 pre-existing reportMissingTypeArgument errors in evaluation/assessment.py, untouched by WP00"
+  ],
+  "not_established": [
+    "native_dcode_runtime",
+    "real_authorization",
+    "provider_calls",
+    "product_memory_effect",
+    "product_learning_effect",
+    "UI_execution",
+    "OS_isolation",
+    "full_python_quality"
+  ]
+}

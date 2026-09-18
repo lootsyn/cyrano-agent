@@ -1,0 +1,31 @@
+{
+  "schema_version": "cyrano.skill-bindings/1",
+  "status": "template_requires_verified_native_binding",
+  "always_load_bodies": false,
+  "bindings": [
+    {
+      "skill_id": "cyrano-code-intelligence",
+      "path": "plugins/cyrano/skills/cyrano-code-intelligence/SKILL.md",
+      "default_enabled": false,
+      "source_digest": "3bbeccf0451c3c54a4fd632c895d58bce6aa9caf8deeefa6ce30792c7c726cdd",
+      "activation": "operator_approved_release_and_capability_probe",
+      "manifest_ref": "configs/skills/cyrano-code-intelligence.template.json"
+    },
+    {
+      "skill_id": "memory-curation",
+      "path": "plugins/cyrano/skills/memory-curation/SKILL.md",
+      "default_enabled": false,
+      "source_digest": "37095da19921ab825230f47b14fdf7f9d9fd9603c8609ff501bddaaf46c5f3dd",
+      "activation": "operator_approved_release_and_capability_probe",
+      "manifest_ref": "configs/skills/memory-curation.template.json"
+    },
+    {
+      "skill_id": "monitor-investigation",
+      "path": "plugins/cyrano/skills/monitor-investigation/SKILL.md",
+      "default_enabled": false,
+      "source_digest": "6fe959a46d17550bfc3349f5d197bafe437b85e7874ee6a41982923d297ad8dd",
+      "activation": "operator_approved_release_and_capability_probe",
+      "manifest_ref": "configs/skills/monitor-investigation.template.json"
+    }
+  ]
+}

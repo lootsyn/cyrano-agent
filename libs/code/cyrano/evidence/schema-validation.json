@@ -1,0 +1,14 @@
+{
+  "kind": "executed_versioned_schema_validation",
+  "schemas_checked": 7,
+  "schema_definitions": 158,
+  "cases_checked": 250,
+  "role_skill_templates_checked": 31,
+  "imported_schemas_checked": 15,
+  "imported_shape_cases_checked": 28,
+  "failed_cases": [],
+  "success": true,
+  "api_check_scope": "local refs, not a running OpenAPI server",
+  "authority_checks": "not_implied_by_JSON_schema",
+  "source_code_executed": false
+}

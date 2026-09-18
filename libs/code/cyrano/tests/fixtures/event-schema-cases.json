@@ -1,0 +1,2540 @@
+{
+  "status": "synthetic_not_operational_evidence",
+  "cases": [
+    {
+      "id": "SessionStartedPayload-valid",
+      "schema_type": "SessionStartedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "session.started",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "previous_state": null,
+        "next_state": "CREATED",
+        "checkpoint_ref": null,
+        "completion_report_ref": null,
+        "unknown_operation_ids": []
+      }
+    },
+    {
+      "id": "SessionStartedPayload-extra-rejected",
+      "schema_type": "SessionStartedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "session.started",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "previous_state": null,
+        "next_state": "CREATED",
+        "checkpoint_ref": null,
+        "completion_report_ref": null,
+        "unknown_operation_ids": [],
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "SessionPausedPayload-valid",
+      "schema_type": "SessionPausedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "session.paused",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "previous_state": null,
+        "next_state": "CREATED",
+        "checkpoint_ref": null,
+        "completion_report_ref": null,
+        "unknown_operation_ids": []
+      }
+    },
+    {
+      "id": "SessionPausedPayload-extra-rejected",
+      "schema_type": "SessionPausedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "session.paused",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "previous_state": null,
+        "next_state": "CREATED",
+        "checkpoint_ref": null,
+        "completion_report_ref": null,
+        "unknown_operation_ids": [],
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "SessionResumedPayload-valid",
+      "schema_type": "SessionResumedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "session.resumed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "previous_state": null,
+        "next_state": "CREATED",
+        "checkpoint_ref": null,
+        "completion_report_ref": null,
+        "unknown_operation_ids": []
+      }
+    },
+    {
+      "id": "SessionResumedPayload-extra-rejected",
+      "schema_type": "SessionResumedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "session.resumed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "previous_state": null,
+        "next_state": "CREATED",
+        "checkpoint_ref": null,
+        "completion_report_ref": null,
+        "unknown_operation_ids": [],
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "SessionCancelledPayload-valid",
+      "schema_type": "SessionCancelledPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "session.cancelled",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "previous_state": null,
+        "next_state": "CREATED",
+        "checkpoint_ref": null,
+        "completion_report_ref": null,
+        "unknown_operation_ids": []
+      }
+    },
+    {
+      "id": "SessionCancelledPayload-extra-rejected",
+      "schema_type": "SessionCancelledPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "session.cancelled",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "previous_state": null,
+        "next_state": "CREATED",
+        "checkpoint_ref": null,
+        "completion_report_ref": null,
+        "unknown_operation_ids": [],
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "SessionCompletedPayload-valid",
+      "schema_type": "SessionCompletedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "session.completed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "previous_state": null,
+        "next_state": "CREATED",
+        "checkpoint_ref": null,
+        "completion_report_ref": null,
+        "unknown_operation_ids": []
+      }
+    },
+    {
+      "id": "SessionCompletedPayload-extra-rejected",
+      "schema_type": "SessionCompletedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "session.completed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "previous_state": null,
+        "next_state": "CREATED",
+        "checkpoint_ref": null,
+        "completion_report_ref": null,
+        "unknown_operation_ids": [],
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "WorkStartedPayload-valid",
+      "schema_type": "WorkStartedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "work.started",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "work_unit_id": "synthetic",
+        "plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "operation_id": "synthetic",
+        "attempt_id": null,
+        "input_snapshot": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "output_snapshot": null,
+        "result_status": "started",
+        "verification_refs": []
+      }
+    },
+    {
+      "id": "WorkStartedPayload-extra-rejected",
+      "schema_type": "WorkStartedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "work.started",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "work_unit_id": "synthetic",
+        "plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "operation_id": "synthetic",
+        "attempt_id": null,
+        "input_snapshot": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "output_snapshot": null,
+        "result_status": "started",
+        "verification_refs": [],
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "WorkFinishedPayload-valid",
+      "schema_type": "WorkFinishedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "work.finished",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "work_unit_id": "synthetic",
+        "plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "operation_id": "synthetic",
+        "attempt_id": null,
+        "input_snapshot": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "output_snapshot": null,
+        "result_status": "started",
+        "verification_refs": []
+      }
+    },
+    {
+      "id": "WorkFinishedPayload-extra-rejected",
+      "schema_type": "WorkFinishedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "work.finished",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "work_unit_id": "synthetic",
+        "plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "operation_id": "synthetic",
+        "attempt_id": null,
+        "input_snapshot": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "output_snapshot": null,
+        "result_status": "started",
+        "verification_refs": [],
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "WorkReworkPayload-valid",
+      "schema_type": "WorkReworkPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "work.rework",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "work_unit_id": "synthetic",
+        "plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "operation_id": "synthetic",
+        "attempt_id": null,
+        "input_snapshot": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "output_snapshot": null,
+        "result_status": "started",
+        "verification_refs": []
+      }
+    },
+    {
+      "id": "WorkReworkPayload-extra-rejected",
+      "schema_type": "WorkReworkPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "work.rework",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "work_unit_id": "synthetic",
+        "plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "operation_id": "synthetic",
+        "attempt_id": null,
+        "input_snapshot": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "output_snapshot": null,
+        "result_status": "started",
+        "verification_refs": [],
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "RecoveryReconciledPayload-valid",
+      "schema_type": "RecoveryReconciledPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "recovery.reconciled",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "operation_id": "synthetic",
+        "actual_status": "not_started",
+        "journal_ref": "synthetic",
+        "next_action_ref": null
+      }
+    },
+    {
+      "id": "RecoveryReconciledPayload-extra-rejected",
+      "schema_type": "RecoveryReconciledPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "recovery.reconciled",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "operation_id": "synthetic",
+        "actual_status": "not_started",
+        "journal_ref": "synthetic",
+        "next_action_ref": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "InterviewQuestionProposedPayload-valid",
+      "schema_type": "InterviewQuestionProposedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "interview.question_proposed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "question_id": "synthetic",
+        "obligation_ids": [],
+        "question_text_ref": "synthetic",
+        "input_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "host_display_ref": null
+      }
+    },
+    {
+      "id": "InterviewQuestionProposedPayload-extra-rejected",
+      "schema_type": "InterviewQuestionProposedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "interview.question_proposed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "question_id": "synthetic",
+        "obligation_ids": [],
+        "question_text_ref": "synthetic",
+        "input_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "host_display_ref": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "InterviewQuestionAskedPayload-valid",
+      "schema_type": "InterviewQuestionAskedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "interview.question_asked",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "question_id": "synthetic",
+        "obligation_ids": [],
+        "question_text_ref": "synthetic",
+        "input_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "host_display_ref": null
+      }
+    },
+    {
+      "id": "InterviewQuestionAskedPayload-extra-rejected",
+      "schema_type": "InterviewQuestionAskedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "interview.question_asked",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "question_id": "synthetic",
+        "obligation_ids": [],
+        "question_text_ref": "synthetic",
+        "input_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "host_display_ref": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "UserAnswerReceivedPayload-valid",
+      "schema_type": "UserAnswerReceivedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "user.answer_received",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "trusted_user_event_ref": "synthetic",
+        "actor_id": "synthetic",
+        "raw_text_ref": "synthetic",
+        "supersedes_event_ref": null
+      }
+    },
+    {
+      "id": "UserAnswerReceivedPayload-extra-rejected",
+      "schema_type": "UserAnswerReceivedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "user.answer_received",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "trusted_user_event_ref": "synthetic",
+        "actor_id": "synthetic",
+        "raw_text_ref": "synthetic",
+        "supersedes_event_ref": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "DecisionProposedPayload-valid",
+      "schema_type": "DecisionProposedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "decision.proposed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "decision_id": "synthetic",
+        "decision_kind": "intent",
+        "source_user_event_ref": null,
+        "supersedes_decision_ref": null,
+        "affected_entity_ids": []
+      }
+    },
+    {
+      "id": "DecisionProposedPayload-extra-rejected",
+      "schema_type": "DecisionProposedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "decision.proposed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "decision_id": "synthetic",
+        "decision_kind": "intent",
+        "source_user_event_ref": null,
+        "supersedes_decision_ref": null,
+        "affected_entity_ids": [],
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "DecisionDecidedPayload-valid",
+      "schema_type": "DecisionDecidedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "decision.decided",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "decision_id": "synthetic",
+        "decision_kind": "intent",
+        "source_user_event_ref": null,
+        "supersedes_decision_ref": null,
+        "affected_entity_ids": []
+      }
+    },
+    {
+      "id": "DecisionDecidedPayload-extra-rejected",
+      "schema_type": "DecisionDecidedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "decision.decided",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "decision_id": "synthetic",
+        "decision_kind": "intent",
+        "source_user_event_ref": null,
+        "supersedes_decision_ref": null,
+        "affected_entity_ids": [],
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "DecisionSupersededPayload-valid",
+      "schema_type": "DecisionSupersededPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "decision.superseded",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "decision_id": "synthetic",
+        "decision_kind": "intent",
+        "source_user_event_ref": null,
+        "supersedes_decision_ref": null,
+        "affected_entity_ids": []
+      }
+    },
+    {
+      "id": "DecisionSupersededPayload-extra-rejected",
+      "schema_type": "DecisionSupersededPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "decision.superseded",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "decision_id": "synthetic",
+        "decision_kind": "intent",
+        "source_user_event_ref": null,
+        "supersedes_decision_ref": null,
+        "affected_entity_ids": [],
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "EvidenceCollectedPayload-valid",
+      "schema_type": "EvidenceCollectedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "evidence.collected",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "evidence_id": "synthetic",
+        "source_snapshot": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_locator": "synthetic",
+        "validation_status": "collected",
+        "depends_on_digests": []
+      }
+    },
+    {
+      "id": "EvidenceCollectedPayload-extra-rejected",
+      "schema_type": "EvidenceCollectedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "evidence.collected",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "evidence_id": "synthetic",
+        "source_snapshot": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_locator": "synthetic",
+        "validation_status": "collected",
+        "depends_on_digests": [],
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "EvidenceStalePayload-valid",
+      "schema_type": "EvidenceStalePayload",
+      "valid": true,
+      "payload": {
+        "event_type": "evidence.stale",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "evidence_id": "synthetic",
+        "source_snapshot": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_locator": "synthetic",
+        "validation_status": "collected",
+        "depends_on_digests": []
+      }
+    },
+    {
+      "id": "EvidenceStalePayload-extra-rejected",
+      "schema_type": "EvidenceStalePayload",
+      "valid": false,
+      "payload": {
+        "event_type": "evidence.stale",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "evidence_id": "synthetic",
+        "source_snapshot": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_locator": "synthetic",
+        "validation_status": "collected",
+        "depends_on_digests": [],
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "SpecCompiledPayload-valid",
+      "schema_type": "SpecCompiledPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "spec.compiled",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "spec_ref": "synthetic",
+        "spec_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "obligation_ids": [],
+        "unresolved_ids": []
+      }
+    },
+    {
+      "id": "SpecCompiledPayload-extra-rejected",
+      "schema_type": "SpecCompiledPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "spec.compiled",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "spec_ref": "synthetic",
+        "spec_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "obligation_ids": [],
+        "unresolved_ids": [],
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "PlanCompiledPayload-valid",
+      "schema_type": "PlanCompiledPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "plan.compiled",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "plan_ref": "synthetic",
+        "plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "spec_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "delivery_mode": "patch_only",
+        "work_unit_ids": []
+      }
+    },
+    {
+      "id": "PlanCompiledPayload-extra-rejected",
+      "schema_type": "PlanCompiledPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "plan.compiled",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "plan_ref": "synthetic",
+        "plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "spec_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "delivery_mode": "patch_only",
+        "work_unit_ids": [],
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "ReviewRequestedPayload-valid",
+      "schema_type": "ReviewRequestedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "review.requested",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "review_task_id": "synthetic",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "review_role": "synthetic",
+        "reviewer_execution_ref": null,
+        "finding_refs": [],
+        "outcome": "requested",
+        "review_report_ref": null
+      }
+    },
+    {
+      "id": "ReviewRequestedPayload-extra-rejected",
+      "schema_type": "ReviewRequestedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "review.requested",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "review_task_id": "synthetic",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "review_role": "synthetic",
+        "reviewer_execution_ref": null,
+        "finding_refs": [],
+        "outcome": "requested",
+        "review_report_ref": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "ReviewCompletedPayload-valid",
+      "schema_type": "ReviewCompletedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "review.completed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "review_task_id": "synthetic",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "review_role": "synthetic",
+        "reviewer_execution_ref": null,
+        "finding_refs": [],
+        "outcome": "requested",
+        "review_report_ref": null
+      }
+    },
+    {
+      "id": "ReviewCompletedPayload-extra-rejected",
+      "schema_type": "ReviewCompletedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "review.completed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "review_task_id": "synthetic",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "review_role": "synthetic",
+        "reviewer_execution_ref": null,
+        "finding_refs": [],
+        "outcome": "requested",
+        "review_report_ref": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "ReviewFailedPayload-valid",
+      "schema_type": "ReviewFailedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "review.failed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "review_task_id": "synthetic",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "review_role": "synthetic",
+        "reviewer_execution_ref": null,
+        "finding_refs": [],
+        "outcome": "requested",
+        "review_report_ref": null
+      }
+    },
+    {
+      "id": "ReviewFailedPayload-extra-rejected",
+      "schema_type": "ReviewFailedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "review.failed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "review_task_id": "synthetic",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "review_role": "synthetic",
+        "reviewer_execution_ref": null,
+        "finding_refs": [],
+        "outcome": "requested",
+        "review_report_ref": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "ApprovalRequestedPayload-valid",
+      "schema_type": "ApprovalRequestedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "approval.requested",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "request_id": "synthetic",
+        "action": "approve_spec_for_planning",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_event_ref": null,
+        "trusted_actor_id": null,
+        "receipt_ref": null,
+        "reason_ref": null
+      }
+    },
+    {
+      "id": "ApprovalRequestedPayload-extra-rejected",
+      "schema_type": "ApprovalRequestedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "approval.requested",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "request_id": "synthetic",
+        "action": "approve_spec_for_planning",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_event_ref": null,
+        "trusted_actor_id": null,
+        "receipt_ref": null,
+        "reason_ref": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "ApprovalGrantedPayload-valid",
+      "schema_type": "ApprovalGrantedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "approval.granted",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "request_id": "synthetic",
+        "action": "approve_spec_for_planning",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_event_ref": null,
+        "trusted_actor_id": null,
+        "receipt_ref": null,
+        "reason_ref": null
+      }
+    },
+    {
+      "id": "ApprovalGrantedPayload-extra-rejected",
+      "schema_type": "ApprovalGrantedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "approval.granted",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "request_id": "synthetic",
+        "action": "approve_spec_for_planning",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_event_ref": null,
+        "trusted_actor_id": null,
+        "receipt_ref": null,
+        "reason_ref": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "ApprovalDeniedPayload-valid",
+      "schema_type": "ApprovalDeniedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "approval.denied",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "request_id": "synthetic",
+        "action": "approve_spec_for_planning",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_event_ref": null,
+        "trusted_actor_id": null,
+        "receipt_ref": null,
+        "reason_ref": null
+      }
+    },
+    {
+      "id": "ApprovalDeniedPayload-extra-rejected",
+      "schema_type": "ApprovalDeniedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "approval.denied",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "request_id": "synthetic",
+        "action": "approve_spec_for_planning",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_event_ref": null,
+        "trusted_actor_id": null,
+        "receipt_ref": null,
+        "reason_ref": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "ApprovalRevokedPayload-valid",
+      "schema_type": "ApprovalRevokedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "approval.revoked",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "request_id": "synthetic",
+        "action": "approve_spec_for_planning",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_event_ref": null,
+        "trusted_actor_id": null,
+        "receipt_ref": null,
+        "reason_ref": null
+      }
+    },
+    {
+      "id": "ApprovalRevokedPayload-extra-rejected",
+      "schema_type": "ApprovalRevokedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "approval.revoked",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "request_id": "synthetic",
+        "action": "approve_spec_for_planning",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_event_ref": null,
+        "trusted_actor_id": null,
+        "receipt_ref": null,
+        "reason_ref": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "PermitIssuedPayload-valid",
+      "schema_type": "PermitIssuedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "permit.issued",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "permit_request_id": "synthetic",
+        "permit_ref": null,
+        "action": "synthetic",
+        "work_unit_id": null,
+        "scope_binding_ref": "synthetic",
+        "policy_epoch": 0,
+        "expires_at": null
+      }
+    },
+    {
+      "id": "PermitIssuedPayload-extra-rejected",
+      "schema_type": "PermitIssuedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "permit.issued",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "permit_request_id": "synthetic",
+        "permit_ref": null,
+        "action": "synthetic",
+        "work_unit_id": null,
+        "scope_binding_ref": "synthetic",
+        "policy_epoch": 0,
+        "expires_at": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "PermitDeniedPayload-valid",
+      "schema_type": "PermitDeniedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "permit.denied",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "permit_request_id": "synthetic",
+        "permit_ref": null,
+        "action": "synthetic",
+        "work_unit_id": null,
+        "scope_binding_ref": "synthetic",
+        "policy_epoch": 0,
+        "expires_at": null
+      }
+    },
+    {
+      "id": "PermitDeniedPayload-extra-rejected",
+      "schema_type": "PermitDeniedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "permit.denied",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "permit_request_id": "synthetic",
+        "permit_ref": null,
+        "action": "synthetic",
+        "work_unit_id": null,
+        "scope_binding_ref": "synthetic",
+        "policy_epoch": 0,
+        "expires_at": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "ModelStartedPayload-valid",
+      "schema_type": "ModelStartedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "model.started",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "attempt_id": "synthetic",
+        "logical_call_id": "synthetic",
+        "parent_attempt_id": null,
+        "model_binding_ref": "synthetic",
+        "context_manifest_ref": "synthetic",
+        "provider_request_id": null,
+        "attempt_state": "started",
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "cache_read_tokens": null,
+          "cache_write_tokens": null,
+          "cost_decimal": null,
+          "currency": "USD",
+          "semantics_ref": null,
+          "coverage": "measured"
+        },
+        "duration_ms": null,
+        "billable_leaf": false
+      }
+    },
+    {
+      "id": "ModelStartedPayload-extra-rejected",
+      "schema_type": "ModelStartedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "model.started",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "attempt_id": "synthetic",
+        "logical_call_id": "synthetic",
+        "parent_attempt_id": null,
+        "model_binding_ref": "synthetic",
+        "context_manifest_ref": "synthetic",
+        "provider_request_id": null,
+        "attempt_state": "started",
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "cache_read_tokens": null,
+          "cache_write_tokens": null,
+          "cost_decimal": null,
+          "currency": "USD",
+          "semantics_ref": null,
+          "coverage": "measured"
+        },
+        "duration_ms": null,
+        "billable_leaf": false,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "ModelFinishedPayload-valid",
+      "schema_type": "ModelFinishedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "model.finished",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "attempt_id": "synthetic",
+        "logical_call_id": "synthetic",
+        "parent_attempt_id": null,
+        "model_binding_ref": "synthetic",
+        "context_manifest_ref": "synthetic",
+        "provider_request_id": null,
+        "attempt_state": "started",
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "cache_read_tokens": null,
+          "cache_write_tokens": null,
+          "cost_decimal": null,
+          "currency": "USD",
+          "semantics_ref": null,
+          "coverage": "measured"
+        },
+        "duration_ms": null,
+        "billable_leaf": false
+      }
+    },
+    {
+      "id": "ModelFinishedPayload-extra-rejected",
+      "schema_type": "ModelFinishedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "model.finished",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "attempt_id": "synthetic",
+        "logical_call_id": "synthetic",
+        "parent_attempt_id": null,
+        "model_binding_ref": "synthetic",
+        "context_manifest_ref": "synthetic",
+        "provider_request_id": null,
+        "attempt_state": "started",
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "cache_read_tokens": null,
+          "cache_write_tokens": null,
+          "cost_decimal": null,
+          "currency": "USD",
+          "semantics_ref": null,
+          "coverage": "measured"
+        },
+        "duration_ms": null,
+        "billable_leaf": false,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "ModelFailedPayload-valid",
+      "schema_type": "ModelFailedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "model.failed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "attempt_id": "synthetic",
+        "logical_call_id": "synthetic",
+        "parent_attempt_id": null,
+        "model_binding_ref": "synthetic",
+        "context_manifest_ref": "synthetic",
+        "provider_request_id": null,
+        "attempt_state": "started",
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "cache_read_tokens": null,
+          "cache_write_tokens": null,
+          "cost_decimal": null,
+          "currency": "USD",
+          "semantics_ref": null,
+          "coverage": "measured"
+        },
+        "duration_ms": null,
+        "billable_leaf": false
+      }
+    },
+    {
+      "id": "ModelFailedPayload-extra-rejected",
+      "schema_type": "ModelFailedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "model.failed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "attempt_id": "synthetic",
+        "logical_call_id": "synthetic",
+        "parent_attempt_id": null,
+        "model_binding_ref": "synthetic",
+        "context_manifest_ref": "synthetic",
+        "provider_request_id": null,
+        "attempt_state": "started",
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "cache_read_tokens": null,
+          "cache_write_tokens": null,
+          "cost_decimal": null,
+          "currency": "USD",
+          "semantics_ref": null,
+          "coverage": "measured"
+        },
+        "duration_ms": null,
+        "billable_leaf": false,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "ModelRetryPayload-valid",
+      "schema_type": "ModelRetryPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "model.retry",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "attempt_id": "synthetic",
+        "logical_call_id": "synthetic",
+        "parent_attempt_id": null,
+        "model_binding_ref": "synthetic",
+        "context_manifest_ref": "synthetic",
+        "provider_request_id": null,
+        "attempt_state": "started",
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "cache_read_tokens": null,
+          "cache_write_tokens": null,
+          "cost_decimal": null,
+          "currency": "USD",
+          "semantics_ref": null,
+          "coverage": "measured"
+        },
+        "duration_ms": null,
+        "billable_leaf": false
+      }
+    },
+    {
+      "id": "ModelRetryPayload-extra-rejected",
+      "schema_type": "ModelRetryPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "model.retry",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "attempt_id": "synthetic",
+        "logical_call_id": "synthetic",
+        "parent_attempt_id": null,
+        "model_binding_ref": "synthetic",
+        "context_manifest_ref": "synthetic",
+        "provider_request_id": null,
+        "attempt_state": "started",
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "cache_read_tokens": null,
+          "cache_write_tokens": null,
+          "cost_decimal": null,
+          "currency": "USD",
+          "semantics_ref": null,
+          "coverage": "measured"
+        },
+        "duration_ms": null,
+        "billable_leaf": false,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "ToolRequestedPayload-valid",
+      "schema_type": "ToolRequestedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "tool.requested",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "operation_id": "synthetic",
+        "tool_id": "synthetic",
+        "permit_ref": null,
+        "arguments_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sanitized_arguments_ref": null,
+        "outcome": "requested",
+        "result_artifact_ref": null,
+        "duration_ms": null
+      }
+    },
+    {
+      "id": "ToolRequestedPayload-extra-rejected",
+      "schema_type": "ToolRequestedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "tool.requested",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "operation_id": "synthetic",
+        "tool_id": "synthetic",
+        "permit_ref": null,
+        "arguments_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sanitized_arguments_ref": null,
+        "outcome": "requested",
+        "result_artifact_ref": null,
+        "duration_ms": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "ToolDeniedPayload-valid",
+      "schema_type": "ToolDeniedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "tool.denied",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "operation_id": "synthetic",
+        "tool_id": "synthetic",
+        "permit_ref": null,
+        "arguments_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sanitized_arguments_ref": null,
+        "outcome": "requested",
+        "result_artifact_ref": null,
+        "duration_ms": null
+      }
+    },
+    {
+      "id": "ToolDeniedPayload-extra-rejected",
+      "schema_type": "ToolDeniedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "tool.denied",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "operation_id": "synthetic",
+        "tool_id": "synthetic",
+        "permit_ref": null,
+        "arguments_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sanitized_arguments_ref": null,
+        "outcome": "requested",
+        "result_artifact_ref": null,
+        "duration_ms": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "ToolStartedPayload-valid",
+      "schema_type": "ToolStartedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "tool.started",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "operation_id": "synthetic",
+        "tool_id": "synthetic",
+        "permit_ref": null,
+        "arguments_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sanitized_arguments_ref": null,
+        "outcome": "requested",
+        "result_artifact_ref": null,
+        "duration_ms": null
+      }
+    },
+    {
+      "id": "ToolStartedPayload-extra-rejected",
+      "schema_type": "ToolStartedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "tool.started",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "operation_id": "synthetic",
+        "tool_id": "synthetic",
+        "permit_ref": null,
+        "arguments_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sanitized_arguments_ref": null,
+        "outcome": "requested",
+        "result_artifact_ref": null,
+        "duration_ms": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "ToolFinishedPayload-valid",
+      "schema_type": "ToolFinishedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "tool.finished",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "operation_id": "synthetic",
+        "tool_id": "synthetic",
+        "permit_ref": null,
+        "arguments_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sanitized_arguments_ref": null,
+        "outcome": "requested",
+        "result_artifact_ref": null,
+        "duration_ms": null
+      }
+    },
+    {
+      "id": "ToolFinishedPayload-extra-rejected",
+      "schema_type": "ToolFinishedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "tool.finished",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "operation_id": "synthetic",
+        "tool_id": "synthetic",
+        "permit_ref": null,
+        "arguments_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sanitized_arguments_ref": null,
+        "outcome": "requested",
+        "result_artifact_ref": null,
+        "duration_ms": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "ToolFailedPayload-valid",
+      "schema_type": "ToolFailedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "tool.failed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "operation_id": "synthetic",
+        "tool_id": "synthetic",
+        "permit_ref": null,
+        "arguments_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sanitized_arguments_ref": null,
+        "outcome": "requested",
+        "result_artifact_ref": null,
+        "duration_ms": null
+      }
+    },
+    {
+      "id": "ToolFailedPayload-extra-rejected",
+      "schema_type": "ToolFailedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "tool.failed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "operation_id": "synthetic",
+        "tool_id": "synthetic",
+        "permit_ref": null,
+        "arguments_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sanitized_arguments_ref": null,
+        "outcome": "requested",
+        "result_artifact_ref": null,
+        "duration_ms": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "ToolUnknownOutcomePayload-valid",
+      "schema_type": "ToolUnknownOutcomePayload",
+      "valid": true,
+      "payload": {
+        "event_type": "tool.unknown_outcome",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "operation_id": "synthetic",
+        "tool_id": "synthetic",
+        "permit_ref": null,
+        "arguments_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sanitized_arguments_ref": null,
+        "outcome": "requested",
+        "result_artifact_ref": null,
+        "duration_ms": null
+      }
+    },
+    {
+      "id": "ToolUnknownOutcomePayload-extra-rejected",
+      "schema_type": "ToolUnknownOutcomePayload",
+      "valid": false,
+      "payload": {
+        "event_type": "tool.unknown_outcome",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "operation_id": "synthetic",
+        "tool_id": "synthetic",
+        "permit_ref": null,
+        "arguments_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sanitized_arguments_ref": null,
+        "outcome": "requested",
+        "result_artifact_ref": null,
+        "duration_ms": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "FileChangedPayload-valid",
+      "schema_type": "FileChangedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "file.changed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "change_manifest_ref": "synthetic",
+        "operation_id": "synthetic",
+        "before_snapshot": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "after_snapshot": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "changed_path_refs": []
+      }
+    },
+    {
+      "id": "FileChangedPayload-extra-rejected",
+      "schema_type": "FileChangedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "file.changed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "change_manifest_ref": "synthetic",
+        "operation_id": "synthetic",
+        "before_snapshot": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "after_snapshot": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "changed_path_refs": [],
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "VerificationFinishedPayload-valid",
+      "schema_type": "VerificationFinishedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "verification.finished",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "verification_ref": "synthetic",
+        "check_id": "synthetic",
+        "postimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "outcome": "passed",
+        "runner_ref": "synthetic"
+      }
+    },
+    {
+      "id": "VerificationFinishedPayload-extra-rejected",
+      "schema_type": "VerificationFinishedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "verification.finished",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "verification_ref": "synthetic",
+        "check_id": "synthetic",
+        "postimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "outcome": "passed",
+        "runner_ref": "synthetic",
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "MemoryQueriedPayload-valid",
+      "schema_type": "MemoryQueriedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "memory.queried",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "memory_ids": [],
+        "memory_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "view_digest": null,
+        "query_digest": null,
+        "application_evidence_refs": [],
+        "affected_dependency_ids": [],
+        "deletion_request_ref": null
+      }
+    },
+    {
+      "id": "MemoryQueriedPayload-extra-rejected",
+      "schema_type": "MemoryQueriedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "memory.queried",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "memory_ids": [],
+        "memory_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "view_digest": null,
+        "query_digest": null,
+        "application_evidence_refs": [],
+        "affected_dependency_ids": [],
+        "deletion_request_ref": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "MemorySelectedPayload-valid",
+      "schema_type": "MemorySelectedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "memory.selected",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "memory_ids": [],
+        "memory_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "view_digest": null,
+        "query_digest": null,
+        "application_evidence_refs": [],
+        "affected_dependency_ids": [],
+        "deletion_request_ref": null
+      }
+    },
+    {
+      "id": "MemorySelectedPayload-extra-rejected",
+      "schema_type": "MemorySelectedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "memory.selected",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "memory_ids": [],
+        "memory_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "view_digest": null,
+        "query_digest": null,
+        "application_evidence_refs": [],
+        "affected_dependency_ids": [],
+        "deletion_request_ref": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "MemoryInjectedPayload-valid",
+      "schema_type": "MemoryInjectedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "memory.injected",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "memory_ids": [],
+        "memory_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "view_digest": null,
+        "query_digest": null,
+        "application_evidence_refs": [],
+        "affected_dependency_ids": [],
+        "deletion_request_ref": null
+      }
+    },
+    {
+      "id": "MemoryInjectedPayload-extra-rejected",
+      "schema_type": "MemoryInjectedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "memory.injected",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "memory_ids": [],
+        "memory_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "view_digest": null,
+        "query_digest": null,
+        "application_evidence_refs": [],
+        "affected_dependency_ids": [],
+        "deletion_request_ref": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "MemoryReferencedPayload-valid",
+      "schema_type": "MemoryReferencedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "memory.referenced",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "memory_ids": [],
+        "memory_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "view_digest": null,
+        "query_digest": null,
+        "application_evidence_refs": [],
+        "affected_dependency_ids": [],
+        "deletion_request_ref": null
+      }
+    },
+    {
+      "id": "MemoryReferencedPayload-extra-rejected",
+      "schema_type": "MemoryReferencedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "memory.referenced",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "memory_ids": [],
+        "memory_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "view_digest": null,
+        "query_digest": null,
+        "application_evidence_refs": [],
+        "affected_dependency_ids": [],
+        "deletion_request_ref": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "MemoryAppliedPayload-valid",
+      "schema_type": "MemoryAppliedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "memory.applied",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "memory_ids": [],
+        "memory_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "view_digest": null,
+        "query_digest": null,
+        "application_evidence_refs": [],
+        "affected_dependency_ids": [],
+        "deletion_request_ref": null
+      }
+    },
+    {
+      "id": "MemoryAppliedPayload-extra-rejected",
+      "schema_type": "MemoryAppliedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "memory.applied",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "memory_ids": [],
+        "memory_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "view_digest": null,
+        "query_digest": null,
+        "application_evidence_refs": [],
+        "affected_dependency_ids": [],
+        "deletion_request_ref": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "MemoryStalePayload-valid",
+      "schema_type": "MemoryStalePayload",
+      "valid": true,
+      "payload": {
+        "event_type": "memory.stale",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "memory_ids": [],
+        "memory_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "view_digest": null,
+        "query_digest": null,
+        "application_evidence_refs": [],
+        "affected_dependency_ids": [],
+        "deletion_request_ref": null
+      }
+    },
+    {
+      "id": "MemoryStalePayload-extra-rejected",
+      "schema_type": "MemoryStalePayload",
+      "valid": false,
+      "payload": {
+        "event_type": "memory.stale",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "memory_ids": [],
+        "memory_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "view_digest": null,
+        "query_digest": null,
+        "application_evidence_refs": [],
+        "affected_dependency_ids": [],
+        "deletion_request_ref": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "LearningProposedPayload-valid",
+      "schema_type": "LearningProposedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "learning.proposed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "job_id": "synthetic",
+        "source_terminal_event_id": "synthetic",
+        "learning_policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "candidate_ref": null,
+        "job_state": "created",
+        "analysis_ref": null
+      }
+    },
+    {
+      "id": "LearningProposedPayload-extra-rejected",
+      "schema_type": "LearningProposedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "learning.proposed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "job_id": "synthetic",
+        "source_terminal_event_id": "synthetic",
+        "learning_policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "candidate_ref": null,
+        "job_state": "created",
+        "analysis_ref": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "EvalFinishedPayload-valid",
+      "schema_type": "EvalFinishedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "eval.finished",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "experiment_ref": "synthetic",
+        "candidate_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "baseline_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evaluation_report_ref": "synthetic",
+        "verdict": "eligible_for_review",
+        "actual_pair_count": 0,
+        "family_count": 0
+      }
+    },
+    {
+      "id": "EvalFinishedPayload-extra-rejected",
+      "schema_type": "EvalFinishedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "eval.finished",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "experiment_ref": "synthetic",
+        "candidate_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "baseline_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evaluation_report_ref": "synthetic",
+        "verdict": "eligible_for_review",
+        "actual_pair_count": 0,
+        "family_count": 0,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "ReleasePromotedPayload-valid",
+      "schema_type": "ReleasePromotedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "release.promoted",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "previous_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "target_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approval_ref": null,
+        "cohort_ref": null,
+        "affected_run_ids": [],
+        "pointer_revision": 0
+      }
+    },
+    {
+      "id": "ReleasePromotedPayload-extra-rejected",
+      "schema_type": "ReleasePromotedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "release.promoted",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "previous_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "target_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approval_ref": null,
+        "cohort_ref": null,
+        "affected_run_ids": [],
+        "pointer_revision": 0,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "ReleaseRolledBackPayload-valid",
+      "schema_type": "ReleaseRolledBackPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "release.rolled_back",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "previous_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "target_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approval_ref": null,
+        "cohort_ref": null,
+        "affected_run_ids": [],
+        "pointer_revision": 0
+      }
+    },
+    {
+      "id": "ReleaseRolledBackPayload-extra-rejected",
+      "schema_type": "ReleaseRolledBackPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "release.rolled_back",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "previous_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "target_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approval_ref": null,
+        "cohort_ref": null,
+        "affected_run_ids": [],
+        "pointer_revision": 0,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "TelemetryGapPayload-valid",
+      "schema_type": "TelemetryGapPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "telemetry.gap",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "missing_path_ids": [],
+        "required_path_ids": [],
+        "coverage_report_ref": "synthetic",
+        "affects_authority": false,
+        "since_event_seq": 0
+      }
+    },
+    {
+      "id": "TelemetryGapPayload-extra-rejected",
+      "schema_type": "TelemetryGapPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "telemetry.gap",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "missing_path_ids": [],
+        "required_path_ids": [],
+        "coverage_report_ref": "synthetic",
+        "affects_authority": false,
+        "since_event_seq": 0,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "SessionCancellingPayload-valid",
+      "schema_type": "SessionCancellingPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "session.cancelling",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "previous_state": null,
+        "next_state": "CREATED",
+        "checkpoint_ref": null,
+        "completion_report_ref": null,
+        "unknown_operation_ids": []
+      }
+    },
+    {
+      "id": "SessionCancellingPayload-extra-rejected",
+      "schema_type": "SessionCancellingPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "session.cancelling",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "previous_state": null,
+        "next_state": "CREATED",
+        "checkpoint_ref": null,
+        "completion_report_ref": null,
+        "unknown_operation_ids": [],
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "SessionReconcilingPayload-valid",
+      "schema_type": "SessionReconcilingPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "session.reconciling",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "previous_state": null,
+        "next_state": "CREATED",
+        "checkpoint_ref": null,
+        "completion_report_ref": null,
+        "unknown_operation_ids": []
+      }
+    },
+    {
+      "id": "SessionReconcilingPayload-extra-rejected",
+      "schema_type": "SessionReconcilingPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "session.reconciling",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "previous_state": null,
+        "next_state": "CREATED",
+        "checkpoint_ref": null,
+        "completion_report_ref": null,
+        "unknown_operation_ids": [],
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "SessionFailedPayload-valid",
+      "schema_type": "SessionFailedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "session.failed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "previous_state": null,
+        "next_state": "CREATED",
+        "checkpoint_ref": null,
+        "completion_report_ref": null,
+        "unknown_operation_ids": []
+      }
+    },
+    {
+      "id": "SessionFailedPayload-extra-rejected",
+      "schema_type": "SessionFailedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "session.failed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "previous_state": null,
+        "next_state": "CREATED",
+        "checkpoint_ref": null,
+        "completion_report_ref": null,
+        "unknown_operation_ids": [],
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "LearningJobCreatedPayload-valid",
+      "schema_type": "LearningJobCreatedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "learning.job_created",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "job_id": "synthetic",
+        "source_terminal_event_id": "synthetic",
+        "learning_policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "candidate_ref": null,
+        "job_state": "created",
+        "analysis_ref": null
+      }
+    },
+    {
+      "id": "LearningJobCreatedPayload-extra-rejected",
+      "schema_type": "LearningJobCreatedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "learning.job_created",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "job_id": "synthetic",
+        "source_terminal_event_id": "synthetic",
+        "learning_policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "candidate_ref": null,
+        "job_state": "created",
+        "analysis_ref": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "LearningJobFailedPayload-valid",
+      "schema_type": "LearningJobFailedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "learning.job_failed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "job_id": "synthetic",
+        "source_terminal_event_id": "synthetic",
+        "learning_policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "candidate_ref": null,
+        "job_state": "created",
+        "analysis_ref": null
+      }
+    },
+    {
+      "id": "LearningJobFailedPayload-extra-rejected",
+      "schema_type": "LearningJobFailedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "learning.job_failed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "job_id": "synthetic",
+        "source_terminal_event_id": "synthetic",
+        "learning_policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "candidate_ref": null,
+        "job_state": "created",
+        "analysis_ref": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "MemoryRevokedPayload-valid",
+      "schema_type": "MemoryRevokedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "memory.revoked",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "memory_ids": [],
+        "memory_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "view_digest": null,
+        "query_digest": null,
+        "application_evidence_refs": [],
+        "affected_dependency_ids": [],
+        "deletion_request_ref": null
+      }
+    },
+    {
+      "id": "MemoryRevokedPayload-extra-rejected",
+      "schema_type": "MemoryRevokedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "memory.revoked",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "memory_ids": [],
+        "memory_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "view_digest": null,
+        "query_digest": null,
+        "application_evidence_refs": [],
+        "affected_dependency_ids": [],
+        "deletion_request_ref": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "MemoryDeletedPayload-valid",
+      "schema_type": "MemoryDeletedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "memory.deleted",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "memory_ids": [],
+        "memory_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "view_digest": null,
+        "query_digest": null,
+        "application_evidence_refs": [],
+        "affected_dependency_ids": [],
+        "deletion_request_ref": null
+      }
+    },
+    {
+      "id": "MemoryDeletedPayload-extra-rejected",
+      "schema_type": "MemoryDeletedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "memory.deleted",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "memory_ids": [],
+        "memory_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "view_digest": null,
+        "query_digest": null,
+        "application_evidence_refs": [],
+        "affected_dependency_ids": [],
+        "deletion_request_ref": null,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "SkillLoadedPayload-valid",
+      "schema_type": "SkillLoadedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "skill.loaded",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "skill_id": "synthetic",
+        "skill_content_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "resource_digests": [],
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "application_evidence_refs": []
+      }
+    },
+    {
+      "id": "SkillLoadedPayload-extra-rejected",
+      "schema_type": "SkillLoadedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "skill.loaded",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "skill_id": "synthetic",
+        "skill_content_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "resource_digests": [],
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "application_evidence_refs": [],
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "SkillAppliedPayload-valid",
+      "schema_type": "SkillAppliedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "skill.applied",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "skill_id": "synthetic",
+        "skill_content_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "resource_digests": [],
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "application_evidence_refs": []
+      }
+    },
+    {
+      "id": "SkillAppliedPayload-extra-rejected",
+      "schema_type": "SkillAppliedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "skill.applied",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "skill_id": "synthetic",
+        "skill_content_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "resource_digests": [],
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "application_evidence_refs": [],
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "ReleaseRevokedPayload-valid",
+      "schema_type": "ReleaseRevokedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "release.revoked",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "previous_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "target_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approval_ref": null,
+        "cohort_ref": null,
+        "affected_run_ids": [],
+        "pointer_revision": 0
+      }
+    },
+    {
+      "id": "ReleaseRevokedPayload-extra-rejected",
+      "schema_type": "ReleaseRevokedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "release.revoked",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "previous_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "target_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approval_ref": null,
+        "cohort_ref": null,
+        "affected_run_ids": [],
+        "pointer_revision": 0,
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "BudgetReservedPayload-valid",
+      "schema_type": "BudgetReservedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "budget.reserved",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "reservation_id": "synthetic",
+        "operation_id": "synthetic",
+        "amount_decimal": "0",
+        "currency": "USD",
+        "status": "reserved",
+        "settlement_evidence_ref": null,
+        "outstanding_liability_decimal": "0"
+      }
+    },
+    {
+      "id": "BudgetReservedPayload-extra-rejected",
+      "schema_type": "BudgetReservedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "budget.reserved",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "reservation_id": "synthetic",
+        "operation_id": "synthetic",
+        "amount_decimal": "0",
+        "currency": "USD",
+        "status": "reserved",
+        "settlement_evidence_ref": null,
+        "outstanding_liability_decimal": "0",
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "BudgetSettledPayload-valid",
+      "schema_type": "BudgetSettledPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "budget.settled",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "reservation_id": "synthetic",
+        "operation_id": "synthetic",
+        "amount_decimal": "0",
+        "currency": "USD",
+        "status": "reserved",
+        "settlement_evidence_ref": null,
+        "outstanding_liability_decimal": "0"
+      }
+    },
+    {
+      "id": "BudgetSettledPayload-extra-rejected",
+      "schema_type": "BudgetSettledPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "budget.settled",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "reservation_id": "synthetic",
+        "operation_id": "synthetic",
+        "amount_decimal": "0",
+        "currency": "USD",
+        "status": "reserved",
+        "settlement_evidence_ref": null,
+        "outstanding_liability_decimal": "0",
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "BudgetUnknownPayload-valid",
+      "schema_type": "BudgetUnknownPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "budget.unknown",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "reservation_id": "synthetic",
+        "operation_id": "synthetic",
+        "amount_decimal": "0",
+        "currency": "USD",
+        "status": "reserved",
+        "settlement_evidence_ref": null,
+        "outstanding_liability_decimal": "0"
+      }
+    },
+    {
+      "id": "BudgetUnknownPayload-extra-rejected",
+      "schema_type": "BudgetUnknownPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "budget.unknown",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "reservation_id": "synthetic",
+        "operation_id": "synthetic",
+        "amount_decimal": "0",
+        "currency": "USD",
+        "status": "reserved",
+        "settlement_evidence_ref": null,
+        "outstanding_liability_decimal": "0",
+        "unrecognized_authority": true
+      }
+    },
+    {
+      "id": "ApprovalDisplayedPayload-valid",
+      "schema_type": "ApprovalDisplayedPayload",
+      "valid": true,
+      "payload": {
+        "event_type": "approval.displayed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "request_id": "synthetic",
+        "action": "approve_spec_for_planning",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_event_ref": null,
+        "trusted_actor_id": null,
+        "receipt_ref": null,
+        "reason_ref": null
+      }
+    },
+    {
+      "id": "ApprovalDisplayedPayload-extra-rejected",
+      "schema_type": "ApprovalDisplayedPayload",
+      "valid": false,
+      "payload": {
+        "event_type": "approval.displayed",
+        "entity_id": "synthetic",
+        "entity_digest": null,
+        "evidence_refs": [],
+        "reason_codes": [],
+        "request_id": "synthetic",
+        "action": "approve_spec_for_planning",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_event_ref": null,
+        "trusted_actor_id": null,
+        "receipt_ref": null,
+        "reason_ref": null,
+        "unrecognized_authority": true
+      }
+    }
+  ]
+}

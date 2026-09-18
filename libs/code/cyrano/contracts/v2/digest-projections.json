@@ -1,0 +1,141 @@
+{
+  "schema_version": "2.0",
+  "types": {
+    "GovernedWorkPlan": {
+      "version": "2",
+      "algorithm": "CYRANO-C14N-1-SHA256",
+      "subject_fields": [
+        "kind",
+        "schema_version",
+        "id",
+        "scope",
+        "contract_digest",
+        "base_snapshot_digest",
+        "work_units",
+        "session_id",
+        "policy_digest",
+        "release_digest",
+        "runtime_lock_digest",
+        "delivery_mode",
+        "permission_set",
+        "required_reviews",
+        "unresolved_items"
+      ],
+      "envelope_fields": [
+        "review_refs",
+        "plan_approval_ref",
+        "execution_permit_ref",
+        "status"
+      ]
+    },
+    "TrustedApprovalReceipt": {
+      "version": "2",
+      "algorithm": "CYRANO-C14N-1-SHA256",
+      "subject_fields": [
+        "kind",
+        "schema_version",
+        "id",
+        "scope",
+        "session_id",
+        "actor_id",
+        "user_event_id",
+        "display_event_id",
+        "display_digest",
+        "action",
+        "bindings",
+        "permission_set",
+        "budget",
+        "issued_at",
+        "expires_at",
+        "nonce",
+        "issuer"
+      ],
+      "envelope_fields": [
+        "attestation"
+      ]
+    },
+    "ToolExecutionPermit": {
+      "version": "2",
+      "algorithm": "CYRANO-C14N-1-SHA256",
+      "subject_fields": [
+        "kind",
+        "schema_version",
+        "id",
+        "scope",
+        "session_id",
+        "run_id",
+        "work_unit_id",
+        "approval_ids",
+        "bindings",
+        "permission_set",
+        "action",
+        "tool_inventory_digest",
+        "policy_epoch",
+        "fencing_token",
+        "sandbox_id",
+        "expected_preimage_digest",
+        "max_calls",
+        "max_seconds",
+        "max_output_bytes",
+        "budget",
+        "issued_at",
+        "expires_at",
+        "nonce",
+        "issuer"
+      ],
+      "envelope_fields": [
+        "attestation"
+      ]
+    },
+    "ResolvedTaskProfile": {
+      "version": "2",
+      "algorithm": "CYRANO-C14N-1-SHA256",
+      "subject_fields": [
+        "kind",
+        "schema_version",
+        "id",
+        "scope",
+        "phase",
+        "task_kind",
+        "risk",
+        "permission_set",
+        "budget",
+        "required_reviews",
+        "required_checks",
+        "source_policy_digests",
+        "context_epoch",
+        "resolution_version"
+      ],
+      "envelope_fields": [
+        "profile_digest"
+      ]
+    },
+    "MemoryAccessBinding": {
+      "version": "2",
+      "algorithm": "CYRANO-C14N-1-SHA256",
+      "subject_fields": [
+        "kind",
+        "schema_version",
+        "id",
+        "memory_id",
+        "memory_subject_digest",
+        "scope",
+        "scope_level",
+        "session_id",
+        "task_id",
+        "release_subject_digest",
+        "evidence_digest",
+        "authority",
+        "verified_at",
+        "expires_at",
+        "required_approval_id",
+        "sensitivity"
+      ],
+      "envelope_fields": [
+        "status"
+      ]
+    }
+  },
+  "legacy_auto_resign": false,
+  "authorization_requires_trusted_evidence": true
+}

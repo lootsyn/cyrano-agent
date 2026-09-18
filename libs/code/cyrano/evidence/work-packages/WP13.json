@@ -1,0 +1,212 @@
+{
+ "kind": "work_package_completion_evidence",
+ "work_package": "WP13",
+ "title": "전수 이벤트·대시보드·비용관측 (event catalogue, durable sink, metrics, monitor, dashboard)",
+ "recorded_by": "implementer (independent post-image review performed)",
+ "success": true,
+ "source_digests": {
+  "deepagents_code/cyrano/events/catalogue.py": "sha256:183f057ad7de06240f9a98d3c56c9ec2bc142bb6031fbe1c7aabff2f9348a02f",
+  "deepagents_code/cyrano/events/domain_sink.py": "sha256:1f76615fb7ca1bb6b18646d857bc3eaf88b5f772ac6660b29ffe03199b186e58",
+  "deepagents_code/cyrano/events/export.py": "sha256:7e6709283d6932ecf87d7a703658416c78470dba2c2280fd8b4651a45ffb67ca",
+  "deepagents_code/cyrano/events/metrics.py": "sha256:c03c3481bc6fe9d0ce1561d20631a3a8ec649286f814dbb40559a8af31ac82b9",
+  "deepagents_code/cyrano/events/native_observer.py": "sha256:6236f622fe2f418300f72a8e26367e0c587bd46857a783f1769a9e6eb21649da",
+  "deepagents_code/cyrano/events/query.py": "sha256:25d2ecd1303d5dd3c1a61ce4178c14dadcaf27040ecebd309f9ad354b43a3808",
+  "deepagents_code/cyrano/events/reconcile.py": "sha256:a37244e77c581d31b4d0362097222a003e93d0dc2a35e6debf94919eacb2af39",
+  "deepagents_code/cyrano/events/recovery.py": "sha256:0b7347a3fbbd8a24f4519ddece6e3f78932b4c0290efaab6b30caa54399df928",
+  "deepagents_code/cyrano/events/tool_observer.py": "sha256:e300dce971db14477756b1e7e4ce2744d6a5c8fb58b258bb4d72307af7974905",
+  "deepagents_code/cyrano/monitor/projection.py": "sha256:ae1b1ab579e83f65142f7d5c5d2bd2214b84232516149086b0f079545f3b0df5",
+  "deepagents_code/cyrano/monitor/screen.py": "sha256:70f8a4d41bef931abf64bfbd2e26da1353f294c6e8c5afee4c754103c64e0e6b",
+  "deepagents_code/cyrano/monitor/__init__.py": "sha256:0e38f2f6e7557343fee7d2a39967e7d8bb559c2613be2075f2fe673f1a41ba3e",
+  "deepagents_code/cyrano/cli/dashboard.py": "sha256:71fa3faac50351c970f98c15fe07948975ecf4ef3de1cf87b335e637bbbfc1f2",
+  "deepagents_code/cyrano/cli/__main__.py": "sha256:c45f7c0f82cde4d615013df0b4f5ec74b93e86ce9b4c79626287049b94a7f9b6",
+  "deepagents_code/cyrano/sqlite/repository.py": "sha256:ad55e492a623b1adb148071ebfb70d64bf6f29dd201559c482f455c07fe0f619",
+  "tests/cyrano_product/test_wp13_product.py": "sha256:7d087402144416a4256f8e72b1f653c75ddbaed8ba8b0c6f5aee8173263a8152",
+  "tests/cyrano_product/test_wp13_observability.py": "sha256:1451a880426e1e7853ac49c3440bb15b3e0a59da5a9625c4100211148c8582f3",
+  "tests/cyrano_product/test_wp13_contract_scenarios.py": "sha256:99d86e43f5cacc6b56143dfe9af9f195742c3d8b63c1653d8be1540f716ba646",
+  "tests/cyrano_product/test_r4_rc40.py": "sha256:65dd2ca66187be64a38d1093411aed24b9850db9f4c2fa80d26ca3557b036ea7",
+  "tests/cyrano_product/test_r4_rc41.py": "sha256:203e6558a4ff059da1154b878df22fd917c8e91bd49fa97f4d445677a26a62ed",
+  "tests/cyrano_product/test_r4_rc42.py": "sha256:f7d67b79840e8785bceb2a5c3de7d66cd90ef790105ca4f291469de48415f5e1"
+ },
+ "contract_files": [
+  "cyrano/contracts/v1/cyrano.schema.json",
+  "cyrano/contracts/contract-registry.json",
+  "cyrano/contracts/integration/acceptance-map.json",
+  "cyrano/docs/design/testing/2026-09-16-evaluation-observability.ko.md",
+  "deepagents_code/cyrano/events/README.md"
+ ],
+ "schema_change": {
+  "additive_extension_table": "event_blobs(raw_digest PK, scope_id, body BLOB) in sqlite/repository.py EXTENSION_DDL",
+  "rationale": "target events table stores payload_digest but the base schema has no scoped body store for event payloads; extension mirrors the memory_records precedent",
+  "atomic_write": "ScopedRepository.record_observation_in() appends events inside an owner transaction so a domain mutation and its observation commit or roll back together"
+ },
+ "acceptance_evidence": {
+  "OBS-EMPTY": "passed - test_obs_empty",
+  "OBS-REPORT": "passed - test_obs_report",
+  "OBS-XSS": "passed - test_obs_xss",
+  "OBS-SECRET": "passed - test_obs_secret",
+  "UH-CACHE-02": "passed - test_uh_cache_02",
+  "UH-CACHE-03": "passed - test_uh_cache_03",
+  "UH-OBS-01": "passed - test_uh_obs_01_leaf_only",
+  "UH-OBS-02": "passed - test_uh_obs_02",
+  "UH-OBS-03": "passed - test_uh_obs_03",
+  "UH-OBS-04": "passed - test_uh_obs_04",
+  "UH-OBS-05": "passed - test_uh_obs_05",
+  "UH-OBS-06": "passed - test_uh_obs_06",
+  "UH-OBS-07": "passed - test_uh_obs_07",
+  "UH-OBS-08": "passed - test_uh_obs_08",
+  "UH-OBS-09": "passed - test_uh_obs_09",
+  "UH-OBS-10": "passed - test_uh_obs_10",
+  "UH-OBS-11": "passed - test_uh_obs_11",
+  "UH-OBS-12": "passed - test_uh_obs_12",
+  "INTEG-TYPED-PAYLOAD": "passed - test_integ_typed_payload",
+  "R3-41-01": "passed - test_r3_41_01_complete_timeline",
+  "R3-41-02": "passed - test_r3_41_02_missing_review",
+  "R3-41-03": "passed - test_r3_41_03_docs_only",
+  "R3-41-04": "passed - test_r3_41_04_cancel_flow",
+  "R3-41-05": "passed - test_r3_41_05_reconnect_dupes",
+  "R3-41-06": "passed - test_r3_41_06_fs_evidence_wins",
+  "R3-42-01": "passed - test_r3_42_01_failure_classes",
+  "R3-42-02": "passed - test_r3_42_02_hidden_calls",
+  "R3-42-03": "passed - test_r3_42_03_memory_stages",
+  "R3-42-04": "passed - test_r3_42_04_worker_crash",
+  "R3-42-05": "passed - test_r3_42_05_secret_log",
+  "R3-42-06": "passed - test_r3_42_06_forged_log",
+  "R3-43-01": "passed - test_r3_43_01_fake_clock",
+  "R3-43-02": "passed - test_r3_43_02_wall_reversal",
+  "R3-43-03": "passed - test_r3_43_03_child_dedupe",
+  "R3-43-04": "passed - test_r3_43_04_partial_usage",
+  "R3-43-05": "passed - test_r3_43_05_parallel_children",
+  "R3-43-06": "passed - test_r3_43_06_retry_layers",
+  "R4-RC40-01": "passed - test_rc40_01_full_flow",
+  "R4-RC40-02": "passed - test_rc40_02_audit_failure",
+  "R4-RC40-03": "passed - test_rc40_03_dup_and_order",
+  "R4-RC40-04": "passed - test_rc40_04_crash",
+  "R4-RC41-01": "passed - test_rc41_01_retry_and_child",
+  "R4-RC41-02": "passed - test_rc41_02_negative_time",
+  "R4-RC41-03": "passed - test_rc41_03_cache_usage_missing",
+  "R4-RC41-04": "passed - test_rc41_04_hidden_call_path",
+  "R4-RC42-01": "passed - test_rc42_01_failure_cause",
+  "R4-RC42-02": "passed - test_rc42_02_scope_bypass",
+  "R4-RC42-03": "passed - test_rc42_03_sensitive",
+  "R4-RC42-04": "passed - test_rc42_04_reconnect",
+  "R5-RF07-01": "passed - test_r5_rf07_01_busy_entry",
+  "R5-RF07-02": "passed - test_r5_rf07_02_existing_commands",
+  "R5-RF07-03": "passed - test_r5_rf07_03_thread_switch",
+  "R5-RF07-04": "passed - test_r5_rf07_04_unauthorized_cursor",
+  "R5-RF07-05": "passed - test_r5_rf07_05_snapshot_race",
+  "R5-RF07-06": "passed - test_r5_rf07_06_extension_limit",
+  "R5-RF08-01": "passed - test_r5_rf08_01_real_call_counts",
+  "R5-RF08-02": "passed - test_r5_rf08_02_seq_gap",
+  "R5-RF08-03": "passed - test_r5_rf08_03_osc_attack",
+  "R5-RF08-04": "passed - test_r5_rf08_04_small_terminal",
+  "R5-RF08-05": "passed - test_r5_rf08_05_dismiss_keeps_agent",
+  "R5-RF08-06": "passed - test_r5_rf08_06_overflow",
+  "R5-RF09-01": "passed - test_r5_rf09_01_pilot_order",
+  "R5-RF09-02": "passed - test_r5_rf09_02_first_failure",
+  "R5-RF09-03": "passed - test_r5_rf09_03_headless_output",
+  "R5-RF09-04": "passed - test_r5_rf09_04_generation_reset",
+  "R5-RF09-05": "passed - test_r5_rf09_05_coalesce",
+  "R5-RF09-06": "passed - test_r5_rf09_06_no_mutation",
+  "CON-OBS-01": "passed - test_con_obs_01",
+  "CON-OBS-02": "passed - test_con_obs_02",
+  "CON-OBS-03": "passed - test_con_obs_03",
+  "CON-OBS-04": "passed - test_con_obs_04",
+  "CON-OBS-05": "passed - test_con_obs_05",
+  "CON-OBS-06": "passed - test_con_obs_06",
+  "CON-OBS-07": "passed - test_con_obs_07",
+  "CON-OBS-08": "passed - test_con_obs_08",
+  "CON-OBS-09": "passed - test_con_obs_09",
+  "CON-OBS-10": "passed - test_con_obs_10",
+  "CON-OBS-11": "passed - test_con_obs_11",
+  "CON-OBS-12": "passed - test_con_obs_12"
+ },
+ "commands": [
+  {
+   "argv": "uv run --no-sync python -m pytest tests/cyrano_product/test_wp13_product.py tests/cyrano_product/test_wp13_observability.py tests/cyrano_product/test_wp13_contract_scenarios.py tests/cyrano_product/test_r4_rc40.py tests/cyrano_product/test_r4_rc41.py tests/cyrano_product/test_r4_rc42.py -q",
+   "exit": 0,
+   "result": "79 passed in 6.41s"
+  },
+  {
+   "argv": "uv run --no-sync python -m pytest tests/cyrano_product -q",
+   "exit": 0,
+   "result": "555 passed in 20.95s"
+  },
+  {
+   "argv": "ruff check --config cyrano/configs/quality/ruff.toml <wp13-owned paths>",
+   "exit": 0,
+   "result": "all checks passed (events/, monitor/, cli/, sqlite/repository.py, WP13 test files)"
+  },
+  {
+   "argv": "ruff format --check --config cyrano/configs/quality/ruff.toml <wp13-owned paths>",
+   "exit": 0,
+   "result": "27 files already formatted"
+  },
+  {
+   "argv": "uv run --no-sync ty check deepagents_code/cyrano",
+   "exit": 0,
+   "result": "all checks passed"
+  },
+  {
+   "argv": "basedpyright <wp13 source dirs + sqlite/repository.py>",
+   "exit": 1,
+   "result": "0 errors, 368 warnings (sqlite3 Cursor/Any and Unknown-from-JSON; baseline warning class)"
+  },
+  {
+   "argv": "python cyrano/scripts/dev.py schemas",
+   "exit": 0,
+   "result": "pass"
+  },
+  {
+   "argv": "python cyrano/scripts/check_integration.py",
+   "exit": 0,
+   "result": "pass"
+  },
+  {
+   "argv": "python cyrano/scripts/check_r4.py",
+   "exit": 0,
+   "result": "pass"
+  },
+  {
+   "argv": "python cyrano/scripts/check_r5.py",
+   "exit": 0,
+   "result": "pass"
+  },
+  {
+   "argv": "python cyrano/scripts/dev.py check",
+   "exit": 0,
+   "result": "green; no GENERATED_DOCS_STALE"
+  },
+  {
+   "argv": "uv run --with mistune python cyrano/scripts/dev.py docs",
+   "exit": 0,
+   "result": "404 sources regenerated, html generated"
+  },
+  {
+   "argv": "pytest --collect-only -q <wp13 test files>",
+   "exit": 0,
+   "result": "79 collected nodes; every WP13 acceptance ID maps to a collected node"
+  }
+ ],
+ "errors": [],
+ "blocked": [],
+ "explicit_blocks": [
+  "dev.py quality exits 1 on pre-existing overlay-wide style debt (400 style_audit findings + ruff findings in baseline files; zero findings in WP13-owned paths)",
+  "R5-RF07-06: the dcode extension API exposes register_tool only — no slash-command registration hook exists, so the native /cyrano monitor entry is reported unavailable rather than faked (test asserts the honest unavailable path)"
+ ],
+ "not_established": [
+  "native dcode runtime wiring of the observers into a live agent loop (observers are exercised against the real scoped SQLite ledger in-process; no live dcode session emitted events)",
+  "live provider usage/cost capture (usage handling is reducer-verified on stored events; no paid or real provider call was made)",
+  "native /trace /cost command integration with the Cyrano dashboard (commands exist natively; binding to Cyrano queries is integration-layer work)",
+  "exporter push to an external sink (export_bundle produces a verified local bundle; no network transmission)"
+ ],
+ "review_findings": [
+  "post-image review found export_bundle silently truncated at one 500-event page; fixed by paging the full timeline via ObservationQuery.iter_events with a stalled-cursor guard",
+  "post-image review found recover_orphans used a hardcoded producer_seq floor of 100000, which collides on a second recovery run over a different orphan set; fixed via DomainSink.next_producer_seq (ledger-wide max+1)",
+  "post-image review found observer self._seq counters collide after process restart because the ledger dedupes (producer, producer_seq) globally; observers now draw sequences from next_producer_seq",
+  "post-image review found build_report scanned only one timeline page; now iterates all events",
+  "post-image review found projection.summary() only flagged *.failed kinds; a terminal row with outcome=failed/error (e.g. test.finished) now counts as a first-observed-failure candidate, matching catalogue.is_failure_event",
+  "post-image review found reconcile_attempts dropped finish-only attempts from every bucket; a finish without its start is now flagged ordering_uncertain"
+ ],
+ "authority_scope": "event authority, scope ACL, redaction, idempotency, sequence ownership, unknown/partial accounting, bounded monitor projection, and read-only Textual screen verified at component level over the real scoped SQLite ledger",
+ "next_wp_impact": "WP09/WP10 dispatch and runner can emit work.*, tool.*, and model.* events through DomainSink with atomic transitions; WP14 replay can consume ObservationQuery.iter_events and reconcile_attempts"
+}

@@ -1,0 +1,2474 @@
+{
+  "schema_version": "cyrano.r4-case-design/1",
+  "status": "not_executed_product_specifications",
+  "cases": [
+    {
+      "id": "R4-RC00-01",
+      "title": "복사 위치",
+      "owner_wp": "WP00",
+      "owner_rc": "RC00",
+      "criterion_ids": [
+        "1-1",
+        "2-1"
+      ],
+      "given": "고정 SHA의 전체 checkout과 새 payload",
+      "when": "preflight 후 code-root에 복사하고 verify-installed",
+      "then": "native pyproject·uv.lock·parent init bytes 동일, Cyrano import origin이 checkout 아래",
+      "execution_status": "not_run",
+      "test_layer": "preparation",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc00.py",
+      "implementation_test_symbol": "test_rc00_01",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "고정 SHA의 전체 checkout과 새 payload",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "고정 SHA의 전체 checkout과 새 payload",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "preflight 후 code-root에 복사하고 verify-installed",
+        "native pyproject·uv.lock·parent init bytes 동일, Cyrano import origin이 checkout 아래",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "native pyproject·uv.lock·parent init bytes 동일, Cyrano import origin이 checkout 아래",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC00-02",
+      "title": "실제 parent import",
+      "owner_wp": "WP00",
+      "owner_rc": "RC00",
+      "criterion_ids": [
+        "1-1",
+        "2-1"
+      ],
+      "given": "native 환경과 별도 fresh process",
+      "when": "uv run --no-sync python으로 deepagents_code와 cyrano를 import",
+      "then": "parent logging/lazy init를 우회하지 않고 성공 또는 명확한 blocked",
+      "execution_status": "not_run",
+      "test_layer": "preparation",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc00.py",
+      "implementation_test_symbol": "test_rc00_02",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "native 환경과 별도 fresh process",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "native 환경과 별도 fresh process",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "uv run --no-sync python으로 deepagents_code와 cyrano를 import",
+        "parent logging/lazy init를 우회하지 않고 성공 또는 명확한 blocked",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "parent logging/lazy init를 우회하지 않고 성공 또는 명확한 blocked",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC00-03",
+      "title": "wheel resources",
+      "owner_wp": "WP00",
+      "owner_rc": "RC00",
+      "criterion_ids": [
+        "1-1",
+        "2-1"
+      ],
+      "given": "Cyrano native 연결을 구현한 build tree",
+      "when": "wheel 생성·새 venv 설치·resource API 읽기",
+      "then": "docs 개발 경로 없이 필수 resource read, 누락이면 실패",
+      "execution_status": "not_run",
+      "test_layer": "preparation",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc00.py",
+      "implementation_test_symbol": "test_rc00_03",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "Cyrano native 연결을 구현한 build tree",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "Cyrano native 연결을 구현한 build tree",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "wheel 생성·새 venv 설치·resource API 읽기",
+        "docs 개발 경로 없이 필수 resource read, 누락이면 실패",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "docs 개발 경로 없이 필수 resource read, 누락이면 실패",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC00-04",
+      "title": "기존 파일 충돌",
+      "owner_wp": "WP00",
+      "owner_rc": "RC00",
+      "criterion_ids": [
+        "1-1",
+        "2-1"
+      ],
+      "given": "대상 cyrano 파일에 다른 사용자 내용",
+      "when": "copy 계획 검사",
+      "then": "복사 전 전체 거부·대상 bytes 유지",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc00.py",
+      "implementation_test_symbol": "test_rc00_04",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "대상 cyrano 파일에 다른 사용자 내용",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "대상 cyrano 파일에 다른 사용자 내용",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "copy 계획 검사",
+        "복사 전 전체 거부·대상 bytes 유지",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "복사 전 전체 거부·대상 bytes 유지",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC01-01",
+      "title": "고정 readset",
+      "owner_wp": "WP00",
+      "owner_rc": "RC01",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3",
+        "2-2",
+        "2-3",
+        "2-4"
+      ],
+      "given": "같은 task와 변경 없는 문서",
+      "when": "router를 서로 다른 시각에 두 번 실행",
+      "then": "정렬·digest·content 동일; 시간·진행률이 stable 영역에 없음",
+      "execution_status": "not_run",
+      "test_layer": "preparation",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc01.py",
+      "implementation_test_symbol": "test_rc01_01",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "같은 task와 변경 없는 문서",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "같은 task와 변경 없는 문서",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "router를 서로 다른 시각에 두 번 실행",
+        "정렬·digest·content 동일; 시간·진행률이 stable 영역에 없음",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "정렬·digest·content 동일; 시간·진행률이 stable 영역에 없음",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC01-02",
+      "title": "참고 권위",
+      "owner_wp": "WP00",
+      "owner_rc": "RC01",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3",
+        "2-2",
+        "2-3",
+        "2-4"
+      ],
+      "given": "원문 pack에 상위 지침처럼 보이는 문장",
+      "when": "reference를 선택 로딩",
+      "then": "source reference label 유지·현재 정책과 충돌시 승격 안함",
+      "execution_status": "not_run",
+      "test_layer": "preparation",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc01.py",
+      "implementation_test_symbol": "test_rc01_02",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "원문 pack에 상위 지침처럼 보이는 문장",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "원문 pack에 상위 지침처럼 보이는 문장",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "reference를 선택 로딩",
+        "source reference label 유지·현재 정책과 충돌시 승격 안함",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "source reference label 유지·현재 정책과 충돌시 승격 안함",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC01-03",
+      "title": "docstring 의미",
+      "owner_wp": "WP00",
+      "owner_rc": "RC01",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3",
+        "2-2",
+        "2-3",
+        "2-4"
+      ],
+      "given": "설명은 있으나 반환형·오류를 잘못 설명한 함수",
+      "when": "native lint와 독립 의미 리뷰",
+      "then": "lint 통과여도 1-3 pass 금지·수정 finding",
+      "execution_status": "not_run",
+      "test_layer": "preparation",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc01.py",
+      "implementation_test_symbol": "test_rc01_03",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "설명은 있으나 반환형·오류를 잘못 설명한 함수",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "설명은 있으나 반환형·오류를 잘못 설명한 함수",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "native lint와 독립 의미 리뷰",
+        "lint 통과여도 1-3 pass 금지·수정 finding",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "lint 통과여도 1-3 pass 금지·수정 finding",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC01-04",
+      "title": "계획 이전 변경",
+      "owner_wp": "WP00",
+      "owner_rc": "RC01",
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3",
+        "2-2",
+        "2-3",
+        "2-4"
+      ],
+      "given": "승인 전 source write를 시도하는 통합 fixture",
+      "when": "native 파일·shell·child 경로 호출",
+      "then": "제품 구현 후 모든 변경 경로 차단; developer AGENTS만 있으면 미충족",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc01.py",
+      "implementation_test_symbol": "test_rc01_04",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "승인 전 source write를 시도하는 통합 fixture",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "승인 전 source write를 시도하는 통합 fixture",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "native 파일·shell·child 경로 호출",
+        "제품 구현 후 모든 변경 경로 차단; developer AGENTS만 있으면 미충족",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "제품 구현 후 모든 변경 경로 차단; developer AGENTS만 있으면 미충족",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC30-01",
+      "title": "새 프로세스 지속",
+      "owner_wp": "WP11",
+      "owner_rc": "RC30",
+      "criterion_ids": [
+        "3-1"
+      ],
+      "given": "A가 규칙·실패 경험을 각각 저장하고 승인",
+      "when": "A 종료; checkpoint 없이 새 B에서 조회",
+      "then": "동일 workspace의 active revision과 digest 회수",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc30.py",
+      "implementation_test_symbol": "test_rc30_01",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "A가 규칙·실패 경험을 각각 저장하고 승인",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "A가 규칙·실패 경험을 각각 저장하고 승인",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "A 종료; checkpoint 없이 새 B에서 조회",
+        "동일 workspace의 active revision과 digest 회수",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "동일 workspace의 active revision과 digest 회수",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC30-02",
+      "title": "scope 분리",
+      "owner_wp": "WP11",
+      "owner_rc": "RC30",
+      "criterion_ids": [
+        "3-1"
+      ],
+      "given": "동일 title이 tenant A/B에 있고 유효 release는 A",
+      "when": "A로 query",
+      "then": "B 본문·count·rank가 노출되지 않음",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc30.py",
+      "implementation_test_symbol": "test_rc30_02",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "동일 title이 tenant A/B에 있고 유효 release는 A",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "동일 title이 tenant A/B에 있고 유효 release는 A",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "A로 query",
+        "B 본문·count·rank가 노출되지 않음",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "B 본문·count·rank가 노출되지 않음",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC30-03",
+      "title": "동시 activation",
+      "owner_wp": "WP11",
+      "owner_rc": "RC30",
+      "criterion_ids": [
+        "3-1"
+      ],
+      "given": "같은 parent release로 두 승인된 후보",
+      "when": "동시에 CAS activation",
+      "then": "하나 성공, 하나 STALE_REVISION, 이전 release 불변",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc30.py",
+      "implementation_test_symbol": "test_rc30_03",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "같은 parent release로 두 승인된 후보",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "같은 parent release로 두 승인된 후보",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "동시에 CAS activation",
+        "하나 성공, 하나 STALE_REVISION, 이전 release 불변",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "하나 성공, 하나 STALE_REVISION, 이전 release 불변",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC30-04",
+      "title": "원장 crash",
+      "owner_wp": "WP11",
+      "owner_rc": "RC30",
+      "criterion_ids": [
+        "3-1"
+      ],
+      "given": "revision/event/outbox transaction 중 fault 주입",
+      "when": "writer 재시작·recovery",
+      "then": "전부 commit 또는 전부 rollback; 반쪽 active 없음",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc30.py",
+      "implementation_test_symbol": "test_rc30_04",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "revision/event/outbox transaction 중 fault 주입",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "revision/event/outbox transaction 중 fault 주입",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "writer 재시작·recovery",
+        "전부 commit 또는 전부 rollback; 반쪽 active 없음",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "전부 commit 또는 전부 rollback; 반쪽 active 없음",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC31-01",
+      "title": "계획 실제 주입",
+      "owner_wp": "WP11",
+      "owner_rc": "RC31",
+      "criterion_ids": [
+        "3-2"
+      ],
+      "given": "관련 rule와 무관한 rule, sealed phase task",
+      "when": "new native request를 조립",
+      "then": "관련 view digest와 실제 ContextManifest 연결, stable prefix는 동일",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc31.py",
+      "implementation_test_symbol": "test_rc31_01",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "관련 rule와 무관한 rule, sealed phase task",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "관련 rule와 무관한 rule, sealed phase task",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "new native request를 조립",
+        "관련 view digest와 실제 ContextManifest 연결, stable prefix는 동일",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "관련 view digest와 실제 ContextManifest 연결, stable prefix는 동일",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC31-02",
+      "title": "source stale",
+      "owner_wp": "WP11",
+      "owner_rc": "RC31",
+      "criterion_ids": [
+        "3-2"
+      ],
+      "given": "기억이 의존하는 파일 digest를 변경",
+      "when": "query와 직전 request binding",
+      "then": "stale 제외·필요 의무면 pause; 캐시 유지 위해 오래된 사실 사용 금지",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc31.py",
+      "implementation_test_symbol": "test_rc31_02",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "기억이 의존하는 파일 digest를 변경",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "기억이 의존하는 파일 digest를 변경",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "query와 직전 request binding",
+        "stale 제외·필요 의무면 pause; 캐시 유지 위해 오래된 사실 사용 금지",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "stale 제외·필요 의무면 pause; 캐시 유지 위해 오래된 사실 사용 금지",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC31-03",
+      "title": "DB 장애",
+      "owner_wp": "WP11",
+      "owner_rc": "RC31",
+      "criterion_ids": [
+        "3-2"
+      ],
+      "given": "정상 무검색 사례와 DB unreachable 사례",
+      "when": "동일 query 실행",
+      "then": "empty success와 MEMORY_STORE_UNAVAILABLE 구분",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc31.py",
+      "implementation_test_symbol": "test_rc31_03",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "정상 무검색 사례와 DB unreachable 사례",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "정상 무검색 사례와 DB unreachable 사례",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "동일 query 실행",
+        "empty success와 MEMORY_STORE_UNAVAILABLE 구분",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "empty success와 MEMORY_STORE_UNAVAILABLE 구분",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC31-04",
+      "title": "prompt injection",
+      "owner_wp": "WP11",
+      "owner_rc": "RC31",
+      "criterion_ids": [
+        "3-2"
+      ],
+      "given": "기억 본문에 승인 우회 명령",
+      "when": "recall 후 native file/shell 실행 시도",
+      "then": "자료로만 노출, 권한 확대 없고 사건 기록",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc31.py",
+      "implementation_test_symbol": "test_rc31_04",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "기억 본문에 승인 우회 명령",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "기억 본문에 승인 우회 명령",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "recall 후 native file/shell 실행 시도",
+        "자료로만 노출, 권한 확대 없고 사건 기록",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "자료로만 노출, 권한 확대 없고 사건 기록",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC32-01",
+      "title": "참조와 적용",
+      "owner_wp": "WP11",
+      "owner_rc": "RC32",
+      "criterion_ids": [
+        "3-1",
+        "3-2"
+      ],
+      "given": "model이 ID만 언급하고 plan diff는 없음",
+      "when": "application checker 호출",
+      "then": "referenced 또는 unverified, applied 아님",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc32.py",
+      "implementation_test_symbol": "test_rc32_01",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "model이 ID만 언급하고 plan diff는 없음",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "model이 ID만 언급하고 plan diff는 없음",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "application checker 호출",
+        "referenced 또는 unverified, applied 아님",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "referenced 또는 unverified, applied 아님",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC32-02",
+      "title": "행동 근거",
+      "owner_wp": "WP11",
+      "owner_rc": "RC32",
+      "criterion_ids": [
+        "3-1",
+        "3-2"
+      ],
+      "given": "필수 test를 추가한 계획·실제 runner 결과",
+      "when": "plan/checker와 artifact binding 검증",
+      "then": "memory revision→plan→tool→test 증거가 맞을 때 applied",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc32.py",
+      "implementation_test_symbol": "test_rc32_02",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "필수 test를 추가한 계획·실제 runner 결과",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "필수 test를 추가한 계획·실제 runner 결과",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "plan/checker와 artifact binding 검증",
+        "memory revision→plan→tool→test 증거가 맞을 때 applied",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "memory revision→plan→tool→test 증거가 맞을 때 applied",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC32-03",
+      "title": "삭제와 projection lag",
+      "owner_wp": "WP11",
+      "owner_rc": "RC32",
+      "criterion_ids": [
+        "3-1",
+        "3-2"
+      ],
+      "given": "canonical tombstone 성공·FTS outbox는 지연",
+      "when": "query 및 새 session 시작",
+      "then": "새 결과에 본문 없음; purge receipt에 pending 범위 표시",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc32.py",
+      "implementation_test_symbol": "test_rc32_03",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "canonical tombstone 성공·FTS outbox는 지연",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "canonical tombstone 성공·FTS outbox는 지연",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "query 및 새 session 시작",
+        "새 결과에 본문 없음; purge receipt에 pending 범위 표시",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "새 결과에 본문 없음; purge receipt에 pending 범위 표시",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC32-04",
+      "title": "상충과 정정",
+      "owner_wp": "WP11",
+      "owner_rc": "RC32",
+      "criterion_ids": [
+        "3-1",
+        "3-2"
+      ],
+      "given": "동일 권위의 conflicting facts",
+      "when": "new user correction 후 query",
+      "then": "자동 최신값 선택 없음; 명시 supersedes 연결·옛 view 재사용 차단",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc32.py",
+      "implementation_test_symbol": "test_rc32_04",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "동일 권위의 conflicting facts",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "동일 권위의 conflicting facts",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "new user correction 후 query",
+        "자동 최신값 선택 없음; 명시 supersedes 연결·옛 view 재사용 차단",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "자동 최신값 선택 없음; 명시 supersedes 연결·옛 view 재사용 차단",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC33-01",
+      "title": "정상 교훈 후보",
+      "owner_wp": "WP16",
+      "owner_rc": "RC33",
+      "criterion_ids": [
+        "3-3"
+      ],
+      "given": "반복 검증 누락과 해당 runner evidence",
+      "when": "analyst와 generator 실행",
+      "then": "원인/대안/반례/patch/평가계획·비용 결속; active 변경 없음",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc33.py",
+      "implementation_test_symbol": "test_rc33_01",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "반복 검증 누락과 해당 runner evidence",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "반복 검증 누락과 해당 runner evidence",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "analyst와 generator 실행",
+        "원인/대안/반례/patch/평가계획·비용 결속; active 변경 없음",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "원인/대안/반례/patch/평가계획·비용 결속; active 변경 없음",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC33-02",
+      "title": "비실패 분류",
+      "owner_wp": "WP16",
+      "owner_rc": "RC33",
+      "criterion_ids": [
+        "3-3"
+      ],
+      "given": "TDD red·user cancel·정상 권한 거부",
+      "when": "episode 분석",
+      "then": "승인·test 생략 같은 잘못된 교훈 생성·승격 차단",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc33.py",
+      "implementation_test_symbol": "test_rc33_02",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "TDD red·user cancel·정상 권한 거부",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "TDD red·user cancel·정상 권한 거부",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "episode 분석",
+        "승인·test 생략 같은 잘못된 교훈 생성·승격 차단",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "승인·test 생략 같은 잘못된 교훈 생성·승격 차단",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC33-03",
+      "title": "혼합 변경",
+      "owner_wp": "WP16",
+      "owner_rc": "RC33",
+      "criterion_ids": [
+        "3-3"
+      ],
+      "given": "정책IR과 skill script를 동시에 수정",
+      "when": "독립 impact 분류",
+      "then": "transition_changing/code lane, scheduling_only 선언 무시",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc33.py",
+      "implementation_test_symbol": "test_rc33_03",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "정책IR과 skill script를 동시에 수정",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "정책IR과 skill script를 동시에 수정",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "독립 impact 분류",
+        "transition_changing/code lane, scheduling_only 선언 무시",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "transition_changing/code lane, scheduling_only 선언 무시",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC33-04",
+      "title": "무한 자기학습",
+      "owner_wp": "WP16",
+      "owner_rc": "RC33",
+      "criterion_ids": [
+        "3-3"
+      ],
+      "given": "learning worker event가 다시 outbox를 유발",
+      "when": "max depth/lease/idempotency 검사",
+      "then": "중복·재귀 과금 제한; 업무 결과와 learning status 분리",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc33.py",
+      "implementation_test_symbol": "test_rc33_04",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "learning worker event가 다시 outbox를 유발",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "learning worker event가 다시 outbox를 유발",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "max depth/lease/idempotency 검사",
+        "중복·재귀 과금 제한; 업무 결과와 learning status 분리",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "중복·재귀 과금 제한; 업무 결과와 learning status 분리",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC34-01",
+      "title": "전후 비교",
+      "owner_wp": "WP20",
+      "owner_rc": "RC34",
+      "criterion_ids": [
+        "3-4"
+      ],
+      "given": "same family/runtime/budget에서 skill 후보",
+      "when": "승인된 actual baseline/candidate pair 실행",
+      "then": "각 runner raw 결과·조건·cost·random order 보존; replay 대체 없음",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc34.py",
+      "implementation_test_symbol": "test_rc34_01",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "same family/runtime/budget에서 skill 후보",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "same family/runtime/budget에서 skill 후보",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "승인된 actual baseline/candidate pair 실행",
+        "각 runner raw 결과·조건·cost·random order 보존; replay 대체 없음",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "각 runner raw 결과·조건·cost·random order 보존; replay 대체 없음",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC34-02",
+      "title": "안전 회귀",
+      "owner_wp": "WP20",
+      "owner_rc": "RC34",
+      "criterion_ids": [
+        "3-4"
+      ],
+      "given": "task 성공률 개선과 approval bypass 1건",
+      "when": "promotion gate",
+      "then": "hard fail, 평균 비용/성공으로 상쇄 금지",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc34.py",
+      "implementation_test_symbol": "test_rc34_02",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "task 성공률 개선과 approval bypass 1건",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "task 성공률 개선과 approval bypass 1건",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "promotion gate",
+        "hard fail, 평균 비용/성공으로 상쇄 금지",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "hard fail, 평균 비용/성공으로 상쇄 금지",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC34-03",
+      "title": "불확실 효과",
+      "owner_wp": "WP20",
+      "owner_rc": "RC34",
+      "criterion_ids": [
+        "3-4"
+      ],
+      "given": "작은 표본·CI가 threshold와 겹침",
+      "when": "통계 판정",
+      "then": "inconclusive, passed로 반올림 금지",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc34.py",
+      "implementation_test_symbol": "test_rc34_03",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "작은 표본·CI가 threshold와 겹침",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "작은 표본·CI가 threshold와 겹침",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "통계 판정",
+        "inconclusive, passed로 반올림 금지",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "inconclusive, passed로 반올림 금지",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC34-04",
+      "title": "sealed 누수",
+      "owner_wp": "WP20",
+      "owner_rc": "RC34",
+      "criterion_ids": [
+        "3-4"
+      ],
+      "given": "동일 issue variant가 train/holdout에 존재",
+      "when": "manifest 검증",
+      "then": "DATA_LEAKAGE로 invalid, 비용 청구 전 가능하면 중지",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc34.py",
+      "implementation_test_symbol": "test_rc34_04",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "동일 issue variant가 train/holdout에 존재",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "동일 issue variant가 train/holdout에 존재",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "manifest 검증",
+        "DATA_LEAKAGE로 invalid, 비용 청구 전 가능하면 중지",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "DATA_LEAKAGE로 invalid, 비용 청구 전 가능하면 중지",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC35-01",
+      "title": "다음 업무 반영",
+      "owner_wp": "WP21",
+      "owner_rc": "RC35",
+      "criterion_ids": [
+        "3-4"
+      ],
+      "given": "평가·리뷰·승인 완료 release R1, 기존 run R0",
+      "when": "R1 promote 후 완전히 새 B 시작",
+      "then": "B ContextManifest에서 R1 실제 artifact, 기존 A는 R0 유지",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc35.py",
+      "implementation_test_symbol": "test_rc35_01",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "평가·리뷰·승인 완료 release R1, 기존 run R0",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "평가·리뷰·승인 완료 release R1, 기존 run R0",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "R1 promote 후 완전히 새 B 시작",
+        "B ContextManifest에서 R1 실제 artifact, 기존 A는 R0 유지",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "B ContextManifest에서 R1 실제 artifact, 기존 A는 R0 유지",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC35-02",
+      "title": "묵은 승인",
+      "owner_wp": "WP21",
+      "owner_rc": "RC35",
+      "criterion_ids": [
+        "3-4"
+      ],
+      "given": "평가 후 candidate patch digest를 변경",
+      "when": "승격 시도",
+      "then": "APPROVAL_INVALID 또는 STALE_REVISION; active pointer 불변",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc35.py",
+      "implementation_test_symbol": "test_rc35_02",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "평가 후 candidate patch digest를 변경",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "평가 후 candidate patch digest를 변경",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "승격 시도",
+        "APPROVAL_INVALID 또는 STALE_REVISION; active pointer 불변",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "APPROVAL_INVALID 또는 STALE_REVISION; active pointer 불변",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC35-03",
+      "title": "동시 후보",
+      "owner_wp": "WP21",
+      "owner_rc": "RC35",
+      "criterion_ids": [
+        "3-4"
+      ],
+      "given": "같은 parent에서 평가된 두 후보",
+      "when": "동시에 promote",
+      "then": "하나만 성공; 나머지 rebase·재평가",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc35.py",
+      "implementation_test_symbol": "test_rc35_03",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "같은 parent에서 평가된 두 후보",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "같은 parent에서 평가된 두 후보",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "동시에 promote",
+        "하나만 성공; 나머지 rebase·재평가",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "하나만 성공; 나머지 rebase·재평가",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC35-04",
+      "title": "revoke와 code",
+      "owner_wp": "WP21",
+      "owner_rc": "RC35",
+      "criterion_ids": [
+        "3-4"
+      ],
+      "given": "canary 회귀·일부 사용자 code 변경 존재",
+      "when": "revoke/rollback",
+      "then": "신규 dispatch 중지; harness rollback과 사용자 코드 미원복 분리",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc35.py",
+      "implementation_test_symbol": "test_rc35_04",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "canary 회귀·일부 사용자 code 변경 존재",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "canary 회귀·일부 사용자 code 변경 존재",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "revoke/rollback",
+        "신규 dispatch 중지; harness rollback과 사용자 코드 미원복 분리",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "신규 dispatch 중지; harness rollback과 사용자 코드 미원복 분리",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC36-01",
+      "title": "코드 제안 경로",
+      "owner_wp": "WP19",
+      "owner_rc": "RC36",
+      "criterion_ids": [
+        "3-3",
+        "3-4",
+        "1-3"
+      ],
+      "given": "승인된 code candidate와 build 계획",
+      "when": "격리 source에서 build·tests·fresh install",
+      "then": "실행 중 프로세스 파일 불변; 새 package로만 반영",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc36.py",
+      "implementation_test_symbol": "test_rc36_01",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "승인된 code candidate와 build 계획",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "승인된 code candidate와 build 계획",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "격리 source에서 build·tests·fresh install",
+        "실행 중 프로세스 파일 불변; 새 package로만 반영",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "실행 중 프로세스 파일 불변; 새 package로만 반영",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC36-02",
+      "title": "자기 파일 덮어쓰기",
+      "owner_wp": "WP19",
+      "owner_rc": "RC36",
+      "criterion_ids": [
+        "3-3",
+        "3-4",
+        "1-3"
+      ],
+      "given": "worker가 현재 extension.py를 write",
+      "when": "실행 broker 검사",
+      "then": "protected path deny·audit 기록",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc36.py",
+      "implementation_test_symbol": "test_rc36_02",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "worker가 현재 extension.py를 write",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "worker가 현재 extension.py를 write",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "실행 broker 검사",
+        "protected path deny·audit 기록",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "protected path deny·audit 기록",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC36-03",
+      "title": "복구 불가 migration",
+      "owner_wp": "WP19",
+      "owner_rc": "RC36",
+      "criterion_ids": [
+        "3-3",
+        "3-4",
+        "1-3"
+      ],
+      "given": "이전 schema reader와 호환 안되는 변경",
+      "when": "upgrade/rollback preflight",
+      "then": "restore 또는 migration 계획 없으면 승격 차단",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc36.py",
+      "implementation_test_symbol": "test_rc36_03",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "이전 schema reader와 호환 안되는 변경",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "이전 schema reader와 호환 안되는 변경",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "upgrade/rollback preflight",
+        "restore 또는 migration 계획 없으면 승격 차단",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "restore 또는 migration 계획 없으면 승격 차단",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC36-04",
+      "title": "resource 누락",
+      "owner_wp": "WP19",
+      "owner_rc": "RC36",
+      "criterion_ids": [
+        "3-3",
+        "3-4",
+        "1-3"
+      ],
+      "given": "wheel에서 필수 JSON/skill 파일을 제외",
+      "when": "fresh install runtime smoke",
+      "then": "개발 checkout fallback 없이 실패",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc36.py",
+      "implementation_test_symbol": "test_rc36_04",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "wheel에서 필수 JSON/skill 파일을 제외",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "wheel에서 필수 JSON/skill 파일을 제외",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "fresh install runtime smoke",
+        "개발 checkout fallback 없이 실패",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "개발 checkout fallback 없이 실패",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC40-01",
+      "title": "전체 흐름",
+      "owner_wp": "WP13",
+      "owner_rc": "RC40",
+      "criterion_ids": [
+        "4-1",
+        "4-2"
+      ],
+      "given": "new request가 계획 review 수정 후 code/tests까지 완료",
+      "when": "요청 timeline 조회",
+      "then": "각 phase·분기·review→승인→변경 연결과 raw evidence",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc40.py",
+      "implementation_test_symbol": "test_rc40_01",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "new request가 계획 review 수정 후 code/tests까지 완료",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "new request가 계획 review 수정 후 code/tests까지 완료",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "요청 timeline 조회",
+        "각 phase·분기·review→승인→변경 연결과 raw evidence",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "각 phase·분기·review→승인→변경 연결과 raw evidence",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC40-02",
+      "title": "감사 쓰기 실패",
+      "owner_wp": "WP13",
+      "owner_rc": "RC40",
+      "criterion_ids": [
+        "4-1",
+        "4-2"
+      ],
+      "given": "broker write 전에 event DB disk-full 주입",
+      "when": "승인된 code mutation",
+      "then": "변경 fail-closed; 성공 상태 없음",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc40.py",
+      "implementation_test_symbol": "test_rc40_02",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "broker write 전에 event DB disk-full 주입",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "broker write 전에 event DB disk-full 주입",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "승인된 code mutation",
+        "변경 fail-closed; 성공 상태 없음",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "변경 fail-closed; 성공 상태 없음",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC40-03",
+      "title": "중복·순서 역전",
+      "owner_wp": "WP13",
+      "owner_rc": "RC40",
+      "criterion_ids": [
+        "4-1",
+        "4-2"
+      ],
+      "given": "동일 event 두 번과 finish-before-start",
+      "when": "ingest 후 projection 재생",
+      "then": "중복 계수 없음; pending/orphan 표시·causality 유지",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc40.py",
+      "implementation_test_symbol": "test_rc40_03",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "동일 event 두 번과 finish-before-start",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "동일 event 두 번과 finish-before-start",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "ingest 후 projection 재생",
+        "중복 계수 없음; pending/orphan 표시·causality 유지",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "중복 계수 없음; pending/orphan 표시·causality 유지",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC40-04",
+      "title": "종료 crash",
+      "owner_wp": "WP13",
+      "owner_rc": "RC40",
+      "criterion_ids": [
+        "4-1",
+        "4-2"
+      ],
+      "given": "external action 후 terminal commit 전 crash",
+      "when": "recovery 실행",
+      "then": "unknown/reconcile, 자동 재실행으로 이중 side effect 금지",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc40.py",
+      "implementation_test_symbol": "test_rc40_04",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "external action 후 terminal commit 전 crash",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "external action 후 terminal commit 전 crash",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "recovery 실행",
+        "unknown/reconcile, 자동 재실행으로 이중 side effect 금지",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "unknown/reconcile, 자동 재실행으로 이중 side effect 금지",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC41-01",
+      "title": "재시도와 child",
+      "owner_wp": "WP13",
+      "owner_rc": "RC41",
+      "criterion_ids": [
+        "4-2",
+        "4-3"
+      ],
+      "given": "main L1 세 번 시도+child L2 한 번",
+      "when": "native observer로 집계",
+      "then": "logical2/physical4/retry2, tool denied는 started 제외",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc41.py",
+      "implementation_test_symbol": "test_rc41_01",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "main L1 세 번 시도+child L2 한 번",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "main L1 세 번 시도+child L2 한 번",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "native observer로 집계",
+        "logical2/physical4/retry2, tool denied는 started 제외",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "logical2/physical4/retry2, tool denied는 started 제외",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC41-02",
+      "title": "음수 시간",
+      "owner_wp": "WP13",
+      "owner_rc": "RC41",
+      "criterion_ids": [
+        "4-2",
+        "4-3"
+      ],
+      "given": "다른 boot의 monotonic 또는 reversed time",
+      "when": "metric reducer",
+      "then": "clock mismatch 표시, duration 0으로 감추지 않음",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc41.py",
+      "implementation_test_symbol": "test_rc41_02",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "다른 boot의 monotonic 또는 reversed time",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "다른 boot의 monotonic 또는 reversed time",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "metric reducer",
+        "clock mismatch 표시, duration 0으로 감추지 않음",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "clock mismatch 표시, duration 0으로 감추지 않음",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC41-03",
+      "title": "cache usage 누락",
+      "owner_wp": "WP13",
+      "owner_rc": "RC41",
+      "criterion_ids": [
+        "4-2",
+        "4-3"
+      ],
+      "given": "한 provider는 포함 semantics, 다른 호출은 미보고",
+      "when": "cost/cache 집계",
+      "then": "중복 input 없음; null 유지·coverage 표시",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc41.py",
+      "implementation_test_symbol": "test_rc41_03",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "한 provider는 포함 semantics, 다른 호출은 미보고",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "한 provider는 포함 semantics, 다른 호출은 미보고",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "cost/cache 집계",
+        "중복 input 없음; null 유지·coverage 표시",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "중복 input 없음; null 유지·coverage 표시",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC41-04",
+      "title": "숨은 호출 경로",
+      "owner_wp": "WP13",
+      "owner_rc": "RC41",
+      "criterion_ids": [
+        "4-2",
+        "4-3"
+      ],
+      "given": "main/child/summary/offload/classifier/rubric 각 활성",
+      "when": "coverage probe",
+      "then": "실제 관측된 경로만 verified; 없는 signal은 not_tested/unsupported",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc41.py",
+      "implementation_test_symbol": "test_rc41_04",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "main/child/summary/offload/classifier/rubric 각 활성",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "main/child/summary/offload/classifier/rubric 각 활성",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "coverage probe",
+        "실제 관측된 경로만 verified; 없는 signal은 not_tested/unsupported",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "실제 관측된 경로만 verified; 없는 signal은 not_tested/unsupported",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC42-01",
+      "title": "실패 원인 탐색",
+      "owner_wp": "WP13",
+      "owner_rc": "RC42",
+      "criterion_ids": [
+        "4-4",
+        "4-2"
+      ],
+      "given": "test 실패 이벤트와 stderr artifact가 연결",
+      "when": "read-only session에서 요청 검색→trace→artifact",
+      "then": "실패 단계와 근거 열람; model 추측은 hypothesis",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc42.py",
+      "implementation_test_symbol": "test_rc42_01",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "test 실패 이벤트와 stderr artifact가 연결",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "test 실패 이벤트와 stderr artifact가 연결",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "read-only session에서 요청 검색→trace→artifact",
+        "실패 단계와 근거 열람; model 추측은 hypothesis",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "실패 단계와 근거 열람; model 추측은 hypothesis",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC42-02",
+      "title": "scope 조회 우회",
+      "owner_wp": "WP13",
+      "owner_rc": "RC42",
+      "criterion_ids": [
+        "4-4",
+        "4-2"
+      ],
+      "given": "다른 workspace trace_id를 알고 있음",
+      "when": "timeline/detail/export 호출",
+      "then": "일관된 deny/not-found 정책; 본문·집계 누출 없음",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc42.py",
+      "implementation_test_symbol": "test_rc42_02",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "다른 workspace trace_id를 알고 있음",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "다른 workspace trace_id를 알고 있음",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "timeline/detail/export 호출",
+        "일관된 deny/not-found 정책; 본문·집계 누출 없음",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "일관된 deny/not-found 정책; 본문·집계 누출 없음",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC42-03",
+      "title": "민감정보",
+      "owner_wp": "WP13",
+      "owner_rc": "RC42",
+      "criterion_ids": [
+        "4-4",
+        "4-2"
+      ],
+      "given": "fake secret sentinel 포함 tool stderr",
+      "when": "ingest/storage/export/view",
+      "then": "저장 전 masking·quarantine; raw body 미노출",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc42.py",
+      "implementation_test_symbol": "test_rc42_03",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "fake secret sentinel 포함 tool stderr",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "fake secret sentinel 포함 tool stderr",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "ingest/storage/export/view",
+        "저장 전 masking·quarantine; raw body 미노출",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "저장 전 masking·quarantine; raw body 미노출",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC42-04",
+      "title": "재연결",
+      "owner_wp": "WP13",
+      "owner_rc": "RC42",
+      "criterion_ids": [
+        "4-4",
+        "4-2"
+      ],
+      "given": "SSE/poll 중 연결 종료 후 cursor resume",
+      "when": "backlog 조회",
+      "then": "중복 이벤트 제거·누락 없음·stale cursor 정책 표시",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc42.py",
+      "implementation_test_symbol": "test_rc42_04",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "SSE/poll 중 연결 종료 후 cursor resume",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "SSE/poll 중 연결 종료 후 cursor resume",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "backlog 조회",
+        "중복 이벤트 제거·누락 없음·stale cursor 정책 표시",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "중복 이벤트 제거·누락 없음·stale cursor 정책 표시",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC43-01",
+      "title": "한 시나리오 완주",
+      "owner_wp": "WP23",
+      "owner_rc": "RC43",
+      "criterion_ids": [
+        "3-1",
+        "3-2",
+        "3-3",
+        "3-4",
+        "4-1",
+        "4-2",
+        "4-3",
+        "4-4"
+      ],
+      "given": "실패 작업 A→개선→새 작업 B를 실제 dcode로 수행",
+      "when": "모든 phase와 memory/release/trace 연결 평가",
+      "then": "3·4번 각 항목은 해당 독립 raw 근거로만 채점",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc43.py",
+      "implementation_test_symbol": "test_rc43_01",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "실패 작업 A→개선→새 작업 B를 실제 dcode로 수행",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "실패 작업 A→개선→새 작업 B를 실제 dcode로 수행",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "모든 phase와 memory/release/trace 연결 평가",
+        "3·4번 각 항목은 해당 독립 raw 근거로만 채점",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "3·4번 각 항목은 해당 독립 raw 근거로만 채점",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC43-02",
+      "title": "겉보기 관측",
+      "owner_wp": "WP23",
+      "owner_rc": "RC43",
+      "criterion_ids": [
+        "3-1",
+        "3-2",
+        "3-3",
+        "3-4",
+        "4-1",
+        "4-2",
+        "4-3",
+        "4-4"
+      ],
+      "given": "기반 fixtures만 PASS, native observer 없음",
+      "when": "평가 report 제출",
+      "then": "공식 점수 null/항목 미평가; runtime 통과 아님",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc43.py",
+      "implementation_test_symbol": "test_rc43_02",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "기반 fixtures만 PASS, native observer 없음",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "기반 fixtures만 PASS, native observer 없음",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "평가 report 제출",
+        "공식 점수 null/항목 미평가; runtime 통과 아님",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "공식 점수 null/항목 미평가; runtime 통과 아님",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC43-03",
+      "title": "부하와 exporter 장애",
+      "owner_wp": "WP23",
+      "owner_rc": "RC43",
+      "criterion_ids": [
+        "3-1",
+        "3-2",
+        "3-3",
+        "3-4",
+        "4-1",
+        "4-2",
+        "4-3",
+        "4-4"
+      ],
+      "given": "승인된 부하 manifest·외부 exporter down",
+      "when": "다수 요청/queue cap·local query",
+      "then": "local durable 유지/명시 lag·audit fail은 mutation 차단",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc43.py",
+      "implementation_test_symbol": "test_rc43_03",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "승인된 부하 manifest·외부 exporter down",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "승인된 부하 manifest·외부 exporter down",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "다수 요청/queue cap·local query",
+        "local durable 유지/명시 lag·audit fail은 mutation 차단",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "local durable 유지/명시 lag·audit fail은 mutation 차단",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    },
+    {
+      "id": "R4-RC43-04",
+      "title": "실행 범위 누락",
+      "owner_wp": "WP23",
+      "owner_rc": "RC43",
+      "criterion_ids": [
+        "3-1",
+        "3-2",
+        "3-3",
+        "3-4",
+        "4-1",
+        "4-2",
+        "4-3",
+        "4-4"
+      ],
+      "given": "TUI만 검증하고 ACP/headless 미검증",
+      "when": "출시 coverage 검토",
+      "then": "미검증 mode 숨기지 않음; 해당 운영등급 출시 차단",
+      "execution_status": "not_run",
+      "test_layer": "native_integration_or_effectiveness",
+      "implementation_test_path": "../tests/cyrano_product/test_r4_rc43.py",
+      "implementation_test_symbol": "test_rc43_04",
+      "fixture_contract": {
+        "root": "temporary external control home plus isolated workspace",
+        "scope": [
+          "tenant-a/user-a/workspace-a",
+          "tenant-b/user-b/workspace-b"
+        ],
+        "runner": "verified native dcode for product claims; deterministic fakes only for unit prerequisites",
+        "fault_injection": "TUI만 검증하고 ACP/headless 미검증",
+        "trusted_evaluator": "separate principal and frozen task/suite; model cannot edit oracle"
+      },
+      "steps": [
+        "TUI만 검증하고 ACP/headless 미검증",
+        "record source/runtime/policy/suite/request/release digests and preimage snapshot",
+        "출시 coverage 검토",
+        "미검증 mode 숨기지 않음; 해당 운영등급 출시 차단",
+        "record raw artifacts; compare postimage and external outcome; clean only owned temp roots"
+      ],
+      "assertions": [
+        "미검증 mode 숨기지 않음; 해당 운영등급 출시 차단",
+        "no secret or cross-scope leak",
+        "failed/blocked/unknown/not_run remain distinct"
+      ],
+      "evidence_files": [
+        "run-binding.json",
+        "events.jsonl",
+        "case-result.json",
+        "artifact-manifest.json",
+        "review.json"
+      ],
+      "cleanup": "Stop child processes; release leases; reconcile unknown remote outcomes; preserve explicit evidence; delete only owned temp roots."
+    }
+  ]
+}

@@ -1,0 +1,255 @@
+{
+  "project": "Cyrano Agent",
+  "kind": "integrated_engineering_package_readiness",
+  "as_of": "2026-09-17",
+  "product_status": "not_evaluated",
+  "native_runtime_complete": false,
+  "source_basis": {
+    "actual_project": "Cyrano_Agent_Dcode_Development_R5_2026-09-16.zip",
+    "integrated_material": "Cyrano_Agent_Docs_Addendum_2026-09-17.zip + supplied request + current planning/HITL specification",
+    "unavailable_original": "Earlier text referenced R6, but no R6 backing archive was accessible; no byte-identical R6 preservation or R6 test count is claimed."
+  },
+  "scope": {
+    "product_layout": "preserved",
+    "product_python_files": 39,
+    "product_python_bytes_changed": 0,
+    "canonical_documents": "edited in place",
+    "routing": "automatically generated from existing work plans",
+    "separate_addendum_required": false,
+    "runtime_audit_history": "required as specified; not removed",
+    "delivery_history_archives": "removed from active development package"
+  },
+  "checks": {
+    "foundation": {
+      "kind": "executed_foundation_tests",
+      "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+      "executed_at": "2026-09-17T02:32:12.968980+00:00",
+      "tests_run": 302,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "success": true,
+      "not_covered": [
+        "live_dcode",
+        "provider_cache",
+        "OS_isolation",
+        "product_self_improvement_effectiveness"
+      ]
+    },
+    "project_structure": {
+      "kind": "executed_project_structure_check",
+      "counts": {
+        "packages": 13,
+        "work_packages": 24,
+        "acceptance_specifications": 857,
+        "product_roles": 14,
+        "product_skills": 17,
+        "developer_skills": 10,
+        "local_links_checked": 892,
+        "python_sources_parsed": 70,
+        "target_sql_tables": 24
+      },
+      "errors": [],
+      "success": true,
+      "does_not_establish": [
+        "full_lint_typecheck",
+        "production_dcode",
+        "OS_security",
+        "live_effectiveness"
+      ]
+    },
+    "schema": {
+      "kind": "executed_versioned_schema_validation",
+      "schemas_checked": 7,
+      "schema_definitions": 158,
+      "cases_checked": 250,
+      "role_skill_templates_checked": 31,
+      "imported_schemas_checked": 15,
+      "imported_shape_cases_checked": 28,
+      "failed_cases": [],
+      "success": true,
+      "api_check_scope": "local refs, not a running OpenAPI server",
+      "authority_checks": "not_implied_by_JSON_schema",
+      "source_code_executed": false
+    },
+    "integration": {
+      "kind": "executed_integration_artifact_validation",
+      "revision": "2026-09-16-cyrano-r4",
+      "success": true,
+      "counts": {
+        "preserved_source_files": 110,
+        "mapped_source_cases": 124,
+        "reused_interview_cases": 22,
+        "canonical_product_specifications": 857,
+        "mapped_source_sections": 33,
+        "mapped_source_schemas": 15,
+        "work_packages": 24,
+        "integration_work_items": 72,
+        "session_states": 29,
+        "guards": 38,
+        "typed_event_payloads": 65,
+        "model_tool_ports": 17,
+        "product_rubric_criteria": 15,
+        "target_sql_tables_including_governance": 29
+      },
+      "errors": [],
+      "scope": "source preservation and design/config/plan consistency",
+      "does_not_establish": [
+        "signature_authenticity",
+        "runtime_guards",
+        "native_dcode",
+        "OS_isolation",
+        "live_evaluation",
+        "full_PEP8_compliance",
+        "production_schema_migration",
+        "production_event_semantics"
+      ]
+    },
+    "documents_and_contracts": {
+      "kind": "engineering_package_checks_not_product_evaluation",
+      "success": true,
+      "counts": {
+        "routed_tasks": 61,
+        "verified_stage_routes": 183,
+        "max_readset_bytes": 47948,
+        "acceptance_specifications": 857,
+        "integrated_implementation_units": 12,
+        "request_sections": 44,
+        "pairwise_rows": 22,
+        "required_pairs": 205,
+        "covered_pairs": 205,
+        "runtime_contract_definitions": 17,
+        "planning_contract_definitions": 11,
+        "planning_shape_cases_executed": 60,
+        "current_documents_scanned": 245
+      },
+      "errors": [],
+      "blocked": [],
+      "semantic_review_scope": "key contracts and cross-component interfaces; inventory does not prove every sentence correct",
+      "not_established": [
+        "native_dcode",
+        "real_authorization",
+        "provider_calls",
+        "product_memory_effect",
+        "product_learning_effect",
+        "UI_execution",
+        "OS_isolation",
+        "full_python_quality"
+      ]
+    },
+    "assessment": {
+      "kind": "assessment_preparation_not_product_evaluation",
+      "success": true,
+      "criteria": 15,
+      "point_atoms": 40,
+      "new_grading_cases": 178,
+      "python_pack_cases": 60,
+      "all_acceptance_specs": 857,
+      "preserved_new_reference_files": 138,
+      "test_development_tasks": 12,
+      "errors": []
+    },
+    "copy_helper_unit_tests": {
+      "executed": 29,
+      "failures": 0,
+      "scope": "synthetic local file trees, not native dcode"
+    },
+    "html": {
+      "rendered": "Chromium content rendering; original file:// navigation blocked, no product TUI was run",
+      "widths": [
+        1440,
+        760
+      ],
+      "navigation_links_checked": 8,
+      "missing_targets": 0
+    },
+    "quality": {
+      "kind": "source_native_quality_preparation",
+      "status": "blocked",
+      "missing": [
+        "ruff",
+        "ty"
+      ],
+      "results": [],
+      "tools": [],
+      "line_audit_exit": 1,
+      "full_PEP8_compliance_claimed": false,
+      "note": "Executable identities require WP00 runtime-lock review."
+    },
+    "line_length_diagnostics": {
+      "count": 620,
+      "passed": false
+    },
+    "cold_extract": [
+      {
+        "argv": [
+          "/opt/pyvenv/bin/python",
+          "verify_package.py"
+        ],
+        "exit_code": 0,
+        "log_sha256": "65dee21db85543d1b24fca70ed21a81f07baf8741a22d388c681fa000901e867"
+      },
+      {
+        "argv": [
+          "/opt/pyvenv/bin/python",
+          "cyrano/scripts/dev.py",
+          "check"
+        ],
+        "exit_code": 0,
+        "log_sha256": "48755b6941267074d957fe2d704e273a36e4a2dfccb69ad06f7a317b4c859176"
+      },
+      {
+        "argv": [
+          "/opt/pyvenv/bin/python",
+          "cyrano/scripts/dev.py",
+          "schemas"
+        ],
+        "exit_code": 0,
+        "log_sha256": "e1194aa04e75fe0d4acbf4fe5aa82f64cb8442e48d2550dc6a3720114aabcd31"
+      },
+      {
+        "argv": [
+          "/opt/pyvenv/bin/python",
+          "cyrano/scripts/assessment.py",
+          "validate"
+        ],
+        "exit_code": 0,
+        "log_sha256": "e37ed9b884c8f1170a1bdd2fdcc54ed4f6e86b47842ea197d1373006af48653c"
+      },
+      {
+        "argv": [
+          "/opt/pyvenv/bin/python",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "exit_code": 0,
+        "log_sha256": "ae3b0dcd2ba88e567a44ec788304011a82ac9e0943a32a88c96510388ef270c2"
+      }
+    ],
+    "real_payload_synthetic_copy": {
+      "files": 809,
+      "passed": true,
+      "native_sentinels_preserved": 4,
+      "not_native_integration": true
+    },
+    "manifest": {
+      "file_count_before_final_report": 820,
+      "payload_files": 809,
+      "zip_crc_checked": true,
+      "no_casefold_collisions": true
+    }
+  },
+  "retained_reference_files": 281,
+  "limitations": [
+    "Native dcode install/import/build/integration not executed",
+    "No OS authorization boundary or native TUI/approval UI established",
+    "No real provider calls/cache/Memory/self-improvement effectiveness evaluation",
+    "Ruff and ty unavailable; full Python quality is blocked",
+    "Review is author analysis plus structural/mutation tests, not an independent external reviewer",
+    "857 acceptance entries are specifications, not 857 executed product tests"
+  ]
+}

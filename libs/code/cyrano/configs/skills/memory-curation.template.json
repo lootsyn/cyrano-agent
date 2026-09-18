@@ -1,0 +1,34 @@
+{
+  "kind": "skill_manifest",
+  "schema_version": "1.0",
+  "id": "memory-curation",
+  "version": "0.1.0-dev",
+  "name": "memory-curation",
+  "description": "실행 근거로 scoped memory나 skill의 부분 개선 후보를 만들 때 사용한다.",
+  "entrypoint": "SKILL.md",
+  "content_digest": "sha256:37095da19921ab825230f47b14fdf7f9d9fd9603c8609ff501bddaaf46c5f3dd",
+  "resources": [],
+  "allowed_roles": [
+    "learning-analyst",
+    "candidate-author"
+  ],
+  "required_tools": [
+    "cyrano_memory_query",
+    "cyrano_propose_artifact"
+  ],
+  "scope": {
+    "tenant": "__BIND_TENANT__",
+    "user": "__BIND_USER__",
+    "workspace": "__BIND_WORKSPACE__"
+  },
+  "context_byte_budget": 8192,
+  "activation_tests": [
+    "R5-RF05-02"
+  ],
+  "counterexample_tests": [
+    "R5-RF05-01"
+  ],
+  "release_digest": null,
+  "approval_ref": null,
+  "status": "candidate"
+}

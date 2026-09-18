@@ -1,0 +1,24 @@
+{
+  "schema_version": "udh.adapter/1",
+  "report_id": "adapter-demo",
+  "observed_at": "2026-09-15T07:00:00Z",
+  "dcode_version": "UNVERIFIED-EXAMPLE",
+  "sdk_version": "UNVERIFIED-EXAMPLE",
+  "python_version": "UNVERIFIED-EXAMPLE",
+  "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "assurance_requested": "governed",
+  "checks": [
+    {
+      "check_id": "ADAPTER-01",
+      "surface": "native and extension tool enforcement",
+      "status": "not_tested",
+      "required_for_governed": true,
+      "evidence": [],
+      "limitation": "실제 dcode 실행 전"
+    }
+  ],
+  "governed_ready": false,
+  "coverage_gaps": [
+    "실제 어댑터/격리/모델 호출 미검증"
+  ]
+}

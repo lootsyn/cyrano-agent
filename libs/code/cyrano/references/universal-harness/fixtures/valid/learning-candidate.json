@@ -1,0 +1,52 @@
+{
+  "schema_version": "udh.candidate/1",
+  "candidate_id": "candidate-demo",
+  "session_id": "session-demo",
+  "parent_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "target": "skill",
+  "status": "proposed",
+  "scope": "workspace",
+  "workspace_id": "workspace-demo",
+  "observation_ids": [
+    "observation-1"
+  ],
+  "source_task_ids": [
+    "task-1"
+  ],
+  "causal_hypothesis": "경계 입력의 기존 테스트를 읽지 않는 절차가 회귀 누락에 기여했을 수 있다.",
+  "alternative_explanations": [
+    "요구 변경 또는 테스트 환경 오류일 수 있다."
+  ],
+  "proposed_change": {
+    "artifact_id": "artifact-demo",
+    "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "media_type": "text/plain"
+  },
+  "expected_benefit": "경계 입력 회귀 누락 감소",
+  "possible_regressions": [
+    "불필요한 파일 읽기 비용 증가"
+  ],
+  "evaluation_spec_digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "evaluation_ids": [],
+  "approval_receipt_id": null,
+  "created_at": "2026-09-15T07:00:00Z",
+  "policy_impact": "none",
+  "success_criteria": [
+    "회귀 누락 감소"
+  ],
+  "non_regression_criteria": [
+    "의도 위반 및 무승인 실행 0",
+    "기존 필수 검사 유지"
+  ],
+  "rollback_release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "approval_requirements": [
+    "approve_harness_release"
+  ],
+  "budget": {
+    "max_model_attempts": 32,
+    "max_tool_calls": 100,
+    "max_seconds": 3600,
+    "max_parallel_workers": 3,
+    "max_cost_usd": null
+  }
+}

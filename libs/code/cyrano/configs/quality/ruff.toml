@@ -1,0 +1,19 @@
+# CYRANO-owned scope only. Native dcode configuration remains untouched.
+target-version = "py312"
+line-length = 79
+[format]
+docstring-code-format = true
+docstring-code-line-length = 72
+[lint]
+select = ["E", "F", "W", "I", "N", "D"]
+ignore = ["D203", "D213"]
+[lint.pydocstyle]
+convention = "google"
+[lint.pycodestyle]
+max-doc-length = 72
+[lint.per-file-ignores]
+"**/tests/**" = ["D100", "D101", "D102", "D103", "D104"]
+# Cyrano scripts and unit tests bootstrap sys.path before importing the
+# package; E402 is structural in that layout.
+"cyrano/scripts/**" = ["E402"]
+"tests/unit_tests/cyrano/**" = ["E402"]

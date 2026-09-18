@@ -1,0 +1,35 @@
+# This template configures the NEW UDH harness project, not a target repository.
+# Do not treat this as a full pyproject with dependencies/uv.lock.
+[tool.black]
+line-length = 79
+target-version = ["py312"]
+
+[tool.ruff]
+line-length = 79
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "E501", "F", "I", "N", "UP", "B", "D", "S"]
+# Black is the ONLY formatter; Ruff is used as a linter.
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101", "D"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_unused_configs = true
+show_error_codes = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--strict-markers --strict-config"
+markers = [
+  "contract: framework adapter compatibility",
+  "governed: actual broker and OS isolation",
+  "model_eval: paid or configured model execution",
+  "operational: crash recovery and deployment checks",
+]

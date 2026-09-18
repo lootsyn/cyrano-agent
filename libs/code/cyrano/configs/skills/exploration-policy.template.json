@@ -1,0 +1,41 @@
+{
+  "kind": "skill_manifest",
+  "schema_version": "1.0",
+  "id": "exploration-policy",
+  "version": "0.1.0-dev",
+  "name": "exploration-policy",
+  "description": "공개된 탐색 관측만으로 다음 branch/action 후보를 결정한다.",
+  "entrypoint": "SKILL.md",
+  "content_digest": "sha256:3c1ae09c75ca98444c6a9884ffe1aa2f2f49b299c6db773b8b78dd4e1e5c2589",
+  "resources": [
+    {
+      "path": "references/checklist.md",
+      "digest": "sha256:a1f419c4707545002eb10f0b3abada68bae73a7d9622ce2101c0a070f3859b1d",
+      "executable": false
+    },
+    {
+      "path": "assets/output.example.json",
+      "digest": "sha256:8431b0ccacc40f885765fd7ceeac06de2bc55f0b957473e23454a65bb8dbaf05",
+      "executable": false
+    }
+  ],
+  "allowed_roles": [
+    "exploration-policy"
+  ],
+  "required_tools": [],
+  "scope": {
+    "tenant": "__BIND_TENANT__",
+    "user": "__BIND_USER__",
+    "workspace": "__BIND_WORKSPACE__"
+  },
+  "context_byte_budget": 8192,
+  "activation_tests": [
+    "SKILL-exploration-policy-positive"
+  ],
+  "counterexample_tests": [
+    "SKILL-exploration-policy-negative"
+  ],
+  "release_digest": null,
+  "approval_ref": null,
+  "status": "candidate"
+}

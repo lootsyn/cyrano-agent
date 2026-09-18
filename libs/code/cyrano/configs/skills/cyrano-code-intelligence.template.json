@@ -1,0 +1,35 @@
+{
+  "kind": "skill_manifest",
+  "schema_version": "1.0",
+  "id": "cyrano-code-intelligence",
+  "version": "0.1.0-dev",
+  "name": "cyrano-code-intelligence",
+  "description": "definition·reference·문서·graph 근거로 변경 영향을 확인할 때 사용한다.",
+  "entrypoint": "SKILL.md",
+  "content_digest": "sha256:3bbeccf0451c3c54a4fd632c895d58bce6aa9caf8deeefa6ce30792c7c726cdd",
+  "resources": [],
+  "allowed_roles": [
+    "evidence-scout",
+    "implementer",
+    "code-reviewer"
+  ],
+  "required_tools": [
+    "cyrano_code_query",
+    "cyrano_docs_query"
+  ],
+  "scope": {
+    "tenant": "__BIND_TENANT__",
+    "user": "__BIND_USER__",
+    "workspace": "__BIND_WORKSPACE__"
+  },
+  "context_byte_budget": 8192,
+  "activation_tests": [
+    "R5-RF02-01"
+  ],
+  "counterexample_tests": [
+    "R5-RF02-02"
+  ],
+  "release_digest": null,
+  "approval_ref": null,
+  "status": "candidate"
+}

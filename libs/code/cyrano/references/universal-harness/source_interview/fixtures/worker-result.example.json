@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "session_id": "example-session",
+  "task_id": "critic-001",
+  "base_revision": 4,
+  "input_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "role": "critic",
+  "status": "complete",
+  "findings": [
+    {
+      "id": "finding-duplicate-import",
+      "kind": "counterexample",
+      "severity": "high",
+      "affected_ids": [
+        "decision-reupload"
+      ],
+      "evidence_refs": [
+        "contract-example"
+      ],
+      "statement": "같은 파일을 재업로드했을 때 중복 저장할지 기존 결과를 반환할지 정해지지 않았다.",
+      "rationale": "두 결과가 사용자가 보는 데이터 건수를 다르게 만든다.",
+      "proposed_action": "ask_user",
+      "counterexample": {
+        "given": "같은 CSV가 한 번 성공적으로 처리되었다.",
+        "when": "사용자가 동일한 파일을 다시 업로드한다.",
+        "possible_outcome_a": "새 작업으로 동일 행을 다시 저장한다.",
+        "possible_outcome_b": "중복을 감지하고 이전 결과를 보여준다.",
+        "why_contract_allows_both": "현재 계약은 최초 입력만 다룬다.",
+        "is_hypothetical": true
+      },
+      "question_candidate": {
+        "target_decision_ids": [
+          "decision-reupload"
+        ],
+        "text": "같은 파일을 다시 올리면 새 데이터로 저장해야 하나요, 이전 처리 결과를 보여줘야 하나요?",
+        "why_now": "중복 저장 방지 여부가 저장 정책과 검증 기준을 바꾼다.",
+        "answerability_reason": "사용자가 원하는 재업로드 결과를 고를 수 있다.",
+        "alternatives": [
+          {
+            "id": "new",
+            "label": "새 작업",
+            "observable_consequence": "같은 행이 추가 저장될 수 있다."
+          },
+          {
+            "id": "reuse",
+            "label": "이전 결과",
+            "observable_consequence": "동일 입력의 추가 저장을 막는다."
+          }
+        ],
+        "allow_custom_answer": true
+      }
+    }
+  ],
+  "remaining_unknowns": [
+    "동일 파일을 판정하는 업무 기준은 아직 합의되지 않았다."
+  ],
+  "capabilities_used": []
+}

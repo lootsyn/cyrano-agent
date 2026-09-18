@@ -1,0 +1,134 @@
+{
+  "name": "Cyrano Agent",
+  "version": "0.4.0.dev0",
+  "status": "dcode_additive_development_sources_runtime_not_connected",
+  "as_of": "2026-09-17",
+  "packages": [
+    {
+      "id": "contracts",
+      "path": "../deepagents_code/cyrano/contracts",
+      "module": "deepagents_code.cyrano.contracts",
+      "dependencies": []
+    },
+    {
+      "id": "kernel",
+      "path": "../deepagents_code/cyrano/kernel",
+      "module": "deepagents_code.cyrano.kernel",
+      "dependencies": [
+        "contracts"
+      ]
+    },
+    {
+      "id": "sqlite",
+      "path": "../deepagents_code/cyrano/sqlite",
+      "module": "deepagents_code.cyrano.sqlite",
+      "dependencies": [
+        "contracts"
+      ]
+    },
+    {
+      "id": "compiler",
+      "path": "../deepagents_code/cyrano/context",
+      "module": "deepagents_code.cyrano.context",
+      "dependencies": [
+        "contracts"
+      ]
+    },
+    {
+      "id": "memory",
+      "path": "../deepagents_code/cyrano/memory",
+      "module": "deepagents_code.cyrano.memory",
+      "dependencies": [
+        "contracts"
+      ]
+    },
+    {
+      "id": "interview",
+      "path": "../deepagents_code/cyrano/interview",
+      "module": "deepagents_code.cyrano.interview",
+      "dependencies": [
+        "contracts"
+      ]
+    },
+    {
+      "id": "workflow",
+      "path": "../deepagents_code/cyrano/workflow",
+      "module": "deepagents_code.cyrano.workflow",
+      "dependencies": [
+        "contracts"
+      ]
+    },
+    {
+      "id": "improvement",
+      "path": "../deepagents_code/cyrano/improvement",
+      "module": "deepagents_code.cyrano.improvement",
+      "dependencies": [
+        "contracts"
+      ]
+    },
+    {
+      "id": "evaluation",
+      "path": "../deepagents_code/cyrano/evaluation",
+      "module": "deepagents_code.cyrano.evaluation",
+      "dependencies": [
+        "contracts"
+      ]
+    },
+    {
+      "id": "lifecycle",
+      "path": "../deepagents_code/cyrano/plugins",
+      "module": "deepagents_code.cyrano.plugins",
+      "dependencies": [
+        "contracts"
+      ]
+    },
+    {
+      "id": "events",
+      "path": "../deepagents_code/cyrano/events",
+      "module": "deepagents_code.cyrano.events",
+      "dependencies": [
+        "contracts"
+      ]
+    },
+    {
+      "id": "dcode",
+      "path": "../deepagents_code/cyrano/dcode",
+      "module": "deepagents_code.cyrano.dcode",
+      "dependencies": [
+        "contracts"
+      ]
+    },
+    {
+      "id": "cli",
+      "path": "../deepagents_code/cyrano/cli",
+      "module": "deepagents_code.cyrano.cli",
+      "dependencies": [
+        "contracts",
+        "kernel",
+        "sqlite",
+        "compiler",
+        "memory",
+        "interview",
+        "workflow",
+        "improvement",
+        "evaluation",
+        "lifecycle",
+        "events",
+        "dcode"
+      ]
+    }
+  ],
+  "default_mode": "disabled",
+  "not_claimed": [
+    "production_ready",
+    "dcode_integration_verified",
+    "live_cache_hit",
+    "self_improvement_effectiveness"
+  ],
+  "integration_revision": "2026-09-16-cyrano-r4",
+  "upstream_revision": "7f9e8ed3a555933902045792da9bb184950ee7b2",
+  "native_activation": "planned approved edits through WP00/WP05/WP06/WP11/WP12/WP13, verified by RC00 and native tests",
+  "grading": "15_exact_user_criteria_40_points_not_evaluated",
+  "slug": "cyrano-agent",
+  "documentation": "current-integrated-single-owner"
+}

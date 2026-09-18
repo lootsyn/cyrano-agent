@@ -1,0 +1,158 @@
+{
+  "source_namespace": "universal-harness/2026-09-15",
+  "target_namespace": "cyrano-project/2026-09-16-r2",
+  "mappings": [
+    {
+      "source_wp": "WP00",
+      "target_wps": [
+        "WP00",
+        "WP06",
+        "WP22"
+      ]
+    },
+    {
+      "source_wp": "WP01",
+      "target_wps": [
+        "WP01"
+      ]
+    },
+    {
+      "source_wp": "WP02",
+      "target_wps": [
+        "WP02"
+      ]
+    },
+    {
+      "source_wp": "WP03",
+      "target_wps": [
+        "WP03"
+      ]
+    },
+    {
+      "source_wp": "WP04",
+      "target_wps": [
+        "WP07",
+        "WP09",
+        "WP10"
+      ]
+    },
+    {
+      "source_wp": "WP05",
+      "target_wps": [
+        "WP03",
+        "WP06"
+      ]
+    },
+    {
+      "source_wp": "WP06",
+      "target_wps": [
+        "WP07",
+        "WP08"
+      ]
+    },
+    {
+      "source_wp": "WP07",
+      "target_wps": [
+        "WP08"
+      ]
+    },
+    {
+      "source_wp": "WP08",
+      "target_wps": [
+        "WP09"
+      ]
+    },
+    {
+      "source_wp": "WP09",
+      "target_wps": [
+        "WP09",
+        "WP10"
+      ]
+    },
+    {
+      "source_wp": "WP10",
+      "target_wps": [
+        "WP04",
+        "WP05",
+        "WP06"
+      ]
+    },
+    {
+      "source_wp": "WP11",
+      "target_wps": [
+        "WP05",
+        "WP12"
+      ]
+    },
+    {
+      "source_wp": "WP12",
+      "target_wps": [
+        "WP11",
+        "WP12"
+      ]
+    },
+    {
+      "source_wp": "WP13",
+      "target_wps": [
+        "WP10",
+        "WP22"
+      ]
+    },
+    {
+      "source_wp": "WP14",
+      "target_wps": [
+        "WP13"
+      ]
+    },
+    {
+      "source_wp": "WP15",
+      "target_wps": [
+        "WP10",
+        "WP13"
+      ]
+    },
+    {
+      "source_wp": "WP16",
+      "target_wps": [
+        "WP14",
+        "WP16",
+        "WP17",
+        "WP18",
+        "WP19"
+      ]
+    },
+    {
+      "source_wp": "WP17",
+      "target_wps": [
+        "WP20"
+      ]
+    },
+    {
+      "source_wp": "WP18",
+      "target_wps": [
+        "WP21"
+      ]
+    },
+    {
+      "source_wp": "WP19",
+      "target_wps": [
+        "WP13",
+        "WP22"
+      ]
+    },
+    {
+      "source_wp": "WP20",
+      "target_wps": [
+        "WP02",
+        "WP22"
+      ]
+    },
+    {
+      "source_wp": "WP21",
+      "target_wps": [
+        "WP22",
+        "WP23"
+      ]
+    }
+  ]
+}

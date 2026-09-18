@@ -1,0 +1,97 @@
+{
+  "notice": "All fixtures are synthetic and have no runtime authority.",
+  "positive": [
+    {
+      "path": "positive/quality-policy.json",
+      "model": "QualityPolicy",
+      "schema": "quality-policy.schema.json"
+    },
+    {
+      "path": "positive/quality-report.json",
+      "model": "QualityReport",
+      "schema": "quality-report.schema.json"
+    },
+    {
+      "path": "positive/completion-requirement.json",
+      "model": "CompletionRequirement",
+      "schema": "completion-requirement.schema.json"
+    },
+    {
+      "path": "positive/baselined-report.json",
+      "model": "QualityReport",
+      "schema": "quality-report.schema.json"
+    }
+  ],
+  "negative": [
+    {
+      "path": "negative/extra-approval-field.json",
+      "model": "QualityReport",
+      "schema": "quality-report.schema.json"
+    },
+    {
+      "path": "negative/stale-declared-pass.json",
+      "model": "QualityReport",
+      "schema": "quality-report.schema.json"
+    },
+    {
+      "path": "negative/missing-required-declared-pass.json",
+      "model": "QualityReport",
+      "schema": "quality-report.schema.json"
+    },
+    {
+      "path": "negative/duplicate-check.json",
+      "model": "QualityReport",
+      "schema": "quality-report.schema.json"
+    },
+    {
+      "path": "negative/timezone-missing.json",
+      "model": "QualityReport",
+      "schema": "quality-report.schema.json"
+    },
+    {
+      "path": "negative/unexecuted-pass.json",
+      "model": "QualityReport",
+      "schema": "quality-report.schema.json"
+    },
+    {
+      "path": "negative/negative-diagnostic-count.json",
+      "model": "QualityReport",
+      "schema": "quality-report.schema.json"
+    },
+    {
+      "path": "negative/boolean-exit-code.json",
+      "model": "QualityReport",
+      "schema": "quality-report.schema.json"
+    },
+    {
+      "path": "negative/baseline-without-comparison.json",
+      "model": "QualityReport",
+      "schema": "quality-report.schema.json"
+    },
+    {
+      "path": "negative/path-traversal.json",
+      "model": "QualityPolicy",
+      "schema": "quality-policy.schema.json"
+    },
+    {
+      "path": "negative/absolute-source-root.json",
+      "model": "QualityPolicy",
+      "schema": "quality-policy.schema.json"
+    },
+    {
+      "path": "negative/second-formatter.json",
+      "model": "QualityPolicy",
+      "schema": "quality-policy.schema.json"
+    },
+    {
+      "path": "negative/negative-repair-budget.json",
+      "model": "QualityPolicy",
+      "schema": "quality-policy.schema.json"
+    },
+    {
+      "path": "negative/weak-required-checks.json",
+      "model": "QualityPolicy",
+      "schema": "quality-policy.schema.json"
+    }
+  ]
+}

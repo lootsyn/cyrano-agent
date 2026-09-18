@@ -1,0 +1,33 @@
+{
+  "kind": "executed_integration_artifact_validation",
+  "revision": "2026-09-16-cyrano-r4",
+  "success": true,
+  "counts": {
+    "preserved_source_files": 110,
+    "mapped_source_cases": 124,
+    "reused_interview_cases": 22,
+    "canonical_product_specifications": 857,
+    "mapped_source_sections": 33,
+    "mapped_source_schemas": 15,
+    "work_packages": 24,
+    "integration_work_items": 72,
+    "session_states": 29,
+    "guards": 38,
+    "typed_event_payloads": 65,
+    "model_tool_ports": 17,
+    "product_rubric_criteria": 15,
+    "target_sql_tables_including_governance": 29
+  },
+  "errors": [],
+  "scope": "source preservation and design/config/plan consistency",
+  "does_not_establish": [
+    "signature_authenticity",
+    "runtime_guards",
+    "native_dcode",
+    "OS_isolation",
+    "live_evaluation",
+    "full_PEP8_compliance",
+    "production_schema_migration",
+    "production_event_semantics"
+  ]
+}

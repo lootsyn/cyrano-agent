@@ -1,0 +1,119 @@
+{
+ "kind": "work_package_completion_evidence",
+ "work_package": "WP07",
+ "title": "인터뷰 결정·의무·준비도 kernel",
+ "recorded_by": "implementer (independent post-image review performed)",
+ "success": true,
+ "source_digests": {
+  "deepagents_code/cyrano/interview/service.py": "sha256:cca273fb163817c4746c8ceda6ec12bab915f817371aab0b008c0fd704a9e804",
+  "deepagents_code/cyrano/interview/decisions.py": "sha256:0b925fe7c31c4c3ad5849f3d2eaa221665b43537df5494834be73bc9a2227369",
+  "deepagents_code/cyrano/interview/readiness.py": "sha256:153e2491cfe5ee1f354c983e64499e6847d1392c7ee8a259fb25fcfd0703de70",
+  "deepagents_code/cyrano/interview/worker_adapter.py": "sha256:1a2f7a39c3abf4298d0e0d4a7ffa2d5c36005550885bd2452251668e29502d80",
+  "deepagents_code/cyrano/interview/__init__.py": "sha256:8d0394b14b5d9e19a0f65575b4d74481a901a30af60cc36cf3a100b8031f2e34",
+  "deepagents_code/cyrano/kernel/session_state.py": "sha256:ff6011f65d320afdc2e8c8e1a4daf5ac6f215e5de0a52a02c1156204d1da0524",
+  "deepagents_code/cyrano/kernel/session_guards.py": "sha256:b290f5bda94acb5ba92ddfe36705dc6136682c1dba8b50e80b6a6eac3aa78cb4",
+  "tests/cyrano_product/test_wp07_product.py": "sha256:ca28ab98617ffc1483dc6711ebd1c9bb2f8890df14992a7717a6c723010e9884"
+ },
+ "contract_files": {
+  "cyrano/contracts/v2/session-state-machine.json": "loaded by SessionMachine.from_contract; tests bind the real document",
+  "cyrano/contracts/sql/target-schema.sql": "ledger DDL used by the test repository"
+ },
+ "acceptance_evidence": {
+  "INT-R01": "passed - critical open obligation blocks readiness; clarity_score is accepted but never consulted (test_int_r01_score_never_offsets_blocker)",
+  "INT-R02": "passed - observation and intended_change statements coexist; source priority never deletes the intent (test_int_r02)",
+  "INT-R03": "passed - model-proposed high-impact decision without user authorization raises UNAUTHORIZED_DECISION (test_int_r03)",
+  "INT-R04": "passed - rescinding preserves history and returns the transitive invalidation closure over scenarios/bundle approvals (test_int_r04)",
+  "INT-R05": "passed - worker result on an old revision raises STALE_REVISION and the task id is preserved in the re-review queue (test_int_r05)",
+  "INT-R06": "passed - payload approved:true raises WRONG_PURPOSE at the command layer; untrusted approve events never set approval; only trusted+attested events do (test_int_r06_*)",
+  "INT-R07": "passed - open critical obligations plus exhausted budget returns pause with the unresolved list; never READY (test_int_r07)",
+  "INT-R08": "passed - cancel on the first question moves to CANCELLING immediately; no minimum rounds (test_int_r08_and_int_cancel_immediate)",
+  "INT-R10": "passed - critical obligation removal without authorized reason raises UNAUTHORIZED_DECISION; authorized removal records the reason (test_int_r10)",
+  "INT-R11": "passed - model choice outside delegated domains is never approved (test_int_r11)",
+  "INT-R12": "passed - same idempotency key replays the original response; no duplicate event or revision (test_int_r12)",
+  "INT-R13": "passed - same key with a different payload returns IDEMPOTENCY_CONFLICT (test_int_r13)",
+  "INT-R14": "passed - changed snapshot digest invalidates bound evidence and clears review credit (test_int_r14)",
+  "INT-R15": "passed - satisfied intake advances to review with zero questions asked (test_int_r15_no_minimum_rounds)",
+  "INT-R16": "passed - repeated done from the same reviewer is not a new review; untrusted sources never count (test_int_r16)",
+  "INT-R17": "passed - bounded search that finds nothing records unconfirmed, never absent (test_int_r17)",
+  "INT-R19": "passed - injected instruction text is stored as data; approval and authority are unchanged (test_int_r19)",
+  "INT-R21": "passed - low-impact internal-structure choice is decided under delegation; no user question is created (test_int_r21)",
+  "INT-SCORE": "passed - blockers persist regardless of score (test_int_score_blocker_kept)",
+  "INT-EARLY": "passed - review reached without minimum rounds (test_int_early_zero_questions_review)",
+  "INT-CANCEL": "passed - immediate CANCELLING; late worker results are refused on a cancelled session (test_int_r08_and_int_cancel_immediate)",
+  "INTEG-STATE-DOMAIN": "passed - work completion moves VERIFYING to FINAL_REVIEW while the candidate domain stays promoted (test_integ_state_domain_separation)",
+  "INTEG-PAUSE-RESUME": "passed - resume() has no caller target; the persisted checkpoint decides; terminal checkpoints refuse (test_integ_pause_resume_ignores_caller_target, test_terminal_checkpoint_never_resumes)",
+  "WP07-I01": "passed - 29-state catalog and transitions loaded from the contract document; duplicate explicit rows rejected; explicit beats unique global (test_catalog_has_29_states, test_explicit_beats_global)",
+  "WP07-I02": "passed - guards evaluate typed GuardEvidence only; unknown guard ids raise UNKNOWN_GUARD; absent facts fail closed (test_unknown_guard_is_typed_failure, test_guard_needs_typed_evidence)",
+  "WP07-I03": "passed - reverse-dependency invalidation via affected_closure, checkpoint-bound resume, and CANCELLING can never reach completion events (test_cancelling_never_completes)"
+ },
+ "commands": [
+  {
+   "argv": "uv run --no-sync python -m pytest tests/cyrano_product/test_wp07_product.py -q",
+   "exit": 0,
+   "result": "30 passed"
+  },
+  {
+   "argv": "uv run --no-sync python -m pytest tests/cyrano_product/ -q",
+   "exit": 0,
+   "result": "224 passed"
+  },
+  {
+   "argv": "uv run --no-sync ty check deepagents_code/cyrano/",
+   "exit": 0,
+   "result": "all checks passed"
+  },
+  {
+   "argv": "basedpyright deepagents_code/cyrano/interview/ deepagents_code/cyrano/kernel/",
+   "exit": 1,
+   "result": "0 errors; warnings only (reportAny/reportUnannotatedClassAttribute/reportUnusedParameter for intentionally accepted-but-ignored API params)"
+  },
+  {
+   "argv": "uv run --no-sync ruff check --config cyrano/configs/quality/ruff.toml deepagents_code/cyrano/interview/ deepagents_code/cyrano/kernel/ tests/cyrano_product/test_wp07_product.py",
+   "exit": 0,
+   "result": "clean; pre-existing interview package findings fixed as WP07-owned debt"
+  },
+  {
+   "argv": "uv run --no-sync ruff format --check --config cyrano/configs/quality/ruff.toml <wp07 files>",
+   "exit": 0,
+   "result": "clean after Cyrano-config format applied"
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/dev.py schemas",
+   "exit": 0,
+   "result": "success true"
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/dev.py check",
+   "exit": 0,
+   "result": "green (unit suite + doc freshness)"
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/check_integration.py",
+   "exit": 0,
+   "result": "success true"
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/check_r5.py",
+   "exit": 0,
+   "result": "success true"
+  }
+ ],
+ "errors": [],
+ "blocked": [],
+ "explicit_blocks": [
+  "dev.py quality still exits 1 on pre-existing overlay-wide debt outside WP07-owned files",
+  "BasedPyright warnings remain at warning level; record_observation(subject) and assess_readiness(clarity_score) keep parameters that are intentionally accepted but ignored per INT-R01/INT-R17 semantics"
+ ],
+ "not_established": [
+  "real provider/worker execution (worker_adapter validates bindings; live workers are WP08+)",
+  "guard provenance: GuardEvidence is a typed record but the trusted producers of its facts are wired by the WP06 runtime adapter",
+  "persistent session recovery across process restarts (checkpoint/resume logic verified; durable checkpoint storage belongs to the ledger layer)"
+ ],
+ "review_findings": [
+  "execute_command's WRONG_PURPOSE guard rejects approved:true payloads before service code runs; the INT-R06 test now asserts both layers",
+  "ingest_worker_result refuses results on CANCELLING/CANCELLED sessions so a late worker cannot resurrect work",
+  "pre-existing line-length findings in interview/readiness.py, worker_adapter.py, and __init__.py cleaned as WP07-owned package debt"
+ ],
+ "authority_scope": "interview kernel semantics verified at component level against the real ledger and contract catalog",
+ "next_wp_impact": "WP08 interview roles consume DecisionLog/Statement/worker binding; WP11 memory and WP06 adapter consume SessionMachine + GuardEvidence"
+}

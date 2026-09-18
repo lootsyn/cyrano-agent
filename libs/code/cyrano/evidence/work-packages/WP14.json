@@ -1,0 +1,76 @@
+{
+  "kind": "work_package_completion_evidence",
+  "work_package": "WP14",
+  "title": "Episode·world·replay 정합성",
+  "recorded_by": "implementer (independent post-image review performed)",
+  "success": true,
+  "source_digests": {
+    "deepagents_code/cyrano/improvement/episodes.py": "sha256:bd90a45846922344ba4813a304e5f03914d33b258fa877c70eead7c8d7194863",
+    "deepagents_code/cyrano/improvement/worlds.py": "sha256:46d5e29aaa66222def7c65a6030f2b2ec0fed2d789ead24569bf1db3275850f2",
+    "deepagents_code/cyrano/improvement/replay.py": "sha256:5fd0a57c51abc3007d1f918fca041f69e778dd50bf31bddbc208c29e8fd84df4",
+    "tests/cyrano_product/test_wp14_product.py": "sha256:ba4a3e0acb3366b6e85e23c8122a38f6d7e1297cab4b7e4b0657286e6c21cd18"
+  },
+  "contract_files": [
+    ".agents/work/WP14.ko.md",
+    "docs/design/features/2026-09-16-dream-path-a.ko.md",
+    "contracts/v1/cyrano.schema.json"
+  ],
+  "schema_change": {
+    "kind": "none",
+    "rationale": "replay consumes the existing events/event_blobs/artifacts ledger; no new durable tables required"
+  },
+  "verification": {
+    "targeted_tests": "23 passed (tests/cyrano_product/test_wp14_product.py)",
+    "full_product_suite": "730 passed (tests/cyrano_product/)",
+    "ruff": "0 findings in WP14-owned paths under cyrano/configs/quality/ruff.toml",
+    "ty": "0 errors on improvement/episodes.py, worlds.py, replay.py and test_wp14_product.py",
+    "basedpyright": "0 errors; remaining warnings are the accepted sqlite3-Any/implicit-concat baseline class shared with verified WP09/WP10 files",
+    "dev_check": "dev.py check exit 0 after docs regeneration",
+    "quality_gate": "0 findings in WP14-owned paths; pre-existing baseline debt in other files unchanged"
+  },
+  "architecture": {
+    "episode": "build_episode freezes recorded events into an immutable dependency DAG; duplicate node ids refused; complete requires a terminal event",
+    "world": "build_world seals an episode into a WorldTape bound to an ExecutionSignature; hidden scores live on the tape and never enter the frontier",
+    "public_observation": "frontier projection exposes only progress facts (attempts, error kinds, budget, legal actions); no scores, best branch, or result-revealing ids",
+    "replay": "WorldReplay requires pre-result slot commitment, then open_batch -> settle_step -> close_batch; results cross the barrier only when every step is supported; mismatch classes: signature_mismatch (model/endpoint/runtime/tools), input_mismatch (skill drift or wrong input fingerprint), dependency_not_observed, out_of_support, incomplete, timeout",
+    "trace": "trace_run/failure_attribution navigate the ledger by event_seq cursor with scope denial indistinguishable from absence; deleted payloads are evidence_unavailable; absent terminal failure -> root_cause=unknown with hypotheses separated from observation",
+    "stop": "settle_stop refuses to substitute exploration stop for acceptance/review gates"
+  },
+  "not_established": [
+    "native_dcode_runtime_replay",
+    "real_policy_runner_isolation (process/container boundary; policies run in-process in tests)",
+    "real_model_or_provider_calls",
+    "live_ui_trace_surface (trace navigation verified at API level only)"
+  ],
+  "acceptance_evidence": {
+    "DREAM-RPL-01": "passed - test_dream_rpl_01_same_decision_hidden_scores_not_referenced",
+    "DREAM-RPL-02": "passed - test_dream_rpl_02_legal_action_without_transition_is_out_of_support",
+    "DREAM-RPL-03": "passed - test_dream_rpl_03_unobserved_dependency_blocks_replay",
+    "DREAM-RPL-04": "passed - test_dream_rpl_04_skill_drift_is_input_mismatch",
+    "DREAM-RPL-05": "passed - test_dream_rpl_05_model_drift_is_signature_mismatch_not_new_result",
+    "DREAM-RPL-06": "passed - test_dream_rpl_06_slots_precede_results_no_best_leak + test_uncommitted_action_refused",
+    "DREAM-RPL-07": "passed - test_dream_rpl_07_tape_order_fixed_no_best_sample_selection",
+    "DREAM-RPL-08": "passed - test_dream_rpl_08_full_denominator_and_support_count",
+    "DREAM-RPL-09": "passed - test_dream_rpl_09_each_policy_starts_at_root",
+    "DREAM-RPL-10": "passed - test_dream_rpl_10_external_id_substitution_same_result",
+    "DREAM-RPL-11": "passed - test_dream_rpl_11_missing_terminal_is_incomplete_not_scored",
+    "DREAM-RPL-12": "passed - test_dream_rpl_12_barrier_blocks_select_timeout_explicit",
+    "A-FUTURE": "passed - test_a_future_hidden_permutation_same_action",
+    "A-BATCH": "passed - test_a_batch_partial_support_reveals_nothing",
+    "A-DEPENDENCY": "passed - test_a_dependency_unexecuted_parent_never_guessed",
+    "A-STOP": "passed - test_a_stop_exploration_never_skips_gates",
+    "R3-44-01": "passed - test_r3_44_01_trace_navigates_timeline_to_receipt",
+    "R3-44-02": "passed - test_r3_44_02_foreign_scope_denied_without_leak",
+    "R3-44-03": "passed - test_r3_44_03_event_seq_stable_pagination",
+    "R3-44-04": "passed - test_r3_44_04_deleted_payload_marked_unavailable",
+    "R3-44-05": "passed - test_r3_44_05_lost_worker_root_cause_unknown",
+    "R3-44-06": "passed - test_r3_44_06_distinct_failures_identified"
+  },
+  "review_notes": [
+    "post-image review found and fixed: commit_slots was decorative (now enforced via SLOTS_NOT_COMMITTED before open_batch)",
+    "post-image review found and fixed: world_score trusted a caller-supplied all_supported flag (now derives support from the replay's revealed set)",
+    "post-image review found and fixed: terminal end-marker node counted as a planned action in world_score (now excluded via is_terminal)",
+    "post-image review found and fixed: failure_attribution silently truncated timelines beyond 10000 spans (now pages the full stream)",
+    "post-image review found and fixed: WorldTape.frontier was a dead field (frontier is dynamic via public_observation; field removed)"
+  ]
+}

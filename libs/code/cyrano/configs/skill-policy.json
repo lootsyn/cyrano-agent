@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "source_of_truth": "plugins/cyrano/skills",
+  "source_write_mode": "candidate_only",
+  "catalogue_order": "skill_id_ascending",
+  "load_policy": "metadata_then_body_then_references",
+  "catalogue_pinned_per_epoch": true,
+  "executable_resource_is_code_change": true,
+  "duplicate_skill_ids": "reject",
+  "runtime_projection": "verified_external_CYRANO_home_only",
+  "project_target_installation": "forbidden"
+}

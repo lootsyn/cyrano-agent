@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "status": "design_example_not_measured_optimum",
+  "mode": "standard",
+  "budgets": {
+    "human_questions_soft_limit": 6,
+    "model_calls_hard_limit": 32,
+    "max_parallel_workers": 3,
+    "worker_spawn_depth": 0
+  },
+  "on_budget_exhaustion": "pause_with_unresolved_obligations",
+  "on_explicit_user_stop": "pause_or_cancel_immediately",
+  "readiness": {
+    "scalar_score_can_authorize": false,
+    "minimum_question_rounds": 0,
+    "unresolved_material_conflicts_block": true,
+    "unauthorized_material_assumptions_block": true,
+    "required_review_failure_blocks": true,
+    "defer_requires_owner_trigger_and_stage": true
+  },
+  "review": {
+    "standard_required": [
+      "critic"
+    ],
+    "critical_required": [
+      "critic",
+      "blind_reviewer"
+    ],
+    "review_input_must_match_contract_digest": true
+  },
+  "authority": {
+    "user_events_from_trusted_host_only": true,
+    "worker_approval_fields_rejected": true,
+    "missing_host_attestation": "export_unapproved_draft_only",
+    "execution_authorization_supported_by_interview_v1": false
+  },
+  "capabilities": {
+    "default": [
+      "read_authorized_local_sources"
+    ],
+    "external_research": "requires_explicit_source_scope",
+    "sandbox_probe": "requires_separate_authorization_and_isolation",
+    "production_mutation": "denied",
+    "credential_access": "denied",
+    "commit_push_deploy": "denied"
+  },
+  "diagnostics": {
+    "show_coverage_as_probability": false,
+    "show_critical_unknowns": true,
+    "show_unapproved_assumptions": true
+  }
+}

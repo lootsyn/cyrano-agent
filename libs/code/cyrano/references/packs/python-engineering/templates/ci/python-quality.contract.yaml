@@ -1,0 +1,37 @@
+# This file specifies a CI contract; it is NOT a runnable GitHub workflow.
+schema_version: "1.0"
+required_status_name: quality/final
+candidate_inputs:
+  - repository_identity
+  - candidate_sha
+  - base_sha
+trusted_inputs:
+  - immutable_runner_release_digest
+  - approved_policy_digest
+  - toolchain_lock_digest
+  - suite_digest
+required_phases:
+  - resolve_identity
+  - acquire_trusted_runner
+  - seal_candidate
+  - prepare_locked_environment_in_sandbox
+  - policy_guard
+  - format
+  - lint
+  - type
+  - required_tests
+  - required_review
+  - aggregate
+failure_conditions:
+  - missing_required_phase
+  - skipped_required_phase
+  - stale_candidate
+  - invalid_or_missing_evidence
+  - unauthorized_policy_change
+  - failed_required_check
+security:
+  candidate_receives_write_tokens: false
+  candidate_receives_release_secrets: false
+  execute_untrusted_code_in_privileged_pull_request_target: false
+  trusted_runner_imported_from_candidate: false
+  actions_require_full_commit_sha: true

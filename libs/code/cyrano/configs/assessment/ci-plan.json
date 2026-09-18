@@ -1,0 +1,19 @@
+{
+  "status": "proposed_not_installed",
+  "working_directory": "libs/code",
+  "native_upstream_checks": "use reviewed native Makefile/CI exact commands; reverify WP00",
+  "required_cyrano_jobs": [
+    "source-inventory",
+    "quality",
+    "foundation",
+    "contract",
+    "governed-plan-enforcement",
+    "memory-persistence-application",
+    "before-after-regression",
+    "trace-completeness",
+    "assessment-signature-bindings"
+  ],
+  "missing_credentials": "blocked_not_passed",
+  "branch_protection": "query actual remote required check policy under authorized account; YAML existence is not enforcement",
+  "runtime_default": "no paid calls until approved budget; deterministic and live suites separate"
+}

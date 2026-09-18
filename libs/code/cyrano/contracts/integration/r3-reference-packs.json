@@ -1,0 +1,696 @@
+{
+  "files": [
+    {
+      "path": "references/packs/dcode-analysis/AGENTS.md",
+      "bytes": 21048,
+      "sha256": "7c34103f1bbdcd7ad1d46bf13e0cd259adfc929d70c384956cdb841fd415e139"
+    },
+    {
+      "path": "references/packs/dcode-analysis/CLAUDE.md",
+      "bytes": 123,
+      "sha256": "2b2c0269771fec2189e1b0823a4760ba4ae8a7322852881fcd3a02ebef7b746f"
+    },
+    {
+      "path": "references/packs/dcode-analysis/README.md",
+      "bytes": 3633,
+      "sha256": "ad215bf38fe5e659c8257ab2174978db01be03969ee0a818858cf7ccca161899"
+    },
+    {
+      "path": "references/packs/dcode-analysis/analysis/00-overview.md",
+      "bytes": 14532,
+      "sha256": "325b927e54f72c485590da366c073ac1f2ff1606ee39bb6b209e3e97b6a8e4c0"
+    },
+    {
+      "path": "references/packs/dcode-analysis/analysis/01-boot-client-server.md",
+      "bytes": 42167,
+      "sha256": "3399ce5d7e2b23bb9865e6b0fb285b97f2b5b232878bde739e22085a3e1ee90f"
+    },
+    {
+      "path": "references/packs/dcode-analysis/analysis/02-agent-assembly-sdk-core.md",
+      "bytes": 42904,
+      "sha256": "6149b0eebc08e4f3cfda50ebd1aff751cac65d72f258ff0cfa87a61826deb3f8"
+    },
+    {
+      "path": "references/packs/dcode-analysis/analysis/03-config-models-credentials.md",
+      "bytes": 43121,
+      "sha256": "c93da93d48dfcba4852c3afe647773984a904b66447fad136ff419ce7592e934"
+    },
+    {
+      "path": "references/packs/dcode-analysis/analysis/04-approval-hitl-security.md",
+      "bytes": 42196,
+      "sha256": "66d2926cd3a71b4b16ff71c9b268c8e227ffc7b906a0239e150189479834b5cd"
+    },
+    {
+      "path": "references/packs/dcode-analysis/analysis/05-subagents-goals-rubrics.md",
+      "bytes": 42819,
+      "sha256": "55493c511df20806b3614dd48736e61105fc1467645d2b0915f4235ad7990f0d"
+    },
+    {
+      "path": "references/packs/dcode-analysis/analysis/06-memory-skills.md",
+      "bytes": 39318,
+      "sha256": "13ace4a32a0e25b679876ca08d3d7b79c8e4a849da27e41f314355c81dc64e6b"
+    },
+    {
+      "path": "references/packs/dcode-analysis/analysis/07-mcp-hooks-extensions-plugins.md",
+      "bytes": 41555,
+      "sha256": "16de7659adfff89e312f2830cc71e088f94c04938a07aa7ed6f0e1d05e677493"
+    },
+    {
+      "path": "references/packs/dcode-analysis/analysis/08-sandboxes-execution.md",
+      "bytes": 43177,
+      "sha256": "1de5117b1b463a4a5b693dcf7acb5a77219a279f6e096141d6a2061aece2ceb4"
+    },
+    {
+      "path": "references/packs/dcode-analysis/analysis/09-tui-app-commands-acp.md",
+      "bytes": 40444,
+      "sha256": "5fd47e4d3cb2efa794691796f29e82c1a0ddb8b4909112e1571c00b5fcd39a67"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/code/approval-modes.md",
+      "bytes": 11668,
+      "sha256": "d20f2a9df65821fe7119caeeb7169964f211d36949db3ac17b7c729fb8a3c822"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/code/changelog.md",
+      "bytes": 1469721,
+      "sha256": "3f867276f8e2e320add900406960b3a12a85958b37dd2daafc5253b66f73842d"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/code/cli-reference.md",
+      "bytes": 60266,
+      "sha256": "0975458bdc60fb46c37ec034f32664a191012f5c110844fd0e28a2588bd02e2b"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/code/config-file.md",
+      "bytes": 43330,
+      "sha256": "b8bf29120eb721a8be16691f044901d6d00b4f27d2103bb830bf4375dde22cba"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/code/configuration.md",
+      "bytes": 57046,
+      "sha256": "d758dabf6fb93a04b4bf081a7059260d636877ebc8ff3b76a4edd0070e94750f"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/code/credentials.md",
+      "bytes": 11348,
+      "sha256": "b63052bdd55e55a0e428cb289f01ab8aa2489ae0e6639528fd866c049c28482e"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/code/extensions.md",
+      "bytes": 11142,
+      "sha256": "fef07ab76850b3c0b15debfcb782db19f6794d6921642e354db24fb17f46dbcc"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/code/goals-and-rubrics.md",
+      "bytes": 6667,
+      "sha256": "13d3f31265876ba63be01df15b5aa9b7b602b9befaebd8e90f6720dcded7a16f"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/code/hooks.md",
+      "bytes": 27671,
+      "sha256": "52be74c112c661377dea80c848afcdf0f59d89e6fd067631947342cc36d26145"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/code/mcp-tools.md",
+      "bytes": 29081,
+      "sha256": "2d1b920b12aa73d0c516498e86affb594bee92d5c6548b00c60a967f963a6842"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/code/memory-and-skills.md",
+      "bytes": 9658,
+      "sha256": "da92b12df6eff7c9dd539c9f0e4276a2a2ae2760fdc45a09ff13b36233352e83"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/code/overview.md",
+      "bytes": 3909,
+      "sha256": "19ba3b0b542ad4909ec1d1e3706335fe58124906642aa66447d79e97442d268f"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/code/plugins.md",
+      "bytes": 11762,
+      "sha256": "c544d10506116bffd09362d54ae57f646f7be81125e8f8a76e8b20c4cb30970d"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/code/providers.md",
+      "bytes": 26486,
+      "sha256": "506c1478a16b90b4607a590bef1eb8e9f030796ca10517ff295f14c8eab8277a"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/code/quickstart.md",
+      "bytes": 22282,
+      "sha256": "7a21058466111ad4253b32755eb11814041783c0696b353fe96e6bf238ad9150"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/code/remote-sandboxes.md",
+      "bytes": 18322,
+      "sha256": "a47f8645396cb8435fed2415c3e52d75de2275685e2777dbb9ae4f8bf018cffc"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/code/subagents.md",
+      "bytes": 5093,
+      "sha256": "3d76f4896fde0d3247e764298144fd289b6608f7f6b078bbbc98e1d732efb29d"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/a2a.md",
+      "bytes": 29758,
+      "sha256": "53ecdd9a7696374bf0c204fe1dc15a9f754c05bbb557f1a99783b4abd3d23e59"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/acp.md",
+      "bytes": 9755,
+      "sha256": "133b33468124a4e570709800cab0601c4c09a3a5e890e574a0b91040c0fb263f"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/async-subagents.md",
+      "bytes": 15722,
+      "sha256": "1eb45a1e476284ddb405cb6c92cd0369f09cca297198b65c63cc3dd16224d995"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/backends.md",
+      "bytes": 58266,
+      "sha256": "a8af871473bf29fd51c2e5ee62c29769b1cac452563e0d6c8620913cb5a035cf"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/changelog-js.md",
+      "bytes": 936078,
+      "sha256": "53829fa0acea00eaca3e1dcf4565a6fdbc4800c226e73b83a0fc7e6ca77b4ab1"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/changelog-py.md",
+      "bytes": 965949,
+      "sha256": "6367562afb194653177ada9662da52a9e379e475cdc35df3638dcb039abfcbd8"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/comparison.md",
+      "bytes": 10012,
+      "sha256": "4c0993aa9d5317466b901522aa622ac50ee8081607ac7b094a89c8a1f026b6cd"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/content-builder.md",
+      "bytes": 32257,
+      "sha256": "c4bfe94b318140ebd9409fea621d1674b3289347d8dff48334864adc500baa51"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/context-engineering.md",
+      "bytes": 52532,
+      "sha256": "f50b43490b5c0fcc84158dee611afd189ffb8c466a5f37c0fef82e5a9a55b78f"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/customization.md",
+      "bytes": 157061,
+      "sha256": "61b5de1f193592f3a9bb23fc36498d578f970508108870847c51e214c07bdf2d"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/data-analysis.md",
+      "bytes": 36889,
+      "sha256": "f2f2d30576b489dddb6ca45df829044528c8a7e6bcc8fe6b6a8b14c3097db10c"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/deep-research.md",
+      "bytes": 21202,
+      "sha256": "f10ce9bd0a614044bbc4c9da5ddf06b83d179f01ced596a0903232f7031ef835"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/dynamic-subagents.md",
+      "bytes": 61262,
+      "sha256": "b3bc8a73cf39551d276c38d6d916ce911f852180366d72e837d97de1b8c77ce5"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/event-streaming.md",
+      "bytes": 10674,
+      "sha256": "6fc07634bab718ab2140ca52df247c6815944bc381ba159145b5a90d51aa3a25"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/fault-tolerance.md",
+      "bytes": 15452,
+      "sha256": "3a43b9687b7c0a12376a74ed9dcbc6e290f6845ad2c60404fbb983bba5f60bb3"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/going-to-production.md",
+      "bytes": 49265,
+      "sha256": "ff9a55ef7dabaaba8f50ad77f7272e6d021c09f85e698d03465da5a86943425b"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/human-in-the-loop.md",
+      "bytes": 33723,
+      "sha256": "35924eece086b9734183bc6343d04737f6e4d6515139ae8a5591fcb2b0d421f8"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/interpreters.md",
+      "bytes": 29168,
+      "sha256": "c0572896bdd335432157d2a59de8f0fdb668fab7f32b3663539617ab9b2573ec"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/llms.txt",
+      "bytes": 3569,
+      "sha256": "7f44424040e19eb4900e0523fa6c76f13feed5f54ed6d461d3001bc9feffc88c"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/mcp.md",
+      "bytes": 7497,
+      "sha256": "5f47ca8ba67a14613ce847c6e2d39deade18f5132cdefb996eb9ed90c1a71e96"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/memory.md",
+      "bytes": 27395,
+      "sha256": "c9631c6f227f5bd9e6511e65d52c4642a0cd73644d36eb7ef749485225c684f2"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/models.md",
+      "bytes": 17919,
+      "sha256": "fa055445f7d9aa3304620c0c31296f3a5f31667d791279bb9cfea85feffff6a8"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/multimodal.md",
+      "bytes": 7106,
+      "sha256": "954fcd7c47407ffbdab873ee061466733af259c82f1923c67ea941148370b132"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/openwiki.md",
+      "bytes": 4762,
+      "sha256": "d7d255915b554acf6dfe75769cf08e5988382c640f828daca42d757c54a8e2bf"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/overview.md",
+      "bytes": 79371,
+      "sha256": "c9924cf2817c5297fd5d9822232e482629e71bfc16c6756dc0e474f5c9d7b890"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/permissions.md",
+      "bytes": 13360,
+      "sha256": "2d983db041d5ee787bca1be61581e11bb5895d9b03b8c184b801a081f65605e9"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/profiles.md",
+      "bytes": 13673,
+      "sha256": "42ad1e8b723f0c9ce8d9df06c229f6f70b0f1e61921114cb080d0bd90bb6d49c"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/quickstart.md",
+      "bytes": 19610,
+      "sha256": "d3a0cdf88dac045a6152a0a0ec2dd74ccc9224fd8095e517f31052fa74af04fb"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/rag.md",
+      "bytes": 58348,
+      "sha256": "2584f58bccb4c92a90fe6949b64bab1d1a048c68ea0b4700b10579e3673d7f54"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/retrieval.md",
+      "bytes": 15937,
+      "sha256": "f33be95db74cfb068aabdd3e61e558eea4104d5bdbb1e6658dd775d9e5196175"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/rubric.md",
+      "bytes": 45483,
+      "sha256": "295f6b7fdd3b6c786bf6de81084bdded5efe0e68a222b6dbf3cb7b61c46c6aea"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/sandbox.md",
+      "bytes": 83036,
+      "sha256": "fe3e6e42b0a631f08dd8047ab84aea4c1b7bca597fa8e7a8433c3f3831663de4"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/sandboxes.md",
+      "bytes": 72775,
+      "sha256": "fcc928e8774ef52d02a2845d01b740c9a9655c629cbcdd3c394f8851966c010f"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/skills.md",
+      "bytes": 82049,
+      "sha256": "5f64a7f0e5ca4bed9ca9ecb106ddba58693c9a5297480ba0beb1146a65508977"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/streaming.md",
+      "bytes": 51964,
+      "sha256": "4dbf08f60a08c6d11de9e625703424001247fdcd24f723a4313642742b91fd7a"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/subagent-streaming.md",
+      "bytes": 63638,
+      "sha256": "508fef88c95842777ce29cde1049574991831cc0b57e8fdda7a5ad89a1db4154"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/subagents.md",
+      "bytes": 117051,
+      "sha256": "050dff67790b69751301c98ce5b7ade7c9b95ba6c58fc91e9bc63a1a90102da1"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/todo-list.md",
+      "bytes": 64753,
+      "sha256": "fbd76e9be5080b640df5fe0d2c01a3e75f52b0214ea724372f3b04afc3c95839"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/tools.md",
+      "bytes": 18013,
+      "sha256": "221572f750ee3b5df071d914a31121fd23c92667faacdfd6f7dd175e2f2ac517"
+    },
+    {
+      "path": "references/packs/dcode-analysis/docs_official/sdk/urls.txt",
+      "bytes": 2564,
+      "sha256": "c9f032ca03e04ce316962aa0cbbd92c95f5cdc957ac74a77ec38d2fc94206ba7"
+    },
+    {
+      "path": "references/packs/dcode-analysis/scripts/check_comments_only.py",
+      "bytes": 2624,
+      "sha256": "cea410418ea9920e336e0580402c10e7f9631bd1c3234601cfa563b1cf0fc61a"
+    },
+    {
+      "path": "references/packs/python-engineering/MANIFEST.sha256",
+      "bytes": 7057,
+      "sha256": "340fdc3284d667c61effbde8d6056ed898baad000f6e4c11a9544c9eff314971"
+    },
+    {
+      "path": "references/packs/python-engineering/START_HERE.ko.md",
+      "bytes": 2725,
+      "sha256": "6332fe642e4602fccf589f87bc42b84de8cc05a6d8a3072f3ddf3fa99406f6e2"
+    },
+    {
+      "path": "references/packs/python-engineering/UDH_PYTHON_ENGINEERING_FULL_DESIGN.ko.html",
+      "bytes": 177587,
+      "sha256": "ee114e6db8f55e4113c7f46411c53a701ec1d8ee57f58c0a3eefb869678d2baf"
+    },
+    {
+      "path": "references/packs/python-engineering/UDH_PYTHON_ENGINEERING_FULL_DESIGN.ko.md",
+      "bytes": 142785,
+      "sha256": "b1c0e881ab568ca46bb31c74234442dae3ad0e3467e36d6ce5401e8c3113d66f"
+    },
+    {
+      "path": "references/packs/python-engineering/contracts/__init__.py",
+      "bytes": 61,
+      "sha256": "37c603fe086ac7718360f3ac931c581d4f375fb0fe04bbb43768f19f1217ace2"
+    },
+    {
+      "path": "references/packs/python-engineering/contracts/reference_models.py",
+      "bytes": 9956,
+      "sha256": "f233a85c68dda53c711e317b4fd0de2775d8a34ecb503d6fce5e9e064dd16a73"
+    },
+    {
+      "path": "references/packs/python-engineering/contracts/sql/quality.proposed.sql",
+      "bytes": 1065,
+      "sha256": "3b900e46bfd78ae753f3315086495fbec8c1c6c657d519c729527ad7b4640e72"
+    },
+    {
+      "path": "references/packs/python-engineering/contracts/v1/check-result.schema.json",
+      "bytes": 2582,
+      "sha256": "d1c313ff48a75283981baa9713b6f8b483a0d44437d1915e788d326c4aade94a"
+    },
+    {
+      "path": "references/packs/python-engineering/contracts/v1/completion-requirement.schema.json",
+      "bytes": 2422,
+      "sha256": "bf8ee40223686ce7c3dee43eda840e1a677495bc9ada4d94e42282e58b297ae4"
+    },
+    {
+      "path": "references/packs/python-engineering/contracts/v1/quality-policy.schema.json",
+      "bytes": 2370,
+      "sha256": "ac359dafb1697a3eaa3b410f692617fa9371ba3a218857146f84b682074b1aa9"
+    },
+    {
+      "path": "references/packs/python-engineering/contracts/v1/quality-report.schema.json",
+      "bytes": 5738,
+      "sha256": "f6ee3f1b01e3475bef07de2667529c694090b10736383520710f5b7bb6c2ae22"
+    },
+    {
+      "path": "references/packs/python-engineering/docs/decisions/ADR-PY-001.ko.md",
+      "bytes": 1410,
+      "sha256": "1b9c214d6da2bfcd9aa34c97d9cc19d5d49a332c008bbca148e06df8e251dfb2"
+    },
+    {
+      "path": "references/packs/python-engineering/docs/design/01_SCOPE_AND_DECISIONS.ko.md",
+      "bytes": 5979,
+      "sha256": "40558b909a0a390f4c7dc3d3afee3553ae2afafe4b7833e05a995a65c1a32835"
+    },
+    {
+      "path": "references/packs/python-engineering/docs/design/02_ARCHITECTURE_AND_OWNERSHIP.ko.md",
+      "bytes": 6481,
+      "sha256": "a2b302b4987a82536858b6402e3f842d49adbd7362b962871170e4c68caebe47"
+    },
+    {
+      "path": "references/packs/python-engineering/docs/design/03_PYTHON_POLICY.ko.md",
+      "bytes": 6231,
+      "sha256": "1c2d824c9601071ead9ebafb36adc35b481c0a8145742b7b2c685cca88a2d1b9"
+    },
+    {
+      "path": "references/packs/python-engineering/docs/design/04_AGENT_SKILL_AND_CONTEXT.ko.md",
+      "bytes": 6541,
+      "sha256": "0feb03bbad91ac2b08b2e43dec73e6ed3b973ef2848b73f408ea7ac943a9642f"
+    },
+    {
+      "path": "references/packs/python-engineering/docs/design/05_PLAN_AND_STATE_MACHINE.ko.md",
+      "bytes": 5473,
+      "sha256": "7defbe5212a59dff4b5812940f1f736a61ae403b6956892965f1e3c634ee4d5a"
+    },
+    {
+      "path": "references/packs/python-engineering/docs/design/06_SNAPSHOT_AND_TRUST.ko.md",
+      "bytes": 6981,
+      "sha256": "1fedc8d749ffc41f21e93dd87ab989e9df8270eac80b3688a1fdb4d3e073ebfd"
+    },
+    {
+      "path": "references/packs/python-engineering/docs/design/07_RUNNER_AND_TOOL_ADAPTERS.ko.md",
+      "bytes": 7584,
+      "sha256": "7a1ac5c9d3843bdf47b4a5277f227dc5d960191fc937eb8c5dfbf2ea02d84920"
+    },
+    {
+      "path": "references/packs/python-engineering/docs/design/08_DATA_CONTRACTS_AND_COMPLETION.ko.md",
+      "bytes": 8222,
+      "sha256": "ec0bf9d138b3e8a8899d325b11ab7ee0e7aec4a3bb8cd644e5e02491070b0c55"
+    },
+    {
+      "path": "references/packs/python-engineering/docs/design/09_LEGACY_AND_EXCEPTIONS.ko.md",
+      "bytes": 4683,
+      "sha256": "47d19219e47c38b9b65ce1723581ad53d3b752ac4296dcda3adef20a0d5b121b"
+    },
+    {
+      "path": "references/packs/python-engineering/docs/design/10_DCODE_INTEGRATION.ko.md",
+      "bytes": 6069,
+      "sha256": "138455dd23ae77a846bf8a846e0ad516cbb9aa9b1abe709d4a2fab5fdd498335"
+    },
+    {
+      "path": "references/packs/python-engineering/docs/design/11_CI_SECURITY_AND_OPERATIONS.ko.md",
+      "bytes": 4844,
+      "sha256": "0cf57d3d1a25f891c7d27c53dcc9615291d11c9e185ee77a7890f04c82542ead"
+    },
+    {
+      "path": "references/packs/python-engineering/docs/design/12_OBSERVABILITY_AND_SELF_IMPROVEMENT.ko.md",
+      "bytes": 5537,
+      "sha256": "02c3050a1a22a947c7dca8d2d3f2fedf9fc11adeb6d4e6e2f3e7b4a9cf7cdc06"
+    },
+    {
+      "path": "references/packs/python-engineering/docs/design/13_ACCEPTANCE_TEST_SPEC.ko.md",
+      "bytes": 6662,
+      "sha256": "85c34a6b5a3f75249671779238936ad5a96cb7fbd3558c163df18da7265302b3"
+    },
+    {
+      "path": "references/packs/python-engineering/docs/design/14_SOURCES_AND_VALIDATION.ko.md",
+      "bytes": 4561,
+      "sha256": "118c3fddc75e77ff7ea7b997ea5ccd1a77bd85699a1ef4d6a8b959d473461839"
+    },
+    {
+      "path": "references/packs/python-engineering/docs/design/15_API_STORAGE_ERROR_CONTRACTS.ko.md",
+      "bytes": 8500,
+      "sha256": "69a3b1e56a12f848df28d2629a7b83fb5042c1fd6b8b2822a74afb2ab0249a12"
+    },
+    {
+      "path": "references/packs/python-engineering/docs/development/PY_IMPLEMENTATION_PLAN.ko.md",
+      "bytes": 6743,
+      "sha256": "a1f4e2d31ec86eec2e6fe663a4e12f73ada74996496f990e5615eb7906bf6cf9"
+    },
+    {
+      "path": "references/packs/python-engineering/docs/execution/PY_RUNBOOK.ko.md",
+      "bytes": 4184,
+      "sha256": "656b716d33abf8392fb3792e1ab8b2251bc534205061d5bd3630e701e596165b"
+    },
+    {
+      "path": "references/packs/python-engineering/evidence/kit-validation.json",
+      "bytes": 672,
+      "sha256": "eb32ed00963edd926f1faf9cf9ed0735a632a50545f4d6e3643b7c0045dc486b"
+    },
+    {
+      "path": "references/packs/python-engineering/evidence/kit-validation.stderr.txt",
+      "bytes": 2827,
+      "sha256": "655530d02b402986eb02eb48bf6c88fc9e30d369de4df2b22e745245fcffa244"
+    },
+    {
+      "path": "references/packs/python-engineering/evidence/kit-validation.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "references/packs/python-engineering/fixtures/manifest.json",
+      "bytes": 2670,
+      "sha256": "ae49607f3d0c1da63006135bd80972a229dcf1bf0011b68187f2cb1a6e5d1cba"
+    },
+    {
+      "path": "references/packs/python-engineering/fixtures/negative/absolute-source-root.json",
+      "bytes": 489,
+      "sha256": "6318474575272a4812392d97b65adf6aa991679e5797be9c4774a0dfc01814ce"
+    },
+    {
+      "path": "references/packs/python-engineering/fixtures/negative/baseline-without-comparison.json",
+      "bytes": 4278,
+      "sha256": "a1c9b255d875c3fa134f7736746e12e666cfbc672646d7f35b4560cd2828a372"
+    },
+    {
+      "path": "references/packs/python-engineering/fixtures/negative/boolean-exit-code.json",
+      "bytes": 4268,
+      "sha256": "aada0918a8fcc751549513dacab77049236a38b87829db6fabae89c211d187c6"
+    },
+    {
+      "path": "references/packs/python-engineering/fixtures/negative/duplicate-check.json",
+      "bytes": 4826,
+      "sha256": "42c3e85d0cad8966827909d2bc2d0e04cc8b6ea62f592a0e92cde3284ac7063b"
+    },
+    {
+      "path": "references/packs/python-engineering/fixtures/negative/extra-approval-field.json",
+      "bytes": 4294,
+      "sha256": "58c2a59a43e5ab8dfb6de992e3a174d93a27bf33c30ff1621e1549948bd0e094"
+    },
+    {
+      "path": "references/packs/python-engineering/fixtures/negative/missing-required-declared-pass.json",
+      "bytes": 3728,
+      "sha256": "4c5576086939869ea224a61d12b6cffe9123267a6c81706ac06196355a47719e"
+    },
+    {
+      "path": "references/packs/python-engineering/fixtures/negative/negative-diagnostic-count.json",
+      "bytes": 4266,
+      "sha256": "32369724858a84f3879f143e44040deadc842853d84ab44d66d52a36895983e2"
+    },
+    {
+      "path": "references/packs/python-engineering/fixtures/negative/negative-repair-budget.json",
+      "bytes": 501,
+      "sha256": "cc381493a79650e3fee61aa2f10084ea17a5f538fd02d0196a32dc6c146c059e"
+    },
+    {
+      "path": "references/packs/python-engineering/fixtures/negative/path-traversal.json",
+      "bytes": 490,
+      "sha256": "dfa290600871e73dd275bdc3eded72b7e36c647397321dd726503e8abc688e44"
+    },
+    {
+      "path": "references/packs/python-engineering/fixtures/negative/second-formatter.json",
+      "bytes": 499,
+      "sha256": "b90be29deaf56673de06491ade29708318620da52be55e2c388aa4ae9200cb18"
+    },
+    {
+      "path": "references/packs/python-engineering/fixtures/negative/stale-declared-pass.json",
+      "bytes": 4265,
+      "sha256": "ba5dc5d4afedc0f81a6bf948fb0ab0fc8617b8a12d019fcdc0cc4eb433716d46"
+    },
+    {
+      "path": "references/packs/python-engineering/fixtures/negative/timezone-missing.json",
+      "bytes": 4264,
+      "sha256": "a8a892d502136739260a9acec95c00a997ca2e438683386e8d1f2dbda18a4ab5"
+    },
+    {
+      "path": "references/packs/python-engineering/fixtures/negative/unexecuted-pass.json",
+      "bytes": 4266,
+      "sha256": "a0d9923f24f3d2322bc99d11d6195076fb32b94edc5d4ea0534f2c1a64c2915f"
+    },
+    {
+      "path": "references/packs/python-engineering/fixtures/negative/weak-required-checks.json",
+      "bytes": 427,
+      "sha256": "083066803227d1469886f1e647299d4258aff1b02f45eb7e1e2307c477109adf"
+    },
+    {
+      "path": "references/packs/python-engineering/fixtures/positive/baselined-report.json",
+      "bytes": 4347,
+      "sha256": "3de701be08f4b714791a83caf24e4c09ba6da9ac88560ec7b219e27b2c12e18e"
+    },
+    {
+      "path": "references/packs/python-engineering/fixtures/positive/completion-requirement.json",
+      "bytes": 936,
+      "sha256": "627be46eaa5f622b54c933450d40ca3a931962ce5de74138d25af84341e6031b"
+    },
+    {
+      "path": "references/packs/python-engineering/fixtures/positive/quality-policy.json",
+      "bytes": 500,
+      "sha256": "e6261114fd9de1152d044280255bd269e0c2f21497380f9b7d46af47adb6d456"
+    },
+    {
+      "path": "references/packs/python-engineering/fixtures/positive/quality-report.json",
+      "bytes": 4265,
+      "sha256": "3f04731d751a27f950eacb9e9de2c1aa1df00fd40d66e3bbf6d83172f157bb63"
+    },
+    {
+      "path": "references/packs/python-engineering/handoff/IMPLEMENTATION_REQUEST.ko.md",
+      "bytes": 2700,
+      "sha256": "79f785e7650a2992998da73f0f7cd9f985ee18af15b3ca980f39e1d31ddbc2e8"
+    },
+    {
+      "path": "references/packs/python-engineering/requirements-validation.txt",
+      "bytes": 95,
+      "sha256": "952dcbf63e5eb020c2dba42e5e7654a252397a7984afc0d58283ec57b1713297"
+    },
+    {
+      "path": "references/packs/python-engineering/scripts/validate_kit.py",
+      "bytes": 2072,
+      "sha256": "384dd2c13b5d566b4981a7d2504e1a417bc1e3583b46b21ec03323ae030e6aad"
+    },
+    {
+      "path": "references/packs/python-engineering/templates/agents/python-code-reviewer/AGENTS.md",
+      "bytes": 715,
+      "sha256": "98c248000ebd0812c23418f45c91217b9bc4bac854c896eacc21ae33332550ee"
+    },
+    {
+      "path": "references/packs/python-engineering/templates/agents/python-plan-reviewer/AGENTS.md",
+      "bytes": 719,
+      "sha256": "944e445b3af35cbeec22f6fabde74c410c488c0ec2da72c7f8d6fd07b2e2f61c"
+    },
+    {
+      "path": "references/packs/python-engineering/templates/ci/python-quality.contract.yaml",
+      "bytes": 985,
+      "sha256": "69b0241854be336ab4c101b7cff9b8be9591a1758ad13a5a7a7a96442c47b45d"
+    },
+    {
+      "path": "references/packs/python-engineering/templates/dcode/profile.fragment.toml",
+      "bytes": 212,
+      "sha256": "7b2d51cfe621c8d610458914e6ebae06dd9bf4ded555890b824cf5a09975cf38"
+    },
+    {
+      "path": "references/packs/python-engineering/templates/project/AGENTS.python-section.md",
+      "bytes": 459,
+      "sha256": "4a1172b8da3a28575e70681c821378f66d47e02fd39183082a72452229a151aa"
+    },
+    {
+      "path": "references/packs/python-engineering/templates/project/pyright-target.fragment.toml",
+      "bytes": 308,
+      "sha256": "a34ea94abcfca3d65c05bb80f81103065054618193f9e63faf6eba8a49f86194"
+    },
+    {
+      "path": "references/packs/python-engineering/templates/project/python-quality.fragment.toml",
+      "bytes": 956,
+      "sha256": "20248966e930ff0868fbbfa6a78ebc05841b0654bc964635d4b619131061fa83"
+    },
+    {
+      "path": "references/packs/python-engineering/templates/skills/python-engineering/SKILL.md",
+      "bytes": 4497,
+      "sha256": "ab3646ce39b152d282c3c81d6cfb67bed8239a5aa0f734592bb7376734eee016"
+    },
+    {
+      "path": "references/packs/python-engineering/templates/skills/python-engineering/references/completion.md",
+      "bytes": 686,
+      "sha256": "084b419866827666367e09d5d4c43de83728796cc2fe7e91284a27f5b808b7e1"
+    },
+    {
+      "path": "references/packs/python-engineering/templates/skills/python-engineering/references/legacy.md",
+      "bytes": 593,
+      "sha256": "2c2c2edbc7dfa011e369f7573a0b9b3e246ad579a659a33d838b2e36a4829e62"
+    },
+    {
+      "path": "references/packs/python-engineering/templates/skills/python-engineering/references/policy.md",
+      "bytes": 612,
+      "sha256": "97f64e1e359cbf495ff763907052411a9173347ac133f157d2920e31ed08faee"
+    },
+    {
+      "path": "references/packs/python-engineering/tests/test_contracts.py",
+      "bytes": 8865,
+      "sha256": "25d9e7f1e5953aab99c7384a4aa46d0423d058858f021e4a65f68f5a78dd83ad"
+    },
+    {
+      "path": "references/packs/python-engineering/tests/test_templates.py",
+      "bytes": 2833,
+      "sha256": "bd8fa95796ddb124add5934926ba32c1b061f7fc6974fd518535ec8080a83e86"
+    }
+  ],
+  "reference_only": true,
+  "not_in_auto_skill_discovery": true
+}

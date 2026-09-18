@@ -1,0 +1,171 @@
+{
+  "schema_version": "cyrano.toolchain/1",
+  "recipes": [
+    {
+      "id": "ty",
+      "kind": "python",
+      "package": "ty==0.0.61",
+      "dev": "recommended",
+      "product": "optional_verified_lsp",
+      "license": "MIT",
+      "source_ids": [
+        "S10"
+      ],
+      "version_argv": [
+        "ty",
+        "--version"
+      ],
+      "run_argv": [
+        "ty",
+        "server"
+      ],
+      "requires_build_ack": false,
+      "enabled": false,
+      "installed": false,
+      "installation_scope": "project_private_managed_directory",
+      "resolution_status": "not_resolved_in_delivery",
+      "runtime_verified": false
+    },
+    {
+      "id": "graphify",
+      "kind": "python",
+      "package": "graphifyy==0.9.62",
+      "dev": "optional_code_only",
+      "product": "graph_import_only_no_daemon",
+      "license": "Apache-2.0; inspect LICENSE-MIT and NOTICE",
+      "source_ids": [
+        "S14",
+        "S15"
+      ],
+      "version_argv": [
+        "graphify",
+        "--version"
+      ],
+      "run_argv": [
+        "graphify",
+        "extract",
+        "<snapshot>",
+        "--code-only",
+        "--no-cluster"
+      ],
+      "requires_build_ack": false,
+      "enabled": false,
+      "installed": false,
+      "installation_scope": "project_private_managed_directory",
+      "resolution_status": "not_resolved_in_delivery",
+      "runtime_verified": false
+    },
+    {
+      "id": "qmd",
+      "kind": "npm",
+      "packages": {
+        "@tobilu/qmd": "2.8.3",
+        "typescript": "5.9.3"
+      },
+      "dev": "optional_document_search",
+      "product": "optional_document_retrieval_adapter",
+      "license": "MIT",
+      "source_ids": [
+        "S16",
+        "S17"
+      ],
+      "version_argv": [
+        "qmd",
+        "--version"
+      ],
+      "requires_build_ack": true,
+      "node_requirement": ">=22.12",
+      "enabled": false,
+      "installed": false,
+      "installation_scope": "project_private_managed_directory",
+      "resolution_status": "not_resolved_in_delivery",
+      "runtime_verified": false
+    },
+    {
+      "id": "scip-python",
+      "kind": "npm",
+      "packages": {
+        "@sourcegraph/scip-python": "0.6.6"
+      },
+      "dev": "optional_offline_index",
+      "product": "index_import_only",
+      "license": "MIT",
+      "source_ids": [
+        "S18",
+        "S19"
+      ],
+      "version_argv": [
+        "scip-python",
+        "--version"
+      ],
+      "run_argv": [
+        "scip-python",
+        "index",
+        "<snapshot>",
+        "--project-name=cyrano",
+        "--environment=<environment.json>"
+      ],
+      "requires_build_ack": false,
+      "node_requirement": ">=22.12",
+      "enabled": false,
+      "installed": false,
+      "installation_scope": "project_private_managed_directory",
+      "resolution_status": "not_resolved_in_delivery",
+      "runtime_verified": false
+    },
+    {
+      "id": "serena",
+      "kind": "source_uv",
+      "repository": "https://github.com/oraios/serena.git",
+      "revision": "1bbe53546124c00e4238972f1599a91fbf8c6539",
+      "dev": "optional_explicit_license_ack",
+      "product": "not_distributed_not_default",
+      "license": "GPL-3.0-or-later",
+      "source_ids": [
+        "S12",
+        "S13"
+      ],
+      "version_argv": [
+        "serena",
+        "--help"
+      ],
+      "run_argv": [
+        "serena",
+        "start-mcp-server",
+        "--project",
+        "<snapshot>",
+        "--open-web-dashboard",
+        "false"
+      ],
+      "requires_build_ack": true,
+      "enabled": false,
+      "installed": false,
+      "installation_scope": "project_private_managed_directory",
+      "resolution_status": "not_resolved_in_delivery",
+      "runtime_verified": false
+    }
+  ],
+  "not_installed": [
+    {
+      "id": "knip",
+      "reason": "Python product and docs do not require JS/TS dead-code scanning. Add only to an approved JS/TS work unit; no automatic --fix.",
+      "official_install": "npm install -D knip typescript @types/node",
+      "observed_version": "6.35.1",
+      "source_ids": [
+        "S20",
+        "S21"
+      ]
+    },
+    {
+      "id": "hermes-agent",
+      "reason": "Reference architecture, not another agent loop dependency."
+    }
+  ],
+  "rules": [
+    "No global installs or sudo",
+    "No automatic external API calls or model downloads",
+    "No live project-source edits by semantic tools",
+    "Resolution precedes installation; installed is not runtime_verified",
+    "No automatic hooks, user-home AGENTS changes or shell profiles"
+  ]
+}

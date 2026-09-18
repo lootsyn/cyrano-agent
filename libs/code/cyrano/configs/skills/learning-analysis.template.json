@@ -1,0 +1,46 @@
+{
+  "kind": "skill_manifest",
+  "schema_version": "1.0",
+  "id": "learning-analysis",
+  "version": "0.1.0-dev",
+  "name": "learning-analysis",
+  "description": "업무 episode에서 근거 있는 반복 원인과 반례를 찾고 개선 작업계획을 작성한다.",
+  "entrypoint": "SKILL.md",
+  "content_digest": "sha256:c5e4db6365f1f300aa6d14b753580513c280c61b673a38fde097d31fa2054ece",
+  "resources": [
+    {
+      "path": "references/checklist.md",
+      "digest": "sha256:987b687b825c086e1710924a33ff9a2bf22d1d784151dbf8227f954d9207dfc4",
+      "executable": false
+    },
+    {
+      "path": "assets/output.example.json",
+      "digest": "sha256:8e69d204be5699cbd0fcc84c6b3b8375488256c928614ff65b290b155a36c5aa",
+      "executable": false
+    },
+    {
+      "path": "references/universal-integration.md",
+      "digest": "sha256:0bc1b07745e799167968bb04a38238ed244ac12ce119bba78213b93872379694",
+      "executable": false
+    }
+  ],
+  "allowed_roles": [
+    "learning-analyst"
+  ],
+  "required_tools": [],
+  "scope": {
+    "tenant": "__BIND_TENANT__",
+    "user": "__BIND_USER__",
+    "workspace": "__BIND_WORKSPACE__"
+  },
+  "context_byte_budget": 8192,
+  "activation_tests": [
+    "SKILL-learning-analysis-positive"
+  ],
+  "counterexample_tests": [
+    "SKILL-learning-analysis-negative"
+  ],
+  "release_digest": null,
+  "approval_ref": null,
+  "status": "candidate"
+}

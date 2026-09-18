@@ -1,0 +1,28 @@
+{
+  "kind": "design_kit_validation_only",
+  "created_at": "2026-09-16T04:22:38.628140+00:00",
+  "python": "3.13.5",
+  "dependencies": {
+    "pydantic": "2.13.4",
+    "jsonschema": "4.26.0"
+  },
+  "argv": [
+    "/opt/pyvenv/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-v"
+  ],
+  "exit_code": 0,
+  "status": "PASS",
+  "not_executed": [
+    "Black/Ruff/mypy/Pyright CLI validation",
+    "Actual pytest adapter and test observer",
+    "Native dcode / real model integration",
+    "Governed sandbox and receipt authentication",
+    "CI branch protection or remote repository changes",
+    "Self-improvement performance experiments"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "kind": "executed_readiness_drill",
+  "drill": "key_rotation",
+  "category": "A",
+  "authorization": "isolated_no_external_effects",
+  "external_effects": false,
+  "argv": [
+    "/home/ubuntu/cyrano-agent-devin/libs/code/.venv/bin/python",
+    "drills.py",
+    "key_rotation"
+  ],
+  "status": "passed",
+  "blockers": [],
+  "checks": [
+    {
+      "name": "permit_verifies_under_issuing_root",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "old_permit_rejected_after_rotation",
+      "passed": true,
+      "detail": "INVALID_SIGNATURE"
+    },
+    {
+      "name": "new_permit_verifies_under_new_root",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "revocation_survives_rotation",
+      "passed": true,
+      "detail": "PERMIT_REVOKED"
+    }
+  ],
+  "cleanup": {
+    "path": "/tmp/cyrano-drill-keys-m_8u_hwo",
+    "removed": true
+  },
+  "raw": {
+    "key_material": "ephemeral_in_memory"
+  },
+  "cleanup_verified": true
+}

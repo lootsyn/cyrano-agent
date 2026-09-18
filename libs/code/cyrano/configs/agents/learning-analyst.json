@@ -1,0 +1,25 @@
+{
+  "kind": "agent_role",
+  "schema_version": "1.0",
+  "id": "learning-analyst",
+  "description": "반복 근거를 원인 가설과 학습계획으로 변환",
+  "prompt_path": "plugins/cyrano/agents/learning-analyst.md",
+  "input_schema": "contracts/v1/cyrano.schema.json#/$defs/AgentTask",
+  "output_schema": "contracts/v1/cyrano.schema.json#/$defs/LearningWorkPlan",
+  "skills": [
+    "learning-analysis",
+    "scoped-memory",
+    "memory-curation"
+  ],
+  "allowed_tools": [
+    "cyrano_memory_query",
+    "cyrano_evidence_read",
+    "cyrano_propose_artifact",
+    "cyrano_session_view",
+    "cyrano_memory_read"
+  ],
+  "authority": "proposal_only",
+  "context_epoch_policy": "pinned_per_phase",
+  "read_scope": "development_episodes",
+  "max_delegation_depth": 0
+}

@@ -1,0 +1,242 @@
+{
+  "schema_version": "1.0",
+  "purpose": "binding_digest is separate from full artifact bytes digest",
+  "types": {
+    "LearningWorkPlan": {
+      "subject_fields": [
+        "kind",
+        "schema_version",
+        "id",
+        "scope",
+        "baseline_release_digest",
+        "hypothesis",
+        "alternative_explanations",
+        "evidence_refs",
+        "target_surfaces",
+        "allowed_patch_paths",
+        "expected_effect",
+        "risks",
+        "counterexamples",
+        "evaluation_strategy",
+        "budget",
+        "rollback_release_digest"
+      ],
+      "envelope_fields": [
+        "review_refs",
+        "authorization_ref",
+        "status"
+      ],
+      "version": "1",
+      "algorithm": "CYRANO-C14N-1-SHA256"
+    },
+    "CandidateProposal": {
+      "subject_fields": [
+        "kind",
+        "schema_version",
+        "id",
+        "scope",
+        "parent_release_digest",
+        "artifact_digest",
+        "surface",
+        "hypothesis",
+        "alternative_explanations",
+        "evidence_refs",
+        "patch_paths",
+        "patch_digest",
+        "claimed_effect_class",
+        "learning_work_plan_digest",
+        "expected_effect",
+        "risks",
+        "rollback_release_digest",
+        "requested_scope_expansion",
+        "run_kind",
+        "meta_depth"
+      ],
+      "envelope_fields": [
+        "status"
+      ],
+      "version": "1",
+      "algorithm": "CYRANO-C14N-1-SHA256"
+    },
+    "PlanBundle": {
+      "subject_fields": [
+        "kind",
+        "schema_version",
+        "id",
+        "scope",
+        "contract_digest",
+        "base_snapshot_digest",
+        "work_units"
+      ],
+      "envelope_fields": [
+        "review_refs",
+        "plan_approval_ref",
+        "execution_permit_ref",
+        "status"
+      ],
+      "version": "1",
+      "algorithm": "CYRANO-C14N-1-SHA256"
+    },
+    "ExperimentPlan": {
+      "subject_fields": [
+        "kind",
+        "schema_version",
+        "id",
+        "candidate_digest",
+        "baseline_release_digest",
+        "scope",
+        "route",
+        "development_manifest_digest",
+        "validation_manifest_digest",
+        "sealed_manifest_ref",
+        "family_kind",
+        "minimum_families",
+        "repeats_per_condition",
+        "planned_pairs",
+        "primary_criterion",
+        "secondary_metrics",
+        "mandatory_safety_tests",
+        "budget",
+        "randomization_seed",
+        "baseline_input_digest",
+        "candidate_input_digest",
+        "cache_condition",
+        "feedback_policy"
+      ],
+      "envelope_fields": [
+        "permit_ref",
+        "status"
+      ],
+      "version": "1",
+      "algorithm": "CYRANO-C14N-1-SHA256"
+    },
+    "HarnessRelease": {
+      "subject_fields": [
+        "kind",
+        "schema_version",
+        "id",
+        "scope",
+        "parent_release_digest",
+        "components",
+        "runtime_compatibility_ref",
+        "evaluation_report_refs",
+        "review_refs",
+        "minimum_schema_version",
+        "rollback_target_digest",
+        "activation_boundary"
+      ],
+      "envelope_fields": [
+        "promotion_approval_ref",
+        "signature_ref",
+        "status"
+      ],
+      "version": "1",
+      "algorithm": "CYRANO-C14N-1-SHA256"
+    },
+    "SkillManifest": {
+      "subject_fields": [
+        "kind",
+        "schema_version",
+        "id",
+        "version",
+        "name",
+        "description",
+        "entrypoint",
+        "content_digest",
+        "resources",
+        "allowed_roles",
+        "required_tools",
+        "scope",
+        "context_byte_budget",
+        "activation_tests",
+        "counterexample_tests"
+      ],
+      "envelope_fields": [
+        "release_digest",
+        "approval_ref",
+        "status"
+      ],
+      "version": "1",
+      "algorithm": "CYRANO-C14N-1-SHA256"
+    },
+    "MemoryRecord": {
+      "subject_fields": [
+        "kind",
+        "schema_version",
+        "id",
+        "scope",
+        "memory_kind",
+        "title",
+        "content_digest",
+        "evidence_refs",
+        "valid_from",
+        "valid_until",
+        "depends_on_digests",
+        "valid_when",
+        "counterexamples",
+        "supersedes",
+        "lineage_ids",
+        "version"
+      ],
+      "envelope_fields": [
+        "approval_ref",
+        "status"
+      ],
+      "version": "1",
+      "algorithm": "CYRANO-C14N-1-SHA256"
+    },
+    "InterviewContract": {
+      "subject_fields": [
+        "kind",
+        "schema_version",
+        "id",
+        "scope",
+        "revision",
+        "source_event_ids",
+        "goal",
+        "included",
+        "excluded",
+        "constraints",
+        "decisions",
+        "obligations",
+        "scenarios",
+        "snapshot_digest",
+        "execution_authorized"
+      ],
+      "envelope_fields": [
+        "review_refs",
+        "approval_ref"
+      ],
+      "version": "1",
+      "algorithm": "CYRANO-C14N-1-SHA256"
+    },
+    "EvaluationReport": {
+      "subject_fields": [
+        "kind",
+        "schema_version",
+        "id",
+        "experiment_plan_digest",
+        "candidate_digest",
+        "baseline_release_digest",
+        "route",
+        "actual_pairs",
+        "planned_pairs",
+        "independent_families",
+        "safety_failures",
+        "missing_pairs",
+        "intervals",
+        "replay_supported",
+        "replay_scheduled",
+        "execution_refs",
+        "evaluator_identity",
+        "status",
+        "limitations"
+      ],
+      "envelope_fields": [
+        "signature_ref"
+      ],
+      "version": "1",
+      "algorithm": "CYRANO-C14N-1-SHA256"
+    }
+  }
+}

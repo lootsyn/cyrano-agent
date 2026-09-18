@@ -1,0 +1,27 @@
+{
+  "schema_version": "udh.event/1",
+  "event_id": "event-demo",
+  "event_seq": 1,
+  "event_type": "model.started",
+  "session_id": "session-demo",
+  "workspace_id": "workspace-demo",
+  "run_id": "run-demo",
+  "parent_run_id": null,
+  "task_id": "task-1",
+  "trace_id": "11111111111111111111111111111111",
+  "span_id": "2222222222222222",
+  "parent_span_id": null,
+  "producer": "observer-demo",
+  "producer_seq": 1,
+  "occurred_at": "2026-09-15T07:00:00Z",
+  "ingested_at": "2026-09-15T07:00:00Z",
+  "control_revision": 1,
+  "policy_digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "payload_digest": "sha256:ee340abb6f309121b5d7b00e91280a079136b8d4e25fb182f0dde35c7cda3d6f",
+  "sensitivity": "internal",
+  "source_kind": "runtime_observer",
+  "payload": {
+    "anything": true
+  }
+}

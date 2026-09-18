@@ -1,0 +1,92 @@
+{
+  "as_of": "2026-09-16",
+  "deepseek_harness_commit": "0d1f50007f9bca3f52b06e1c3074fa14d5fb0720",
+  "deepseek_harness_commit_date": "2026-09-15T03:16:06Z",
+  "full_upstream_runtime_audited": false,
+  "sources": [
+    {
+      "id": "S01",
+      "title": "DeepSeek Harness architecture",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/0d1f50007f9bca3f52b06e1c3074fa14d5fb0720/docs/architecture.md",
+      "scope": "plugin/service/provider/consumer, composition, model-visible logs",
+      "status": "reviewed"
+    },
+    {
+      "id": "S02",
+      "title": "DeepSeek Harness Agent Notes",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/0d1f50007f9bca3f52b06e1c3074fa14d5fb0720/.agents/notes/README.md",
+      "scope": "lifecycle/class, proposed/implemented headers, alternatives",
+      "status": "reviewed"
+    },
+    {
+      "id": "S03",
+      "title": "DeepSeek Harness documentation and agent rules",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/0d1f50007f9bca3f52b06e1c3074fa14d5fb0720/docs/AGENTS.md",
+      "scope": "one home per fact, short AGENTS, package README/subsystems/skills",
+      "status": "reviewed"
+    },
+    {
+      "id": "S04",
+      "title": "dcode Python extensions",
+      "url": "https://github.com/langchain-ai/deepagents/blob/main/libs/code/EXTENSIONS.md",
+      "scope": "async factory, supported registrations, rebuild, trust limitations",
+      "status": "reviewed_main_not_installed"
+    },
+    {
+      "id": "S05",
+      "title": "Deep Agents skills",
+      "url": "https://docs.langchain.com/oss/python/deepagents/skills",
+      "scope": "progressive disclosure metadata/body/resources",
+      "status": "reviewed"
+    },
+    {
+      "id": "S06",
+      "title": "LangChain custom middleware",
+      "url": "https://docs.langchain.com/oss/python/langchain/middleware/custom",
+      "scope": "lifecycle/model/tool extension boundaries",
+      "status": "reviewed"
+    },
+    {
+      "id": "S07",
+      "title": "OpenAI prompt caching",
+      "url": "https://developers.openai.com/api/docs/guides/prompt-caching",
+      "scope": "exact prefix and actual usage; not response caching",
+      "status": "reviewed"
+    },
+    {
+      "id": "S08",
+      "title": "Anthropic prompt caching",
+      "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching",
+      "scope": "provider native cache controls, not universal TTL",
+      "status": "reviewed"
+    },
+    {
+      "id": "S09",
+      "title": "OpenRouter prompt caching",
+      "url": "https://openrouter.ai/docs/guides/best-practices/prompt-caching",
+      "scope": "provider routing/cache semantics need actual observation",
+      "status": "reviewed"
+    },
+    {
+      "id": "S10",
+      "title": "DREAM",
+      "url": "https://dream-rsi.com/",
+      "scope": "prior supplied DREAM analysis and replay design; no product effectiveness replication",
+      "status": "supplied_analysis_reference"
+    },
+    {
+      "id": "S11",
+      "title": "dcode package metadata",
+      "url": "https://github.com/langchain-ai/deepagents/blob/main/libs/code/pyproject.toml",
+      "scope": "main observed code0.1.69/deepagents0.7.14/Python>=3.12; not local install",
+      "status": "reviewed_main_not_installed"
+    },
+    {
+      "id": "S12",
+      "title": "PEP8",
+      "url": "https://peps.python.org/pep-0008/",
+      "scope": "Python style reference; formatter alone does not prove all rules",
+      "status": "implementation_reference"
+    }
+  ]
+}

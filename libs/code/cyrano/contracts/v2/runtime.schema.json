@@ -1,0 +1,1222 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cyrano.local/contracts/runtime.schema.json",
+  "title": "Cyrano runtime boundary implementation contracts",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/CapabilityEnvelope"
+    },
+    {
+      "$ref": "#/$defs/NormalizationRecord"
+    },
+    {
+      "$ref": "#/$defs/ContextEpoch"
+    },
+    {
+      "$ref": "#/$defs/CacheObservation"
+    },
+    {
+      "$ref": "#/$defs/WorkflowIR"
+    },
+    {
+      "$ref": "#/$defs/TaskLease"
+    },
+    {
+      "$ref": "#/$defs/RecallHint"
+    },
+    {
+      "$ref": "#/$defs/SkillDelta"
+    },
+    {
+      "$ref": "#/$defs/PatchAnchor"
+    },
+    {
+      "$ref": "#/$defs/DelegationEnvelope"
+    },
+    {
+      "$ref": "#/$defs/EvidenceBundle"
+    }
+  ],
+  "$defs": {
+    "Digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "Id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512
+    },
+    "FeatureEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "feature": {
+          "type": "string",
+          "enum": [
+            "tool_calls",
+            "parallel_tool_calls",
+            "vision",
+            "reasoning_replay",
+            "cache_metrics",
+            "cancel",
+            "context_limit",
+            "output_limit"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "unknown",
+            "declared",
+            "verified_supported",
+            "verified_unsupported"
+          ]
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": [
+                "string",
+                "integer",
+                "boolean"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RuntimeArtifactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "feature",
+        "status",
+        "value",
+        "evidence_ref"
+      ]
+    },
+    "CapabilityEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "proposal.ng.v1"
+        },
+        "runtime_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "provider_api": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "endpoint_identity": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "route_identity": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 512
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "model_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "adapter_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "probe_suite_digest": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Digest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FeatureEvidence"
+          },
+          "minItems": 1,
+          "maxItems": 16
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "expires_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "runtime_digest",
+        "provider_api",
+        "endpoint_identity",
+        "route_identity",
+        "model_id",
+        "adapter_digest",
+        "probe_suite_digest",
+        "features",
+        "observed_at",
+        "expires_at"
+      ]
+    },
+    "NormalizationRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "logical_request_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "attempt_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "context_epoch_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "provider_request_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 512
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "input_ref": {
+          "$ref": "#/$defs/RuntimeArtifactRef"
+        },
+        "output_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RuntimeArtifactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "mapping_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "loss_class": {
+          "type": "string",
+          "enum": [
+            "lossless",
+            "lossy_approved",
+            "unsupported"
+          ]
+        },
+        "synthetic_observation": {
+          "type": "boolean"
+        },
+        "effect_status": {
+          "type": "string",
+          "enum": [
+            "not_started",
+            "succeeded",
+            "failed",
+            "cancelled",
+            "unknown"
+          ]
+        },
+        "error_code": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 512
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "logical_request_id",
+        "attempt_id",
+        "context_epoch_id",
+        "provider_request_id",
+        "input_ref",
+        "output_ref",
+        "mapping_digest",
+        "loss_class",
+        "synthetic_observation",
+        "effect_status",
+        "error_code"
+      ]
+    },
+    "ContextEpoch": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "epoch_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "runtime_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "policy_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "plan_subject_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "tool_inventory_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "memory_release_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "skill_release_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "stable_prefix_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "obligation_manifest": {
+          "$ref": "#/$defs/RuntimeArtifactRef"
+        },
+        "token_measurement": {
+          "type": "string",
+          "enum": [
+            "native_tokenizer",
+            "provider_usage",
+            "estimate",
+            "unknown"
+          ]
+        },
+        "wire_observed": {
+          "type": "boolean"
+        },
+        "scope": {
+          "$ref": "#/$defs/RuntimeScopeBinding"
+        },
+        "generation": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        }
+      },
+      "required": [
+        "epoch_id",
+        "runtime_digest",
+        "policy_digest",
+        "plan_subject_digest",
+        "tool_inventory_digest",
+        "memory_release_digest",
+        "skill_release_digest",
+        "stable_prefix_digest",
+        "obligation_manifest",
+        "token_measurement",
+        "wire_observed",
+        "scope",
+        "generation"
+      ]
+    },
+    "CacheObservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "attempt_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "epoch_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "request_started_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "completed_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "route_identity": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 512
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "prefix_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "cache_read_tokens": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2147483647
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "cache_write_tokens": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2147483647
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "input_tokens": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2147483647
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "accounting_semantics": {
+          "type": "string",
+          "enum": [
+            "inclusive",
+            "exclusive",
+            "provider_specific",
+            "unknown"
+          ]
+        },
+        "ttl_policy_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RuntimeArtifactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ttl_start": {
+          "type": "string",
+          "enum": [
+            "request_start",
+            "provider_explicit",
+            "unknown"
+          ]
+        },
+        "billing_status": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "reported",
+            "reconciled",
+            "unknown"
+          ]
+        }
+      },
+      "required": [
+        "attempt_id",
+        "epoch_id",
+        "request_started_at",
+        "completed_at",
+        "route_identity",
+        "prefix_digest",
+        "cache_read_tokens",
+        "cache_write_tokens",
+        "input_tokens",
+        "accounting_semantics",
+        "ttl_policy_ref",
+        "ttl_start",
+        "billing_status"
+      ]
+    },
+    "WorkflowNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "read",
+            "agent_task",
+            "verify",
+            "human_decision",
+            "join",
+            "apply_candidate"
+          ]
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "minItems": 0,
+          "maxItems": 128
+        },
+        "requirement_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "minItems": 1,
+          "maxItems": 128
+        },
+        "acceptance_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "minItems": 1,
+          "maxItems": 128
+        },
+        "input_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RuntimeArtifactRef"
+          },
+          "minItems": 0,
+          "maxItems": 128
+        },
+        "output_contract_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "scope_ref": {
+          "$ref": "#/$defs/RuntimeArtifactRef"
+        },
+        "resource_claims": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "minItems": 0,
+          "maxItems": 128
+        },
+        "recipe_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 512
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "retry_class": {
+          "type": "string",
+          "enum": [
+            "never",
+            "read_only",
+            "idempotent_proven"
+          ]
+        },
+        "max_attempts": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10
+        },
+        "deadline_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "reserved_cost_microunits": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2147483647
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "compensation_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RuntimeArtifactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "node_id",
+        "kind",
+        "dependencies",
+        "requirement_ids",
+        "acceptance_ids",
+        "input_refs",
+        "output_contract_id",
+        "scope_ref",
+        "resource_claims",
+        "recipe_id",
+        "retry_class",
+        "max_attempts",
+        "deadline_at",
+        "reserved_cost_microunits",
+        "compensation_ref"
+      ]
+    },
+    "WorkflowIR": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "workflow_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "parent_digest": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Digest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "plan_subject_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/WorkflowNode"
+          },
+          "minItems": 1,
+          "maxItems": 200
+        },
+        "max_parallel": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 32
+        },
+        "max_expansions": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        }
+      },
+      "required": [
+        "workflow_id",
+        "revision",
+        "parent_digest",
+        "plan_subject_digest",
+        "nodes",
+        "max_parallel",
+        "max_expansions"
+      ],
+      "description": "Unprivileged compiled proposal. Its digest excludes live permissions, runtime progress and results; the Broker binds the immutable digest to the separate execution permit."
+    },
+    "TaskLease": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "task_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "worker_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "generation": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "fencing_token": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "expires_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "baseline_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "permit_ref": {
+          "$ref": "#/$defs/RuntimeArtifactRef"
+        }
+      },
+      "required": [
+        "task_id",
+        "worker_id",
+        "generation",
+        "fencing_token",
+        "expires_at",
+        "baseline_digest",
+        "permit_ref"
+      ]
+    },
+    "RecallHint": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "hint_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "memory_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "memory_revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "content_ref": {
+          "$ref": "#/$defs/RuntimeArtifactRef"
+        },
+        "factual_hint": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "trigger_event_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "scope": {
+          "$ref": "#/$defs/RuntimeScopeBinding"
+        },
+        "expires_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "candidate_set_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "context_epoch_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "authority": {
+          "const": "advisory"
+        }
+      },
+      "required": [
+        "hint_id",
+        "memory_id",
+        "memory_revision",
+        "content_ref",
+        "factual_hint",
+        "trigger_event_id",
+        "scope",
+        "expires_at",
+        "candidate_set_digest",
+        "context_epoch_id",
+        "authority"
+      ]
+    },
+    "SkillDelta": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "candidate_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "operation": {
+          "type": "string",
+          "enum": [
+            "add",
+            "refine",
+            "deprecate",
+            "merge"
+          ]
+        },
+        "parent_release_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "target_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "minItems": 1,
+          "maxItems": 64
+        },
+        "content_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RuntimeArtifactRef"
+          },
+          "minItems": 1,
+          "maxItems": 64
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RuntimeArtifactRef"
+          },
+          "minItems": 1,
+          "maxItems": 128
+        },
+        "scope": {
+          "$ref": "#/$defs/RuntimeScopeBinding"
+        },
+        "evaluation_suite_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "impact_class": {
+          "type": "string",
+          "enum": [
+            "transition_changing",
+            "protected_change"
+          ]
+        },
+        "rollback_release_digest": {
+          "$ref": "#/$defs/Digest"
+        }
+      },
+      "required": [
+        "candidate_id",
+        "operation",
+        "parent_release_digest",
+        "target_ids",
+        "content_refs",
+        "evidence_refs",
+        "scope",
+        "evaluation_suite_digest",
+        "impact_class",
+        "rollback_release_digest"
+      ]
+    },
+    "PatchAnchor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "source_snapshot_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "file_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "byte_start": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "byte_end": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "expected_content_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "replacement_ref": {
+          "$ref": "#/$defs/RuntimeArtifactRef"
+        },
+        "encoding": {
+          "type": "string",
+          "enum": [
+            "utf-8",
+            "binary_recipe"
+          ]
+        },
+        "newline_policy": {
+          "type": "string",
+          "enum": [
+            "preserve",
+            "explicit_conversion"
+          ]
+        },
+        "permit_ref": {
+          "$ref": "#/$defs/RuntimeArtifactRef"
+        }
+      },
+      "required": [
+        "path",
+        "source_snapshot_digest",
+        "file_digest",
+        "byte_start",
+        "byte_end",
+        "expected_content_digest",
+        "replacement_ref",
+        "encoding",
+        "newline_policy",
+        "permit_ref"
+      ]
+    },
+    "DelegationEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "delegation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "task_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "generation": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "protocol": {
+          "type": "string",
+          "enum": [
+            "acp",
+            "a2a"
+          ]
+        },
+        "protocol_revision": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "peer_identity": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "capability_snapshot": {
+          "$ref": "#/$defs/RuntimeArtifactRef"
+        },
+        "workspace_mapping": {
+          "$ref": "#/$defs/RuntimeArtifactRef"
+        },
+        "input_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RuntimeArtifactRef"
+          },
+          "minItems": 1,
+          "maxItems": 128
+        },
+        "budget_ref": {
+          "$ref": "#/$defs/RuntimeArtifactRef"
+        },
+        "deadline_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "execution_permit_ref": {
+          "$ref": "#/$defs/RuntimeArtifactRef"
+        },
+        "expected_output_contract": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        }
+      },
+      "required": [
+        "delegation_id",
+        "task_id",
+        "generation",
+        "protocol",
+        "protocol_revision",
+        "peer_identity",
+        "capability_snapshot",
+        "workspace_mapping",
+        "input_refs",
+        "budget_ref",
+        "deadline_at",
+        "execution_permit_ref",
+        "expected_output_contract"
+      ]
+    },
+    "EvidenceBundle": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "bundle_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "source_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "candidate_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "runtime_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "policy_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "plan_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "suite_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "release_digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "artifact_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RuntimeArtifactRef"
+          },
+          "minItems": 1,
+          "maxItems": 1024
+        },
+        "executed_case_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "minItems": 0,
+          "maxItems": 4096
+        },
+        "not_executed_case_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "minItems": 0,
+          "maxItems": 4096
+        },
+        "verdict": {
+          "type": "string",
+          "enum": [
+            "passed",
+            "failed",
+            "blocked",
+            "inconclusive",
+            "not_run"
+          ]
+        },
+        "trusted_runner_ref": {
+          "$ref": "#/$defs/RuntimeArtifactRef"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "minItems": 0,
+          "maxItems": 128
+        }
+      },
+      "required": [
+        "bundle_id",
+        "source_digest",
+        "candidate_digest",
+        "runtime_digest",
+        "policy_digest",
+        "plan_digest",
+        "suite_digest",
+        "release_digest",
+        "artifact_refs",
+        "executed_case_ids",
+        "not_executed_case_ids",
+        "verdict",
+        "trusted_runner_ref",
+        "limitations"
+      ]
+    },
+    "RuntimeScopeBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tenant": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "user": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "workspace": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "task": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "acl_revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        }
+      },
+      "required": [
+        "tenant",
+        "user",
+        "workspace",
+        "task",
+        "acl_revision"
+      ],
+      "description": "Trusted scope binding. Project identity uses governance Scope; task and acl_revision are invocation bindings, not another tenant authority."
+    },
+    "RuntimeArtifactRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "artifact_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "digest": {
+          "$ref": "#/$defs/Digest"
+        },
+        "media_type": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "scope": {
+          "$ref": "#/$defs/RuntimeScopeBinding"
+        },
+        "producer_kind": {
+          "type": "string",
+          "enum": [
+            "trusted_runner",
+            "control_plane",
+            "model_proposal",
+            "external_peer"
+          ]
+        },
+        "redacted": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "artifact_id",
+        "digest",
+        "media_type",
+        "size_bytes",
+        "scope",
+        "producer_kind",
+        "redacted"
+      ]
+    }
+  }
+}

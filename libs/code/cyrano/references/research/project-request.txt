@@ -1,0 +1,1614 @@
+# DeepAgents Code 차세대 Coding-Agent Harness 심층 연구·설계·개발계획·실행계획 요청
+
+당신은 이번 작업에서 단순한 기술 조사자나 문서 작성자가 아니다.
+
+당신의 역할은 다음을 모두 수행하는 **Principal AI Agent Architect + Coding-Agent Researcher + Staff Software Engineer + Implementation Planner**이다.
+
+최종 목표는 최신 Coding Agent / Agent Harness 기술을 충분히 조사한 뒤, 현재 우리가 개발 중인 **DeepAgents Code 기반 Coding Assistant**에 실제로 반영할 가치가 있는 기술을 선별하고, 모순 없는 목표 아키텍처와 상세 설계, 개발계획, 실행계획, 검증계획까지 완성한 후 모든 결과물을 ZIP 파일로 패키징하여 사용자가 바로 다운로드할 수 있게 만드는 것이다.
+
+단순 조사 보고서에서 끝내지 마라.
+
+반드시 아래 전체 사이클을 끝까지 완수해야 한다.
+
+---
+
+# 0. 최종 목표
+
+다음 전체 흐름을 완수한다.
+
+```text
+최신 기술 탐색
+    ↓
+실제 구현/소스 검증
+    ↓
+기술별 장단점 분석
+    ↓
+DeepAgents Code 현재 구조 분석
+    ↓
+Gap Analysis
+    ↓
+도입 후보 기술 선정
+    ↓
+채택 / 부분 채택 / 보류 / 제외 결정
+    ↓
+통합 Target Architecture
+    ↓
+상세 설계
+    ↓
+개발 단계 및 구현 순서
+    ↓
+파일/모듈 단위 개발계획
+    ↓
+Migration / Rollout 계획
+    ↓
+테스트 / 검증 / Evidence 계획
+    ↓
+실행 체크리스트
+    ↓
+하위 모델용 구현 Handoff
+    ↓
+최종 자체 리뷰
+    ↓
+ZIP 패키지 생성
+```
+
+최종 결과는 **다른 하위 모델이나 coding agent가 추가 설명 없이 그대로 구현을 시작할 수 있는 수준**이어야 한다.
+
+---
+
+# 1. 매우 중요한 조사 원칙
+
+## 1.1 유명세 기반 후보 선정 금지
+
+GitHub stars, 회사 규모, 검색 노출 순위, 유명 블로그에서 자주 언급되는지 여부를 기준으로 후보를 선정하지 마라.
+
+다음 기준을 우선한다.
+
+1. Architecture novelty
+2. 실제 구현 여부
+3. 최근 개발 활동
+4. Coding-agent harness에 주는 실질적 가치
+5. Model portability
+6. Context engineering
+7. Tool-use reliability
+8. Verification / evidence
+9. Memory / self-improvement
+10. Parallel execution
+11. Agent interoperability
+12. Long-running autonomy
+13. 운영/관측 가능성
+14. 기업 프로젝트에 적용 가능한 안정성
+
+작지만 기술적으로 앞선 프로젝트도 적극적으로 찾아라.
+
+---
+
+## 1.2 단순 웹 검색만으로 판단 금지
+
+README 한 장이나 검색 결과 요약만 읽고 판단하지 마라.
+
+가능한 경우 반드시 다음을 확인한다.
+
+- 공식 repository
+- 최근 release / changelog
+- 실제 source code
+- architecture 문서
+- provider implementation
+- agent loop
+- tool-call handling
+- model compatibility layer
+- skills implementation
+- subagent/team implementation
+- memory implementation
+- context compaction
+- prompt caching
+- LSP / AST / code graph
+- hooks / middleware
+- test suite
+- issues / discussions
+- 실제 알려진 failure mode
+
+문서 주장과 실제 코드 구현이 다르면 **코드를 우선**한다.
+
+---
+
+# 2. 조사 기준일
+
+조사 기준일은 작업 수행 시점의 최신 날짜이다.
+
+특히 2026년 들어 Coding Agent 분야의 변화가 매우 빠르므로:
+
+- 최근 수개월
+- 최근 release
+- 최근 architecture 변화
+- beta/nightly에서 실험 중인 기능
+
+까지 확인하라.
+
+오래된 2024~2025 비교 글을 최신 사실처럼 사용하지 마라.
+
+각 프로젝트에 대해 반드시 다음을 기록한다.
+
+```text
+Repository
+Latest stable release
+Latest development/nightly state
+Last meaningful update
+Maintenance activity
+Production maturity
+Experimental features
+```
+
+---
+
+# 3. 반드시 조사해야 할 1차 후보군
+
+아래 프로젝트는 반드시 개별적으로 조사한다.
+
+## 핵심 연구군
+
+- Hermes Agent
+- gajae-code
+- OMO / oh-my-openagent
+- Senpi
+- Pi
+- Oh My Pi
+- protoCLI
+- protoAgent
+- Open SWE
+- Inception
+- Pactrail
+
+## 주요 Coding Agent / Harness
+
+- OpenCode
+- Cline
+- OpenHands
+- Continue
+- Qwen Code
+- Crush
+- Kilo Code
+- goose
+- Aider
+- mini-SWE-agent
+- Gemini CLI
+- Kiro
+- Amp
+- Cursor
+
+## 추가 탐색
+
+위 목록으로 후보군을 제한하지 마라.
+
+최신 프로젝트 중 다음 조건에 해당하는 것을 추가 탐색하라.
+
+- architecture가 독특함
+- 최신 research idea를 빠르게 구현함
+- 작은 프로젝트지만 코드 수준이 높음
+- model-agnostic harness
+- generated orchestration
+- agent teams
+- durable execution
+- evidence-first agent
+- semantic/code graph 기반 coding
+- context engineering 중심
+- self-learning / self-improving
+- runtime-level prompt cache 관리
+- ACP / A2A 활용
+- agent control plane
+- deterministic workflow execution
+
+새로운 유의미한 프로젝트를 발견하면 반드시 포함한다.
+
+---
+
+# 4. 핵심 연구 질문
+
+각 프로젝트를 단순 기능 목록으로 작성하지 마라.
+
+반드시 다음 질문에 답하라.
+
+## 4.1 Agent Core
+
+- Agent loop는 어떻게 구성되어 있는가?
+- reasoning → tool → observation loop는 일반적인 ReAct와 무엇이 다른가?
+- runtime이 강제하는 invariant가 있는가?
+- 모델에게 맡기는 부분과 deterministic runtime이 담당하는 부분은 무엇인가?
+
+---
+
+## 4.2 Model Portability
+
+특히 중요하다.
+
+우리의 문제의식은:
+
+> Claude Code에 Claude가 아닌 모델을 붙이면 API 자체는 호출되지만 해당 모델의 실제 잠재 성능이 충분히 나오지 않는 경우가 있다.
+
+따라서 각 agent에 대해 다음을 확인한다.
+
+```text
+Provider abstraction
+Protocol abstraction
+Tool-call normalization
+Reasoning normalization
+Message normalization
+Thinking handling
+Role compatibility
+Tool-result compatibility
+Prompt adaptation
+Model capability detection
+Per-model tuning
+Fallback
+Routing
+Multi-model orchestration
+```
+
+특히 다음 모델/계열을 고려한다.
+
+- Claude
+- GPT 계열
+- Gemini
+- Qwen
+- Kimi
+- GLM
+- DeepSeek
+- MiniMax
+- Mistral
+- local models
+- OpenRouter 제공 모델
+
+중요:
+
+모델별로 거대한 별도 prompt를 하드코딩하는 방식이 아니라,
+
+```text
+Common Harness
++
+Capability Normalization
++
+Thin Model-Specific Adaptation
+```
+
+형태가 가능한지 검토한다.
+
+---
+
+# 5. Context Engineering
+
+각 agent가 context를 어떻게 다루는지 상세히 조사한다.
+
+특히:
+
+- context budgeting
+- context pruning
+- compaction
+- summarization
+- active file restoration
+- semantic retrieval
+- repo map
+- code graph
+- symbol index
+- LSP
+- AST
+- Tree-sitter
+- BM25
+- embedding retrieval
+- cheap exploration model
+- expensive implementation model
+- subagent context isolation
+- parent context fork
+- context inheritance
+- context pollution 방지
+
+를 확인한다.
+
+우리 시스템에 적합한 **Context Architecture**를 새로 설계하라.
+
+---
+
+# 6. Prompt Caching / KV Cache Awareness
+
+이 항목은 단순 비용 최적화가 아니다.
+
+다음을 조사한다.
+
+- prompt prefix stability
+- provider별 prompt caching
+- system prompt 변경으로 인한 cache invalidation
+- tool list 변화와 cache
+- skills injection과 cache
+- memory injection과 cache
+- compaction과 cache
+- cache TTL
+- cache-aware scheduling
+- long-running command 중 cache 유지
+- model switch 시 cache 분리
+- subagent cache sharing
+
+Senpi / Hermes 등의 구현을 특히 깊게 조사한다.
+
+그 후 DeepAgents Code용:
+
+```text
+Cache-Stable Prompt Architecture
+Cache Boundary
+Static Prefix
+Dynamic Context
+Skill Loading Policy
+Memory Injection Policy
+Tool Exposure Policy
+TTL-Aware Runtime
+```
+
+를 설계한다.
+
+---
+
+# 7. Planning / Interview / Human-in-the-Loop
+
+현재 우리가 매우 중요하게 보는 영역이다.
+
+다음 후보들을 특히 비교한다.
+
+- gajae deep-interview
+- gajae ralplan
+- OMO hyperplan
+- Kiro spec-driven workflow
+- Open SWE workflow
+- 기타 최신 planning/interview 시스템
+
+우리 목표 workflow는 단순:
+
+```text
+plan → code
+```
+
+가 아니다.
+
+최소한:
+
+```text
+Request
+  ↓
+Ambiguity detection
+  ↓
+Deep Interview
+  ↓
+Requirement normalization
+  ↓
+Constraints
+  ↓
+Acceptance criteria
+  ↓
+Architecture / Design
+  ↓
+Implementation plan
+  ↓
+Independent critique
+  ↓
+Human review
+  ↓
+Approved execution plan
+```
+
+을 고려한다.
+
+Human-in-the-loop가 필요한 지점과 자동화 가능한 지점을 명확히 구분한다.
+
+---
+
+# 8. Dynamic Workflow / Generated Orchestration
+
+Inception과 유사한 접근을 특히 조사한다.
+
+질문:
+
+기존 방식:
+
+```text
+LLM
+ → subagent 호출
+ → 결과 확인
+ → 또 subagent 호출
+```
+
+보다,
+
+```text
+LLM
+ → workflow program 생성
+ → deterministic runtime 실행
+```
+
+방식이 어떤 상황에서 더 좋은가?
+
+다음을 평가한다.
+
+- DAG
+- dynamic DAG
+- generated JavaScript/Python workflow
+- recursion
+- concurrency
+- retry
+- timeout
+- budget
+- dependency
+- failure isolation
+- resumability
+- deterministic execution
+
+DeepAgents Code에:
+
+```text
+Ad-hoc orchestration
++
+Compiled/generated workflow
+```
+
+두 계층을 둘 가치가 있는지 판단하고 설계한다.
+
+---
+
+# 9. Multi-Agent / Agent Teams
+
+단순 subagent 지원 여부만 확인하지 마라.
+
+다음을 구분한다.
+
+```text
+Parent → Child
+
+Supervisor → Workers
+
+Peer Team
+
+Debate / Review Team
+
+Pipeline Agents
+
+Dynamic Team
+
+Long-running Agent Team
+
+External Agent Delegation
+```
+
+그리고 다음을 조사한다.
+
+- shared task board
+- task ownership
+- agent-to-agent message
+- agent mailbox
+- shared memory
+- isolated memory
+- parallel execution
+- conflict detection
+- result aggregation
+- reviewer agent
+- planner agent
+- coding agent
+- test agent
+- research agent
+- security agent
+
+---
+
+# 10. Worktree / Sandbox / Isolation
+
+병렬 agent 작업에서는 반드시 조사한다.
+
+다음을 비교한다.
+
+- git worktree
+- container
+- Docker
+- ephemeral VM
+- E2B
+- Kubernetes sandbox
+- filesystem overlay
+- candidate workspace
+
+목표는:
+
+```text
+Agent A ─ worktree A
+Agent B ─ worktree B
+Agent C ─ worktree C
+```
+
+로 충돌을 최소화하고 최종 merge 단계에서 통합하는 것이다.
+
+branch/worktree lifecycle까지 설계한다.
+
+---
+
+# 11. Code Intelligence
+
+grep/search만으로 coding agent를 만들지 않는다.
+
+다음을 각각 평가한다.
+
+- ripgrep
+- Tree-sitter
+- AST
+- LSP
+- symbol index
+- call graph
+- dependency graph
+- CodeGraph
+- GitNexus류 semantic graph
+- impact analysis
+
+각 기술에 대해:
+
+```text
+장점
+비용
+복잡도
+정확도
+언어 의존성
+fallback
+cache 가능성
+incremental update
+```
+
+를 분석한다.
+
+DeepAgents Code에 어떤 계층을 적용할지 설계한다.
+
+예:
+
+```text
+Level 1: text search
+Level 2: symbol index
+Level 3: LSP
+Level 4: AST
+Level 5: semantic/code graph
+```
+
+---
+
+# 12. Memory
+
+Memory를 하나의 vector DB로 뭉뚱그리지 마라.
+
+최소한 다음으로 나눠 설계한다.
+
+```text
+Session Memory
+Working Memory
+Project Memory
+Semantic Memory
+Episodic Memory
+Procedural Memory
+Skill Memory
+Failure Memory
+Preference Memory
+Architecture Decision Memory
+Review Feedback Memory
+```
+
+다음을 비교한다.
+
+- Hermes
+- OMO Kibitzer
+- protoAgent skill distillation
+- Open SWE review learning
+- 기타 후보
+
+특히 **retrieval pollution을 막는 구조**를 설계한다.
+
+항상 memory를 prompt에 넣지 말고:
+
+```text
+Event
+ ↓
+Memory relevance evaluator
+ ↓
+Relevant only
+ ↓
+Just-in-time recall
+```
+
+같은 구조도 검토한다.
+
+---
+
+# 13. Self-Improving
+
+“agent가 자기 prompt를 바꾼다” 정도로 정의하지 마라.
+
+다음을 각각 분리한다.
+
+```text
+Failure → lesson extraction
+
+Lesson → memory
+
+Repeated lesson → skill candidate
+
+Skill candidate → evaluation
+
+Evaluation → promoted skill
+
+Old skill → decay
+
+Duplicate skill → merge
+
+Bad skill → rollback
+
+Human review feedback → policy improvement
+```
+
+Self-improvement에 반드시 governance를 둔다.
+
+agent가 검증 없이 자기 core prompt를 계속 수정하는 구조는 피한다.
+
+---
+
+# 14. Skills
+
+agentskills.io 계열을 포함해 최신 skill 구조를 비교한다.
+
+Skill은 다음으로 구분한다.
+
+```text
+Knowledge skill
+Procedure skill
+Workflow skill
+Tool skill
+Policy skill
+Domain skill
+Evaluation skill
+```
+
+다음을 설계한다.
+
+- discovery
+- lazy loading
+- scope
+- dependency
+- compatibility
+- version
+- lifecycle
+- test
+- approval
+- deprecation
+- auto-generated skill
+- human-authored skill
+
+---
+
+# 15. MCP / ACP / A2A
+
+각각 역할이 다르므로 구분한다.
+
+```text
+MCP
+→ Agent ↔ Tool / Resource
+
+ACP
+→ Editor / Client ↔ Coding Agent
+
+A2A
+→ Agent ↔ Agent
+```
+
+다음을 검토한다.
+
+- ACP 기반 interchangeable coding workers
+- A2A remote agent
+- MCP scoped tool/skill
+- external agent delegation
+- Codex / Gemini CLI / Claude-compatible agent를 worker로 활용
+
+우리 시스템이 특정 coding agent에 종속되지 않고:
+
+```text
+Orchestrator
+   ↓
+ACP
+   ↓
+Worker Agent
+```
+
+형태가 될 수 있는지 설계한다.
+
+---
+
+# 16. Verification / Evidence
+
+이 항목은 매우 중요하다.
+
+Agent가:
+
+> “완료했습니다.”
+
+라고 말하는 것을 성공 조건으로 인정하지 않는다.
+
+다음을 조사하고 설계한다.
+
+- Pactrail
+- OMO evidence loop
+- Open SWE
+- CI 기반 verification
+- reviewer agents
+- deterministic hooks
+
+완료 조건은 최소한:
+
+```text
+Implementation
+ ↓
+Static checks
+ ↓
+Lint
+ ↓
+Unit tests
+ ↓
+Integration tests
+ ↓
+Type check
+ ↓
+Build
+ ↓
+Optional runtime test
+ ↓
+Diff review
+ ↓
+Acceptance criteria mapping
+ ↓
+Evidence package
+```
+
+이어야 한다.
+
+모든 acceptance criterion이 evidence에 연결되어야 한다.
+
+---
+
+# 17. Hooks / Middleware / Policy Enforcement
+
+LLM에게:
+
+> “테스트를 꼭 해.”
+
+라고 prompt로 말하는 것과,
+
+runtime이:
+
+```text
+AgentStop
+→ test 실패
+→ 종료 불가
+```
+
+를 강제하는 것은 다르다.
+
+다음을 조사한다.
+
+- BeforeAgent
+- AfterAgent
+- BeforeTool
+- AfterTool
+- PreToolUse
+- PostToolUse
+- AgentStop
+- commit hook
+- test gate
+- policy gate
+
+우리는 가능한 중요한 rule을 **prompt가 아니라 deterministic middleware/hook**으로 옮기고 싶다.
+
+어떤 rule을 어디에 놓을지 설계한다.
+
+---
+
+# 18. Monitoring / Observability
+
+Coding Assistant 전체를 관측 가능하게 만들어라.
+
+최소한:
+
+```text
+session
+run
+step
+model call
+tool call
+subagent
+workflow
+token
+cache
+cost
+latency
+retry
+error
+test
+evidence
+memory retrieval
+skill load
+```
+
+을 trace할 수 있어야 한다.
+
+OpenTelemetry 가능성을 검토한다.
+
+필요하면:
+
+- Langfuse
+- Jaeger
+- Tempo
+- 기타 backend
+
+와 연동 가능한 구조를 제안한다.
+
+---
+
+# 19. Long-Running / Durable Execution
+
+긴 작업이 context/session interruption 때문에 망가지지 않게 한다.
+
+다음을 조사한다.
+
+- checkpoints
+- event journal
+- durable goal
+- resume
+- crash recovery
+- task ledger
+- scheduler
+- background jobs
+- reconnect
+- compaction recovery
+
+목표:
+
+```text
+Agent process 종료
+      ↓
+다시 시작
+      ↓
+state 복구
+      ↓
+작업 계속
+```
+
+이 가능해야 한다.
+
+---
+
+# 20. 우리 DeepAgents Code에 대한 적용 판단
+
+각 기술마다 반드시 다음 중 하나를 결정한다.
+
+```text
+ADOPT
+ADAPT
+EXPERIMENT
+DEFER
+REJECT
+```
+
+단순히 “좋아 보인다”라고 쓰지 마라.
+
+각 판단에:
+
+- 이유
+- 기대 효과
+- 구현 비용
+- 복잡도
+- 위험
+- dependency
+- 유지보수 비용
+- fallback
+- 도입 순서
+
+를 작성한다.
+
+---
+
+# 21. 과도한 복잡성 방지
+
+최신 기술이라고 전부 집어넣지 마라.
+
+다음을 반드시 검토한다.
+
+```text
+기능 가치
+vs
+복잡성 증가
+vs
+runtime overhead
+vs
+운영비용
+vs
+유지보수
+```
+
+“기술적으로 멋져서” 도입하지 않는다.
+
+YAGNI 관점도 적용한다.
+
+---
+
+# 22. Target Architecture 작성
+
+최종적으로 DeepAgents Code의 목표 architecture를 작성한다.
+
+최소한 다음 계층을 표현한다.
+
+```text
+User / IDE / CLI
+        │
+        ▼
+Interaction Layer
+        │
+        ▼
+Interview / Requirement Engine
+        │
+        ▼
+Planning / Design Engine
+        │
+        ▼
+Workflow / Orchestration Engine
+        │
+ ┌──────┼─────────┐
+ ▼      ▼         ▼
+Agent  Agent     Agent
+        │
+        ▼
+Model Abstraction Layer
+        │
+        ▼
+Provider Adapters
+
+Cross-cutting:
+
+Context Engine
+Memory Engine
+Skills
+Code Intelligence
+Verification
+Evidence
+Hooks / Policy
+Sandbox / Worktree
+Observability
+Cache Manager
+Durable State
+```
+
+필요하면 더 좋은 구조로 수정한다.
+
+---
+
+# 23. 상세 설계 수준
+
+설계 문서는 “아이디어” 수준이면 안 된다.
+
+하위 모델이 구현할 수 있게 다음을 포함한다.
+
+- package/module 구조
+- 주요 class
+- 주요 interface
+- Pydantic model
+- state schema
+- event schema
+- provider interface
+- hook interface
+- memory interface
+- skill interface
+- workflow interface
+- verification interface
+
+가능하면 Python pseudo-code 또는 interface skeleton까지 작성한다.
+
+예:
+
+```python
+class ModelAdapter(Protocol):
+    def normalize_request(...)
+    def normalize_tools(...)
+    def normalize_response(...)
+    def capabilities(...)
+```
+
+처럼 구현 계약을 명확하게 한다.
+
+---
+
+# 24. Development Plan
+
+개발 계획은 단계별로 나눈다.
+
+예:
+
+```text
+Phase 0
+Baseline measurement
+
+Phase 1
+Model abstraction
+
+Phase 2
+Context engine
+
+Phase 3
+Code intelligence
+
+Phase 4
+Interview / planning
+
+Phase 5
+Workflow engine
+
+Phase 6
+Parallel workers
+
+Phase 7
+Verification
+
+Phase 8
+Memory
+
+Phase 9
+Self-improvement
+
+Phase 10
+Observability
+
+Phase 11
+ACP / A2A
+
+Phase 12
+Production hardening
+```
+
+단, 위 구조를 그대로 복사하지 말고 실제 dependency 분석 후 최적 순서를 도출한다.
+
+---
+
+# 25. 각 Phase에 반드시 포함할 항목
+
+각 개발 Phase마다:
+
+```text
+Goal
+Why now
+Dependencies
+Files/modules
+Interfaces
+Detailed implementation tasks
+Tests
+Acceptance criteria
+Evidence
+Risks
+Rollback
+Done definition
+```
+
+을 작성한다.
+
+---
+
+# 26. 실행계획
+
+개발계획과 실행계획을 구분한다.
+
+실행계획은 coding agent가 실제로 따라갈 수 있는 단위여야 한다.
+
+예:
+
+```text
+Task 3.2
+
+목표:
+Model capability registry 구현
+
+변경 파일:
+src/models/capabilities.py
+src/models/registry.py
+
+신규 테스트:
+tests/models/test_capabilities.py
+
+구현:
+1.
+2.
+3.
+
+검증:
+pytest ...
+ruff ...
+mypy ...
+
+완료 Evidence:
+...
+```
+
+정도로 구체화한다.
+
+---
+
+# 27. Parallelization Plan
+
+동시에 진행 가능한 작업과 불가능한 작업을 분석한다.
+
+예:
+
+```text
+Stream A
+Provider abstraction
+
+Stream B
+Observability
+
+Stream C
+Skill registry
+```
+
+처럼 독립 stream을 정의하고,
+
+```text
+Dependency DAG
+```
+
+를 작성한다.
+
+worktree 기반 parallel execution 계획도 포함한다.
+
+---
+
+# 28. Migration Plan
+
+현재 DeepAgents Code에서 새 구조로 가는 동안 big-bang rewrite를 피한다.
+
+다음을 설계한다.
+
+```text
+Current
+ ↓
+Compatibility layer
+ ↓
+Dual-run
+ ↓
+New architecture
+ ↓
+Old path deprecation
+```
+
+feature flag / adapter / migration 단계도 고려한다.
+
+---
+
+# 29. Benchmark / Evaluation Plan
+
+도입 기술이 실제로 좋아졌는지 검증해야 한다.
+
+최소 다음을 평가한다.
+
+```text
+task success rate
+first-pass success
+tool-call errors
+edit failures
+regressions
+test pass rate
+context usage
+cache hit
+token cost
+latency
+human intervention
+retry count
+completion time
+```
+
+동일 작업을 여러 harness/model 조합에서 비교한다.
+
+예:
+
+```text
+Same task
+Same repository
+Same model
+Different harness
+```
+
+와
+
+```text
+Same task
+Same harness
+Different model
+```
+
+을 각각 분리한다.
+
+---
+
+# 30. 모델별 검증
+
+가능하면 다음 계열을 대상으로 test matrix를 설계한다.
+
+- Claude
+- GPT
+- Gemini
+- Kimi
+- GLM
+- Qwen
+- DeepSeek
+
+목표는 모델 순위를 정하는 것이 아니다.
+
+목표는:
+
+> 각 모델의 성능을 harness가 얼마나 손실 없이 끌어내는가?
+
+이다.
+
+---
+
+# 31. 현재 후보 기술을 그대로 믿지 말 것
+
+이번 요청에 포함된 다음 아이디어도 비판적으로 검토한다.
+
+- OMO Kibitzer memory
+- Hash-Anchored Edit
+- CodeGraph
+- Senpi cache-aware scheduling
+- thin model preset
+- gajae deep interview
+- gajae plan critique
+- protoAgent delegate architecture
+- ACP worker abstraction
+- A2A
+- Inception dynamic workflow
+- Pactrail evidence transaction
+- Open SWE reviewer/analyzer
+- Orin tool retrieval
+- worktree parallelism
+- deterministic hooks
+
+좋은 아이디어라도 우리 환경에는 맞지 않을 수 있다.
+
+---
+
+# 32. 반드시 해야 할 자체 반론 과정
+
+최종 설계를 한 번 작성하고 끝내지 마라.
+
+최소 세 번의 internal review를 수행한다.
+
+## Review 1 — Architecture
+
+- 계층 책임이 겹치는가?
+- 너무 많은 abstraction이 있는가?
+- circular dependency가 있는가?
+- 모델 종속성이 숨어 있는가?
+
+## Review 2 — Implementation
+
+- 실제 구현 가능한가?
+- 하위 모델이 이해할 수 있는가?
+- 누락된 interface가 있는가?
+- 테스트할 수 없는 구조가 있는가?
+
+## Review 3 — Operations
+
+- 장기 실행 가능한가?
+- 디버깅 가능한가?
+- 비용 폭증 가능성은?
+- 실패 시 복구 가능한가?
+- self-improvement가 시스템을 망가뜨릴 수 있는가?
+
+발견된 문제는 문서에 TODO만 남기지 말고 가능한 범위에서 설계를 수정한다.
+
+---
+
+# 33. 최종 산출물 디렉터리
+
+최종 결과는 다음과 유사하게 구성한다.
+
+```text
+deepagents-code-nextgen-research/
+│
+├── START_HERE.ko.md
+│
+├── 01-research/
+│   ├── agent-landscape.md
+│   ├── latest-techniques.md
+│   ├── model-portability.md
+│   ├── context-engineering.md
+│   ├── memory-self-improvement.md
+│   ├── multi-agent-orchestration.md
+│   ├── verification-evidence.md
+│   └── sources.md
+│
+├── 02-evaluation/
+│   ├── comparison-matrix.md
+│   ├── adopt-adapt-reject.md
+│   ├── gap-analysis.md
+│   └── risk-analysis.md
+│
+├── 03-architecture/
+│   ├── target-architecture.md
+│   ├── model-runtime.md
+│   ├── context-engine.md
+│   ├── memory-engine.md
+│   ├── workflow-engine.md
+│   ├── code-intelligence.md
+│   ├── verification-engine.md
+│   ├── observability.md
+│   └── interoperability.md
+│
+├── 04-design/
+│   ├── detailed-design.md
+│   ├── interfaces.md
+│   ├── schemas.md
+│   ├── state-machines.md
+│   └── failure-recovery.md
+│
+├── 05-development/
+│   ├── development-plan.md
+│   ├── dependency-dag.md
+│   ├── parallel-streams.md
+│   ├── migration-plan.md
+│   └── test-plan.md
+│
+├── 06-execution/
+│   ├── EXECUTION_PLAN.md
+│   ├── task-breakdown.md
+│   ├── acceptance-criteria.md
+│   └── evidence-requirements.md
+│
+├── 07-handoff/
+│   ├── IMPLEMENTATION_HANDOFF.md
+│   ├── lower-model-prompt.md
+│   └── reviewer-prompt.md
+│
+└── 08-review/
+    ├── architecture-review.md
+    ├── contradiction-review.md
+    └── final-readiness-review.md
+```
+
+실제 조사 결과에 따라 구조를 개선해도 된다.
+
+---
+
+# 34. START_HERE.ko.md
+
+이 파일은 가장 중요하다.
+
+다른 모델이나 사람이 ZIP을 처음 열었을 때 이것 하나로 다음을 이해할 수 있어야 한다.
+
+1. 왜 이 작업을 했는가
+2. 무엇을 조사했는가
+3. 가장 중요한 발견은 무엇인가
+4. 무엇을 도입하기로 했는가
+5. 무엇을 도입하지 않기로 했는가
+6. 최종 architecture는 무엇인가
+7. 구현 순서는 무엇인가
+8. 어디서부터 개발을 시작해야 하는가
+9. 다른 문서는 어떤 순서로 읽어야 하는가
+
+---
+
+# 35. IMPLEMENTATION_HANDOFF.md
+
+이 문서만 다른 coding agent에게 줘도 개발을 시작할 수 있어야 한다.
+
+반드시 다음을 포함한다.
+
+```text
+Current state
+Target state
+Non-goals
+Architecture constraints
+Implementation order
+Files to create
+Files to modify
+Interfaces
+Data structures
+Tests
+Commands
+Acceptance criteria
+Evidence
+Stop conditions
+```
+
+---
+
+# 36. lower-model-prompt.md
+
+상위 모델보다 성능이 낮은 coding agent에게 구현을 맡겨도 최대한 실패하지 않도록 상세한 프롬프트를 작성한다.
+
+특히 다음을 포함한다.
+
+- 임의 설계 변경 금지
+- 모호하면 existing design 먼저 확인
+- 작은 단계
+- 단계별 test
+- evidence 기록
+- 완료 조건
+- forbidden shortcuts
+
+---
+
+# 37. reviewer-prompt.md
+
+독립 reviewer 모델이 구현 결과를 검토하는 prompt도 작성한다.
+
+reviewer는 구현 agent의 설명을 신뢰하지 않고:
+
+- 실제 diff
+- test
+- evidence
+- architecture compliance
+
+를 기준으로 판단하게 한다.
+
+---
+
+# 38. 연구 내용 표현 방식
+
+특징을 다음처럼 쓰지 마라.
+
+잘못된 예:
+
+```text
+Hermes:
+- memory
+- skills
+- OpenRouter
+```
+
+반드시 설명한다.
+
+예:
+
+```text
+Hermes의 memory 구조는 단순히 과거 대화 일부를 system prompt에
+추가하는 방식이 아니다. 세션과 장기 memory를 분리하며,
+self-learned skill과 결합해 반복적으로 성공한 작업 절차를
+procedural knowledge로 재사용하려는 구조다.
+
+우리 시스템에서는 전체 구현을 그대로 가져오기보다
+episodic memory → skill candidate → 검증 → promotion 부분만
+분리하여 적용하는 것이 적합하다.
+```
+
+즉:
+
+```text
+무엇인가
+어떻게 동작하는가
+왜 중요한가
+장점
+문제점
+우리에게 필요한가
+어떻게 적용할 것인가
+```
+
+까지 설명한다.
+
+---
+
+# 39. 출처
+
+모든 최신 사실은 출처를 남긴다.
+
+가능하면:
+
+- 공식 docs
+- official repository
+- source code
+- changelog
+- release
+- maintainer discussion
+
+을 우선한다.
+
+블로그나 2차 자료는 보조 자료로만 사용한다.
+
+---
+
+# 40. 절대로 하지 말아야 할 것
+
+다음을 금지한다.
+
+- 유명 agent 몇 개만 조사
+- README만 읽고 평가
+- GitHub stars 기반 순위
+- “좋아 보인다” 수준 평가
+- 구현 불가능한 추상 설계
+- 무조건적인 기술 도입
+- 기존 DeepAgents 구조 무시
+- 모델별 거대한 prompt 하드코딩
+- self-improvement를 무검증 자동 prompt 수정으로 구현
+- agent의 자기보고를 verification으로 인정
+- 테스트 없이 완료 선언
+- TODO만 잔뜩 남김
+- 최종 ZIP 없이 종료
+- 다운로드 불가능한 경로만 출력
+
+---
+
+# 41. 작업 진행 원칙
+
+사용자에게 중간 결정을 계속 떠넘기지 마라.
+
+합리적으로 판단 가능한 부분은 직접 결정한다.
+
+정보가 완벽하지 않더라도:
+
+```text
+Assumption
+Evidence
+Decision
+Risk
+```
+
+형태로 명시하고 진행한다.
+
+중간 조사 결과 때문에 최초 가설이 틀렸다면 과감하게 수정한다.
+
+---
+
+# 42. 최종 완료 조건
+
+아래가 전부 충족되어야 작업 완료다.
+
+- 최신 agent landscape 재조사 완료
+- 작은/신규 프로젝트 탐색 완료
+- 실제 source-level 검증 완료
+- DeepAgents Code gap analysis 완료
+- 기술별 ADOPT/ADAPT/EXPERIMENT/DEFER/REJECT 결정 완료
+- target architecture 완료
+- 상세 설계 완료
+- interface/schema 수준 설계 완료
+- 개발계획 완료
+- dependency / parallelization 계획 완료
+- migration 계획 완료
+- 실행계획 완료
+- test/evaluation 계획 완료
+- evidence 전략 완료
+- lower-model implementation handoff 완료
+- independent reviewer prompt 완료
+- architecture contradiction review 완료
+- 최종 readiness review 완료
+
+그리고 마지막으로 반드시:
+
+```text
+deepagents-code-nextgen-research.zip
+```
+
+형태의 ZIP을 생성한다.
+
+ZIP 안에는 모든 조사·설계·개발계획·실행계획·handoff 문서를 포함한다.
+
+실제로 파일을 생성하고 압축한 뒤 **사용자가 클릭하여 다운로드할 수 있는 링크를 최종 응답에 제공하라.**
+
+작업을 문서 내용만 채팅에 출력하고 끝내지 마라.
+
+---
+
+# 43. 마지막 요구
+
+이번 작업의 핵심 질문은:
+
+> “어떤 agent가 가장 좋은가?”
+
+가 아니다.
+
+핵심 질문은:
+
+> “2026년 현재 가장 발전된 Coding-Agent/Harness 기술 중 무엇이 실제로 우리 DeepAgents Code를 더 뛰어난 모델-독립적 Coding Assistant로 만들 수 있으며, 그것을 최소한의 불필요한 복잡성으로 어떻게 통합 구현할 것인가?”
+
+이다.
+
+조사 결과에서 기존 계획보다 더 좋은 구조가 발견되면 기존 설계를 유지하려고 하지 말고 수정하라.
+
+최종 결과는 연구 보고서가 아니라 **실제 차세대 DeepAgents Code 구현을 시작하기 위한 engineering package**여야 한다.

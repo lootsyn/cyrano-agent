@@ -1,0 +1,127 @@
+{
+  "F0": {
+    "description": "Pure input fixture, not a trusted service or signing key. Fake time is explicit; use actual service transport in product tests.",
+    "clock_utc": "2030-01-01T00:00:00Z",
+    "scope": {
+      "tenant": "tenant-1",
+      "user": "human-1",
+      "workspace": "workspace-1"
+    },
+    "actors": {
+      "author": "author-1",
+      "reviewer": "review-1",
+      "human": "human-1",
+      "other": "other-1"
+    },
+    "paths": {
+      "allowed": "src/service.py",
+      "forbidden": "private/sentinel.txt"
+    },
+    "files": {
+      "src/service.py": "def normalize(value: str) -> str:\n    return value.strip()\n",
+      "private/sentinel.txt": "DO_NOT_CHANGE\n"
+    },
+    "task_graph": {
+      "A": [],
+      "B": [
+        "A"
+      ],
+      "C": [
+        "A"
+      ],
+      "D": [
+        "B",
+        "C"
+      ]
+    },
+    "request": {
+      "decision_id": "decision-1",
+      "scope": {
+        "tenant": "tenant-1",
+        "user": "human-1",
+        "workspace": "workspace-1"
+      },
+      "purpose": "plan_approval",
+      "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "request_revision": 1,
+      "nonce": "nonce-1",
+      "expires_at": "2030-01-01T00:10:00Z",
+      "allowed_responses": [
+        "approve",
+        "reject",
+        "defer",
+        "cancel",
+        "request_changes",
+        "ask_question"
+      ],
+      "state": "pending"
+    },
+    "response": {
+      "decision_id": "decision-1",
+      "expected_revision": 1,
+      "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "nonce": "nonce-1",
+      "response": "approve",
+      "comment": "",
+      "amendment_artifact_id": null,
+      "selected_work_unit_ids": [],
+      "client_event_id": "event-1"
+    },
+    "subject": {
+      "subject_id": "subject-1",
+      "plan_id": "plan-1",
+      "revision": 1,
+      "scope": {
+        "tenant": "tenant-1",
+        "user": "human-1",
+        "workspace": "workspace-1"
+      },
+      "review_scopes": [
+        "requirements",
+        "implementation",
+        "testing",
+        "operations"
+      ],
+      "dependency_ids": [],
+      "requirements_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "design_decisions_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "work_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "source_baseline_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "runtime_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "test_plan_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "recovery_recipe_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "budget_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "finding": {
+      "finding_id": "finding-1",
+      "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "reviewer_run_id": "review-1",
+      "author_run_id": "author-1",
+      "requirement_ids": [
+        "R1"
+      ],
+      "work_unit_ids": [
+        "A"
+      ],
+      "evidence_ids": [
+        "ev-1"
+      ],
+      "severity": "blocking",
+      "description": "Missing rollback for the schema change.",
+      "resolution_condition": "Verified recovery recipe and test.",
+      "refutation_condition": "Evidence that no schema change exists.",
+      "state": "open"
+    },
+    "cost_units": {
+      "cap": 100000,
+      "currency": "USD_microunits"
+    },
+    "model_endpoint": "fake_transport_not_network",
+    "expected_sandbox": "dedicated_temporary_root"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "default_authority": "deny",
+  "approval_tokens_in_agent_context": false,
+  "source_writer": "action_broker",
+  "target_repository_writable_mount": false,
+  "shell_readonly_source": true,
+  "scratch_writable": true,
+  "separate_principals_required": true,
+  "network": "deny_unless_permit",
+  "docker_socket_mount": false,
+  "automatic_privilege_escalation": false,
+  "raw_remote_trace_export": false,
+  "immutable_active_release": true,
+  "exact_create_paths_required": true,
+  "only_write_requires_broker_sink": true,
+  "unknown_tool_schema": "deny",
+  "project_auto_execution": "untrusted_require_launch_view_isolation",
+  "policy_source": "configs/broker-policy.json"
+}

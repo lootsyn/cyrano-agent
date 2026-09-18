@@ -1,0 +1,41 @@
+{
+  "kind": "skill_manifest",
+  "schema_version": "1.0",
+  "id": "paired-evaluation-review",
+  "version": "0.1.0-dev",
+  "name": "paired-evaluation-review",
+  "description": "사전 등록된 실험과 실제 실행 증거의 공정성·누수·안전을 검토한다.",
+  "entrypoint": "SKILL.md",
+  "content_digest": "sha256:c3e468ed63b71f8e1c61e8074e6da88e90baf6d10a6aacaeb0e5af5d9d218f64",
+  "resources": [
+    {
+      "path": "references/checklist.md",
+      "digest": "sha256:cef7066bc85d6af57a95af40d14b506ca249bc3c791168d361468dfa53f9ea21",
+      "executable": false
+    },
+    {
+      "path": "assets/output.example.json",
+      "digest": "sha256:8431b0ccacc40f885765fd7ceeac06de2bc55f0b957473e23454a65bb8dbaf05",
+      "executable": false
+    }
+  ],
+  "allowed_roles": [
+    "experiment-reviewer"
+  ],
+  "required_tools": [],
+  "scope": {
+    "tenant": "__BIND_TENANT__",
+    "user": "__BIND_USER__",
+    "workspace": "__BIND_WORKSPACE__"
+  },
+  "context_byte_budget": 8192,
+  "activation_tests": [
+    "SKILL-paired-evaluation-review-positive"
+  ],
+  "counterexample_tests": [
+    "SKILL-paired-evaluation-review-negative"
+  ],
+  "release_digest": null,
+  "approval_ref": null,
+  "status": "candidate"
+}

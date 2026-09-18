@@ -1,0 +1,3027 @@
+{
+  "status": "synthetic_contract_fixtures_not_authority",
+  "cases": [
+    {
+      "id": "GovernedWorkUnit-valid",
+      "schema_type": "GovernedWorkUnit",
+      "valid": true,
+      "payload": {
+        "id": "example",
+        "depends_on": [],
+        "requirement_ids": [
+          "example"
+        ],
+        "acceptance_ids": [
+          "example"
+        ],
+        "read_paths": [],
+        "write_paths": [],
+        "commands": [],
+        "risk": "low",
+        "owner_role": "example",
+        "rollback_recipe": "example",
+        "estimated_budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "objective": "example",
+        "create_paths": [],
+        "delete_paths": [],
+        "only_write_paths": [],
+        "expected_preimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "input_artifact_digests": [],
+        "preconditions": [
+          "example"
+        ],
+        "steps": [
+          {
+            "id": "example",
+            "instruction": "example",
+            "expected_observation": "example"
+          }
+        ],
+        "error_handling": [
+          "example"
+        ],
+        "verification_specs": [
+          {
+            "check_id": "example",
+            "recipe_id": "example",
+            "requirement_ids": [
+              "example"
+            ],
+            "scenario_ids": [
+              "example"
+            ],
+            "required": false,
+            "expected_exit_codes": [
+              0
+            ],
+            "expected_evidence": [
+              "example"
+            ],
+            "test_count_applicable": false
+          }
+        ],
+        "done_when": [
+          "example"
+        ]
+      }
+    },
+    {
+      "id": "GovernedWorkUnit-unknown-field",
+      "schema_type": "GovernedWorkUnit",
+      "valid": false,
+      "payload": {
+        "id": "example",
+        "depends_on": [],
+        "requirement_ids": [
+          "example"
+        ],
+        "acceptance_ids": [
+          "example"
+        ],
+        "read_paths": [],
+        "write_paths": [],
+        "commands": [],
+        "risk": "low",
+        "owner_role": "example",
+        "rollback_recipe": "example",
+        "estimated_budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "objective": "example",
+        "create_paths": [],
+        "delete_paths": [],
+        "only_write_paths": [],
+        "expected_preimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "input_artifact_digests": [],
+        "preconditions": [
+          "example"
+        ],
+        "steps": [
+          {
+            "id": "example",
+            "instruction": "example",
+            "expected_observation": "example"
+          }
+        ],
+        "error_handling": [
+          "example"
+        ],
+        "verification_specs": [
+          {
+            "check_id": "example",
+            "recipe_id": "example",
+            "requirement_ids": [
+              "example"
+            ],
+            "scenario_ids": [
+              "example"
+            ],
+            "required": false,
+            "expected_exit_codes": [
+              0
+            ],
+            "expected_evidence": [
+              "example"
+            ],
+            "test_count_applicable": false
+          }
+        ],
+        "done_when": [
+          "example"
+        ],
+        "unauthorized_extra": true
+      }
+    },
+    {
+      "id": "GovernedWorkPlan-valid",
+      "schema_type": "GovernedWorkPlan",
+      "valid": true,
+      "payload": {
+        "kind": "governed_work_plan",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "contract_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_units": [
+          {
+            "id": "example",
+            "depends_on": [],
+            "requirement_ids": [
+              "example"
+            ],
+            "acceptance_ids": [
+              "example"
+            ],
+            "read_paths": [],
+            "write_paths": [],
+            "commands": [],
+            "risk": "low",
+            "owner_role": "example",
+            "rollback_recipe": "example",
+            "estimated_budget": {
+              "model_calls": 0,
+              "input_tokens": 0,
+              "output_tokens": 0,
+              "tool_calls": 0,
+              "wall_seconds": 0,
+              "cost_limit": "0",
+              "currency": "USD",
+              "unknown_cost_action": "pause"
+            },
+            "objective": "example",
+            "create_paths": [],
+            "delete_paths": [],
+            "only_write_paths": [],
+            "expected_preimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "input_artifact_digests": [],
+            "preconditions": [
+              "example"
+            ],
+            "steps": [
+              {
+                "id": "example",
+                "instruction": "example",
+                "expected_observation": "example"
+              }
+            ],
+            "error_handling": [
+              "example"
+            ],
+            "verification_specs": [
+              {
+                "check_id": "example",
+                "recipe_id": "example",
+                "requirement_ids": [
+                  "example"
+                ],
+                "scenario_ids": [
+                  "example"
+                ],
+                "required": false,
+                "expected_exit_codes": [
+                  0
+                ],
+                "expected_evidence": [
+                  "example"
+                ],
+                "test_count_applicable": false
+              }
+            ],
+            "done_when": [
+              "example"
+            ]
+          }
+        ],
+        "review_refs": [],
+        "plan_approval_ref": "example",
+        "execution_permit_ref": "example",
+        "status": "draft",
+        "session_id": "example",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "delivery_mode": "patch_only",
+        "permission_set": {
+          "root_id": "example",
+          "read": [],
+          "create": [],
+          "write_existing": [],
+          "delete": [],
+          "only_write": [],
+          "deny": [],
+          "recipe_ids": [],
+          "network_allowlist": []
+        },
+        "required_reviews": [
+          "example"
+        ],
+        "unresolved_items": []
+      }
+    },
+    {
+      "id": "GovernedWorkPlan-unknown-field",
+      "schema_type": "GovernedWorkPlan",
+      "valid": false,
+      "payload": {
+        "kind": "governed_work_plan",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "contract_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_units": [
+          {
+            "id": "example",
+            "depends_on": [],
+            "requirement_ids": [
+              "example"
+            ],
+            "acceptance_ids": [
+              "example"
+            ],
+            "read_paths": [],
+            "write_paths": [],
+            "commands": [],
+            "risk": "low",
+            "owner_role": "example",
+            "rollback_recipe": "example",
+            "estimated_budget": {
+              "model_calls": 0,
+              "input_tokens": 0,
+              "output_tokens": 0,
+              "tool_calls": 0,
+              "wall_seconds": 0,
+              "cost_limit": "0",
+              "currency": "USD",
+              "unknown_cost_action": "pause"
+            },
+            "objective": "example",
+            "create_paths": [],
+            "delete_paths": [],
+            "only_write_paths": [],
+            "expected_preimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "input_artifact_digests": [],
+            "preconditions": [
+              "example"
+            ],
+            "steps": [
+              {
+                "id": "example",
+                "instruction": "example",
+                "expected_observation": "example"
+              }
+            ],
+            "error_handling": [
+              "example"
+            ],
+            "verification_specs": [
+              {
+                "check_id": "example",
+                "recipe_id": "example",
+                "requirement_ids": [
+                  "example"
+                ],
+                "scenario_ids": [
+                  "example"
+                ],
+                "required": false,
+                "expected_exit_codes": [
+                  0
+                ],
+                "expected_evidence": [
+                  "example"
+                ],
+                "test_count_applicable": false
+              }
+            ],
+            "done_when": [
+              "example"
+            ]
+          }
+        ],
+        "review_refs": [],
+        "plan_approval_ref": "example",
+        "execution_permit_ref": "example",
+        "status": "draft",
+        "session_id": "example",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "delivery_mode": "patch_only",
+        "permission_set": {
+          "root_id": "example",
+          "read": [],
+          "create": [],
+          "write_existing": [],
+          "delete": [],
+          "only_write": [],
+          "deny": [],
+          "recipe_ids": [],
+          "network_allowlist": []
+        },
+        "required_reviews": [
+          "example"
+        ],
+        "unresolved_items": [],
+        "unauthorized_extra": true
+      }
+    },
+    {
+      "id": "TrustedApprovalReceipt-valid",
+      "schema_type": "TrustedApprovalReceipt",
+      "valid": true,
+      "payload": {
+        "kind": "trusted_approval_receipt",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "actor_id": "example",
+        "user_event_id": "example",
+        "display_event_id": "example",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "action": "approve_spec_for_planning",
+        "bindings": {
+          "contract_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "work_plan_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "release_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "permission_set": {
+          "root_id": "example",
+          "read": [],
+          "create": [],
+          "write_existing": [],
+          "delete": [],
+          "only_write": [],
+          "deny": [],
+          "recipe_ids": [],
+          "network_allowlist": []
+        },
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "issued_at": "2026-09-16T00:00:00Z",
+        "expires_at": "2026-09-16T00:00:00Z",
+        "nonce": "example",
+        "issuer": "example",
+        "attestation": {
+          "algorithm": "Ed25519",
+          "key_id": "example",
+          "canonicalization": "CYRANO-C14N-1",
+          "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      }
+    },
+    {
+      "id": "TrustedApprovalReceipt-unknown-field",
+      "schema_type": "TrustedApprovalReceipt",
+      "valid": false,
+      "payload": {
+        "kind": "trusted_approval_receipt",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "actor_id": "example",
+        "user_event_id": "example",
+        "display_event_id": "example",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "action": "approve_spec_for_planning",
+        "bindings": {
+          "contract_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "work_plan_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "release_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "permission_set": {
+          "root_id": "example",
+          "read": [],
+          "create": [],
+          "write_existing": [],
+          "delete": [],
+          "only_write": [],
+          "deny": [],
+          "recipe_ids": [],
+          "network_allowlist": []
+        },
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "issued_at": "2026-09-16T00:00:00Z",
+        "expires_at": "2026-09-16T00:00:00Z",
+        "nonce": "example",
+        "issuer": "example",
+        "attestation": {
+          "algorithm": "Ed25519",
+          "key_id": "example",
+          "canonicalization": "CYRANO-C14N-1",
+          "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "unauthorized_extra": true
+      }
+    },
+    {
+      "id": "ToolExecutionPermit-valid",
+      "schema_type": "ToolExecutionPermit",
+      "valid": true,
+      "payload": {
+        "kind": "tool_execution_permit",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "run_id": "example",
+        "work_unit_id": "example",
+        "approval_ids": [
+          "example"
+        ],
+        "bindings": {
+          "contract_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "work_plan_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "release_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "permission_set": {
+          "root_id": "example",
+          "read": [],
+          "create": [],
+          "write_existing": [],
+          "delete": [],
+          "only_write": [],
+          "deny": [],
+          "recipe_ids": [],
+          "network_allowlist": []
+        },
+        "action": "read",
+        "tool_inventory_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_epoch": 0,
+        "fencing_token": 0,
+        "sandbox_id": "example",
+        "expected_preimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "max_calls": 1,
+        "max_seconds": 1,
+        "max_output_bytes": 1,
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "issued_at": "2026-09-16T00:00:00Z",
+        "expires_at": "2026-09-16T00:00:00Z",
+        "nonce": "example",
+        "issuer": "example",
+        "attestation": {
+          "algorithm": "Ed25519",
+          "key_id": "example",
+          "canonicalization": "CYRANO-C14N-1",
+          "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      }
+    },
+    {
+      "id": "ToolExecutionPermit-unknown-field",
+      "schema_type": "ToolExecutionPermit",
+      "valid": false,
+      "payload": {
+        "kind": "tool_execution_permit",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "run_id": "example",
+        "work_unit_id": "example",
+        "approval_ids": [
+          "example"
+        ],
+        "bindings": {
+          "contract_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "work_plan_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "release_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "permission_set": {
+          "root_id": "example",
+          "read": [],
+          "create": [],
+          "write_existing": [],
+          "delete": [],
+          "only_write": [],
+          "deny": [],
+          "recipe_ids": [],
+          "network_allowlist": []
+        },
+        "action": "read",
+        "tool_inventory_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_epoch": 0,
+        "fencing_token": 0,
+        "sandbox_id": "example",
+        "expected_preimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "max_calls": 1,
+        "max_seconds": 1,
+        "max_output_bytes": 1,
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "issued_at": "2026-09-16T00:00:00Z",
+        "expires_at": "2026-09-16T00:00:00Z",
+        "nonce": "example",
+        "issuer": "example",
+        "attestation": {
+          "algorithm": "Ed25519",
+          "key_id": "example",
+          "canonicalization": "CYRANO-C14N-1",
+          "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "unauthorized_extra": true
+      }
+    },
+    {
+      "id": "RunnerVerification-valid",
+      "schema_type": "RunnerVerification",
+      "valid": true,
+      "payload": {
+        "kind": "runner_verification",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "work_unit_id": "example",
+        "check_id": "example",
+        "recipe_id": "example",
+        "requirement_ids": [
+          "example"
+        ],
+        "scenario_ids": [
+          "example"
+        ],
+        "postimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runner_identity": "example",
+        "status": "passed",
+        "exit_code": 0,
+        "test_count_applicable": false,
+        "tests_collected": 0,
+        "tests_passed": 0,
+        "tests_failed": 0,
+        "tests_skipped": 0,
+        "started_at": "2026-09-16T00:00:00Z",
+        "finished_at": "2026-09-16T00:01:00Z",
+        "evidence_refs": [
+          {
+            "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "locator": "example",
+            "claim": "example",
+            "observed_at": "2026-09-16T00:00:00Z",
+            "trust": "runner_observed"
+          }
+        ],
+        "reason": "example"
+      }
+    },
+    {
+      "id": "RunnerVerification-unknown-field",
+      "schema_type": "RunnerVerification",
+      "valid": false,
+      "payload": {
+        "kind": "runner_verification",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "work_unit_id": "example",
+        "check_id": "example",
+        "recipe_id": "example",
+        "requirement_ids": [
+          "example"
+        ],
+        "scenario_ids": [
+          "example"
+        ],
+        "postimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runner_identity": "example",
+        "status": "passed",
+        "exit_code": 0,
+        "test_count_applicable": false,
+        "tests_collected": 0,
+        "tests_passed": 0,
+        "tests_failed": 0,
+        "tests_skipped": 0,
+        "started_at": "2026-09-16T00:00:00Z",
+        "finished_at": "2026-09-16T00:01:00Z",
+        "evidence_refs": [
+          {
+            "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "locator": "example",
+            "claim": "example",
+            "observed_at": "2026-09-16T00:00:00Z",
+            "trust": "runner_observed"
+          }
+        ],
+        "reason": "example",
+        "unauthorized_extra": true
+      }
+    },
+    {
+      "id": "ExecutionChangeManifest-valid",
+      "schema_type": "ExecutionChangeManifest",
+      "valid": true,
+      "payload": {
+        "kind": "execution_change_manifest",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "work_unit_id": "example",
+        "permit_id": "example",
+        "preimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "postimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "changes": [
+          {
+            "path": "example",
+            "operation": "modify",
+            "before_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "after_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "unexpected_paths": [],
+        "runner_id": "example",
+        "observed_at": "2026-09-16T00:00:00Z",
+        "apply_status": "not_applied",
+        "journal_ref": "example"
+      }
+    },
+    {
+      "id": "ExecutionChangeManifest-unknown-field",
+      "schema_type": "ExecutionChangeManifest",
+      "valid": false,
+      "payload": {
+        "kind": "execution_change_manifest",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "work_unit_id": "example",
+        "permit_id": "example",
+        "preimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "postimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "changes": [
+          {
+            "path": "example",
+            "operation": "modify",
+            "before_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "after_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "unexpected_paths": [],
+        "runner_id": "example",
+        "observed_at": "2026-09-16T00:00:00Z",
+        "apply_status": "not_applied",
+        "journal_ref": "example",
+        "unauthorized_extra": true
+      }
+    },
+    {
+      "id": "RunCompletionReport-valid",
+      "schema_type": "RunCompletionReport",
+      "valid": true,
+      "payload": {
+        "kind": "run_completion_report",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "state": "CREATED",
+        "assurance": "advisory",
+        "delivery_mode": "patch_only",
+        "source_application_status": "not_requested",
+        "bindings": {
+          "contract_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "work_plan_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "release_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "approval_ids": [],
+        "change_set_ids": [],
+        "verification_ids": [],
+        "review_ids": [],
+        "blockers": [],
+        "audit_gaps": [],
+        "monitoring_gaps": [],
+        "unknown_effects": [],
+        "memory_applied_ids": [],
+        "learning_job_ids": [],
+        "generated_at": "2026-09-16T00:00:00Z",
+        "authority": "trusted_kernel_only"
+      }
+    },
+    {
+      "id": "RunCompletionReport-unknown-field",
+      "schema_type": "RunCompletionReport",
+      "valid": false,
+      "payload": {
+        "kind": "run_completion_report",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "state": "CREATED",
+        "assurance": "advisory",
+        "delivery_mode": "patch_only",
+        "source_application_status": "not_requested",
+        "bindings": {
+          "contract_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "work_plan_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "release_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "approval_ids": [],
+        "change_set_ids": [],
+        "verification_ids": [],
+        "review_ids": [],
+        "blockers": [],
+        "audit_gaps": [],
+        "monitoring_gaps": [],
+        "unknown_effects": [],
+        "memory_applied_ids": [],
+        "learning_job_ids": [],
+        "generated_at": "2026-09-16T00:00:00Z",
+        "authority": "trusted_kernel_only",
+        "unauthorized_extra": true
+      }
+    },
+    {
+      "id": "ResolvedTaskProfile-valid",
+      "schema_type": "ResolvedTaskProfile",
+      "valid": true,
+      "payload": {
+        "kind": "resolved_task_profile",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "phase": "interview",
+        "task_kind": "bugfix",
+        "risk": "low",
+        "permission_set": {
+          "root_id": "example",
+          "read": [],
+          "create": [],
+          "write_existing": [],
+          "delete": [],
+          "only_write": [],
+          "deny": [],
+          "recipe_ids": [],
+          "network_allowlist": []
+        },
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "required_reviews": [
+          "example"
+        ],
+        "required_checks": [
+          "example"
+        ],
+        "source_policy_digests": [
+          "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        ],
+        "context_epoch": 0,
+        "profile_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "resolution_version": "intersection-union-minimum/1"
+      }
+    },
+    {
+      "id": "ResolvedTaskProfile-unknown-field",
+      "schema_type": "ResolvedTaskProfile",
+      "valid": false,
+      "payload": {
+        "kind": "resolved_task_profile",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "phase": "interview",
+        "task_kind": "bugfix",
+        "risk": "low",
+        "permission_set": {
+          "root_id": "example",
+          "read": [],
+          "create": [],
+          "write_existing": [],
+          "delete": [],
+          "only_write": [],
+          "deny": [],
+          "recipe_ids": [],
+          "network_allowlist": []
+        },
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "required_reviews": [
+          "example"
+        ],
+        "required_checks": [
+          "example"
+        ],
+        "source_policy_digests": [
+          "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        ],
+        "context_epoch": 0,
+        "profile_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "resolution_version": "intersection-union-minimum/1",
+        "unauthorized_extra": true
+      }
+    },
+    {
+      "id": "MemoryAccessBinding-valid",
+      "schema_type": "MemoryAccessBinding",
+      "valid": true,
+      "payload": {
+        "kind": "memory_access_binding",
+        "schema_version": "2.0",
+        "id": "example",
+        "memory_id": "example",
+        "memory_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "scope_level": "workspace",
+        "session_id": "example",
+        "task_id": "example",
+        "release_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evidence_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "authority": "observed_fact",
+        "verified_at": "2026-09-16T00:00:00Z",
+        "expires_at": "2026-09-16T00:00:00Z",
+        "required_approval_id": "example",
+        "sensitivity": "public",
+        "status": "candidate"
+      }
+    },
+    {
+      "id": "MemoryAccessBinding-unknown-field",
+      "schema_type": "MemoryAccessBinding",
+      "valid": false,
+      "payload": {
+        "kind": "memory_access_binding",
+        "schema_version": "2.0",
+        "id": "example",
+        "memory_id": "example",
+        "memory_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "scope_level": "workspace",
+        "session_id": "example",
+        "task_id": "example",
+        "release_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evidence_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "authority": "observed_fact",
+        "verified_at": "2026-09-16T00:00:00Z",
+        "expires_at": "2026-09-16T00:00:00Z",
+        "required_approval_id": "example",
+        "sensitivity": "public",
+        "status": "candidate",
+        "unauthorized_extra": true
+      }
+    },
+    {
+      "id": "GovernedEvent-valid",
+      "schema_type": "GovernedEvent",
+      "valid": true,
+      "payload": {
+        "kind": "governed_event",
+        "schema_version": "2.0",
+        "id": "example",
+        "event_type": "session.started",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "run_id": "example",
+        "parent_run_id": "example",
+        "producer": "example",
+        "producer_seq": 0,
+        "event_seq": 0,
+        "occurred_at": "2026-09-16T00:00:00Z",
+        "ingested_at": "2026-09-16T00:00:00Z",
+        "payload_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "payload_ref": "example",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sensitivity": "public",
+        "observation_kind": "trusted_runner",
+        "control_revision": 0,
+        "task_id": "example",
+        "trace_id": "example",
+        "span_id": "example",
+        "parent_span_id": "example",
+        "payload_schema_ref": "example",
+        "required_on_read": false
+      }
+    },
+    {
+      "id": "GovernedEvent-unknown-field",
+      "schema_type": "GovernedEvent",
+      "valid": false,
+      "payload": {
+        "kind": "governed_event",
+        "schema_version": "2.0",
+        "id": "example",
+        "event_type": "session.started",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "run_id": "example",
+        "parent_run_id": "example",
+        "producer": "example",
+        "producer_seq": 0,
+        "event_seq": 0,
+        "occurred_at": "2026-09-16T00:00:00Z",
+        "ingested_at": "2026-09-16T00:00:00Z",
+        "payload_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "payload_ref": "example",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sensitivity": "public",
+        "observation_kind": "trusted_runner",
+        "control_revision": 0,
+        "task_id": "example",
+        "trace_id": "example",
+        "span_id": "example",
+        "parent_span_id": "example",
+        "payload_schema_ref": "example",
+        "required_on_read": false,
+        "unauthorized_extra": true
+      }
+    },
+    {
+      "id": "LearningTriggerObservation-valid",
+      "schema_type": "LearningTriggerObservation",
+      "valid": true,
+      "payload": {
+        "kind": "learning_trigger_observation",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "run_id": "example",
+        "terminal_event_id": "example",
+        "learning_policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_event_ids": [
+          "example"
+        ],
+        "expected_outcome": "example",
+        "actual_outcome": "example",
+        "phase": "example",
+        "intent": "example",
+        "environment_error": false,
+        "user_change": false,
+        "expected_tdd_red": false,
+        "correct_authorization_denial": false,
+        "meta_depth": 0,
+        "classification": "candidate_signal",
+        "authority": "observation_not_active_memory"
+      }
+    },
+    {
+      "id": "LearningTriggerObservation-unknown-field",
+      "schema_type": "LearningTriggerObservation",
+      "valid": false,
+      "payload": {
+        "kind": "learning_trigger_observation",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "run_id": "example",
+        "terminal_event_id": "example",
+        "learning_policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_event_ids": [
+          "example"
+        ],
+        "expected_outcome": "example",
+        "actual_outcome": "example",
+        "phase": "example",
+        "intent": "example",
+        "environment_error": false,
+        "user_change": false,
+        "expected_tdd_red": false,
+        "correct_authorization_denial": false,
+        "meta_depth": 0,
+        "classification": "candidate_signal",
+        "authority": "observation_not_active_memory",
+        "unauthorized_extra": true
+      }
+    },
+    {
+      "id": "CompatibilityProbe-valid",
+      "schema_type": "CompatibilityProbe",
+      "valid": true,
+      "payload": {
+        "kind": "compatibility_probe",
+        "schema_version": "2.0",
+        "id": "example",
+        "probe_id": "example",
+        "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "stage": "bootstrap",
+        "status": "verified",
+        "mandatory_for_governed": false,
+        "evidence_refs": [
+          {
+            "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "locator": "example",
+            "claim": "example",
+            "observed_at": "2026-09-16T00:00:00Z",
+            "trust": "runner_observed"
+          }
+        ],
+        "source_manifest_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "limitations": []
+      }
+    },
+    {
+      "id": "CompatibilityProbe-unknown-field",
+      "schema_type": "CompatibilityProbe",
+      "valid": false,
+      "payload": {
+        "kind": "compatibility_probe",
+        "schema_version": "2.0",
+        "id": "example",
+        "probe_id": "example",
+        "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "stage": "bootstrap",
+        "status": "verified",
+        "mandatory_for_governed": false,
+        "evidence_refs": [],
+        "source_manifest_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "limitations": [],
+        "unauthorized_extra": true
+      }
+    },
+    {
+      "id": "SessionQuery-valid",
+      "schema_type": "SessionQuery",
+      "valid": true,
+      "payload": {
+        "kind": "session_query",
+        "schema_version": "2.0",
+        "session_id": "example",
+        "expected_revision": 0
+      }
+    },
+    {
+      "id": "SessionQuery-unknown-field",
+      "schema_type": "SessionQuery",
+      "valid": false,
+      "payload": {
+        "kind": "session_query",
+        "schema_version": "2.0",
+        "session_id": "example",
+        "expected_revision": 0,
+        "unauthorized_extra": true
+      }
+    },
+    {
+      "id": "NextActionRequest-valid",
+      "schema_type": "NextActionRequest",
+      "valid": true,
+      "payload": {
+        "kind": "next_action_request",
+        "schema_version": "2.0",
+        "session_id": "example",
+        "expected_revision": 0,
+        "input_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "id": "NextActionRequest-unknown-field",
+      "schema_type": "NextActionRequest",
+      "valid": false,
+      "payload": {
+        "kind": "next_action_request",
+        "schema_version": "2.0",
+        "session_id": "example",
+        "expected_revision": 0,
+        "input_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "unauthorized_extra": true
+      }
+    },
+    {
+      "id": "ApprovalRequest-valid",
+      "schema_type": "ApprovalRequest",
+      "valid": true,
+      "payload": {
+        "kind": "approval_request",
+        "schema_version": "2.0",
+        "session_id": "example",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "requested_action": "approve_spec_for_planning",
+        "display_manifest_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "authority": "request_only"
+      }
+    },
+    {
+      "id": "ApprovalRequest-unknown-field",
+      "schema_type": "ApprovalRequest",
+      "valid": false,
+      "payload": {
+        "kind": "approval_request",
+        "schema_version": "2.0",
+        "session_id": "example",
+        "subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "requested_action": "approve_spec_for_planning",
+        "display_manifest_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "authority": "request_only",
+        "unauthorized_extra": true
+      }
+    },
+    {
+      "id": "MemoryReadRequest-valid",
+      "schema_type": "MemoryReadRequest",
+      "valid": true,
+      "payload": {
+        "kind": "memory_read_request",
+        "schema_version": "2.0",
+        "memory_id": "example",
+        "memory_access_binding_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "memory_view_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "max_bytes": 1
+      }
+    },
+    {
+      "id": "MemoryReadRequest-unknown-field",
+      "schema_type": "MemoryReadRequest",
+      "valid": false,
+      "payload": {
+        "kind": "memory_read_request",
+        "schema_version": "2.0",
+        "memory_id": "example",
+        "memory_access_binding_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "memory_view_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "max_bytes": 1,
+        "unauthorized_extra": true
+      }
+    },
+    {
+      "id": "SessionLifecycleRequest-valid",
+      "schema_type": "SessionLifecycleRequest",
+      "valid": true,
+      "payload": {
+        "kind": "session_lifecycle_request",
+        "schema_version": "2.0",
+        "session_id": "example",
+        "action": "pause",
+        "expected_revision": 0,
+        "reason": "example"
+      }
+    },
+    {
+      "id": "SessionLifecycleRequest-unknown-field",
+      "schema_type": "SessionLifecycleRequest",
+      "valid": false,
+      "payload": {
+        "kind": "session_lifecycle_request",
+        "schema_version": "2.0",
+        "session_id": "example",
+        "action": "pause",
+        "expected_revision": 0,
+        "reason": "example",
+        "unauthorized_extra": true
+      }
+    },
+    {
+      "id": "TrustedUserEvent-valid",
+      "schema_type": "TrustedUserEvent",
+      "valid": true,
+      "payload": {
+        "kind": "trusted_user_event",
+        "schema_version": "2.0",
+        "id": "example",
+        "session_id": "example",
+        "source_channel": "authenticated_host",
+        "raw_content_ref": "example",
+        "raw_content_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_event_id": "example",
+        "received_at": "2026-09-16T00:00:00Z"
+      }
+    },
+    {
+      "id": "TrustedUserEvent-unknown-field",
+      "schema_type": "TrustedUserEvent",
+      "valid": false,
+      "payload": {
+        "kind": "trusted_user_event",
+        "schema_version": "2.0",
+        "id": "example",
+        "session_id": "example",
+        "source_channel": "authenticated_host",
+        "raw_content_ref": "example",
+        "raw_content_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "display_event_id": "example",
+        "received_at": "2026-09-16T00:00:00Z",
+        "unauthorized_extra": true
+      }
+    },
+    {
+      "id": "GovernedWorkPlan-no-delivery",
+      "schema_type": "GovernedWorkPlan",
+      "valid": false,
+      "payload": {
+        "kind": "governed_work_plan",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "contract_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_units": [
+          {
+            "id": "example",
+            "depends_on": [],
+            "requirement_ids": [
+              "example"
+            ],
+            "acceptance_ids": [
+              "example"
+            ],
+            "read_paths": [],
+            "write_paths": [],
+            "commands": [],
+            "risk": "low",
+            "owner_role": "example",
+            "rollback_recipe": "example",
+            "estimated_budget": {
+              "model_calls": 0,
+              "input_tokens": 0,
+              "output_tokens": 0,
+              "tool_calls": 0,
+              "wall_seconds": 0,
+              "cost_limit": "0",
+              "currency": "USD",
+              "unknown_cost_action": "pause"
+            },
+            "objective": "example",
+            "create_paths": [],
+            "delete_paths": [],
+            "only_write_paths": [],
+            "expected_preimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "input_artifact_digests": [],
+            "preconditions": [
+              "example"
+            ],
+            "steps": [
+              {
+                "id": "example",
+                "instruction": "example",
+                "expected_observation": "example"
+              }
+            ],
+            "error_handling": [
+              "example"
+            ],
+            "verification_specs": [
+              {
+                "check_id": "example",
+                "recipe_id": "example",
+                "requirement_ids": [
+                  "example"
+                ],
+                "scenario_ids": [
+                  "example"
+                ],
+                "required": false,
+                "expected_exit_codes": [
+                  0
+                ],
+                "expected_evidence": [
+                  "example"
+                ],
+                "test_count_applicable": false
+              }
+            ],
+            "done_when": [
+              "example"
+            ]
+          }
+        ],
+        "review_refs": [],
+        "plan_approval_ref": "example",
+        "execution_permit_ref": "example",
+        "status": "draft",
+        "session_id": "example",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "permission_set": {
+          "root_id": "example",
+          "read": [],
+          "create": [],
+          "write_existing": [],
+          "delete": [],
+          "only_write": [],
+          "deny": [],
+          "recipe_ids": [],
+          "network_allowlist": []
+        },
+        "required_reviews": [
+          "example"
+        ],
+        "unresolved_items": []
+      }
+    },
+    {
+      "id": "GovernedWorkPlan-no-work",
+      "schema_type": "GovernedWorkPlan",
+      "valid": false,
+      "payload": {
+        "kind": "governed_work_plan",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "contract_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_units": [],
+        "review_refs": [],
+        "plan_approval_ref": "example",
+        "execution_permit_ref": "example",
+        "status": "draft",
+        "session_id": "example",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "delivery_mode": "patch_only",
+        "permission_set": {
+          "root_id": "example",
+          "read": [],
+          "create": [],
+          "write_existing": [],
+          "delete": [],
+          "only_write": [],
+          "deny": [],
+          "recipe_ids": [],
+          "network_allowlist": []
+        },
+        "required_reviews": [
+          "example"
+        ],
+        "unresolved_items": []
+      }
+    },
+    {
+      "id": "GovernedWorkPlan-parent-create",
+      "schema_type": "GovernedWorkPlan",
+      "valid": false,
+      "payload": {
+        "kind": "governed_work_plan",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "contract_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_units": [
+          {
+            "id": "example",
+            "depends_on": [],
+            "requirement_ids": [
+              "example"
+            ],
+            "acceptance_ids": [
+              "example"
+            ],
+            "read_paths": [],
+            "write_paths": [],
+            "commands": [],
+            "risk": "low",
+            "owner_role": "example",
+            "rollback_recipe": "example",
+            "estimated_budget": {
+              "model_calls": 0,
+              "input_tokens": 0,
+              "output_tokens": 0,
+              "tool_calls": 0,
+              "wall_seconds": 0,
+              "cost_limit": "0",
+              "currency": "USD",
+              "unknown_cost_action": "pause"
+            },
+            "objective": "example",
+            "create_paths": [],
+            "delete_paths": [],
+            "only_write_paths": [],
+            "expected_preimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "input_artifact_digests": [],
+            "preconditions": [
+              "example"
+            ],
+            "steps": [
+              {
+                "id": "example",
+                "instruction": "example",
+                "expected_observation": "example"
+              }
+            ],
+            "error_handling": [
+              "example"
+            ],
+            "verification_specs": [
+              {
+                "check_id": "example",
+                "recipe_id": "example",
+                "requirement_ids": [
+                  "example"
+                ],
+                "scenario_ids": [
+                  "example"
+                ],
+                "required": false,
+                "expected_exit_codes": [
+                  0
+                ],
+                "expected_evidence": [
+                  "example"
+                ],
+                "test_count_applicable": false
+              }
+            ],
+            "done_when": [
+              "example"
+            ]
+          }
+        ],
+        "review_refs": [],
+        "plan_approval_ref": "example",
+        "execution_permit_ref": "example",
+        "status": "draft",
+        "session_id": "example",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "delivery_mode": "patch_only",
+        "permission_set": {
+          "root_id": "example",
+          "read": [],
+          "create": [
+            "../escape.py"
+          ],
+          "write_existing": [],
+          "delete": [],
+          "only_write": [],
+          "deny": [],
+          "recipe_ids": [],
+          "network_allowlist": []
+        },
+        "required_reviews": [
+          "example"
+        ],
+        "unresolved_items": []
+      }
+    },
+    {
+      "id": "GovernedWorkPlan-create-glob",
+      "schema_type": "GovernedWorkPlan",
+      "valid": false,
+      "payload": {
+        "kind": "governed_work_plan",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "contract_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_units": [
+          {
+            "id": "example",
+            "depends_on": [],
+            "requirement_ids": [
+              "example"
+            ],
+            "acceptance_ids": [
+              "example"
+            ],
+            "read_paths": [],
+            "write_paths": [],
+            "commands": [],
+            "risk": "low",
+            "owner_role": "example",
+            "rollback_recipe": "example",
+            "estimated_budget": {
+              "model_calls": 0,
+              "input_tokens": 0,
+              "output_tokens": 0,
+              "tool_calls": 0,
+              "wall_seconds": 0,
+              "cost_limit": "0",
+              "currency": "USD",
+              "unknown_cost_action": "pause"
+            },
+            "objective": "example",
+            "create_paths": [],
+            "delete_paths": [],
+            "only_write_paths": [],
+            "expected_preimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "input_artifact_digests": [],
+            "preconditions": [
+              "example"
+            ],
+            "steps": [
+              {
+                "id": "example",
+                "instruction": "example",
+                "expected_observation": "example"
+              }
+            ],
+            "error_handling": [
+              "example"
+            ],
+            "verification_specs": [
+              {
+                "check_id": "example",
+                "recipe_id": "example",
+                "requirement_ids": [
+                  "example"
+                ],
+                "scenario_ids": [
+                  "example"
+                ],
+                "required": false,
+                "expected_exit_codes": [
+                  0
+                ],
+                "expected_evidence": [
+                  "example"
+                ],
+                "test_count_applicable": false
+              }
+            ],
+            "done_when": [
+              "example"
+            ]
+          }
+        ],
+        "review_refs": [],
+        "plan_approval_ref": "example",
+        "execution_permit_ref": "example",
+        "status": "draft",
+        "session_id": "example",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "delivery_mode": "patch_only",
+        "permission_set": {
+          "root_id": "example",
+          "read": [],
+          "create": [
+            "src/**"
+          ],
+          "write_existing": [],
+          "delete": [],
+          "only_write": [],
+          "deny": [],
+          "recipe_ids": [],
+          "network_allowlist": []
+        },
+        "required_reviews": [
+          "example"
+        ],
+        "unresolved_items": []
+      }
+    },
+    {
+      "id": "TrustedApprovalReceipt-execution-no-plan",
+      "schema_type": "TrustedApprovalReceipt",
+      "valid": false,
+      "payload": {
+        "kind": "trusted_approval_receipt",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "actor_id": "example",
+        "user_event_id": "example",
+        "display_event_id": "example",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "action": "authorize_execution",
+        "bindings": {
+          "contract_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "work_plan_subject_digest": null,
+          "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "release_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "permission_set": {
+          "root_id": "example",
+          "read": [],
+          "create": [],
+          "write_existing": [],
+          "delete": [],
+          "only_write": [],
+          "deny": [],
+          "recipe_ids": [],
+          "network_allowlist": []
+        },
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "issued_at": "2026-09-16T00:00:00Z",
+        "expires_at": "2026-09-16T00:00:00Z",
+        "nonce": "example",
+        "issuer": "example",
+        "attestation": {
+          "algorithm": "Ed25519",
+          "key_id": "example",
+          "canonicalization": "CYRANO-C14N-1",
+          "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      }
+    },
+    {
+      "id": "TrustedApprovalReceipt-wrong-algorithm",
+      "schema_type": "TrustedApprovalReceipt",
+      "valid": false,
+      "payload": {
+        "kind": "trusted_approval_receipt",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "actor_id": "example",
+        "user_event_id": "example",
+        "display_event_id": "example",
+        "display_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "action": "approve_spec_for_planning",
+        "bindings": {
+          "contract_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "work_plan_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "release_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "permission_set": {
+          "root_id": "example",
+          "read": [],
+          "create": [],
+          "write_existing": [],
+          "delete": [],
+          "only_write": [],
+          "deny": [],
+          "recipe_ids": [],
+          "network_allowlist": []
+        },
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "issued_at": "2026-09-16T00:00:00Z",
+        "expires_at": "2026-09-16T00:00:00Z",
+        "nonce": "example",
+        "issuer": "example",
+        "attestation": {
+          "algorithm": "HMAC",
+          "key_id": "example",
+          "canonicalization": "CYRANO-C14N-1",
+          "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      }
+    },
+    {
+      "id": "ToolExecutionPermit-no-parent",
+      "schema_type": "ToolExecutionPermit",
+      "valid": false,
+      "payload": {
+        "kind": "tool_execution_permit",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "run_id": "example",
+        "work_unit_id": "example",
+        "approval_ids": [],
+        "bindings": {
+          "contract_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "work_plan_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "release_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "permission_set": {
+          "root_id": "example",
+          "read": [],
+          "create": [],
+          "write_existing": [],
+          "delete": [],
+          "only_write": [],
+          "deny": [],
+          "recipe_ids": [],
+          "network_allowlist": []
+        },
+        "action": "read",
+        "tool_inventory_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_epoch": 0,
+        "fencing_token": 0,
+        "sandbox_id": "example",
+        "expected_preimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "max_calls": 1,
+        "max_seconds": 1,
+        "max_output_bytes": 1,
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "issued_at": "2026-09-16T00:00:00Z",
+        "expires_at": "2026-09-16T00:00:00Z",
+        "nonce": "example",
+        "issuer": "example",
+        "attestation": {
+          "algorithm": "Ed25519",
+          "key_id": "example",
+          "canonicalization": "CYRANO-C14N-1",
+          "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      }
+    },
+    {
+      "id": "RunnerVerification-zero-tests",
+      "schema_type": "RunnerVerification",
+      "valid": false,
+      "payload": {
+        "kind": "runner_verification",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "work_unit_id": "example",
+        "check_id": "example",
+        "recipe_id": "example",
+        "requirement_ids": [
+          "example"
+        ],
+        "scenario_ids": [
+          "example"
+        ],
+        "postimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runner_identity": "example",
+        "status": "passed",
+        "exit_code": 0,
+        "test_count_applicable": true,
+        "tests_collected": 0,
+        "tests_passed": 0,
+        "tests_failed": 0,
+        "tests_skipped": 0,
+        "started_at": "2026-09-16T00:00:00Z",
+        "finished_at": "2026-09-16T00:01:00Z",
+        "evidence_refs": [
+          {
+            "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "locator": "example",
+            "claim": "example",
+            "observed_at": "2026-09-16T00:00:00Z",
+            "trust": "runner_observed"
+          }
+        ],
+        "reason": "example"
+      }
+    },
+    {
+      "id": "RunnerVerification-no-evidence",
+      "schema_type": "RunnerVerification",
+      "valid": false,
+      "payload": {
+        "kind": "runner_verification",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "work_unit_id": "example",
+        "check_id": "example",
+        "recipe_id": "example",
+        "requirement_ids": [
+          "example"
+        ],
+        "scenario_ids": [
+          "example"
+        ],
+        "postimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runner_identity": "example",
+        "status": "passed",
+        "exit_code": 0,
+        "test_count_applicable": false,
+        "tests_collected": 0,
+        "tests_passed": 0,
+        "tests_failed": 0,
+        "tests_skipped": 0,
+        "started_at": "2026-09-16T00:00:00Z",
+        "finished_at": "2026-09-16T00:01:00Z",
+        "evidence_refs": [],
+        "reason": "example"
+      }
+    },
+    {
+      "id": "RunCompletionReport-false-completed",
+      "schema_type": "RunCompletionReport",
+      "valid": false,
+      "payload": {
+        "kind": "run_completion_report",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "state": "COMPLETED",
+        "assurance": "advisory",
+        "delivery_mode": "patch_only",
+        "source_application_status": "not_requested",
+        "bindings": {
+          "contract_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "work_plan_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "release_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "approval_ids": [],
+        "change_set_ids": [],
+        "verification_ids": [],
+        "review_ids": [],
+        "blockers": [],
+        "audit_gaps": [],
+        "monitoring_gaps": [],
+        "unknown_effects": [],
+        "memory_applied_ids": [],
+        "learning_job_ids": [],
+        "generated_at": "2026-09-16T00:00:00Z",
+        "authority": "trusted_kernel_only"
+      }
+    },
+    {
+      "id": "RunCompletionReport-unknown-completed",
+      "schema_type": "RunCompletionReport",
+      "valid": false,
+      "payload": {
+        "kind": "run_completion_report",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "state": "COMPLETED",
+        "assurance": "advisory",
+        "delivery_mode": "patch_only",
+        "source_application_status": "unknown",
+        "bindings": {
+          "contract_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "work_plan_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "release_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "approval_ids": [],
+        "change_set_ids": [],
+        "verification_ids": [
+          "v"
+        ],
+        "review_ids": [
+          "r"
+        ],
+        "blockers": [],
+        "audit_gaps": [],
+        "monitoring_gaps": [],
+        "unknown_effects": [
+          "op"
+        ],
+        "memory_applied_ids": [],
+        "learning_job_ids": [],
+        "generated_at": "2026-09-16T00:00:00Z",
+        "authority": "trusted_kernel_only"
+      }
+    },
+    {
+      "id": "RunCompletionReport-unapplied-completed",
+      "schema_type": "RunCompletionReport",
+      "valid": false,
+      "payload": {
+        "kind": "run_completion_report",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "state": "COMPLETED",
+        "assurance": "advisory",
+        "delivery_mode": "apply_to_source",
+        "source_application_status": "not_applied",
+        "bindings": {
+          "contract_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "work_plan_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "release_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "approval_ids": [],
+        "change_set_ids": [],
+        "verification_ids": [
+          "v"
+        ],
+        "review_ids": [
+          "r"
+        ],
+        "blockers": [],
+        "audit_gaps": [],
+        "monitoring_gaps": [],
+        "unknown_effects": [],
+        "memory_applied_ids": [],
+        "learning_job_ids": [],
+        "generated_at": "2026-09-16T00:00:00Z",
+        "authority": "trusted_kernel_only"
+      }
+    },
+    {
+      "id": "MemoryAccessBinding-session-id-missing",
+      "schema_type": "MemoryAccessBinding",
+      "valid": false,
+      "payload": {
+        "kind": "memory_access_binding",
+        "schema_version": "2.0",
+        "id": "example",
+        "memory_id": "example",
+        "memory_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "scope_level": "session",
+        "session_id": null,
+        "task_id": "example",
+        "release_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evidence_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "authority": "observed_fact",
+        "verified_at": "2026-09-16T00:00:00Z",
+        "expires_at": "2026-09-16T00:00:00Z",
+        "required_approval_id": "example",
+        "sensitivity": "public",
+        "status": "candidate"
+      }
+    },
+    {
+      "id": "MemoryAccessBinding-procedure-not-approved",
+      "schema_type": "MemoryAccessBinding",
+      "valid": false,
+      "payload": {
+        "kind": "memory_access_binding",
+        "schema_version": "2.0",
+        "id": "example",
+        "memory_id": "example",
+        "memory_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "scope_level": "workspace",
+        "session_id": "example",
+        "task_id": "example",
+        "release_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evidence_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "authority": "approved_procedure",
+        "verified_at": "2026-09-16T00:00:00Z",
+        "expires_at": "2026-09-16T00:00:00Z",
+        "required_approval_id": null,
+        "sensitivity": "public",
+        "status": "active"
+      }
+    },
+    {
+      "id": "CompatibilityProbe-verified-no-evidence",
+      "schema_type": "CompatibilityProbe",
+      "valid": false,
+      "payload": {
+        "kind": "compatibility_probe",
+        "schema_version": "2.0",
+        "id": "example",
+        "probe_id": "example",
+        "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "stage": "bootstrap",
+        "status": "verified",
+        "mandatory_for_governed": false,
+        "evidence_refs": [],
+        "source_manifest_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "limitations": []
+      }
+    },
+    {
+      "id": "SessionLifecycleRequest-caller-target",
+      "schema_type": "SessionLifecycleRequest",
+      "valid": false,
+      "payload": {
+        "kind": "session_lifecycle_request",
+        "schema_version": "2.0",
+        "session_id": "example",
+        "action": "pause",
+        "expected_revision": 0,
+        "reason": "example",
+        "target": "EXECUTING"
+      }
+    },
+    {
+      "id": "negative-budget",
+      "schema_type": "GovernedWorkPlan",
+      "valid": false,
+      "payload": {
+        "kind": "governed_work_plan",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "contract_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "work_units": [
+          {
+            "id": "example",
+            "depends_on": [],
+            "requirement_ids": [
+              "example"
+            ],
+            "acceptance_ids": [
+              "example"
+            ],
+            "read_paths": [],
+            "write_paths": [],
+            "commands": [],
+            "risk": "low",
+            "owner_role": "example",
+            "rollback_recipe": "example",
+            "estimated_budget": {
+              "model_calls": 0,
+              "input_tokens": 0,
+              "output_tokens": 0,
+              "tool_calls": 0,
+              "wall_seconds": 0,
+              "cost_limit": "-1",
+              "currency": "USD",
+              "unknown_cost_action": "pause"
+            },
+            "objective": "example",
+            "create_paths": [],
+            "delete_paths": [],
+            "only_write_paths": [],
+            "expected_preimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "input_artifact_digests": [],
+            "preconditions": [
+              "example"
+            ],
+            "steps": [
+              {
+                "id": "example",
+                "instruction": "example",
+                "expected_observation": "example"
+              }
+            ],
+            "error_handling": [
+              "example"
+            ],
+            "verification_specs": [
+              {
+                "check_id": "example",
+                "recipe_id": "example",
+                "requirement_ids": [
+                  "example"
+                ],
+                "scenario_ids": [
+                  "example"
+                ],
+                "required": false,
+                "expected_exit_codes": [
+                  0
+                ],
+                "expected_evidence": [
+                  "example"
+                ],
+                "test_count_applicable": false
+              }
+            ],
+            "done_when": [
+              "example"
+            ]
+          }
+        ],
+        "review_refs": [],
+        "plan_approval_ref": "example",
+        "execution_permit_ref": "example",
+        "status": "draft",
+        "session_id": "example",
+        "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "delivery_mode": "patch_only",
+        "permission_set": {
+          "root_id": "example",
+          "read": [],
+          "create": [],
+          "write_existing": [],
+          "delete": [],
+          "only_write": [],
+          "deny": [],
+          "recipe_ids": [],
+          "network_allowlist": []
+        },
+        "required_reviews": [
+          "example"
+        ],
+        "unresolved_items": []
+      }
+    },
+    {
+      "id": "permission-literal-path-0",
+      "schema_type": "ToolExecutionPermit",
+      "valid": false,
+      "payload": {
+        "kind": "tool_execution_permit",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "run_id": "example",
+        "work_unit_id": "example",
+        "approval_ids": [
+          "example"
+        ],
+        "bindings": {
+          "contract_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "work_plan_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "release_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "permission_set": {
+          "root_id": "example",
+          "read": [
+            "a//b"
+          ],
+          "create": [],
+          "write_existing": [],
+          "delete": [],
+          "only_write": [],
+          "deny": [],
+          "recipe_ids": [],
+          "network_allowlist": []
+        },
+        "action": "read",
+        "tool_inventory_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_epoch": 0,
+        "fencing_token": 0,
+        "sandbox_id": "example",
+        "expected_preimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "max_calls": 1,
+        "max_seconds": 1,
+        "max_output_bytes": 1,
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "issued_at": "2026-09-16T00:00:00Z",
+        "expires_at": "2026-09-16T00:00:00Z",
+        "nonce": "example",
+        "issuer": "example",
+        "attestation": {
+          "algorithm": "Ed25519",
+          "key_id": "example",
+          "canonicalization": "CYRANO-C14N-1",
+          "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      }
+    },
+    {
+      "id": "permission-literal-path-1",
+      "schema_type": "ToolExecutionPermit",
+      "valid": false,
+      "payload": {
+        "kind": "tool_execution_permit",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "run_id": "example",
+        "work_unit_id": "example",
+        "approval_ids": [
+          "example"
+        ],
+        "bindings": {
+          "contract_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "work_plan_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "release_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "permission_set": {
+          "root_id": "example",
+          "read": [
+            "a/"
+          ],
+          "create": [],
+          "write_existing": [],
+          "delete": [],
+          "only_write": [],
+          "deny": [],
+          "recipe_ids": [],
+          "network_allowlist": []
+        },
+        "action": "read",
+        "tool_inventory_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_epoch": 0,
+        "fencing_token": 0,
+        "sandbox_id": "example",
+        "expected_preimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "max_calls": 1,
+        "max_seconds": 1,
+        "max_output_bytes": 1,
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "issued_at": "2026-09-16T00:00:00Z",
+        "expires_at": "2026-09-16T00:00:00Z",
+        "nonce": "example",
+        "issuer": "example",
+        "attestation": {
+          "algorithm": "Ed25519",
+          "key_id": "example",
+          "canonicalization": "CYRANO-C14N-1",
+          "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      }
+    },
+    {
+      "id": "permission-literal-path-2",
+      "schema_type": "ToolExecutionPermit",
+      "valid": false,
+      "payload": {
+        "kind": "tool_execution_permit",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "run_id": "example",
+        "work_unit_id": "example",
+        "approval_ids": [
+          "example"
+        ],
+        "bindings": {
+          "contract_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "work_plan_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "release_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "permission_set": {
+          "root_id": "example",
+          "read": [
+            "./a"
+          ],
+          "create": [],
+          "write_existing": [],
+          "delete": [],
+          "only_write": [],
+          "deny": [],
+          "recipe_ids": [],
+          "network_allowlist": []
+        },
+        "action": "read",
+        "tool_inventory_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_epoch": 0,
+        "fencing_token": 0,
+        "sandbox_id": "example",
+        "expected_preimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "max_calls": 1,
+        "max_seconds": 1,
+        "max_output_bytes": 1,
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "issued_at": "2026-09-16T00:00:00Z",
+        "expires_at": "2026-09-16T00:00:00Z",
+        "nonce": "example",
+        "issuer": "example",
+        "attestation": {
+          "algorithm": "Ed25519",
+          "key_id": "example",
+          "canonicalization": "CYRANO-C14N-1",
+          "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      }
+    },
+    {
+      "id": "permission-literal-path-3",
+      "schema_type": "ToolExecutionPermit",
+      "valid": false,
+      "payload": {
+        "kind": "tool_execution_permit",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "run_id": "example",
+        "work_unit_id": "example",
+        "approval_ids": [
+          "example"
+        ],
+        "bindings": {
+          "contract_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "work_plan_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "release_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "permission_set": {
+          "root_id": "example",
+          "read": [
+            "a/../b"
+          ],
+          "create": [],
+          "write_existing": [],
+          "delete": [],
+          "only_write": [],
+          "deny": [],
+          "recipe_ids": [],
+          "network_allowlist": []
+        },
+        "action": "read",
+        "tool_inventory_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_epoch": 0,
+        "fencing_token": 0,
+        "sandbox_id": "example",
+        "expected_preimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "max_calls": 1,
+        "max_seconds": 1,
+        "max_output_bytes": 1,
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "issued_at": "2026-09-16T00:00:00Z",
+        "expires_at": "2026-09-16T00:00:00Z",
+        "nonce": "example",
+        "issuer": "example",
+        "attestation": {
+          "algorithm": "Ed25519",
+          "key_id": "example",
+          "canonicalization": "CYRANO-C14N-1",
+          "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      }
+    },
+    {
+      "id": "permission-literal-path-4",
+      "schema_type": "ToolExecutionPermit",
+      "valid": false,
+      "payload": {
+        "kind": "tool_execution_permit",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "run_id": "example",
+        "work_unit_id": "example",
+        "approval_ids": [
+          "example"
+        ],
+        "bindings": {
+          "contract_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "work_plan_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "release_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "permission_set": {
+          "root_id": "example",
+          "read": [
+            "a\\b"
+          ],
+          "create": [],
+          "write_existing": [],
+          "delete": [],
+          "only_write": [],
+          "deny": [],
+          "recipe_ids": [],
+          "network_allowlist": []
+        },
+        "action": "read",
+        "tool_inventory_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_epoch": 0,
+        "fencing_token": 0,
+        "sandbox_id": "example",
+        "expected_preimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "max_calls": 1,
+        "max_seconds": 1,
+        "max_output_bytes": 1,
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "issued_at": "2026-09-16T00:00:00Z",
+        "expires_at": "2026-09-16T00:00:00Z",
+        "nonce": "example",
+        "issuer": "example",
+        "attestation": {
+          "algorithm": "Ed25519",
+          "key_id": "example",
+          "canonicalization": "CYRANO-C14N-1",
+          "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      }
+    },
+    {
+      "id": "permission-literal-path-5",
+      "schema_type": "ToolExecutionPermit",
+      "valid": false,
+      "payload": {
+        "kind": "tool_execution_permit",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "run_id": "example",
+        "work_unit_id": "example",
+        "approval_ids": [
+          "example"
+        ],
+        "bindings": {
+          "contract_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "work_plan_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "release_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "permission_set": {
+          "root_id": "example",
+          "read": [
+            "C:/a"
+          ],
+          "create": [],
+          "write_existing": [],
+          "delete": [],
+          "only_write": [],
+          "deny": [],
+          "recipe_ids": [],
+          "network_allowlist": []
+        },
+        "action": "read",
+        "tool_inventory_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_epoch": 0,
+        "fencing_token": 0,
+        "sandbox_id": "example",
+        "expected_preimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "max_calls": 1,
+        "max_seconds": 1,
+        "max_output_bytes": 1,
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "issued_at": "2026-09-16T00:00:00Z",
+        "expires_at": "2026-09-16T00:00:00Z",
+        "nonce": "example",
+        "issuer": "example",
+        "attestation": {
+          "algorithm": "Ed25519",
+          "key_id": "example",
+          "canonicalization": "CYRANO-C14N-1",
+          "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      }
+    },
+    {
+      "id": "permission-literal-path-6",
+      "schema_type": "ToolExecutionPermit",
+      "valid": false,
+      "payload": {
+        "kind": "tool_execution_permit",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "run_id": "example",
+        "work_unit_id": "example",
+        "approval_ids": [
+          "example"
+        ],
+        "bindings": {
+          "contract_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "work_plan_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "release_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "permission_set": {
+          "root_id": "example",
+          "read": [
+            "a\nb"
+          ],
+          "create": [],
+          "write_existing": [],
+          "delete": [],
+          "only_write": [],
+          "deny": [],
+          "recipe_ids": [],
+          "network_allowlist": []
+        },
+        "action": "read",
+        "tool_inventory_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_epoch": 0,
+        "fencing_token": 0,
+        "sandbox_id": "example",
+        "expected_preimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "max_calls": 1,
+        "max_seconds": 1,
+        "max_output_bytes": 1,
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "issued_at": "2026-09-16T00:00:00Z",
+        "expires_at": "2026-09-16T00:00:00Z",
+        "nonce": "example",
+        "issuer": "example",
+        "attestation": {
+          "algorithm": "Ed25519",
+          "key_id": "example",
+          "canonicalization": "CYRANO-C14N-1",
+          "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      }
+    },
+    {
+      "id": "permission-literal-path-7",
+      "schema_type": "ToolExecutionPermit",
+      "valid": false,
+      "payload": {
+        "kind": "tool_execution_permit",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "run_id": "example",
+        "work_unit_id": "example",
+        "approval_ids": [
+          "example"
+        ],
+        "bindings": {
+          "contract_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "work_plan_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "release_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "permission_set": {
+          "root_id": "example",
+          "read": [
+            "x:y"
+          ],
+          "create": [],
+          "write_existing": [],
+          "delete": [],
+          "only_write": [],
+          "deny": [],
+          "recipe_ids": [],
+          "network_allowlist": []
+        },
+        "action": "read",
+        "tool_inventory_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_epoch": 0,
+        "fencing_token": 0,
+        "sandbox_id": "example",
+        "expected_preimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "max_calls": 1,
+        "max_seconds": 1,
+        "max_output_bytes": 1,
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "issued_at": "2026-09-16T00:00:00Z",
+        "expires_at": "2026-09-16T00:00:00Z",
+        "nonce": "example",
+        "issuer": "example",
+        "attestation": {
+          "algorithm": "Ed25519",
+          "key_id": "example",
+          "canonicalization": "CYRANO-C14N-1",
+          "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      }
+    },
+    {
+      "id": "permission-literal-path-8",
+      "schema_type": "ToolExecutionPermit",
+      "valid": false,
+      "payload": {
+        "kind": "tool_execution_permit",
+        "schema_version": "2.0",
+        "id": "example",
+        "scope": {
+          "tenant": "example",
+          "user": "example",
+          "workspace": "example"
+        },
+        "session_id": "example",
+        "run_id": "example",
+        "work_unit_id": "example",
+        "approval_ids": [
+          "example"
+        ],
+        "bindings": {
+          "contract_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "work_plan_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "permission_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "policy_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "release_subject_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "runtime_lock_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "permission_set": {
+          "root_id": "example",
+          "read": [
+            "a/*"
+          ],
+          "create": [],
+          "write_existing": [],
+          "delete": [],
+          "only_write": [],
+          "deny": [],
+          "recipe_ids": [],
+          "network_allowlist": []
+        },
+        "action": "read",
+        "tool_inventory_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "policy_epoch": 0,
+        "fencing_token": 0,
+        "sandbox_id": "example",
+        "expected_preimage_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "max_calls": 1,
+        "max_seconds": 1,
+        "max_output_bytes": 1,
+        "budget": {
+          "model_calls": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "wall_seconds": 0,
+          "cost_limit": "0",
+          "currency": "USD",
+          "unknown_cost_action": "pause"
+        },
+        "issued_at": "2026-09-16T00:00:00Z",
+        "expires_at": "2026-09-16T00:00:00Z",
+        "nonce": "example",
+        "issuer": "example",
+        "attestation": {
+          "algorithm": "Ed25519",
+          "key_id": "example",
+          "canonicalization": "CYRANO-C14N-1",
+          "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      }
+    }
+  ]
+}

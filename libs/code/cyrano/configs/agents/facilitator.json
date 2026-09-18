@@ -1,0 +1,27 @@
+{
+  "kind": "agent_role",
+  "schema_version": "1.0",
+  "id": "facilitator",
+  "description": "사용자 대화를 단일 경로로 이끄는 인터뷰 조정자",
+  "prompt_path": "plugins/cyrano/agents/facilitator.md",
+  "input_schema": "contracts/v1/cyrano.schema.json#/$defs/AgentTask",
+  "output_schema": "contracts/v1/interview-worker-result.schema.json",
+  "skills": [
+    "decision-interview",
+    "scoped-memory"
+  ],
+  "allowed_tools": [
+    "cyrano_contract_read",
+    "cyrano_memory_query",
+    "cyrano_propose_artifact",
+    "cyrano_request_review",
+    "cyrano_session_view",
+    "cyrano_next_action",
+    "cyrano_request_approval",
+    "cyrano_memory_read"
+  ],
+  "authority": "proposal_only",
+  "context_epoch_policy": "pinned_per_phase",
+  "read_scope": "current_task",
+  "max_delegation_depth": 1
+}

@@ -1,0 +1,41 @@
+{
+  "kind": "skill_manifest",
+  "schema_version": "1.0",
+  "id": "evidence-scout",
+  "version": "0.1.0-dev",
+  "name": "evidence-scout",
+  "description": "사용자에게 묻기 전에 저장소·실행·공식 문서에서 확인 가능한 근거를 수집한다.",
+  "entrypoint": "SKILL.md",
+  "content_digest": "sha256:1498d37378f0b66ec5090ff442e028a793a87dceec94ab1bf5407176b789c556",
+  "resources": [
+    {
+      "path": "references/checklist.md",
+      "digest": "sha256:30439a5dc03ba2e3a09ddefe1f7cb03851c1eddf01d79c59d8f5955989d36d2c",
+      "executable": false
+    },
+    {
+      "path": "assets/output.example.json",
+      "digest": "sha256:8431b0ccacc40f885765fd7ceeac06de2bc55f0b957473e23454a65bb8dbaf05",
+      "executable": false
+    }
+  ],
+  "allowed_roles": [
+    "evidence-scout"
+  ],
+  "required_tools": [],
+  "scope": {
+    "tenant": "__BIND_TENANT__",
+    "user": "__BIND_USER__",
+    "workspace": "__BIND_WORKSPACE__"
+  },
+  "context_byte_budget": 8192,
+  "activation_tests": [
+    "SKILL-evidence-scout-positive"
+  ],
+  "counterexample_tests": [
+    "SKILL-evidence-scout-negative"
+  ],
+  "release_digest": null,
+  "approval_ref": null,
+  "status": "candidate"
+}

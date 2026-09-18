@@ -1,0 +1,21 @@
+{
+  "kind": "agent_role",
+  "schema_version": "1.0",
+  "id": "blind-handoff-reviewer",
+  "description": "대화 없이 전달 계약의 모호성 검토",
+  "prompt_path": "plugins/cyrano/agents/blind-handoff-reviewer.md",
+  "input_schema": "contracts/v1/cyrano.schema.json#/$defs/AgentTask",
+  "output_schema": "contracts/v1/interview-worker-result.schema.json",
+  "skills": [
+    "blind-handoff"
+  ],
+  "allowed_tools": [
+    "cyrano_evidence_read",
+    "cyrano_report_result",
+    "cyrano_session_view"
+  ],
+  "authority": "proposal_only",
+  "context_epoch_policy": "pinned_per_phase",
+  "read_scope": "current_task",
+  "max_delegation_depth": 0
+}

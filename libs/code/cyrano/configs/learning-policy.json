@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "enabled": false,
+  "routes": [
+    "A",
+    "B"
+  ],
+  "max_candidates_per_cycle": 8,
+  "max_meta_depth": 1,
+  "max_parallel_experiments": 2,
+  "minimum_independent_families_example": 20,
+  "repeats_per_condition_example": 3,
+  "paired_execution_required": [
+    "A",
+    "B"
+  ],
+  "forbidden_auto_surfaces": [
+    "approval_trust",
+    "permissions",
+    "redaction",
+    "sealed_tests",
+    "evaluation_judge",
+    "promotion_gate"
+  ],
+  "promotion_requires_human_or_explicit_bounded_delegation": true,
+  "on_inconclusive": "keep_baseline",
+  "evaluation_budget_default": "0",
+  "cost_currency": "USD",
+  "cost_unknown_action": "pause",
+  "trigger_validation": "expected_outcome_actual_outcome_phase_intent_environment_error_user_change",
+  "terminal_job_identity": [
+    "run_id",
+    "terminal_event_id",
+    "learning_policy_digest"
+  ],
+  "learning_failure_changes_work_outcome": false
+}

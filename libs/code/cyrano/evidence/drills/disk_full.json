@@ -1,0 +1,42 @@
+{
+  "kind": "executed_readiness_drill",
+  "drill": "disk_full",
+  "category": "A",
+  "authorization": "isolated_no_external_effects",
+  "external_effects": false,
+  "argv": [
+    "/home/ubuntu/cyrano-agent-devin/libs/code/.venv/bin/python",
+    "drills.py",
+    "disk_full"
+  ],
+  "status": "passed",
+  "blockers": [],
+  "checks": [
+    {
+      "name": "disk_full_surfaces_typed_error",
+      "passed": true,
+      "detail": "database or disk is full"
+    },
+    {
+      "name": "no_partial_commit",
+      "passed": true,
+      "detail": {
+        "events": 1,
+        "requests": 1
+      }
+    },
+    {
+      "name": "repository_usable_after_rollback",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "cleanup": {
+    "path": "/tmp/cyrano-drill-diskfull-1uc5639n",
+    "removed": true
+  },
+  "raw": {
+    "injection": "sqlite execute INSERT/UPDATE -> ENOSPC"
+  },
+  "cleanup_verified": true
+}

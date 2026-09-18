@@ -1,0 +1,434 @@
+{
+  "schema_version": "cyrano.refinement-plan/4",
+  "work_packages_preserved": 24,
+  "test_work_packages_preserved": 12,
+  "refinements": [
+    {
+      "id": "RC00",
+      "owner_wp": "WP00",
+      "title": "dcode 복사·native import·wheel 검증",
+      "depends_on": [],
+      "requires_verified_wp_interfaces": [],
+      "criterion_ids": [
+        "1-1",
+        "2-1"
+      ],
+      "status": "planned",
+      "design_ref": "docs/design/DCODE_INTEGRATION.ko.md",
+      "output_paths": [
+        "../deepagents_code/cyrano/dcode/probes.py",
+        "../deepagents_code/cyrano/dcode/package_build.py",
+        "../tests/cyrano_product/test_r4_rc00.py"
+      ],
+      "case_ids": [
+        "R4-RC00-01",
+        "R4-RC00-02",
+        "R4-RC00-03",
+        "R4-RC00-04"
+      ],
+      "completion_evidence": "evidence/work-packages/RC00.json",
+      "test_implementation_status": "not_implemented",
+      "test_runtime": "native_env_required_for_product_evidence"
+    },
+    {
+      "id": "RC01",
+      "owner_wp": "WP00",
+      "title": "문서 라우팅·품질·계획 시작 규칙",
+      "depends_on": [
+        "RC00"
+      ],
+      "requires_verified_wp_interfaces": [],
+      "criterion_ids": [
+        "1-1",
+        "1-2",
+        "1-3",
+        "2-2",
+        "2-3",
+        "2-4"
+      ],
+      "status": "planned",
+      "design_ref": "docs/design/DOCUMENT_GOVERNANCE.ko.md",
+      "output_paths": [
+        "../deepagents_code/cyrano/context/document_route.py",
+        "../tests/cyrano_product/test_r4_rc01.py"
+      ],
+      "case_ids": [
+        "R4-RC01-01",
+        "R4-RC01-02",
+        "R4-RC01-03",
+        "R4-RC01-04"
+      ],
+      "completion_evidence": "evidence/work-packages/RC01.json",
+      "test_implementation_status": "not_implemented",
+      "test_runtime": "native_env_required_for_product_evidence"
+    },
+    {
+      "id": "RC30",
+      "owner_wp": "WP11",
+      "title": "Memory durable 저장·revision·scope",
+      "depends_on": [],
+      "requires_verified_wp_interfaces": [
+        "WP02",
+        "WP05",
+        "WP07"
+      ],
+      "criterion_ids": [
+        "3-1"
+      ],
+      "status": "planned",
+      "design_ref": "docs/design/MEMORY_LIFECYCLE.ko.md",
+      "output_paths": [
+        "../deepagents_code/cyrano/memory/models.py",
+        "../deepagents_code/cyrano/memory/repository.py",
+        "../deepagents_code/cyrano/memory/service.py",
+        "../tests/cyrano_product/test_r4_rc30.py"
+      ],
+      "case_ids": [
+        "R4-RC30-01",
+        "R4-RC30-02",
+        "R4-RC30-03",
+        "R4-RC30-04"
+      ],
+      "completion_evidence": "evidence/work-packages/RC30.json",
+      "test_implementation_status": "not_implemented",
+      "test_runtime": "native_env_required_for_product_evidence"
+    },
+    {
+      "id": "RC31",
+      "owner_wp": "WP11",
+      "title": "Recall·native prompt binding·캐시 epoch",
+      "depends_on": [
+        "RC30",
+        "RC00"
+      ],
+      "requires_verified_wp_interfaces": [
+        "WP06"
+      ],
+      "criterion_ids": [
+        "3-2"
+      ],
+      "status": "planned",
+      "design_ref": "docs/design/MEMORY_LIFECYCLE.ko.md",
+      "output_paths": [
+        "../deepagents_code/cyrano/memory/recall.py",
+        "../deepagents_code/cyrano/memory/binding.py",
+        "../deepagents_code/cyrano/dcode/memory_adapter.py",
+        "../tests/cyrano_product/test_r4_rc31.py"
+      ],
+      "case_ids": [
+        "R4-RC31-01",
+        "R4-RC31-02",
+        "R4-RC31-03",
+        "R4-RC31-04"
+      ],
+      "completion_evidence": "evidence/work-packages/RC31.json",
+      "test_implementation_status": "not_implemented",
+      "test_runtime": "native_env_required_for_product_evidence"
+    },
+    {
+      "id": "RC32",
+      "owner_wp": "WP11",
+      "title": "Memory 적용 증명·정정·삭제",
+      "depends_on": [
+        "RC31"
+      ],
+      "requires_verified_wp_interfaces": [
+        "WP09",
+        "WP10"
+      ],
+      "criterion_ids": [
+        "3-1",
+        "3-2"
+      ],
+      "status": "planned",
+      "design_ref": "docs/design/MEMORY_LIFECYCLE.ko.md",
+      "output_paths": [
+        "../deepagents_code/cyrano/memory/application.py",
+        "../deepagents_code/cyrano/memory/deletion.py",
+        "../deepagents_code/cyrano/memory/invalidation.py",
+        "../tests/cyrano_product/test_r4_rc32.py"
+      ],
+      "case_ids": [
+        "R4-RC32-01",
+        "R4-RC32-02",
+        "R4-RC32-03",
+        "R4-RC32-04"
+      ],
+      "completion_evidence": "evidence/work-packages/RC32.json",
+      "test_implementation_status": "not_implemented",
+      "test_runtime": "native_env_required_for_product_evidence"
+    },
+    {
+      "id": "RC33",
+      "owner_wp": "WP16",
+      "title": "Episode→가설→학습계획→후보",
+      "depends_on": [
+        "RC30",
+        "RC40"
+      ],
+      "requires_verified_wp_interfaces": [
+        "WP10"
+      ],
+      "criterion_ids": [
+        "3-3"
+      ],
+      "status": "planned",
+      "design_ref": "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md",
+      "output_paths": [
+        "../deepagents_code/cyrano/improvement/episodes.py",
+        "../deepagents_code/cyrano/improvement/analysis.py",
+        "../deepagents_code/cyrano/improvement/workplan.py",
+        "../deepagents_code/cyrano/improvement/candidates.py",
+        "../deepagents_code/cyrano/improvement/impact.py",
+        "../tests/cyrano_product/test_r4_rc33.py"
+      ],
+      "case_ids": [
+        "R4-RC33-01",
+        "R4-RC33-02",
+        "R4-RC33-03",
+        "R4-RC33-04"
+      ],
+      "completion_evidence": "evidence/work-packages/RC33.json",
+      "test_implementation_status": "not_implemented",
+      "test_runtime": "native_env_required_for_product_evidence"
+    },
+    {
+      "id": "RC34",
+      "owner_wp": "WP20",
+      "title": "실제 paired·회귀·sealed 평가",
+      "depends_on": [
+        "RC33",
+        "RC41"
+      ],
+      "requires_verified_wp_interfaces": [
+        "WP10"
+      ],
+      "criterion_ids": [
+        "3-4"
+      ],
+      "status": "planned",
+      "design_ref": "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md",
+      "output_paths": [
+        "../deepagents_code/cyrano/evaluation/paired.py",
+        "../deepagents_code/cyrano/evaluation/statistics.py",
+        "../deepagents_code/cyrano/evaluation/budget.py",
+        "../deepagents_code/cyrano/evaluation/gates.py",
+        "../tests/cyrano_product/test_r4_rc34.py"
+      ],
+      "case_ids": [
+        "R4-RC34-01",
+        "R4-RC34-02",
+        "R4-RC34-03",
+        "R4-RC34-04"
+      ],
+      "completion_evidence": "evidence/work-packages/RC34.json",
+      "test_implementation_status": "not_implemented",
+      "test_runtime": "native_env_required_for_product_evidence"
+    },
+    {
+      "id": "RC35",
+      "owner_wp": "WP21",
+      "title": "승격·next-run binding·revoke",
+      "depends_on": [
+        "RC34",
+        "RC32",
+        "RC36"
+      ],
+      "requires_verified_wp_interfaces": [
+        "WP15",
+        "WP17",
+        "WP18",
+        "WP19",
+        "WP20"
+      ],
+      "criterion_ids": [
+        "3-4"
+      ],
+      "status": "planned",
+      "design_ref": "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md",
+      "output_paths": [
+        "../deepagents_code/cyrano/kernel/releases.py",
+        "../deepagents_code/cyrano/kernel/rollout.py",
+        "../deepagents_code/cyrano/kernel/recovery.py",
+        "../tests/cyrano_product/test_r4_rc35.py"
+      ],
+      "case_ids": [
+        "R4-RC35-01",
+        "R4-RC35-02",
+        "R4-RC35-03",
+        "R4-RC35-04"
+      ],
+      "completion_evidence": "evidence/work-packages/RC35.json",
+      "test_implementation_status": "not_implemented",
+      "test_runtime": "native_env_required_for_product_evidence"
+    },
+    {
+      "id": "RC36",
+      "owner_wp": "WP19",
+      "title": "경로 B 코드·resource·migration",
+      "depends_on": [
+        "RC34",
+        "RC00"
+      ],
+      "requires_verified_wp_interfaces": [
+        "WP04",
+        "WP10"
+      ],
+      "criterion_ids": [
+        "3-3",
+        "3-4",
+        "1-3"
+      ],
+      "status": "planned",
+      "design_ref": "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md",
+      "output_paths": [
+        "../deepagents_code/cyrano/improvement/code_lane.py",
+        "../deepagents_code/cyrano/dcode/package_build.py",
+        "../tests/cyrano_product/test_r4_rc36.py"
+      ],
+      "case_ids": [
+        "R4-RC36-01",
+        "R4-RC36-02",
+        "R4-RC36-03",
+        "R4-RC36-04"
+      ],
+      "completion_evidence": "evidence/work-packages/RC36.json",
+      "test_implementation_status": "not_implemented",
+      "test_runtime": "native_env_required_for_product_evidence"
+    },
+    {
+      "id": "RC40",
+      "owner_wp": "WP13",
+      "title": "요청 timeline·transactional event/outbox",
+      "depends_on": [],
+      "requires_verified_wp_interfaces": [
+        "WP02",
+        "WP06"
+      ],
+      "criterion_ids": [
+        "4-1",
+        "4-2"
+      ],
+      "status": "planned",
+      "design_ref": "docs/design/OBSERVABILITY_PIPELINE.ko.md",
+      "output_paths": [
+        "../deepagents_code/cyrano/events/domain_sink.py",
+        "../deepagents_code/cyrano/events/catalogue.py",
+        "../deepagents_code/cyrano/events/reconcile.py",
+        "../tests/cyrano_product/test_r4_rc40.py"
+      ],
+      "case_ids": [
+        "R4-RC40-01",
+        "R4-RC40-02",
+        "R4-RC40-03",
+        "R4-RC40-04"
+      ],
+      "completion_evidence": "evidence/work-packages/RC40.json",
+      "test_implementation_status": "not_implemented",
+      "test_runtime": "native_env_required_for_product_evidence"
+    },
+    {
+      "id": "RC41",
+      "owner_wp": "WP13",
+      "title": "native 호출 coverage·지표 정확성",
+      "depends_on": [
+        "RC40"
+      ],
+      "requires_verified_wp_interfaces": [
+        "WP06"
+      ],
+      "criterion_ids": [
+        "4-2",
+        "4-3"
+      ],
+      "status": "planned",
+      "design_ref": "docs/design/OBSERVABILITY_PIPELINE.ko.md",
+      "output_paths": [
+        "../deepagents_code/cyrano/events/native_observer.py",
+        "../deepagents_code/cyrano/events/tool_observer.py",
+        "../deepagents_code/cyrano/events/metrics.py",
+        "../tests/cyrano_product/test_r4_rc41.py"
+      ],
+      "case_ids": [
+        "R4-RC41-01",
+        "R4-RC41-02",
+        "R4-RC41-03",
+        "R4-RC41-04"
+      ],
+      "completion_evidence": "evidence/work-packages/RC41.json",
+      "test_implementation_status": "not_implemented",
+      "test_runtime": "native_env_required_for_product_evidence"
+    },
+    {
+      "id": "RC42",
+      "owner_wp": "WP13",
+      "title": "Trace 조회·원인·privacy·권한",
+      "depends_on": [
+        "RC40",
+        "RC41"
+      ],
+      "requires_verified_wp_interfaces": [
+        "WP03"
+      ],
+      "criterion_ids": [
+        "4-4",
+        "4-2"
+      ],
+      "status": "planned",
+      "design_ref": "docs/design/OBSERVABILITY_PIPELINE.ko.md",
+      "output_paths": [
+        "../deepagents_code/cyrano/events/query.py",
+        "../deepagents_code/cyrano/events/export.py",
+        "../deepagents_code/cyrano/cli/dashboard.py",
+        "../tests/cyrano_product/test_r4_rc42.py"
+      ],
+      "case_ids": [
+        "R4-RC42-01",
+        "R4-RC42-02",
+        "R4-RC42-03",
+        "R4-RC42-04"
+      ],
+      "completion_evidence": "evidence/work-packages/RC42.json",
+      "test_implementation_status": "not_implemented",
+      "test_runtime": "native_env_required_for_product_evidence"
+    },
+    {
+      "id": "RC43",
+      "owner_wp": "WP23",
+      "title": "native E2E·부하·40점 증거 패키지",
+      "depends_on": [
+        "RC35",
+        "RC42",
+        "RC01"
+      ],
+      "requires_verified_wp_interfaces": [
+        "WP22"
+      ],
+      "criterion_ids": [
+        "3-1",
+        "3-2",
+        "3-3",
+        "3-4",
+        "4-1",
+        "4-2",
+        "4-3",
+        "4-4"
+      ],
+      "status": "planned",
+      "design_ref": "docs/testing/R4_ACCEPTANCE_PROTOCOL.ko.md",
+      "output_paths": [
+        "../deepagents_code/cyrano/evaluation/rubric_evidence.py",
+        "../tests/cyrano_product/test_r4_rc43.py"
+      ],
+      "case_ids": [
+        "R4-RC43-01",
+        "R4-RC43-02",
+        "R4-RC43-03",
+        "R4-RC43-04"
+      ],
+      "completion_evidence": "evidence/work-packages/RC43.json",
+      "test_implementation_status": "not_implemented",
+      "test_runtime": "native_env_required_for_product_evidence"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+ "kind": "work_package_completion_evidence",
+ "work_package": "WP18",
+ "title": "경로 B 인터뷰·계획·context·recipe",
+ "recorded_by": "implementer (independent post-image review performed)",
+ "success": true,
+ "source_digests": {
+  "deepagents_code/cyrano/improvement/workflow_lane.py": "sha256:8c36d4a1a314df3dfe1f41eb88e4cae6556c4637bfc4ae11e3f9f70b66ba102c",
+  "deepagents_code/cyrano/evaluation/interview.py": "sha256:48bdb353c05d50971732e00153f9a6eaa37ff2fc006833f03a4e0c24033a6a95",
+  "deepagents_code/cyrano/evaluation/context.py": "sha256:705f216b5ebc51444735aa28173bb01d981cd4e57d28d80004d17a05a873c0cb",
+  "tests/cyrano_product/test_wp18_product.py": "sha256:f0c6091d82ca6e5398ca3975799abbe9adffda18b69d122244b009eaf228338f"
+ },
+ "contract_files": [
+  ".agents/work/WP18.ko.md",
+  "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md",
+  "tests/acceptance/catalog.json"
+ ],
+ "schema_change": {
+  "kind": "none",
+  "rationale": "pure evaluation/lane functions; durable persistence reuses existing ledgers when wired"
+ },
+ "verification": {
+  "targeted_tests": "11 passed (tests/cyrano_product/test_wp18_product.py)",
+  "full_product_suite": "883 passed (tests/cyrano_product/)",
+  "ruff": "0 findings in WP18-owned paths under cyrano/configs/quality/ruff.toml",
+  "formatter": "ruff format --check clean on WP18-owned paths",
+  "ty": "0 errors on deepagents_code/cyrano",
+  "dev_check": "dev.py check exit 0 after docs regeneration",
+  "quality_gate": "0 findings in WP18-owned paths; pre-existing baseline debt unchanged"
+ },
+ "architecture": {
+  "workflow_lane": "classify_episode_outcome separates expected (tdd_red/user_cancelled/denied_correctly) from transient and defect; analyze_failure_episode mines a typed candidate with cause/alternatives/diff/effect/counterexamples/rollback and refuses protected paths; evaluate_actual_workflow refuses promotion when coverage or task completion regresses; enqueue_learning_followups filters origin_kind=learning and bounds follow-ups by budget and cap",
+  "interview": "bind_answer seals an answer to the question digest; evaluate_interview_scenario labels answers to reworded questions as simulation, never actual",
+  "context": "evaluate_context_candidate treats dropped required obligations as regression regardless of cache/token gains; detect_eval_tamper refuses weakened or removed verification commands; rebind_evaluation marks evidence stale when the candidate body digest changed and records cached conditions separately"
+ },
+ "review_findings_resolved": [
+  "detect_eval_tamper missed tab-separated weak commands",
+  "WorkflowCandidate lacked the alternatives field required by R3-33-01"
+ ],
+ "not_established": [
+  "native_dcode_runtime_integration (API-level verification only)",
+  "real_model_or_provider_calls",
+  "real_interview_driver (scenario evaluation is structural)"
+ ],
+ "acceptance_evidence": {
+  "B-QUESTION": "passed - test_b_question_wording_change_labels_simulation",
+  "B-PLAN": "passed - test_b_plan_fewer_tasks_less_coverage_no_promotion",
+  "B-CONTEXT": "passed - test_b_context_cache_gain_with_dropped_obligation_fails",
+  "B-RECIPE": "passed - test_b_recipe_echo_success_is_tamper",
+  "INTEG-B-STALE-EVAL": "passed - test_integ_b_stale_eval_rebinds_on_body_change",
+  "R3-33-01": "passed - test_r3_33_01_directive_candidate_carries_full_contract",
+  "R3-33-02": "passed - test_r3_33_02_skill_body_change_is_path_b",
+  "R3-33-03": "passed - test_r3_33_03_memory_candidate_scoped_not_global",
+  "R3-33-04": "passed - test_r3_33_04_expected_vs_defect_classification",
+  "R3-33-05": "passed - test_r3_33_05_eval_boundary_change_is_protected",
+  "R3-33-06": "passed - test_r3_33_06_learning_origins_filtered_budget_bounded",
+  "WP18-I01": "passed - question-digest answer binding in test_b_question",
+  "WP18-I02": "passed - test_b_recipe_echo_success_is_tamper + test_b_context",
+  "WP18-I03": "passed - test_integ_b_stale_eval_rebinds_on_body_change (cached conditions recorded separately)"
+ }
+}

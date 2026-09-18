@@ -1,0 +1,12 @@
+{
+  "name": "cyrano-tool-qmd",
+  "private": true,
+  "version": "0.0.0",
+  "dependencies": {
+    "@tobilu/qmd": "2.8.3",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

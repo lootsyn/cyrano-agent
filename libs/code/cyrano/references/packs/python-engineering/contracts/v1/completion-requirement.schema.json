@@ -1,0 +1,100 @@
+{
+  "additionalProperties": false,
+  "description": "Mirror requirements fetched from a trusted controller, not the model.",
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "workspace_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "title": "Workspace Id",
+      "type": "string"
+    },
+    "attempt_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "title": "Attempt Id",
+      "type": "string"
+    },
+    "plan_digest": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "title": "Plan Digest",
+      "type": "string"
+    },
+    "policy_digest": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "title": "Policy Digest",
+      "type": "string"
+    },
+    "toolchain_digest": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "title": "Toolchain Digest",
+      "type": "string"
+    },
+    "suite_digest": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "title": "Suite Digest",
+      "type": "string"
+    },
+    "approved_snapshot_digest": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "title": "Approved Snapshot Digest",
+      "type": "string"
+    },
+    "required_check_ids": {
+      "items": {
+        "maxLength": 128,
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Required Check Ids",
+      "type": "array"
+    },
+    "allow_baseline": {
+      "title": "Allow Baseline",
+      "type": "boolean"
+    },
+    "review_snapshot_digest": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "title": "Review Snapshot Digest",
+      "type": "string"
+    },
+    "review_disposition": {
+      "enum": [
+        "approve",
+        "request_changes",
+        "blocked"
+      ],
+      "title": "Review Disposition",
+      "type": "string"
+    },
+    "review_open_blockers": {
+      "minimum": 0,
+      "title": "Review Open Blockers",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "workspace_id",
+    "attempt_id",
+    "plan_digest",
+    "policy_digest",
+    "toolchain_digest",
+    "suite_digest",
+    "approved_snapshot_digest",
+    "required_check_ids",
+    "allow_baseline",
+    "review_snapshot_digest",
+    "review_disposition",
+    "review_open_blockers"
+  ],
+  "title": "CompletionRequirement",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:udh:quality:CompletionRequirement:1.0"
+}

@@ -1,0 +1,333 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Decision Interview Worker Result v1",
+  "description": "Proposal only. Schema validation does not establish evidence truth, authority, freshness, or user approval.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "session_id",
+    "task_id",
+    "base_revision",
+    "input_digest",
+    "role",
+    "status",
+    "findings",
+    "remaining_unknowns",
+    "capabilities_used"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "session_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "base_revision": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "input_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "role": {
+      "enum": [
+        "facilitator",
+        "evidence_scout",
+        "critic",
+        "blind_reviewer"
+      ]
+    },
+    "status": {
+      "enum": [
+        "complete",
+        "insufficient_context",
+        "failed"
+      ]
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "kind",
+          "severity",
+          "affected_ids",
+          "evidence_refs",
+          "statement",
+          "rationale",
+          "proposed_action"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "kind": {
+            "enum": [
+              "fact_observation",
+              "decision_proposal",
+              "clarification_gap",
+              "contradiction",
+              "counterexample",
+              "out_of_scope"
+            ]
+          },
+          "severity": {
+            "enum": [
+              "low",
+              "medium",
+              "high",
+              "critical"
+            ]
+          },
+          "affected_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+            },
+            "uniqueItems": true,
+            "minItems": 1
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+            },
+            "uniqueItems": true
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1
+          },
+          "proposed_action": {
+            "enum": [
+              "ask_user",
+              "inspect",
+              "research",
+              "sandbox_probe",
+              "defer",
+              "review",
+              "no_action"
+            ]
+          },
+          "counterexample": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "given",
+              "when",
+              "possible_outcome_a",
+              "possible_outcome_b",
+              "why_contract_allows_both",
+              "is_hypothetical"
+            ],
+            "properties": {
+              "given": {
+                "type": "string",
+                "minLength": 1
+              },
+              "when": {
+                "type": "string",
+                "minLength": 1
+              },
+              "possible_outcome_a": {
+                "type": "string",
+                "minLength": 1
+              },
+              "possible_outcome_b": {
+                "type": "string",
+                "minLength": 1
+              },
+              "why_contract_allows_both": {
+                "type": "string",
+                "minLength": 1
+              },
+              "is_hypothetical": {
+                "type": "boolean"
+              }
+            }
+          },
+          "question_candidate": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "target_decision_ids",
+              "text",
+              "why_now",
+              "answerability_reason"
+            ],
+            "properties": {
+              "target_decision_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "why_now": {
+                "type": "string",
+                "minLength": 1
+              },
+              "answerability_reason": {
+                "type": "string",
+                "minLength": 1
+              },
+              "alternatives": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 5,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id",
+                    "label",
+                    "observable_consequence"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                    },
+                    "label": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "observable_consequence": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              },
+              "allow_custom_answer": {
+                "type": "boolean",
+                "const": true
+              }
+            }
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "counterexample"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "required": [
+                "counterexample"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "fact_observation"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "properties": {
+                "evidence_refs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                  },
+                  "uniqueItems": true,
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "proposed_action": {
+                  "const": "ask_user"
+                }
+              },
+              "required": [
+                "proposed_action"
+              ]
+            },
+            "then": {
+              "required": [
+                "question_candidate"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "remaining_unknowns": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "capabilities_used": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "failure_reason": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "failed"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "failure_reason"
+        ]
+      }
+    }
+  ]
+}

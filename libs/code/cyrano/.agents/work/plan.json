@@ -1,0 +1,5725 @@
+{
+  "schema_version": "1.0",
+  "status": "implementation_plan_not_execution_history",
+  "topological_order": [
+    "WP00",
+    "WP01",
+    "WP02",
+    "WP04",
+    "WP03",
+    "WP07",
+    "WP05",
+    "WP06",
+    "WP11",
+    "WP08",
+    "WP13",
+    "WP12",
+    "WP09",
+    "WP10",
+    "WP14",
+    "WP16",
+    "WP20",
+    "WP15",
+    "WP17",
+    "WP18",
+    "WP19",
+    "WP21",
+    "WP22",
+    "WP23"
+  ],
+  "work_packages": [
+    {
+      "id": "WP00",
+      "title": "실제 runtime·개발 도구 호환성 고정",
+      "status": "verified",
+      "foundation_present": true,
+      "depends_on": [],
+      "owner_package": "../deepagents_code/cyrano/dcode",
+      "owner_role": "implementer",
+      "reviewer_role": "reviewer",
+      "risk": "high",
+      "goal": "고정 dcode checkout에 additive source overlay를 적용하고 native source/lock/extension 경로 및 실제 실행 호환성을 고정한다.",
+      "input_refs": [
+        "AGENTS.md",
+        "docs/design/architecture/2026-09-16-runtime-security.ko.md",
+        "contracts/v1/cyrano.schema.json",
+        "../deepagents_code/cyrano/dcode/README.md",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "docs/design/architecture/2026-09-16-universal-harness-integration.ko.md",
+        "docs/execution/INTEGRATED_WORK_DETAILS.ko.md",
+        "contracts/assessment/rubric.json",
+        "docs/testing/STRATEGY.ko.md",
+        "docs/development/TEST_DEVELOPMENT_PLAN.ko.md",
+        "docs/development/refinements/RC00.ko.md",
+        "docs/design/DCODE_INTEGRATION.ko.md",
+        "docs/development/refinements/RC01.ko.md",
+        "docs/design/DOCUMENT_GOVERNANCE.ko.md",
+        "docs/development/refinements/RF00.ko.md",
+        "docs/development/refinements/RF01.ko.md",
+        "docs/design/architecture/2026-09-16-system-design.ko.md",
+        "contracts/v2/runtime.schema.json"
+      ],
+      "output_paths": [
+        "runtime/runtime-lock.json",
+        "../deepagents_code/cyrano/dcode/probes.py",
+        "tools/quality/requirements.lock",
+        "../tests/cyrano_product/test_wp00_product.py",
+        "../deepagents_code/cyrano/dcode/package_build.py",
+        "../tests/cyrano_product/test_r4_rc00.py",
+        "../deepagents_code/cyrano/context/document_route.py",
+        "../tests/cyrano_product/test_r4_rc01.py",
+        "../deepagents_code/cyrano/dcode/adapter.py",
+        ".agents/work/plan.json",
+        "../tests/cyrano_product/test_wp00_baseline.py"
+      ],
+      "methods": [
+        "inspect_installed_distribution -> artifact metadata",
+        "run_compatibility_probe -> verified/unsupported/failed/not_tested",
+        "write_runtime_lock -> immutable receipt",
+        "resolve_feature_state(manifest, probes, permits) -> 구성/설치/probe/허가/활성 다섯 조건을 분리하고 usable 여부·차단 이유 반환",
+        "validate_ownership(inventory) -> 강제 책임에 code owner·반례, skill에는 proposal_only 여부를 검사",
+        "resolve(tool, consent) -> 공식 package/commit만 resolve; transitive lock·raw 명령·license inventory 저장",
+        "install(tool, lock_receipt) -> hash와 source revision 확인 후 격리 설치; 불완전 설치 비활성",
+        "probe(tool, sandbox) -> version/help/기능·파일/네트워크 부작용 결과를 ProbeReport로 반환"
+      ],
+      "acceptance_ids": [
+        "RUNTIME-HASH",
+        "RUNTIME-MISSING",
+        "RUNTIME-NATIVE",
+        "UH-OPS-02",
+        "INTEG-WP-BOOTSTRAP",
+        "R4-RC00-01",
+        "R4-RC00-02",
+        "R4-RC00-03",
+        "R4-RC00-04",
+        "R4-RC01-01",
+        "R4-RC01-02",
+        "R4-RC01-03",
+        "R4-RC01-04",
+        "R5-RF00-01",
+        "R5-RF00-02",
+        "R5-RF00-03",
+        "R5-RF00-04",
+        "R5-RF00-05",
+        "R5-RF00-06",
+        "R5-RF01-01",
+        "R5-RF01-02",
+        "R5-RF01-03",
+        "R5-RF01-04",
+        "R5-RF01-05",
+        "R5-RF01-06"
+      ],
+      "commands": [
+        [
+          "uv",
+          "run",
+          "--no-sync",
+          "python",
+          "-m",
+          "pytest",
+          "tests/cyrano_product/test_wp00_product.py",
+          "-q"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "schemas"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "check"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_integration.py"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "quality"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_r5.py"
+        ]
+      ],
+      "completion_evidence": "evidence/work-packages/WP00.json",
+      "remote_side_effects_authorized": false,
+      "source_work_packages": [
+        "universal:WP00"
+      ],
+      "integration_revision": "2026-09-16-assessment-r3",
+      "integration_tasks": [
+        {
+          "id": "WP00-I01",
+          "instruction": "quality 79/72 baseline·tool 가용성·실제 Python 배포를 조사한다.",
+          "status": "completed"
+        },
+        {
+          "id": "WP00-I02",
+          "instruction": "기본 extension 등록·async 호출·실제 tool inventory를 안전 fixture로 확인한다.",
+          "status": "completed"
+        },
+        {
+          "id": "WP00-I03",
+          "instruction": "full security/child/usage 결과는 WP06/WP22 완료 전 not_tested로 남긴다.",
+          "status": "completed"
+        }
+      ],
+      "integration_focus": "bootstrap probes와 full governed 검증 분리",
+      "bootstrap_approval_mode": "external_human_review_not_claimed_as_CYRANO_enforced",
+      "product_completion_requires": [
+        "mandatory_acceptance_actual_evidence",
+        "quality_gates_or_explicit_block",
+        "independent_postimage_review",
+        "no_unresolved_security_or_unknown_effect",
+        "source_and_contract_manifest_match"
+      ],
+      "r3_assessment_criteria": [],
+      "assessment_test_tasks": [
+        "TS00",
+        "TS11"
+      ],
+      "r4_refinements": [
+        "RC00",
+        "RC01"
+      ],
+      "native_inspection_and_patch_targets": [
+        "deepagents_code/__init__.py",
+        "pyproject.toml",
+        "uv.lock",
+        "DEVELOPMENT.md"
+      ],
+      "native_target_status": "inspect at pinned source; edit only after plan approval; not patched by overlay",
+      "commands_cwd": "libs/code",
+      "command_availability": "first command requires implemented product test and native uv environment; preparation scripts exist",
+      "r5_refinements": [
+        "RF00",
+        "RF01"
+      ],
+      "implementation_units": [
+        {
+          "id": "WP00-baseline",
+          "title": "기준 소스·소유권·구조 보존 확인",
+          "status": "planned",
+          "design_ref": "docs/design/architecture/2026-09-16-system-design.ko.md",
+          "implementation_steps": [
+            "기존 dcode 기준 checkout의 파일·의존성·실행경로를 확인한다. 새 upstream 버전을 발견해도 무음 업그레이드하지 않는다.",
+            "현재 Cyrano 제품 코드와 문서·schema·기존 WP의 소유권을 확인한다. 존재하지 않는 이전 납품 파일이나 테스트 결과는 현재 증거로 사용하지 않는다.",
+            "실제 실행환경과 전용 HOME·sandbox·기준 실패를 기록하고, 준비 검사와 native 통합 검사를 분리한다."
+          ],
+          "interfaces": "CompatibilityReport와 DocumentationBinding을 확정하되 이번 overlay는 기존 plan.json을 바꾸지 않는다.",
+          "acceptance_conditions": [
+            "현재 원본 파일을 변경하지 않은 hash 목록",
+            "기존 R6 규칙과 이 보완의 충돌·해결 owner 표",
+            "실행된 base test와 미실행 native test 구분",
+            "새 NG ID가 기존 ID와 충돌하지 않음"
+          ],
+          "risks": "R6 bytes 미확보 상태에서 R5로 재구성·downgrade하는 것이 가장 큰 위험이다. 파일 이동·전체 목차 재생성을 먼저 하지 않는다.",
+          "output_paths": [
+            "../deepagents_code/cyrano/dcode/adapter.py",
+            ".agents/work/plan.json"
+          ],
+          "product_test_path": "../tests/cyrano_product/test_wp00_baseline.py",
+          "commands": [
+            {
+              "cwd": "libs/code",
+              "argv": [
+                "uv",
+                "run",
+                "--no-sync",
+                "python",
+                "-m",
+                "pytest",
+                "tests/cyrano_product/test_wp00_baseline.py",
+                "-q"
+              ],
+              "available_after": "implement_test_and_runtime_ports",
+              "zero_tests": "fail"
+            }
+          ],
+          "definition_inputs": [
+            "contracts/v2/runtime.schema.json",
+            "contracts/v2/governance.schema.json"
+          ],
+          "execution_requires": "Required predecessor ports + real dcode adapter + explicit runtime cost/side-effect permit; missing prerequisites are blocked, not pass.",
+          "consumed_owned_interfaces": []
+        }
+      ],
+      "primary_design": "docs/design/DCODE_INTEGRATION.ko.md",
+      "document": ".agents/work/WP00.ko.md",
+      "reading_refs": {
+        "plan": [
+          ".agents/work/WP00.ko.md",
+          "docs/design/DCODE_INTEGRATION.ko.md"
+        ],
+        "implement": [
+          ".agents/work/WP00.ko.md",
+          "docs/design/DCODE_INTEGRATION.ko.md"
+        ],
+        "test": [
+          ".agents/work/WP00.ko.md",
+          "docs/testing/STRATEGY.ko.md"
+        ]
+      },
+      "resource_refs": [
+        "contracts/v1/cyrano.schema.json",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "contracts/assessment/rubric.json",
+        "contracts/v2/runtime.schema.json",
+        "tests/acceptance/catalog.json"
+      ],
+      "resource_selection": {
+        "tests/acceptance/catalog.json": {
+          "owner_wp": "WP00"
+        },
+        "contracts/v2/runtime.schema.json": {
+          "use": "Read only referenced $defs; do not inject entire schema by default."
+        }
+      },
+      "dependency_milestones": {},
+      "milestones": {
+        "interface_ready": "required interfaces, actual module behavior and owned negative paths verified; no final score/release claim",
+        "product_verified": "all owned mandatory product acceptances executed with native/authorized boundaries and independent review"
+      }
+    },
+    {
+      "id": "WP01",
+      "title": "데이터 계약·digest·semantic validation",
+      "status": "verified",
+      "foundation_present": true,
+      "depends_on": [],
+      "owner_package": "../deepagents_code/cyrano/contracts",
+      "owner_role": "implementer",
+      "reviewer_role": "reviewer",
+      "risk": "high",
+      "goal": "machine contracts와 의미 검사, 서명 대상 projection을 단일 소유자에서 구현한다.",
+      "input_refs": [
+        "AGENTS.md",
+        "docs/design/architecture/2026-09-16-data-api.ko.md",
+        "contracts/v1/cyrano.schema.json",
+        "../deepagents_code/cyrano/contracts/README.md",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "docs/design/architecture/2026-09-16-universal-harness-integration.ko.md",
+        "docs/execution/INTEGRATED_WORK_DETAILS.ko.md",
+        "contracts/assessment/rubric.json",
+        "docs/testing/STRATEGY.ko.md",
+        "docs/development/TEST_DEVELOPMENT_PLAN.ko.md"
+      ],
+      "output_paths": [
+        "../deepagents_code/cyrano/contracts/validation.py",
+        "../deepagents_code/cyrano/contracts/subjects.py",
+        "contracts/v1/cyrano.schema.json",
+        "../tests/cyrano_product/test_wp01_product.py"
+      ],
+      "methods": [
+        "validate_document -> typed payload",
+        "binding_digest -> subject hash",
+        "validate_references -> dangling/scope/digest findings"
+      ],
+      "acceptance_ids": [
+        "CONTRACT-UNKNOWN",
+        "CONTRACT-DIGEST",
+        "CONTRACT-SUBJECT",
+        "CONTRACT-RECEIPT",
+        "CONTRACT-FLOAT",
+        "INTEG-AUTH-CONVERSION",
+        "INTEG-JSON-STRICT"
+      ],
+      "commands": [
+        [
+          "uv",
+          "run",
+          "--no-sync",
+          "python",
+          "-m",
+          "pytest",
+          "tests/cyrano_product/test_wp01_product.py",
+          "-q"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "schemas"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "check"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_integration.py"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "quality"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_r5.py"
+        ]
+      ],
+      "completion_evidence": "evidence/work-packages/WP01.json",
+      "remote_side_effects_authorized": false,
+      "source_work_packages": [
+        "universal:WP01"
+      ],
+      "integration_revision": "2026-09-16-assessment-r3",
+      "integration_tasks": [
+        {
+          "id": "WP01-I01",
+          "instruction": "원본·v1·v2 타입 registry를 명시하며 default 추론을 금지한다.",
+          "status": "completed"
+        },
+        {
+          "id": "WP01-I02",
+          "instruction": "중복 key·float·deep JSON·surrogate·과대값을 인증 경계에서 거부한다.",
+          "status": "completed"
+        },
+        {
+          "id": "WP01-I03",
+          "instruction": "Gov plan·receipt·permit·verification·report와 subject projections를 구현한다.",
+          "status": "completed"
+        }
+      ],
+      "integration_focus": "governance v2 계약과 strict ingress",
+      "bootstrap_approval_mode": "external_human_review_not_claimed_as_CYRANO_enforced",
+      "product_completion_requires": [
+        "mandatory_acceptance_actual_evidence",
+        "quality_gates_or_explicit_block",
+        "independent_postimage_review",
+        "no_unresolved_security_or_unknown_effect",
+        "source_and_contract_manifest_match"
+      ],
+      "r3_assessment_criteria": [],
+      "assessment_test_tasks": [
+        "TS01"
+      ],
+      "r4_refinements": [],
+      "commands_cwd": "libs/code",
+      "command_availability": "first command requires implemented product test and native uv environment; preparation scripts exist",
+      "r5_refinements": [],
+      "primary_design": "docs/design/architecture/2026-09-16-data-api.ko.md",
+      "document": ".agents/work/WP01.ko.md",
+      "reading_refs": {
+        "plan": [
+          ".agents/work/WP01.ko.md",
+          "docs/design/architecture/2026-09-16-data-api.ko.md"
+        ],
+        "implement": [
+          ".agents/work/WP01.ko.md",
+          "docs/design/architecture/2026-09-16-data-api.ko.md"
+        ],
+        "test": [
+          ".agents/work/WP01.ko.md",
+          "docs/testing/STRATEGY.ko.md"
+        ]
+      },
+      "resource_refs": [
+        "contracts/v1/cyrano.schema.json",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "contracts/assessment/rubric.json",
+        "tests/acceptance/catalog.json"
+      ],
+      "resource_selection": {
+        "tests/acceptance/catalog.json": {
+          "owner_wp": "WP01"
+        },
+        "contracts/v2/runtime.schema.json": {
+          "use": "Read only referenced $defs; do not inject entire schema by default."
+        }
+      },
+      "dependency_milestones": {},
+      "milestones": {
+        "interface_ready": "required interfaces, actual module behavior and owned negative paths verified; no final score/release claim",
+        "product_verified": "all owned mandatory product acceptances executed with native/authorized boundaries and independent review"
+      }
+    },
+    {
+      "id": "WP02",
+      "title": "원장·scope ACL·outbox·migration",
+      "status": "verified",
+      "foundation_present": true,
+      "depends_on": [
+        "WP01"
+      ],
+      "owner_package": "../deepagents_code/cyrano/sqlite",
+      "owner_role": "implementer",
+      "reviewer_role": "reviewer",
+      "risk": "high",
+      "goal": "현재 SQLite 기반 코드를 production scope-aware transaction 저장소로 확장한다.",
+      "input_refs": [
+        "AGENTS.md",
+        "docs/design/architecture/2026-09-16-data-api.ko.md",
+        "contracts/v1/cyrano.schema.json",
+        "../deepagents_code/cyrano/sqlite/README.md",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "docs/design/architecture/2026-09-16-universal-harness-integration.ko.md",
+        "docs/execution/INTEGRATED_WORK_DETAILS.ko.md",
+        "contracts/assessment/rubric.json",
+        "docs/testing/STRATEGY.ko.md",
+        "docs/development/TEST_DEVELOPMENT_PLAN.ko.md"
+      ],
+      "output_paths": [
+        "../deepagents_code/cyrano/sqlite/repository.py",
+        "../deepagents_code/cyrano/sqlite/migrations.py",
+        "contracts/sql/target-schema.sql",
+        "../tests/cyrano_product/test_wp02_product.py",
+        "../tests/cyrano_product/test_wp02_contract_scenarios.py",
+        "../tests/cyrano_product/test_resume_lifecycle.py"
+      ],
+      "methods": [
+        "execute_command -> receipt",
+        "read_scoped_entity -> version",
+        "claim_outbox -> lease/fence",
+        "reconcile_unknown -> disposition"
+      ],
+      "acceptance_ids": [
+        "STORE-SCOPE",
+        "STORE-CRASH",
+        "STORE-FENCE",
+        "STORE-FUTURE",
+        "UH-RUN-01",
+        "UH-RUN-02",
+        "UH-RUN-03",
+        "UH-RUN-05",
+        "UH-OPS-05",
+        "INTEG-MIGRATION",
+        "CON-REC-01",
+        "CON-REC-02",
+        "CON-REC-03",
+        "CON-REC-04",
+        "CON-REC-05",
+        "CON-REC-06",
+        "CON-REC-07",
+        "CON-REC-08",
+        "CON-REC-09",
+        "CON-REC-10",
+        "CON-REC-11",
+        "CON-REC-12",
+        "RESUME-001",
+        "RESUME-002",
+        "RESUME-003",
+        "RESUME-004",
+        "RESUME-005",
+        "RESUME-006",
+        "RESUME-007",
+        "RESUME-008",
+        "RESUME-009",
+        "RESUME-010",
+        "RESUME-011",
+        "RESUME-012"
+      ],
+      "commands": [
+        [
+          "uv",
+          "run",
+          "--no-sync",
+          "python",
+          "-m",
+          "pytest",
+          "tests/cyrano_product/test_wp02_product.py",
+          "-q"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "schemas"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "check"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_integration.py"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "quality"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_r5.py"
+        ]
+      ],
+      "completion_evidence": "evidence/work-packages/WP02.json",
+      "remote_side_effects_authorized": false,
+      "source_work_packages": [
+        "universal:WP02",
+        "universal:WP20"
+      ],
+      "integration_revision": "2026-09-16-assessment-r3",
+      "integration_tasks": [
+        {
+          "id": "WP02-I01",
+          "instruction": "telemetry event_seq와 semantic control_revision을 분리한다.",
+          "status": "completed"
+        },
+        {
+          "id": "WP02-I02",
+          "instruction": "현재 Store→목표 DDL migration 및 충돌 원본 SQL의 필드 mapping을 작성한다.",
+          "status": "completed"
+        },
+        {
+          "id": "WP02-I03",
+          "instruction": "event/state/idempotency/outbox transaction과 backup/restore/fencing을 구현한다.",
+          "status": "completed"
+        }
+      ],
+      "integration_focus": "control revision·원장·migration·예산 기록",
+      "bootstrap_approval_mode": "external_human_review_not_claimed_as_CYRANO_enforced",
+      "product_completion_requires": [
+        "mandatory_acceptance_actual_evidence",
+        "quality_gates_or_explicit_block",
+        "independent_postimage_review",
+        "no_unresolved_security_or_unknown_effect",
+        "source_and_contract_manifest_match"
+      ],
+      "r3_assessment_criteria": [],
+      "assessment_test_tasks": [
+        "TS01"
+      ],
+      "r4_refinements": [],
+      "commands_cwd": "libs/code",
+      "command_availability": "first command requires implemented product test and native uv environment; preparation scripts exist",
+      "r5_refinements": [],
+      "primary_design": "docs/design/architecture/2026-09-16-data-api.ko.md",
+      "document": ".agents/work/WP02.ko.md",
+      "reading_refs": {
+        "plan": [
+          ".agents/work/WP02.ko.md",
+          "docs/design/architecture/2026-09-16-data-api.ko.md"
+        ],
+        "implement": [
+          ".agents/work/WP02.ko.md",
+          "docs/design/architecture/2026-09-16-data-api.ko.md"
+        ],
+        "test": [
+          ".agents/work/WP02.ko.md",
+          "docs/testing/STRATEGY.ko.md"
+        ]
+      },
+      "resource_refs": [
+        "contracts/v1/cyrano.schema.json",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "contracts/assessment/rubric.json",
+        "tests/acceptance/catalog.json"
+      ],
+      "resource_selection": {
+        "tests/acceptance/catalog.json": {
+          "owner_wp": "WP02"
+        },
+        "contracts/v2/runtime.schema.json": {
+          "use": "Read only referenced $defs; do not inject entire schema by default."
+        }
+      },
+      "dependency_milestones": {
+        "WP01": "interface_ready"
+      },
+      "milestones": {
+        "interface_ready": "required interfaces, actual module behavior and owned negative paths verified; no final score/release claim",
+        "product_verified": "all owned mandatory product acceptances executed with native/authorized boundaries and independent review"
+      }
+    },
+    {
+      "id": "WP03",
+      "title": "신뢰된 승인·Action Broker·sandbox",
+      "status": "verified",
+      "foundation_present": false,
+      "depends_on": [
+        "WP00",
+        "WP01",
+        "WP02"
+      ],
+      "owner_package": "../deepagents_code/cyrano/kernel",
+      "owner_role": "implementer",
+      "reviewer_role": "security-reviewer",
+      "risk": "critical",
+      "goal": "승인 purpose·source snapshot·실제 OS 경계를 통한 실행 통제를 구현한다.",
+      "input_refs": [
+        "AGENTS.md",
+        "docs/design/architecture/2026-09-16-runtime-security.ko.md",
+        "contracts/v1/cyrano.schema.json",
+        "../deepagents_code/cyrano/kernel/README.md",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "docs/design/architecture/2026-09-16-universal-harness-integration.ko.md",
+        "docs/execution/INTEGRATED_WORK_DETAILS.ko.md",
+        "contracts/assessment/rubric.json",
+        "docs/testing/STRATEGY.ko.md",
+        "docs/development/TEST_DEVELOPMENT_PLAN.ko.md",
+        "docs/design/CODE_INTELLIGENCE_AND_TOOL_ISOLATION.ko.md",
+        "contracts/v2/runtime.schema.json"
+      ],
+      "output_paths": [
+        "../deepagents_code/cyrano/kernel/approvals.py",
+        "../deepagents_code/cyrano/kernel/actions.py",
+        "../deepagents_code/cyrano/dcode/sandbox.py",
+        "../tests/cyrano_product/test_wp03_product.py",
+        "../deepagents_code/cyrano/intelligence/contracts.py",
+        "../deepagents_code/cyrano/kernel/anchored_edit.py",
+        "../tests/cyrano_product/test_wp03_anchored_edit.py",
+        "../tests/cyrano_product/test_wp03_contract_scenarios.py",
+        "../tests/cyrano_product/test_human_lifecycle.py",
+        "../tests/cyrano_product/test_isolate_lifecycle.py"
+      ],
+      "methods": [
+        "issue_permit -> signed permit",
+        "verify_permit -> authorized spec",
+        "apply_scoped_patch -> new snapshot",
+        "cancel_execution -> known/unknown result"
+      ],
+      "acceptance_ids": [
+        "AUTH-FAKE",
+        "AUTH-PURPOSE",
+        "AUTH-REVOKE",
+        "AUTH-SYMLINK",
+        "AUTH-PRINCIPAL",
+        "AUTH-DOCKER",
+        "UH-AUTH-01",
+        "UH-AUTH-02",
+        "UH-AUTH-03",
+        "UH-AUTH-04",
+        "UH-AUTH-05",
+        "UH-AUTH-06",
+        "UH-AUTH-07",
+        "UH-AUTH-08",
+        "UH-AUTH-09",
+        "UH-AUTH-10",
+        "UH-AUTH-11",
+        "UH-AUTH-12",
+        "UH-AUTH-13",
+        "UH-AUTH-14",
+        "INTEG-ONLY-WRITE",
+        "R3-24-01",
+        "R3-24-02",
+        "R3-24-03",
+        "R3-24-04",
+        "R3-24-05",
+        "R3-24-06",
+        "CON-EDT-01",
+        "CON-EDT-02",
+        "CON-EDT-03",
+        "CON-EDT-04",
+        "CON-EDT-05",
+        "CON-EDT-06",
+        "CON-EDT-07",
+        "CON-EDT-08",
+        "CON-EDT-09",
+        "CON-EDT-10",
+        "CON-EDT-11",
+        "CON-EDT-12",
+        "HUMAN-001",
+        "HUMAN-002",
+        "HUMAN-003",
+        "HUMAN-004",
+        "HUMAN-005",
+        "HUMAN-006",
+        "HUMAN-007",
+        "HUMAN-008",
+        "HUMAN-009",
+        "HUMAN-010",
+        "HUMAN-011",
+        "HUMAN-012",
+        "HUMAN-013",
+        "HUMAN-014",
+        "HUMAN-015",
+        "HUMAN-016",
+        "ISOLATE-001",
+        "ISOLATE-002",
+        "ISOLATE-003",
+        "ISOLATE-004",
+        "ISOLATE-005",
+        "ISOLATE-006",
+        "ISOLATE-007",
+        "ISOLATE-008",
+        "ISOLATE-009",
+        "ISOLATE-010",
+        "ISOLATE-011",
+        "ISOLATE-012"
+      ],
+      "commands": [
+        [
+          "uv",
+          "run",
+          "--no-sync",
+          "python",
+          "-m",
+          "pytest",
+          "tests/cyrano_product/test_wp03_product.py",
+          "-q"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "schemas"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "check"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_integration.py"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "quality"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_r5.py"
+        ]
+      ],
+      "completion_evidence": "evidence/work-packages/WP03.json",
+      "remote_side_effects_authorized": false,
+      "source_work_packages": [
+        "universal:WP03",
+        "universal:WP05"
+      ],
+      "integration_revision": "2026-09-16-assessment-r3",
+      "integration_tasks": [
+        {
+          "id": "WP03-I01",
+          "instruction": "표시 원문 digest와 인증된 user/display event를 Ed25519 receipt에 결속한다.",
+          "status": "completed"
+        },
+        {
+          "id": "WP03-I02",
+          "instruction": "read/create/write_existing/delete/only_write·deny 우선·권한 교집합을 구현한다.",
+          "status": "completed"
+        },
+        {
+          "id": "WP03-I03",
+          "instruction": "OS principal/readonly source/scratch·symlink/hardlink/TOCTOU·미등록tool·auditfail을 검증한다.",
+          "status": "completed"
+        }
+      ],
+      "integration_focus": "별도 사람 승인·정확 파일 권한·broker",
+      "bootstrap_approval_mode": "external_human_review_not_claimed_as_CYRANO_enforced",
+      "product_completion_requires": [
+        "mandatory_acceptance_actual_evidence",
+        "quality_gates_or_explicit_block",
+        "independent_postimage_review",
+        "no_unresolved_security_or_unknown_effect",
+        "source_and_contract_manifest_match"
+      ],
+      "r3_assessment_criteria": [
+        "2-4"
+      ],
+      "assessment_test_tasks": [
+        "TS05"
+      ],
+      "r4_refinements": [],
+      "commands_cwd": "libs/code",
+      "command_availability": "first command requires implemented product test and native uv environment; preparation scripts exist",
+      "r5_refinements": [],
+      "implementation_units": [
+        {
+          "id": "WP03-anchored-edit",
+          "title": "코드 근거와 anchored edit·recoverable apply",
+          "status": "completed",
+          "design_ref": "docs/design/CODE_INTELLIGENCE_AND_TOOL_ISOLATION.ko.md",
+          "implementation_steps": [
+            "index binding을 source/environment/ACL/provider/schema로 고정하고 graph relation 신뢰 등급을 분리한다.",
+            "파일 전체 digest+정확한 byte range·기대 원문을 검증한다. CRLF·encoding을 보존하고 fuzzy patch를 금지한다.",
+            "한 patch 안의 전체 hunk를 candidate artifact에 우선 검증한다. path race는 immutable snapshot 또는 검증된 descriptor 정책으로 막는다.",
+            "원본 반영은 별도 permit과 journal을 사용한다. before/after file digest·mode·단계 기록을 먼저 저장한다.",
+            "disk-full·crash·동시source변경을 주입하고 복구가 사용자 새 변경을 덮어쓰지 않는지 확인한다."
+          ],
+          "interfaces": "AnchoredEditService.validate_patch/apply_candidate; IntelligenceResult/PatchAnchor.",
+          "acceptance_conditions": [
+            "stale anchor no-write",
+            "변경된 index 결과를 근거로 편집 불가",
+            "부분 실패 뒤 applied로 표시 금지",
+            "receipt scope 밖 파일 변경0"
+          ],
+          "risks": "짧은 hash collision이나 여러 파일 rename을 한 번의 원자 변경이라고 오인하지 않는다.",
+          "output_paths": [
+            "../deepagents_code/cyrano/intelligence/contracts.py",
+            "../deepagents_code/cyrano/kernel/anchored_edit.py"
+          ],
+          "product_test_path": "../tests/cyrano_product/test_wp03_anchored_edit.py",
+          "commands": [
+            {
+              "cwd": "libs/code",
+              "argv": [
+                "uv",
+                "run",
+                "--no-sync",
+                "python",
+                "-m",
+                "pytest",
+                "tests/cyrano_product/test_wp03_anchored_edit.py",
+                "-q"
+              ],
+              "available_after": "implement_test_and_runtime_ports",
+              "zero_tests": "fail"
+            }
+          ],
+          "definition_inputs": [
+            "contracts/v2/runtime.schema.json",
+            "contracts/v2/governance.schema.json"
+          ],
+          "execution_requires": "Required predecessor ports + real dcode adapter + explicit runtime cost/side-effect permit; missing prerequisites are blocked, not pass.",
+          "consumed_owned_interfaces": [
+            {
+              "path": "../deepagents_code/cyrano/dcode/adapter.py",
+              "owner_wp": "WP00"
+            }
+          ]
+        }
+      ],
+      "primary_design": "docs/design/architecture/2026-09-16-runtime-security.ko.md",
+      "document": ".agents/work/WP03.ko.md",
+      "reading_refs": {
+        "plan": [
+          ".agents/work/WP03.ko.md",
+          "docs/design/architecture/2026-09-16-runtime-security.ko.md"
+        ],
+        "implement": [
+          ".agents/work/WP03.ko.md",
+          "docs/design/architecture/2026-09-16-runtime-security.ko.md"
+        ],
+        "test": [
+          ".agents/work/WP03.ko.md",
+          "docs/testing/STRATEGY.ko.md"
+        ]
+      },
+      "resource_refs": [
+        "contracts/v1/cyrano.schema.json",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "contracts/assessment/rubric.json",
+        "contracts/v2/runtime.schema.json",
+        "tests/acceptance/catalog.json"
+      ],
+      "resource_selection": {
+        "tests/acceptance/catalog.json": {
+          "owner_wp": "WP03"
+        },
+        "contracts/v2/runtime.schema.json": {
+          "use": "Read only referenced $defs; do not inject entire schema by default."
+        }
+      },
+      "dependency_milestones": {
+        "WP00": "interface_ready",
+        "WP01": "interface_ready",
+        "WP02": "interface_ready"
+      },
+      "milestones": {
+        "interface_ready": "required interfaces, actual module behavior and owned negative paths verified; no final score/release claim",
+        "product_verified": "all owned mandatory product acceptances executed with native/authorized boundaries and independent review"
+      }
+    },
+    {
+      "id": "WP04",
+      "title": "plugin 구성·lifecycle·역순 정리",
+      "status": "verified",
+      "foundation_present": true,
+      "depends_on": [
+        "WP01"
+      ],
+      "owner_package": "../deepagents_code/cyrano/plugins",
+      "owner_role": "implementer",
+      "reviewer_role": "reviewer",
+      "risk": "high",
+      "goal": "명시적 구성→resolved spec→provider tree를 만들고 partial startup을 복구한다.",
+      "input_refs": [
+        "AGENTS.md",
+        "docs/design/architecture/2026-09-16-system-design.ko.md",
+        "contracts/v1/cyrano.schema.json",
+        "../deepagents_code/cyrano/plugins/README.md",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "docs/design/architecture/2026-09-16-universal-harness-integration.ko.md",
+        "docs/execution/INTEGRATED_WORK_DETAILS.ko.md",
+        "contracts/assessment/rubric.json",
+        "docs/testing/STRATEGY.ko.md",
+        "docs/development/TEST_DEVELOPMENT_PLAN.ko.md"
+      ],
+      "output_paths": [
+        "../deepagents_code/cyrano/plugins/composition.py",
+        "../deepagents_code/cyrano/plugins/registry.py",
+        "configs/profiles/governed.template.json",
+        "../tests/cyrano_product/test_wp04_product.py"
+      ],
+      "methods": [
+        "resolve_config -> resolved composition",
+        "start_components -> handles",
+        "close_components -> cleanup report"
+      ],
+      "acceptance_ids": [
+        "PLUGIN-PARTIAL",
+        "PLUGIN-DISPOSE",
+        "PLUGIN-CONFIG"
+      ],
+      "commands": [
+        [
+          "uv",
+          "run",
+          "--no-sync",
+          "python",
+          "-m",
+          "pytest",
+          "tests/cyrano_product/test_wp04_product.py",
+          "-q"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "schemas"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "check"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_integration.py"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "quality"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_r5.py"
+        ]
+      ],
+      "completion_evidence": "evidence/work-packages/WP04.json",
+      "remote_side_effects_authorized": false,
+      "source_work_packages": [
+        "universal:WP10"
+      ],
+      "integration_revision": "2026-09-16-assessment-r3",
+      "integration_tasks": [
+        {
+          "id": "WP04-I01",
+          "instruction": "단일 composite·고정 tool inventory·정확 schema hash 등록을 구현한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP04-I02",
+          "instruction": "역순 teardown·부분 등록 실패 cleanup·import-time 작업 금지를 검사한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP04-I03",
+          "instruction": "프로젝트 extension/hook/MCP 자동신뢰는 별도 runtime discovery 책임으로 연결한다.",
+          "status": "planned"
+        }
+      ],
+      "integration_focus": "등록 순서·권한 제한 plugin lifecycle",
+      "bootstrap_approval_mode": "verified_broker_or_explicit_external_development_review",
+      "product_completion_requires": [
+        "mandatory_acceptance_actual_evidence",
+        "quality_gates_or_explicit_block",
+        "independent_postimage_review",
+        "no_unresolved_security_or_unknown_effect",
+        "source_and_contract_manifest_match"
+      ],
+      "r3_assessment_criteria": [],
+      "assessment_test_tasks": [
+        "TS02",
+        "TS05"
+      ],
+      "r4_refinements": [],
+      "commands_cwd": "libs/code",
+      "command_availability": "first command requires implemented product test and native uv environment; preparation scripts exist",
+      "r5_refinements": [],
+      "primary_design": "docs/design/architecture/2026-09-16-system-design.ko.md",
+      "document": ".agents/work/WP04.ko.md",
+      "reading_refs": {
+        "plan": [
+          ".agents/work/WP04.ko.md",
+          "docs/design/architecture/2026-09-16-system-design.ko.md"
+        ],
+        "implement": [
+          ".agents/work/WP04.ko.md",
+          "docs/design/architecture/2026-09-16-system-design.ko.md"
+        ],
+        "test": [
+          ".agents/work/WP04.ko.md",
+          "docs/testing/STRATEGY.ko.md"
+        ]
+      },
+      "resource_refs": [
+        "contracts/v1/cyrano.schema.json",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "contracts/assessment/rubric.json",
+        "tests/acceptance/catalog.json"
+      ],
+      "resource_selection": {
+        "tests/acceptance/catalog.json": {
+          "owner_wp": "WP04"
+        },
+        "contracts/v2/runtime.schema.json": {
+          "use": "Read only referenced $defs; do not inject entire schema by default."
+        }
+      },
+      "dependency_milestones": {
+        "WP01": "interface_ready"
+      },
+      "milestones": {
+        "interface_ready": "required interfaces, actual module behavior and owned negative paths verified; no final score/release claim",
+        "product_verified": "all owned mandatory product acceptances executed with native/authorized boundaries and independent review"
+      }
+    },
+    {
+      "id": "WP05",
+      "title": "context·skill catalog·native binding",
+      "status": "verified",
+      "foundation_present": true,
+      "depends_on": [
+        "WP00",
+        "WP01",
+        "WP04"
+      ],
+      "owner_package": "../deepagents_code/cyrano/context",
+      "owner_role": "implementer",
+      "reviewer_role": "reviewer",
+      "risk": "high",
+      "goal": "결정적 CYRANO prefix와 dynamic tail을 native dcode에 검증 가능하게 반영한다.",
+      "input_refs": [
+        "AGENTS.md",
+        "docs/design/architecture/2026-09-16-cache-context.ko.md",
+        "contracts/v1/cyrano.schema.json",
+        "../deepagents_code/cyrano/context/README.md",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "docs/design/architecture/2026-09-16-universal-harness-integration.ko.md",
+        "docs/execution/INTEGRATED_WORK_DETAILS.ko.md",
+        "contracts/assessment/rubric.json",
+        "docs/testing/STRATEGY.ko.md",
+        "docs/development/TEST_DEVELOPMENT_PLAN.ko.md",
+        "contracts/v2/runtime.schema.json"
+      ],
+      "output_paths": [
+        "../deepagents_code/cyrano/context/binding.py",
+        "../deepagents_code/cyrano/context/catalogue.py",
+        "../deepagents_code/cyrano/context/usage.py",
+        "../tests/cyrano_product/test_wp05_product.py",
+        "../deepagents_code/cyrano/context/compiler.py",
+        "../deepagents_code/cyrano/context/epochs.py",
+        "../deepagents_code/cyrano/events/coverage.py",
+        "../tests/cyrano_product/test_wp05_context.py",
+        "../tests/cyrano_product/test_wp05_contract_scenarios.py"
+      ],
+      "methods": [
+        "resolve_catalogue -> fixed metadata",
+        "compile_context -> context manifest",
+        "bind_context -> actual binding receipt",
+        "normalize_usage -> measured/null"
+      ],
+      "acceptance_ids": [
+        "CACHE-TAIL",
+        "CACHE-TOOLS",
+        "CACHE-UNKNOWN",
+        "CACHE-WIRE",
+        "CACHE-TOKEN",
+        "UH-CACHE-01",
+        "UH-CACHE-04",
+        "UH-CACHE-07",
+        "UH-CACHE-08",
+        "UH-CACHE-09",
+        "CON-CTX-01",
+        "CON-CTX-02",
+        "CON-CTX-03",
+        "CON-CTX-04",
+        "CON-CTX-05",
+        "CON-CTX-06",
+        "CON-CTX-07",
+        "CON-CTX-08",
+        "CON-CTX-09",
+        "CON-CTX-10",
+        "CON-CTX-11",
+        "CON-CTX-12",
+        "CON-CAC-01",
+        "CON-CAC-02",
+        "CON-CAC-03",
+        "CON-CAC-04",
+        "CON-CAC-05",
+        "CON-CAC-06",
+        "CON-CAC-07",
+        "CON-CAC-08",
+        "CON-CAC-09",
+        "CON-CAC-10",
+        "CON-CAC-11",
+        "CON-CAC-12"
+      ],
+      "commands": [
+        [
+          "uv",
+          "run",
+          "--no-sync",
+          "python",
+          "-m",
+          "pytest",
+          "tests/cyrano_product/test_wp05_product.py",
+          "-q"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "schemas"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "check"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_integration.py"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "quality"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_r5.py"
+        ]
+      ],
+      "completion_evidence": "evidence/work-packages/WP05.json",
+      "remote_side_effects_authorized": false,
+      "source_work_packages": [
+        "universal:WP10",
+        "universal:WP11"
+      ],
+      "integration_revision": "2026-09-16-assessment-r3",
+      "integration_tasks": [
+        {
+          "id": "WP05-I01",
+          "instruction": "상위 policy·session·approval·role·workunit의 교집합/합집합/min으로 profile을 계산한다.",
+          "status": "completed"
+        },
+        {
+          "id": "WP05-I02",
+          "instruction": "memory release 고정과 조회 view 변화를 구분하고 동적 ID는 tail에 둔다.",
+          "status": "completed"
+        },
+        {
+          "id": "WP05-I03",
+          "instruction": "offload·compaction에서도 계약·승인·blocker·evidence ID를 복구하며 불명 한도를 발명하지 않는다.",
+          "status": "completed"
+        }
+      ],
+      "integration_focus": "L0–L5와 resolved TaskProfile",
+      "bootstrap_approval_mode": "verified_broker_or_explicit_external_development_review",
+      "product_completion_requires": [
+        "mandatory_acceptance_actual_evidence",
+        "quality_gates_or_explicit_block",
+        "independent_postimage_review",
+        "no_unresolved_security_or_unknown_effect",
+        "source_and_contract_manifest_match"
+      ],
+      "r3_assessment_criteria": [],
+      "assessment_test_tasks": [
+        "TS02",
+        "TS05"
+      ],
+      "r4_refinements": [],
+      "native_inspection_and_patch_targets": [
+        "deepagents_code/agent.py",
+        "deepagents_code/extensions/"
+      ],
+      "native_target_status": "inspect at pinned source; edit only after plan approval; not patched by overlay",
+      "commands_cwd": "libs/code",
+      "command_availability": "first command requires implemented product test and native uv environment; preparation scripts exist",
+      "r5_refinements": [],
+      "implementation_units": [
+        {
+          "id": "WP05-context",
+          "title": "안정 context epoch·compaction·cache 관측",
+          "status": "completed",
+          "design_ref": "docs/design/architecture/2026-09-16-cache-context.ko.md",
+          "implementation_steps": [
+            "현재 compiler의 byte deterministic 성질을 보존하고 native tokenizer/provider usage 관측을 별도 필드로 추가한다.",
+            "ObligationManifest를 현재 의도·계획·실행 원장에서 추출한다. 모델 요약이 이를 덮어쓰지 못하도록 read-only input과 검증을 분리한다.",
+            "고정 core·역할·tool metadata와 dynamic memory/query/progress를 분리하고 context epoch 변화를 기록한다.",
+            "cache read/write accounting의 포함 관계와 null을 처리한다. TTL은 provider 정책에 따라 request-start 기준으로 계산하며 재시작 후 단조시계 값을 재사용하지 않는다.",
+            "유휴 warming은 제품 기본 흐름에서 꺼두고 실험 스위치·별도 비용 cap·actual billing 기록·pending input 우선순위를 가진 제안으로 남긴다."
+          ],
+          "interfaces": "ContextService.compile_epoch/compact/record_cache_observation.",
+          "acceptance_conditions": [
+            "compaction 전후 의무 집합 동일",
+            "조회 결과만 바뀌면 stable prefix 유지",
+            "변경된 tool schema는 새 epoch",
+            "실제 cache metrics 없으면 unknown",
+            "stale generation 과금은 누락하지 않음"
+          ],
+          "risks": "캐시 절약을 위해 승인 철회·사용자 정정·필수 정보를 지연하면 안 된다.",
+          "output_paths": [
+            "../deepagents_code/cyrano/context/compiler.py",
+            "../deepagents_code/cyrano/context/epochs.py",
+            "../deepagents_code/cyrano/events/coverage.py"
+          ],
+          "product_test_path": "../tests/cyrano_product/test_wp05_context.py",
+          "commands": [
+            {
+              "cwd": "libs/code",
+              "argv": [
+                "uv",
+                "run",
+                "--no-sync",
+                "python",
+                "-m",
+                "pytest",
+                "tests/cyrano_product/test_wp05_context.py",
+                "-q"
+              ],
+              "available_after": "implement_test_and_runtime_ports",
+              "zero_tests": "fail"
+            }
+          ],
+          "definition_inputs": [
+            "contracts/v2/runtime.schema.json",
+            "contracts/v2/governance.schema.json"
+          ],
+          "execution_requires": "Required predecessor ports + real dcode adapter + explicit runtime cost/side-effect permit; missing prerequisites are blocked, not pass.",
+          "consumed_owned_interfaces": []
+        }
+      ],
+      "primary_design": "docs/design/architecture/2026-09-16-cache-context.ko.md",
+      "document": ".agents/work/WP05.ko.md",
+      "reading_refs": {
+        "plan": [
+          ".agents/work/WP05.ko.md",
+          "docs/design/architecture/2026-09-16-cache-context.ko.md"
+        ],
+        "implement": [
+          ".agents/work/WP05.ko.md",
+          "docs/design/architecture/2026-09-16-cache-context.ko.md"
+        ],
+        "test": [
+          ".agents/work/WP05.ko.md",
+          "docs/testing/STRATEGY.ko.md"
+        ]
+      },
+      "resource_refs": [
+        "contracts/v1/cyrano.schema.json",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "contracts/assessment/rubric.json",
+        "contracts/v2/runtime.schema.json",
+        "tests/acceptance/catalog.json"
+      ],
+      "resource_selection": {
+        "tests/acceptance/catalog.json": {
+          "owner_wp": "WP05"
+        },
+        "contracts/v2/runtime.schema.json": {
+          "use": "Read only referenced $defs; do not inject entire schema by default."
+        }
+      },
+      "dependency_milestones": {
+        "WP00": "interface_ready",
+        "WP01": "interface_ready",
+        "WP04": "interface_ready"
+      },
+      "milestones": {
+        "interface_ready": "required interfaces, actual module behavior and owned negative paths verified; no final score/release claim",
+        "product_verified": "all owned mandatory product acceptances executed with native/authorized boundaries and independent review"
+      }
+    },
+    {
+      "id": "WP06",
+      "title": "dcode extension와 actual attempt port",
+      "status": "verified",
+      "foundation_present": false,
+      "depends_on": [
+        "WP03",
+        "WP04",
+        "WP05"
+      ],
+      "owner_package": "../deepagents_code/cyrano/dcode",
+      "owner_role": "implementer",
+      "reviewer_role": "security-reviewer",
+      "risk": "critical",
+      "goal": "실제 dcode 코딩 실행과 관측을 외부 control plane에 연결한다.",
+      "input_refs": [
+        "AGENTS.md",
+        "docs/design/architecture/2026-09-16-runtime-security.ko.md",
+        "contracts/v1/cyrano.schema.json",
+        "../deepagents_code/cyrano/dcode/README.md",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "docs/design/architecture/2026-09-16-universal-harness-integration.ko.md",
+        "docs/execution/INTEGRATED_WORK_DETAILS.ko.md",
+        "contracts/assessment/rubric.json",
+        "docs/testing/STRATEGY.ko.md",
+        "docs/development/TEST_DEVELOPMENT_PLAN.ko.md",
+        "docs/development/refinements/RF02.ko.md",
+        "docs/design/DCODE_INTEGRATION.ko.md",
+        "contracts/v2/runtime.schema.json"
+      ],
+      "output_paths": [
+        "../deepagents_code/cyrano/dcode/bridge.py",
+        "../deepagents_code/cyrano/dcode/middleware.py",
+        "plugins/cyrano/extension.py",
+        "../tests/cyrano_product/test_wp06_product.py",
+        "../deepagents_code/cyrano/dcode/capabilities.py",
+        "../deepagents_code/cyrano/dcode/normalization.py",
+        "../deepagents_code/cyrano/contracts/types.py",
+        "../tests/cyrano_product/test_wp06_protocol.py",
+        "../tests/cyrano_product/test_wp06_contract_scenarios.py"
+      ],
+      "methods": [
+        "start_verified_runtime -> handle",
+        "execute_attempt -> source/evidence receipt",
+        "collect_native_events -> normalized events",
+        "verify_extension_health -> coverage",
+        "open_analysis(binding, capabilities) -> 승인된 executable·snapshot·environment로 generation 발급",
+        "query(session, request) -> capabilities/encoding/version 검증 후 제한된 read operation 결과",
+        "close_analysis(session) -> shutdown/exit→deadline→owned process tree 정리"
+      ],
+      "acceptance_ids": [
+        "DCODE-SETUP",
+        "DCODE-CHILD",
+        "DCODE-VIRTUAL",
+        "DCODE-OVERRIDE",
+        "UH-RUN-09",
+        "UH-CACHE-10",
+        "UH-OPS-03",
+        "INTEG-NATIVE-LOAD",
+        "INTEG-ROLE-MAPPING",
+        "R3-11-01",
+        "R3-11-02",
+        "R3-11-03",
+        "R3-11-04",
+        "R3-11-05",
+        "R3-11-06",
+        "R3-12-01",
+        "R3-12-02",
+        "R3-12-03",
+        "R3-12-04",
+        "R3-12-05",
+        "R3-12-06",
+        "R3-13-01",
+        "R3-13-02",
+        "R3-13-03",
+        "R3-13-04",
+        "R3-13-05",
+        "R3-13-06",
+        "PEQ-PY-T01",
+        "PEQ-PY-T02",
+        "PEQ-PY-T03",
+        "PEQ-PY-T04",
+        "PEQ-PY-T05",
+        "PEQ-PY-T06",
+        "PEQ-PY-T07",
+        "PEQ-PY-T08",
+        "PEQ-PY-T09",
+        "PEQ-PY-T10",
+        "PEQ-PY-T11",
+        "PEQ-PY-T12",
+        "PEQ-PY-T13",
+        "PEQ-PY-T14",
+        "PEQ-PY-T15",
+        "PEQ-PY-T16",
+        "PEQ-PY-T17",
+        "PEQ-PY-T18",
+        "PEQ-PY-T19",
+        "PEQ-PY-T20",
+        "PEQ-PY-T21",
+        "PEQ-PY-T22",
+        "PEQ-PY-T23",
+        "PEQ-PY-T24",
+        "PEQ-PY-T25",
+        "PEQ-PY-T26",
+        "PEQ-PY-T27",
+        "PEQ-PY-T28",
+        "PEQ-PY-T29",
+        "PEQ-PY-T30",
+        "PEQ-PY-T31",
+        "PEQ-PY-T32",
+        "PEQ-PY-T33",
+        "PEQ-PY-T34",
+        "PEQ-PY-T35",
+        "PEQ-PY-T36",
+        "PEQ-PY-T37",
+        "PEQ-PY-T38",
+        "PEQ-PY-T39",
+        "PEQ-PY-T40",
+        "PEQ-PY-T41",
+        "PEQ-PY-T42",
+        "PEQ-PY-T43",
+        "R5-RF02-01",
+        "R5-RF02-02",
+        "R5-RF02-03",
+        "R5-RF02-04",
+        "R5-RF02-05",
+        "R5-RF02-06",
+        "CON-MOD-01",
+        "CON-MOD-02",
+        "CON-MOD-03",
+        "CON-MOD-04",
+        "CON-MOD-05",
+        "CON-MOD-06",
+        "CON-MOD-07",
+        "CON-MOD-08",
+        "CON-MOD-09",
+        "CON-MOD-10",
+        "CON-MOD-11",
+        "CON-MOD-12"
+      ],
+      "commands": [
+        [
+          "uv",
+          "run",
+          "--no-sync",
+          "python",
+          "-m",
+          "pytest",
+          "tests/cyrano_product/test_wp06_product.py",
+          "-q"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "schemas"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "check"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_integration.py"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "quality"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_r5.py"
+        ]
+      ],
+      "completion_evidence": "evidence/work-packages/WP06.json",
+      "remote_side_effects_authorized": false,
+      "source_work_packages": [
+        "universal:WP00",
+        "universal:WP05",
+        "universal:WP10"
+      ],
+      "integration_revision": "2026-09-16-assessment-r3",
+      "integration_tasks": [
+        {
+          "id": "WP06-I01",
+          "instruction": "RunBinding→durable attempt→guard→budget→frozen context→handler→usage settle 순서를 구현한다.",
+          "status": "completed"
+        },
+        {
+          "id": "WP06-I02",
+          "instruction": "native/extension/MCP/child/compaction/retry/remember 경로를 sentinel matrix로 검사한다.",
+          "status": "completed"
+        },
+        {
+          "id": "WP06-I03",
+          "instruction": "자동 실행 설정이 있는 원본은 변경하지 않고 별도 launch view로 discovery를 제한한다.",
+          "status": "completed"
+        }
+      ],
+      "integration_focus": "10개 middleware 책임·실제 tool mediation",
+      "bootstrap_approval_mode": "verified_broker_or_explicit_external_development_review",
+      "product_completion_requires": [
+        "mandatory_acceptance_actual_evidence",
+        "quality_gates_or_explicit_block",
+        "independent_postimage_review",
+        "no_unresolved_security_or_unknown_effect",
+        "source_and_contract_manifest_match"
+      ],
+      "r3_assessment_criteria": [
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "assessment_test_tasks": [
+        "TS02",
+        "TS03"
+      ],
+      "r4_refinements": [],
+      "native_inspection_and_patch_targets": [
+        "deepagents_code/agent.py",
+        "deepagents_code/auto_mode.py"
+      ],
+      "native_target_status": "inspect at pinned source; edit only after plan approval; not patched by overlay",
+      "commands_cwd": "libs/code",
+      "command_availability": "first command requires implemented product test and native uv environment; preparation scripts exist",
+      "r5_refinements": [
+        "RF02"
+      ],
+      "implementation_units": [
+        {
+          "id": "WP06-protocol",
+          "title": "제공자 capability와 tool stream conformance",
+          "status": "planned",
+          "design_ref": "docs/design/DCODE_INTEGRATION.ko.md",
+          "implementation_steps": [
+            "verified/declared/unknown capability evidence를 durable runtime identity에 연결한다. model 이름으로 행동 특화 profile을 생성하지 않는다.",
+            "논리 request·physical attempt·provider tool id mapping을 정의한다. 원시 stream decoder와 call assembler를 분리하고 크기·count 상한을 검사한다.",
+            "종료 fragment 이전에는 완성된 JSON처럼 보여도 Broker를 호출하지 않는다. malformed/duplicate/orphan을 오류·synthetic 관측으로 보존한다.",
+            "서명된 reasoning과 필수 image의 provider 전환 정책을 구현한다. lossless 변환 외는 사용자 의도 확인 또는 명시 미지원이다.",
+            "실제 dcode invoke 경로·child/offload 호출에서 observer 범위를 검사한다. pure 변환 fixture와 native 통합 결과를 다른 report에 기록한다."
+          ],
+          "interfaces": "CapabilityService.resolve/require; ProtocolNormalizer.validate_request/consume_fragment/finalize/project_history.",
+          "acceptance_conditions": [
+            "정상 fragment는 정확히 한 번 dispatch",
+            "불완전 call은 effect0",
+            "서로 다른 call ID가 합쳐지지 않음",
+            "opaque reasoning 자동 텍스트 export 없음",
+            "취소 후 usage는 기록·작업 적용은 차단"
+          ],
+          "risks": "기존 provider가 이미 normalize한 데이터를 재변환하면 서명이 깨지거나 호출이 중복될 수 있다.",
+          "output_paths": [
+            "../deepagents_code/cyrano/dcode/capabilities.py",
+            "../deepagents_code/cyrano/dcode/normalization.py",
+            "../deepagents_code/cyrano/contracts/types.py"
+          ],
+          "product_test_path": "../tests/cyrano_product/test_wp06_protocol.py",
+          "commands": [
+            {
+              "cwd": "libs/code",
+              "argv": [
+                "uv",
+                "run",
+                "--no-sync",
+                "python",
+                "-m",
+                "pytest",
+                "tests/cyrano_product/test_wp06_protocol.py",
+                "-q"
+              ],
+              "available_after": "implement_test_and_runtime_ports",
+              "zero_tests": "fail"
+            }
+          ],
+          "definition_inputs": [
+            "contracts/v2/runtime.schema.json",
+            "contracts/v2/governance.schema.json"
+          ],
+          "execution_requires": "Required predecessor ports + real dcode adapter + explicit runtime cost/side-effect permit; missing prerequisites are blocked, not pass.",
+          "consumed_owned_interfaces": []
+        }
+      ],
+      "primary_design": "docs/design/DCODE_INTEGRATION.ko.md",
+      "document": ".agents/work/WP06.ko.md",
+      "reading_refs": {
+        "plan": [
+          ".agents/work/WP06.ko.md",
+          "docs/design/DCODE_INTEGRATION.ko.md"
+        ],
+        "implement": [
+          ".agents/work/WP06.ko.md",
+          "docs/design/DCODE_INTEGRATION.ko.md"
+        ],
+        "test": [
+          ".agents/work/WP06.ko.md",
+          "docs/testing/STRATEGY.ko.md"
+        ]
+      },
+      "resource_refs": [
+        "contracts/v1/cyrano.schema.json",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "contracts/assessment/rubric.json",
+        "contracts/v2/runtime.schema.json",
+        "tests/acceptance/catalog.json"
+      ],
+      "resource_selection": {
+        "tests/acceptance/catalog.json": {
+          "owner_wp": "WP06"
+        },
+        "contracts/v2/runtime.schema.json": {
+          "use": "Read only referenced $defs; do not inject entire schema by default."
+        }
+      },
+      "dependency_milestones": {
+        "WP03": "interface_ready",
+        "WP04": "interface_ready",
+        "WP05": "interface_ready"
+      },
+      "milestones": {
+        "interface_ready": "required interfaces, actual module behavior and owned negative paths verified; no final score/release claim",
+        "product_verified": "all owned mandatory product acceptances executed with native/authorized boundaries and independent review"
+      }
+    },
+    {
+      "id": "WP07",
+      "title": "인터뷰 결정·의무·준비도 kernel",
+      "status": "verified",
+      "foundation_present": true,
+      "depends_on": [
+        "WP01",
+        "WP02"
+      ],
+      "owner_package": "../deepagents_code/cyrano/interview",
+      "owner_role": "implementer",
+      "reviewer_role": "reviewer",
+      "risk": "high",
+      "goal": "원본 R01–R22의 상태·의무·authority invariants를 구현한다.",
+      "input_refs": [
+        "AGENTS.md",
+        "docs/design/features/2026-09-16-interview-workflow.ko.md",
+        "contracts/v1/cyrano.schema.json",
+        "../deepagents_code/cyrano/interview/README.md",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "docs/design/architecture/2026-09-16-universal-harness-integration.ko.md",
+        "docs/execution/INTEGRATED_WORK_DETAILS.ko.md",
+        "contracts/assessment/rubric.json",
+        "docs/testing/STRATEGY.ko.md",
+        "docs/development/TEST_DEVELOPMENT_PLAN.ko.md"
+      ],
+      "output_paths": [
+        "../deepagents_code/cyrano/interview/service.py",
+        "../deepagents_code/cyrano/interview/decisions.py",
+        "../deepagents_code/cyrano/interview/readiness.py",
+        "../tests/cyrano_product/test_wp07_product.py",
+        "../deepagents_code/cyrano/kernel/session_state.py",
+        "../deepagents_code/cyrano/kernel/session_guards.py"
+      ],
+      "methods": [
+        "ingest_user_event -> revision",
+        "apply_obligation_change -> state",
+        "assess_readiness -> blockers",
+        "invalidate_dependents -> review work"
+      ],
+      "acceptance_ids": [
+        "INT-R01",
+        "INT-R02",
+        "INT-R03",
+        "INT-R04",
+        "INT-R05",
+        "INT-R06",
+        "INT-R07",
+        "INT-R08",
+        "INT-R10",
+        "INT-R11",
+        "INT-R12",
+        "INT-R13",
+        "INT-R14",
+        "INT-R15",
+        "INT-R16",
+        "INT-R17",
+        "INT-R19",
+        "INT-R21",
+        "INT-SCORE",
+        "INT-EARLY",
+        "INT-CANCEL",
+        "INTEG-STATE-DOMAIN",
+        "INTEG-PAUSE-RESUME"
+      ],
+      "commands": [
+        [
+          "uv",
+          "run",
+          "--no-sync",
+          "python",
+          "-m",
+          "pytest",
+          "tests/cyrano_product/test_wp07_product.py",
+          "-q"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "schemas"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "check"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_integration.py"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "quality"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_r5.py"
+        ]
+      ],
+      "completion_evidence": "evidence/work-packages/WP07.json",
+      "remote_side_effects_authorized": false,
+      "source_work_packages": [
+        "universal:WP04",
+        "universal:WP06"
+      ],
+      "integration_revision": "2026-09-16-assessment-r3",
+      "integration_tasks": [
+        {
+          "id": "WP07-I01",
+          "instruction": "session 29-state catalog와 candidate transition 함수를 독립 유지한다.",
+          "status": "completed"
+        },
+        {
+          "id": "WP07-I02",
+          "instruction": "guard는 typed evidence로 계산하고 요청 body의 true/target을 신뢰하지 않는다.",
+          "status": "completed"
+        },
+        {
+          "id": "WP07-I03",
+          "instruction": "역의존 무효화·checkpoint resume·CANCELLING/unknown 완료 금지를 구현한다.",
+          "status": "completed"
+        }
+      ],
+      "integration_focus": "업무 상태기계와 인터뷰 kernel",
+      "bootstrap_approval_mode": "verified_broker_or_explicit_external_development_review",
+      "product_completion_requires": [
+        "mandatory_acceptance_actual_evidence",
+        "quality_gates_or_explicit_block",
+        "independent_postimage_review",
+        "no_unresolved_security_or_unknown_effect",
+        "source_and_contract_manifest_match"
+      ],
+      "r3_assessment_criteria": [],
+      "assessment_test_tasks": [
+        "TS04"
+      ],
+      "r4_refinements": [],
+      "commands_cwd": "libs/code",
+      "command_availability": "first command requires implemented product test and native uv environment; preparation scripts exist",
+      "r5_refinements": [],
+      "primary_design": "docs/design/features/2026-09-16-interview-workflow.ko.md",
+      "document": ".agents/work/WP07.ko.md",
+      "reading_refs": {
+        "plan": [
+          ".agents/work/WP07.ko.md",
+          "docs/design/features/2026-09-16-interview-workflow.ko.md"
+        ],
+        "implement": [
+          ".agents/work/WP07.ko.md",
+          "docs/design/features/2026-09-16-interview-workflow.ko.md"
+        ],
+        "test": [
+          ".agents/work/WP07.ko.md",
+          "docs/testing/STRATEGY.ko.md"
+        ]
+      },
+      "resource_refs": [
+        "contracts/v1/cyrano.schema.json",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "contracts/assessment/rubric.json",
+        "tests/acceptance/catalog.json"
+      ],
+      "resource_selection": {
+        "tests/acceptance/catalog.json": {
+          "owner_wp": "WP07"
+        },
+        "contracts/v2/runtime.schema.json": {
+          "use": "Read only referenced $defs; do not inject entire schema by default."
+        }
+      },
+      "dependency_milestones": {
+        "WP01": "interface_ready",
+        "WP02": "interface_ready"
+      },
+      "milestones": {
+        "interface_ready": "required interfaces, actual module behavior and owned negative paths verified; no final score/release claim",
+        "product_verified": "all owned mandatory product acceptances executed with native/authorized boundaries and independent review"
+      }
+    },
+    {
+      "id": "WP08",
+      "title": "인터뷰 역할·blind handoff·export",
+      "status": "verified",
+      "foundation_present": false,
+      "depends_on": [
+        "WP06",
+        "WP07"
+      ],
+      "owner_package": "../deepagents_code/cyrano/interview",
+      "owner_role": "implementer",
+      "reviewer_role": "reviewer",
+      "risk": "high",
+      "goal": "Facilitator와 독립 워커를 실제 runtime에 연결하고 승인된 계약을 export한다.",
+      "input_refs": [
+        "AGENTS.md",
+        "docs/design/features/2026-09-16-interview-workflow.ko.md",
+        "contracts/v1/cyrano.schema.json",
+        "../deepagents_code/cyrano/interview/README.md",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "docs/design/architecture/2026-09-16-universal-harness-integration.ko.md",
+        "docs/execution/INTEGRATED_WORK_DETAILS.ko.md",
+        "contracts/assessment/rubric.json",
+        "docs/testing/STRATEGY.ko.md",
+        "docs/development/TEST_DEVELOPMENT_PLAN.ko.md"
+      ],
+      "output_paths": [
+        "../deepagents_code/cyrano/interview/workers.py",
+        "../deepagents_code/cyrano/interview/export.py",
+        "plugins/cyrano/agents/facilitator.md",
+        "../tests/cyrano_product/test_wp08_product.py"
+      ],
+      "methods": [
+        "apply_worker_result -> result/late evidence",
+        "request_blind_review -> task",
+        "compile_contract -> bundle",
+        "export_approved_bundle -> artifacts"
+      ],
+      "acceptance_ids": [
+        "INT-R09",
+        "INT-R18",
+        "INT-R20",
+        "INT-R22",
+        "INT-BLIND",
+        "INT-EXPORT",
+        "INT-NOORIGIN",
+        "INTEG-REVIEW-PROFILE",
+        "R3-21-01",
+        "R3-21-02",
+        "R3-21-03",
+        "R3-21-04",
+        "R3-21-05",
+        "R3-21-06"
+      ],
+      "commands": [
+        [
+          "uv",
+          "run",
+          "--no-sync",
+          "python",
+          "-m",
+          "pytest",
+          "tests/cyrano_product/test_wp08_product.py",
+          "-q"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "schemas"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "check"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_integration.py"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "quality"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_r5.py"
+        ]
+      ],
+      "completion_evidence": "evidence/work-packages/WP08.json",
+      "remote_side_effects_authorized": false,
+      "source_work_packages": [
+        "universal:WP06",
+        "universal:WP07"
+      ],
+      "integration_revision": "2026-09-16-assessment-r3",
+      "integration_tasks": [
+        {
+          "id": "WP08-I01",
+          "instruction": "원본 R01–R22를 하나의 시나리오 집합으로 유지한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP08-I02",
+          "instruction": "모든 spec에 critic·blind review, high/critical에 추가 security reviewer를 배치한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP08-I03",
+          "instruction": "원문·결정·SPEC·ACCEPTANCE·OPEN_QUESTIONS·evidence·approval export를 exact digest로 묶는다.",
+          "status": "planned"
+        }
+      ],
+      "integration_focus": "단일 진행자·필수 critic·blind handoff",
+      "bootstrap_approval_mode": "verified_broker_or_explicit_external_development_review",
+      "product_completion_requires": [
+        "mandatory_acceptance_actual_evidence",
+        "quality_gates_or_explicit_block",
+        "independent_postimage_review",
+        "no_unresolved_security_or_unknown_effect",
+        "source_and_contract_manifest_match"
+      ],
+      "r3_assessment_criteria": [
+        "2-1"
+      ],
+      "assessment_test_tasks": [
+        "TS04"
+      ],
+      "r4_refinements": [],
+      "commands_cwd": "libs/code",
+      "command_availability": "first command requires implemented product test and native uv environment; preparation scripts exist",
+      "r5_refinements": [],
+      "primary_design": "docs/design/features/2026-09-16-interview-workflow.ko.md",
+      "document": ".agents/work/WP08.ko.md",
+      "reading_refs": {
+        "plan": [
+          ".agents/work/WP08.ko.md",
+          "docs/design/features/2026-09-16-interview-workflow.ko.md"
+        ],
+        "implement": [
+          ".agents/work/WP08.ko.md",
+          "docs/design/features/2026-09-16-interview-workflow.ko.md"
+        ],
+        "test": [
+          ".agents/work/WP08.ko.md",
+          "docs/testing/STRATEGY.ko.md"
+        ]
+      },
+      "resource_refs": [
+        "contracts/v1/cyrano.schema.json",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "contracts/assessment/rubric.json",
+        "tests/acceptance/catalog.json"
+      ],
+      "resource_selection": {
+        "tests/acceptance/catalog.json": {
+          "owner_wp": "WP08"
+        },
+        "contracts/v2/runtime.schema.json": {
+          "use": "Read only referenced $defs; do not inject entire schema by default."
+        }
+      },
+      "dependency_milestones": {
+        "WP06": "interface_ready",
+        "WP07": "interface_ready"
+      },
+      "milestones": {
+        "interface_ready": "required interfaces, actual module behavior and owned negative paths verified; no final score/release claim",
+        "product_verified": "all owned mandatory product acceptances executed with native/authorized boundaries and independent review"
+      }
+    },
+    {
+      "id": "WP09",
+      "title": "계획·review·WorkUnit dispatcher",
+      "status": "verified",
+      "foundation_present": true,
+      "depends_on": [
+        "WP03",
+        "WP08",
+        "WP11",
+        "WP13"
+      ],
+      "owner_package": "../deepagents_code/cyrano/workflow",
+      "owner_role": "implementer",
+      "reviewer_role": "reviewer",
+      "risk": "high",
+      "goal": "계약을 검증 가능한 DAG로 분해하고 승인·resource conflict를 강제한다.",
+      "input_refs": [
+        "AGENTS.md",
+        "docs/design/features/2026-09-16-plan-memory-execution.ko.md",
+        "contracts/v1/cyrano.schema.json",
+        "../deepagents_code/cyrano/workflow/README.md",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "docs/design/architecture/2026-09-16-universal-harness-integration.ko.md",
+        "docs/execution/INTEGRATED_WORK_DETAILS.ko.md",
+        "contracts/assessment/rubric.json",
+        "docs/testing/STRATEGY.ko.md",
+        "docs/development/TEST_DEVELOPMENT_PLAN.ko.md",
+        "contracts/v2/runtime.schema.json"
+      ],
+      "output_paths": [
+        "../deepagents_code/cyrano/workflow/service.py",
+        "../deepagents_code/cyrano/workflow/dispatch.py",
+        "../deepagents_code/cyrano/workflow/plan.py",
+        "../tests/cyrano_product/test_wp09_product.py",
+        "../deepagents_code/cyrano/workflow/compiler.py",
+        "../tests/cyrano_product/test_wp09_compiler.py",
+        "../deepagents_code/cyrano/workflow/coordination.py",
+        "../deepagents_code/cyrano/sqlite/store.py",
+        "../deepagents_code/cyrano/kernel/transitions.py",
+        "../tests/cyrano_product/test_wp09_coordination.py",
+        "../tests/cyrano_product/test_wp09_contract_scenarios.py",
+        "../tests/cyrano_product/test_plan_lifecycle.py",
+        "../tests/cyrano_product/test_review_lifecycle.py",
+        "../tests/cyrano_product/test_change_lifecycle.py",
+        "../deepagents_code/cyrano/planning/subject.py",
+        "../deepagents_code/cyrano/planning/validation.py",
+        "../deepagents_code/cyrano/planning/review.py",
+        "../deepagents_code/cyrano/planning/decisions.py",
+        "../deepagents_code/cyrano/planning/changes.py",
+        "../deepagents_code/cyrano/planning/recovery.py",
+        "../deepagents_code/cyrano/planning/completion.py"
+      ],
+      "methods": [
+        "compile_plan -> bundle",
+        "validate_plan -> violations",
+        "reserve_ready_work -> lease",
+        "review_plan -> findings"
+      ],
+      "acceptance_ids": [
+        "PLAN-DAG",
+        "PLAN-CONFLICT",
+        "PLAN-CHANGE",
+        "UH-PLAN-01",
+        "UH-PLAN-02",
+        "UH-PLAN-03",
+        "UH-PLAN-04",
+        "UH-PLAN-05",
+        "UH-PLAN-06",
+        "UH-PLAN-07",
+        "UH-PLAN-08",
+        "UH-PLAN-10",
+        "UH-RUN-06",
+        "UH-RUN-07",
+        "UH-RUN-10",
+        "INTEG-DELIVERY-BIND",
+        "INTEG-COST-RESERVE",
+        "R3-22-01",
+        "R3-22-02",
+        "R3-22-03",
+        "R3-22-04",
+        "R3-22-05",
+        "R3-22-06",
+        "R3-23-01",
+        "R3-23-02",
+        "R3-23-03",
+        "R3-23-04",
+        "R3-23-05",
+        "R3-23-06",
+        "CON-WFL-01",
+        "CON-WFL-02",
+        "CON-WFL-03",
+        "CON-WFL-04",
+        "CON-WFL-05",
+        "CON-WFL-06",
+        "CON-WFL-07",
+        "CON-WFL-08",
+        "CON-WFL-09",
+        "CON-WFL-10",
+        "CON-WFL-11",
+        "CON-WFL-12",
+        "CON-TEM-01",
+        "CON-TEM-02",
+        "CON-TEM-03",
+        "CON-TEM-04",
+        "CON-TEM-05",
+        "CON-TEM-06",
+        "CON-TEM-07",
+        "CON-TEM-08",
+        "CON-TEM-09",
+        "CON-TEM-10",
+        "CON-TEM-11",
+        "CON-TEM-12",
+        "CON-HIL-01",
+        "CON-HIL-02",
+        "CON-HIL-03",
+        "CON-HIL-04",
+        "CON-HIL-05",
+        "CON-HIL-06",
+        "CON-HIL-07",
+        "CON-HIL-08",
+        "CON-HIL-09",
+        "CON-HIL-10",
+        "CON-HIL-11",
+        "CON-HIL-12",
+        "PLAN-001",
+        "PLAN-002",
+        "PLAN-003",
+        "PLAN-004",
+        "PLAN-005",
+        "PLAN-006",
+        "PLAN-007",
+        "PLAN-008",
+        "PLAN-009",
+        "PLAN-010",
+        "PLAN-011",
+        "PLAN-012",
+        "REVIEW-001",
+        "REVIEW-002",
+        "REVIEW-003",
+        "REVIEW-004",
+        "REVIEW-005",
+        "REVIEW-006",
+        "REVIEW-007",
+        "REVIEW-008",
+        "REVIEW-009",
+        "REVIEW-010",
+        "REVIEW-011",
+        "REVIEW-012",
+        "CHANGE-001",
+        "CHANGE-002",
+        "CHANGE-003",
+        "CHANGE-004",
+        "CHANGE-005",
+        "CHANGE-006",
+        "CHANGE-007",
+        "CHANGE-008",
+        "CHANGE-009",
+        "CHANGE-010",
+        "CHANGE-011",
+        "CHANGE-012"
+      ],
+      "commands": [
+        [
+          "uv",
+          "run",
+          "--no-sync",
+          "python",
+          "-m",
+          "pytest",
+          "tests/cyrano_product/test_wp09_product.py",
+          "-q"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "schemas"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "check"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_integration.py"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "quality"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_r5.py"
+        ]
+      ],
+      "completion_evidence": "evidence/work-packages/WP09.json",
+      "remote_side_effects_authorized": false,
+      "source_work_packages": [
+        "universal:WP04",
+        "universal:WP08",
+        "universal:WP09"
+      ],
+      "integration_revision": "2026-09-16-assessment-r3",
+      "integration_tasks": [
+        {
+          "id": "WP09-I01",
+          "instruction": "GovernedWorkPlan의 정확 생성·기존수정·삭제·납품 모드·recipe·rollback을 검사한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP09-I02",
+          "instruction": "동시 writer lease·원자 비용 예약·unknown liability·자식 spawn0 정책을 구현한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP09-I03",
+          "instruction": "모든 업무의 독립 plan review와 별도 execution authorization을 강제한다.",
+          "status": "planned"
+        }
+      ],
+      "integration_focus": "구체 WorkUnit·계획 승인과 실행 허가",
+      "bootstrap_approval_mode": "verified_broker_or_explicit_external_development_review",
+      "product_completion_requires": [
+        "mandatory_acceptance_actual_evidence",
+        "quality_gates_or_explicit_block",
+        "independent_postimage_review",
+        "no_unresolved_security_or_unknown_effect",
+        "source_and_contract_manifest_match"
+      ],
+      "r3_assessment_criteria": [
+        "2-2",
+        "2-3"
+      ],
+      "assessment_test_tasks": [
+        "TS04",
+        "TS05"
+      ],
+      "r4_refinements": [],
+      "commands_cwd": "libs/code",
+      "command_availability": "first command requires implemented product test and native uv environment; preparation scripts exist",
+      "r5_refinements": [],
+      "implementation_units": [
+        {
+          "id": "WP09-compiler",
+          "title": "계획을 제한된 WorkflowIR로 검토·컴파일",
+          "status": "planned",
+          "design_ref": "docs/design/features/2026-09-16-plan-memory-execution.ko.md",
+          "implementation_steps": [
+            "필수 interview 결과와 기존 현재 review/approval subject를 immutable input으로 받는다. 새 schema가 자동 실행 허가를 만들지 않게 한다.",
+            "허용 node kind와 typed condition AST를 parse하고 task별 요구·테스트·scope·output contract를 검증한다.",
+            "topological order·resource conflict·budget upper bound·hidden acceptance obligation을 계산한다. 모든 blocker의 구체 ID와 해결 owner를 돌려준다.",
+            "동적 확장은 parent digest와 새 revision을 만들며 범위·비용·검증 확대를 검출해 재검토한다.",
+            "조건부 사용자 응답·stale UI·취소·review loop cap을 기존 상태기계의 의미와 연결한다. 단계 축약으로 interview를 없애지 않는다."
+          ],
+          "interfaces": "WorkflowCompiler.compile/propose_expansion; existing HumanDecision/Review workflow.",
+          "acceptance_conditions": [
+            "cycle·임의 code expression 거부",
+            "필수 review가 없는 plan은 dispatch0",
+            "조건부 승인 후 수정본 재표시",
+            "새 task가 parent permit으로 권한 확대 불가"
+          ],
+          "risks": "compile 성공을 human approval 또는 execution permit으로 취급하면 안 된다.",
+          "output_paths": [
+            "../deepagents_code/cyrano/workflow/plan.py",
+            "../deepagents_code/cyrano/workflow/compiler.py"
+          ],
+          "product_test_path": "../tests/cyrano_product/test_wp09_compiler.py",
+          "commands": [
+            {
+              "cwd": "libs/code",
+              "argv": [
+                "uv",
+                "run",
+                "--no-sync",
+                "python",
+                "-m",
+                "pytest",
+                "tests/cyrano_product/test_wp09_compiler.py",
+                "-q"
+              ],
+              "available_after": "implement_test_and_runtime_ports",
+              "zero_tests": "fail"
+            }
+          ],
+          "definition_inputs": [
+            "contracts/v2/runtime.schema.json",
+            "contracts/v2/governance.schema.json"
+          ],
+          "execution_requires": "Required predecessor ports + real dcode adapter + explicit runtime cost/side-effect permit; missing prerequisites are blocked, not pass.",
+          "consumed_owned_interfaces": [
+            {
+              "path": "../deepagents_code/cyrano/interview/readiness.py",
+              "owner_wp": "WP07"
+            }
+          ]
+        },
+        {
+          "id": "WP09-coordination",
+          "title": "작업 소유권·mailbox·worktree 병렬 실행",
+          "status": "planned",
+          "design_ref": "docs/design/features/2026-09-16-plan-memory-execution.ko.md",
+          "implementation_steps": [
+            "단일 transaction에서 ready/permit/dependency 확인, lease 발급, fencing 증가와 outbox를 commit한다.",
+            "worker가 시작되기 전 lease·budget을 재확인한다. scope와 비용은 parent/child 교집합·분할이다.",
+            "mailbox message id unique·expiry·generation·scope 검사와 queue cursor를 구현한다.",
+            "worktree를 보안 경계로 취급하지 않고 검증 sandbox에 매핑한다. 다른 agent source/credential/.git 쓰기 권한을 제거한다.",
+            "통합 patch에서 source drift·공유 interface·lock 충돌을 검사한 뒤 새 snapshot의 acceptance를 다시 실행한다. cleanup은 소유 receipt와 현재hash가 일치할 때만 수행한다."
+          ],
+          "interfaces": "TeamCoordinator.claim_task/settle/cancel; TaskLease; WorkspaceLease ownership.",
+          "acceptance_conditions": [
+            "동시 claim winner1",
+            "늦은 결과는 state effect0, audit 유지",
+            "parent budget 복제 금지",
+            "merge 뒤 hidden regression 재실행",
+            "사용자 수정 worktree cleanup 거부"
+          ],
+          "risks": "각 branch test 통과가 integration 통과를 의미하지 않으며 worktree는 sandbox가 아니다.",
+          "output_paths": [
+            "../deepagents_code/cyrano/workflow/coordination.py",
+            "../deepagents_code/cyrano/sqlite/store.py",
+            "../deepagents_code/cyrano/kernel/transitions.py"
+          ],
+          "product_test_path": "../tests/cyrano_product/test_wp09_coordination.py",
+          "commands": [
+            {
+              "cwd": "libs/code",
+              "argv": [
+                "uv",
+                "run",
+                "--no-sync",
+                "python",
+                "-m",
+                "pytest",
+                "tests/cyrano_product/test_wp09_coordination.py",
+                "-q"
+              ],
+              "available_after": "implement_test_and_runtime_ports",
+              "zero_tests": "fail"
+            }
+          ],
+          "definition_inputs": [
+            "contracts/v2/runtime.schema.json",
+            "contracts/v2/governance.schema.json"
+          ],
+          "execution_requires": "Required predecessor ports + real dcode adapter + explicit runtime cost/side-effect permit; missing prerequisites are blocked, not pass.",
+          "consumed_owned_interfaces": []
+        }
+      ],
+      "primary_design": "docs/design/features/2026-09-16-plan-memory-execution.ko.md",
+      "document": ".agents/work/WP09.ko.md",
+      "reading_refs": {
+        "plan": [
+          ".agents/work/WP09.ko.md",
+          "docs/design/features/2026-09-16-plan-memory-execution.ko.md"
+        ],
+        "implement": [
+          ".agents/work/WP09.ko.md",
+          "docs/design/features/2026-09-16-plan-memory-execution.ko.md"
+        ],
+        "test": [
+          ".agents/work/WP09.ko.md",
+          "docs/testing/STRATEGY.ko.md"
+        ]
+      },
+      "resource_refs": [
+        "contracts/v1/cyrano.schema.json",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "contracts/assessment/rubric.json",
+        "contracts/v2/runtime.schema.json",
+        "tests/acceptance/catalog.json"
+      ],
+      "resource_selection": {
+        "tests/acceptance/catalog.json": {
+          "owner_wp": "WP09"
+        },
+        "contracts/v2/runtime.schema.json": {
+          "use": "Read only referenced $defs; do not inject entire schema by default."
+        }
+      },
+      "dependency_milestones": {
+        "WP03": "interface_ready",
+        "WP08": "interface_ready",
+        "WP11": "interface_ready",
+        "WP13": "interface_ready"
+      },
+      "milestones": {
+        "interface_ready": "required interfaces, actual module behavior and owned negative paths verified; no final score/release claim",
+        "product_verified": "all owned mandatory product acceptances executed with native/authorized boundaries and independent review"
+      }
+    },
+    {
+      "id": "WP10",
+      "title": "실제 구현·검증·patch settle",
+      "status": "verified",
+      "foundation_present": false,
+      "depends_on": [
+        "WP06",
+        "WP09"
+      ],
+      "owner_package": "../deepagents_code/cyrano/workflow",
+      "owner_role": "implementer",
+      "reviewer_role": "security-reviewer",
+      "risk": "critical",
+      "goal": "실제 code 작업과 test recipe·최종 source 반영 허가를 연결한다.",
+      "input_refs": [
+        "AGENTS.md",
+        "docs/design/features/2026-09-16-plan-memory-execution.ko.md",
+        "contracts/v1/cyrano.schema.json",
+        "../deepagents_code/cyrano/workflow/README.md",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "docs/design/architecture/2026-09-16-universal-harness-integration.ko.md",
+        "docs/execution/INTEGRATED_WORK_DETAILS.ko.md",
+        "contracts/assessment/rubric.json",
+        "docs/testing/STRATEGY.ko.md",
+        "docs/development/TEST_DEVELOPMENT_PLAN.ko.md",
+        "docs/design/DCODE_INTEGRATION.ko.md",
+        "contracts/v2/runtime.schema.json"
+      ],
+      "output_paths": [
+        "../deepagents_code/cyrano/workflow/execution.py",
+        "../deepagents_code/cyrano/workflow/verification.py",
+        "../deepagents_code/cyrano/kernel/patches.py",
+        "../tests/cyrano_product/test_wp10_product.py",
+        "../deepagents_code/cyrano/dcode/external_worker.py",
+        "../tests/cyrano_product/test_wp10_external_worker.py",
+        "../tests/cyrano_product/test_wp10_contract_scenarios.py",
+        "../tests/cyrano_product/test_complete_lifecycle.py"
+      ],
+      "methods": [
+        "run_work -> attempt receipt",
+        "verify_artifact -> separated outcomes",
+        "settle_work -> complete/blocked",
+        "apply_to_target -> approved result"
+      ],
+      "acceptance_ids": [
+        "WORK-MERGE",
+        "WORK-UNKNOWN",
+        "WORK-SOURCE",
+        "WORK-TEST",
+        "UH-PLAN-09",
+        "UH-RUN-04",
+        "UH-RUN-08",
+        "UH-OPS-07",
+        "UH-OPS-08",
+        "INTEG-PARTIAL-UNDO",
+        "INTEG-CANCEL-UNKNOWN",
+        "CON-INT-01",
+        "CON-INT-02",
+        "CON-INT-03",
+        "CON-INT-04",
+        "CON-INT-05",
+        "CON-INT-06",
+        "CON-INT-07",
+        "CON-INT-08",
+        "CON-INT-09",
+        "CON-INT-10",
+        "CON-INT-11",
+        "CON-INT-12",
+        "COMPLETE-001",
+        "COMPLETE-002",
+        "COMPLETE-003",
+        "COMPLETE-004",
+        "COMPLETE-005",
+        "COMPLETE-006",
+        "COMPLETE-007",
+        "COMPLETE-008",
+        "COMPLETE-009",
+        "COMPLETE-010",
+        "COMPLETE-011",
+        "COMPLETE-012"
+      ],
+      "commands": [
+        [
+          "uv",
+          "run",
+          "--no-sync",
+          "python",
+          "-m",
+          "pytest",
+          "tests/cyrano_product/test_wp10_product.py",
+          "-q"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "schemas"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "check"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_integration.py"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "quality"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_r5.py"
+        ]
+      ],
+      "completion_evidence": "evidence/work-packages/WP10.json",
+      "remote_side_effects_authorized": false,
+      "source_work_packages": [
+        "universal:WP04",
+        "universal:WP09",
+        "universal:WP13",
+        "universal:WP15"
+      ],
+      "integration_revision": "2026-09-16-assessment-r3",
+      "integration_tasks": [
+        {
+          "id": "WP10-I01",
+          "instruction": "pytest red/0개/all skip와 runner 실패를 구분하고 최신 postimage에 검증을 결속한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP10-I02",
+          "instruction": "patch_only는 패치 전달, apply_to_source는 추가 승인·실제 적용·최종 검증으로 완료한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP10-I03",
+          "instruction": "다중파일 partial·외부 수정·cancel/timeout을 reconcile하고 blind retry/rollback을 금지한다.",
+          "status": "planned"
+        }
+      ],
+      "integration_focus": "runner 증거·완료·원본 반영 journal",
+      "bootstrap_approval_mode": "verified_broker_or_explicit_external_development_review",
+      "product_completion_requires": [
+        "mandatory_acceptance_actual_evidence",
+        "quality_gates_or_explicit_block",
+        "independent_postimage_review",
+        "no_unresolved_security_or_unknown_effect",
+        "source_and_contract_manifest_match"
+      ],
+      "r3_assessment_criteria": [],
+      "assessment_test_tasks": [
+        "TS05"
+      ],
+      "r4_refinements": [],
+      "commands_cwd": "libs/code",
+      "command_availability": "first command requires implemented product test and native uv environment; preparation scripts exist",
+      "r5_refinements": [],
+      "implementation_units": [
+        {
+          "id": "WP10-external-worker",
+          "title": "MCP snapshot·선택적 ACP/A2A worker",
+          "status": "planned",
+          "design_ref": "docs/design/DCODE_INTEGRATION.ko.md",
+          "implementation_steps": [
+            "protocol/version/endpoint/executable/schema를 고정하고 declared capability와 실제 conformance를 구분한다.",
+            "filesystem·terminal permission callback을 Broker로 연결한다. absolute path는 승인된 workspace map에만 매핑한다.",
+            "submit/cancel/reconnect/late result의 ID와generation을 원장에 저장한다. peer unknown을 로컬success로 변환하지 않는다.",
+            "출력 patch/artifact는 URI·size·type·archive·symlink 검사를 거친다. local trusted runner가 scope와hidden acceptance를 검증한다.",
+            "optional worker 미설치·인증실패·지원불가이면 명시 unavailable이고 새engine/자격증명탐색/무음fallback은 없다."
+          ],
+          "interfaces": "ExternalWorkerPort.submit/query/cancel; DelegationEnvelope.",
+          "acceptance_conditions": [
+            "cancel notification은완료아님",
+            "schema drift차단",
+            "peer completed는인수아님",
+            "권한없는원문fetch0",
+            "late비용은기록"
+          ],
+          "risks": "외부 tool 설명·AgentCard는 권한의 근거가 아니다. 실제 원격 도구 실행은 별도 동의·예산 필요.",
+          "output_paths": [
+            "../deepagents_code/cyrano/dcode/external_worker.py"
+          ],
+          "product_test_path": "../tests/cyrano_product/test_wp10_external_worker.py",
+          "commands": [
+            {
+              "cwd": "libs/code",
+              "argv": [
+                "uv",
+                "run",
+                "--no-sync",
+                "python",
+                "-m",
+                "pytest",
+                "tests/cyrano_product/test_wp10_external_worker.py",
+                "-q"
+              ],
+              "available_after": "implement_test_and_runtime_ports",
+              "zero_tests": "fail"
+            }
+          ],
+          "definition_inputs": [
+            "contracts/v2/runtime.schema.json",
+            "contracts/v2/governance.schema.json"
+          ],
+          "execution_requires": "Required predecessor ports + real dcode adapter + explicit runtime cost/side-effect permit; missing prerequisites are blocked, not pass.",
+          "consumed_owned_interfaces": [
+            {
+              "path": "../deepagents_code/cyrano/dcode/adapter.py",
+              "owner_wp": "WP00"
+            },
+            {
+              "path": "../deepagents_code/cyrano/intelligence/contracts.py",
+              "owner_wp": "WP03"
+            }
+          ]
+        }
+      ],
+      "primary_design": "docs/design/architecture/2026-09-16-runtime-security.ko.md",
+      "document": ".agents/work/WP10.ko.md",
+      "reading_refs": {
+        "plan": [
+          ".agents/work/WP10.ko.md",
+          "docs/design/architecture/2026-09-16-runtime-security.ko.md"
+        ],
+        "implement": [
+          ".agents/work/WP10.ko.md",
+          "docs/design/architecture/2026-09-16-runtime-security.ko.md"
+        ],
+        "test": [
+          ".agents/work/WP10.ko.md",
+          "docs/testing/STRATEGY.ko.md"
+        ]
+      },
+      "resource_refs": [
+        "contracts/v1/cyrano.schema.json",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "contracts/assessment/rubric.json",
+        "contracts/v2/runtime.schema.json",
+        "tests/acceptance/catalog.json"
+      ],
+      "resource_selection": {
+        "tests/acceptance/catalog.json": {
+          "owner_wp": "WP10"
+        },
+        "contracts/v2/runtime.schema.json": {
+          "use": "Read only referenced $defs; do not inject entire schema by default."
+        }
+      },
+      "dependency_milestones": {
+        "WP06": "interface_ready",
+        "WP09": "interface_ready"
+      },
+      "milestones": {
+        "interface_ready": "required interfaces, actual module behavior and owned negative paths verified; no final score/release claim",
+        "product_verified": "all owned mandatory product acceptances executed with native/authorized boundaries and independent review"
+      }
+    },
+    {
+      "id": "WP11",
+      "title": "범위화 Memory 저장·조회·무효화",
+      "status": "verified",
+      "foundation_present": true,
+      "depends_on": [
+        "WP02",
+        "WP05",
+        "WP07"
+      ],
+      "owner_package": "../deepagents_code/cyrano/memory",
+      "owner_role": "implementer",
+      "reviewer_role": "reviewer",
+      "risk": "high",
+      "goal": "memory candidate/active 분리와 phase별 recall·적용 증거를 구현한다.",
+      "input_refs": [
+        "AGENTS.md",
+        "docs/design/features/2026-09-16-plan-memory-execution.ko.md",
+        "contracts/v1/cyrano.schema.json",
+        "../deepagents_code/cyrano/memory/README.md",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "docs/design/architecture/2026-09-16-universal-harness-integration.ko.md",
+        "docs/execution/INTEGRATED_WORK_DETAILS.ko.md",
+        "contracts/assessment/rubric.json",
+        "docs/testing/STRATEGY.ko.md",
+        "docs/development/TEST_DEVELOPMENT_PLAN.ko.md",
+        "docs/development/refinements/RC30.ko.md",
+        "docs/design/MEMORY_LIFECYCLE.ko.md",
+        "docs/development/refinements/RC31.ko.md",
+        "docs/development/refinements/RC32.ko.md",
+        "docs/development/refinements/RF03.ko.md",
+        "docs/development/refinements/RF04.ko.md",
+        "docs/design/ADAPTIVE_MEMORY_AND_SKILL_EVOLUTION.ko.md",
+        "contracts/v2/runtime.schema.json"
+      ],
+      "output_paths": [
+        "../deepagents_code/cyrano/memory/repository.py",
+        "../deepagents_code/cyrano/memory/invalidation.py",
+        "../deepagents_code/cyrano/memory/recall.py",
+        "../tests/cyrano_product/test_wp11_product.py",
+        "../deepagents_code/cyrano/memory/models.py",
+        "../deepagents_code/cyrano/memory/service.py",
+        "../tests/cyrano_product/test_r4_rc30.py",
+        "../deepagents_code/cyrano/memory/binding.py",
+        "../deepagents_code/cyrano/dcode/memory_adapter.py",
+        "../tests/cyrano_product/test_r4_rc31.py",
+        "../deepagents_code/cyrano/memory/application.py",
+        "../deepagents_code/cyrano/memory/deletion.py",
+        "../tests/cyrano_product/test_r4_rc32.py",
+        "../deepagents_code/cyrano/memory/selection.py",
+        "../tests/cyrano_product/test_wp11_recall.py",
+        "../tests/cyrano_product/test_wp11_contract_scenarios.py"
+      ],
+      "methods": [
+        "query_memory -> immutable view",
+        "propose_memory -> candidate",
+        "activate_memory -> release component",
+        "invalidate_memory -> dependency closure",
+        "export_corpus(scope, refs) -> ACL·freshness·tombstone 후 immutable docs만 복사",
+        "import_index(manifest, bytes) -> 환경/source/acl/digest와 위치·크기 검증",
+        "search_documents(view, query) -> searchLex 기본, 경로 재검증; 정답 없으면 빈 결과",
+        "bind_core(release, epoch) -> 고정 snapshot·budget·required rules 보존",
+        "select_recall(work_unit, scope) -> 관련성 우선, 충분한 근거 없으면 abstain",
+        "record_application(exposure, artifacts) -> plan/code/test detector 근거로 applied/unknown 구분"
+      ],
+      "acceptance_ids": [
+        "MEM-CANDIDATE",
+        "MEM-STALE",
+        "MEM-CONFLICT",
+        "MEM-DELETE",
+        "MEM-APPLIED",
+        "UH-CACHE-05",
+        "UH-CACHE-06",
+        "UH-MEM-01",
+        "UH-MEM-02",
+        "UH-MEM-03",
+        "UH-MEM-04",
+        "UH-MEM-05",
+        "UH-MEM-06",
+        "UH-MEM-07",
+        "UH-MEM-09",
+        "UH-MEM-10",
+        "UH-MEM-11",
+        "UH-MEM-13",
+        "INTEG-MEMORY-VIEW",
+        "INTEG-RETENTION",
+        "INTEG-SCOPE-ACL",
+        "R3-31-01",
+        "R3-31-02",
+        "R3-31-03",
+        "R3-31-04",
+        "R3-31-05",
+        "R3-31-06",
+        "R3-32-01",
+        "R3-32-02",
+        "R3-32-03",
+        "R3-32-04",
+        "R3-32-05",
+        "R3-32-06",
+        "R4-RC30-01",
+        "R4-RC30-02",
+        "R4-RC30-03",
+        "R4-RC30-04",
+        "R4-RC31-01",
+        "R4-RC31-02",
+        "R4-RC31-03",
+        "R4-RC31-04",
+        "R4-RC32-01",
+        "R4-RC32-02",
+        "R4-RC32-03",
+        "R4-RC32-04",
+        "R5-RF03-01",
+        "R5-RF03-02",
+        "R5-RF03-03",
+        "R5-RF03-04",
+        "R5-RF03-05",
+        "R5-RF03-06",
+        "R5-RF04-01",
+        "R5-RF04-02",
+        "R5-RF04-03",
+        "R5-RF04-04",
+        "R5-RF04-05",
+        "R5-RF04-06",
+        "CON-MEM-01",
+        "CON-MEM-02",
+        "CON-MEM-03",
+        "CON-MEM-04",
+        "CON-MEM-05",
+        "CON-MEM-06",
+        "CON-MEM-07",
+        "CON-MEM-08",
+        "CON-MEM-09",
+        "CON-MEM-10",
+        "CON-MEM-11",
+        "CON-MEM-12"
+      ],
+      "commands": [
+        [
+          "uv",
+          "run",
+          "--no-sync",
+          "python",
+          "-m",
+          "pytest",
+          "tests/cyrano_product/test_wp11_product.py",
+          "-q"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "schemas"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "check"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_integration.py"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "quality"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_r5.py"
+        ]
+      ],
+      "completion_evidence": "evidence/work-packages/WP11.json",
+      "remote_side_effects_authorized": false,
+      "source_work_packages": [
+        "universal:WP12"
+      ],
+      "integration_revision": "2026-09-16-assessment-r3",
+      "integration_tasks": [
+        {
+          "id": "WP11-I01",
+          "instruction": "tenant/user/workspace/session/task ACL을 rank/top-k 전에 필터한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP11-I02",
+          "instruction": "memory release와 query view를 분리하고 actual plan/tool evidence로 applied를 계산한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP11-I03",
+          "instruction": "freshness/정정/삭제의 FTS·optional vector·export·backup·replay 영향을 추적한다.",
+          "status": "planned"
+        }
+      ],
+      "integration_focus": "scope별 적극 recall·삭제·검증된 적용",
+      "bootstrap_approval_mode": "verified_broker_or_explicit_external_development_review",
+      "product_completion_requires": [
+        "mandatory_acceptance_actual_evidence",
+        "quality_gates_or_explicit_block",
+        "independent_postimage_review",
+        "no_unresolved_security_or_unknown_effect",
+        "source_and_contract_manifest_match"
+      ],
+      "r3_assessment_criteria": [
+        "3-1",
+        "3-2"
+      ],
+      "assessment_test_tasks": [
+        "TS06"
+      ],
+      "r4_refinements": [
+        "RC30",
+        "RC31",
+        "RC32"
+      ],
+      "native_inspection_and_patch_targets": [
+        "deepagents_code/agent.py",
+        "deepagents_code/memory_guard.py"
+      ],
+      "native_target_status": "inspect at pinned source; edit only after plan approval; not patched by overlay",
+      "commands_cwd": "libs/code",
+      "command_availability": "first command requires implemented product test and native uv environment; preparation scripts exist",
+      "r5_refinements": [
+        "RF03",
+        "RF04"
+      ],
+      "implementation_units": [
+        {
+          "id": "WP11-recall",
+          "title": "event-triggered recall과 실제 memory 적용",
+          "status": "planned",
+          "design_ref": "docs/design/ADAPTIVE_MEMORY_AND_SKILL_EVOLUTION.ko.md",
+          "implementation_steps": [
+            "기존 memory.kind와 첨부11분류를 facet/view로 매핑한다. 필요 없이 새로운 DB·enum migration을 만들지 않는다.",
+            "권한·active·dependency·삭제를 retrieval 이전에 필터한다. event coalescing과 strict budget으로 힌트 워커를 실행한다.",
+            "candidate id/revision·trigger·epoch·expiry가 결속된 hint만 수용하고 중복·상충·의도 변경을 처리한다.",
+            "model self-report와 plan/code/test 적용 evidence를 구분해 application 상태를 계산한다.",
+            "프로세스 A 종료·B 새 session에서 지속성과 scope를 검사하고 삭제/tombstone·backup 복원·cached hint를 함께 무효화한다."
+          ],
+          "interfaces": "RecallService.candidates/admit_hint/mark_application; RecallHint.",
+          "acceptance_conditions": [
+            "다른workspace 누출0",
+            "새세션에서도 실제기억회수",
+            "검색만으로 applied 금지",
+            "deprecated/revoked 기억 미주입",
+            "user correction 우선"
+          ],
+          "risks": "유용성 점수가 사실성·신뢰·권한을 대신하는 오류를 막는다.",
+          "output_paths": [
+            "../deepagents_code/cyrano/memory/selection.py",
+            "../deepagents_code/cyrano/memory/recall.py",
+            "../deepagents_code/cyrano/memory/application.py"
+          ],
+          "product_test_path": "../tests/cyrano_product/test_wp11_recall.py",
+          "commands": [
+            {
+              "cwd": "libs/code",
+              "argv": [
+                "uv",
+                "run",
+                "--no-sync",
+                "python",
+                "-m",
+                "pytest",
+                "tests/cyrano_product/test_wp11_recall.py",
+                "-q"
+              ],
+              "available_after": "implement_test_and_runtime_ports",
+              "zero_tests": "fail"
+            }
+          ],
+          "definition_inputs": [
+            "contracts/v2/runtime.schema.json",
+            "contracts/v2/governance.schema.json"
+          ],
+          "execution_requires": "Required predecessor ports + real dcode adapter + explicit runtime cost/side-effect permit; missing prerequisites are blocked, not pass.",
+          "consumed_owned_interfaces": []
+        }
+      ],
+      "primary_design": "docs/design/MEMORY_LIFECYCLE.ko.md",
+      "document": ".agents/work/WP11.ko.md",
+      "reading_refs": {
+        "plan": [
+          ".agents/work/WP11.ko.md",
+          "docs/design/MEMORY_LIFECYCLE.ko.md"
+        ],
+        "implement": [
+          ".agents/work/WP11.ko.md",
+          "docs/design/MEMORY_LIFECYCLE.ko.md"
+        ],
+        "test": [
+          ".agents/work/WP11.ko.md",
+          "docs/testing/STRATEGY.ko.md"
+        ]
+      },
+      "resource_refs": [
+        "contracts/v1/cyrano.schema.json",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "contracts/assessment/rubric.json",
+        "contracts/v2/runtime.schema.json",
+        "tests/acceptance/catalog.json"
+      ],
+      "resource_selection": {
+        "tests/acceptance/catalog.json": {
+          "owner_wp": "WP11"
+        },
+        "contracts/v2/runtime.schema.json": {
+          "use": "Read only referenced $defs; do not inject entire schema by default."
+        }
+      },
+      "dependency_milestones": {
+        "WP02": "interface_ready",
+        "WP05": "interface_ready",
+        "WP07": "interface_ready"
+      },
+      "milestones": {
+        "interface_ready": "required interfaces, actual module behavior and owned negative paths verified; no final score/release claim",
+        "product_verified": "all owned mandatory product acceptances executed with native/authorized boundaries and independent review"
+      }
+    },
+    {
+      "id": "WP12",
+      "title": "Skill registry·검증·release 투영",
+      "status": "verified",
+      "foundation_present": false,
+      "depends_on": [
+        "WP05",
+        "WP11"
+      ],
+      "owner_package": "../deepagents_code/cyrano/context",
+      "owner_role": "implementer",
+      "reviewer_role": "reviewer",
+      "risk": "high",
+      "goal": "실제 skill 로딩·참조·executable 분류·외부 runtime 투영을 구현한다.",
+      "input_refs": [
+        "AGENTS.md",
+        "docs/design/architecture/2026-09-16-cache-context.ko.md",
+        "contracts/v1/cyrano.schema.json",
+        "../deepagents_code/cyrano/context/README.md",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "docs/design/architecture/2026-09-16-universal-harness-integration.ko.md",
+        "docs/execution/INTEGRATED_WORK_DETAILS.ko.md",
+        "contracts/assessment/rubric.json",
+        "docs/testing/STRATEGY.ko.md",
+        "docs/development/TEST_DEVELOPMENT_PLAN.ko.md"
+      ],
+      "output_paths": [
+        "../deepagents_code/cyrano/context/skills.py",
+        "../deepagents_code/cyrano/context/projection.py",
+        "configs/skills/",
+        "../tests/cyrano_product/test_wp12_product.py"
+      ],
+      "methods": [
+        "validate_skill -> static findings",
+        "build_skill_release -> artifacts",
+        "project_verified_release -> external root",
+        "observe_skill_use -> selected/loaded/applied"
+      ],
+      "acceptance_ids": [
+        "SKILL-DUPLICATE",
+        "SKILL-EXECUTABLE",
+        "SKILL-LOAD",
+        "SKILL-TEMPLATE",
+        "SKILL-blind-handoff-positive",
+        "SKILL-blind-handoff-negative",
+        "SKILL-cache-context-positive",
+        "SKILL-cache-context-negative",
+        "SKILL-candidate-authoring-positive",
+        "SKILL-candidate-authoring-negative",
+        "SKILL-decision-interview-positive",
+        "SKILL-decision-interview-negative",
+        "SKILL-evidence-scout-positive",
+        "SKILL-evidence-scout-negative",
+        "SKILL-exploration-policy-positive",
+        "SKILL-exploration-policy-negative",
+        "SKILL-learning-analysis-positive",
+        "SKILL-learning-analysis-negative",
+        "SKILL-paired-evaluation-review-positive",
+        "SKILL-paired-evaluation-review-negative",
+        "SKILL-plan-and-review-positive",
+        "SKILL-plan-and-review-negative",
+        "SKILL-release-review-positive",
+        "SKILL-release-review-negative",
+        "SKILL-runtime-code-change-positive",
+        "SKILL-runtime-code-change-negative",
+        "SKILL-safe-implementation-positive",
+        "SKILL-safe-implementation-negative",
+        "SKILL-scoped-memory-positive",
+        "SKILL-scoped-memory-negative",
+        "SKILL-verification-recipe-positive",
+        "SKILL-verification-recipe-negative",
+        "UH-MEM-08",
+        "UH-MEM-14",
+        "PEQ-PY-T44",
+        "PEQ-PY-T45",
+        "PEQ-PY-T46",
+        "PEQ-PY-T47",
+        "PEQ-PY-T48",
+        "PEQ-PY-T49",
+        "PEQ-PY-T50"
+      ],
+      "commands": [
+        [
+          "uv",
+          "run",
+          "--no-sync",
+          "python",
+          "-m",
+          "pytest",
+          "tests/cyrano_product/test_wp12_product.py",
+          "-q"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "schemas"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "check"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_integration.py"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "quality"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_r5.py"
+        ]
+      ],
+      "completion_evidence": "evidence/work-packages/WP12.json",
+      "remote_side_effects_authorized": false,
+      "source_work_packages": [
+        "universal:WP11",
+        "universal:WP12"
+      ],
+      "integration_revision": "2026-09-16-assessment-r3",
+      "integration_tasks": [
+        {
+          "id": "WP12-I01",
+          "instruction": "metadata→본문→resource 순서와 digest/적용 사례를 검증한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP12-I02",
+          "instruction": "native remember와 활성 AGENTS 쓰기를 candidate broker 경로로 전환한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP12-I03",
+          "instruction": "도구/skill 갱신은 새 release·epoch이며 security revoke는 즉시 pause한다.",
+          "status": "planned"
+        }
+      ],
+      "integration_focus": "skill progressive loading와 remember 통제",
+      "bootstrap_approval_mode": "verified_broker_or_explicit_external_development_review",
+      "product_completion_requires": [
+        "mandatory_acceptance_actual_evidence",
+        "quality_gates_or_explicit_block",
+        "independent_postimage_review",
+        "no_unresolved_security_or_unknown_effect",
+        "source_and_contract_manifest_match"
+      ],
+      "r3_assessment_criteria": [],
+      "assessment_test_tasks": [
+        "TS03",
+        "TS06"
+      ],
+      "r4_refinements": [],
+      "native_inspection_and_patch_targets": [
+        "deepagents_code/agent.py"
+      ],
+      "native_target_status": "inspect at pinned source; edit only after plan approval; not patched by overlay",
+      "commands_cwd": "libs/code",
+      "command_availability": "first command requires implemented product test and native uv environment; preparation scripts exist",
+      "r5_refinements": [],
+      "primary_design": "docs/design/ADAPTIVE_MEMORY_AND_SKILL_EVOLUTION.ko.md",
+      "document": ".agents/work/WP12.ko.md",
+      "reading_refs": {
+        "plan": [
+          ".agents/work/WP12.ko.md",
+          "docs/design/ADAPTIVE_MEMORY_AND_SKILL_EVOLUTION.ko.md"
+        ],
+        "implement": [
+          ".agents/work/WP12.ko.md",
+          "docs/design/ADAPTIVE_MEMORY_AND_SKILL_EVOLUTION.ko.md"
+        ],
+        "test": [
+          ".agents/work/WP12.ko.md",
+          "docs/testing/STRATEGY.ko.md"
+        ]
+      },
+      "resource_refs": [
+        "contracts/v1/cyrano.schema.json",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "contracts/assessment/rubric.json",
+        "tests/acceptance/catalog.json"
+      ],
+      "resource_selection": {
+        "tests/acceptance/catalog.json": {
+          "owner_wp": "WP12"
+        },
+        "contracts/v2/runtime.schema.json": {
+          "use": "Read only referenced $defs; do not inject entire schema by default."
+        }
+      },
+      "dependency_milestones": {
+        "WP05": "interface_ready",
+        "WP11": "interface_ready"
+      },
+      "milestones": {
+        "interface_ready": "required interfaces, actual module behavior and owned negative paths verified; no final score/release claim",
+        "product_verified": "all owned mandatory product acceptances executed with native/authorized boundaries and independent review"
+      }
+    },
+    {
+      "id": "WP13",
+      "title": "전수 이벤트·native CLI Monitor·비용관측",
+      "status": "verified",
+      "foundation_present": true,
+      "depends_on": [
+        "WP02",
+        "WP06"
+      ],
+      "owner_package": "../deepagents_code/cyrano/events",
+      "owner_role": "implementer",
+      "reviewer_role": "reviewer",
+      "risk": "high",
+      "goal": "모든 등록 실행의 상태·trace·usage·학습·승인을 조회하고 관측 누락을 드러낸다.",
+      "input_refs": [
+        "AGENTS.md",
+        "docs/design/testing/2026-09-16-evaluation-observability.ko.md",
+        "contracts/v1/cyrano.schema.json",
+        "../deepagents_code/cyrano/events/README.md",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "docs/design/architecture/2026-09-16-universal-harness-integration.ko.md",
+        "docs/execution/INTEGRATED_WORK_DETAILS.ko.md",
+        "contracts/assessment/rubric.json",
+        "docs/testing/STRATEGY.ko.md",
+        "docs/development/TEST_DEVELOPMENT_PLAN.ko.md",
+        "docs/development/refinements/RC40.ko.md",
+        "docs/design/OBSERVABILITY_PIPELINE.ko.md",
+        "docs/development/refinements/RC41.ko.md",
+        "docs/development/refinements/RC42.ko.md",
+        "docs/development/refinements/RF07.ko.md",
+        "docs/development/refinements/RF08.ko.md",
+        "docs/development/refinements/RF09.ko.md",
+        "contracts/v2/runtime.schema.json"
+      ],
+      "output_paths": [
+        "../deepagents_code/cyrano/events/catalogue.py",
+        "../deepagents_code/cyrano/events/export.py",
+        "../deepagents_code/cyrano/cli/dashboard.py",
+        "../tests/cyrano_product/test_wp13_product.py",
+        "../deepagents_code/cyrano/events/domain_sink.py",
+        "../deepagents_code/cyrano/events/reconcile.py",
+        "../tests/cyrano_product/test_r4_rc40.py",
+        "../deepagents_code/cyrano/events/native_observer.py",
+        "../deepagents_code/cyrano/events/tool_observer.py",
+        "../deepagents_code/cyrano/events/metrics.py",
+        "../tests/cyrano_product/test_r4_rc41.py",
+        "../deepagents_code/cyrano/events/query.py",
+        "../tests/cyrano_product/test_r4_rc42.py",
+        "../deepagents_code/cyrano/events/recovery.py",
+        "../deepagents_code/cyrano/monitor/projection.py",
+        "../tests/cyrano_product/test_wp13_observability.py",
+        "../tests/cyrano_product/test_wp13_contract_scenarios.py"
+      ],
+      "methods": [
+        "record_event -> sequence",
+        "coverage_report -> missing paths",
+        "stream_authorized_events -> SSE",
+        "render_dashboard -> escaped view",
+        "open_cyrano_monitor(app, tab) -> 현재 native request/workspace 확인, noLLM·read-only modal",
+        "get_snapshot(principal, request) -> same read tx snapshot+high_watermark+generation",
+        "follow_view(cursor, filters) -> scope-bound cursor/retention reset, canonical→view 변환",
+        "render_snapshot(snapshot) -> 7pane·정확상태·누락표시; no rawmarkup",
+        "ingest(view_event) -> scope/generation/idempotency/seq 검증; boundedprojection",
+        "close_screen() -> 화면worker만 취소, nativeagent 계속실행",
+        "run_pilot_cases(app_fixture) -> 실제 Textual eventloop·key·resize 검증",
+        "run_native_flow(runtime) -> plan→review→code→test→memory→learn trace를 실제조회",
+        "compare_source_counts(trace, display) -> runner 원시count와 UI집계 비교; missing측정"
+      ],
+      "acceptance_ids": [
+        "OBS-EMPTY",
+        "OBS-REPORT",
+        "OBS-XSS",
+        "OBS-SECRET",
+        "UH-CACHE-02",
+        "UH-CACHE-03",
+        "UH-OBS-01",
+        "UH-OBS-02",
+        "UH-OBS-03",
+        "UH-OBS-04",
+        "UH-OBS-05",
+        "UH-OBS-06",
+        "UH-OBS-07",
+        "UH-OBS-08",
+        "UH-OBS-09",
+        "UH-OBS-10",
+        "UH-OBS-11",
+        "UH-OBS-12",
+        "INTEG-TYPED-PAYLOAD",
+        "R3-41-01",
+        "R3-41-02",
+        "R3-41-03",
+        "R3-41-04",
+        "R3-41-05",
+        "R3-41-06",
+        "R3-42-01",
+        "R3-42-02",
+        "R3-42-03",
+        "R3-42-04",
+        "R3-42-05",
+        "R3-42-06",
+        "R3-43-01",
+        "R3-43-02",
+        "R3-43-03",
+        "R3-43-04",
+        "R3-43-05",
+        "R3-43-06",
+        "R4-RC40-01",
+        "R4-RC40-02",
+        "R4-RC40-03",
+        "R4-RC40-04",
+        "R4-RC41-01",
+        "R4-RC41-02",
+        "R4-RC41-03",
+        "R4-RC41-04",
+        "R4-RC42-01",
+        "R4-RC42-02",
+        "R4-RC42-03",
+        "R4-RC42-04",
+        "R5-RF07-01",
+        "R5-RF07-02",
+        "R5-RF07-03",
+        "R5-RF07-04",
+        "R5-RF07-05",
+        "R5-RF07-06",
+        "R5-RF08-01",
+        "R5-RF08-02",
+        "R5-RF08-03",
+        "R5-RF08-04",
+        "R5-RF08-05",
+        "R5-RF08-06",
+        "R5-RF09-01",
+        "R5-RF09-02",
+        "R5-RF09-03",
+        "R5-RF09-04",
+        "R5-RF09-05",
+        "R5-RF09-06",
+        "CON-OBS-01",
+        "CON-OBS-02",
+        "CON-OBS-03",
+        "CON-OBS-04",
+        "CON-OBS-05",
+        "CON-OBS-06",
+        "CON-OBS-07",
+        "CON-OBS-08",
+        "CON-OBS-09",
+        "CON-OBS-10",
+        "CON-OBS-11",
+        "CON-OBS-12"
+      ],
+      "commands": [
+        [
+          "uv",
+          "run",
+          "--no-sync",
+          "python",
+          "-m",
+          "pytest",
+          "tests/cyrano_product/test_wp13_product.py",
+          "-q"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "schemas"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "check"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_integration.py"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "quality"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_r5.py"
+        ]
+      ],
+      "completion_evidence": "evidence/work-packages/WP13.json",
+      "remote_side_effects_authorized": false,
+      "source_work_packages": [
+        "universal:WP14",
+        "universal:WP15",
+        "universal:WP19"
+      ],
+      "integration_revision": "2026-09-16-assessment-r3",
+      "integration_tasks": [
+        {
+          "id": "WP13-I01",
+          "instruction": "event type별 payload와 producer authority registry를 구현한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP13-I02",
+          "instruction": "leaf attempt만 합산하고 retry·usage semantics·unknown·coverage gaps를 기록한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP13-I03",
+          "instruction": "8개 dashboard/SSE scope/cursor·separate approval listener·CSRF·redaction·outbox를 검증한다.",
+          "status": "planned"
+        }
+      ],
+      "integration_focus": "typed events·중첩 비용·8화면",
+      "bootstrap_approval_mode": "verified_broker_or_explicit_external_development_review",
+      "product_completion_requires": [
+        "mandatory_acceptance_actual_evidence",
+        "quality_gates_or_explicit_block",
+        "independent_postimage_review",
+        "no_unresolved_security_or_unknown_effect",
+        "source_and_contract_manifest_match"
+      ],
+      "r3_assessment_criteria": [
+        "4-1",
+        "4-2",
+        "4-3"
+      ],
+      "assessment_test_tasks": [
+        "TS09",
+        "TS10"
+      ],
+      "r4_refinements": [
+        "RC40",
+        "RC41",
+        "RC42"
+      ],
+      "native_inspection_and_patch_targets": [
+        "deepagents_code/agent.py",
+        "deepagents_code/cost_tracking.py",
+        "deepagents_code/resume_state.py"
+      ],
+      "native_target_status": "inspect at pinned source; edit only after plan approval; not patched by overlay",
+      "commands_cwd": "libs/code",
+      "command_availability": "first command requires implemented product test and native uv environment; preparation scripts exist",
+      "r5_refinements": [
+        "RF07",
+        "RF08",
+        "RF09"
+      ],
+      "implementation_units": [
+        {
+          "id": "WP13-observability",
+          "title": "native trace·effect ledger·CLI projection",
+          "status": "completed",
+          "design_ref": "docs/design/OBSERVABILITY_PIPELINE.ko.md",
+          "implementation_steps": [
+            "native 호출·tool·child·offload·review·warming·export 각 producer를 식별하고 missing coverage를 보고한다.",
+            "상태 변경/event/outbox transaction과 physical attempt billing unique key를 구현한다. cancel 후usage 수용은 state 적용과 분리한다.",
+            "TUI용 snapshot/aggregate/cursor read API를 기존 화면에 연결한다. 조회에 LLM을 호출하지 않는다.",
+            "queue overflow·gap marker·cursor expiry·권한철회·thread 전환 시 민감한 stale view를 비우고 재동기화한다.",
+            "crash recovery는 lease/effect/permit/source를 재확인한 뒤만 재개한다. optional exporter 실패와 mandatory audit 실패를 분리한다."
+          ],
+          "interfaces": "ObservationQuery.timeline/reconcile_effect; billing attempt identity; native observer map.",
+          "acceptance_conditions": [
+            "logical1/physical3/retry2 검증",
+            "최신N목록과전체집계분리",
+            "계측공백을0으로표시하지않음",
+            "위험행동전audit 실패시효과0"
+          ],
+          "risks": "hash chain 또는 UI timeline 존재가 완전한 계측·변조 방지를 증명하지 않는다.",
+          "output_paths": [
+            "../deepagents_code/cyrano/events/query.py",
+            "../deepagents_code/cyrano/events/recovery.py",
+            "../deepagents_code/cyrano/monitor/projection.py"
+          ],
+          "product_test_path": "../tests/cyrano_product/test_wp13_observability.py",
+          "commands": [
+            {
+              "cwd": "libs/code",
+              "argv": [
+                "uv",
+                "run",
+                "--no-sync",
+                "python",
+                "-m",
+                "pytest",
+                "tests/cyrano_product/test_wp13_observability.py",
+                "-q"
+              ],
+              "available_after": "implement_test_and_runtime_ports",
+              "zero_tests": "fail"
+            }
+          ],
+          "definition_inputs": [
+            "contracts/v2/runtime.schema.json",
+            "contracts/v2/governance.schema.json"
+          ],
+          "execution_requires": "Required predecessor ports + real dcode adapter + explicit runtime cost/side-effect permit; missing prerequisites are blocked, not pass.",
+          "consumed_owned_interfaces": [
+            {
+              "path": "../deepagents_code/cyrano/events/coverage.py",
+              "owner_wp": "WP05"
+            }
+          ]
+        }
+      ],
+      "primary_design": "docs/design/OBSERVABILITY_PIPELINE.ko.md",
+      "document": ".agents/work/WP13.ko.md",
+      "reading_refs": {
+        "plan": [
+          ".agents/work/WP13.ko.md",
+          "docs/design/OBSERVABILITY_PIPELINE.ko.md"
+        ],
+        "implement": [
+          ".agents/work/WP13.ko.md",
+          "docs/design/OBSERVABILITY_PIPELINE.ko.md"
+        ],
+        "test": [
+          ".agents/work/WP13.ko.md",
+          "docs/testing/STRATEGY.ko.md"
+        ]
+      },
+      "resource_refs": [
+        "contracts/v1/cyrano.schema.json",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "contracts/assessment/rubric.json",
+        "contracts/v2/runtime.schema.json",
+        "tests/acceptance/catalog.json"
+      ],
+      "resource_selection": {
+        "tests/acceptance/catalog.json": {
+          "owner_wp": "WP13"
+        },
+        "contracts/v2/runtime.schema.json": {
+          "use": "Read only referenced $defs; do not inject entire schema by default."
+        }
+      },
+      "dependency_milestones": {
+        "WP02": "interface_ready",
+        "WP06": "interface_ready"
+      },
+      "milestones": {
+        "interface_ready": "required interfaces, actual module behavior and owned negative paths verified; no final score/release claim",
+        "product_verified": "all owned mandatory product acceptances executed with native/authorized boundaries and independent review"
+      }
+    },
+    {
+      "id": "WP14",
+      "title": "Episode·world·replay 정합성",
+      "status": "verified",
+      "foundation_present": true,
+      "depends_on": [
+        "WP10",
+        "WP13"
+      ],
+      "owner_package": "../deepagents_code/cyrano/improvement",
+      "owner_role": "implementer",
+      "reviewer_role": "reviewer",
+      "risk": "high",
+      "goal": "입력·정보 dependency가 고정된 recorded world와 비공개 replay runner를 구현한다.",
+      "input_refs": [
+        "AGENTS.md",
+        "docs/design/features/2026-09-16-dream-path-a.ko.md",
+        "contracts/v1/cyrano.schema.json",
+        "../deepagents_code/cyrano/improvement/README.md",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "docs/design/architecture/2026-09-16-universal-harness-integration.ko.md",
+        "docs/execution/INTEGRATED_WORK_DETAILS.ko.md",
+        "contracts/assessment/rubric.json",
+        "docs/testing/STRATEGY.ko.md",
+        "docs/development/TEST_DEVELOPMENT_PLAN.ko.md"
+      ],
+      "output_paths": [
+        "../deepagents_code/cyrano/improvement/episodes.py",
+        "../deepagents_code/cyrano/improvement/worlds.py",
+        "../deepagents_code/cyrano/improvement/replay.py",
+        "../tests/cyrano_product/test_wp14_product.py"
+      ],
+      "methods": [
+        "build_episode -> immutable graph",
+        "build_world -> tape",
+        "public_observation -> redacted frontier",
+        "step_batch -> supported/out_of_support"
+      ],
+      "acceptance_ids": [
+        "DREAM-RPL-01",
+        "DREAM-RPL-02",
+        "DREAM-RPL-03",
+        "DREAM-RPL-04",
+        "DREAM-RPL-05",
+        "DREAM-RPL-06",
+        "DREAM-RPL-07",
+        "DREAM-RPL-08",
+        "DREAM-RPL-09",
+        "DREAM-RPL-10",
+        "DREAM-RPL-11",
+        "DREAM-RPL-12",
+        "A-FUTURE",
+        "A-BATCH",
+        "A-DEPENDENCY",
+        "A-STOP",
+        "R3-44-01",
+        "R3-44-02",
+        "R3-44-03",
+        "R3-44-04",
+        "R3-44-05",
+        "R3-44-06"
+      ],
+      "commands": [
+        [
+          "uv",
+          "run",
+          "--no-sync",
+          "python",
+          "-m",
+          "pytest",
+          "tests/cyrano_product/test_wp14_product.py",
+          "-q"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "schemas"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "check"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_integration.py"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "quality"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_r5.py"
+        ]
+      ],
+      "completion_evidence": "evidence/work-packages/WP14.json",
+      "remote_side_effects_authorized": false,
+      "source_work_packages": [
+        "universal:WP16"
+      ],
+      "integration_revision": "2026-09-16-assessment-r3",
+      "integration_tasks": [
+        {
+          "id": "WP14-I01",
+          "instruction": "input fingerprint·부모·추가 dependency를 고정한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP14-I02",
+          "instruction": "삭제/만료/비공개 raw input은 replay unavailable로 분류한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP14-I03",
+          "instruction": "원본 testcase와 실제 corpus를 분리하고 out_of_support를 가짜 실패로 대체하지 않는다.",
+          "status": "planned"
+        }
+      ],
+      "integration_focus": "episode와 정확한 replay 전제",
+      "bootstrap_approval_mode": "verified_broker_or_explicit_external_development_review",
+      "product_completion_requires": [
+        "mandatory_acceptance_actual_evidence",
+        "quality_gates_or_explicit_block",
+        "independent_postimage_review",
+        "no_unresolved_security_or_unknown_effect",
+        "source_and_contract_manifest_match"
+      ],
+      "r3_assessment_criteria": [
+        "4-4"
+      ],
+      "assessment_test_tasks": [
+        "TS09",
+        "TS10"
+      ],
+      "r4_refinements": [],
+      "commands_cwd": "libs/code",
+      "command_availability": "first command requires implemented product test and native uv environment; preparation scripts exist",
+      "r5_refinements": [],
+      "primary_design": "docs/design/features/2026-09-16-dream-path-a.ko.md",
+      "document": ".agents/work/WP14.ko.md",
+      "reading_refs": {
+        "plan": [
+          ".agents/work/WP14.ko.md",
+          "docs/design/features/2026-09-16-dream-path-a.ko.md"
+        ],
+        "implement": [
+          ".agents/work/WP14.ko.md",
+          "docs/design/features/2026-09-16-dream-path-a.ko.md"
+        ],
+        "test": [
+          ".agents/work/WP14.ko.md",
+          "docs/testing/STRATEGY.ko.md"
+        ]
+      },
+      "resource_refs": [
+        "contracts/v1/cyrano.schema.json",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "contracts/assessment/rubric.json",
+        "tests/acceptance/catalog.json"
+      ],
+      "resource_selection": {
+        "tests/acceptance/catalog.json": {
+          "owner_wp": "WP14"
+        },
+        "contracts/v2/runtime.schema.json": {
+          "use": "Read only referenced $defs; do not inject entire schema by default."
+        }
+      },
+      "dependency_milestones": {
+        "WP10": "interface_ready",
+        "WP13": "interface_ready"
+      },
+      "milestones": {
+        "interface_ready": "required interfaces, actual module behavior and owned negative paths verified; no final score/release claim",
+        "product_verified": "all owned mandatory product acceptances executed with native/authorized boundaries and independent review"
+      }
+    },
+    {
+      "id": "WP15",
+      "title": "경로 A bounded policy 학습",
+      "status": "verified",
+      "foundation_present": false,
+      "depends_on": [
+        "WP14",
+        "WP20"
+      ],
+      "owner_package": "../deepagents_code/cyrano/improvement",
+      "owner_role": "implementer",
+      "reviewer_role": "reviewer",
+      "risk": "high",
+      "goal": "고정 profile menu가 아닌 bounded IR 후보 생성·replay 선별·실제 평가를 연결한다.",
+      "input_refs": [
+        "AGENTS.md",
+        "docs/design/features/2026-09-16-dream-path-a.ko.md",
+        "contracts/v1/cyrano.schema.json",
+        "../deepagents_code/cyrano/improvement/README.md",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "docs/design/architecture/2026-09-16-universal-harness-integration.ko.md",
+        "docs/execution/INTEGRATED_WORK_DETAILS.ko.md",
+        "contracts/assessment/rubric.json",
+        "docs/testing/STRATEGY.ko.md",
+        "docs/development/TEST_DEVELOPMENT_PLAN.ko.md"
+      ],
+      "output_paths": [
+        "../deepagents_code/cyrano/improvement/policy_ir.py",
+        "../deepagents_code/cyrano/improvement/search.py",
+        "../deepagents_code/cyrano/improvement/policy_runner.py",
+        "../tests/cyrano_product/test_wp15_product.py"
+      ],
+      "methods": [
+        "validate_ir -> bounded policy",
+        "generate_policy_candidate -> proposal",
+        "screen_replay -> support/score",
+        "request_actual_validation -> experiment"
+      ],
+      "acceptance_ids": [
+        "A-IR",
+        "A-NOMENU",
+        "A-ACTUAL"
+      ],
+      "commands": [
+        [
+          "uv",
+          "run",
+          "--no-sync",
+          "python",
+          "-m",
+          "pytest",
+          "tests/cyrano_product/test_wp15_product.py",
+          "-q"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "schemas"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "check"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_integration.py"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "quality"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_r5.py"
+        ]
+      ],
+      "completion_evidence": "evidence/work-packages/WP15.json",
+      "remote_side_effects_authorized": false,
+      "source_work_packages": [],
+      "integration_revision": "2026-09-16-assessment-r3",
+      "integration_tasks": [
+        {
+          "id": "WP15-I01",
+          "instruction": "고정 관측에서만 정책을 비교하고 미래 자료를 정책 프로세스에서 제외한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP15-I02",
+          "instruction": "동일 후보라도 모델/endpoint/runtime이 다른 결과를 재사용하지 않는다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP15-I03",
+          "instruction": "최종 실제 평가·독립 review·bounded approval 전에는 활성화하지 않는다.",
+          "status": "planned"
+        }
+      ],
+      "integration_focus": "경로 A 정책 개선 보존",
+      "bootstrap_approval_mode": "verified_broker_or_explicit_external_development_review",
+      "product_completion_requires": [
+        "mandatory_acceptance_actual_evidence",
+        "quality_gates_or_explicit_block",
+        "independent_postimage_review",
+        "no_unresolved_security_or_unknown_effect",
+        "source_and_contract_manifest_match"
+      ],
+      "r3_assessment_criteria": [],
+      "assessment_test_tasks": [
+        "TS07"
+      ],
+      "r4_refinements": [],
+      "commands_cwd": "libs/code",
+      "command_availability": "first command requires implemented product test and native uv environment; preparation scripts exist",
+      "r5_refinements": [],
+      "primary_design": "docs/design/features/2026-09-16-dream-path-a.ko.md",
+      "document": ".agents/work/WP15.ko.md",
+      "reading_refs": {
+        "plan": [
+          ".agents/work/WP15.ko.md",
+          "docs/design/features/2026-09-16-dream-path-a.ko.md"
+        ],
+        "implement": [
+          ".agents/work/WP15.ko.md",
+          "docs/design/features/2026-09-16-dream-path-a.ko.md"
+        ],
+        "test": [
+          ".agents/work/WP15.ko.md",
+          "docs/testing/STRATEGY.ko.md"
+        ]
+      },
+      "resource_refs": [
+        "contracts/v1/cyrano.schema.json",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "contracts/assessment/rubric.json",
+        "tests/acceptance/catalog.json"
+      ],
+      "resource_selection": {
+        "tests/acceptance/catalog.json": {
+          "owner_wp": "WP15"
+        },
+        "contracts/v2/runtime.schema.json": {
+          "use": "Read only referenced $defs; do not inject entire schema by default."
+        }
+      },
+      "dependency_milestones": {
+        "WP14": "interface_ready",
+        "WP20": "interface_ready"
+      },
+      "milestones": {
+        "interface_ready": "required interfaces, actual module behavior and owned negative paths verified; no final score/release claim",
+        "product_verified": "all owned mandatory product acceptances executed with native/authorized boundaries and independent review"
+      }
+    },
+    {
+      "id": "WP16",
+      "title": "경로 B 분석·학습계획·impact",
+      "status": "verified",
+      "foundation_present": true,
+      "depends_on": [
+        "WP10",
+        "WP11",
+        "WP13"
+      ],
+      "owner_package": "../deepagents_code/cyrano/improvement",
+      "owner_role": "implementer",
+      "reviewer_role": "reviewer",
+      "risk": "high",
+      "goal": "입력 변경의 가설·계획·후보·독립 분류·보호 경로 검사 엔진을 구현한다.",
+      "input_refs": [
+        "AGENTS.md",
+        "docs/design/features/2026-09-16-path-b-improvement.ko.md",
+        "contracts/v1/cyrano.schema.json",
+        "../deepagents_code/cyrano/improvement/README.md",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "docs/design/architecture/2026-09-16-universal-harness-integration.ko.md",
+        "docs/execution/INTEGRATED_WORK_DETAILS.ko.md",
+        "contracts/assessment/rubric.json",
+        "docs/testing/STRATEGY.ko.md",
+        "docs/development/TEST_DEVELOPMENT_PLAN.ko.md",
+        "docs/development/refinements/RC33.ko.md",
+        "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md",
+        "docs/development/refinements/RF05.ko.md",
+        "docs/design/ADAPTIVE_MEMORY_AND_SKILL_EVOLUTION.ko.md",
+        "contracts/v2/runtime.schema.json"
+      ],
+      "output_paths": [
+        "../deepagents_code/cyrano/improvement/analysis.py",
+        "../deepagents_code/cyrano/improvement/workplan.py",
+        "../deepagents_code/cyrano/improvement/candidates.py",
+        "../deepagents_code/cyrano/improvement/impact.py",
+        "../tests/cyrano_product/test_wp16_product.py",
+        "../deepagents_code/cyrano/improvement/episodes.py",
+        "../tests/cyrano_product/test_r4_rc33.py",
+        "../deepagents_code/cyrano/improvement/classification.py",
+        "../deepagents_code/cyrano/improvement/skill_evaluation.py",
+        "../tests/cyrano_product/test_wp16_skill_evolution.py"
+      ],
+      "methods": [
+        "analyze_patterns -> hypotheses",
+        "compile_learning_plan -> reviewed plan",
+        "propose_candidate -> immutable diff",
+        "assess_impact -> A/B/manual",
+        "validate_delta(base, delta) -> expected revision·scope·근거·보호필드·크기 검증; candidate 반환",
+        "enqueue_review(terminal, release) -> 동일 tx outbox+idempotency; 중복 coalesce 조건 기록",
+        "run_review(job, budget) -> foreground 우선·cancel/defer·실패dead-letter, 추가 권한 없음"
+      ],
+      "acceptance_ids": [
+        "DREAM-ACT-01",
+        "DREAM-ACT-02",
+        "DREAM-ACT-03",
+        "DREAM-ACT-04",
+        "DREAM-ACT-05",
+        "DREAM-ACT-06",
+        "DREAM-PLC-01",
+        "DREAM-PLC-02",
+        "DREAM-PLC-03",
+        "DREAM-PLC-04",
+        "DREAM-PLC-05",
+        "DREAM-MEM-01",
+        "DREAM-MEM-02",
+        "DREAM-MEM-03",
+        "DREAM-MEM-04",
+        "DREAM-WF-01",
+        "DREAM-WF-02",
+        "DREAM-WF-03",
+        "DREAM-WF-04",
+        "DREAM-OPS-01",
+        "DREAM-OPS-02",
+        "DREAM-OPS-03",
+        "DREAM-DC-01",
+        "DREAM-DC-02",
+        "DREAM-DC-03",
+        "DREAM-DC-04",
+        "DREAM-DC-05",
+        "DREAM-QA-01",
+        "DREAM-QA-02",
+        "DREAM-QA-03",
+        "B-CAUSE",
+        "B-UNKNOWN",
+        "B-PROTECTED",
+        "B-META",
+        "UH-LEARN-01",
+        "UH-LEARN-02",
+        "UH-LEARN-03",
+        "UH-LEARN-04",
+        "UH-LEARN-05",
+        "UH-LEARN-13",
+        "UH-LEARN-14",
+        "INTEG-LEARNING-DEFAULT",
+        "R4-RC33-01",
+        "R4-RC33-02",
+        "R4-RC33-03",
+        "R4-RC33-04",
+        "R5-RF05-01",
+        "R5-RF05-02",
+        "R5-RF05-03",
+        "R5-RF05-04",
+        "R5-RF05-05",
+        "R5-RF05-06"
+      ],
+      "commands": [
+        [
+          "uv",
+          "run",
+          "--no-sync",
+          "python",
+          "-m",
+          "pytest",
+          "tests/cyrano_product/test_wp16_product.py",
+          "-q"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "schemas"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "check"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_integration.py"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "quality"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_r5.py"
+        ]
+      ],
+      "completion_evidence": "evidence/work-packages/WP16.json",
+      "remote_side_effects_authorized": false,
+      "source_work_packages": [
+        "universal:WP16"
+      ],
+      "integration_revision": "2026-09-16-assessment-r3",
+      "integration_tasks": [
+        {
+          "id": "WP16-I01",
+          "instruction": "TDD red·정상 deny·환경오류·요구변경·일반 실패를 분리한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP16-I02",
+          "instruction": "terminal event+job outbox를 원자 기록하고 logical dedupe를 구현한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP16-I03",
+          "instruction": "학습 worker 실패는 업무 결과와 분리하고 후보 작성자가 영향 분류/평가를 승인하지 못한다.",
+          "status": "planned"
+        }
+      ],
+      "integration_focus": "LearningTrigger와 개선 작업 계획",
+      "bootstrap_approval_mode": "verified_broker_or_explicit_external_development_review",
+      "product_completion_requires": [
+        "mandatory_acceptance_actual_evidence",
+        "quality_gates_or_explicit_block",
+        "independent_postimage_review",
+        "no_unresolved_security_or_unknown_effect",
+        "source_and_contract_manifest_match"
+      ],
+      "r3_assessment_criteria": [],
+      "assessment_test_tasks": [
+        "TS07"
+      ],
+      "r4_refinements": [
+        "RC33"
+      ],
+      "commands_cwd": "libs/code",
+      "command_availability": "first command requires implemented product test and native uv environment; preparation scripts exist",
+      "r5_refinements": [
+        "RF05"
+      ],
+      "implementation_units": [
+        {
+          "id": "WP16-skill-evolution",
+          "title": "Lesson·skill delta·paired evaluation·승격",
+          "status": "planned",
+          "design_ref": "docs/design/ADAPTIVE_MEMORY_AND_SKILL_EVOLUTION.ko.md",
+          "implementation_steps": [
+            "예상된 TDD fail·환경장애·사용자변경·권한거부를 outcome taxonomy로 구분하고 원인 가설·대안을 저장한다.",
+            "반복 lesson에서 add/refine/deprecate/merge 후보를 만들며 부모 release·scope·근거·반례를 포함한다.",
+            "독립 impact classifier로 A/B/protected를 판정한다. skill resource Python 변경을 텍스트 변경으로 위장할 수 없게 한다.",
+            "WP20의 paired holdout/regression 계획으로 실제 B 실행을 수행한다. inconclusive·hard failure는 승격 요청을 차단한다.",
+            "승인 후 CAS release를 새 작업에서 실제 로딩·사용했는지 확인하고, revoke 시 관련 기억/힌트·context를 pause/rebind한다."
+          ],
+          "interfaces": "SkillEvolutionService.propose/evaluate/request_promotion; SkillDelta; existing release broker.",
+          "acceptance_conditions": [
+            "학습후보와active분리",
+            "B replay-only 승격0",
+            "평가성공과현재candidate digest동일",
+            "새 작업release증거",
+            "canary 회귀rollback"
+          ],
+          "risks": "메모리 정리·skill 병합으로 근거와 반례가 사라지는 것을 금지한다.",
+          "output_paths": [
+            "../deepagents_code/cyrano/improvement/classification.py",
+            "../deepagents_code/cyrano/improvement/candidates.py",
+            "../deepagents_code/cyrano/improvement/skill_evaluation.py"
+          ],
+          "product_test_path": "../tests/cyrano_product/test_wp16_skill_evolution.py",
+          "commands": [
+            {
+              "cwd": "libs/code",
+              "argv": [
+                "uv",
+                "run",
+                "--no-sync",
+                "python",
+                "-m",
+                "pytest",
+                "tests/cyrano_product/test_wp16_skill_evolution.py",
+                "-q"
+              ],
+              "available_after": "implement_test_and_runtime_ports",
+              "zero_tests": "fail"
+            }
+          ],
+          "definition_inputs": [
+            "contracts/v2/runtime.schema.json",
+            "contracts/v2/governance.schema.json"
+          ],
+          "execution_requires": "Required predecessor ports + real dcode adapter + explicit runtime cost/side-effect permit; missing prerequisites are blocked, not pass.",
+          "consumed_owned_interfaces": []
+        }
+      ],
+      "primary_design": "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md",
+      "document": ".agents/work/WP16.ko.md",
+      "reading_refs": {
+        "plan": [
+          ".agents/work/WP16.ko.md",
+          "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+        ],
+        "implement": [
+          ".agents/work/WP16.ko.md",
+          "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+        ],
+        "test": [
+          ".agents/work/WP16.ko.md",
+          "docs/testing/STRATEGY.ko.md"
+        ]
+      },
+      "resource_refs": [
+        "contracts/v1/cyrano.schema.json",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "contracts/assessment/rubric.json",
+        "contracts/v2/runtime.schema.json",
+        "tests/acceptance/catalog.json"
+      ],
+      "resource_selection": {
+        "tests/acceptance/catalog.json": {
+          "owner_wp": "WP16"
+        },
+        "contracts/v2/runtime.schema.json": {
+          "use": "Read only referenced $defs; do not inject entire schema by default."
+        }
+      },
+      "dependency_milestones": {
+        "WP10": "interface_ready",
+        "WP11": "interface_ready",
+        "WP13": "interface_ready"
+      },
+      "milestones": {
+        "interface_ready": "required interfaces, actual module behavior and owned negative paths verified; no final score/release claim",
+        "product_verified": "all owned mandatory product acceptances executed with native/authorized boundaries and independent review"
+      }
+    },
+    {
+      "id": "WP17",
+      "title": "경로 B Memory·Skill 실제 평가",
+      "status": "verified",
+      "foundation_present": false,
+      "depends_on": [
+        "WP11",
+        "WP12",
+        "WP16",
+        "WP20"
+      ],
+      "owner_package": "../deepagents_code/cyrano/improvement",
+      "owner_role": "implementer",
+      "reviewer_role": "reviewer",
+      "risk": "high",
+      "goal": "사실·절차 개선의 scope/freshness/실제 적용/반례를 평가해 후보를 검토 단계로 보낸다.",
+      "input_refs": [
+        "AGENTS.md",
+        "docs/design/features/2026-09-16-path-b-improvement.ko.md",
+        "contracts/v1/cyrano.schema.json",
+        "../deepagents_code/cyrano/improvement/README.md",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "docs/design/architecture/2026-09-16-universal-harness-integration.ko.md",
+        "docs/execution/INTEGRATED_WORK_DETAILS.ko.md",
+        "contracts/assessment/rubric.json",
+        "docs/testing/STRATEGY.ko.md",
+        "docs/development/TEST_DEVELOPMENT_PLAN.ko.md"
+      ],
+      "output_paths": [
+        "../deepagents_code/cyrano/improvement/knowledge_lane.py",
+        "../deepagents_code/cyrano/improvement/skill_lane.py",
+        "../tests/unit_tests/cyrano/test_wp17_knowledge.py",
+        "../tests/cyrano_product/test_wp17_product.py",
+        "../tests/cyrano_product/test_wp17_contract_scenarios.py"
+      ],
+      "methods": [
+        "validate_knowledge_candidate -> supported facts",
+        "evaluate_memory_pairs -> evidence",
+        "evaluate_skill_pairs -> observed application",
+        "prepare_memory_skill_bundle -> review input"
+      ],
+      "acceptance_ids": [
+        "B-FACT",
+        "B-PREF",
+        "B-SKILL",
+        "B-NEGATIVE",
+        "UH-MEM-12",
+        "CON-SKL-01",
+        "CON-SKL-02",
+        "CON-SKL-03",
+        "CON-SKL-04",
+        "CON-SKL-05",
+        "CON-SKL-06",
+        "CON-SKL-07",
+        "CON-SKL-08",
+        "CON-SKL-09",
+        "CON-SKL-10",
+        "CON-SKL-11",
+        "CON-SKL-12"
+      ],
+      "commands": [
+        [
+          "uv",
+          "run",
+          "--no-sync",
+          "python",
+          "-m",
+          "pytest",
+          "tests/cyrano_product/test_wp17_product.py",
+          "-q"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "schemas"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "check"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_integration.py"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "quality"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_r5.py"
+        ]
+      ],
+      "completion_evidence": "evidence/work-packages/WP17.json",
+      "remote_side_effects_authorized": false,
+      "source_work_packages": [
+        "universal:WP16"
+      ],
+      "integration_revision": "2026-09-16-assessment-r3",
+      "integration_tasks": [
+        {
+          "id": "WP17-I01",
+          "instruction": "관측 사실·선호·절차마다 scope/freshness/approval를 다르게 검증한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP17-I02",
+          "instruction": "skill text/code/resource 변화를 구분해 실제 baseline/candidate 평가한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP17-I03",
+          "instruction": "scope 확대·삭제·상충·실행 코드 포함 시 추가 guard를 적용한다.",
+          "status": "planned"
+        }
+      ],
+      "integration_focus": "경로 B 기억·skill 보강",
+      "bootstrap_approval_mode": "verified_broker_or_explicit_external_development_review",
+      "product_completion_requires": [
+        "mandatory_acceptance_actual_evidence",
+        "quality_gates_or_explicit_block",
+        "independent_postimage_review",
+        "no_unresolved_security_or_unknown_effect",
+        "source_and_contract_manifest_match"
+      ],
+      "r3_assessment_criteria": [],
+      "assessment_test_tasks": [
+        "TS07",
+        "TS08"
+      ],
+      "r4_refinements": [],
+      "commands_cwd": "libs/code",
+      "command_availability": "first command requires implemented product test and native uv environment; preparation scripts exist",
+      "r5_refinements": [],
+      "primary_design": "docs/design/features/2026-09-16-path-b-improvement.ko.md",
+      "document": ".agents/work/WP17.ko.md",
+      "reading_refs": {
+        "plan": [
+          ".agents/work/WP17.ko.md",
+          "docs/design/features/2026-09-16-path-b-improvement.ko.md"
+        ],
+        "implement": [
+          ".agents/work/WP17.ko.md",
+          "docs/design/features/2026-09-16-path-b-improvement.ko.md"
+        ],
+        "test": [
+          ".agents/work/WP17.ko.md",
+          "docs/testing/STRATEGY.ko.md"
+        ]
+      },
+      "resource_refs": [
+        "contracts/v1/cyrano.schema.json",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "contracts/assessment/rubric.json",
+        "tests/acceptance/catalog.json"
+      ],
+      "resource_selection": {
+        "tests/acceptance/catalog.json": {
+          "owner_wp": "WP17"
+        },
+        "contracts/v2/runtime.schema.json": {
+          "use": "Read only referenced $defs; do not inject entire schema by default."
+        }
+      },
+      "dependency_milestones": {
+        "WP11": "interface_ready",
+        "WP12": "interface_ready",
+        "WP16": "interface_ready",
+        "WP20": "interface_ready"
+      },
+      "milestones": {
+        "interface_ready": "required interfaces, actual module behavior and owned negative paths verified; no final score/release claim",
+        "product_verified": "all owned mandatory product acceptances executed with native/authorized boundaries and independent review"
+      }
+    },
+    {
+      "id": "WP18",
+      "title": "경로 B 인터뷰·계획·context·recipe",
+      "status": "verified",
+      "foundation_present": false,
+      "depends_on": [
+        "WP08",
+        "WP09",
+        "WP12",
+        "WP16",
+        "WP20"
+      ],
+      "owner_package": "../deepagents_code/cyrano/improvement",
+      "owner_role": "implementer",
+      "reviewer_role": "reviewer",
+      "risk": "high",
+      "goal": "질문·전달·계획·리뷰·context·검증 개선을 표면별 actual evaluator에 연결한다.",
+      "input_refs": [
+        "AGENTS.md",
+        "docs/design/features/2026-09-16-path-b-improvement.ko.md",
+        "contracts/v1/cyrano.schema.json",
+        "../deepagents_code/cyrano/improvement/README.md",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "docs/design/architecture/2026-09-16-universal-harness-integration.ko.md",
+        "docs/execution/INTEGRATED_WORK_DETAILS.ko.md",
+        "contracts/assessment/rubric.json",
+        "docs/testing/STRATEGY.ko.md",
+        "docs/development/TEST_DEVELOPMENT_PLAN.ko.md"
+      ],
+      "output_paths": [
+        "../deepagents_code/cyrano/improvement/workflow_lane.py",
+        "../deepagents_code/cyrano/evaluation/interview.py",
+        "../deepagents_code/cyrano/evaluation/context.py",
+        "../tests/cyrano_product/test_wp18_product.py"
+      ],
+      "methods": [
+        "evaluate_interview_scenario -> simulation label",
+        "evaluate_actual_workflow -> task receipts",
+        "evaluate_context_candidate -> quality/usage",
+        "detect_eval_tamper -> protected finding"
+      ],
+      "acceptance_ids": [
+        "B-QUESTION",
+        "B-PLAN",
+        "B-CONTEXT",
+        "B-RECIPE",
+        "INTEG-B-STALE-EVAL",
+        "R3-33-01",
+        "R3-33-02",
+        "R3-33-03",
+        "R3-33-04",
+        "R3-33-05",
+        "R3-33-06"
+      ],
+      "commands": [
+        [
+          "uv",
+          "run",
+          "--no-sync",
+          "python",
+          "-m",
+          "pytest",
+          "tests/cyrano_product/test_wp18_product.py",
+          "-q"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "schemas"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "check"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_integration.py"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "quality"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_r5.py"
+        ]
+      ],
+      "completion_evidence": "evidence/work-packages/WP18.json",
+      "remote_side_effects_authorized": false,
+      "source_work_packages": [
+        "universal:WP16"
+      ],
+      "integration_revision": "2026-09-16-assessment-r3",
+      "integration_tasks": [
+        {
+          "id": "WP18-I01",
+          "instruction": "질문 변경에는 동일 답 재사용을 금지하고 인터뷰 반례를 실제 조건에 맞게 검증한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP18-I02",
+          "instruction": "검증 기준을 약화시키는 recipe 변경과 토큰 절약용 의무 삭제를 거부한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP18-I03",
+          "instruction": "candidate 변경 시 평가 binding을 재계산하고 캐시 실험조건을 별도 기록한다.",
+          "status": "planned"
+        }
+      ],
+      "integration_focus": "경로 B 인터뷰·계획·context·recipe",
+      "bootstrap_approval_mode": "verified_broker_or_explicit_external_development_review",
+      "product_completion_requires": [
+        "mandatory_acceptance_actual_evidence",
+        "quality_gates_or_explicit_block",
+        "independent_postimage_review",
+        "no_unresolved_security_or_unknown_effect",
+        "source_and_contract_manifest_match"
+      ],
+      "r3_assessment_criteria": [
+        "3-3"
+      ],
+      "assessment_test_tasks": [
+        "TS07",
+        "TS08"
+      ],
+      "r4_refinements": [],
+      "commands_cwd": "libs/code",
+      "command_availability": "first command requires implemented product test and native uv environment; preparation scripts exist",
+      "r5_refinements": [],
+      "primary_design": "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md",
+      "document": ".agents/work/WP18.ko.md",
+      "reading_refs": {
+        "plan": [
+          ".agents/work/WP18.ko.md",
+          "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+        ],
+        "implement": [
+          ".agents/work/WP18.ko.md",
+          "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+        ],
+        "test": [
+          ".agents/work/WP18.ko.md",
+          "docs/testing/STRATEGY.ko.md"
+        ]
+      },
+      "resource_refs": [
+        "contracts/v1/cyrano.schema.json",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "contracts/assessment/rubric.json",
+        "tests/acceptance/catalog.json"
+      ],
+      "resource_selection": {
+        "tests/acceptance/catalog.json": {
+          "owner_wp": "WP18"
+        },
+        "contracts/v2/runtime.schema.json": {
+          "use": "Read only referenced $defs; do not inject entire schema by default."
+        }
+      },
+      "dependency_milestones": {
+        "WP08": "interface_ready",
+        "WP09": "interface_ready",
+        "WP12": "interface_ready",
+        "WP16": "interface_ready",
+        "WP20": "interface_ready"
+      },
+      "milestones": {
+        "interface_ready": "required interfaces, actual module behavior and owned negative paths verified; no final score/release claim",
+        "product_verified": "all owned mandatory product acceptances executed with native/authorized boundaries and independent review"
+      }
+    },
+    {
+      "id": "WP19",
+      "title": "경로 B 코드·wheel·migration 제안",
+      "status": "verified",
+      "foundation_present": false,
+      "depends_on": [
+        "WP04",
+        "WP10",
+        "WP16",
+        "WP20"
+      ],
+      "owner_package": "../deepagents_code/cyrano/improvement",
+      "owner_role": "implementer",
+      "reviewer_role": "security-reviewer",
+      "risk": "critical",
+      "goal": "운영 코드 자기수정 없이 별도 source·CI·사람 review로 code 후보를 배포 준비한다.",
+      "input_refs": [
+        "AGENTS.md",
+        "docs/design/features/2026-09-16-path-b-improvement.ko.md",
+        "contracts/v1/cyrano.schema.json",
+        "../deepagents_code/cyrano/improvement/README.md",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "docs/design/architecture/2026-09-16-universal-harness-integration.ko.md",
+        "docs/execution/INTEGRATED_WORK_DETAILS.ko.md",
+        "contracts/assessment/rubric.json",
+        "docs/testing/STRATEGY.ko.md",
+        "docs/development/TEST_DEVELOPMENT_PLAN.ko.md",
+        "docs/development/refinements/RC36.ko.md",
+        "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+      ],
+      "output_paths": [
+        "../deepagents_code/cyrano/improvement/code_lane.py",
+        "../deepagents_code/cyrano/dcode/package_build.py",
+        "docs/execution/runbooks/runtime-upgrade.ko.md",
+        "../tests/cyrano_product/test_wp19_product.py",
+        "../tests/cyrano_product/test_r4_rc36.py"
+      ],
+      "methods": [
+        "prepare_code_workspace -> isolated copy",
+        "run_code_checks -> build evidence",
+        "plan_migration -> safe rollback path",
+        "prepare_runtime_candidate -> signed build refs"
+      ],
+      "acceptance_ids": [
+        "B-SELFEDIT",
+        "B-WHEEL",
+        "B-MIGRATION",
+        "UH-LEARN-12",
+        "R4-RC36-01",
+        "R4-RC36-02",
+        "R4-RC36-03",
+        "R4-RC36-04"
+      ],
+      "commands": [
+        [
+          "uv",
+          "run",
+          "--no-sync",
+          "python",
+          "-m",
+          "pytest",
+          "tests/cyrano_product/test_wp19_product.py",
+          "-q"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "schemas"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "check"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_integration.py"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "quality"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_r5.py"
+        ]
+      ],
+      "completion_evidence": "evidence/work-packages/WP19.json",
+      "remote_side_effects_authorized": false,
+      "source_work_packages": [
+        "universal:WP16"
+      ],
+      "integration_revision": "2026-09-16-assessment-r3",
+      "integration_tasks": [
+        {
+          "id": "WP19-I01",
+          "instruction": "별도 소스 snapshot에서 계획·review·wheel·설치·통합 테스트한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP19-I02",
+          "instruction": "candidate가 current process/core/approval/evaluator를 덮어쓰지 못한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP19-I03",
+          "instruction": "코드 rollback과 데이터 migration 복구·외부 부작용을 분리한다.",
+          "status": "planned"
+        }
+      ],
+      "integration_focus": "경로 B 코드·데이터 migration",
+      "bootstrap_approval_mode": "verified_broker_or_explicit_external_development_review",
+      "product_completion_requires": [
+        "mandatory_acceptance_actual_evidence",
+        "quality_gates_or_explicit_block",
+        "independent_postimage_review",
+        "no_unresolved_security_or_unknown_effect",
+        "source_and_contract_manifest_match"
+      ],
+      "r3_assessment_criteria": [],
+      "assessment_test_tasks": [
+        "TS07",
+        "TS08"
+      ],
+      "r4_refinements": [
+        "RC36"
+      ],
+      "commands_cwd": "libs/code",
+      "command_availability": "first command requires implemented product test and native uv environment; preparation scripts exist",
+      "r5_refinements": [],
+      "primary_design": "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md",
+      "document": ".agents/work/WP19.ko.md",
+      "reading_refs": {
+        "plan": [
+          ".agents/work/WP19.ko.md",
+          "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md"
+        ],
+        "implement": [
+          ".agents/work/WP19.ko.md",
+          "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md"
+        ],
+        "test": [
+          ".agents/work/WP19.ko.md",
+          "docs/testing/STRATEGY.ko.md"
+        ]
+      },
+      "resource_refs": [
+        "contracts/v1/cyrano.schema.json",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "contracts/assessment/rubric.json",
+        "tests/acceptance/catalog.json"
+      ],
+      "resource_selection": {
+        "tests/acceptance/catalog.json": {
+          "owner_wp": "WP19"
+        },
+        "contracts/v2/runtime.schema.json": {
+          "use": "Read only referenced $defs; do not inject entire schema by default."
+        }
+      },
+      "dependency_milestones": {
+        "WP04": "interface_ready",
+        "WP10": "interface_ready",
+        "WP16": "interface_ready",
+        "WP20": "interface_ready"
+      },
+      "milestones": {
+        "interface_ready": "required interfaces, actual module behavior and owned negative paths verified; no final score/release claim",
+        "product_verified": "all owned mandatory product acceptances executed with native/authorized boundaries and independent review"
+      }
+    },
+    {
+      "id": "WP20",
+      "title": "paired·sealed 평가·분석·budget",
+      "status": "verified",
+      "foundation_present": true,
+      "depends_on": [
+        "WP10",
+        "WP13"
+      ],
+      "owner_package": "../deepagents_code/cyrano/evaluation",
+      "owner_role": "implementer",
+      "reviewer_role": "security-reviewer",
+      "risk": "critical",
+      "goal": "경로 A/B 모두의 실제 비교와 독립 verdict·분모·비용·holdout을 구현한다.",
+      "input_refs": [
+        "AGENTS.md",
+        "docs/design/testing/2026-09-16-evaluation-observability.ko.md",
+        "contracts/v1/cyrano.schema.json",
+        "../deepagents_code/cyrano/evaluation/README.md",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "docs/design/architecture/2026-09-16-universal-harness-integration.ko.md",
+        "docs/execution/INTEGRATED_WORK_DETAILS.ko.md",
+        "contracts/assessment/rubric.json",
+        "docs/testing/STRATEGY.ko.md",
+        "docs/development/TEST_DEVELOPMENT_PLAN.ko.md",
+        "docs/development/refinements/RC34.ko.md",
+        "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md",
+        "docs/development/refinements/RF06.ko.md",
+        "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md",
+        "contracts/v2/runtime.schema.json"
+      ],
+      "output_paths": [
+        "../deepagents_code/cyrano/evaluation/paired.py",
+        "../deepagents_code/cyrano/evaluation/statistics.py",
+        "../deepagents_code/cyrano/evaluation/budget.py",
+        "../deepagents_code/cyrano/evaluation/gates.py",
+        "../tests/cyrano_product/test_wp20_product.py",
+        "../tests/cyrano_product/test_r4_rc34.py",
+        "../deepagents_code/cyrano/evaluation/assessment.py",
+        "../tests/cyrano_product/test_wp20_paired_evaluation.py",
+        "../tests/cyrano_product/test_wp20_contract_scenarios.py"
+      ],
+      "methods": [
+        "authorize_experiment -> permit-bound spec",
+        "run_pair -> execution evidence",
+        "analyze_families -> intervals",
+        "judge_candidate -> eligibility not approval",
+        "build_memory_arms(candidate, dataset) -> A0/A1/A2/A3 독립 변경과 policy 고정",
+        "estimate_utility(exposures, outcomes) -> 관련성/권한 불변, causal vs correlation 구분",
+        "verify_next_run(release, run) -> 새process·task·release/context/행동 실제 일치"
+      ],
+      "acceptance_ids": [
+        "DREAM-EVA-01",
+        "DREAM-EVA-02",
+        "DREAM-EVA-03",
+        "DREAM-EVA-04",
+        "DREAM-EVA-05",
+        "DREAM-EVA-06",
+        "DREAM-EVA-07",
+        "DREAM-EVA-08",
+        "DREAM-EVA-09",
+        "EVAL-ZERO",
+        "EVAL-FAMILY",
+        "EVAL-DENOM",
+        "EVAL-COST",
+        "EVAL-SAFE",
+        "EVAL-SEAL",
+        "EVAL-INTERVAL",
+        "UH-LEARN-06",
+        "UH-LEARN-07",
+        "UH-LEARN-08",
+        "INTEG-DATASET-COUNT",
+        "R3-34-01",
+        "R3-34-02",
+        "R3-34-03",
+        "R3-34-04",
+        "R3-34-05",
+        "R3-34-06",
+        "PEQ-PY-T55",
+        "PEQ-PY-T56",
+        "PEQ-PY-T57",
+        "PEQ-PY-T58",
+        "PEQ-PY-T59",
+        "PEQ-PY-T60",
+        "R4-RC34-01",
+        "R4-RC34-02",
+        "R4-RC34-03",
+        "R4-RC34-04",
+        "R5-RF06-01",
+        "R5-RF06-02",
+        "R5-RF06-03",
+        "R5-RF06-04",
+        "R5-RF06-05",
+        "R5-RF06-06",
+        "CON-EVI-01",
+        "CON-EVI-02",
+        "CON-EVI-03",
+        "CON-EVI-04",
+        "CON-EVI-05",
+        "CON-EVI-06",
+        "CON-EVI-07",
+        "CON-EVI-08",
+        "CON-EVI-09",
+        "CON-EVI-10",
+        "CON-EVI-11",
+        "CON-EVI-12"
+      ],
+      "commands": [
+        [
+          "uv",
+          "run",
+          "--no-sync",
+          "python",
+          "-m",
+          "pytest",
+          "tests/cyrano_product/test_wp20_product.py",
+          "-q"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "schemas"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "check"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_integration.py"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "quality"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_r5.py"
+        ]
+      ],
+      "completion_evidence": "evidence/work-packages/WP20.json",
+      "remote_side_effects_authorized": false,
+      "source_work_packages": [
+        "universal:WP17"
+      ],
+      "integration_revision": "2026-09-16-assessment-r3",
+      "integration_tasks": [
+        {
+          "id": "WP20-I01",
+          "instruction": "family/시간 split·봉인·접근횟수·반복을 사전 고정한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP20-I02",
+          "instruction": "improved/regressed라는 효과 설명과 eligible_for_review라는 상태를 혼동하지 않는다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP20-I03",
+          "instruction": "허가된 actual pairs만으로 불확실성·비회귀·전체비용을 계산하고 evidence 없으면 inconclusive다.",
+          "status": "planned"
+        }
+      ],
+      "integration_focus": "paired 평가·결과 의미·40점과 분리",
+      "bootstrap_approval_mode": "verified_broker_or_explicit_external_development_review",
+      "product_completion_requires": [
+        "mandatory_acceptance_actual_evidence",
+        "quality_gates_or_explicit_block",
+        "independent_postimage_review",
+        "no_unresolved_security_or_unknown_effect",
+        "source_and_contract_manifest_match"
+      ],
+      "r3_assessment_criteria": [
+        "3-4"
+      ],
+      "assessment_test_tasks": [
+        "TS01",
+        "TS08",
+        "TS11"
+      ],
+      "r4_refinements": [
+        "RC34"
+      ],
+      "commands_cwd": "libs/code",
+      "command_availability": "first command requires implemented product test and native uv environment; preparation scripts exist",
+      "r5_refinements": [
+        "RF06"
+      ],
+      "implementation_units": [
+        {
+          "id": "WP20-paired-evaluation",
+          "title": "paired 평가·fault model·effectiveness 증거",
+          "status": "planned",
+          "design_ref": "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md",
+          "implementation_steps": [
+            "현baseline과candidate를immutablemanifest로고정한다. source/runtime/policy/suite/model/route/budget 차이를명시한다.",
+            "동일task/differentharness와동일harness/differentmodel비교를분리한다. task family와시간으로split하고holdout 노출제한을둔다.",
+            "정확성·firstpass·false-ready·scope위반·testpass·humanintervention·retry·token/cache/cost/latency를 실제관측으로정의한다.",
+            "counterbalance 실행순서,cachewarm/cold 관측가능성,환경오류·실패·중단표본을그대로보존한다. 무작위seed를API가 지원하지 않으면unknown이라고적는다.",
+            "성능개선CI와non-inferiority margin은실험전에등록한다. 공백·insufficientpower는inconclusive. 이작업의평가계약은WP16전에정의하고effectiveness 실행은제품연결후수행한다."
+          ],
+          "interfaces": "EvaluationPlan, EvidenceBundle; paired task-family analysis and hard gate.",
+          "acceptance_conditions": [
+            "safety regression 상쇄0",
+            "원본family 누수0",
+            "모델2개를동일cache로간주하지않음",
+            "성공모델순위대신조건별결과",
+            "fixture pass≠제품효과"
+          ],
+          "risks": "개선 비용·실험 비용을 제외하면 순효과가 과대평가된다.",
+          "output_paths": [
+            "../deepagents_code/cyrano/evaluation/gates.py",
+            "../deepagents_code/cyrano/evaluation/assessment.py",
+            "tests/assessment/"
+          ],
+          "product_test_path": "../tests/cyrano_product/test_wp20_paired_evaluation.py",
+          "commands": [
+            {
+              "cwd": "libs/code",
+              "argv": [
+                "uv",
+                "run",
+                "--no-sync",
+                "python",
+                "-m",
+                "pytest",
+                "tests/cyrano_product/test_wp20_paired_evaluation.py",
+                "-q"
+              ],
+              "available_after": "implement_test_and_runtime_ports",
+              "zero_tests": "fail"
+            }
+          ],
+          "definition_inputs": [
+            "contracts/v2/runtime.schema.json",
+            "contracts/v2/governance.schema.json"
+          ],
+          "execution_requires": "Required predecessor ports + real dcode adapter + explicit runtime cost/side-effect permit; missing prerequisites are blocked, not pass.",
+          "consumed_owned_interfaces": []
+        }
+      ],
+      "primary_design": "docs/design/testing/2026-09-16-evaluation-observability.ko.md",
+      "document": ".agents/work/WP20.ko.md",
+      "reading_refs": {
+        "plan": [
+          ".agents/work/WP20.ko.md",
+          "docs/design/testing/2026-09-16-evaluation-observability.ko.md"
+        ],
+        "implement": [
+          ".agents/work/WP20.ko.md",
+          "docs/design/testing/2026-09-16-evaluation-observability.ko.md"
+        ],
+        "test": [
+          ".agents/work/WP20.ko.md",
+          "docs/testing/STRATEGY.ko.md"
+        ]
+      },
+      "resource_refs": [
+        "contracts/v1/cyrano.schema.json",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "contracts/assessment/rubric.json",
+        "contracts/v2/runtime.schema.json",
+        "tests/acceptance/catalog.json"
+      ],
+      "resource_selection": {
+        "tests/acceptance/catalog.json": {
+          "owner_wp": "WP20"
+        },
+        "contracts/v2/runtime.schema.json": {
+          "use": "Read only referenced $defs; do not inject entire schema by default."
+        }
+      },
+      "dependency_milestones": {
+        "WP10": "interface_ready",
+        "WP13": "interface_ready"
+      },
+      "milestones": {
+        "interface_ready": "required interfaces, actual module behavior and owned negative paths verified; no final score/release claim",
+        "product_verified": "all owned mandatory product acceptances executed with native/authorized boundaries and independent review"
+      }
+    },
+    {
+      "id": "WP21",
+      "title": "release·CAS·canary·rollback",
+      "status": "verified",
+      "foundation_present": false,
+      "depends_on": [
+        "WP15",
+        "WP17",
+        "WP18",
+        "WP19",
+        "WP20"
+      ],
+      "owner_package": "../deepagents_code/cyrano/kernel",
+      "owner_role": "implementer",
+      "reviewer_role": "security-reviewer",
+      "risk": "critical",
+      "goal": "불변 subject에 승인·서명을 결합하고 새 run만 안전하게 활성화·복구한다.",
+      "input_refs": [
+        "AGENTS.md",
+        "docs/design/features/2026-09-16-path-b-improvement.ko.md",
+        "contracts/v1/cyrano.schema.json",
+        "../deepagents_code/cyrano/kernel/README.md",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "docs/design/architecture/2026-09-16-universal-harness-integration.ko.md",
+        "docs/execution/INTEGRATED_WORK_DETAILS.ko.md",
+        "contracts/assessment/rubric.json",
+        "docs/testing/STRATEGY.ko.md",
+        "docs/development/TEST_DEVELOPMENT_PLAN.ko.md",
+        "docs/development/refinements/RC35.ko.md",
+        "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+      ],
+      "output_paths": [
+        "../deepagents_code/cyrano/kernel/releases.py",
+        "../deepagents_code/cyrano/kernel/rollout.py",
+        "../deepagents_code/cyrano/kernel/recovery.py",
+        "../tests/cyrano_product/test_wp21_product.py",
+        "../tests/cyrano_product/test_r4_rc35.py"
+      ],
+      "methods": [
+        "prepare_release -> staged manifest",
+        "promote_release -> CAS pointer",
+        "assign_canary -> pinned cohort",
+        "rollback_or_revoke -> impacted runs"
+      ],
+      "acceptance_ids": [
+        "DREAM-REL-01",
+        "DREAM-REL-02",
+        "DREAM-REL-03",
+        "DREAM-REL-04",
+        "DREAM-REL-05",
+        "REL-CAS",
+        "REL-PIN",
+        "REL-REVOKE",
+        "REL-CODE",
+        "UH-LEARN-09",
+        "UH-LEARN-10",
+        "UH-LEARN-11",
+        "R4-RC35-01",
+        "R4-RC35-02",
+        "R4-RC35-03",
+        "R4-RC35-04"
+      ],
+      "commands": [
+        [
+          "uv",
+          "run",
+          "--no-sync",
+          "python",
+          "-m",
+          "pytest",
+          "tests/cyrano_product/test_wp21_product.py",
+          "-q"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "schemas"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "check"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_integration.py"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "quality"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_r5.py"
+        ]
+      ],
+      "completion_evidence": "evidence/work-packages/WP21.json",
+      "remote_side_effects_authorized": false,
+      "source_work_packages": [
+        "universal:WP18"
+      ],
+      "integration_revision": "2026-09-16-assessment-r3",
+      "integration_tasks": [
+        {
+          "id": "WP21-I01",
+          "instruction": "Release subject→사람 또는 명시 위임 승인→원자 active pointer 순서를 구현한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP21-I02",
+          "instruction": "동시 후보는 parent rebase+재평가하고 active run은 보통 freeze한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP21-I03",
+          "instruction": "보안 revoke·canary regression은 새 dispatch를 멈추고 영향 세션을 분리 보고한다.",
+          "status": "planned"
+        }
+      ],
+      "integration_focus": "승격 승인·CAS·보안 철회",
+      "bootstrap_approval_mode": "verified_broker_or_explicit_external_development_review",
+      "product_completion_requires": [
+        "mandatory_acceptance_actual_evidence",
+        "quality_gates_or_explicit_block",
+        "independent_postimage_review",
+        "no_unresolved_security_or_unknown_effect",
+        "source_and_contract_manifest_match"
+      ],
+      "r3_assessment_criteria": [],
+      "assessment_test_tasks": [
+        "TS08"
+      ],
+      "r4_refinements": [
+        "RC35"
+      ],
+      "commands_cwd": "libs/code",
+      "command_availability": "first command requires implemented product test and native uv environment; preparation scripts exist",
+      "r5_refinements": [],
+      "primary_design": "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md",
+      "document": ".agents/work/WP21.ko.md",
+      "reading_refs": {
+        "plan": [
+          ".agents/work/WP21.ko.md",
+          "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+        ],
+        "implement": [
+          ".agents/work/WP21.ko.md",
+          "docs/design/SELF_IMPROVEMENT_LIFECYCLE.ko.md"
+        ],
+        "test": [
+          ".agents/work/WP21.ko.md",
+          "docs/testing/STRATEGY.ko.md"
+        ]
+      },
+      "resource_refs": [
+        "contracts/v1/cyrano.schema.json",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "contracts/assessment/rubric.json",
+        "tests/acceptance/catalog.json"
+      ],
+      "resource_selection": {
+        "tests/acceptance/catalog.json": {
+          "owner_wp": "WP21"
+        },
+        "contracts/v2/runtime.schema.json": {
+          "use": "Read only referenced $defs; do not inject entire schema by default."
+        }
+      },
+      "dependency_milestones": {
+        "WP15": "interface_ready",
+        "WP17": "interface_ready",
+        "WP18": "interface_ready",
+        "WP19": "interface_ready",
+        "WP20": "interface_ready"
+      },
+      "milestones": {
+        "interface_ready": "required interfaces, actual module behavior and owned negative paths verified; no final score/release claim",
+        "product_verified": "all owned mandatory product acceptances executed with native/authorized boundaries and independent review"
+      }
+    },
+    {
+      "id": "WP22",
+      "title": "packaging·품질·격리·복구 출시 gate",
+      "status": "verified",
+      "foundation_present": false,
+      "depends_on": [
+        "WP13",
+        "WP21"
+      ],
+      "owner_package": "../deepagents_code/cyrano/cli",
+      "owner_role": "implementer",
+      "reviewer_role": "security-reviewer",
+      "risk": "critical",
+      "goal": "clean environment 설치와 모든 필수 기능·권한·문서·artifact 정합성을 검증한다.",
+      "input_refs": [
+        "AGENTS.md",
+        "docs/design/architecture/2026-09-16-system-design.ko.md",
+        "contracts/v1/cyrano.schema.json",
+        "../deepagents_code/cyrano/cli/README.md",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "docs/design/architecture/2026-09-16-universal-harness-integration.ko.md",
+        "docs/execution/INTEGRATED_WORK_DETAILS.ko.md",
+        "contracts/assessment/rubric.json",
+        "docs/testing/STRATEGY.ko.md",
+        "docs/development/TEST_DEVELOPMENT_PLAN.ko.md",
+        "docs/development/refinements/RF10.ko.md",
+        "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md",
+        "contracts/v2/runtime.schema.json"
+      ],
+      "output_paths": [
+        "../deepagents_code/cyrano/cli/launch.py",
+        ".github/workflows/ci.yml",
+        "scripts/release_check.py",
+        "docs/execution/runbooks/governed-launch.ko.md",
+        "../tests/cyrano_product/test_wp22_product.py",
+        "evidence/product-scorecard.json",
+        "../tests/cyrano_product/test_wp22_release.py",
+        "../tests/cyrano_product/test_wp22_contract_scenarios.py"
+      ],
+      "methods": [
+        "build_distributions -> installable artifacts",
+        "validate_runtime_support -> release coverage",
+        "run_security_drills -> evidence",
+        "collect_release_readiness -> blockers",
+        "build_assets(source_catalog) -> runtime허용asset만생성·각hash/권한",
+        "verify_wheel(wheel, manifest) -> 새temp설치·source없는상태·importlibresources 검증",
+        "restore_with_deletions(backup, ledger) -> 복구 후tombstone우선·구버전write차단"
+      ],
+      "acceptance_ids": [
+        "PACK-ISOLATED",
+        "PACK-QUALITY",
+        "PACK-NATIVE",
+        "UH-PY-01",
+        "UH-PY-02",
+        "UH-PY-03",
+        "UH-PY-04",
+        "UH-PY-05",
+        "UH-PY-06",
+        "UH-PY-07",
+        "UH-PY-08",
+        "UH-PY-09",
+        "UH-PY-10",
+        "UH-OPS-01",
+        "UH-OPS-04",
+        "UH-OPS-06",
+        "INTEG-MISSING-EVIDENCE",
+        "INTEG-RUBRIC-HARD",
+        "INTEG-ASSURANCE",
+        "PEQ-PY-T51",
+        "PEQ-PY-T52",
+        "PEQ-PY-T53",
+        "PEQ-PY-T54",
+        "R5-RF10-01",
+        "R5-RF10-02",
+        "R5-RF10-03",
+        "R5-RF10-04",
+        "R5-RF10-05",
+        "R5-RF10-06",
+        "CON-MIG-01",
+        "CON-MIG-02",
+        "CON-MIG-03",
+        "CON-MIG-04",
+        "CON-MIG-05",
+        "CON-MIG-06",
+        "CON-MIG-07",
+        "CON-MIG-08",
+        "CON-MIG-09",
+        "CON-MIG-10",
+        "CON-MIG-11",
+        "CON-MIG-12"
+      ],
+      "commands": [
+        [
+          "uv",
+          "run",
+          "--no-sync",
+          "python",
+          "-m",
+          "pytest",
+          "tests/cyrano_product/test_wp22_product.py",
+          "-q"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "schemas"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "check"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_integration.py"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "quality"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_r5.py"
+        ]
+      ],
+      "completion_evidence": "evidence/work-packages/WP22.json",
+      "remote_side_effects_authorized": false,
+      "source_work_packages": [
+        "universal:WP00",
+        "universal:WP13",
+        "universal:WP19",
+        "universal:WP20",
+        "universal:WP21"
+      ],
+      "integration_revision": "2026-09-16-assessment-r3",
+      "integration_tasks": [
+        {
+          "id": "WP22-I01",
+          "instruction": "quality79/72·실제 lock·전체 required evidence와 독립 결과 review를 확인한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP22-I02",
+          "instruction": "governed 8화면·permission bypass·disk full·key rotation·restore·install nonmutation을 검사한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP22-I03",
+          "instruction": "문서 fixture 아닌 실제 evidence로 20개 rubric와 hard gates를 계산한다.",
+          "status": "planned"
+        }
+      ],
+      "integration_focus": "40점표·배포·복구 인수",
+      "bootstrap_approval_mode": "verified_broker_or_explicit_external_development_review",
+      "product_completion_requires": [
+        "mandatory_acceptance_actual_evidence",
+        "quality_gates_or_explicit_block",
+        "independent_postimage_review",
+        "no_unresolved_security_or_unknown_effect",
+        "source_and_contract_manifest_match"
+      ],
+      "r3_assessment_criteria": [],
+      "assessment_test_tasks": [
+        "TS11"
+      ],
+      "r4_refinements": [],
+      "native_inspection_and_patch_targets": [
+        "pyproject.toml",
+        "Makefile"
+      ],
+      "native_target_status": "inspect at pinned source; edit only after plan approval; not patched by overlay",
+      "commands_cwd": "libs/code",
+      "command_availability": "first command requires implemented product test and native uv environment; preparation scripts exist",
+      "r5_refinements": [
+        "RF10"
+      ],
+      "implementation_units": [
+        {
+          "id": "WP22-release",
+          "title": "조합 rollout·형식 migration·release 준비",
+          "status": "planned",
+          "design_ref": "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md",
+          "implementation_steps": [
+            "feature별 off/observe_only/isolated_shadow/gated_canary/enabled 상태와 운영자 승인 조건을 고정한다.",
+            "shadow에서 같은 실제write/push/결제를 두 번 하지 않는다. isolated candidate 또는 비효과 비교로 제한한다.",
+            "DB/schema reader/writer compatibility와 backup·tombstone·restore dry-run을 검증한다.",
+            "wheel 자원·skillresource·license/notice·tool별 개발/제품범위·lock·SBOM의 공급망 확인을 수행한다.",
+            "릴리스 후보의 15평가항목과hard failure를 확인하고 실제 증거 없는 항목은not_evaluated/blocked로 보고한다."
+          ],
+          "interfaces": "기존 FeaturePolicy/ReleaseBroker에 단계·compatibility/evidence를 연결; 새 launcher 불필요.",
+          "acceptance_conditions": [
+            "생산부작용shadow중복0",
+            "구버전reader를새DB에자동실행금지",
+            "코드rollback과데이터복구분리",
+            "사용자파일보존"
+          ],
+          "risks": "새 sourcebase 업그레이드와 여러 기능 변경을 동시에 넣어 회귀 원인을 잃지 않는다.",
+          "output_paths": [
+            "docs/execution/"
+          ],
+          "product_test_path": "../tests/cyrano_product/test_wp22_release.py",
+          "commands": [
+            {
+              "cwd": "libs/code",
+              "argv": [
+                "uv",
+                "run",
+                "--no-sync",
+                "python",
+                "-m",
+                "pytest",
+                "tests/cyrano_product/test_wp22_release.py",
+                "-q"
+              ],
+              "available_after": "implement_test_and_runtime_ports",
+              "zero_tests": "fail"
+            }
+          ],
+          "definition_inputs": [
+            "contracts/v2/runtime.schema.json",
+            "contracts/v2/governance.schema.json"
+          ],
+          "execution_requires": "Required predecessor ports + real dcode adapter + explicit runtime cost/side-effect permit; missing prerequisites are blocked, not pass.",
+          "consumed_owned_interfaces": [
+            {
+              "path": "../deepagents_code/cyrano/evaluation/gates.py",
+              "owner_wp": "WP20"
+            },
+            {
+              "path": "../deepagents_code/cyrano/plugins/registry.py",
+              "owner_wp": "WP04"
+            }
+          ]
+        }
+      ],
+      "primary_design": "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md",
+      "document": ".agents/work/WP22.ko.md",
+      "reading_refs": {
+        "plan": [
+          ".agents/work/WP22.ko.md",
+          "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md"
+        ],
+        "implement": [
+          ".agents/work/WP22.ko.md",
+          "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md"
+        ],
+        "test": [
+          ".agents/work/WP22.ko.md",
+          "docs/testing/STRATEGY.ko.md"
+        ]
+      },
+      "resource_refs": [
+        "contracts/v1/cyrano.schema.json",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "contracts/assessment/rubric.json",
+        "contracts/v2/runtime.schema.json",
+        "tests/acceptance/catalog.json"
+      ],
+      "resource_selection": {
+        "tests/acceptance/catalog.json": {
+          "owner_wp": "WP22"
+        },
+        "contracts/v2/runtime.schema.json": {
+          "use": "Read only referenced $defs; do not inject entire schema by default."
+        }
+      },
+      "dependency_milestones": {
+        "WP13": "interface_ready",
+        "WP21": "interface_ready"
+      },
+      "milestones": {
+        "interface_ready": "required interfaces, actual module behavior and owned negative paths verified; no final score/release claim",
+        "product_verified": "all owned mandatory product acceptances executed with native/authorized boundaries and independent review"
+      },
+      "release_checks_require": "All mandatory product acceptances across dependency closure must be product_verified; interface_ready never sufficient for release."
+    },
+    {
+      "id": "WP23",
+      "title": "실제 효과 검증과 승인된 초기 운영",
+      "status": "planned",
+      "foundation_present": false,
+      "depends_on": [
+        "WP22"
+      ],
+      "owner_package": "../deepagents_code/cyrano/evaluation",
+      "owner_role": "implementer",
+      "reviewer_role": "security-reviewer",
+      "risk": "critical",
+      "goal": "실제 사용자 허가 scope에서 기능·효과·비용을 입증하고 제한된 운영을 승인받는다.",
+      "input_refs": [
+        "AGENTS.md",
+        "docs/design/testing/2026-09-16-evaluation-observability.ko.md",
+        "contracts/v1/cyrano.schema.json",
+        "../deepagents_code/cyrano/evaluation/README.md",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "docs/design/architecture/2026-09-16-universal-harness-integration.ko.md",
+        "docs/execution/INTEGRATED_WORK_DETAILS.ko.md",
+        "contracts/assessment/rubric.json",
+        "docs/testing/STRATEGY.ko.md",
+        "docs/development/TEST_DEVELOPMENT_PLAN.ko.md",
+        "docs/development/refinements/RC43.ko.md",
+        "docs/testing/R4_ACCEPTANCE_PROTOCOL.ko.md",
+        "docs/development/refinements/RF11.ko.md"
+      ],
+      "output_paths": [
+        "evidence/live-evaluation/",
+        "evidence/launch-readiness.json",
+        "docs/execution/runbooks/effectiveness-study.ko.md",
+        "../tests/cyrano_product/test_wp23_product.py",
+        "../deepagents_code/cyrano/evaluation/rubric_evidence.py",
+        "../tests/cyrano_product/test_r4_rc43.py"
+      ],
+      "methods": [
+        "run_preregistered_study -> actual pairs",
+        "review_effectiveness -> scoped result",
+        "request_launch_approval -> trusted decision",
+        "observe_rollout -> retain/rollback",
+        "collect_release_evidence(release) -> source/runtime/tool/suite/policy/hash같은 증거만 수집",
+        "evaluate_rubric(evidence) -> 15항목 정확배점·hardgate·notrun비점수",
+        "seal_handoff(manifest) -> 실제수행/미수행/불명/권한·원복·후속 적용 명시"
+      ],
+      "acceptance_ids": [
+        "LIVE-UNAUTHORIZED",
+        "LIVE-CLAIM",
+        "LIVE-SCOPE",
+        "R4-RC43-01",
+        "R4-RC43-02",
+        "R4-RC43-03",
+        "R4-RC43-04",
+        "R5-RF11-01",
+        "R5-RF11-02",
+        "R5-RF11-03",
+        "R5-RF11-04",
+        "R5-RF11-05",
+        "R5-RF11-06"
+      ],
+      "commands": [
+        [
+          "uv",
+          "run",
+          "--no-sync",
+          "python",
+          "-m",
+          "pytest",
+          "tests/cyrano_product/test_wp23_product.py",
+          "-q"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "schemas"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "check"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_integration.py"
+        ],
+        [
+          "python",
+          "cyrano/scripts/dev.py",
+          "quality"
+        ],
+        [
+          "python",
+          "cyrano/scripts/check_r5.py"
+        ]
+      ],
+      "completion_evidence": "evidence/work-packages/WP23.json",
+      "remote_side_effects_authorized": false,
+      "source_work_packages": [
+        "universal:WP21"
+      ],
+      "integration_revision": "2026-09-16-assessment-r3",
+      "integration_tasks": [
+        {
+          "id": "WP23-I01",
+          "instruction": "동일 release를 모델 이름 특화 없이 승인된 비교 조건에서 평가한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP23-I02",
+          "instruction": "결과 불확실/비용 증가를 숨기지 않고 baseline 유지 또는 범위 제한한다.",
+          "status": "planned"
+        },
+        {
+          "id": "WP23-I03",
+          "instruction": "운영 활성·학습·canary·trace를 개별 허가하고 실제 효과/제한/복구 evidence를 인수한다.",
+          "status": "planned"
+        }
+      ],
+      "integration_focus": "실제 업무 효과와 운영 시작",
+      "bootstrap_approval_mode": "verified_broker_or_explicit_external_development_review",
+      "product_completion_requires": [
+        "mandatory_acceptance_actual_evidence",
+        "quality_gates_or_explicit_block",
+        "independent_postimage_review",
+        "no_unresolved_security_or_unknown_effect",
+        "source_and_contract_manifest_match"
+      ],
+      "r3_assessment_criteria": [],
+      "assessment_test_tasks": [
+        "TS11"
+      ],
+      "r4_refinements": [
+        "RC43"
+      ],
+      "commands_cwd": "libs/code",
+      "command_availability": "first command requires implemented product test and native uv environment; preparation scripts exist",
+      "r5_refinements": [
+        "RF11"
+      ],
+      "primary_design": "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md",
+      "document": ".agents/work/WP23.ko.md",
+      "reading_refs": {
+        "plan": [
+          ".agents/work/WP23.ko.md",
+          "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md"
+        ],
+        "implement": [
+          ".agents/work/WP23.ko.md",
+          "docs/design/RELEASE_ASSETS_AND_OPERATIONAL_COMPLETENESS.ko.md"
+        ],
+        "test": [
+          ".agents/work/WP23.ko.md",
+          "docs/testing/STRATEGY.ko.md"
+        ]
+      },
+      "resource_refs": [
+        "contracts/v1/cyrano.schema.json",
+        "contracts/contract-registry.json",
+        "contracts/integration/acceptance-map.json",
+        "contracts/v2/governance.schema.json",
+        "contracts/v2/session-state-machine.json",
+        "contracts/assessment/rubric.json",
+        "tests/acceptance/catalog.json"
+      ],
+      "resource_selection": {
+        "tests/acceptance/catalog.json": {
+          "owner_wp": "WP23"
+        },
+        "contracts/v2/runtime.schema.json": {
+          "use": "Read only referenced $defs; do not inject entire schema by default."
+        }
+      },
+      "dependency_milestones": {
+        "WP22": "interface_ready"
+      },
+      "milestones": {
+        "interface_ready": "required interfaces, actual module behavior and owned negative paths verified; no final score/release claim",
+        "product_verified": "all owned mandatory product acceptances executed with native/authorized boundaries and independent review"
+      },
+      "release_checks_require": "All mandatory product acceptances across dependency closure must be product_verified; interface_ready never sufficient for release."
+    }
+  ],
+  "revision": "current-development-baseline",
+  "incoming_namespace_must_not_replace_ids": true,
+  "execution_policy": "Use current plan and exact source evidence. Document preparation does not authorize product operations.",
+  "document_policy": "Update existing owners and regenerate document routing; no separate addendum workflow."
+}

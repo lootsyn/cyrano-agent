@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cyrano.invalid/assessment/evidence-v3",
+  "title": "Export metadata only; signature/registry checks are external",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "source_digest",
+    "runtime_digest",
+    "policy_digest",
+    "suite_digest",
+    "scope",
+    "records",
+    "template_not_execution"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "cyrano.assessment-evidence/3"
+    },
+    "source_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "runtime_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "policy_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "suite_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "case_id",
+          "status",
+          "tests_executed",
+          "raw_artifact_refs",
+          "review_ref",
+          "evidence_kind",
+          "source_digest",
+          "runtime_digest",
+          "policy_digest",
+          "suite_digest"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "enum": [
+              "passed",
+              "failed",
+              "blocked",
+              "not_run",
+              "cancelled",
+              "unknown_outcome"
+            ]
+          },
+          "tests_executed": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "raw_artifact_refs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "review_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "evidence_kind": {
+            "enum": [
+              "actual_execution",
+              "example",
+              "self_report",
+              "design"
+            ]
+          },
+          "skipped": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "xfailed": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "deselected": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "source_digest": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          },
+          "runtime_digest": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          },
+          "policy_digest": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          },
+          "suite_digest": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "template_not_execution": {
+      "type": "boolean"
+    }
+  }
+}

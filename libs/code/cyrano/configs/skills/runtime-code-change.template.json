@@ -1,0 +1,41 @@
+{
+  "kind": "skill_manifest",
+  "schema_version": "1.0",
+  "id": "runtime-code-change",
+  "version": "0.1.0-dev",
+  "name": "runtime-code-change",
+  "description": "하네스/skill 실행 코드를 별도 개발 작업으로 수정·검증·패키징한다.",
+  "entrypoint": "SKILL.md",
+  "content_digest": "sha256:d6b38e74480c1a74f6b144542ea768854621e2715c1b812a02b0c941be5a1839",
+  "resources": [
+    {
+      "path": "references/checklist.md",
+      "digest": "sha256:87e66223619b8e171b0f8b02550a8a65a5771e1867c41a3eaebf20c58cd3958f",
+      "executable": false
+    },
+    {
+      "path": "assets/output.example.json",
+      "digest": "sha256:8431b0ccacc40f885765fd7ceeac06de2bc55f0b957473e23454a65bb8dbaf05",
+      "executable": false
+    }
+  ],
+  "allowed_roles": [
+    "code-reviewer"
+  ],
+  "required_tools": [],
+  "scope": {
+    "tenant": "__BIND_TENANT__",
+    "user": "__BIND_USER__",
+    "workspace": "__BIND_WORKSPACE__"
+  },
+  "context_byte_budget": 8192,
+  "activation_tests": [
+    "SKILL-runtime-code-change-positive"
+  ],
+  "counterexample_tests": [
+    "SKILL-runtime-code-change-negative"
+  ],
+  "release_digest": null,
+  "approval_ref": null,
+  "status": "candidate"
+}

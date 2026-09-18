@@ -1,0 +1,98 @@
+{
+ "kind": "work_package_completion_evidence",
+ "work_package": "WP10",
+ "title": "실제 구현·검증·patch settle (attempt runner, verify_artifact, source apply, external worker port)",
+ "recorded_by": "implementer (independent post-image review performed)",
+ "success": true,
+ "source_digests": {
+  "deepagents_code/cyrano/workflow/execution.py": "sha256:a187c6af2a84984f961c07daec3dd2174adee7750b3af954d795b9e5d477f474",
+  "deepagents_code/cyrano/workflow/verification.py": "sha256:e3bfbad1d9d68639211cf652f56b294b23a1dfc408f56c67717ce1da228ce632",
+  "deepagents_code/cyrano/kernel/patches.py": "sha256:d6a242d8ba8b87b3ed26a3468ff870d0725cabf573a0126c0b269dbfbf48b562",
+  "deepagents_code/cyrano/dcode/external_worker.py": "sha256:3850c0969c3d67fb55b13cf1e2ce7a93a01d188521ffa3a8b3c4b176f6b4ef38",
+  "deepagents_code/cyrano/sqlite/repository.py": "sha256:ad55e492a623b1adb148071ebfb70d64bf6f29dd201559c482f455c07fe0f619",
+  "tests/cyrano_product/test_wp10_product.py": "sha256:a018325ed378d201b250968fa91b7d99090d9e5b8054a34340a57d2ca68fad56",
+  "tests/cyrano_product/test_wp10_external_worker.py": "sha256:74e668545a3781d1e312e445bf91eea1e3adea7acca5727413a82edd99065d39",
+  "tests/cyrano_product/test_wp10_contract_scenarios.py": "sha256:633e438a4bdde36cf365292d9e0979052a9e5339e35803e26d06fd70885a0bdd",
+  "tests/cyrano_product/test_complete_lifecycle.py": "sha256:fa3dd86b91dae0eaef72c9f00cdcc29f2076b9cb379286210309bcc77d29baff"
+ },
+ "contract_files": [
+  "cyrano/contracts/v2/runtime.schema.json",
+  "cyrano/contracts/v2/governance.schema.json",
+  "cyrano/docs/design/DCODE_INTEGRATION.ko.md",
+  "cyrano/docs/design/architecture/2026-09-16-runtime-security.ko.md",
+  "deepagents_code/cyrano/workflow/README.md"
+ ],
+ "schema_change": {
+  "additive_extension_tables": "run_cancellations(stream_id PK, generation, state, at), external_delegations(delegation_id PK, scope_id, stream_id, generation, state, external_ref, recorded_at) in sqlite/repository.py EXTENSION_DDL",
+  "rationale": "durable cancel-reconcile state and delegation identity are ledger concerns; additive tables follow the coord_tasks/event_blobs precedent",
+  "new_repo_apis": "claim_job (bind a claim to one job id), record_usage (bill observed usage on unknown outcomes), fail_job (fence-checked failed settle); all mirror submit_result's fence semantics"
+ },
+ "verification": {
+  "targeted_tests": "45 passed (test_wp10_product + test_wp10_external_worker + test_wp10_contract_scenarios + test_complete_lifecycle)",
+  "full_product_suite": "707 passed (tests/cyrano_product/)",
+  "real_subprocess": "run_test_recipe runs sys.executable -m pytest with JUnit XML; WP10-I01 tests exercise real red/empty/all-skip/runner-error suites",
+  "ruff": "0 findings in WP10-owned paths under cyrano/configs/quality/ruff.toml",
+  "ty": "0 errors on workflow/, kernel/patches.py, dcode/external_worker.py, sqlite/repository.py",
+  "basedpyright": "0 errors; remaining warnings are the accepted sqlite3-Any/implicit-concat baseline class shared with verified WP09 files",
+  "dev_check": "dev.py check success=true after docs regeneration",
+  "quality_gate": "global gate still fails on pre-existing baseline debt outside WP10-owned paths (0 owned-path findings)"
+ },
+ "architecture": {
+  "attempt_lifecycle": "run_work enqueues a durable outbox job before invoking the worker, claims it by job id, settles via fence-checked submit_result/fail_job, or marks unknown on timeout — a crash leaves evidence, never a guess",
+  "no_blind_retry": "a task whose latest job is unknown refuses run_work until reconcile_attempt records an explicit disposition",
+  "cancel_semantics": "cancel_run durably blocks new dispatch (run_cancellations), cancels pending jobs, marks leased jobs unknown, and reports observed partial results",
+  "source_apply": "apply_to_target requires a separate source_apply grant, checks every preimage before writing, journals preimage+postimage per file, and reports partial honestly; rollback restores only files still matching the journaled postimage",
+  "external_worker": "peer declarations are untrusted metadata; usable capability is declared∩granted; peer completed maps to unverified; cancel is a request not a stop; late artifacts are billed+audited but fenced"
+ },
+ "not_established": [
+  "native_dcode_runtime_dispatch",
+  "real_mcp_acp_a2a_transport",
+  "real_authorization_transport",
+  "provider_calls",
+  "OS_isolation",
+  "full_python_quality_overlay"
+ ],
+ "acceptance_evidence": {
+  "WORK-MERGE": "passed - test_work_merge_merged_digest_needs_revalidation",
+  "WORK-UNKNOWN": "passed - test_work_unknown_preserved_no_blind_retry",
+  "WORK-SOURCE": "passed - test_work_source_copy_change_is_not_source_change",
+  "WORK-TEST": "passed - test_work_test_oracle_removal_is_tamper",
+  "UH-PLAN-09": "passed - test_uh_plan_09_approved_apply_advances_expected_chain + test_uh_plan_09_out_of_grant_advance_refused",
+  "UH-RUN-04": "passed - test_uh_run_04_started_then_restart_reconciles_unknown",
+  "UH-RUN-08": "passed - test_uh_run_08_cancel_blocks_dispatch_reports_partial",
+  "UH-OPS-07": "passed - test_uh_ops_07_preimage_conflict_blocks_overwrite",
+  "UH-OPS-08": "passed - test_uh_ops_08_partial_apply_journals_recovery",
+  "INTEG-PARTIAL-UNDO": "passed - test_integ_partial_undo_preserves_user_edit + test_wp10_i03_partial_then_reconcile_no_blind_rollback",
+  "INTEG-CANCEL-UNKNOWN": "passed - test_integ_cancel_unknown_report_keeps_unknown",
+  "CON-INT-01": "passed - test_con_int_01_schema_drift_blocks_invocation",
+  "CON-INT-02": "passed - test_con_int_02_agent_card_intersection_only",
+  "CON-INT-03": "passed - test_con_int_03_remote_path_escape_denied",
+  "CON-INT-04": "passed - test_con_int_04_cancel_notification_is_not_completion",
+  "CON-INT-05": "passed - test_con_int_05_late_artifact_after_cancel_is_stale",
+  "CON-INT-06": "passed - test_con_int_06_artifact_ssrf_denied",
+  "CON-INT-07": "passed - test_con_int_07_archive_bomb_rejected",
+  "CON-INT-08": "passed - test_con_int_08_peer_completed_is_unverified",
+  "CON-INT-09": "passed - test_con_int_09_submit_timeout_stays_unknown",
+  "CON-INT-10": "passed - test_con_int_10_resume_unsupported_is_explicit",
+  "CON-INT-11": "passed - test_con_int_11_tool_description_is_untrusted",
+  "CON-INT-12": "passed - test_con_int_12_missing_worker_is_unavailable",
+  "COMPLETE-001": "passed - test_complete_001_verified_no_change",
+  "COMPLETE-002": "passed - test_complete_002_analysis_request_is_answered",
+  "COMPLETE-003": "passed - test_complete_003_missing_mandatory_run_blocks",
+  "COMPLETE-004": "passed - test_complete_004_zero_executed_is_not_run + test_wp10_i01_empty_collection_is_not_run",
+  "COMPLETE-005": "passed - test_complete_005_mandatory_skip_is_blocked + test_wp10_i01_all_skipped_mandatory_is_blocked",
+  "COMPLETE-006": "passed - test_complete_006_merged_artifact_revalidation",
+  "COMPLETE-007": "passed - test_complete_007_patch_only_delivers_no_source_write + test_wp10_i02_patch_only_then_approved_apply",
+  "COMPLETE-008": "passed - test_complete_008_publish_needs_publish_purpose",
+  "COMPLETE-009": "passed - test_complete_009_post_review_edit_is_stale",
+  "COMPLETE-010": "passed - test_complete_010_lost_raw_evidence_is_unverifiable",
+  "COMPLETE-011": "passed - test_complete_011_rollback_halts_on_user_modified",
+  "COMPLETE-012": "passed - test_complete_012_lesson_failure_is_separate"
+ },
+ "review_notes": [
+  "post-image review found and fixed: ExpectedChain.advance partially mutated state before an out-of-grant ACL_DENIED (now validates all applied entries first); map_workspace_path allowed /remote/ws2 to match the /remote/ws prefix (now boundary-checked); submit recorded 'submitted' before the transport call and a non-timeout error left a false record (now rejected vs unknown); run_test_recipe propagated ET.ParseError on corrupt JUnit XML (now yields no results, verdict via exit code)",
+  "pytest exit-code semantics: 5 (no tests collected) and 2-4 (runner error) are distinct verdicts — empty collection is not_run, runner error is unverifiable",
+  "check_artifact_uri does not resolve DNS — a hostname allowlist cannot prevent rebinding to private addresses; literal-IP and scheme checks are enforced",
+  "apply journal_id is deterministic over grant subject + patch set; a second identical apply reuses the journal path"
+ ]
+}

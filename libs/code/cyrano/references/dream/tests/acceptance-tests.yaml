@@ -1,0 +1,396 @@
+schema_version: 1.0.0-design
+notice: 이 시나리오는 구현할 수용 테스트 명세이며 현재 실행하지 않았다. 계약 fixture 검사는 별도 evidence에 기록한다.
+execution_status: not_run
+cases:
+- id: RPL-01
+  area: replay
+  given: 같은 공개 prefix, 다른 hidden descendant 점수
+  when: 정책의 다음 행동 비교
+  then: 동일 결정; 숨은 결과 참조 없음
+  execution_status: not_run
+  test_layer: component
+- id: RPL-02
+  area: replay
+  given: 합법 action이나 저장 transition 없음
+  when: replay step
+  then: out_of_support; full-world score null; 데이터 수집 요청
+  execution_status: not_run
+  test_layer: component
+- id: RPL-03
+  area: replay
+  given: B가 A 결과를 context에 사용
+  when: A를 공개하지 않고 B 실행
+  then: dependency_not_observed로 replay 미지원
+  execution_status: not_run
+  test_layer: component
+- id: RPL-04
+  area: replay
+  given: 동일 snapshot, 다른 skill digest
+  when: 과거 transition 매칭
+  then: input_mismatch; 실제 재실행 필요
+  execution_status: not_run
+  test_layer: component
+- id: RPL-05
+  area: replay
+  given: 모델/endpoint 실행 조합 변경
+  when: 기존 world 사용
+  then: signature_mismatch; 결과를 새 모델 결과로 표시하지 않음
+  execution_status: not_run
+  test_layer: component
+- id: RPL-06
+  area: replay
+  given: root slots 결과가 존재
+  when: 초기 view 구성
+  then: 슬롯은 결과 이전 commitment; best 요약 누출 없음
+  execution_status: not_run
+  test_layer: component
+- id: RPL-07
+  area: replay
+  given: sample 여러 개, 동일 action
+  when: sample 선택
+  then: 사전 고정 tape; 최고 점수 샘플 선별 금지
+  execution_status: not_run
+  test_layer: component
+- id: RPL-08
+  area: replay
+  given: 일부 world 미지원
+  when: 평균 비교 보고
+  then: 전체 예정 분모와 support 수 공개; 누락된 성공 주장 금지
+  execution_status: not_run
+  test_layer: component
+- id: RPL-09
+  area: replay
+  given: 같은 world, 정책2개
+  when: 독립 replay 시작
+  then: 각 정책은 root에서 시작; prefix 오염 없음
+  execution_status: not_run
+  test_layer: component
+- id: RPL-10
+  area: replay
+  given: 외부 ID 임의 치환
+  when: 동점 없는 행동 비교
+  then: 결과 동일; ID 암기 없고 동점 처리만 예외
+  execution_status: not_run
+  test_layer: component
+- id: RPL-11
+  area: replay
+  given: terminal event 누락
+  when: world 봉인
+  then: incomplete; 완전 replay 평가 금지
+  execution_status: not_run
+  test_layer: component
+- id: RPL-12
+  area: replay
+  given: batch 일부 완료
+  when: 다음 select 호출
+  then: barrier까지 금지; timeout은 명시 상태
+  execution_status: not_run
+  test_layer: component
+- id: ACT-01
+  area: kernel
+  given: 동일 action 두 번 포함
+  when: dispatch
+  then: 중복 거부; 새 side effect 없음
+  execution_status: not_run
+  test_layer: component
+- id: ACT-02
+  area: kernel
+  given: worker cap 초과 batch
+  when: dispatch
+  then: 초과 거부
+  execution_status: not_run
+  test_layer: component
+- id: ACT-03
+  area: kernel
+  given: parent-child 동일 batch
+  when: dispatch
+  then: 의존 동시 실행 거부
+  execution_status: not_run
+  test_layer: component
+- id: ACT-04
+  area: kernel
+  given: stop_exploration 반환
+  when: run 완료 전이
+  then: 필수 verification/review 없으면 완료 불가
+  execution_status: not_run
+  test_layer: component
+- id: ACT-05
+  area: kernel
+  given: permit 없이 새 branch 요구
+  when: dispatch
+  then: 권한 거부; 정책 점수로 우회 못함
+  execution_status: not_run
+  test_layer: component
+- id: ACT-06
+  area: kernel
+  given: provider timeout 후 결과 불명
+  when: 재시도 요청
+  then: unknown_outcome reconcile; 무조건 이중 실행 금지
+  execution_status: not_run
+  test_layer: component
+- id: PLC-01
+  area: policy
+  given: 허용 feature만 사용하는 DAG
+  when: 정적 검증
+  then: 타입/참조/깊이/operation 제한 검사
+  execution_status: not_run
+  test_layer: component
+- id: PLC-02
+  area: policy
+  given: 순환 node reference
+  when: 정적 검증
+  then: cycle 거부
+  execution_status: not_run
+  test_layer: component
+- id: PLC-03
+  area: policy
+  given: 파일/네트워크 접근 정책 코드
+  when: isolated policy 실행
+  then: 권한 없음; deadline/resource 제한
+  execution_status: not_run
+  test_layer: component
+- id: PLC-04
+  area: policy
+  given: 모델 이름 기반 분기
+  when: 정적 검증
+  then: GEN-01 위반 거부
+  execution_status: not_run
+  test_layer: component
+- id: PLC-05
+  area: policy
+  given: learned stop=true
+  when: Kernel 수행
+  then: 탐색만 중단; 원본 쓰기·완료 권한 없음
+  execution_status: not_run
+  test_layer: component
+- id: EVA-01
+  area: evaluation
+  given: 후보가 실패한 테스트 삭제
+  when: impact classification
+  then: protected_change로 거부
+  execution_status: not_run
+  test_layer: component
+- id: EVA-02
+  area: evaluation
+  given: train/holdout 같은 repo family
+  when: split 검사
+  then: DATA_LEAKAGE; 평가 무효
+  execution_status: not_run
+  test_layer: component
+- id: EVA-03
+  area: evaluation
+  given: 미래 평가가 memory에 유입
+  when: cutoff 검사
+  then: 누수로 평가 무효
+  execution_status: not_run
+  test_layer: component
+- id: EVA-04
+  area: evaluation
+  given: 통계 기준/예산 미등록
+  when: 평가·승격 요청
+  then: 필수 항목 누락이면 차단
+  execution_status: not_run
+  test_layer: component
+- id: EVA-05
+  area: evaluation
+  given: 성공률 상승, 무승인 실행1건
+  when: 승격 판단
+  then: hard gate로 거부
+  execution_status: not_run
+  test_layer: component
+- id: EVA-06
+  area: evaluation
+  given: 효과 불확실하거나 표본 작음
+  when: 효과 판정
+  then: inconclusive; 성공 문구 금지
+  execution_status: not_run
+  test_layer: component
+- id: EVA-07
+  area: evaluation
+  given: 관측 비용 일부 null
+  when: 총비용 보고
+  then: 0으로 채우지 않음; coverage 공개
+  execution_status: not_run
+  test_layer: component
+- id: EVA-08
+  area: evaluation
+  given: 동일 seed 미지원 provider
+  when: 반복 paired 평가
+  then: 비결정성 기록; 순서 무작위화·family clustering
+  execution_status: not_run
+  test_layer: component
+- id: EVA-09
+  area: evaluation
+  given: policy와 memory 동시 변경
+  when: 효과 attribution
+  then: bundle 또는 ablation; 단일 원인 확정 금지
+  execution_status: not_run
+  test_layer: component
+- id: MEM-01
+  area: memory
+  given: scope가 다른 과거 성공 지식
+  when: recall
+  then: ACL에서 차단; LLM 후처리 의존 금지
+  execution_status: not_run
+  test_layer: component
+- id: MEM-02
+  area: memory
+  given: memory query hit만 관측
+  when: 효과 점수 계산
+  then: applied/effectiveness로 집계하지 않음
+  execution_status: not_run
+  test_layer: component
+- id: MEM-03
+  area: memory
+  given: 입력 파일/environment digest 변경
+  when: memory 주입
+  then: stale 및 재확인
+  execution_status: not_run
+  test_layer: component
+- id: MEM-04
+  area: memory
+  given: world 삭제/동의 철회
+  when: 파생물 추적
+  then: 기억·정책·후보 lineage 검토/회수
+  execution_status: not_run
+  test_layer: component
+- id: WF-01
+  area: workflow
+  given: 질문 수 감소, blocker 남음
+  when: 인터뷰 readiness
+  then: ready 불가
+  execution_status: not_run
+  test_layer: integration
+- id: WF-02
+  area: workflow
+  given: 질문 변경, 과거 답변 존재
+  when: 인터뷰 replay
+  then: 다른 질문 답 복붙 평가 금지; 실제 검증 요구
+  execution_status: not_run
+  test_layer: integration
+- id: WF-03
+  area: workflow
+  given: 학습 후보 계획 리뷰 없음
+  when: 실험 실행
+  then: 사전 위임 permit 내 반복 아닌 경우 차단
+  execution_status: not_run
+  test_layer: integration
+- id: WF-04
+  area: workflow
+  given: TDD red 또는 정당한 승인 거부
+  when: 실패 분석
+  then: 낭비/나쁜 정책으로 자동 낙인 금지
+  execution_status: not_run
+  test_layer: integration
+- id: REL-01
+  area: release
+  given: 동일 parent 후보2개
+  when: 연속 승격
+  then: 첫 CAS만 성공; 둘째 rebase 및 재평가
+  execution_status: not_run
+  test_layer: integration
+- id: REL-02
+  area: release
+  given: run 진행 중 새 release
+  when: 승격
+  then: 기존 run pin; 새 episode부터 적용
+  execution_status: not_run
+  test_layer: integration
+- id: REL-03
+  area: release
+  given: 긴급 policy revoke
+  when: 진행 중 run
+  then: 영향 run pause; 일반 pin보다 revoke 우선
+  execution_status: not_run
+  test_layer: integration
+- id: REL-04
+  area: release
+  given: canary 회귀
+  when: rollback
+  then: harness pointer 복구; workspace 자동 revert 없음
+  execution_status: not_run
+  test_layer: integration
+- id: REL-05
+  area: release
+  given: human approval 없음
+  when: 자동 승격
+  then: 기본 비활성; scoped 사전 위임 없으면 차단
+  execution_status: not_run
+  test_layer: integration
+- id: OPS-01
+  area: outbox
+  given: terminal commit 직후 crash
+  when: 복구 worker
+  then: outbox 유실 없음; idempotent 소비
+  execution_status: not_run
+  test_layer: integration
+- id: OPS-02
+  area: outbox
+  given: lease 만료된 worker 응답
+  when: 결과 적용
+  then: fencing token으로 늦은 쓰기 차단
+  execution_status: not_run
+  test_layer: integration
+- id: OPS-03
+  area: outbox
+  given: learning run terminal
+  when: 학습 trigger
+  then: meta-depth 제한; 무한 학습 recursion 없음
+  execution_status: not_run
+  test_layer: integration
+- id: DC-01
+  area: integration
+  given: 실제 설치 dcode
+  when: doctor
+  then: 버전/hash/API 및 async/child 관측 증거
+  execution_status: not_run
+  test_layer: integration
+- id: DC-02
+  area: integration
+  given: native file/shell/subagent 우회 시도
+  when: governed 실행
+  then: Broker-owned 보호 경로에 쓰기 불가
+  execution_status: not_run
+  test_layer: integration
+- id: DC-03
+  area: integration
+  given: 가상 backend path
+  when: shell 접근
+  then: 가상 파일이 shell 파일이라고 가정하지 않음
+  execution_status: not_run
+  test_layer: integration
+- id: DC-04
+  area: integration
+  given: 일반 hook 오류/timeout
+  when: 승인 상태 확인
+  then: hook 오류를 강제보안 증거로 사용하지 않음
+  execution_status: not_run
+  test_layer: integration
+- id: DC-05
+  area: integration
+  given: adapter 미지원
+  when: 런타임 시작
+  then: governed 차단; SDK 대체/조용한 advisory 전환 없음
+  execution_status: not_run
+  test_layer: integration
+- id: QA-01
+  area: quality
+  given: UDH 설치 및 doctor
+  when: 대상 repository 비교
+  then: 설치용 tracked/untracked 파일 추가 없음
+  execution_status: not_run
+  test_layer: integration
+- id: QA-02
+  area: quality
+  given: Python 구현 후보
+  when: CI
+  then: formatter/lint/type/unit/integration 검증; PEP8 검토
+  execution_status: not_run
+  test_layer: integration
+- id: QA-03
+  area: quality
+  given: 계약 fixture만 통과
+  when: 증거 표기
+  then: contract_tested만; runtime/effectiveness not_tested 유지
+  execution_status: not_run
+  test_layer: integration

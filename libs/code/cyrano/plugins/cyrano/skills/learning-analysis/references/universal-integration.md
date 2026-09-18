@@ -1,0 +1,5 @@
+# Universal Harness 통합 적용
+
+예상TDDred·정상권한거부·userchange·일시envfailure를일반실패와분리한다. terminalevent와learningoutboxidentity를결속하되learningjobfailure가완료된코드품질결과를덮어쓰지않는다. learning은기본비활성이며실험은별도허가/예산이필요하다.
+
+세부wire필드는현contract registry를조회하고, 원본첨부의다른버전/필드명을추정해사용하지않는다. 이문서는지침이며실행권한을부여하지않는다.

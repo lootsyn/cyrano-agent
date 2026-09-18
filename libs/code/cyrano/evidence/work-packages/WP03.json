@@ -1,0 +1,173 @@
+{
+ "kind": "work_package_completion_evidence",
+ "work_package": "WP03",
+ "title": "신뢰된 승인·Action Broker·sandbox",
+ "recorded_by": "implementer (independent post-image review performed)",
+ "success": true,
+ "source_digests": {
+  "deepagents_code/cyrano/kernel/approvals.py": "sha256:e41bd2e2973ecd38574a992d297fb5b6950cc3d0ad4812512bc77ea76ab5833b",
+  "deepagents_code/cyrano/kernel/actions.py": "sha256:c6e5f86f19832ad33d02e82ba25dfe3d344dda1848e9c55cc895f1fea56175f8",
+  "deepagents_code/cyrano/kernel/anchored_edit.py": "sha256:42a8146727c623c17640c56fd299e178649160230478f44319e955060d6c4627",
+  "deepagents_code/cyrano/kernel/transitions.py": "sha256:89db86d9472790fff6ae1130731debe8d8f2153b21ef2d73eff0f6bef1a52c8e",
+  "deepagents_code/cyrano/kernel/__init__.py": "sha256:936d0ab4350fa180b4abe870d4157b3c89131fe4a658af319a2d3f664242968e",
+  "deepagents_code/cyrano/dcode/sandbox.py": "sha256:c5222381357d79eee194570f80f09264193fbcd1e6d31d1da104871193b053cc",
+  "deepagents_code/cyrano/intelligence/contracts.py": "sha256:008c744b8013e20851ea51279ca86a33442b1ad8278a56856d86f4ba4d3d5bbd",
+  "tests/cyrano_product/test_wp03_product.py": "sha256:49fdf937b76792d9348365d9208f3125c0a714405e4e086470288db2f9c07484",
+  "tests/cyrano_product/test_wp03_anchored_edit.py": "sha256:6c060a1948f6d2e2c0d8b98c6183dc3e557bb9649301a14f20bf0b408db1e02d",
+  "tests/cyrano_product/test_wp03_contract_scenarios.py": "sha256:3a96174280604dcf9da8cfff4f3e2520a53218079b508b300ea8486cbd8cfcae",
+  "tests/cyrano_product/test_human_lifecycle.py": "sha256:4998a96acbb012306a1788f913da5f926d393b5d49a38cd76e9717fbb0beb47a",
+  "tests/cyrano_product/test_isolate_lifecycle.py": "sha256:12f22eef0c9699eb853f84fa71ace97bff121f570ca087fd13bd3ec093ac88f3",
+  "tests/cyrano_product/test_2_4.py": "sha256:781730fdfd9f44620ec98b4ccd0fb733004239e0c7f1bdc27f20dc808b78a136"
+ },
+ "contract_files": {
+  "cyrano/.agents/work/WP03.ko.md": "routed work document",
+  "cyrano/docs/design/architecture/2026-09-16-runtime-security.ko.md": "governing design"
+ },
+ "acceptance_evidence": {
+  "AUTH-FAKE": "passed - no permit returns APPROVAL_REQUIRED; forged shown_digest fails Ed25519 verify with INVALID_SIGNATURE (test_auth_fake_no_authority_denied, test_forged_permit_rejected)",
+  "AUTH-PURPOSE": "passed - a plan_approval permit used for execute raises WRONG_APPROVAL_ACTION (test_auth_purpose_wrong_action)",
+  "AUTH-REVOKE": "passed - is_revoked callback consulted at verify and re-verified at apply; PERMIT_REVOKED (test_auth_revoke_blocks, test_revocation_rechecked_at_apply)",
+  "AUTH-SYMLINK": "passed - symlink whose target escapes the workspace raises PATH_ESCAPE in plan_sandbox (test_auth_symlink_escape_denied)",
+  "AUTH-PRINCIPAL": "passed - same-user shell reported as advisory only and governed verdict is false; approval-key reachability also fails governed (test_auth_principal_advisory_only, test_key_reachability_blocks_governed)",
+  "AUTH-DOCKER": "passed - docker.sock mount denied with MOUNT_DENIED unless explicitly approved (test_auth_docker_socket_needs_approval)",
+  "CON-EDT-01": "passed - exact byte-range patch applies (test_con_edt_01_exact_bytes_changed)",
+  "CON-EDT-02": "passed - stale anchor digest rejected before any write (test_con_edt_02_stale_anchor_rejected)",
+  "CON-EDT-03": "passed - short tags never identify anchors (test_con_edt_03_short_tag_never_identifies)",
+  "CON-EDT-04": "passed - ambiguous/non-unique expected content rejected (test_con_edt_04_ambiguous_text_rejected)",
+  "CON-EDT-05": "passed - CRLF bytes preserved through apply (test_con_edt_05_crlf_preserved)",
+  "CON-EDT-06": "passed - NFC anchor range with NFD expected digest rejected as stale; NFC/NFD byte distinction enforced (test_con_edt_06_nfd_bytes_rejected)",
+  "CON-EDT-07": "passed - path escape in anchor rejected (test_con_edt_07_path_escape_denied)",
+  "CON-EDT-08": "passed - symlink swap between validate and apply blocked by descriptor/journal check (test_con_edt_08_symlink_swap_blocked)",
+  "CON-EDT-09": "passed - one stale hunk fails the whole patch; no partial apply (test_con_edt_09_one_stale_hunk_fails_whole_patch)",
+  "CON-EDT-10": "passed - IO error mid-apply leaves journal for reconciliation, never reports applied (test_con_edt_10_io_error_needs_reconciliation)",
+  "CON-EDT-11": "passed - unrelated user edits made after journaling are preserved on recovery (test_con_edt_11_user_edit_conflict_preserved)",
+  "CON-EDT-12": "passed - index binding invalidated on environment/ACL/provider change (test_con_edt_12_index_stale_on_env_change)",
+  "HUMAN-001": "passed - plan approval produces no execution permit (test_human_001)",
+  "HUMAN-002": "passed - plan receipt cannot be used as a publish permit (test_human_002)",
+  "HUMAN-003": "passed - request without a user event expires without approval (test_human_003)",
+  "HUMAN-004": "passed - escape defers; no receipt produced (test_human_004)",
+  "HUMAN-005": "passed - request_changes is not an approval (test_human_005)",
+  "HUMAN-006": "passed - approve-with-amendment rejected as invalid decision (test_human_006)",
+  "HUMAN-007": "passed - decision against a stale display revision rejected (test_human_007)",
+  "HUMAN-008": "passed - nonce mismatch rejected (test_human_008)",
+  "HUMAN-009": "passed - decision after expiry rejected (test_human_009)",
+  "HUMAN-010": "passed - decision by a non-granted actor denied (test_human_010)",
+  "HUMAN-011": "passed - idempotent replay returns the original receipt (test_human_011)",
+  "HUMAN-012": "passed - conflicting replay on the same client event id rejected (test_human_012)",
+  "HUMAN-013": "passed - subset selection approves only chosen items (test_human_013)",
+  "HUMAN-014": "passed - selection missing a required dependency denied (test_human_014)",
+  "HUMAN-015": "passed - display digest mismatch marks display integrity failure (test_human_015)",
+  "HUMAN-016": "passed - key events before display-open never produce approval (test_human_016)",
+  "ISOLATE-001": "passed - unpermitted native write denied (test_isolate_001)",
+  "ISOLATE-002": "passed - unpermitted shell redirection denied (test_isolate_002)",
+  "ISOLATE-003": "passed - unapproved MCP writer denied (test_isolate_003)",
+  "ISOLATE-004": "passed - child scope is grant intersection, never a superset (test_isolate_004)",
+  "ISOLATE-005": "passed - headless mode without headless policy blocked (test_isolate_005)",
+  "ISOLATE-006": "passed - actor claim not matching the authenticated actor denied (test_isolate_006)",
+  "ISOLATE-007": "passed - unvetted recipe execution refused (test_isolate_007)",
+  "ISOLATE-008": "passed - intermediate symlink ancestor denied even for nonexistent leaf (test_isolate_008)",
+  "ISOLATE-009": "passed - case-ambiguous path names rejected (test_isolate_009)",
+  "ISOLATE-010": "passed - agent-writable approval DB fails the governed verdict (test_isolate_010)",
+  "ISOLATE-011": "passed - decompressed payload over the byte cap rejected (test_isolate_011)",
+  "ISOLATE-012": "passed - permission-module failure closes the operation (test_isolate_012)",
+  "UH-AUTH-01": "passed - worker-token actor on the user grant endpoint denied (test_uh_auth_01)",
+  "UH-AUTH-02": "passed - tampered permit fails INVALID_SIGNATURE (test_uh_auth_02)",
+  "UH-AUTH-03": "passed - planning receipt used for execution fails WRONG_APPROVAL_ACTION (test_uh_auth_03)",
+  "UH-AUTH-04": "passed - expired permit fails PERMIT_EXPIRED (test_uh_auth_04)",
+  "UH-AUTH-05": "passed - revoked parent permit blocks the next dispatch (test_uh_auth_05)",
+  "UH-AUTH-06": "passed - session file plus role file yields intersection only; SCOPE_DENIED (test_uh_auth_06)",
+  "UH-AUTH-07": "passed - creating an unlisted file fails CREATE_APPROVAL_REQUIRED (test_uh_auth_07)",
+  "UH-AUTH-08": "passed - allowed name that is a symlink to a protected path fails PATH_ESCAPE (test_uh_auth_08)",
+  "UH-AUTH-09": "passed - hardlink alias of a protected inode fails PROTECTED_ALIAS (test_uh_auth_09)",
+  "UH-AUTH-10": "passed - write-only output denies model read and shell read; deny wins over allow (test_uh_auth_10_and_integ_only_write_deny_read)",
+  "UH-AUTH-11": "passed - source mounted read-only and scratch separated; originals and approval DB untouched (test_uh_auth_11)",
+  "UH-AUTH-12": "passed - unregistered tool fails UNKNOWN_TOOL; never auto-allowed (test_uh_auth_12)",
+  "UH-AUTH-13": "passed - durable audit failure raises AUDIT_UNAVAILABLE before the side effect (test_uh_auth_13)",
+  "UH-AUTH-14": "passed - approval-key reachability fails the isolation verdict and blocks governed launch (test_uh_auth_14)",
+  "INTEG-ONLY-WRITE": "passed - only_write grant implies effective deny-read even when read is also listed (test_uh_auth_10_and_integ_only_write_deny_read)",
+  "R3-24-01": "passed - approved edit changes only the granted file; apply/applied receipts recorded (test_r3_24_01)",
+  "R3-24-02": "passed - write_file/edit_file without a permit deny; raw bytes unchanged and denied events recorded (test_r3_24_02)",
+  "R3-24-03": "passed - execute_python, shell, mcp_writer, child_task bypasses all denied before side effect (test_r3_24_03)",
+  "R3-24-04": "passed - revocation between decide and apply still blocks; bytes unchanged (test_r3_24_04)",
+  "R3-24-05": "passed - yolo/planning modes refused UNSUPPORTED_MODE; manual/auto/headless/acp/resume enforced identically (test_r3_24_05)",
+  "R3-24-06": "passed at component level - symlink, hardlink, and dotdot escapes denied by plan_sandbox with the original file unchanged; the live OS-boundary claim remains limited to mount-plan validation (test_r3_24_06)",
+  "WP03-I01": "passed - display digest and authenticated user/display events bound into the Ed25519 receipt via shown_digest/user_event_id preimage fields",
+  "WP03-I02": "passed - read/create/write_existing/delete/only_write actions implemented with deny-wins and grant intersection in kernel/actions.py",
+  "WP03-I03": "passed - principal advisory reporting, ro/scratch mounts, symlink/hardlink/ancestor escape checks, unregistered-tool denial, and audit-failure fail-closed all verified"
+ },
+ "commands": [
+  {
+   "argv": "uv run --no-sync python -m pytest tests/cyrano_product/test_wp03_product.py tests/cyrano_product/test_wp03_anchored_edit.py tests/cyrano_product/test_wp03_contract_scenarios.py tests/cyrano_product/test_human_lifecycle.py tests/cyrano_product/test_isolate_lifecycle.py tests/cyrano_product/test_2_4.py -q",
+   "exit": 0,
+   "result": "77 passed"
+  },
+  {
+   "argv": "uv run --no-sync python -m pytest tests/cyrano_product/ -q",
+   "exit": 0,
+   "result": "194 passed"
+  },
+  {
+   "argv": "uv run --no-sync ty check deepagents_code/cyrano/",
+   "exit": 0,
+   "result": "all checks passed"
+  },
+  {
+   "argv": "basedpyright deepagents_code/cyrano/kernel/ deepagents_code/cyrano/dcode/sandbox.py deepagents_code/cyrano/intelligence/",
+   "exit": 1,
+   "result": "0 errors, 36 warnings (reportAny/reportUnannotatedClassAttribute class, consistent with sqlite package baseline)"
+  },
+  {
+   "argv": "uv run --no-sync ruff check --config cyrano/configs/quality/ruff.toml <wp03 files>",
+   "exit": 0,
+   "result": "clean; includes pre-existing kernel package files (transitions.py, __init__.py) now owned by WP03"
+  },
+  {
+   "argv": "uv run --no-sync ruff format --check --config cyrano/configs/quality/ruff.toml <wp03 files>",
+   "exit": 0,
+   "result": "clean after Cyrano-config format applied"
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/dev.py schemas",
+   "exit": 0,
+   "result": "success true"
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/dev.py check",
+   "exit": 0,
+   "result": "green (unit suite + doc freshness)"
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/check_integration.py",
+   "exit": 0,
+   "result": "success true"
+  },
+  {
+   "argv": "uv run --no-sync python cyrano/scripts/check_r5.py",
+   "exit": 0,
+   "result": "success true"
+  }
+ ],
+ "errors": [],
+ "blocked": [],
+ "explicit_blocks": [
+  "dev.py quality still exits 1 on pre-existing overlay-wide debt (line-length findings in files outside WP03 ownership); all WP03-owned files are clean under the 79/72 Cyrano config",
+  "R3-24-06 is verified at the mount-plan/component level against a real filesystem; a live dcode sandbox providing a real OS boundary is a native-runtime claim and remains not established until the WP06+ binding exists"
+ ],
+ "not_established": [
+  "real OS-level isolation (sandbox mount planning and validation only; no container/seccomp/namespace enforcement yet)",
+  "production trust-root provenance (tests use generated Ed25519 keys; key distribution is an operator decision)",
+  "native dcode runtime binding of the broker/desk (WP06 wires the attempt port)",
+  "TOCTOU-resistant apply against adversarial in-process races (journal/descriptor policy verified serially)"
+ ],
+ "review_findings": [
+  "ActionBroker constructor parameter aligned to 'audit' after first run found the mismatch",
+  "Idempotency comparison fixed to compare decision_kind, not status",
+  "CON-EDT-06 fixture corrected so the digest mismatch exercises the stale path rather than input-invalid",
+  "only_write now implies effective deny-read even when read is also listed",
+  "intermediate-symlink detection extended to nonexistent leaves for ISOLATE-008",
+  "permit signing preimage built via dataclasses.asdict (slots) after BasedPyright flagged kwargs widening",
+  "pre-existing W505 findings in kernel/transitions.py and kernel/__init__.py cleaned as WP03-owned package debt"
+ ],
+ "authority_scope": "component-level kernel enforcement; governed launch verdicts are advisory until the native dcode binding exists",
+ "next_wp_impact": "WP05 context binding and WP06 attempt port consume verify_permit/ActionBroker/plan_sandbox as their enforcement seam"
+}

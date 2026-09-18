@@ -1,0 +1,69 @@
+{
+ "kind": "work_package_completion_evidence",
+ "work_package": "WP08",
+ "title": "인터뷰 역할·blind handoff·export",
+ "recorded_by": "implementer (independent post-image review performed)",
+ "success": true,
+ "source_digests": {
+  "deepagents_code/cyrano/interview/workers.py": "sha256:57d55dfa94e47f8649e4ef8f4cd3331ecdb92c111277b1a4e1e7a07ef6c01361",
+  "deepagents_code/cyrano/interview/export.py": "sha256:1b5c814cbadae00bdbbff715c252437b75ccb8faa6212ecf6b49c9a952dc6b21",
+  "deepagents_code/cyrano/interview/service.py": "sha256:cca273fb163817c4746c8ceda6ec12bab915f817371aab0b008c0fd704a9e804",
+  "deepagents_code/cyrano/interview/decisions.py": "sha256:0b925fe7c31c4c3ad5849f3d2eaa221665b43537df5494834be73bc9a2227369",
+  "tests/cyrano_product/test_wp08_product.py": "sha256:fd7f237657ed31b9bd10394a102e0638f1bb89bfece2875ed7482ca718df1faf"
+ },
+ "contract_files": {
+  "contracts/v2/session-state-machine.json": "loaded by fixture; unchanged",
+  "plugins/cyrano/agents/facilitator.md": "pre-existing; verified present, not regenerated"
+ },
+ "acceptance_evidence": {
+  "INT-R09": "passed - missing required reviews refuse export with REVIEW_INCOMPLETE; an optional scout failure stays non-blocking (test_int_r09_missing_required_review_blocks, test_int_r09_optional_advice_failure_not_blocking)",
+  "INT-R18": "passed - a post-approval statement changes the subject digest; the old approval mismatches on export (test_int_r18_new_statement_changes_subject)",
+  "INT-R20": "passed - a foreign-subject approval is refused APPROVAL_MISMATCH (test_int_r20_other_approval_not_reused)",
+  "INT-R22": "passed - unapproved compile is draft_unapproved; draft artifact carries execution_authorized=false (test_int_r22_noorigin_draft_only)",
+  "INT-BLIND": "passed - forbidden blind fields (author/origin/rationale/...) refuse with BLIND_SCOPE_VIOLATION (test_int_blind_forbidden_field_refused, test_int_blind_clean_fields_admit)",
+  "INT-EXPORT": "passed - snapshot drift since approval refuses export with STALE_SNAPSHOT (test_int_export_snapshot_change_requires_rereview)",
+  "INT-NOORIGIN": "passed - no attested approval -> draft only; approved export path refuses (test_int_r22_noorigin_draft_only)",
+  "INTEG-REVIEW-PROFILE": "passed - removing a mandatory review raises REVIEW_DUTY_REQUIRED even at low risk (test_integ_review_profile_refuses_removal, test_integ_review_profile_keeps_duties)",
+  "R3-21-01": "passed - fully specified intake reaches review with zero blockers (test_r3_21_01_full_intake_ready)",
+  "R3-21-02": "passed - missing completion oracle is a critical blocker; no dispatch (test_r3_21_02_no_oracle_blocks)",
+  "R3-21-03": "passed - conflicting statements coexist; unresolved_conflicts blocks readiness (test_r3_21_03_conflicts_preserved)",
+  "R3-21-04": "passed - model scope expansion without user authorization raises UNAUTHORIZED_DECISION; authorized path records decided (test_r3_21_04_scope_expansion_needs_approval)",
+  "R3-21-05": "passed - rescind preserves history and returns the dependent closure (plan, review) (test_r3_21_05_correction_invalidates_dependents)",
+  "R3-21-06": "not_run - live_dcode layer; requires a real dcode interview session (WP23 layer)"
+ },
+ "commands": [
+  {
+   "argv": "uv run --no-sync python -m pytest tests/cyrano_product/test_wp08_product.py -q",
+   "exit": 0,
+   "result": "16 passed"
+  },
+  {
+   "argv": "uv run --no-sync python -m pytest tests/cyrano_product/ -q",
+   "exit": 0,
+   "result": "435 passed"
+  },
+  {
+   "argv": ".venv/bin/ruff check --config cyrano/configs/quality/ruff.toml deepagents_code/cyrano/interview/ tests/cyrano_product/test_wp08_product.py",
+   "exit": 0
+  },
+  {
+   "argv": ".venv/bin/ty check deepagents_code/cyrano/interview/",
+   "exit": 0
+  },
+  {
+   "argv": "basedpyright deepagents_code/cyrano/interview/",
+   "exit": 0,
+   "result": "0 errors, warnings only (pre-existing unused-param baseline)"
+  }
+ ],
+ "errors": [],
+ "blocked": [],
+ "explicit_blocks": [],
+ "not_established": [
+  "R3-21-06 live interview inside real dcode remains not_run (live_dcode layer)",
+  "worker dispatch is binding/validation only - real facilitator/critic processes are provided by the plugin runtime, not this layer"
+ ],
+ "review_findings": [],
+ "authority_scope": "interview worker-result admission, blind-review scope, contract compile, and approval-bound export verified at component level over the real ledger",
+ "next_wp_impact": "WP09 workflow dispatch consumes approved ContractBundle exports; WP13 events consume ReviewLedger outcomes"
+}
