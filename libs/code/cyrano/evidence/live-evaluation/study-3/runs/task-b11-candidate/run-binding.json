@@ -1,0 +1,19 @@
+{
+  "run_id": "task-b11-candidate",
+  "manifest_id": "sha256:3b9892415bd99a7f9a25596834a3f63e703b1f6210e3f0fe37bd738a2d02d4c5",
+  "model": "openrouter:deepseek/deepseek-v4.1-flash",
+  "provider_routing": {
+    "only": [
+      "DeepInfra"
+    ],
+    "allow_fallbacks": false,
+    "require_parameters": true
+  },
+  "seed_digest": "sha256:66a6477d8554421293ce51a3d7567d3af6b9819b5b30118378ecedf8963c3239",
+  "profile_digest": "sha256:3c7fbb9fd1ce6bf06353f0e19885adc22c640b52e4e7c2f8a06968ac67578b97",
+  "workspace_digest": "sha256:84ec1a83f2c443843e66cf90982c9d77c538236810bc6890b3d7b2d261642e36",
+  "memory_binding": {
+    "memory_id": "widgetbox-convention-r3",
+    "content_digest": "sha256:e779a8320a208ec21fd2f79104f9ce3c7317c05fe2ec1d51020376871715cfeb"
+  }
+}

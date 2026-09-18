@@ -1,0 +1,15 @@
+{
+  "run_id": "task-b9-baseline",
+  "manifest_id": "sha256:3b9892415bd99a7f9a25596834a3f63e703b1f6210e3f0fe37bd738a2d02d4c5",
+  "model": "openrouter:deepseek/deepseek-v4.1-flash",
+  "provider_routing": {
+    "only": [
+      "DeepInfra"
+    ],
+    "allow_fallbacks": false,
+    "require_parameters": true
+  },
+  "seed_digest": "sha256:fcff0c17364e303bda49c1aa27db440d7715b30c9e8ea5e033625a57000c8802",
+  "profile_digest": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "workspace_digest": "sha256:fa2d5e011a0ad8dc487cc675d46732ae4979549ebf6dc7c3911e60c359774cfb"
+}

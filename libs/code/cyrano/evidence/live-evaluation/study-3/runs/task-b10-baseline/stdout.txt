@@ -1,0 +1,30 @@
+Running task non-interactively...
+App: v0.1.70 | Agent: wp23r3 | Model: deepseek/deepseek-v4.1-flash | Thread: 
+01a0b316-aa7c-7c20-88d6-1502a261dc81
+Starting LangGraph server...
+✓ Server ready
+🔧 Calling tool: ls
+🔧 Calling tool: ls
+🔧 Calling tool: ls
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: grep
+🔧 Calling tool: grep
+🔧 Calling tool: edit_file
+🔧 Calling tool: edit_file
+Marked `upsilon` as deprecated:
+- `meta/upsilon.json`: `"lifecycle": "stable"` → `"lifecycle": "deprecated"`
+- `widgetbox/upsilon.py`: added a deprecation note to the module docstring
+
+✓ Task completed
+
+Usage Stats
+Provider    Model                         Reqs  InputTok  OutputTok  Cost  
+openrouter  deepseek/deepseek-v4.1-flash     6     70.7K       1.4K     —  
+
+Agent active  1m 6s

@@ -1,6 +1,6 @@
 {
   "kind": "sealed_experiment_manifest",
-  "status": "sealed_not_executed",
+  "status": "executed_inconclusive",
   "study_id": "wp23-live-effectiveness-3",
   "evidence_dir": "evidence/live-evaluation/study-3/",
   "manifest": {
@@ -151,5 +151,21 @@
       "baseline_retained": true
     },
     "archived": "manifest.executed_inconclusive-sha256:6d5f88af.json"
+  },
+  "result": "evidence/live-evaluation/study-3/study-result.json",
+  "execution_classification": {
+    "verdict": "inconclusive",
+    "authoritative": true,
+    "valid_measurement": true,
+    "findings": {
+      "baselines": "all 5 baseline holdouts failed (B7-B11) \u2014 hidden contract non-inferable",
+      "candidates": "passed B10, B11; failed B7, B8, B9 despite valid memory provisioning",
+      "gates": "candidate-integrity gates passed for B7/B8/B9/B10/B11; mount-namespace confinement held on all 12 runs",
+      "improvement": "proposed from Task A evidence only; approved, activated, bound, provisioned (receipt sha256:bf04cb39 verified)",
+      "observed_delta": 0.4,
+      "sealed_margin": "not met \u2014 delta < required margin; verdict remains INCONCLUSIVE",
+      "primary_bottleneck": "memory application/adherence \u2014 governed memory conflicted with visible legacy v1 patterns and the model copied v1 on B7/B8/B9 (see workspace diffs)"
+    },
+    "not_a_provisioning_failure": true
   }
 }

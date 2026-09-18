@@ -1,0 +1,34 @@
+Running task non-interactively...
+App: v0.1.70 | Agent: wp23r3 | Model: deepseek/deepseek-v4.1-flash | Thread: 
+01a0b315-b481-70d0-8d97-e2c91821fb07
+Starting LangGraph server...
+✓ Server ready
+🔧 Calling tool: ls
+🔧 Calling tool: ls
+🔧 Calling tool: ls
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: grep
+🔧 Calling tool: edit_file
+🔧 Calling tool: delete
+🔧 Calling tool: delete
+Removed the `tau` widget from the package:
+
+- Deleted `widgetbox/tau.py`
+- Deleted `meta/tau.json`
+- Updated `widgetbox/registry.py` to `REGISTERED = ("alpha",)`
+
+No other references to `tau` remain.
+
+✓ Task completed
+
+Usage Stats
+Provider    Model                         Reqs  InputTok  OutputTok  Cost  
+openrouter  deepseek/deepseek-v4.1-flash     6     70.2K        952     —  
+
+Agent active  28.4s

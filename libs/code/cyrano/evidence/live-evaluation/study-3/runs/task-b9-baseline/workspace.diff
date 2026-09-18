@@ -1,0 +1,28 @@
+diff -ruN /tmp/wp23-live-study-3/task-b9-baseline/seed/meta/tau.json /tmp/wp23-live-study-3/task-b9-baseline/workspace/meta/tau.json
+--- /tmp/wp23-live-study-3/task-b9-baseline/seed/meta/tau.json	2026-09-18 13:50:30.783570554 +0900
++++ /tmp/wp23-live-study-3/task-b9-baseline/workspace/meta/tau.json	1970-01-01 09:00:00.000000000 +0900
+@@ -1,6 +0,0 @@
+-{
+-  "name": "tau",
+-  "schema": "widgetbox.sidecar/1",
+-  "lifecycle": "stable",
+-  "owners": ["team-widgets"]
+-}
+diff -ruN /tmp/wp23-live-study-3/task-b9-baseline/seed/widgetbox/registry.py /tmp/wp23-live-study-3/task-b9-baseline/workspace/widgetbox/registry.py
+--- /tmp/wp23-live-study-3/task-b9-baseline/seed/widgetbox/registry.py	2026-09-18 13:50:30.783570554 +0900
++++ /tmp/wp23-live-study-3/task-b9-baseline/workspace/widgetbox/registry.py	2026-09-18 14:55:57.904776197 +0900
+@@ -1,3 +1,3 @@
+ """Module registry; every widget module must be listed."""
+ 
+-REGISTERED = ("alpha", "tau")
++REGISTERED = ("alpha",)
+diff -ruN /tmp/wp23-live-study-3/task-b9-baseline/seed/widgetbox/tau.py /tmp/wp23-live-study-3/task-b9-baseline/workspace/widgetbox/tau.py
+--- /tmp/wp23-live-study-3/task-b9-baseline/seed/widgetbox/tau.py	2026-09-18 13:50:30.779903888 +0900
++++ /tmp/wp23-live-study-3/task-b9-baseline/workspace/widgetbox/tau.py	1970-01-01 09:00:00.000000000 +0900
+@@ -1,6 +0,0 @@
+-"""Widget tau."""
+-
+-
+-def render() -> str:
+-    """Render tau."""
+-    return "tau"

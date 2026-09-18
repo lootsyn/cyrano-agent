@@ -1,0 +1,265 @@
+{
+  "study_id": "wp23-live-effectiveness-3",
+  "manifest_id": "sha256:3b9892415bd99a7f9a25596834a3f63e703b1f6210e3f0fe37bd738a2d02d4c5",
+  "sealed_manifest_digest": "sha256:8a64920fbefb898e205d77f647ca987e5bcca39668a6fbf5d3ea5621bf39b7b0",
+  "invocation_note": "sealed invocation 'dcode -x <prompt> --workspace <ws>' is a notational placeholder; executed equivalent is 'dcode -n <prompt>' with cwd=<ws> (no -x/--workspace flag exists in deepagents-code 0.1.70)",
+  "totals": {
+    "runs": 12,
+    "requests": 88,
+    "tokens": 1123638,
+    "cost_usd": 0.233663
+  },
+  "pairs": [
+    {
+      "pair_id": "pair-a",
+      "family": "learn-episode",
+      "complete": false,
+      "baseline": "unknown",
+      "candidate": "fail"
+    },
+    {
+      "pair_id": "pair-b10",
+      "family": "convention-apply",
+      "complete": true,
+      "baseline": "fail",
+      "candidate": "pass"
+    },
+    {
+      "pair_id": "pair-b11",
+      "family": "convention-apply",
+      "complete": true,
+      "baseline": "fail",
+      "candidate": "pass"
+    },
+    {
+      "pair_id": "pair-b7",
+      "family": "convention-apply",
+      "complete": true,
+      "baseline": "fail",
+      "candidate": "fail"
+    },
+    {
+      "pair_id": "pair-b8",
+      "family": "convention-apply",
+      "complete": true,
+      "baseline": "fail",
+      "candidate": "fail"
+    },
+    {
+      "pair_id": "pair-b9",
+      "family": "convention-apply",
+      "complete": true,
+      "baseline": "fail",
+      "candidate": "fail"
+    },
+    {
+      "pair_id": "pair-improvement",
+      "family": "learn-episode",
+      "complete": false,
+      "baseline": "unknown",
+      "candidate": "fail"
+    }
+  ],
+  "study": {
+    "permit_id": "sha256:2015a2476c480063aaa301783fe4589507f9c3c0b9a7672022b2731864e1eb5d",
+    "settle": {
+      "manifest_id": "sha256:3b9892415bd99a7f9a25596834a3f63e703b1f6210e3f0fe37bd738a2d02d4c5",
+      "planned_pairs": 5,
+      "actual_pairs": 5,
+      "incomplete_pairs": 2,
+      "denominator_intact": false,
+      "nondeterministic_provider": true
+    },
+    "spent_units": 1123638
+  },
+  "verdict": {
+    "manifest_id": "sha256:3b9892415bd99a7f9a25596834a3f63e703b1f6210e3f0fe37bd738a2d02d4c5",
+    "scope": "manifest_bound_no_generalization",
+    "verdict": "inconclusive",
+    "eligible_for_review": false,
+    "reason": "uncertain effect",
+    "items": {
+      "3-1": "evaluated",
+      "3-2": "evaluated",
+      "3-3": "evaluated",
+      "3-4": "evaluated",
+      "4-1": "evaluated",
+      "4-2": "evaluated",
+      "4-3": "evaluated",
+      "4-4": "evaluated"
+    },
+    "official_score": null,
+    "analysis": {
+      "verdict": "inconclusive",
+      "completed_pairs": 5,
+      "planned_pairs": 5,
+      "families": [
+        {
+          "family": "convention-apply",
+          "pairs": 5,
+          "delta": 0.4,
+          "interval": [
+            -0.402428535550879,
+            0.8548353397492139
+          ]
+        }
+      ]
+    },
+    "cost": {
+      "baseline_units": 434852,
+      "candidate_units": 688786,
+      "learning_overhead_units": 48500,
+      "missing_costs": 0,
+      "total_known": true,
+      "total_units": 1172138,
+      "net_savings_claim_allowed": false
+    },
+    "baseline_retained": true
+  },
+  "runs": [
+    {
+      "run_id": "task-a-candidate",
+      "completed": true,
+      "oracle_exit": 1,
+      "usage": {
+        "requests": 5,
+        "input_tokens": 56300,
+        "output_tokens": 586
+      },
+      "cost_usd": 0.011612,
+      "wall_seconds": 17.81
+    },
+    {
+      "run_id": "improvement",
+      "completed": true,
+      "oracle_exit": 1,
+      "usage": {
+        "requests": 4,
+        "input_tokens": 47300,
+        "output_tokens": 1200
+      },
+      "cost_usd": 0.01018,
+      "wall_seconds": 36.86
+    },
+    {
+      "run_id": "task-b7-baseline",
+      "completed": true,
+      "oracle_exit": 1,
+      "usage": {
+        "requests": 6,
+        "input_tokens": 69400,
+        "output_tokens": 1300
+      },
+      "cost_usd": 0.01466,
+      "wall_seconds": 31.73
+    },
+    {
+      "run_id": "task-b7-candidate",
+      "completed": true,
+      "oracle_exit": 1,
+      "usage": {
+        "requests": 5,
+        "input_tokens": 57500,
+        "output_tokens": 1100
+      },
+      "cost_usd": 0.01216,
+      "wall_seconds": 26.62
+    },
+    {
+      "run_id": "task-b8-baseline",
+      "completed": true,
+      "oracle_exit": 1,
+      "usage": {
+        "requests": 6,
+        "input_tokens": 70100,
+        "output_tokens": 1200
+      },
+      "cost_usd": 0.01474,
+      "wall_seconds": 25.17
+    },
+    {
+      "run_id": "task-b8-candidate",
+      "completed": true,
+      "oracle_exit": 1,
+      "usage": {
+        "requests": 7,
+        "input_tokens": 82800,
+        "output_tokens": 1400
+      },
+      "cost_usd": 0.0174,
+      "wall_seconds": 30.13
+    },
+    {
+      "run_id": "task-b9-baseline",
+      "completed": true,
+      "oracle_exit": 1,
+      "usage": {
+        "requests": 6,
+        "input_tokens": 70200,
+        "output_tokens": 952
+      },
+      "cost_usd": 0.014611,
+      "wall_seconds": 33.79
+    },
+    {
+      "run_id": "task-b9-candidate",
+      "completed": true,
+      "oracle_exit": 1,
+      "usage": {
+        "requests": 7,
+        "input_tokens": 82100,
+        "output_tokens": 1100
+      },
+      "cost_usd": 0.01708,
+      "wall_seconds": 25.92
+    },
+    {
+      "run_id": "task-b10-baseline",
+      "completed": true,
+      "oracle_exit": 1,
+      "usage": {
+        "requests": 6,
+        "input_tokens": 70700,
+        "output_tokens": 1400
+      },
+      "cost_usd": 0.01498,
+      "wall_seconds": 72.01
+    },
+    {
+      "run_id": "task-b10-candidate",
+      "completed": true,
+      "oracle_exit": 0,
+      "usage": {
+        "requests": 14,
+        "input_tokens": 201400,
+        "output_tokens": 6200
+      },
+      "cost_usd": 0.044,
+      "wall_seconds": 129.18
+    },
+    {
+      "run_id": "task-b11-baseline",
+      "completed": true,
+      "oracle_exit": 1,
+      "usage": {
+        "requests": 11,
+        "input_tokens": 146700,
+        "output_tokens": 2900
+      },
+      "cost_usd": 0.03108,
+      "wall_seconds": 73.72
+    },
+    {
+      "run_id": "task-b11-candidate",
+      "completed": true,
+      "oracle_exit": 0,
+      "usage": {
+        "requests": 11,
+        "input_tokens": 146800,
+        "output_tokens": 3000
+      },
+      "cost_usd": 0.03116,
+      "wall_seconds": 54.93
+    }
+  ]
+}

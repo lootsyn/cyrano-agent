@@ -1,0 +1,13 @@
+diff -ruN /tmp/wp23-live-study-3/task-b10-candidate/seed/meta/upsilon.json /tmp/wp23-live-study-3/task-b10-candidate/workspace/meta/upsilon.json
+--- /tmp/wp23-live-study-3/task-b10-candidate/seed/meta/upsilon.json	2026-09-18 13:50:30.783570554 +0900
++++ /tmp/wp23-live-study-3/task-b10-candidate/workspace/meta/upsilon.json	2026-09-18 15:00:02.490528541 +0900
+@@ -1,6 +1,7 @@
+ {
+   "name": "upsilon",
+-  "schema": "widgetbox.sidecar/1",
+-  "lifecycle": "stable",
++  "schema": "widgetbox.sidecar/2",
++  "lifecycle": "deprecated",
++  "compat": "widgetbox/2",
+   "owners": ["team-widgets"]
+ }

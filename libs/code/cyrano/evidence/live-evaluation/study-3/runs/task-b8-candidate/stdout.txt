@@ -1,0 +1,37 @@
+Running task non-interactively...
+App: v0.1.70 | Agent: wp23r3 | Model: deepseek/deepseek-v4.1-flash | Thread: 
+01a0b315-38a4-7da1-82de-ebaeb06a4bc9
+Starting LangGraph server...
+✓ Server ready
+🔧 Calling tool: ls
+🔧 Calling tool: ls
+🔧 Calling tool: ls
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: grep
+🔧 Calling tool: write_file
+🔧 Calling tool: delete
+🔧 Calling tool: edit_file
+🔧 Calling tool: write_file
+🔧 Calling tool: delete
+🔧 Calling tool: grep
+🔧 Calling tool: ls
+🔧 Calling tool: ls
+Renamed `alpha` → `rho` across the package:
+
+- `widgetbox/alpha.py` → `widgetbox/rho.py` (module docstring, `render()` docstring, and return value updated)
+- `widgetbox/registry.py`: `REGISTERED = ("rho",)`
+- `meta/alpha.json` → `meta/rho.json` (with `"name": "rho"`)
+
+No remaining references to `alpha`.
+
+✓ Task completed
+
+Usage Stats
+Provider    Model                         Reqs  InputTok  OutputTok  Cost  
+openrouter  deepseek/deepseek-v4.1-flash     7     82.8K       1.4K     —  
+
+Agent active  24.8s

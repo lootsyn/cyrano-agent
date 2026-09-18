@@ -1,0 +1,23 @@
+diff -ruN /tmp/wp23-live-study-3/task-b10-baseline/seed/meta/upsilon.json /tmp/wp23-live-study-3/task-b10-baseline/workspace/meta/upsilon.json
+--- /tmp/wp23-live-study-3/task-b10-baseline/seed/meta/upsilon.json	2026-09-18 13:50:30.783570554 +0900
++++ /tmp/wp23-live-study-3/task-b10-baseline/workspace/meta/upsilon.json	2026-09-18 14:57:50.053903509 +0900
+@@ -1,6 +1,6 @@
+ {
+   "name": "upsilon",
+   "schema": "widgetbox.sidecar/1",
+-  "lifecycle": "stable",
++  "lifecycle": "deprecated",
+   "owners": ["team-widgets"]
+ }
+diff -ruN /tmp/wp23-live-study-3/task-b10-baseline/seed/widgetbox/upsilon.py /tmp/wp23-live-study-3/task-b10-baseline/workspace/widgetbox/upsilon.py
+--- /tmp/wp23-live-study-3/task-b10-baseline/seed/widgetbox/upsilon.py	2026-09-18 13:50:30.783570554 +0900
++++ /tmp/wp23-live-study-3/task-b10-baseline/workspace/widgetbox/upsilon.py	2026-09-18 14:57:50.053903509 +0900
+@@ -1,4 +1,7 @@
+-"""Widget upsilon."""
++"""Widget upsilon.
++
++Deprecated: this widget is no longer recommended for use.
++"""
+ 
+ 
+ def render() -> str:

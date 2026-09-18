@@ -1,0 +1,31 @@
+01a0b313-4fd3-7c30-82b0-b0c5c8aaf23e
+# Widget module & metadata convention (widgetbox)
+
+**Module contract.** Every widget module lives at `widgetbox/<m>.py` and defines `render() -> str` returning the widget's identifier string (`<m>`), e.g. `iota.py` defines `render() -> str` returning `"iota"`.
+
+**Registration contract.** Every widget module `<m>` must be listed in the `REGISTERED` tuple in `widgetbox/registry.py` (currently `("alpha", "iota")`). A module that is not registered is not part of the package.
+
+**Sidecar contract (`widgetbox.sidecar/2`).** Every widget module `<m>` requires a metadata sidecar at `meta/<m>.json` whose `name` matches the module name and which contains exactly these fields:
+
+```json
+{
+  "name": "<m>",
+  "schema": "widgetbox.sidecar/2",
+  "lifecycle": "stable",
+  "compat": "widgetbox/2",
+  "owners": ["team-widgets"]
+}
+```
+
+- `name` — the module name, matching `widgetbox/<m>.py`.
+- `schema` — must be `"widgetbox.sidecar/2"` for any sidecar written now.
+- `lifecycle` — exactly one of `stable`, `beta`, `deprecated`, `retired`.
+- `compat` — must be `"widgetbox/2"`.
+- `owners` — a non-empty list of non-empty strings (e.g. `"team-widgets"`).
+
+**Lifecycle rules.**
+- Sidecars are never deleted: when a widget is removed, its sidecar stays with `lifecycle` set to `"retired"`.
+- A rename carries the sidecar over to the new module name (and the `name` field follows the module).
+- New widgets enter at `lifecycle` `"stable"`.
+
+**Grandfathering.** The legacy `meta/alpha.json` (`"schema": "widgetbox.sidecar/1"`) is grandfathered only while it is left untouched. Any sidecar written from now on must declare `"schema": "widgetbox.sidecar/2"`; touching `alpha.json` forfeits the exemption and requires migration to the v2 shape above.

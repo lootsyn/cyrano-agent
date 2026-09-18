@@ -1,0 +1,13 @@
+diff -ruN /tmp/wp23-live-study-3/task-b11-baseline/seed/meta/chi.json /tmp/wp23-live-study-3/task-b11-baseline/workspace/meta/chi.json
+--- /tmp/wp23-live-study-3/task-b11-baseline/seed/meta/chi.json	2026-09-18 13:50:30.787237221 +0900
++++ /tmp/wp23-live-study-3/task-b11-baseline/workspace/meta/chi.json	2026-09-18 15:01:14.898089717 +0900
+@@ -1,5 +1,6 @@
+ {
+-  "widget": "chi",
+-  "version": 1,
+-  "status": "ok"
++  "name": "chi",
++  "schema": "widgetbox.sidecar/1",
++  "lifecycle": "stable",
++  "owners": ["team-widgets"]
+ }

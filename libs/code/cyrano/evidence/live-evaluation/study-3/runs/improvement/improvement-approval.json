@@ -1,0 +1,16 @@
+{
+  "candidate_id": "sha256:12e7d08d0ec1dc8a2d21e49bf459620951aabb7173bd3483dbe45045f133f663",
+  "memory_id": "widgetbox-convention-r3",
+  "request_id": "req1",
+  "decision": "approved",
+  "content_digest": "sha256:e779a8320a208ec21fd2f79104f9ce3c7317c05fe2ec1d51020376871715cfeb",
+  "receipt_digest": "sha256:bf04cb39f36fba1f73a1ba232650d78dc63ebf7f91dbd60236acf57445084a88",
+  "receipt_fields": {
+    "subject": "sha256:12e7d08d0ec1dc8a2d21e49bf459620951aabb7173bd3483dbe45045f133f663",
+    "nonce": "wp23-live-3",
+    "actor": "study-operator",
+    "client_event_id": "wp23-live-3-approve-1",
+    "purpose": "improvement_approval"
+  },
+  "memory_activated": true
+}
