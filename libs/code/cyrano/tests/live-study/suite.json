@@ -2,13 +2,21 @@
   "schema_version": "cyrano.live-study/1",
   "status": "sealed_inputs_not_executed",
   "families": ["learn-episode", "convention-apply"],
-  "holdout": ["task-b-holdout"],
-  "min_pairs": 1,
+  "holdout": [
+    "task-b1-holdout",
+    "task-b2-holdout",
+    "task-b3-holdout"
+  ],
+  "min_pairs": 3,
   "ordering": [
     "task-a-candidate",
     "improvement",
-    "task-b-baseline",
-    "task-b-candidate"
+    "task-b1-baseline",
+    "task-b1-candidate",
+    "task-b2-baseline",
+    "task-b2-candidate",
+    "task-b3-baseline",
+    "task-b3-candidate"
   ],
   "tasks": {
     "task-a": {
@@ -16,26 +24,52 @@
       "arm": "candidate",
       "prompt": "In the widgetbox package, add a new widget module `beta` that defines `render() -> str` returning the string 'beta'. Edit files only; do not run tests.",
       "oracle": "oracle/check_registry.py",
+      "workspace": "repo",
       "expected_episode": "first attempt fails the registry convention"
     },
-    "task-b": {
+    "task-b1": {
+      "pair_id": "pair-b1",
       "family": "convention-apply",
-      "holdout": "task-b-holdout",
+      "holdout": "task-b1-holdout",
+      "operation": "add",
       "arms": ["baseline", "candidate"],
       "prompt": "In the widgetbox package, add a new widget module `gamma` that defines `render() -> str` returning the string 'gamma'. Edit files only; do not run tests.",
-      "oracle": "oracle/check_registry.py"
+      "oracle": "oracle/check_registry.py",
+      "workspace": "repo"
+    },
+    "task-b2": {
+      "pair_id": "pair-b2",
+      "family": "convention-apply",
+      "holdout": "task-b2-holdout",
+      "operation": "rename",
+      "arms": ["baseline", "candidate"],
+      "prompt": "In the widgetbox package, rename the widget `alpha` to `delta`, keeping its public `render()` contract. Edit files only; do not run tests.",
+      "oracle": "oracle/check_registry.py",
+      "workspace": "repo"
+    },
+    "task-b3": {
+      "pair_id": "pair-b3",
+      "family": "convention-apply",
+      "holdout": "task-b3-holdout",
+      "operation": "repair",
+      "arms": ["baseline", "candidate"],
+      "prompt": "The widgetbox package contains a `zeta` module that does not conform to the package's own conventions. Repair the package so that `zeta` is a proper widget. Edit files only; do not run tests.",
+      "oracle": "oracle/check_registry.py",
+      "workspace": "repo",
+      "workspace_overlay": "overlays/task-b3"
     }
   },
   "primary_metric": "first_pass_oracle_success",
   "quality_margin": 0.5,
   "budget": {
-    "budget_units": 2500000,
+    "budget_units": 5000000,
     "unit": "token",
-    "max_model_calls": 120,
+    "max_model_calls": 240,
     "max_cost_usd": 10.0
   },
   "timeout_seconds_per_run": 1800,
   "retry_policy": "no retry when an external effect is uncertain; a run aborted before its first model call may be re-issued at most once",
-  "workspace": "per-run byte-identical copy of repo/ under an owned temp root; oracle/ is never copied into the agent workspace",
+  "workspace": "per-run byte-identical copy of repo/ under an owned temp root, plus the task's frozen overlay when declared; oracle/ is never copied into the agent workspace",
+  "completion_rule": "PASS requires all three holdout pairs completed; an incomplete pair is never discarded or replaced for an unfavorable outcome",
   "scope": "this fixture study only; no cross-project or cross-model generalization"
 }

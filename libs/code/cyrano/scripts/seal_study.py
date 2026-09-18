@@ -88,6 +88,7 @@ def build_spec() -> dict[str, object]:
                 "suite": suite,
                 "repo": _tree_digest(STUDY / "repo"),
                 "oracle": _tree_digest(STUDY / "oracle"),
+                "overlays": _tree_digest(STUDY / "overlays"),
             }
         ),
         "runtime_digest": _runtime_digest(),
@@ -150,6 +151,7 @@ def main() -> int:
             "baseline_arm": "tests/live-study/arms/baseline.json",
             "candidate_arm": "tests/live-study/arms/candidate.json",
             "fixture_repo": "tests/live-study/repo/",
+            "overlays": "tests/live-study/overlays/",
             "oracle": "tests/live-study/oracle/",
             "policy": "configs/broker-policy.json",
         },

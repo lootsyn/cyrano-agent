@@ -65,21 +65,28 @@
   "run_order": [
     "task-a-candidate",
     "improvement",
-    "task-b-baseline",
-    "task-b-candidate"
+    "task-b1-baseline",
+    "task-b1-candidate",
+    "task-b2-baseline",
+    "task-b2-candidate",
+    "task-b3-baseline",
+    "task-b3-candidate"
   ],
   "controls": {
     "same_task_text_both_arms": true,
+    "same_starting_state_both_arms": true,
     "same_model_both_arms": true,
     "same_parameters_both_arms": true,
+    "same_tool_availability_both_arms": true,
     "same_provider_routing_both_arms": true,
     "oracle_outside_agent_scope": true,
-    "byte_identical_workspace_copies": true
+    "byte_identical_workspace_copies": true,
+    "candidate_differs_only_by_approved_improvement": true
   },
   "caps": {
-    "max_runs": 4,
-    "max_model_calls": 120,
-    "max_tokens": 2500000,
+    "max_runs": 8,
+    "max_model_calls": 240,
+    "max_tokens": 5000000,
     "max_cost_usd": 10.0,
     "timeout_seconds_per_run": 1800
   }

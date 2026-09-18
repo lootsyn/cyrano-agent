@@ -10,6 +10,7 @@ import hashlib
 import importlib
 import json
 import sys
+from dataclasses import replace
 from pathlib import Path
 
 import pytest
@@ -313,6 +314,46 @@ def test_wp23_i01_same_release_comparison_no_model_specialization():
     assert manifest["model_digest"].startswith("sha256:")
     assert manifest["baseline_digest"] != manifest["candidate_digest"]
     assert manifest["nondeterministic_provider"] is True
+    assert manifest["min_pairs"] == 3
+    assert len(manifest["holdout"]) == 3
+
+
+def test_three_pairs_under_sealed_margin_aggregate_honestly():
+    """The aggregate verdict follows the registered margin rules."""
+    manifest = seal_experiment(_spec(quality_margin=0.5, min_pairs=3))
+    strong = _ledger(manifest, _winning_trials(3))
+    review = review_effectiveness(manifest, strong, _grounded_items())
+    assert review["verdict"] == "improved"
+    partial = _ledger(
+        manifest,
+        [
+            TrialResult(
+                "p0",
+                "convention-apply",
+                "baseline",
+                "completed",
+                "pass",
+                2,
+                0,
+            ),
+            TrialResult(
+                "p0",
+                "convention-apply",
+                "candidate",
+                "completed",
+                "fail",
+                2,
+                1,
+            ),
+            *[
+                replace(t, pair_id=f"p{i + 1}")
+                for i, t in enumerate(_winning_trials(2))
+            ],
+        ],
+    )
+    review = review_effectiveness(manifest, partial, _grounded_items())
+    assert review["verdict"] == "inconclusive"
+    assert review["baseline_retained"] is True
 
 
 def test_provider_routing_is_pinned_and_fail_closed():

@@ -1,10 +1,11 @@
 """Trusted evaluator for the widgetbox convention.
 
 Every widgetbox module other than ``__init__`` and ``registry`` must
-be listed in ``registry.REGISTERED`` and carry a module docstring.
-This file lives outside the agent-editable scope; the model cannot
-edit the oracle. Usage: ``python check_registry.py <repo-root>`` —
-exit 0 pass, 1 convention violation, 2 usage error.
+be listed in ``registry.REGISTERED`` and carry a module docstring;
+every registered name must name a module that exists. This file
+lives outside the agent-editable scope; the model cannot edit the
+oracle. Usage: ``python check_registry.py <repo-root>`` — exit 0
+pass, 1 convention violation, 2 usage error.
 """
 
 import ast
@@ -17,9 +18,7 @@ def main(argv: list[str]) -> int:
     if len(argv) != 2:
         return 2
     root = Path(argv[1])
-    tree = ast.parse(
-        (root / "widgetbox" / "registry.py").read_text()
-    )
+    tree = ast.parse((root / "widgetbox" / "registry.py").read_text())
     registered: set[str] = set()
     for node in tree.body:
         if (
@@ -35,6 +34,10 @@ def main(argv: list[str]) -> int:
     missing = sorted(modules - registered)
     if missing:
         print(f"UNREGISTERED_MODULE: {missing[0]}")
+        return 1
+    stale = sorted(registered - modules)
+    if stale:
+        print(f"STALE_REGISTRATION: {stale[0]}")
         return 1
     undocumented = sorted(
         m

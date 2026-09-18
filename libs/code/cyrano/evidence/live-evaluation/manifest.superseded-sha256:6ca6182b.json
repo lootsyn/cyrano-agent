@@ -1,11 +1,11 @@
 {
   "kind": "sealed_experiment_manifest",
-  "status": "sealed_not_executed",
+  "status": "superseded",
   "manifest": {
-    "manifest_id": "sha256:ff0ae06902d9da113c5a238e4111fc14d112a6c08f2ff797d2b0eb4e4b9615fb",
+    "manifest_id": "sha256:6ca6182b2148c3fc088bade84f6adafcf1bfcd0efe4d2d3da2a5d81c2cf7dc32",
     "baseline_digest": "sha256:6f24305b2cf0cee7a6062b5171bcd9b7e159ca3f5482f1d82499dc206430a6b0",
     "candidate_digest": "sha256:4dc5c259c56749930324ed176fb1477bcb45c7ff6fe57ea7ea6d57d50528eabf",
-    "suite_digest": "sha256:bdf05c37478e2619d7cbbac5effccd32ba67c0d862d8ed6fe6757f1792a5f477",
+    "suite_digest": "sha256:dc17b52e8d55a418a4409dccb15012a91cf19368c2b7de28be4ad29e2d128cf9",
     "runtime_digest": "sha256:9f83d77b42dad1b7bf95c14764b764d8d5f6f3c288184109cca894354b0e7033",
     "plan_digest": "sha256:d9eae41b6dbd96b86561ac225e114aa06c2c5743eb0452c220f02dea68688fce",
     "families": [
@@ -93,9 +93,10 @@
     "timeout_seconds_per_run": 1800
   },
   "supersedes": {
-    "manifest_id": "sha256:6ca6182b2148c3fc088bade84f6adafcf1bfcd0efe4d2d3da2a5d81c2cf7dc32",
-    "sealed_manifest_digest": "sha256:4b6a436f6f21a01c1bbf0606fd7cbe87c9c7f018b37d642643cf541337a70f22",
-    "archived": "manifest.superseded-sha256:6ca6182b.json"
+    "manifest_id": "sha256:1aaef450d37c0f91dda259828501f5d32b4cddf6ccc0ac870149e0d98cc1a2d5",
+    "sealed_manifest_digest": "sha256:95c43f5a0ea8af2028e9209ba447f67f354aa912268a2113438dbc791631c4c2",
+    "archived": "manifest.superseded-sha256:1aaef450.json"
   },
-  "sealed_manifest_digest": "sha256:586d2b8ea96294586307f42453a78ed7fc7cae4c43f78b897a22abd204b7cc17"
+  "sealed_manifest_digest": "sha256:4b6a436f6f21a01c1bbf0606fd7cbe87c9c7f018b37d642643cf541337a70f22",
+  "superseded_by": "manifest.json"
 }
