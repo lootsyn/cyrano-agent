@@ -1,0 +1,38 @@
+{
+  "run_id": "task-b4-baseline",
+  "cmd": [
+    "/home/ubuntu/cyrano-agent-devin/libs/code/.venv/bin/dcode",
+    "-n",
+    "In the widgetbox package, remove the `sigma` widget so that the package no longer exposes it. Edit files only; do not run tests.",
+    "-a",
+    "wp23r2",
+    "-M",
+    "openrouter:deepseek/deepseek-v4.1-flash",
+    "--model-params",
+    "{\"temperature\": 0, \"max_retries\": 0, \"openrouter_provider\": {\"only\": [\"DeepInfra\"], \"allow_fallbacks\": false, \"require_parameters\": true}}",
+    "--max-retries",
+    "0",
+    "--no-mcp",
+    "--timeout",
+    "1500",
+    "--max-turns",
+    "25"
+  ],
+  "cwd": "/tmp/wp23-live-study-2/task-b4-baseline/workspace",
+  "exit_code": 0,
+  "aborted": false,
+  "completed": true,
+  "wall_seconds": 18.48,
+  "usage": {
+    "requests": 6,
+    "input_tokens": 68600,
+    "output_tokens": 714
+  },
+  "cost_usd": 0.014148,
+  "stdout_bytes": 813,
+  "stderr_bytes": 433,
+  "retried": false,
+  "oracle_exit": 0,
+  "oracle_text": "CONVENTION_OK",
+  "workspace_digest": "sha256:64ead3b1acc8b21ef7ada50850d3943d44c892791d28854c726743dcc08108c4"
+}

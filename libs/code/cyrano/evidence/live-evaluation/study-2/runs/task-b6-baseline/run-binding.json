@@ -1,0 +1,15 @@
+{
+  "run_id": "task-b6-baseline",
+  "manifest_id": "sha256:6d5f88af345c439129c745cb85faf245745062151f55e91d6dafa074fd73deda",
+  "model": "openrouter:deepseek/deepseek-v4.1-flash",
+  "provider_routing": {
+    "only": [
+      "DeepInfra"
+    ],
+    "allow_fallbacks": false,
+    "require_parameters": true
+  },
+  "seed_digest": "sha256:ea10ab0fb4c6a8e8e56c49d0f21caacbd6c8bcf141f2421b3a77e43b6e03b60a",
+  "profile_digest": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "workspace_digest": "sha256:4f5f2015be437f97e5e8b5b8bbe1bc14bede68a7e8a62103abee7021f2ce14e5"
+}

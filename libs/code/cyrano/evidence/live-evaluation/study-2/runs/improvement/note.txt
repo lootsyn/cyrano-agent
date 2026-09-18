@@ -1,0 +1,12 @@
+01a0b2c1-97b1-73a1-ae42-c322730e0f6d
+# Engineering Note — `widgetbox` widget module convention
+
+**Scope.** Applies to every widget module in the `widgetbox` package (e.g. `alpha.py`, `kappa.py`).
+
+**Rule.** A module is a valid widget module only if it satisfies both of the following:
+
+1. **Expose a module-level `render()` function.** Signature must be `render() -> str` — no arguments, returning `str`. This is the module's sole public entry point and its rendered value (e.g. `alpha.py` → `"alpha"`, `kappa.py` → `"kappa"`).
+
+2. **Be listed in `widgetbox/registry.py`.** Add the module's name to the `REGISTERED` tuple. The registry is the single source of truth and is **not** auto-discovered — registration is manual and mandatory. Current value: `REGISTERED = ("alpha", "kappa")`. A new module `foo.py` therefore requires adding `"foo"` to that tuple.
+
+**Invariant.** `REGISTERED` and the set of widget modules must stay in sync: no module may exist unregistered, and no entry may reference a missing module.

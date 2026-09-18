@@ -1,6 +1,6 @@
 {
   "kind": "sealed_experiment_manifest",
-  "status": "sealed_not_executed",
+  "status": "executed_inconclusive",
   "study_id": "wp23-live-effectiveness-2",
   "evidence_dir": "evidence/live-evaluation/study-2/",
   "manifest": {
@@ -144,5 +144,26 @@
     },
     "archived": "manifest.executed_inconclusive-sha256:ff0ae069.json"
   },
-  "sealed_manifest_digest": "sha256:2960ddcf4400a66f5ebd553399a141f2400e22140f81b2435b664cc090cac7b1"
+  "sealed_manifest_digest": "sha256:2960ddcf4400a66f5ebd553399a141f2400e22140f81b2435b664cc090cac7b1",
+  "executed_at": 1789705677,
+  "result": "live-evaluation/study-2/study-result.json",
+  "classification": {
+    "verdict": "inconclusive",
+    "kind": "valid_inconclusive",
+    "candidate_integrity_gates": {
+      "task-b4-candidate": "passed",
+      "task-b5-candidate": "passed",
+      "task-b6-candidate": "passed"
+    },
+    "improvement_lifecycle": "genuinely proposed, approved (receipt verified), activated (widgetbox-convention-r2), bound, and provisioned to every candidate arm",
+    "pairs": "all three holdout pairs completed valid baseline-vs-candidate comparisons",
+    "outcomes": {
+      "pair-b4": "pass/pass",
+      "pair-b5": "pass/pass",
+      "pair-b6": "pass/pass"
+    },
+    "measured_lift": 0.0,
+    "reason": "baseline already solved all three holdouts; no headroom for candidate lift",
+    "interpretation": "benchmark ceiling / discriminability limit, NOT a candidate-provisioning failure (unlike study 1)"
+  }
 }

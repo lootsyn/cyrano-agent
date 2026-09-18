@@ -1,0 +1,21 @@
+Running task non-interactively...
+App: v0.1.70 | Agent: wp23r2 | Model: deepseek/deepseek-v4.1-flash | Thread: 
+01a0b2c2-977e-7f60-92eb-8b88a151c15e
+Starting LangGraph server...
+✓ Server ready
+🔧 Calling tool: ls
+🔧 Calling tool: ls
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: edit_file
+Removed the nonexistent `"theta"` entry from `REGISTERED` in `widgetbox/registry.py`; it now lists only the actual widget module `"alpha"`.
+
+✓ Task completed
+
+Usage Stats
+Provider    Model                         Reqs  InputTok  OutputTok  Cost  
+openrouter  deepseek/deepseek-v4.1-flash     5     56.4K        524     —  
+
+Agent active  10.6s

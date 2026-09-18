@@ -1,0 +1,9 @@
+Warning: --model-params max_retries is ignored; dcode owns the retry budget. Use --max-retries or [retries].max_retries in config.toml instead.
+Using profile /tmp/wp23-live-study-2/task-b6-candidate/profile (DEEPAGENTS_HOME)
+Warning: Web search is disabled — TAVILY_API_KEY is not set.
+Get a key at https://tavily.com
+
+To suppress, edit /tmp/wp23-live-study-2/task-b6-candidate/profile/config.toml:
+[warnings]
+suppress = ["tavily"]
+

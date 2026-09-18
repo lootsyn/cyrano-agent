@@ -1,0 +1,38 @@
+{
+  "run_id": "task-b5-baseline",
+  "cmd": [
+    "/home/ubuntu/cyrano-agent-devin/libs/code/.venv/bin/dcode",
+    "-n",
+    "The widgetbox package's registry lists a widget that does not exist. Make `registry.py` consistent with the package's conventions. Edit files only; do not run tests.",
+    "-a",
+    "wp23r2",
+    "-M",
+    "openrouter:deepseek/deepseek-v4.1-flash",
+    "--model-params",
+    "{\"temperature\": 0, \"max_retries\": 0, \"openrouter_provider\": {\"only\": [\"DeepInfra\"], \"allow_fallbacks\": false, \"require_parameters\": true}}",
+    "--max-retries",
+    "0",
+    "--no-mcp",
+    "--timeout",
+    "1500",
+    "--max-turns",
+    "25"
+  ],
+  "cwd": "/tmp/wp23-live-study-2/task-b5-baseline/workspace",
+  "exit_code": 0,
+  "aborted": false,
+  "completed": true,
+  "wall_seconds": 16.42,
+  "usage": {
+    "requests": 5,
+    "input_tokens": 56400,
+    "output_tokens": 524
+  },
+  "cost_usd": 0.011594,
+  "stdout_bytes": 732,
+  "stderr_bytes": 433,
+  "retried": false,
+  "oracle_exit": 0,
+  "oracle_text": "CONVENTION_OK",
+  "workspace_digest": "sha256:64ead3b1acc8b21ef7ada50850d3943d44c892791d28854c726743dcc08108c4"
+}

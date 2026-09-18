@@ -588,7 +588,11 @@ def main() -> int:
                 agent=AGENT,
                 arms_identical=arms_identical,
             )
-            gate_ev = {"run_id": name, "gate": "failed", "failures": fails}
+            gate_ev = {
+                "run_id": name,
+                "gate": "failed" if fails else "passed",
+                "failures": fails,
+            }
             (ev_dir / "integrity-gate.json").write_text(
                 json.dumps(gate_ev, indent=2)
             )

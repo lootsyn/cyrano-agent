@@ -1,0 +1,18 @@
+diff -ruN /tmp/wp23-live-study-2/task-a-candidate/seed/widgetbox/kappa.py /tmp/wp23-live-study-2/task-a-candidate/workspace/widgetbox/kappa.py
+--- /tmp/wp23-live-study-2/task-a-candidate/seed/widgetbox/kappa.py	1970-01-01 09:00:00.000000000 +0900
++++ /tmp/wp23-live-study-2/task-a-candidate/workspace/widgetbox/kappa.py	2026-09-18 13:23:41.020122901 +0900
+@@ -0,0 +1,6 @@
++"""Kappa widget."""
++
++
++def render() -> str:
++    """Render the kappa widget."""
++    return "kappa"
+diff -ruN /tmp/wp23-live-study-2/task-a-candidate/seed/widgetbox/registry.py /tmp/wp23-live-study-2/task-a-candidate/workspace/widgetbox/registry.py
+--- /tmp/wp23-live-study-2/task-a-candidate/seed/widgetbox/registry.py	2026-09-18 10:26:48.135279065 +0900
++++ /tmp/wp23-live-study-2/task-a-candidate/workspace/widgetbox/registry.py	2026-09-18 13:23:41.020122901 +0900
+@@ -1,3 +1,3 @@
+ """Module registry; every widget module must be listed."""
+ 
+-REGISTERED = ("alpha",)
++REGISTERED = ("alpha", "kappa")

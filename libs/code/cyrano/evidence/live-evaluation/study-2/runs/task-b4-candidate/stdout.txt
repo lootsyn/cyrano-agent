@@ -1,0 +1,25 @@
+Running task non-interactively...
+App: v0.1.70 | Agent: wp23r2 | Model: deepseek/deepseek-v4.1-flash | Thread: 
+01a0b2c2-3c49-78f3-a09b-e8666e6d1eee
+Starting LangGraph server...
+✓ Server ready
+🔧 Calling tool: ls
+🔧 Calling tool: ls
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: ls
+🔧 Calling tool: edit_file
+🔧 Calling tool: delete
+🔧 Calling tool: grep
+Removed the `sigma` widget: deleted `widgetbox/sigma.py` and dropped `"sigma"` from `REGISTERED` in `widgetbox/registry.py`. No remaining references to sigma in the package.
+
+✓ Task completed
+
+Usage Stats
+Provider    Model                         Reqs  InputTok  OutputTok  Cost  
+openrouter  deepseek/deepseek-v4.1-flash     7     81.2K        985     —  
+
+Agent active  16.5s

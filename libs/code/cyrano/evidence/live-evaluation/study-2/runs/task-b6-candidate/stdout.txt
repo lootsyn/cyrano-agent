@@ -1,0 +1,30 @@
+Running task non-interactively...
+App: v0.1.70 | Agent: wp23r2 | Model: deepseek/deepseek-v4.1-flash | Thread: 
+01a0b2c3-a4ce-7af2-afa5-58d0086c4ddd
+Starting LangGraph server...
+✓ Server ready
+🔧 Calling tool: ls
+🔧 Calling tool: read_file
+🔧 Calling tool: ls
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: read_file
+🔧 Calling tool: glob
+🔧 Calling tool: edit_file
+🔧 Calling tool: read_file
+Added the missing module docstring to `eta.py`, matching the convention used by every other module in the package (`__init__.py`, `alpha.py`, `registry.py`) and by `alpha.py` specifically:
+
+```python
+"""Eta widget."""
+```
+
+`eta.py` now mirrors `alpha.py`'s structure — module docstring, then `render()` with its own docstring. The module is already listed in `registry.REGISTERED`, so no other changes were needed.
+
+✓ Task completed
+
+Usage Stats
+Provider    Model                         Reqs  InputTok  OutputTok  Cost  
+openrouter  deepseek/deepseek-v4.1-flash     7     81.2K        956     —  
+
+Agent active  16.2s

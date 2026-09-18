@@ -1,0 +1,12 @@
+{
+  "kind": "evidence_label_correction",
+  "applies_to": [
+    "runs/task-b4-candidate/integrity-gate.json",
+    "runs/task-b5-candidate/integrity-gate.json",
+    "runs/task-b6-candidate/integrity-gate.json"
+  ],
+  "defect": "harness wrote the literal label '\"gate\": \"failed\"' regardless of outcome",
+  "authoritative_gate_result": "PASS for all three candidates \u2014 'failures' is [] in every file, and the real executed stdout/stderr/workspace.diff/oracle.txt prove each candidate ran its first model call only after the gate cleared",
+  "original_files": "preserved unmodified; this record corrects the label, not the evidence",
+  "runner_fix": "gate label now derives from the failures list (run_live_study.py)"
+}

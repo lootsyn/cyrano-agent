@@ -1,0 +1,9 @@
+{
+  "run_id": "task-b4-candidate",
+  "study_id": "wp23-live-effectiveness-2",
+  "memory_id": "widgetbox-convention-r2",
+  "candidate_id": "sha256:c50046495c65bf5c3c7fd7616014f59f792b52f4c9de35ed68eadb8fc9a68e69",
+  "content_digest": "sha256:af662a4b2ab67a4a270e9a24843e3a8ffd9ed614c14a88df33a4265e8cb7a736",
+  "artifact": "agents/wp23r2/AGENTS.md",
+  "artifact_digest": "sha256:af662a4b2ab67a4a270e9a24843e3a8ffd9ed614c14a88df33a4265e8cb7a736"
+}
