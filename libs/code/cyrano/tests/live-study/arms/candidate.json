@@ -1,0 +1,16 @@
+{
+  "arm": "candidate",
+  "description": "same dcode release plus the Cyrano governed runtime",
+  "dcode_release": "deepagents-code==0.1.70",
+  "memory_service": "enabled (scoped repository)",
+  "improvement_lanes": "enabled after task-a (path B: memory + skill)",
+  "action_broker": "enabled (permit-gated mutation)",
+  "event_ledger": "local scoped repository, full instrumentation",
+  "approval": "approval desk required for improvement application",
+  "workspace": "byte-identical copy of tests/live-study/repo",
+  "model": {
+    "provider": "anthropic",
+    "model_spec": "anthropic:claude-sonnet-5",
+    "parameters": {}
+  }
+}

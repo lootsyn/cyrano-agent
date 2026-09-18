@@ -1,0 +1,16 @@
+{
+  "arm": "baseline",
+  "description": "stock dcode run; Cyrano improvement and memory lanes disabled",
+  "dcode_release": "deepagents-code==0.1.70",
+  "memory_service": "disabled",
+  "improvement_lanes": "disabled",
+  "action_broker": "disabled",
+  "event_ledger": "local scoped repository, observation only",
+  "approval": "launch-scope permit for the run itself only",
+  "workspace": "byte-identical copy of tests/live-study/repo",
+  "model": {
+    "provider": "anthropic",
+    "model_spec": "anthropic:claude-sonnet-5",
+    "parameters": {}
+  }
+}

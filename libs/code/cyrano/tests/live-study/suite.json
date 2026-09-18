@@ -1,0 +1,41 @@
+{
+  "schema_version": "cyrano.live-study/1",
+  "status": "sealed_inputs_not_executed",
+  "families": ["learn-episode", "convention-apply"],
+  "holdout": ["task-b-holdout"],
+  "min_pairs": 1,
+  "ordering": [
+    "task-a-candidate",
+    "improvement",
+    "task-b-baseline",
+    "task-b-candidate"
+  ],
+  "tasks": {
+    "task-a": {
+      "family": "learn-episode",
+      "arm": "candidate",
+      "prompt": "In the widgetbox package, add a new widget module `beta` that defines `render() -> str` returning the string 'beta'. Edit files only; do not run tests.",
+      "oracle": "oracle/check_registry.py",
+      "expected_episode": "first attempt fails the registry convention"
+    },
+    "task-b": {
+      "family": "convention-apply",
+      "holdout": "task-b-holdout",
+      "arms": ["baseline", "candidate"],
+      "prompt": "In the widgetbox package, add a new widget module `gamma` that defines `render() -> str` returning the string 'gamma'. Edit files only; do not run tests.",
+      "oracle": "oracle/check_registry.py"
+    }
+  },
+  "primary_metric": "first_pass_oracle_success",
+  "quality_margin": 0.5,
+  "budget": {
+    "budget_units": 2500000,
+    "unit": "token",
+    "max_model_calls": 120,
+    "max_cost_usd": 20.0
+  },
+  "timeout_seconds_per_run": 1800,
+  "retry_policy": "no retry when an external effect is uncertain; a run aborted before its first model call may be re-issued at most once",
+  "workspace": "per-run byte-identical copy of repo/ under an owned temp root; oracle/ is never copied into the agent workspace",
+  "scope": "this fixture study only; no cross-project or cross-model generalization"
+}
