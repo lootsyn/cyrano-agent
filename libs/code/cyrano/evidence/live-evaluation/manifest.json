@@ -2,12 +2,12 @@
   "kind": "sealed_experiment_manifest",
   "status": "sealed_not_executed",
   "manifest": {
-    "manifest_id": "sha256:03e6b1d3c27fcdf8caa483cb103a09297769244ce5a35ac2745007e73d035680",
-    "baseline_digest": "sha256:ab9205ddb0ec03a0ead3da1c74e19c11e21788ef233ad637f08491144c32fe9a",
-    "candidate_digest": "sha256:68e9616ab47d6484cf05303fc629272aeb048722899bc3f6ff2981663892037a",
-    "suite_digest": "sha256:d775ec3933bc823a6f0eed3fc297185ac2ce40835a1376e57ef9fdda1011babf",
+    "manifest_id": "sha256:1aaef450d37c0f91dda259828501f5d32b4cddf6ccc0ac870149e0d98cc1a2d5",
+    "baseline_digest": "sha256:6f24305b2cf0cee7a6062b5171bcd9b7e159ca3f5482f1d82499dc206430a6b0",
+    "candidate_digest": "sha256:4dc5c259c56749930324ed176fb1477bcb45c7ff6fe57ea7ea6d57d50528eabf",
+    "suite_digest": "sha256:8dc2a33aa07665bd23795ec11ca6b838351ee34fdc2d3d44b69181edcfbd3ba6",
     "runtime_digest": "sha256:9f83d77b42dad1b7bf95c14764b764d8d5f6f3c288184109cca894354b0e7033",
-    "plan_digest": "sha256:d5fa4ef2e1e5e8be86d5943b2077e6544282613e4d492d4fcd3c3a2bde49793a",
+    "plan_digest": "sha256:3f57828c45da475e1120a479895df224666c57ea0437b76376d33e8066c5c13f",
     "families": [
       "learn-episode",
       "convention-apply"
@@ -25,7 +25,7 @@
       "kernel/actions"
     ],
     "policy_digest": "sha256:4b9378d055eda21515b86b444e2e766a00a1f217048608fe280dabccf7c4823f",
-    "model_digest": "sha256:297a6008d06caccaeef4cda5de7332210eb8c9f04968dfd0bb429b88b0608426",
+    "model_digest": "sha256:53ba3522d1b4b8d621d6d4411317b629c4792b303ba21acd2deb1801e32bfa05",
     "route_digest": "sha256:6c6b24a19d7499999fbe19c4ef6c404dcae0a4c1add87ed3bb7bbc7a8e8f3bdf"
   },
   "inputs": {
@@ -37,16 +37,62 @@
     "oracle": "tests/live-study/oracle/",
     "policy": "configs/broker-policy.json"
   },
-  "credential_env": "ANTHROPIC_API_KEY",
+  "credential_env": "OPENROUTER_API_KEY",
+  "provider_routing": {
+    "policy": {
+      "only": [
+        "DeepInfra"
+      ],
+      "allow_fallbacks": false,
+      "require_parameters": true
+    },
+    "fail_closed": "an unavailable or nonconforming upstream aborts the run; a mid-flight abort yields an incomplete pair (INCONCLUSIVE), never a silent reroute",
+    "pinned_upstream": {
+      "provider_name": "DeepInfra",
+      "tag": "deepinfra/fp8",
+      "context_length": 1048576,
+      "pricing": {
+        "prompt": "0.0000002",
+        "completion": "0.0000006"
+      },
+      "supported_parameters": [
+        "reasoning",
+        "include_reasoning",
+        "max_tokens",
+        "temperature",
+        "top_p",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "repetition_penalty",
+        "top_k",
+        "seed",
+        "min_p",
+        "logit_bias",
+        "structured_outputs",
+        "tools",
+        "tool_choice",
+        "response_format",
+        "reasoning_effort"
+      ],
+      "observed_at": "2026-09-18",
+      "source": "openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash/endpoints"
+    }
+  },
   "external_effects": [
-    "paid model calls to provider anthropic only"
+    "paid model calls to provider openrouter only"
   ],
   "limits": {
     "max_runs": 4,
     "max_model_calls": 120,
     "max_tokens": 2500000,
-    "max_cost_usd": 20.0,
+    "max_cost_usd": 10.0,
     "timeout_seconds_per_run": 1800
   },
-  "sealed_manifest_digest": "sha256:9755ccd97b68d12c397d9da8aba045885173c3dd59b9a03f974a5b4747ba68fd"
+  "supersedes": {
+    "manifest_id": "sha256:03e6b1d3c27fcdf8caa483cb103a09297769244ce5a35ac2745007e73d035680",
+    "sealed_manifest_digest": "sha256:9755ccd97b68d12c397d9da8aba045885173c3dd59b9a03f974a5b4747ba68fd",
+    "archived": "manifest.superseded-sha256:03e6b1d3.json"
+  },
+  "sealed_manifest_digest": "sha256:95c43f5a0ea8af2028e9209ba447f67f354aa912268a2113438dbc791631c4c2"
 }

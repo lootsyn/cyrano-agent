@@ -32,7 +32,7 @@
     "budget_units": 2500000,
     "unit": "token",
     "max_model_calls": 120,
-    "max_cost_usd": 20.0
+    "max_cost_usd": 10.0
   },
   "timeout_seconds_per_run": 1800,
   "retry_policy": "no retry when an external effect is uncertain; a run aborted before its first model call may be re-issued at most once",

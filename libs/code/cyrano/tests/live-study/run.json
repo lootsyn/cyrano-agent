@@ -9,11 +9,58 @@
     "--workspace",
     "<run-workspace>"
   ],
-  "credential_env": "ANTHROPIC_API_KEY",
+  "credential_env": "OPENROUTER_API_KEY",
   "model": {
-    "provider": "anthropic",
-    "model_spec": "anthropic:claude-sonnet-5",
-    "parameters": {}
+    "provider": "openrouter",
+    "model_spec": "openrouter:deepseek/deepseek-v4.1-flash",
+    "parameters": {
+      "temperature": 0,
+      "max_retries": 0,
+      "openrouter_provider": {
+        "only": ["DeepInfra"],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      }
+    }
+  },
+  "provider_routing": {
+    "policy": {
+      "only": ["DeepInfra"],
+      "allow_fallbacks": false,
+      "require_parameters": true
+    },
+    "fail_closed": "an unavailable or nonconforming upstream aborts the run; a mid-flight abort yields an incomplete pair (INCONCLUSIVE), never a silent reroute",
+    "pinned_upstream": {
+      "provider_name": "DeepInfra",
+      "tag": "deepinfra/fp8",
+      "context_length": 1048576,
+      "pricing": {
+        "prompt": "0.0000002",
+        "completion": "0.0000006"
+      },
+      "supported_parameters": [
+        "reasoning",
+        "include_reasoning",
+        "max_tokens",
+        "temperature",
+        "top_p",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "repetition_penalty",
+        "top_k",
+        "seed",
+        "min_p",
+        "logit_bias",
+        "structured_outputs",
+        "tools",
+        "tool_choice",
+        "response_format",
+        "reasoning_effort"
+      ],
+      "observed_at": "2026-09-18",
+      "source": "openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash/endpoints"
+    }
   },
   "run_order": [
     "task-a-candidate",
@@ -25,6 +72,7 @@
     "same_task_text_both_arms": true,
     "same_model_both_arms": true,
     "same_parameters_both_arms": true,
+    "same_provider_routing_both_arms": true,
     "oracle_outside_agent_scope": true,
     "byte_identical_workspace_copies": true
   },
@@ -32,7 +80,7 @@
     "max_runs": 4,
     "max_model_calls": 120,
     "max_tokens": 2500000,
-    "max_cost_usd": 20.0,
+    "max_cost_usd": 10.0,
     "timeout_seconds_per_run": 1800
   }
 }

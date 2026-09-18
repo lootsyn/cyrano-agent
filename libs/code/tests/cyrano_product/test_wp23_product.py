@@ -315,6 +315,23 @@ def test_wp23_i01_same_release_comparison_no_model_specialization():
     assert manifest["nondeterministic_provider"] is True
 
 
+def test_provider_routing_is_pinned_and_fail_closed():
+    """OpenRouter routing cannot silently leave the study boundary."""
+    record = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+    policy = record["provider_routing"]["policy"]
+    assert policy["allow_fallbacks"] is False
+    assert policy["require_parameters"] is True
+    assert policy["only"] == ["DeepInfra"]
+    baseline = json.loads((STUDY / "arms" / "baseline.json").read_text())
+    candidate = json.loads((STUDY / "arms" / "candidate.json").read_text())
+    assert baseline["model"] == candidate["model"]
+    assert baseline["provider_routing"] == candidate["provider_routing"]
+    assert (
+        baseline["model"]["parameters"]["openrouter_provider"]
+        == (candidate["model"]["parameters"]["openrouter_provider"])
+    )
+
+
 def test_wp23_i02_inconclusive_preserves_baseline():
     """WP23-I02: inconclusive keeps the baseline, never upgrades."""
     manifest = seal_experiment(_spec())

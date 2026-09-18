@@ -1,0 +1,53 @@
+{
+  "kind": "sealed_experiment_manifest",
+  "status": "superseded",
+  "manifest": {
+    "manifest_id": "sha256:03e6b1d3c27fcdf8caa483cb103a09297769244ce5a35ac2745007e73d035680",
+    "baseline_digest": "sha256:ab9205ddb0ec03a0ead3da1c74e19c11e21788ef233ad637f08491144c32fe9a",
+    "candidate_digest": "sha256:68e9616ab47d6484cf05303fc629272aeb048722899bc3f6ff2981663892037a",
+    "suite_digest": "sha256:d775ec3933bc823a6f0eed3fc297185ac2ce40835a1376e57ef9fdda1011babf",
+    "runtime_digest": "sha256:9f83d77b42dad1b7bf95c14764b764d8d5f6f3c288184109cca894354b0e7033",
+    "plan_digest": "sha256:d5fa4ef2e1e5e8be86d5943b2077e6544282613e4d492d4fcd3c3a2bde49793a",
+    "families": [
+      "learn-episode",
+      "convention-apply"
+    ],
+    "holdout": [
+      "task-b-holdout"
+    ],
+    "budget_units": 2500000,
+    "quality_margin": 0.5,
+    "min_pairs": 1,
+    "nondeterministic_provider": true,
+    "changes": [
+      "memory/service",
+      "improvement/knowledge_lane",
+      "kernel/actions"
+    ],
+    "policy_digest": "sha256:4b9378d055eda21515b86b444e2e766a00a1f217048608fe280dabccf7c4823f",
+    "model_digest": "sha256:297a6008d06caccaeef4cda5de7332210eb8c9f04968dfd0bb429b88b0608426",
+    "route_digest": "sha256:6c6b24a19d7499999fbe19c4ef6c404dcae0a4c1add87ed3bb7bbc7a8e8f3bdf"
+  },
+  "inputs": {
+    "suite": "tests/live-study/suite.json",
+    "route": "tests/live-study/run.json",
+    "baseline_arm": "tests/live-study/arms/baseline.json",
+    "candidate_arm": "tests/live-study/arms/candidate.json",
+    "fixture_repo": "tests/live-study/repo/",
+    "oracle": "tests/live-study/oracle/",
+    "policy": "configs/broker-policy.json"
+  },
+  "credential_env": "ANTHROPIC_API_KEY",
+  "external_effects": [
+    "paid model calls to provider anthropic only"
+  ],
+  "limits": {
+    "max_runs": 4,
+    "max_model_calls": 120,
+    "max_tokens": 2500000,
+    "max_cost_usd": 20.0,
+    "timeout_seconds_per_run": 1800
+  },
+  "sealed_manifest_digest": "sha256:9755ccd97b68d12c397d9da8aba045885173c3dd59b9a03f974a5b4747ba68fd",
+  "superseded_by": "manifest.json"
+}

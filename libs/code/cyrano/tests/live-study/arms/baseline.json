@@ -9,8 +9,21 @@
   "approval": "launch-scope permit for the run itself only",
   "workspace": "byte-identical copy of tests/live-study/repo",
   "model": {
-    "provider": "anthropic",
-    "model_spec": "anthropic:claude-sonnet-5",
-    "parameters": {}
+    "provider": "openrouter",
+    "model_spec": "openrouter:deepseek/deepseek-v4.1-flash",
+    "parameters": {
+      "temperature": 0,
+      "max_retries": 0,
+      "openrouter_provider": {
+        "only": ["DeepInfra"],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      }
+    }
+  },
+  "provider_routing": {
+    "only": ["DeepInfra"],
+    "allow_fallbacks": false,
+    "require_parameters": true
   }
 }

@@ -114,6 +114,29 @@ def main() -> int:
     spec = build_spec()
     manifest = seal_experiment(spec)
     EVIDENCE.mkdir(parents=True, exist_ok=True)
+    suite = json.loads((STUDY / "suite.json").read_text(encoding="utf-8"))
+    route = json.loads((STUDY / "run.json").read_text(encoding="utf-8"))
+    provider = str(route["model"]["provider"])
+    previous = EVIDENCE / "manifest.json"
+    supersedes = None
+    if previous.is_file():
+        old = json.loads(previous.read_text(encoding="utf-8"))
+        if old.get("status") == "sealed_not_executed":
+            old["status"] = "superseded"
+            old["superseded_by"] = "manifest.json"
+            archive = EVIDENCE / (
+                "manifest.superseded-"
+                + str(old["manifest"]["manifest_id"])[:15]
+                + ".json"
+            )
+            archive.write_text(
+                json.dumps(old, indent=2) + "\n", encoding="utf-8"
+            )
+            supersedes = {
+                "manifest_id": old["manifest"]["manifest_id"],
+                "sealed_manifest_digest": old["sealed_manifest_digest"],
+                "archived": archive.name,
+            }
     record = {
         "kind": "sealed_experiment_manifest",
         "status": "sealed_not_executed",
@@ -130,16 +153,21 @@ def main() -> int:
             "oracle": "tests/live-study/oracle/",
             "policy": "configs/broker-policy.json",
         },
-        "credential_env": "ANTHROPIC_API_KEY",
-        "external_effects": ["paid model calls to provider anthropic only"],
+        "credential_env": str(route["credential_env"]),
+        "provider_routing": route.get("provider_routing"),
+        "external_effects": [f"paid model calls to provider {provider} only"],
         "limits": {
-            "max_runs": 4,
-            "max_model_calls": 120,
-            "max_tokens": spec["budget_units"],
-            "max_cost_usd": 20.0,
-            "timeout_seconds_per_run": 1800,
+            "max_runs": int(route["caps"]["max_runs"]),
+            "max_model_calls": int(suite["budget"]["max_model_calls"]),
+            "max_tokens": int(suite["budget"]["budget_units"]),
+            "max_cost_usd": float(suite["budget"]["max_cost_usd"]),
+            "timeout_seconds_per_run": int(
+                route["caps"]["timeout_seconds_per_run"]
+            ),
         },
     }
+    if supersedes is not None:
+        record["supersedes"] = supersedes
     record["sealed_manifest_digest"] = _digest_json(record["manifest"])
     path = EVIDENCE / "manifest.json"
     path.write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
